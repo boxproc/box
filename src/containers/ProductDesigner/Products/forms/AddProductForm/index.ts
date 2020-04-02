@@ -4,7 +4,7 @@ import { formValueSelector } from 'redux-form';
 
 import { formNamesConst } from 'consts';
 
-import { detailsInitialFormValues } from '../../consts';
+import { detailsInitialFormValues } from './../../consts';
 import AddProductForm from './AddProductForm';
 
 import {

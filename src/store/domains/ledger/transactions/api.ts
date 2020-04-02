@@ -1,8 +1,17 @@
+// import { successResponseMock } from 'consts';
 import { apiClientService } from 'services';
 
-import { TLedgerId } from '../customers';
-// import { transactionsMock } from './mock';
-import { IConvertTrToLoanReq, ITransactionsFilterToSend } from './types';
+import { TLedgerId } from './../customers';
+// import {
+//   transactionsMock,
+//   settleTransactionMock
+//  } from './mock';
+import {
+  IConvertTrToLoanReq,
+  IRetrieveTrReq,
+  ISettleTransactionReq,
+  ITransactionsFilterToSend,
+} from './types';
 // import { throttleUtil } from 'utils';
 
 /**
@@ -23,3 +32,17 @@ export const filterTransactionsById = (data: TLedgerId) =>
  */
 export const convertTransactionToLoan = (data: Partial<IConvertTrToLoanReq>) =>
   apiClientService.post('ui/ledger/transactions/convert_to_loan', { data });
+
+/**
+ * Retrieve transaction API
+ */
+export const retrieveTransaction = (data: IRetrieveTrReq) =>
+  // throttleUtil.getDataAfter(settleTransactionMock, 500);
+  apiClientService.post('ui/ledger/accounts/retrieve_transaction', { data });
+
+/**
+ * Settle transaction API
+ */
+export const settleTransaction = (data: ISettleTransactionReq) =>
+  // throttleUtil.getDataAfter(successResponseMock, 500);
+  apiClientService.post('ui/ledger/accounts/settle_transaction', { data });

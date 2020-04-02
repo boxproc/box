@@ -4,7 +4,7 @@ import { Modal } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
-import { SystemPropertyForm } from '../../forms';
+import { SystemPropertyForm } from './../../forms';
 
 interface IAddSystemPropertyModal extends IWithModal {
   isFormDirty: boolean;

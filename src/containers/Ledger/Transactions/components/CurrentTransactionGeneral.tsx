@@ -52,7 +52,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width="120px" p="8px">
+        <Box width="150px" p="8px">
           <Field
             id="status"
             name="status"
@@ -70,7 +70,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width="100px" p="8px">
+        <Box width={[1 / 12]} p="8px">
           <Field
             id="debitCreditIndicator"
             name="debitCreditIndicator"
@@ -135,7 +135,7 @@ const CurrentTransactionGeneral: React.FC = () => {
           />
         </Box>
         <Hr />
-        <Box width={[1 / 6]} p="8px">
+        <Box width={[1 / 12]} p="8px">
           <Field
             id="aprRate"
             name="aprRate"
@@ -145,7 +145,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 6]} p="8px">
+        <Box width={[3 / 12]} p="8px">
           <Field
             id="aprCalculationMethod"
             name="aprCalculationMethod"
@@ -154,7 +154,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 6]} p="8px">
+        <Box width={[1 / 12]} p="8px">
           <Field
             id="feeRate"
             name="feeRate"
@@ -164,7 +164,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 6]} p="8px">
+        <Box width={[3 / 12]} p="8px">
           <Field
             id="feeApplicationCondition"
             name="feeApplicationCondition"
@@ -173,7 +173,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1 / 6]} p="8px">
+        <Box width={[1 / 12]} p="8px">
           <Field
             id="rewardRate"
             name="rewardRate"
@@ -183,7 +183,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width={[1 / 6]} p="8px">
+        <Box width={[3 / 12]} p="8px">
           <Field
             id="rewardApplicationCondition"
             name="rewardApplicationCondition"
@@ -192,7 +192,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             readOnly={true}
           />
         </Box>
-        <Box width={[1]} p="8px">
+        <Box width={[1 / 2]} p="8px">
           <Field
             id="description"
             name="description"

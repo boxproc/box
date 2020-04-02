@@ -1,138 +1,172 @@
-import { createSelector } from 'reselect';
+  import { createSelector } from 'reselect';
 
-import { IStoreState } from 'store';
-import { instProductsOptionsSelector } from 'store/domains/productDesigner';
+  import { IStoreState } from 'store';
+  import { dictionaryRepaymentTypesOptionsSelector } from 'store/domains/admin';
+  import { createLoadingSelector } from 'store/domains/loader';
+  import { userInstitutionsOptionsSelector } from 'store/domains/login';
+  import { instProductsOptionsSelector } from 'store/domains/productDesigner';
+  import { activeItemIdSelector } from 'store/domains/utils';
+  import { ActionTypeKeys } from './actionTypes';
+  import { prepareCardsToRender, prepareDataToRender, prepareDetailsToRender } from './utils';
+  import { prepareResultLimitAdjDataToRender } from './utilsLimitAdj';
+  import { prepareManualTrResultDataToRender } from './utilsManualTr';
 
-import { dictionaryRepaymentTypesOptionsSelector } from 'store/domains/admin';
-import { userInstitutionsOptionsSelector } from 'store/domains/login';
-import { activeItemIdSelector } from 'store/domains/utils';
+  /** Accounts selectors */
 
-import { createLoadingSelector } from 'store/domains/loader';
-import { ActionTypeKeys } from './actionTypes';
-import {
-  prepareCardsToRender,
-  prepareDataToRender,
-  prepareDetailsToRender,
-} from './utils';
+  export const defaultAccountsSelector = (state: IStoreState) => state.ledger.accounts.accounts;
 
-/** Accounts selectors */
+  export const accountsSelector = createSelector(
+    defaultAccountsSelector,
+    userInstitutionsOptionsSelector,
+    (accounts, institutions) => accounts && accounts.map(account => {
+      const institution = institutions.find(el => el.value === account.institution_id);
 
-export const defaultAccountsSelector = (state: IStoreState) => state.ledger.accounts.accounts;
+      return prepareDataToRender(account, institution);
+    })
+  );
 
-export const accountsSelector = createSelector(
-  defaultAccountsSelector,
-  userInstitutionsOptionsSelector,
-  (accounts, institutions) => accounts && accounts.map(account => {
-    const institution = institutions.find(el => el.value === account.institution_id);
+  /** Account cards selectors */
 
-    return prepareDataToRender(account, institution);
-  })
-);
+  export const defaultAccountCardsSelector = (state: IStoreState) => state.ledger.accounts.cards;
 
-/** Account cards selectors */
+  export const accountCardsSelector = createSelector(
+    defaultAccountCardsSelector,
+    data => data && data.map(el => prepareCardsToRender(el))
+  );
 
-export const defaultAccountCardsSelector = (state: IStoreState) => state.ledger.accounts.cards;
+  /** Current account selectors */
 
-export const accountCardsSelector = createSelector(
-  defaultAccountCardsSelector,
-  data => data && data.map(el => prepareCardsToRender(el))
-);
+  export const currentAccProductTypeSelector = createSelector(
+    activeItemIdSelector,
+    defaultAccountsSelector,
+    (currentId, accounts) => {
+      const currentAcc = accounts.find(el => el.id === currentId);
 
-/** Current account selectors */
+      return currentAcc && currentAcc.product_type;
+    }
+  );
 
-export const currentAccProductTypeSelector = createSelector(
-  activeItemIdSelector,
-  defaultAccountsSelector,
-  (currentId, accounts) => {
-    const currentAcc = accounts.find(el => el.id === currentId);
+  export const currentAccSelector = createSelector(
+    activeItemIdSelector,
+    userInstitutionsOptionsSelector,
+    instProductsOptionsSelector,
+    defaultAccountsSelector,
+    dictionaryRepaymentTypesOptionsSelector,
+    (currentId, institutions, institutionProducts, accounts, repaymentTypesOptions) => {
+      const currentAcc = accounts.find(el => el.id === currentId);
+      const repaymentType = currentAcc && currentAcc.repayment_type;
 
-    return currentAcc && currentAcc.product_type;
-  }
-);
+      return {
+        ...prepareDetailsToRender(currentAcc),
+        institutionId: currentAcc && institutions
+          .find(el => el.value === currentAcc.institution_id),
+        product: currentAcc && institutionProducts.find(el => el.value === currentAcc.product_id),
+        repaymentType: repaymentTypesOptions.find(el => el.value === repaymentType),
+      };
+    }
+  );
 
-export const currentAccSelector = createSelector(
-  activeItemIdSelector,
-  userInstitutionsOptionsSelector,
-  instProductsOptionsSelector,
-  defaultAccountsSelector,
-  dictionaryRepaymentTypesOptionsSelector,
-  (currentId, institutions, institutionProducts, accounts, repaymentTypesOptions) => {
-    const currentAcc = accounts.find(el => el.id === currentId);
-    const repaymentType = currentAcc && currentAcc.repayment_type;
+  export const currentAccAuxCountersSelector = createSelector(
+    currentAccSelector,
+    account => {
+      return {
+        auxCounter1Description: account.auxCounter1Description,
+        auxCounter2Description: account.auxCounter2Description,
+        auxCounter3Description: account.auxCounter3Description,
+        auxCounter1Enabled: account.auxCounter1Enabled,
+        auxCounter2Enabled: account.auxCounter2Enabled,
+        auxCounter3Enabled: account.auxCounter3Enabled,
+      };
+    }
+  );
 
-    return {
-      ...prepareDetailsToRender(currentAcc),
-      institutionId: currentAcc && institutions.find(el => el.value === currentAcc.institution_id),
-      product: currentAcc && institutionProducts.find(el => el.value === currentAcc.product_id),
-      repaymentType: repaymentTypesOptions.find(el => el.value === repaymentType),
-    };
-  }
-);
+  export const currentAccAliasSelector = createSelector(
+    currentAccSelector,
+    data => data && data.accountAlias
+  );
 
-export const currentAccAuxCountersSelector = createSelector(
-  currentAccSelector,
-  account => {
-    return {
-      auxCounter1Description: account.auxCounter1Description,
-      auxCounter2Description: account.auxCounter2Description,
-      auxCounter3Description: account.auxCounter3Description,
-      auxCounter1Enabled: account.auxCounter1Enabled,
-      auxCounter2Enabled: account.auxCounter2Enabled,
-      auxCounter3Enabled: account.auxCounter3Enabled,
-    };
-  }
-);
+  export const currentAccCurrencyCodeSelector = createSelector(
+    currentAccSelector,
+    data => data && data.currencyNumericCode
+  );
 
-export const currentAccAliasSelector = createSelector(
-  currentAccSelector,
-  data => data && data.accountAlias
-);
+  export const currentAccBalanceLimitSelector = createSelector(
+    currentAccSelector,
+    data => data && data.balanceLimit
+  );
 
-export const currentAccCurrencyCodeSelector = createSelector(
-  currentAccSelector,
-  data => data && data.currencyNumericCode
-);
+  export const currentAccBalanceLimitSharedSelector = createSelector(
+    currentAccSelector,
+    data => data && data.balanceLimitShared
+  );
 
-export const currentAccBalanceLimitSelector = createSelector(
-  currentAccSelector,
-  data => data && data.balanceLimit
-);
+  export const currentAccProductOverrideIdSelector = createSelector(
+    currentAccSelector,
+    data => data && data.productOverrideId
+  );
 
-export const currentAccBalanceLimitSharedSelector = createSelector(
-  currentAccSelector,
-  data => data && data.balanceLimitShared
-);
+  export const currentAccHasProductOverrideSelector = createSelector(
+    currentAccSelector,
+    data => data && data.productOverrideId ? true : false
+  );
 
-export const currentAccProductOverrideIdSelector = createSelector(
-  currentAccSelector,
-  data => data && data.productOverrideId
-);
+  /**
+   * Account loading selectors
+   */
 
-export const currentAccHasProductOverrideSelector = createSelector(
-  currentAccSelector,
-  data => data && data.productOverrideId ? true : false
-);
+  export const isAccountLoadingSelector = createLoadingSelector([
+    ActionTypeKeys.FILTER_ACCOUNTS,
+  ]);
 
-/**
- * Account loading selectors
- */
+  export const isUpdatingAccountSelector = createLoadingSelector([
+    ActionTypeKeys.UPDATE_ACCOUNT,
+  ]);
 
-export const isAccountLoadingSelector = createLoadingSelector([
-  ActionTypeKeys.FILTER_ACCOUNTS,
-]);
+  export const isAddingAccountSelector = createLoadingSelector([
+    ActionTypeKeys.ADD_ACCOUNT,
+  ]);
 
-export const isUpdatingAccountSelector = createLoadingSelector([
-  ActionTypeKeys.UPDATE_ACCOUNT,
-]);
+  export const isAccountCardsLoadingSelector = createLoadingSelector([
+    ActionTypeKeys.GET_ACCOUNT_CARDS,
+  ]);
 
-export const isAddingAccountSelector = createLoadingSelector([
-  ActionTypeKeys.ADD_ACCOUNT,
-]);
+  export const isOrderingAccountCardSelector = createLoadingSelector([
+    ActionTypeKeys.ORDER_ACCOUNT_CARD,
+  ]);
 
-export const isAccountCardsLoadingSelector = createLoadingSelector([
-  ActionTypeKeys.GET_ACCOUNT_CARDS,
-]);
+  /**
+   * Manual transaction selectors
+   */
 
-export const isOrderingAccountCardSelector = createLoadingSelector([
-  ActionTypeKeys.ORDER_ACCOUNT_CARD,
-]);
+  export const defaultManualTrSelector = (state: IStoreState) =>
+    state.ledger.accounts.manualTrResult;
+
+  export const manualTransactionSelector = createSelector(
+    defaultManualTrSelector,
+    data => data && prepareManualTrResultDataToRender(data)
+  );
+
+  export const manualTransactionIdSelector = createSelector(
+    manualTransactionSelector,
+    data => data && data.transactionId
+  );
+
+  export const isManualTransactionLoading = createLoadingSelector([
+    ActionTypeKeys.MAKE_TRANSACTION,
+  ]);
+
+  /**
+   * Limit adjustment selectors
+   */
+
+  export const defaultLimitAdjustmentSelector = (state: IStoreState) =>
+    state.ledger.accounts.limitAdjResult;
+
+  export const limitAdjustmentSelector = createSelector(
+    defaultLimitAdjustmentSelector,
+    data => data && prepareResultLimitAdjDataToRender(data)
+  );
+
+  export const isLimitAdjustmentLoadingSelector = createLoadingSelector([
+    ActionTypeKeys.LIMIT_ADJUSTMENT,
+  ]);

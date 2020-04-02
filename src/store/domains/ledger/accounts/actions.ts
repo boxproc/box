@@ -1,5 +1,5 @@
 import { push } from 'react-router-redux';
-import { getFormValues } from 'redux-form';
+import { getFormValues, reset as resetForm } from 'redux-form';
 
 import { basePath, formNamesConst, modalNamesConst, uiItemsConst } from 'consts';
 
@@ -10,7 +10,7 @@ import {
   setActiveItemId,
   setIsOpenFilter,
 } from 'store';
-import { TLedgerId } from '../customers';
+import { TLedgerId } from './../customers';
 import {
   ActionTypeKeys,
   IAddAccountAction,
@@ -18,6 +18,8 @@ import {
   IFilterAccountsAction,
   IFilterAccountsByIdAction,
   IGetAccountCardsAction,
+  IMakeLimitAdjustmentAction,
+  IMakeTransactionAction,
   IOrderAccountCardAction,
   IUpdateAccountAction,
 } from './actionTypes';
@@ -27,10 +29,13 @@ import {
   IAccountDetails,
   IAccountsFilterToSend,
 } from './types';
+import { ILimitAdjReq, ILimitAdjustmentFromData } from './typesLimitAdj';
+import { IManualTransactionFromData, IManualTransactionReq } from './typesManualTr';
 import { prepareDataToSend, prepareFilterToSend } from './utils';
+import { prepareLimitAdjDataToSend } from './utilsLimitAdj';
+import { prepareManualTrDataToSend } from './utilsManualTr';
 
 import { Thunk } from 'types';
-
 import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
 
 /**
@@ -234,3 +239,57 @@ export type TResetAccounts = () => void;
 export const resetAccounts: TResetAccounts = () => ({
   type: ActionTypeKeys.RESET_ACCOUNTS,
 });
+
+/**
+ * Make manual transaction action
+ */
+
+export type TMakeTransaction = (data: Partial<IManualTransactionReq>) => IMakeTransactionAction;
+export type THandleMakeTransaction = (data: Partial<IManualTransactionFromData>) => Thunk<void>;
+
+export const makeTransaction: TMakeTransaction = data => ({
+  type: ActionTypeKeys.MAKE_TRANSACTION,
+  payload: api.makeTransaction(data),
+  meta: { accId: data.account_id },
+});
+
+export const handleMakeTransaction: THandleMakeTransaction = data =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedData = prepareManualTrDataToSend(data);
+
+        await dispatch(makeTransaction(preparedData));
+        dispatch(resetForm(formNamesConst.MANUAL_TRANSACTION));
+        dispatch(openModal({ name: modalNamesConst.MANUAL_TRANSACTION_RESULT }));
+      },
+      dispatch
+    );
+  };
+
+/**
+ * Limit adjustment action
+ */
+
+export type TMakeLimitAdjustment = (data: Partial<ILimitAdjReq>) => IMakeLimitAdjustmentAction;
+export type THandleMakeLimitAdjustment = (data: Partial<ILimitAdjustmentFromData>) => Thunk<void>;
+
+export const makeLimitAdjustment: TMakeLimitAdjustment = data => ({
+  type: ActionTypeKeys.LIMIT_ADJUSTMENT,
+  payload: api.makeLimitAdjustment(data),
+  meta: { accId: data.account_id },
+});
+
+export const handleMakeLimitAdjustment: THandleMakeLimitAdjustment = data =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedData = prepareLimitAdjDataToSend(data);
+
+        await dispatch(makeLimitAdjustment(preparedData));
+        dispatch(resetForm(formNamesConst.MANUAL_TRANSACTION));
+        dispatch(openModal({ name: modalNamesConst.MANUAL_TRANSACTION_RESULT }));
+      },
+      dispatch
+    );
+  };

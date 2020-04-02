@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 import { IStoreState } from 'store';
-import { createLoadingSelector } from '../loader';
+import { createLoadingSelector } from './../loader';
 import { ActionTypeKeys } from './actionTypes';
 import { prepareUiItems } from './utils';
 

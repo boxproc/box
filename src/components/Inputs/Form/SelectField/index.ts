@@ -1,5 +1,5 @@
 ﻿import SelectField from './SelectInput';
 
-import { withFormField } from '../withFormField';
+import { withFormField } from './../withFormField';
 
 export default withFormField(SelectField);

@@ -1,9 +1,9 @@
 import { ImmutableArray } from 'seamless-immutable';
-import { ILimitAdjustmentFromData, ILimitAdjustmentResultData } from './types';
+import { ILimitAdjustmentFromData, ILimitAdjustmentResultData } from './typesLimitAdj';
 
 import { stringsUtil } from 'utils';
 
-export const prepareDataToSend = (data: Partial<ILimitAdjustmentFromData>) => {
+export const prepareLimitAdjDataToSend = (data: Partial<ILimitAdjustmentFromData>) => {
   if (!data) {
     return null;
   }
@@ -27,20 +27,21 @@ export const prepareDataToSend = (data: Partial<ILimitAdjustmentFromData>) => {
   };
 };
 
-export const prepareResultDataToRender = (data: ImmutableArray<ILimitAdjustmentResultData>) => {
-  if (!data || !data.length) {
-    return null;
-  }
+export const prepareResultLimitAdjDataToRender =
+  (data: ImmutableArray<ILimitAdjustmentResultData>) => {
+    if (!data || !data.length) {
+      return null;
+    }
 
-  const {
-    transaction_id,
-    balance_limit,
-    balance_limit_shared,
-  } = data[0];
+    const {
+      transaction_id,
+      balance_limit,
+      balance_limit_shared,
+    } = data[0];
 
-  return {
-    transactionId: transaction_id,
-    balanceLimit: balance_limit,
-    balanceLimitShared: balance_limit_shared,
+    return {
+      transactionId: transaction_id,
+      balanceLimit: balance_limit,
+      balanceLimitShared: balance_limit_shared,
+    };
   };
-};

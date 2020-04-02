@@ -1,5 +1,9 @@
 
 import { ImmutableArray } from 'seamless-immutable';
+
+import { ILimitAdjustmentResultData } from './typesLimitAdj';
+import { IManualTransactionResultData } from './typesManualTr';
+
 import { ISelectValue } from 'types';
 
 export interface IAccountData {
@@ -179,4 +183,6 @@ export interface IAccountCard {
 export interface IAccountsState {
   accounts: ImmutableArray<IAccountData>;
   cards: ImmutableArray<IAccountCardData>;
+  manualTrResult: ImmutableArray<IManualTransactionResultData>;
+  limitAdjResult: ImmutableArray<ILimitAdjustmentResultData>;
 }

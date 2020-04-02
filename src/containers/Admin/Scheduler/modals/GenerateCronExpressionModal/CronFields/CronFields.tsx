@@ -18,7 +18,7 @@ import NthDayFields from './NthDayFields';
 import RangeFields from './RangeFields';
 import SpecificFields from './SpecificFields';
 
-import { TUnity } from '../cronExpressionTypes';
+import { TUnity } from './../cronExpressionTypes';
 
 const Wrapper = styled.div`
   font-size: 13px;

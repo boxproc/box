@@ -1,5 +1,5 @@
 import { apiClientService } from 'services';
-import { TLedgerId } from '../customers';
+import { TLedgerId } from './../customers';
 import { ICardIdsToSend, ICardsFilterToSend } from './types';
 
 /**

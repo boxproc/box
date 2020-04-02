@@ -19,7 +19,7 @@ const ResultLimitAdjustmentForm: React.FC<TResultLimitAdjustmentForm> = () => {
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[1 / 4]} p="8px">
+          <Box width={[1 / 2]} p="8px">
             <Field
               id="balanceLimit"
               name="balanceLimit"
@@ -31,7 +31,7 @@ const ResultLimitAdjustmentForm: React.FC<TResultLimitAdjustmentForm> = () => {
               readOnly={true}
             />
           </Box>
-          <Box width={[1 / 4]} p="8px">
+          <Box width={[1 / 2]} p="8px">
             <Field
               id="balanceLimitShared"
               name="balanceLimitShared"

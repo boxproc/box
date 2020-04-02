@@ -3,7 +3,7 @@ import { createSelector } from 'reselect';
 import { statusConst, yesNoConst } from 'consts';
 
 import { IStoreState } from 'store';
-import { createLoadingSelector } from '../loader';
+import { createLoadingSelector } from './../loader';
 import { ActionTypeKeys } from './actionTypes';
 import { prepareUserDataToRender } from './utils';
 

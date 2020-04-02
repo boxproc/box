@@ -4,7 +4,7 @@ import { Modal } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
-import { InterfaceForm } from '../../forms';
+import { InterfaceForm } from './../../forms';
 
 import { IInterfaceDetails } from 'store';
 import { ISelectValue } from 'types';

@@ -52,7 +52,7 @@ const ResultManualTransactionModal: React.FC<IResultManualTransactionModal> = ({
       name={modalName}
       type={modalTypesConst.VIEWING}
       title="Transaction is successfully completed."
-      containerWidth="650px"
+      containerWidth={isLimitAdjustment ? '400px' : '650px'}
     >
       {isLimitAdjustment
         ? (<ResultLimitAdjustmentForm initialValues={limitAdjustment} />)

@@ -1,5 +1,6 @@
-import { ITransactionsData } from './types';
+import { ISettleTransactionDataReq, ITransactionsData } from './types';
 
+/** Transactions mock */
 export const transactionsMock: ITransactionsData = {
   transactions: [
     {
@@ -49,6 +50,17 @@ export const transactionsMock: ITransactionsData = {
       card_pos_condition_data: null,
       card_response_code: null,
       parent_transaction_id: null,
+    },
+  ],
+};
+
+/** Settle transaction mock */
+export const settleTransactionMock: ISettleTransactionDataReq = {
+  transaction: [
+    {
+      transaction_id: 3456,
+      amount_settled: 1,
+      settled_datetime: '2020-01-08 22:55:12',
     },
   ],
 };

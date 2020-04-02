@@ -5,6 +5,8 @@ import { IAccountsState } from './types';
 export const accountsInitialState: ImmutableObject<IAccountsState> = Immutable({
   accounts: Immutable([]),
   cards: Immutable([]),
+  manualTrResult: Immutable([]),
+  limitAdjResult: Immutable([]),
 });
 
 const accountsReducer = (state = accountsInitialState, action: TAccountsAction) => {
@@ -17,6 +19,40 @@ const accountsReducer = (state = accountsInitialState, action: TAccountsAction) 
 
     case ActionTypeKeys.GET_ACCOUNT_CARDS_FULFILLED:
       return state.set('cards', action.payload.cards);
+
+    case ActionTypeKeys.MAKE_TRANSACTION_FULFILLED:
+      const mData = action.payload.transaction_result[0];
+      const mAccounts = state.accounts.asMutable();
+      const mAccInd = mAccounts.findIndex(el => el.id === action.meta.accId);
+
+      if (mAccInd) {
+        mAccounts[mAccInd] = {
+          ...mAccounts[mAccInd],
+          balance_settled: mData.balance_settled_after,
+          balance_available: mData.balance_available_after,
+        };
+      }
+
+      return state
+        .set('accounts', mAccounts)
+        .set('manualTrResult', action.payload.transaction_result);
+
+    case ActionTypeKeys.LIMIT_ADJUSTMENT_FULFILLED:
+      const lData = action.payload.transaction_result[0];
+      const lAccounts = state.accounts.asMutable();
+      const lAccInd = lAccounts.findIndex(el => el.id === action.meta.accId);
+
+      if (lAccInd) {
+        lAccounts[lAccInd] = {
+          ...lAccounts[lAccInd],
+          balance_limit: lData.balance_limit,
+          balance_limit_shared: lData.balance_limit_shared,
+        };
+      }
+
+      return state
+        .set('accounts', lAccounts)
+        .set('limitAdjResult', action.payload.transaction_result);
 
     case ActionTypeKeys.RESET_ACCOUNTS:
       return state = accountsInitialState;

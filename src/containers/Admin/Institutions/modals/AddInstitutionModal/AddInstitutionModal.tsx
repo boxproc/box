@@ -4,7 +4,7 @@ import { Modal } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
-import { InstitutionForm } from '../../forms';
+import { InstitutionForm } from './../../forms';
 
 interface IAddInstitutionModal extends IWithModal {
   isFormDirty: boolean;

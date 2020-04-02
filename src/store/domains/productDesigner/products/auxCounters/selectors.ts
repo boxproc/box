@@ -2,14 +2,14 @@ import { createSelector } from 'reselect';
 
 import { actionTypesConst, actionTypesOptions, yesNoConst } from 'consts';
 import { createLoadingSelector } from 'store/domains/loader';
-import { defaultCurrentProductSelector } from '../products';
+import { defaultCurrentProductSelector } from './../products';
 import { ActionTypeKeys } from './actionTypes';
 
 export const productAuxCountersSelector = createSelector(
   defaultCurrentProductSelector,
-  current => {
+  data => {
 
-    if (!current) {
+    if (!data) {
       return null;
     }
 
@@ -20,7 +20,7 @@ export const productAuxCountersSelector = createSelector(
       aux_counter_1_enabled,
       aux_counter_2_enabled,
       aux_counter_3_enabled,
-    } = current;
+    } = data;
 
     return {
       auxCounter1Description: aux_counter_1_description,
@@ -35,12 +35,12 @@ export const productAuxCountersSelector = createSelector(
 
 export const actionTypesOptionsSelector = createSelector(
   productAuxCountersSelector,
-  auxCounters => {
+  data => {
     const set = new Set() as any;
 
-    const isAuxCounter1Enabled = auxCounters && auxCounters.auxCounter1Enabled;
-    const isAuxCounter2Enabled = auxCounters && auxCounters.auxCounter2Enabled;
-    const isAuxCounter3Enabled = auxCounters && auxCounters.auxCounter3Enabled;
+    const isAuxCounter1Enabled = data && data.auxCounter1Enabled;
+    const isAuxCounter2Enabled = data && data.auxCounter2Enabled;
+    const isAuxCounter3Enabled = data && data.auxCounter3Enabled;
 
     const auxCounter1Option = actionTypesOptions
       .find(el => el.value === actionTypesConst.UPDATE_AUX_COUNTER_1);

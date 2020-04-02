@@ -2,7 +2,7 @@ import { createSelector } from 'reselect';
 
 import { IStoreState } from 'store';
 import { createLoadingSelector } from 'store/domains/loader';
-import { defaultCurrentProductSelector } from '../products';
+import { defaultCurrentProductSelector } from './../products';
 import { ActionTypeKeys } from './actionTypes';
 
 export const defaultServicesInterfacesSelector = (state: IStoreState) =>

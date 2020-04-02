@@ -5,7 +5,7 @@ import { Flex } from '@rebass/grid';
 
 import { Button, ISpinner, OkCancelButtons, withSpinner } from 'components';
 import { formNamesConst, iconNamesConst } from 'consts';
-import { InterfaceFields } from '../../components';
+import { InterfaceFields } from './../../components';
 
 import {
   THandleAddInterface,

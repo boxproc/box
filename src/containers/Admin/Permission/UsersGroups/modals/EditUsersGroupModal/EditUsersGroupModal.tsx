@@ -4,8 +4,7 @@ import { Modal, withSpinner } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
-
-import { EditUsersGroupForms } from '../../forms';
+import { EditUsersGroupForms } from './../../forms';
 
 interface IEditUsersGroupModal extends IWithModal {
   groupName: string;

@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 import { createLoadingSelector } from 'store/domains/loader';
-import { defaultCurrentProductSelector } from '../products';
+import { defaultCurrentProductSelector } from './../products';
 import { ActionTypeKeys } from './actionTypes';
 import { prepareDataToRender } from './utils';
 

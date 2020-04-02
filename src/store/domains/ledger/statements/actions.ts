@@ -4,7 +4,7 @@ import { getFormValues } from 'redux-form';
 import { basePath, formNamesConst, uiItemsConst } from 'consts';
 
 import { activeItemIdSelector, openModal, setIsOpenFilter } from 'store';
-import { TLedgerId } from '../customers';
+import { TLedgerId } from './../customers';
 
 import {
   ActionTypeKeys,

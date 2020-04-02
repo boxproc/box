@@ -4,8 +4,7 @@ import { Modal } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
-
-import { UserForm } from '../../forms';
+import { UserForm } from './../../forms';
 
 import { IUserDetails } from 'store';
 

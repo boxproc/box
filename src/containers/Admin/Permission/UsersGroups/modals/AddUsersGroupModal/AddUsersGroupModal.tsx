@@ -4,7 +4,7 @@ import { Modal } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
-import { AddUsersGroupForm } from '../../forms';
+import { AddUsersGroupForm } from './../../forms';
 
 interface IAddUserModal extends IWithModal {
   isFormDirty: boolean;

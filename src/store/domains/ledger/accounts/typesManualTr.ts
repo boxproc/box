@@ -1,4 +1,3 @@
-import { ImmutableArray } from 'seamless-immutable';
 import { ISelectValue } from 'types';
 
 export interface IManualTransactionReq {
@@ -37,8 +36,4 @@ export interface IManualTransactionResult {
   balanceSettledAfter: number;
   balanceAvailableBefore: number;
   balanceAvailableAfter: number;
-}
-
-export interface IManualTransactionState {
-  transactionResult: ImmutableArray<IManualTransactionResultData>;
 }

@@ -18,7 +18,7 @@ import { prepareCardIds, prepareFilterToSend } from './utils';
 import { Thunk } from 'types';
 
 import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
-import { TLedgerId } from '../customers';
+import { TLedgerId } from './../customers';
 
 /**
  * Filter cards action

@@ -52,7 +52,6 @@ const SettleTransactionForm: React.FC<TSettleTransactionForm> = ({
             placeholder="0.00"
             fixedDecimalScale={true}
             decimalScale={2}
-            isNumber={true}
             disabled={isDisabled}
             validate={[
               formErrorUtil.isRequired,

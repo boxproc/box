@@ -170,7 +170,6 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
             component={TextareaField}
             placeholder="Enter Description"
             label="Description"
-            height={80}
             validate={[formErrorUtil.isRequired]}
           />
         </Box>

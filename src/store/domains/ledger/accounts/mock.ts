@@ -1,4 +1,5 @@
 import { IAccountsData } from './types';
+import { IManualTransactionResultResponse } from './typesManualTr';
 
 export const accountsMock: IAccountsData = {
   accounts: [
@@ -117,6 +118,19 @@ export const accountsMock: IAccountsData = {
       statement_cycle_repayment_day: 1,
       status_name: 'Active',
       repayment_type: 'O',
+    },
+  ],
+};
+
+export const manualTransactionMock: IManualTransactionResultResponse = {
+  transaction_result: [
+    {
+      transaction_id: 1,
+      status: '00',
+      balance_settled_before: 10.19,
+      balance_settled_after: 110.19,
+      balance_available_before: 10.19,
+      balance_available_after: 110.19,
     },
   ],
 };

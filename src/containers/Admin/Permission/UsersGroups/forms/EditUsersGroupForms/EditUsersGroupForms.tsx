@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Tabs, TabsPanel } from 'components';
-import { UsersGroupMembers, UsersGroupPermissions } from '../../components';
+import { UsersGroupMembers, UsersGroupPermissions } from './../../components';
 import EditUsersGroupFrom from './EditUsersGroupFrom';
 import EditUsersGroupMembersForm from './EditUsersGroupMembersForm';
 import EditUsersGroupPermissionsForm from './EditUsersGroupPermissionsForm';

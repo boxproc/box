@@ -6,7 +6,7 @@ import { IStoreState } from 'store';
 import { createLoadingSelector } from 'store/domains/loader';
 import { activeItemIdSelector } from 'store/domains/utils';
 import { ActionTypeKeys } from './actionTypes';
-import { prepareDataToRender } from './utils';
+import { prepareDataToRender, prepareSettleTrDataToRender } from './utils';
 
 export const defaultTransactionsSelector = (state: IStoreState) =>
   state.ledger.transactions.transactions;
@@ -67,4 +67,39 @@ export const isLoadingTransactionsSelector = createLoadingSelector([
 
 export const isConvertingTrToLoanSelector = createLoadingSelector([
   ActionTypeKeys.CONVERT_TRANSACTION_TO_LOAN,
+]);
+
+/**
+ * Settle transaction selectors
+ */
+
+export const defaultRetrievedTrSelector = (state: IStoreState) =>
+  state.ledger.transactions.settledTransaction;
+
+export const retrievedTransactionSelector = createSelector(
+  defaultRetrievedTrSelector,
+  data => data && prepareSettleTrDataToRender(data)
+);
+
+export const isRetrievedTransactionSelector = createSelector(
+  defaultRetrievedTrSelector,
+  data => {
+    if (!data || !data.length) {
+      return false;
+    }
+
+    return Boolean(data);
+  }
+);
+
+/**
+ * Settle transaction loading selectors
+ */
+
+export const isRetrievingTrSelector = createLoadingSelector([
+  ActionTypeKeys.RETRIEVE_TRANSACTION,
+]);
+
+export const isSettlingTrSelector = createLoadingSelector([
+  ActionTypeKeys.SETTLE_TRANSACTION,
 ]);

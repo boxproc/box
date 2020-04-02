@@ -2,10 +2,8 @@ import React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { ISpinner, OkCancelButtons, withSpinner } from 'components';
-
 import { formNamesConst } from 'consts';
-
-import { UsersGroupFields } from '../../components';
+import { UsersGroupFields } from './../../components';
 
 import { THandleAddUsersGroup } from 'store';
 

@@ -1,11 +1,11 @@
 import React from 'react';
+import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Flex } from '@rebass/grid';
-import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Button, Hr, ISpinner, OkCancelButtons, withSpinner } from 'components';
 import { formNamesConst, iconNamesConst } from 'consts';
-import { EndpointFields } from '../../components';
+import { EndpointFields } from './../../components';
 
 import {
   THandleAddEndpoint,

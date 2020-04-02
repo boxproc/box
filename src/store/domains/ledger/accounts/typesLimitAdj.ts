@@ -1,4 +1,3 @@
-import { ImmutableArray } from 'seamless-immutable';
 import { ISelectValue } from 'types';
 
 export interface ILimitAdjReq {
@@ -33,8 +32,4 @@ export interface ILimitAdjustmentResult {
 
 export interface ILimitAdjustmentResultResponse {
   transaction_result: Array<ILimitAdjustmentResultData>;
-}
-
-export interface ILimitAdjustmentState {
-  transactionResult: ImmutableArray<ILimitAdjustmentResultData>;
 }

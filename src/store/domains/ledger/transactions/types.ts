@@ -1,6 +1,10 @@
 import { ImmutableArray } from 'seamless-immutable';
 import { ISelectValue } from 'types';
 
+/**
+ * Transactions common interfaces
+ */
+
 interface ITransactionPlain {
   id: number;
   description: string;
@@ -150,7 +154,51 @@ export interface ITransactionsFilterToSend {
   pan_alias: string;
 }
 
+/**
+ * Retrieve transaction interfaces
+ */
+
+export interface IRetrieveTrFormValues {
+  id: string;
+}
+
+export interface IRetrieveTrReq {
+  transaction_id: number;
+}
+
+/**
+ * Settle transaction interfaces
+ */
+
+export interface ISettleTransactionReq {
+  transaction_id: number;
+  amount_settled: number;
+  settled_datetime: string;
+}
+
+export interface ISettleTransactionDataReq {
+  transaction: Array<ISettleTransactionReq>;
+}
+
+export interface ISettleTrFormValues {
+  transactionId: number;
+  amountSettled: number;
+  settledDatetime: string;
+}
+
+export interface ISettleTransactionResp {
+  transaction_result: {
+    transaction_id: number;
+    status: string;
+    amount_settled: number;
+    settled_datetime: string;
+    balance_settled_before: number;
+    balance_settled_after: number;
+  };
+}
+
 /** Transactions state interface */
 export interface ITransactionsState {
   transactions: ImmutableArray<ITransactionData>;
+  settledTransaction: ImmutableArray<ISettleTransactionReq>;
 }

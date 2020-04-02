@@ -1,8 +1,10 @@
 // import { successResponseMock } from 'consts';
 import { apiClientService } from 'services';
-import { TLedgerId } from '../customers';
+import { TLedgerId } from './../customers';
 // import { accountsMock } from './mock';
 import { IAccountData, IAccountsFilterToSend } from './types';
+import { ILimitAdjReq } from './typesLimitAdj';
+import { IManualTransactionReq } from './typesManualTr';
 // import { throttleUtil } from 'utils';
 
 /**
@@ -56,3 +58,16 @@ export const orderAccountCard = (accountId: number) =>
  */
 export const filterAccountsById = (data: TLedgerId) =>
   apiClientService.post('ui/ledger/accounts/get', { data });
+
+/**
+ * Manual transaction API
+ */
+export const makeTransaction = (data: Partial<IManualTransactionReq>) =>
+  // throttleUtil.getDataAfter(manualTransactionMock, 500);
+  apiClientService.post('ui/ledger/accounts/make_transaction', { data });
+
+/**
+ * Limit adjustment API
+ */
+export const makeLimitAdjustment = (data: Partial<ILimitAdjReq>) =>
+  apiClientService.post('ui/ledger/accounts/limit_adjustment', { data });

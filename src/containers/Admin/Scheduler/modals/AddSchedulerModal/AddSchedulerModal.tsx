@@ -4,7 +4,7 @@ import { Modal, withSpinner } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
-import { SchedulerForm } from '../../forms';
+import { SchedulerForm } from './../../forms';
 
 import { ISchedulerJobEditable, THandleAddSchedulerJob } from 'store';
 import { ISelectValue } from 'types';
