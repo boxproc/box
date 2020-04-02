@@ -1,16 +1,23 @@
 import { ImmutableArray } from 'seamless-immutable';
-
 import { IIdNamePair, ISelectValue } from 'types';
 
-interface ProductItemInfoPlain extends IIdNamePair { }
+interface IPlainInfo extends IIdNamePair { }
 
-export interface ProductItemPlainResp extends ProductItemInfoPlain {
+interface IProductPlainData extends IPlainInfo {
   description: string;
   history_retention_number_of_day: number;
   locked_flag: string;
 }
 
-export interface ProductItemResp extends ProductItemPlainResp {
+interface IProductPlain extends IPlainInfo {
+  description: string;
+  historyRetentionNumberOfDays: number;
+  lockedFlag: boolean;
+  overridesProductId?: number;
+  statementCycleParameter: number;
+}
+
+export interface IProductData extends IProductPlainData {
   institution_id: string | number;
   status: string | number;
   product_type: string | number;
@@ -39,23 +46,15 @@ export interface ProductItemResp extends ProductItemPlainResp {
   statement_cycle_parameter: number;
 }
 
-export interface ProductsDataResp {
-  products: Array<ProductItemResp>;
+export interface IProductsDataResp {
+  products: Array<IProductData>;
 }
 
-export interface ProductDataResp {
-  product: ProductItemResp;
+export interface IProductDataResp {
+  product: IProductData;
 }
 
-export interface ProductItemPlain extends ProductItemInfoPlain {
-  description: string;
-  historyRetentionNumberOfDays: number;
-  lockedFlag: boolean;
-  overridesProductId?: number;
-  statementCycleParameter: number;
-}
-
-export interface ProductItem extends ProductItemPlain {
+export interface IProduct extends IProductPlain {
   institutionId: string | number;
   status: string | number;
   productType: string | number;
@@ -64,7 +63,11 @@ export interface ProductItem extends ProductItemPlain {
   statementCycleType: string;
 }
 
-export interface ProductItemGeneral extends ProductItemPlain {
+/**
+ * General product details interfaces
+ */
+
+export interface IProductGeneralDetails extends IProductPlain {
   institutionId: ISelectValue;
   status: ISelectValue;
   productType: ISelectValue;
@@ -75,19 +78,27 @@ export interface ProductItemGeneral extends ProductItemPlain {
   statementCycleTypeId: ISelectValue;
 }
 
-export interface ProductFilter {
+/**
+ * Products filter interfaces
+ */
+
+export interface IProductsFilter {
   activeStatusFlag?: boolean;
   institutionId?: ISelectValue;
   productType?: Array<ISelectValue>;
 }
 
-export interface ProductFilterPrepared {
+export interface IProductsFilterToSend {
   status: string;
   institution_id: number | string;
   product_type: Array<number | string>;
 }
 
-export interface RevolvingCreditProductItemResp {
+/**
+ * Revolving credit product type interfaces
+ */
+
+export interface IRevCreditProductData {
   product_id: number;
   limit_sharing_allowed_flag: string;
   minimum_repayment_amount: number;
@@ -95,11 +106,11 @@ export interface RevolvingCreditProductItemResp {
   repayment_grace_number_of_days: number;
 }
 
-export interface RevolvingCreditProductResp {
-  product: RevolvingCreditProductItemResp;
+export interface IRevCreditProductDataResp {
+  product: IRevCreditProductData;
 }
 
-export interface RevolvingCreditProductItem {
+export interface IRevCreditProduct {
   productId: number;
   limitSharingAllowedFlag: boolean;
   minimumRepaymentAmount: number;
@@ -107,7 +118,11 @@ export interface RevolvingCreditProductItem {
   repaymentGraceNumberOfDays: number;
 }
 
-export interface LoanProductItemResp {
+/**
+ * Loan product type interfaces
+ */
+
+export interface ILoanProductData {
   product_id: number;
   def_num_of_installments: number;
   def_num_of_intrst_free_instlmts: number;
@@ -115,11 +130,11 @@ export interface LoanProductItemResp {
   allow_overpayment: number | string;
 }
 
-export interface LoanProductResp {
-  product: LoanProductItemResp;
+export interface ILoanProductDataResp {
+  product: ILoanProductData;
 }
 
-export interface LoanProductItem {
+export interface ILoanProduct {
   productId: number;
   defNumOfInstallments: number;
   defNumOfIntrstFreeInstlmts: number;
@@ -127,41 +142,53 @@ export interface LoanProductItem {
   allowOverpayment: number | string;
 }
 
-export interface PrepaidProductItemResp {
+/**
+ * Prepaid product type interfaces
+ */
+
+export interface IPrepaidProductData {
   product_id: number;
   dormant_after_number_of_days: number;
   breakages_allowed: string;
   reload_allowed: string;
 }
 
-export interface PrepaidProductResp {
-  product: PrepaidProductItemResp;
+export interface IPrepaidProductDataResp {
+  product: IPrepaidProductData;
 }
 
-export interface PrepaidProductItem {
+export interface IPrepaidProduct {
   productId: number;
   dormantAfterNumberOfDays: number;
   breakagesAllowed: boolean;
   reloadAllowed: boolean;
 }
 
-export interface DebitProductItemResp {
+/**
+ * Debit product type interfaces
+ */
+
+export interface IDebitProductData {
   product_id: number;
   apr_overdraft: number;
   overdraft_allowed: string;
 }
 
-export interface DebitProductResp {
-  product: DebitProductItemResp;
+export interface IDebitProductDataResp {
+  product: IDebitProductData;
 }
 
-export interface DebitProductItem {
+export interface IDebitProduct {
   productId: number;
   aprOverdraft: number;
   overdraftAllowed: boolean;
 }
 
-export interface SavingsProductItemResp {
+/**
+ * Savings product type interfaces
+ */
+
+export interface ISavingsProductData {
   product_id: number;
   savings_type: number | string;
   apr: number;
@@ -170,11 +197,11 @@ export interface SavingsProductItemResp {
   maximum_monthly_deposit: number;
 }
 
-export interface SavingsProductResp {
-  product: SavingsProductItemResp;
+export interface ISavingsProductDataResp {
+  product: ISavingsProductData;
 }
 
-export interface SavingsProductItem {
+export interface ISavingsProduct {
   productId: number;
   savingsType: ISelectValue;
   apr: number;
@@ -183,50 +210,64 @@ export interface SavingsProductItem {
   maximumMonthlyDeposit: number;
 }
 
-export type ProductDetailsResp =
-  | DebitProductResp
-  | LoanProductResp
-  | PrepaidProductResp
-  | RevolvingCreditProductResp
-  | SavingsProductResp;
+/**
+ * Product details interfaces
+ */
 
-export type ProductItemDetailsResp =
-  | DebitProductItemResp
-  | LoanProductItemResp
-  | PrepaidProductItemResp
-  | RevolvingCreditProductItemResp
-  | SavingsProductItemResp;
+export type IProductDetailsDataResp =
+  | IDebitProductDataResp
+  | ILoanProductDataResp
+  | IPrepaidProductDataResp
+  | IRevCreditProductDataResp
+  | ISavingsProductDataResp;
 
-export type ProductItemDetails =
-  | DebitProductItem
-  | LoanProductItem
-  | PrepaidProductItem
-  | RevolvingCreditProductItem
-  | SavingsProductItem;
+export type IProductDetailsResp =
+  | IDebitProductData
+  | ILoanProductData
+  | IPrepaidProductData
+  | IRevCreditProductData
+  | ISavingsProductData;
 
-export type NewProduct = ProductItemDetails & ProductItemGeneral;
+export type IProductDetails =
+  | IDebitProduct
+  | ILoanProduct
+  | IPrepaidProduct
+  | IRevCreditProduct
+  | ISavingsProduct;
 
-export type NewProductPrepared = ProductItemDetailsResp & ProductItemResp;
+/**
+ * New product interfaces
+ */
 
-export interface InstitutionProductsItem extends ProductItemInfoPlain {
+export type INewProduct = IProductDetails & IProductGeneralDetails;
+export type INewProductToSend = IProductDetailsResp & IProductData;
+
+/**
+ * Institution products interfaces
+ */
+
+export interface IInstProductData extends IPlainInfo {
   product_type: string;
   def_num_of_intrst_free_instlmts: number;
   def_num_of_installments: number;
 }
 
-export interface InstitutionProductsItemPrepared extends ProductItemInfoPlain {
+export interface IInstProduct extends IPlainInfo {
   productType: string;
   defNumOfIntrstFreeInstlmts: number;
   defNumOfInstallments: number;
 }
 
-export interface InstitutionProducts {
-  institution_products: Array<InstitutionProductsItem>;
+export interface IInstProductsData {
+  institution_products: Array<IInstProductData>;
 }
 
+/**
+ * Products state interface
+ */
 export interface IProductsState {
-  products: ImmutableArray<ProductItemResp>;
-  currentProduct: ProductItemResp;
-  currentProductDetails: ProductItemDetailsResp;
-  institutionProducts: ImmutableArray<InstitutionProductsItem>;
+  currentProduct: IProductData;
+  currentProductDetails: IProductDetailsResp;
+  institutionProducts: ImmutableArray<IInstProductData>;
+  products: ImmutableArray<IProductData>;
 }

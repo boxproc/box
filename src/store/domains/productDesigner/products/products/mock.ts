@@ -1,11 +1,11 @@
 import {
-  InstitutionProducts,
-  ProductDataResp,
-  ProductDetailsResp,
-  ProductsDataResp,
+  IInstProductsData,
+  IProductDataResp,
+  IProductDetailsDataResp,
+  IProductsDataResp,
 } from './types';
 
-export const productsMock: ProductDataResp = {
+export const productsMock: IProductDataResp = {
   product: {
     currency_code: 'AFN',
     description: 'Test revolving credit product from mocks',
@@ -35,7 +35,7 @@ export const productsMock: ProductDataResp = {
   },
 };
 
-export const productsFilteredMock: ProductsDataResp = {
+export const productsFilteredMock: IProductsDataResp = {
   products: [
     {
       currency_code: 'AFN',
@@ -92,7 +92,7 @@ export const productsFilteredMock: ProductsDataResp = {
   ],
 };
 
-export const productDetailsMock: ProductDetailsResp = {
+export const productDetailsMock: IProductDetailsDataResp = {
   product: {
     product_id: 1,
     limit_sharing_allowed_flag: 'N',
@@ -102,7 +102,7 @@ export const productDetailsMock: ProductDetailsResp = {
   },
 };
 
-export const institutionProductsMock: InstitutionProducts = {
+export const institutionProductsMock: IInstProductsData = {
   institution_products: [
     {
       id: 1,

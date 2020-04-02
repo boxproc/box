@@ -4,32 +4,29 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { Delimiter, InputField, SelectField } from 'components';
-
 import { formNamesConst } from 'consts';
-
-import { HandleGetInstitutionProducts } from 'store';
-
+import { THandleGetInstProducts } from 'store';
 import { ISelectValue, TChangeFieldValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface IAccountsFilter {
   accountAliasValue: string;
   filterChange: TChangeFieldValue;
-  getInstitutionProducts: HandleGetInstitutionProducts;
+  getInstProducts: THandleGetInstProducts;
   institutionProductsOptions: Array<ISelectValue>;
   institutionsOptions: Array<ISelectValue>;
   institutionValue: ISelectValue;
   isDisabled: boolean;
-  isLoadingInstitutionProducts: boolean;
+  isLoadingInstProducts: boolean;
 }
 
 const AccountsFilter: React.FC<IAccountsFilter> = ({
   institutionsOptions,
   institutionValue,
   accountAliasValue,
-  getInstitutionProducts,
+  getInstProducts,
   institutionProductsOptions,
-  isLoadingInstitutionProducts,
+  isLoadingInstProducts,
   isDisabled,
   filterChange,
 }) => {
@@ -38,10 +35,10 @@ const AccountsFilter: React.FC<IAccountsFilter> = ({
   React.useEffect(
     () => {
       if (currentInstitutionId) {
-        getInstitutionProducts(currentInstitutionId);
+        getInstProducts(currentInstitutionId);
       }
     },
-    [getInstitutionProducts, currentInstitutionId]
+    [getInstProducts, currentInstitutionId]
   );
 
   React.useEffect(
@@ -117,7 +114,7 @@ const AccountsFilter: React.FC<IAccountsFilter> = ({
           placeholder="Select Product"
           options={institutionProductsOptions}
           isMulti={true}
-          isLoading={isLoadingInstitutionProducts}
+          isLoading={isLoadingInstProducts}
           isDisabled={isDisabled}
         />
       </Box>

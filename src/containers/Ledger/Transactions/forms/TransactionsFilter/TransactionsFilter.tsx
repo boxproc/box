@@ -4,29 +4,26 @@ import { Field } from 'redux-form';
 import { Box } from '@rebass/grid';
 
 import { Delimiter, InputField, MaskField, SelectField } from 'components';
-
 import { dateFormatConst, maskFormatConst } from 'consts';
-
-import { HandleGetInstitutionProducts } from 'store';
-
+import { THandleGetInstProducts } from 'store';
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface ITransactionsFilter {
   institutionsOptions: Array<ISelectValue>;
   institutionProductsOptions: Array<ISelectValue>;
-  getInstitutionProducts: HandleGetInstitutionProducts;
+  getInstProducts: THandleGetInstProducts;
   institutionValue: ISelectValue;
-  isLoadingInstitutionProducts: boolean;
+  isLoadingInstProducts: boolean;
   isDisabled: boolean;
 }
 
 const TransactionsFilter: React.FC<ITransactionsFilter> = ({
   institutionsOptions,
   institutionProductsOptions,
-  getInstitutionProducts,
+  getInstProducts,
   institutionValue,
-  isLoadingInstitutionProducts,
+  isLoadingInstProducts,
   isDisabled,
 }) => {
   const currentInstitutionId = React.useMemo(
@@ -37,10 +34,10 @@ const TransactionsFilter: React.FC<ITransactionsFilter> = ({
   React.useEffect(
     () => {
       if (currentInstitutionId) {
-        getInstitutionProducts(currentInstitutionId);
+        getInstProducts(currentInstitutionId);
       }
     },
-    [getInstitutionProducts, currentInstitutionId]
+    [getInstProducts, currentInstitutionId]
   );
 
   return (
@@ -67,7 +64,7 @@ const TransactionsFilter: React.FC<ITransactionsFilter> = ({
           label="Product"
           placeholder="Select Product"
           options={institutionProductsOptions}
-          isLoading={isLoadingInstitutionProducts}
+          isLoading={isLoadingInstProducts}
           isDisabled={isDisabled}
         />
       </Box>

@@ -7,28 +7,24 @@ import { formNamesConst } from 'consts';
 import AccountsFilter from './AccountsFilter';
 
 import {
-  createLoadingSelector,
-  handleGetInstitutionProducts,
+  handleGetInstProducts,
+  instProductsOptionsSelector,
+  isInstProductsLoadingSelector,
   IStoreState,
-  ProductsActionTypes,
-  selectInstitutionProductsOptions,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.GET_INSTITUTION_PRODUCTS,
-]);
 const formSelector = formValueSelector(formNamesConst.FILTER);
 
 const mapStateToProps = (state: IStoreState) => ({
-  isLoadingInstitutionProducts: loadingSelector(state),
-  institutionProductsOptions: selectInstitutionProductsOptions(state),
+  isLoadingInstProducts: isInstProductsLoadingSelector(state),
+  institutionProductsOptions: instProductsOptionsSelector(state),
   institutionValue: formSelector(state, 'institutionId'),
   accountAliasValue: formSelector(state, 'accountAlias'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getInstitutionProducts: handleGetInstitutionProducts,
+    getInstProducts: handleGetInstProducts,
     filterChange: change,
   },
   dispatch

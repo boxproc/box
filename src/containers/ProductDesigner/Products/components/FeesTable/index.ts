@@ -4,26 +4,21 @@ import { bindActionCreators, Dispatch } from 'redux';
 import FeesTable from './FeesTable';
 
 import {
-  createLoadingSelector,
+  feeAprsOptionsSelector,
   handleDeleteProductFee,
   handleGetProductFeeAprs,
   handleGetProductFees,
   handleUpdateProductFee,
+  isProductFeesDeletingSelector,
+  isProductFeesLoadingSelector,
   IStoreState,
-  ProductAprsFeesRewardsActionTypes,
-  selectAprsOptions,
-  selectProductFees,
+  productFeesSelector,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  ProductAprsFeesRewardsActionTypes.GET_PRODUCT_FEES,
-  ProductAprsFeesRewardsActionTypes.DELETE_PRODUCT_FEE,
-]);
-
 const mapStateToProps = (state: IStoreState) => ({
-  isLoading: loadingSelector(state),
-  productFees: selectProductFees(state),
-  aprsOptions: selectAprsOptions(state),
+  isLoading: isProductFeesLoadingSelector(state) || isProductFeesDeletingSelector(state),
+  productFees: productFeesSelector(state),
+  aprsOptions: feeAprsOptionsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

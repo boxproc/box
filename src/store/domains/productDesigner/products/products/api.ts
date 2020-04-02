@@ -9,16 +9,16 @@ import { apiClientService } from 'services';
 // import { throttleUtil } from 'utils';
 
 import {
-  NewProductPrepared,
-  ProductFilterPrepared,
-  ProductItemDetailsResp,
-  ProductItemResp,
+  INewProductToSend,
+  IProductData,
+  IProductDetailsResp,
+  IProductsFilterToSend,
 } from './types';
 
 /**
  * Get institution products API
  */
-export const getInstitutionProducts = (id: number | string) =>
+export const getInstProducts = (id: number | string) =>
   // throttleUtil.getDataAfter(institutionProductsMock, 500);
   apiClientService.post('ui/product_designer/products/get_by_institution', {
     data: { institution_id: id },
@@ -54,27 +54,27 @@ export const deleteProduct = (id: number) =>
 /**
  * Filter products API
  */
-export const filterProducts = (data: ProductFilterPrepared) =>
+export const filterProducts = (data: IProductsFilterToSend) =>
   // throttleUtil.getDataAfter(productsFilteredMock, 500);
   apiClientService.post('ui/product_designer/products/get', { data });
 
 /**
  * Add product API
  */
-export const addProduct = (data: NewProductPrepared) =>
+export const addProduct = (data: INewProductToSend) =>
   // throttleUtil.getDataAfter(successResponseMock, 500);
   apiClientService.post('ui/product_designer/products/create', { data });
 
 /**
  * Update product API
  */
-export const updateProduct = (data: ProductItemResp) =>
+export const updateProduct = (data: IProductData) =>
   // throttleUtil.getDataAfter(successResponseMock, 500);
   apiClientService.post('ui/product_designer/products/update', { data });
 
 /**
  * Update product details API
  */
-export const updateProductDetails = (data: ProductItemDetailsResp) =>
+export const updateProductDetails = (data: IProductDetailsResp) =>
   // throttleUtil.getDataAfter(successResponseMock, 500);
   apiClientService.post('ui/product_designer/products/extensions/update', { data });

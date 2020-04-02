@@ -7,19 +7,15 @@ import { formNamesConst } from 'consts';
 import RewardsForm from './RewardsForm';
 
 import {
-  createLoadingSelector,
   handleAddProductReward,
+  isProductRewardsAddingSelector,
   IStoreState,
-  ProductAprsFeesRewardsActionTypes,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  ProductAprsFeesRewardsActionTypes.ADD_PRODUCT_REWARD,
-]);
 const formSelector = formValueSelector(formNamesConst.PRODUCT_REWARDS);
 
 const mapStateToProps = (state: IStoreState) => ({
-  isLoading: loadingSelector(state),
+  isLoading: isProductRewardsAddingSelector(state),
   rewardApplicationConditionValue: formSelector(state, 'rewardApplicationCondition'),
 });
 

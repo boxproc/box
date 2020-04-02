@@ -7,33 +7,28 @@ import LoanIllustration from './LoanIllustration';
 import { formNamesConst } from 'consts';
 
 import {
-  createLoadingSelector,
   handleConvertTrToLoan,
   handleGetProductDetails,
   handleIllustrateLoan,
+  instLoanProductsOptionsSelector,
   isConvertingTrToLoanSelector,
   isLoanIllustrationLoadingSelector,
+  isProductDetailsLoadingSelector,
   IStoreState,
   loanIllustrationSelector,
-  ProductsActionTypes,
+  productLoanDetailsSelector,
   resetProductIllustration,
-  selectInstitutionLoanProductsOptions,
-  selectProductLoanDetails,
 } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.PRODUCT_ILLUSTRATION_FORM);
 
-const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.GET_PRODUCT_DETAILS,
-]);
-
 const mapStateToProps = (state: IStoreState) => ({
-  isLoading: loadingSelector(state),
+  isLoading: isProductDetailsLoadingSelector(state),
   isIllustrationLoading: isLoanIllustrationLoadingSelector(state),
   isConversionLoading: isConvertingTrToLoanSelector(state),
-  loanDetails: selectProductLoanDetails(state),
+  loanDetails: productLoanDetailsSelector(state),
   productIllustrationData: loanIllustrationSelector(state),
-  loanProductsOptions: selectInstitutionLoanProductsOptions(state),
+  loanProductsOptions: instLoanProductsOptionsSelector(state),
   selectedLoanProduct: formSelector(state, 'loanProduct'),
 });
 

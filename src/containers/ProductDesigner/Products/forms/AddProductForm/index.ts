@@ -8,20 +8,15 @@ import { detailsInitialFormValues } from '../../consts';
 import AddProductForm from './AddProductForm';
 
 import {
-  createLoadingSelector,
   handleAddProduct,
+  isProductAddingSelector,
   IStoreState,
-  ProductsActionTypes,
 } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.ADD_PRODUCT);
 
-const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.ADD_PRODUCT,
-]);
-
 const mapStateToProps = (state: IStoreState) => ({
-  isLoading: loadingSelector(state),
+  isLoading: isProductAddingSelector(state),
   initialValues: {
     historyRetentionNumberOfDays: 90,
     ...detailsInitialFormValues,

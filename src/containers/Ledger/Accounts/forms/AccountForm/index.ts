@@ -10,10 +10,10 @@ import {
   dictionaryRepaymentTypesOptionsSelector,
   handleAddAccount,
   handleUpdateAccount,
+  instProductsSelector,
   isAddingAccountSelector,
   IStoreState,
   isUpdatingAccountSelector,
-  selectInstitutionProducts,
   userInstitutionsOptionsSelector,
 } from 'store';
 
@@ -21,7 +21,7 @@ const formSelector = formValueSelector(formNamesConst.ACCOUNT);
 
 const mapStateToProps = (state: IStoreState) => ({
   isLoading: isAddingAccountSelector(state) || isUpdatingAccountSelector(state),
-  institutionProducts: selectInstitutionProducts(state),
+  institutionProducts: instProductsSelector(state),
   institutionsOptions: userInstitutionsOptionsSelector(state),
   repaymentTypesOptions: dictionaryRepaymentTypesOptionsSelector(state),
   currentProduct: formSelector(state, 'product'),

@@ -13,25 +13,25 @@ import {
 } from 'store';
 import {
   ActionTypeKeys,
-  AddProductAction,
-  DeleteProductAction,
-  FilterProductsAction,
-  GetInstitutionProductsAction,
-  GetProductAction,
-  GetProductDetailsAction,
-  UpdateProductAction,
-  UpdateProductDetailsAction,
+  IAddProductAction,
+  IDeleteProductAction,
+  IFilterProductsAction,
+  IGetInstProductsAction,
+  IGetProductAction,
+  IGetProductDetailsAction,
+  IUpdateProductAction,
+  IUpdateProductDetailsAction,
 } from './actionTypes';
 import * as api from './api';
-import { selectCurrentProductType } from './selectors';
+import { currentProductTypeSelector } from './selectors';
 import {
-  NewProduct,
-  NewProductPrepared,
-  ProductFilterPrepared,
-  ProductItemDetails,
-  ProductItemDetailsResp,
-  ProductItemGeneral,
-  ProductItemResp,
+  INewProduct,
+  INewProductToSend,
+  IProductData,
+  IProductDetails,
+  IProductDetailsResp,
+  IProductGeneralDetails,
+  IProductsFilterToSend,
 } from './types';
 import {
   prepareDetailsToSend,
@@ -44,79 +44,79 @@ import { Thunk } from 'types';
 
 import { errorDecoratorUtil } from 'utils';
 
-export type GetInstitutionProducts = (id: number | string) => GetInstitutionProductsAction;
-export type HandleGetInstitutionProducts = (id: number | string) => Thunk<void>;
+export type TGetInstProducts = (id: number | string) => IGetInstProductsAction;
+export type THandleGetInstProducts = (id: number | string) => Thunk<void>;
 
-export type DeleteProduct = (id: number) => DeleteProductAction;
-export type HandleDeleteProduct = () => Thunk<void>;
+export type TDeleteProduct = (id: number) => IDeleteProductAction;
+export type THandleDeleteProduct = () => Thunk<void>;
 
-export type FilterProducts = (data: ProductFilterPrepared) => FilterProductsAction;
-export type HandleFilterProducts = () => Thunk<void>;
+export type TFilterProducts = (data: IProductsFilterToSend) => IFilterProductsAction;
+export type THandleFilterProducts = () => Thunk<void>;
 
-export type GetProductDetails = (id: number) => GetProductDetailsAction;
-export type HandleGetProductDetails = (id: number) => Thunk<void>;
+export type TGetProductDetails = (id: number) => IGetProductDetailsAction;
+export type THandleGetProductDetails = (id: number) => Thunk<void>;
 
-export type GetProduct = (id: number) => GetProductAction;
-export type HandleGetProduct = () => Thunk<void>;
+export type TGetProduct = (id: number) => IGetProductAction;
+export type THandleGetProduct = () => Thunk<void>;
 
-export type AddProduct = (data: NewProductPrepared) => AddProductAction;
-export type HandleAddProduct = (data: Partial<NewProduct>) => Thunk<void>;
+export type TAddProduct = (data: INewProductToSend) => IAddProductAction;
+export type THandleAddProduct = (data: Partial<INewProduct>) => Thunk<void>;
 
-export type UpdateProduct = (data: ProductItemResp) => UpdateProductAction;
-export type HandleUpdateProduct = (data: Partial<ProductItemGeneral>) => Thunk<void>;
+export type TUpdateProduct = (data: IProductData) => IUpdateProductAction;
+export type THandleUpdateProduct = (data: Partial<IProductGeneralDetails>) => Thunk<void>;
 
-export type UpdateProductDetails = (data: ProductItemDetailsResp) => UpdateProductDetailsAction;
-export type HandleUpdateProductDetails = (data: Partial<ProductItemDetails>) => Thunk<void>;
+export type TUpdateProductDetails = (data: IProductDetailsResp) => IUpdateProductDetailsAction;
+export type THandleUpdateProductDetails = (data: Partial<IProductDetails>) => Thunk<void>;
 
-export type ResetProducts = () => void;
+export type TResetProducts = () => void;
 
-export const getInstitutionProducts: GetInstitutionProducts = id => ({
-  type: ActionTypeKeys.GET_INSTITUTION_PRODUCTS,
-  payload: api.getInstitutionProducts(id),
+export const getInstProducts: TGetInstProducts = id => ({
+  type: ActionTypeKeys.GET_INST_PRODUCTS,
+  payload: api.getInstProducts(id),
 });
 
-export const deleteProduct: DeleteProduct = id => ({
+export const deleteProduct: TDeleteProduct = id => ({
   type: ActionTypeKeys.DELETE_PRODUCT,
   payload: api.deleteProduct(id),
   meta: { id },
 });
 
-export const filterProducts: FilterProducts = data => ({
+export const filterProducts: TFilterProducts = data => ({
   type: ActionTypeKeys.FILTER_PRODUCTS,
   payload: api.filterProducts(data),
 });
 
-export const getProductDetails: GetProductDetails = id => ({
+export const getProductDetails: TGetProductDetails = id => ({
   type: ActionTypeKeys.GET_PRODUCT_DETAILS,
   payload: api.getProductDetails(id),
 });
 
-export const getProduct: GetProduct = id => ({
+export const getProduct: TGetProduct = id => ({
   type: ActionTypeKeys.GET_PRODUCT,
   payload: api.getProduct(id),
 });
 
-export const addProduct: AddProduct = data => ({
+export const addProduct: TAddProduct = data => ({
   type: ActionTypeKeys.ADD_PRODUCT,
   payload: api.addProduct(data),
 });
 
-export const updateProduct: UpdateProduct = data => ({
+export const updateProduct: TUpdateProduct = data => ({
   type: ActionTypeKeys.UPDATE_PRODUCT,
   payload: api.updateProduct(data),
 });
 
-export const updateProductDetails: UpdateProductDetails = data => ({
+export const updateProductDetails: TUpdateProductDetails = data => ({
   type: ActionTypeKeys.UPDATE_PRODUCT_DETAILS,
   payload: api.updateProductDetails(data),
   meta: data,
 });
 
-export const resetProducts: ResetProducts = () => ({
+export const resetProducts: TResetProducts = () => ({
   type: ActionTypeKeys.RESET_PRODUCTS,
 });
 
-export const handleFilterProducts: HandleFilterProducts = () =>
+export const handleFilterProducts: THandleFilterProducts = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -132,17 +132,17 @@ export const handleFilterProducts: HandleFilterProducts = () =>
     );
   };
 
-export const handleGetInstitutionProducts: HandleGetInstitutionProducts = id =>
+export const handleGetInstProducts: THandleGetInstProducts = id =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(getInstitutionProducts(id));
+        await dispatch(getInstProducts(id));
       },
       dispatch
     );
   };
 
-export const handleDeleteProduct: HandleDeleteProduct = () =>
+export const handleDeleteProduct: THandleDeleteProduct = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -160,7 +160,7 @@ export const handleDeleteProduct: HandleDeleteProduct = () =>
     );
   };
 
-export const handleGetProductDetails: HandleGetProductDetails = id =>
+export const handleGetProductDetails: THandleGetProductDetails = id =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -170,7 +170,7 @@ export const handleGetProductDetails: HandleGetProductDetails = id =>
     );
   };
 
-export const handleGetProduct: HandleGetProduct = () =>
+export const handleGetProduct: THandleGetProduct = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -183,7 +183,7 @@ export const handleGetProduct: HandleGetProduct = () =>
     );
   };
 
-export const handleAddProduct: HandleAddProduct = data =>
+export const handleAddProduct: THandleAddProduct = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -207,7 +207,7 @@ export const handleAddProduct: HandleAddProduct = data =>
     );
   };
 
-export const handleUpdateProduct: HandleUpdateProduct = data =>
+export const handleUpdateProduct: THandleUpdateProduct = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
@@ -223,14 +223,14 @@ export const handleUpdateProduct: HandleUpdateProduct = data =>
     );
   };
 
-export const handleUpdateProductDetails: HandleUpdateProductDetails = data =>
+export const handleUpdateProductDetails: THandleUpdateProductDetails = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
         const preparedData = prepareDetailsToSend(
           data,
-          selectCurrentProductType(state)
+          currentProductTypeSelector(state)
         );
 
         await dispatch(updateProductDetails(preparedData));

@@ -1,16 +1,16 @@
 import {
-  InstitutionProducts,
-  ProductDataResp,
-  ProductDetailsResp,
-  ProductsDataResp,
+  IInstProductsData,
+  IProductDataResp,
+  IProductDetailsDataResp,
+  IProductsDataResp,
 } from './types';
 
 import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
-  GET_INSTITUTION_PRODUCTS = 'products/GET_INSTITUTION_PRODUCTS',
-  GET_INSTITUTION_PRODUCTS_FULFILLED = 'products/GET_INSTITUTION_PRODUCTS_FULFILLED',
-  GET_INSTITUTION_PRODUCTS_REJECTED = 'products/GET_INSTITUTION_PRODUCTS_REJECTED',
+  GET_INST_PRODUCTS = 'products/GET_INST_PRODUCTS',
+  GET_INST_PRODUCTS_FULFILLED = 'products/GET_INST_PRODUCTS_FULFILLED',
+  GET_INST_PRODUCTS_REJECTED = 'products/GET_INST_PRODUCTS_REJECTED',
 
   DELETE_PRODUCT = 'products/DELETE_PRODUCT',
   DELETE_PRODUCT_FULFILLED = 'products/DELETE_PRODUCT_FULFILLED',
@@ -43,139 +43,139 @@ export enum ActionTypeKeys {
   RESET_PRODUCTS = 'products/RESET_PRODUCTS',
 }
 
-export interface GetInstitutionProductsAction {
+export interface IGetInstProductsAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_INSTITUTION_PRODUCTS;
+  readonly type: ActionTypeKeys.GET_INST_PRODUCTS;
 }
 
-export interface GetInstitutionProductsFulfilledAction {
-  readonly payload: InstitutionProducts;
-  readonly type: ActionTypeKeys.GET_INSTITUTION_PRODUCTS_FULFILLED;
+export interface IGetInstProductsFulfilledAction {
+  readonly payload: IInstProductsData;
+  readonly type: ActionTypeKeys.GET_INST_PRODUCTS_FULFILLED;
 }
 
-export interface GetInstitutionProductsRejectedAction {
+export interface IGetInstProductsRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.GET_INSTITUTION_PRODUCTS_REJECTED;
+  readonly type: ActionTypeKeys.GET_INST_PRODUCTS_REJECTED;
 }
 
-export interface DeleteProductAction {
+export interface IDeleteProductAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.DELETE_PRODUCT;
 }
 
-export interface DeleteProductFulfilledAction {
+export interface IDeleteProductFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_FULFILLED;
   readonly meta: { id: number };
 }
 
-export interface DeleteProductRejectedAction {
+export interface IDeleteProductRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.DELETE_PRODUCT_REJECTED;
 }
 
-export interface FilterProductsAction {
+export interface IFilterProductsAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.FILTER_PRODUCTS;
 }
 
-export interface FilterProductsFulfilledAction {
-  readonly payload: ProductsDataResp;
+export interface IFilterProductsFulfilledAction {
+  readonly payload: IProductsDataResp;
   readonly type: ActionTypeKeys.FILTER_PRODUCTS_FULFILLED;
 }
 
-export interface FilterProductsRejectedAction {
+export interface IFilterProductsRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.FILTER_PRODUCTS_REJECTED;
 }
 
-export interface GetProductAction {
+export interface IGetProductAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.GET_PRODUCT;
 }
 
-export interface GetProductFulfilledAction {
-  readonly payload: ProductDataResp;
+export interface IGetProductFulfilledAction {
+  readonly payload: IProductDataResp;
   readonly type: ActionTypeKeys.GET_PRODUCT_FULFILLED;
 }
 
-export interface GetProductRejectedAction {
+export interface IGetProductRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_PRODUCT_REJECTED;
 }
 
-export interface GetProductDetailsAction {
+export interface IGetProductDetailsAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.GET_PRODUCT_DETAILS;
 }
 
-export interface GetProductDetailsFulfilledAction {
-  readonly payload: ProductDetailsResp;
+export interface IGetProductDetailsFulfilledAction {
+  readonly payload: IProductDetailsDataResp;
   readonly type: ActionTypeKeys.GET_PRODUCT_DETAILS_FULFILLED;
 }
 
-export interface GetProductDetailsRejectedAction {
+export interface IGetProductDetailsRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.GET_PRODUCT_DETAILS_REJECTED;
 }
 
-export interface UpdateProductAction {
+export interface IUpdateProductAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT;
 }
 
-export interface UpdateProductFulfilledAction {
+export interface IUpdateProductFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_FULFILLED;
 }
 
-export interface UpdateProductRejectedAction {
+export interface IUpdateProductRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_REJECTED;
 }
 
-export interface UpdateProductDetailsAction {
+export interface IUpdateProductDetailsAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_DETAILS;
 }
 
-export interface UpdateProductDetailsFulfilledAction {
+export interface IUpdateProductDetailsFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_DETAILS_FULFILLED;
   readonly meta: object;
 }
 
-export interface UpdateProductDetailsRejectedAction {
+export interface IUpdateProductDetailsRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.UPDATE_PRODUCT_DETAILS_REJECTED;
 }
 
-export interface AddProductAction {
+export interface IAddProductAction {
   readonly payload: Promise<object>;
   readonly type: ActionTypeKeys.ADD_PRODUCT;
 }
 
-export interface AddProductFulfilledAction {
+export interface IAddProductFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.ADD_PRODUCT_FULFILLED;
 }
 
-export interface AddProductRejectedAction {
+export interface IAddProductRejectedAction {
   readonly payload: TApiResponse;
   readonly type: ActionTypeKeys.ADD_PRODUCT_REJECTED;
 }
 
-export interface ResetProductsAction {
+export interface IResetProductsAction {
   readonly type: ActionTypeKeys.RESET_PRODUCTS;
 }
 
 export type TProductsAction =
-  | GetInstitutionProductsFulfilledAction
-  | DeleteProductFulfilledAction
-  | FilterProductsFulfilledAction
-  | GetProductFulfilledAction
-  | GetProductDetailsFulfilledAction
-  | AddProductFulfilledAction
-  | UpdateProductFulfilledAction
-  | UpdateProductDetailsFulfilledAction
-  | ResetProductsAction;
+  | IGetInstProductsFulfilledAction
+  | IDeleteProductFulfilledAction
+  | IFilterProductsFulfilledAction
+  | IGetProductFulfilledAction
+  | IGetProductDetailsFulfilledAction
+  | IAddProductFulfilledAction
+  | IUpdateProductFulfilledAction
+  | IUpdateProductDetailsFulfilledAction
+  | IResetProductsAction;

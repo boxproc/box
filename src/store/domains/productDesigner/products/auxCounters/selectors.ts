@@ -2,11 +2,11 @@ import { createSelector } from 'reselect';
 
 import { actionTypesConst, actionTypesOptions, yesNoConst } from 'consts';
 import { createLoadingSelector } from 'store/domains/loader';
-import { selectDefaultCurrentProduct } from '../products';
+import { defaultCurrentProductSelector } from '../products';
 import { ActionTypeKeys } from './actionTypes';
 
 export const productAuxCountersSelector = createSelector(
-  selectDefaultCurrentProduct,
+  defaultCurrentProductSelector,
   current => {
 
     if (!current) {

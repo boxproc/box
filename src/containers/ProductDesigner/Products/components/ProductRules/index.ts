@@ -15,9 +15,9 @@ import {
   handleGetProductAprsFeesRewards,
   isEventsLoadingSelector,
   IStoreState,
-  selectProductAprsForRules,
-  selectProductFeesForRules,
-  selectProductRewardsForRules,
+  productAprsForRulesSelector,
+  productFeesForRulesSelector,
+  productRewardsForRulesSelector,
   transTypesForRulesSelector,
 } from 'store';
 
@@ -25,9 +25,9 @@ const formSelector = formValueSelector(formNamesConst.PRODUCT_RULES);
 
 const mapStateToProps = (state: IStoreState) => ({
   eventDataElemsItems: eventDataElemsForRulesSelector(state),
-  productAprsItems: selectProductAprsForRules(state),
-  productFeesItems: selectProductFeesForRules(state),
-  productRewardsItems: selectProductRewardsForRules(state),
+  productAprsItems: productAprsForRulesSelector(state),
+  productFeesItems: productFeesForRulesSelector(state),
+  productRewardsItems: productRewardsForRulesSelector(state),
   transactionTypesItems: transTypesForRulesSelector(state),
   isEventsLoading: isEventsLoadingSelector(state),
   eventsOptions: dictionaryEventsOptionsSelector(state),

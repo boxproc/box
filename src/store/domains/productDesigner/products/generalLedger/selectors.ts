@@ -1,12 +1,12 @@
 import { createSelector } from 'reselect';
 
 import { createLoadingSelector } from 'store/domains/loader';
-import { selectDefaultCurrentProduct } from '../products';
+import { defaultCurrentProductSelector } from '../products';
 import { ActionTypeKeys } from './actionTypes';
 import { prepareDataToRender } from './utils';
 
 export const productGLSelector = createSelector(
-  selectDefaultCurrentProduct,
+  defaultCurrentProductSelector,
   data => prepareDataToRender(data)
 );
 

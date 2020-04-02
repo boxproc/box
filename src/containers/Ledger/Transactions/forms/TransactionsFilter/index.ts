@@ -3,31 +3,26 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { formValueSelector } from 'redux-form';
 
 import { formNamesConst } from 'consts';
-
 import TransactionsFilter from './TransactionsFilter';
 
 import {
-  createLoadingSelector,
-  handleGetInstitutionProducts,
+  handleGetInstProducts,
+  instProductsOptionsSelector,
+  isInstProductsLoadingSelector,
   IStoreState,
-  ProductsActionTypes,
-  selectInstitutionProductsOptions,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.GET_INSTITUTION_PRODUCTS,
-]);
 const formSelector = formValueSelector(formNamesConst.FILTER);
 
 const mapStateToProps = (state: IStoreState) => ({
-  isLoadingInstitutionProducts: loadingSelector(state),
-  institutionProductsOptions: selectInstitutionProductsOptions(state),
+  isLoadingInstProducts: isInstProductsLoadingSelector(state),
+  institutionProductsOptions: instProductsOptionsSelector(state),
   institutionValue: formSelector(state, 'institutionId'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getInstitutionProducts: handleGetInstitutionProducts,
+    getInstProducts: handleGetInstProducts,
   },
   dispatch
 );

@@ -8,23 +8,23 @@ import { tableColumns } from './components';
 import { ProductsFilter } from './forms';
 
 import {
-  HandleDeleteProduct,
-  HandleFilterProducts,
-  ProductItem,
-  ResetProducts,
+  IProduct,
+  THandleDeleteProduct,
+  THandleFilterProducts,
+  TResetProducts,
 } from 'store';
 
 import { ISelectValue } from 'types';
 
 interface IProducts {
-  productItems: ImmutableArray<ProductItem>;
+  productItems: ImmutableArray<IProduct>;
   institutionsOptions: Array<ISelectValue>;
   currentProductName: string;
   isLoading: boolean;
   isReadOnly: boolean;
-  filterProducts: HandleFilterProducts;
-  deleteProduct: HandleDeleteProduct;
-  resetProducts: ResetProducts;
+  filterProducts: THandleFilterProducts;
+  deleteProduct: THandleDeleteProduct;
+  resetProducts: TResetProducts;
 }
 
 export const Products: React.FC<IProducts> = ({

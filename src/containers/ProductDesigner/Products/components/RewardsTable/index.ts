@@ -4,23 +4,18 @@ import { bindActionCreators, Dispatch } from 'redux';
 import RewardsTable from './RewardsTable';
 
 import {
-  createLoadingSelector,
   handleDeleteProductReward,
   handleGetProductRewards,
   handleUpdateProductReward,
+  isProductRewardsDeletingSelector,
+  isProductRewardsLoadingSelector,
   IStoreState,
-  ProductAprsFeesRewardsActionTypes,
-  selectProductRewards,
+  productRewardsSelector,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  ProductAprsFeesRewardsActionTypes.GET_PRODUCT_REWARDS,
-  ProductAprsFeesRewardsActionTypes.DELETE_PRODUCT_REWARD,
-]);
-
 const mapStateToProps = (state: IStoreState) => ({
-  isLoading: loadingSelector(state),
-  productRewards: selectProductRewards(state),
+  isLoading: isProductRewardsLoadingSelector(state) || isProductRewardsDeletingSelector(state),
+  productRewards: productRewardsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

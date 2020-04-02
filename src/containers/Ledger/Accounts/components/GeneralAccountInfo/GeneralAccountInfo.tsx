@@ -13,9 +13,9 @@ import {
 } from 'components';
 
 import {
-  HandleGetInstitutionProducts,
   THandleGetDictionaryAccountStatuses,
   THandleGetDictionaryRepaymentTypes,
+  THandleGetInstProducts,
 } from 'store';
 
 import { dateFormatConst, maskFormatConst } from 'consts';
@@ -37,7 +37,7 @@ interface IGeneralAccountInfo {
   dirty: boolean;
   pristine: boolean;
   isReadOnly: boolean;
-  getInstitutionProducts: HandleGetInstitutionProducts;
+  getInstProducts: THandleGetInstProducts;
   getAccountStatuses: THandleGetDictionaryAccountStatuses;
   getRepaymentTypes: THandleGetDictionaryRepaymentTypes;
   onCancel: () => void;
@@ -48,7 +48,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
   currentInstitution,
   institutionProductsOptions,
   statusesOptions,
-  getInstitutionProducts,
+  getInstProducts,
   getAccountStatuses,
   isEditMode,
   isChosenLoanProductType,
@@ -74,10 +74,10 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
   React.useEffect(
     () => {
       if (currentInstitution) {
-        getInstitutionProducts(currentInstitution.value);
+        getInstProducts(currentInstitution.value);
       }
     },
-    [getInstitutionProducts, currentInstitution]
+    [getInstProducts, currentInstitution]
   );
 
   const isRepaymentType = React.useMemo(

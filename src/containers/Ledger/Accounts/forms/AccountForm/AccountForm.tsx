@@ -3,14 +3,12 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 import { ImmutableArray } from 'seamless-immutable';
 
 import { ISpinner, Tabs, TabsPanel, withSpinner } from 'components';
-
 import { formNamesConst, productTypesConst, repaymentTypesConst } from 'consts';
-
 import { AuxiliaryCounters, GeneralAccountInfo, Overdue } from './../../components';
 
 import {
   IAccountDetails,
-  InstitutionProductsItemPrepared,
+  IInstProduct,
   THandleAddAccount,
   THandleUpdateAccount,
 } from 'store';
@@ -20,7 +18,7 @@ import { dateUtil } from 'utils';
 
 interface IAccountForm extends ISpinner {
   institutionsOptions: Array<ISelectValue>;
-  institutionProducts: ImmutableArray<InstitutionProductsItemPrepared>;
+  institutionProducts: ImmutableArray<IInstProduct>;
   currentAccAuxCounters: Partial<IAccountDetails>;
   currentProduct: ISelectValue;
   currentInstitution: ISelectValue;

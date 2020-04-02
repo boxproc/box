@@ -5,12 +5,12 @@ import { Box, Flex } from '@rebass/grid';
 
 import { InputField, MaskField, SelectField } from 'components';
 import { dateFormatConst, maskFormatConst } from 'consts';
-import { HandleGetInstitutionProducts } from 'store';
+import { THandleGetInstProducts } from 'store';
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface IStatementsFilter {
-  getInstitutionProducts: HandleGetInstitutionProducts;
+  getInstProducts: THandleGetInstProducts;
   institutionProductsOptions: Array<ISelectValue>;
   institutionsOptions: Array<ISelectValue>;
   institutionValue: ISelectValue;
@@ -19,7 +19,7 @@ interface IStatementsFilter {
 }
 
 const StatementsFilter: React.FC<IStatementsFilter> = ({
-  getInstitutionProducts,
+  getInstProducts,
   institutionProductsOptions,
   institutionsOptions,
   institutionValue,
@@ -34,10 +34,10 @@ const StatementsFilter: React.FC<IStatementsFilter> = ({
   React.useEffect(
     () => {
       if (currentInstitutionId) {
-        getInstitutionProducts(currentInstitutionId);
+        getInstProducts(currentInstitutionId);
       }
     },
-    [getInstitutionProducts, currentInstitutionId]
+    [getInstProducts, currentInstitutionId]
   );
 
   return (

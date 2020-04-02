@@ -9,10 +9,10 @@ import IllustrationLoanTable from './IllustrationLoanTable';
 import LoanIllustrationForm from './LoanIllustrationForm';
 
 import {
-  HandleGetProductDetails,
   ILoanIllustration,
-  LoanProductItem,
+  ILoanProduct,
   THandleConvertTrToLoan,
+  THandleGetProductDetails,
   THandleIllustrateLoan,
   TResetProductIllustration,
 } from 'store';
@@ -23,9 +23,9 @@ interface ILoanIllust {
   loanProductsOptions: Array<ISelectValue>;
   illustrateLoanProduct: THandleIllustrateLoan;
   convertTransactionToLoan: THandleConvertTrToLoan;
-  getProductDetails: HandleGetProductDetails;
+  getProductDetails: THandleGetProductDetails;
   resetProductIllustration: TResetProductIllustration;
-  loanDetails: Partial<LoanProductItem>;
+  loanDetails: Partial<ILoanProduct>;
   initialFormValues: object;
   isLoading: boolean;
   isIllustrationLoading: boolean;

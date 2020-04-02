@@ -1,25 +1,20 @@
 import React from 'react';
-
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Hr, ISpinner, OkCancelButtons, withSpinner } from 'components';
-
 import { formNamesConst } from 'consts';
-
 import { ProductDetails } from 'containers/ProductDesigner/Products/components';
-
 import {
-  HandleGetProductDetails,
-  HandleUpdateProductDetails,
+  THandleGetProductDetails,
+  THandleUpdateProductDetails,
 } from 'store';
-
 import { ISelectValue } from 'types';
 
 interface IProductDetailsForm extends ISpinner {
   onCancel?: () => void;
   productType: string;
-  getProductDetails: HandleGetProductDetails;
-  updateProductDetails: HandleUpdateProductDetails;
+  getProductDetails: THandleGetProductDetails;
+  updateProductDetails: THandleUpdateProductDetails;
   isReadOnly: boolean;
   isUpdating: boolean;
   interestDistributionValue: ISelectValue;

@@ -9,18 +9,14 @@ import {
   TabsPanel,
   withSpinner,
 } from 'components';
-
 import { formNamesConst } from 'consts';
-
 import { ProductDetails, ProductGeneralInfo } from 'containers/ProductDesigner/Products/components';
-
-import { HandleAddProduct } from 'store';
-
+import { THandleAddProduct } from 'store';
 import { ISelectValue } from 'types';
 
 interface IAddProductForm extends ISpinner {
   currentProductType: ISelectValue;
-  addProduct: HandleAddProduct;
+  addProduct: THandleAddProduct;
   currentInstitution: ISelectValue;
   interestDistributionValue: ISelectValue;
   onCancel: () => void;

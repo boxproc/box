@@ -7,27 +7,19 @@ import { formNamesConst } from 'consts';
 import FeesForm from './FeesForm';
 
 import {
-  createLoadingSelector,
+  feeAprsOptionsSelector,
   handleAddProductFee,
+  isProductFeeAprsLoadingSelector,
+  isProductFeesAddingSelector,
   IStoreState,
-  ProductAprsFeesRewardsActionTypes,
-  selectAprsOptions,
 } from 'store';
-
-const loadingSelector = createLoadingSelector([
-  ProductAprsFeesRewardsActionTypes.ADD_PRODUCT_FEE,
-]);
-
-const aprsLoading = createLoadingSelector([
-  ProductAprsFeesRewardsActionTypes.GET_PRODUCT_FEE_APR,
-]);
 
 const formSelector = formValueSelector(formNamesConst.PRODUCT_FEES);
 
 const mapStateToProps = (state: IStoreState) => ({
-  isLoading: loadingSelector(state),
-  isAprsLoading: aprsLoading(state),
-  aprsOptions: selectAprsOptions(state),
+  isLoading: isProductFeesAddingSelector(state),
+  isAprsLoading: isProductFeeAprsLoadingSelector(state),
+  aprsOptions: feeAprsOptionsSelector(state),
   feeApplicationConditionValue: formSelector(state, 'feeApplicationCondition'),
 });
 

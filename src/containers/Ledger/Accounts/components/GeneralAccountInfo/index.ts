@@ -13,15 +13,15 @@ import {
   dictionaryRepaymentTypesOptionsSelector,
   handleGetDictionaryAccountStatuses,
   handleGetDictionaryRepaymentTypes,
-  handleGetInstitutionProducts,
+  handleGetInstProducts,
+  instProductsOptionsSelector,
   IStoreState,
-  selectInstitutionProductsOptions,
 } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.ACCOUNT);
 
 const mapStateToProps = (state: IStoreState) => ({
-  institutionProductsOptions: selectInstitutionProductsOptions(state),
+  institutionProductsOptions: instProductsOptionsSelector(state),
   hasProductOverride: currentAccHasProductOverrideSelector(state),
   statusesOptions: dictionaryAccountStatusesOptionsSelector(state),
   repaymentTypesOptions: dictionaryRepaymentTypesOptionsSelector(state),
@@ -30,7 +30,7 @@ const mapStateToProps = (state: IStoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    getInstitutionProducts: handleGetInstitutionProducts,
+    getInstProducts: handleGetInstProducts,
     getAccountStatuses: handleGetDictionaryAccountStatuses,
     getRepaymentTypes: handleGetDictionaryRepaymentTypes,
   },

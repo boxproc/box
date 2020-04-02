@@ -8,28 +8,20 @@ import ProductDetailsForm from './ProductDetailsForm';
 
 import {
   activeItemIdSelector,
-  createLoadingSelector,
+  currentProductDetailsSelector,
   handleGetProductDetails,
   handleUpdateProductDetails,
+  isProductDetailsLoadingSelector,
+  isProductDetailsUpdatingSelector,
   IStoreState,
-  ProductsActionTypes,
-  selectCurrentProductDetails,
 } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.PRODUCT_DETAILS);
 
-const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.GET_PRODUCT_DETAILS,
-]);
-
-const loadingSelectorUpdate = createLoadingSelector([
-  ProductsActionTypes.UPDATE_PRODUCT_DETAILS,
-]);
-
 const mapStateToProps = (state: IStoreState) => ({
-  isLoading: loadingSelector(state),
-  isUpdating: loadingSelectorUpdate(state),
-  initialValues: selectCurrentProductDetails(state),
+  isLoading: isProductDetailsLoadingSelector(state),
+  isUpdating: isProductDetailsUpdatingSelector(state),
+  initialValues: currentProductDetailsSelector(state),
   currentProductId: activeItemIdSelector(state),
   interestDistributionValue: formSelector(state, 'interestDistributionType'),
 });

@@ -7,32 +7,24 @@ import { formNamesConst } from 'consts';
 import GeneralProductForm from './GeneralProductForm';
 
 import {
-  createLoadingSelector,
+  currentProductNameSelector,
+  currentProductSelector,
   handleDeleteProduct,
   handleGetProduct,
   handleUpdateProduct,
+  isProductDeletingSelector,
+  isProductLoadingSelector,
+  isProductUpdatingSelector,
   IStoreState,
-  ProductsActionTypes,
-  selectCurrentProduct,
-  selectCurrentProductName,
 } from 'store';
-
-const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.GET_PRODUCT,
-]);
-
-const loadingSelectorUpdateDelete = createLoadingSelector([
-  ProductsActionTypes.DELETE_PRODUCT,
-  ProductsActionTypes.UPDATE_PRODUCT,
-]);
 
 const formSelector = formValueSelector(formNamesConst.GENERAL_PRODUCT);
 
 const mapStateToProps = (state: IStoreState) => ({
-  isLoading: loadingSelector(state),
-  isUpdatingOrDeleting: loadingSelectorUpdateDelete(state),
-  initialValues: selectCurrentProduct(state),
-  currentProductName: selectCurrentProductName(state),
+  isLoading: isProductLoadingSelector(state),
+  isUpdatingOrDeleting: isProductDeletingSelector(state) || isProductUpdatingSelector(state),
+  initialValues: currentProductSelector(state),
+  currentProductName: currentProductNameSelector(state),
   currentInstitution: formSelector(state, 'institutionId'),
 });
 

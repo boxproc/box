@@ -4,10 +4,10 @@ import { ActionTypeKeys, TProductsAction } from './actionTypes';
 import { IProductsState } from './types';
 
 export const productsInitialState: ImmutableObject<IProductsState> = Immutable({
-  products: Immutable([]),
-  institutionProducts: Immutable([]),
   currentProduct: null,
   currentProductDetails: null,
+  institutionProducts: Immutable([]),
+  products: Immutable([]),
 });
 
 const productsReducer = (state = productsInitialState, action: TProductsAction) => {
@@ -27,7 +27,7 @@ const productsReducer = (state = productsInitialState, action: TProductsAction) 
     case ActionTypeKeys.UPDATE_PRODUCT_DETAILS_FULFILLED:
       return state.set('currentProductDetails', action.meta);
 
-    case ActionTypeKeys.GET_INSTITUTION_PRODUCTS_FULFILLED:
+    case ActionTypeKeys.GET_INST_PRODUCTS_FULFILLED:
       return state.set('institutionProducts', action.payload.institution_products);
 
     case ActionTypeKeys.RESET_PRODUCTS:

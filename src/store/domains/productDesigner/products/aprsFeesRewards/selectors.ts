@@ -1,75 +1,116 @@
 import { createSelector } from 'reselect';
-
 import { IStoreState } from 'store';
 
+import { createLoadingSelector } from 'store/domains/loader';
+import { ActionTypeKeys } from './actionTypes';
 import {
   prepareProductAprsToRender,
   prepareProductFeesToRender,
   prepareProductRewardsToRender,
 } from './utils';
 
-export const selectDefaultProductAprs = (state: IStoreState) =>
+export const defaultProductAprsSelector = (state: IStoreState) =>
   state.productDesigner.productAprsFeesRewards.productAprs;
 
-export const selectProductAprs = createSelector(
-  selectDefaultProductAprs,
-  aprs => aprs && aprs.map(apr => prepareProductAprsToRender(apr))
+export const productAprsSelector = createSelector(
+  defaultProductAprsSelector,
+  data => data && data.map(el => prepareProductAprsToRender(el))
 );
 
-export const selectProductAprsForRules = createSelector(
-  selectDefaultProductAprs,
-  aprs => aprs && aprs.map(apr => {
+export const productAprsForRulesSelector = createSelector(
+  defaultProductAprsSelector,
+  data => data && data.map(el => {
     return {
-      name: apr.product_apr_id,
-      description: apr.description,
+      name: el.product_apr_id,
+      description: el.description,
     };
   })
 );
 
-export const selectDefaultProductFees = (state: IStoreState) =>
+export const defaultProductFeesSelector = (state: IStoreState) =>
   state.productDesigner.productAprsFeesRewards.productFees;
 
-export const selectProductFees = createSelector(
-  selectDefaultProductFees,
-  fees => fees && fees.map(fee => prepareProductFeesToRender(fee))
+export const productFeesSelector = createSelector(
+  defaultProductFeesSelector,
+  data => data && data.map(el => prepareProductFeesToRender(el))
 );
 
-export const selectProductFeesForRules = createSelector(
-  selectDefaultProductFees,
-  fees => fees && fees.map(fee => {
+export const productFeesForRulesSelector = createSelector(
+  defaultProductFeesSelector,
+  data => data && data.map(el => {
     return {
-      name: fee.product_fee_id,
-      description: fee.description,
+      name: el.product_fee_id,
+      description: el.description,
     };
   })
 );
 
-export const selectDefaultProductRewards = (state: IStoreState) =>
+export const defaultProductRewardsSelector = (state: IStoreState) =>
   state.productDesigner.productAprsFeesRewards.productRewards;
 
-export const selectProductRewards = createSelector(
-  selectDefaultProductRewards,
-  rewards => rewards && rewards.map(reward => prepareProductRewardsToRender(reward))
+export const productRewardsSelector = createSelector(
+  defaultProductRewardsSelector,
+  data => data && data.map(el => prepareProductRewardsToRender(el))
 );
 
-export const selectProductRewardsForRules = createSelector(
-  selectDefaultProductRewards,
-  rewards => rewards && rewards.map(reward => {
+export const productRewardsForRulesSelector = createSelector(
+  defaultProductRewardsSelector,
+  data => data && data.map(el => {
     return {
-      name: reward.product_reward_id,
-      description: reward.description,
+      name: el.product_reward_id,
+      description: el.description,
     };
   })
 );
-export const selectDefaultAprs = (state: IStoreState) =>
+export const defaultFeeAprsSelector = (state: IStoreState) =>
   state.productDesigner.productAprsFeesRewards.productFeeAprs;
 
-export const selectAprsOptions = createSelector(
-  selectDefaultAprs,
-  items => items && items.asMutable().map(item => {
+export const feeAprsOptionsSelector = createSelector(
+  defaultFeeAprsSelector,
+  data => data && data.asMutable().map(el => {
     return {
-      value: item.product_apr_id,
-      label: item.apr_description,
+      value: el.product_apr_id,
+      label: el.apr_description,
     };
   })
 );
+
+export const isProductAprsLoadingSelector = createLoadingSelector([
+  ActionTypeKeys.GET_PRODUCT_APRS,
+]);
+
+export const isProductAprsDeletingSelector = createLoadingSelector([
+  ActionTypeKeys.DELETE_PRODUCT_APR,
+]);
+
+export const isProductAprsAddingSelector = createLoadingSelector([
+  ActionTypeKeys.ADD_PRODUCT_APR,
+]);
+
+export const isProductFeeAprsLoadingSelector = createLoadingSelector([
+  ActionTypeKeys.GET_PRODUCT_FEE_APR,
+]);
+
+export const isProductFeesLoadingSelector = createLoadingSelector([
+  ActionTypeKeys.GET_PRODUCT_FEES,
+]);
+
+export const isProductFeesDeletingSelector = createLoadingSelector([
+  ActionTypeKeys.DELETE_PRODUCT_FEE,
+]);
+
+export const isProductFeesAddingSelector = createLoadingSelector([
+  ActionTypeKeys.ADD_PRODUCT_FEE,
+]);
+
+export const isProductRewardsLoadingSelector = createLoadingSelector([
+  ActionTypeKeys.GET_PRODUCT_REWARDS,
+]);
+
+export const isProductRewardsDeletingSelector = createLoadingSelector([
+  ActionTypeKeys.DELETE_PRODUCT_REWARD,
+]);
+
+export const isProductRewardsAddingSelector = createLoadingSelector([
+  ActionTypeKeys.ADD_PRODUCT_REWARD,
+]);

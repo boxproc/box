@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 import { IStoreState } from 'store';
-import { selectInstitutionProductsOptions } from 'store/domains/productDesigner';
+import { instProductsOptionsSelector } from 'store/domains/productDesigner';
 
 import { dictionaryRepaymentTypesOptionsSelector } from 'store/domains/admin';
 import { userInstitutionsOptionsSelector } from 'store/domains/login';
@@ -53,7 +53,7 @@ export const currentAccProductTypeSelector = createSelector(
 export const currentAccSelector = createSelector(
   activeItemIdSelector,
   userInstitutionsOptionsSelector,
-  selectInstitutionProductsOptions,
+  instProductsOptionsSelector,
   defaultAccountsSelector,
   dictionaryRepaymentTypesOptionsSelector,
   (currentId, institutions, institutionProducts, accounts, repaymentTypesOptions) => {

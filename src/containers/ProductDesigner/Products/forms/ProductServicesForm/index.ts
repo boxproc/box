@@ -5,6 +5,7 @@ import ProductServicesForm from './ProductServicesForm';
 
 import {
   activeItemIdSelector,
+  currentProductInstId,
   handleGetProductServices,
   handleUpdateProductServices,
   isProductServiceUpdatingSelector,
@@ -12,7 +13,6 @@ import {
   isServiceInterfacesLoadingSelector,
   IStoreState,
   productServicesSelector,
-  selectCurrentProductInstitutionId,
   servicesEndpointsOptionsSelector,
   servicesInterfacesOptionsSelector,
 } from 'store';
@@ -24,7 +24,7 @@ const mapStateToProps = (state: IStoreState) => ({
   currentUsersGroupId: activeItemIdSelector(state),
   servicesInterfacesOptions: servicesInterfacesOptionsSelector(state),
   servicesEndpointsOptions: servicesEndpointsOptionsSelector(state),
-  currentInstitutionId: selectCurrentProductInstitutionId(state),
+  currentInstitutionId: currentProductInstId(state),
   initialValues: productServicesSelector(state),
 });
 

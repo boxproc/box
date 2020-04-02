@@ -1,12 +1,10 @@
 import React from 'react';
 
 import { ProductImages, renderCheckBoxTableCell, TableCell, TableHeader } from 'components';
-
-import { ProductItem } from 'store';
-
+import { IProduct } from 'store';
 import { ITableCell } from 'types';
 
-type TCell<T extends keyof ProductItem> = ITableCell<ProductItem[T]>;
+type TCell<T extends keyof IProduct> = ITableCell<IProduct[T]>;
 
 export const tableColumns = [
   {

@@ -1,14 +1,11 @@
 import { createSelector } from 'reselect';
 
 import { productTypesConst } from 'consts';
-
 import { IStoreState } from 'store';
-
 import { currenciesOptionsSelector } from 'store/domains/admin';
 import { createLoadingSelector } from 'store/domains/loader';
 import { userInstitutionsOptionsSelector, userInstitutionsSelector } from 'store/domains/login';
 import { activeItemIdSelector } from 'store/domains/utils';
-
 import { ActionTypeKeys } from './actionTypes';
 import {
   prepareCurrGeneralProductToRender,
@@ -16,11 +13,11 @@ import {
   prepareGeneralProductToRender,
 } from './utils';
 
-export const selectDefaultProductItems = (state: IStoreState) =>
+export const defaultProductsSelector = (state: IStoreState) =>
   state.productDesigner.products.products;
 
-export const selectProductItems = createSelector(
-  selectDefaultProductItems,
+export const productsSelector = createSelector(
+  defaultProductsSelector,
   userInstitutionsSelector,
   (products, institutions) => products && products.map(product => {
     if (!product) {
@@ -34,11 +31,15 @@ export const selectProductItems = createSelector(
   })
 );
 
-export const selectDefaultCurrentProduct = (state: IStoreState) =>
+/**
+ * Current product selectors
+ */
+
+export const defaultCurrentProductSelector = (state: IStoreState) =>
   state.productDesigner.products.currentProduct;
 
-export const selectCurrentProduct = createSelector(
-  selectDefaultCurrentProduct,
+export const currentProductSelector = createSelector(
+  defaultCurrentProductSelector,
   userInstitutionsOptionsSelector,
   currenciesOptionsSelector,
   (product, institutions, currencyCodes) => {
@@ -54,8 +55,8 @@ export const selectCurrentProduct = createSelector(
   }
 );
 
-export const selectCurrentProductInstitutionId = createSelector(
-  selectCurrentProduct,
+export const currentProductInstId = createSelector(
+  currentProductSelector,
   data => {
     if (!data || !data.institutionId) {
       return null;
@@ -65,37 +66,37 @@ export const selectCurrentProductInstitutionId = createSelector(
   }
 );
 
-export const selectCurrentProductName = createSelector(
-  selectDefaultCurrentProduct,
+export const currentProductNameSelector = createSelector(
+  defaultCurrentProductSelector,
   data => data && data.name
 );
 
-export const selectProductName = createSelector(
+export const productNameSelector = createSelector(
   activeItemIdSelector,
-  selectDefaultProductItems,
+  defaultProductsSelector,
   (currentId, products) => {
-    const current = products.find(product => product.id === currentId);
+    const currentProduct = products.find(product => product.id === currentId);
 
-    return current && current.name;
+    return currentProduct && currentProduct.name;
   }
 );
 
-export const selectIsProductOverride = createSelector(
-  selectCurrentProduct,
+export const isProductOverrideSelector = createSelector(
+  currentProductSelector,
   data => data && data.overridesProductId ? true : false
 );
 
-export const selectCurrentProductType = createSelector(
-  selectDefaultCurrentProduct,
+export const currentProductTypeSelector = createSelector(
+  defaultCurrentProductSelector,
   data => data && data.product_type
 );
 
-export const selectDetailsCurrentProductDetails = (state: IStoreState) =>
+export const defaultCurrentProductDetailsSelector = (state: IStoreState) =>
   state.productDesigner.products.currentProductDetails;
 
-export const selectCurrentProductDetails = createSelector(
-  selectDetailsCurrentProductDetails,
-  selectCurrentProductType,
+export const currentProductDetailsSelector = createSelector(
+  defaultCurrentProductDetailsSelector,
+  currentProductTypeSelector,
   (product, productType) => {
     if (!product) {
       return null;
@@ -105,16 +106,20 @@ export const selectCurrentProductDetails = createSelector(
   }
 );
 
-export const selectProductLoanDetails = createSelector(
-  selectDetailsCurrentProductDetails,
+export const productLoanDetailsSelector = createSelector(
+  defaultCurrentProductDetailsSelector,
   data => data && prepareDetailsToRender(data, 'L')
 );
 
-export const selectDefaultInstitutionProducts = (state: IStoreState) =>
+/**
+ * Institution products selectors
+ */
+
+export const defaultInstProductsSelector = (state: IStoreState) =>
   state.productDesigner.products.institutionProducts;
 
-export const selectInstitutionProductsOptions = createSelector(
-  selectDefaultInstitutionProducts,
+export const instProductsOptionsSelector = createSelector(
+  defaultInstProductsSelector,
   products => {
     return products && products.asMutable().map(product => {
       return {
@@ -125,12 +130,8 @@ export const selectInstitutionProductsOptions = createSelector(
   }
 );
 
-export const instProductsLoadingSelector = createLoadingSelector([
-  ActionTypeKeys.GET_INSTITUTION_PRODUCTS,
-]);
-
-export const selectInstitutionProducts = createSelector(
-  selectDefaultInstitutionProducts,
+export const instProductsSelector = createSelector(
+  defaultInstProductsSelector,
   data => data && data.map(el => {
     return {
       id: el.id,
@@ -142,8 +143,8 @@ export const selectInstitutionProducts = createSelector(
   })
 );
 
-export const selectInstitutionLoanProductsOptions = createSelector(
-  selectDefaultInstitutionProducts,
+export const instLoanProductsOptionsSelector = createSelector(
+  defaultInstProductsSelector,
   products => {
     if (!products) {
       return null;
@@ -159,3 +160,43 @@ export const selectInstitutionLoanProductsOptions = createSelector(
     });
   }
 );
+
+/**
+ * Product loading selectors
+ */
+
+export const isInstProductsLoadingSelector = createLoadingSelector([
+  ActionTypeKeys.GET_INST_PRODUCTS,
+]);
+
+export const isProductAddingSelector = createLoadingSelector([
+  ActionTypeKeys.ADD_PRODUCT,
+]);
+
+export const isProductDeletingSelector = createLoadingSelector([
+  ActionTypeKeys.DELETE_PRODUCT,
+]);
+
+export const isProductUpdatingSelector = createLoadingSelector([
+  ActionTypeKeys.UPDATE_PRODUCT,
+]);
+
+export const isProductLoadingSelector = createLoadingSelector([
+  ActionTypeKeys.GET_PRODUCT,
+]);
+
+export const isProductDetailsLoadingSelector = createLoadingSelector([
+  ActionTypeKeys.GET_PRODUCT_DETAILS,
+]);
+
+export  const isProductDetailsUpdatingSelector = createLoadingSelector([
+  ActionTypeKeys.UPDATE_PRODUCT_DETAILS,
+]);
+
+export  const isProductsFilteringSelector = createLoadingSelector([
+  ActionTypeKeys.FILTER_PRODUCTS,
+]);
+
+export  const isProductsDeletingSelector = createLoadingSelector([
+  ActionTypeKeys.DELETE_PRODUCT,
+]);

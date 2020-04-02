@@ -4,18 +4,13 @@ import { bindActionCreators, Dispatch } from 'redux';
 import AprsForm from './AprsForm';
 
 import {
-  createLoadingSelector,
   handleAddProductApr,
+  isProductAprsAddingSelector,
   IStoreState,
-  ProductAprsFeesRewardsActionTypes,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  ProductAprsFeesRewardsActionTypes.ADD_PRODUCT_APR,
-]);
-
 const mapStateToProps = (state: IStoreState) => ({
-  isLoading: loadingSelector(state),
+  isLoading: isProductAprsAddingSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

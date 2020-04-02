@@ -11,26 +11,26 @@ import {
 } from 'consts';
 
 import {
-  DebitProductItem,
-  DebitProductItemResp,
-  LoanProductItem,
-  LoanProductItemResp,
-  NewProduct,
-  PrepaidProductItem,
-  PrepaidProductItemResp,
-  ProductFilter,
-  ProductFilterPrepared,
-  ProductItemGeneral,
-  ProductItemResp,
-  RevolvingCreditProductItem,
-  RevolvingCreditProductItemResp,
-  SavingsProductItem,
-  SavingsProductItemResp,
+  IDebitProduct,
+  IDebitProductData,
+  ILoanProduct,
+  ILoanProductData,
+  INewProduct,
+  IPrepaidProduct,
+  IPrepaidProductData,
+  IProductData,
+  IProductGeneralDetails,
+  IProductsFilter,
+  IProductsFilterToSend,
+  IRevCreditProduct,
+  IRevCreditProductData,
+  ISavingsProduct,
+  ISavingsProductData,
 } from './types';
 
 import { stringsUtil } from 'utils';
 
-export const prepareFilterToSend = (data: ProductFilter): ProductFilterPrepared => {
+export const prepareFilterToSend = (data: IProductsFilter): IProductsFilterToSend => {
   const { activeStatusFlag, institutionId, productType } = data;
 
   return {
@@ -40,10 +40,7 @@ export const prepareFilterToSend = (data: ProductFilter): ProductFilterPrepared 
   };
 };
 
-export const prepareGeneralProductToRender = (
-  item: ProductItemResp,
-  institutionName?: string
-) => {
+export const prepareGeneralProductToRender = (item: IProductData, institutionName?: string) => {
   const status = statusOptions.find(el => el.value === item.status);
   const productType = productTypesOptions.find(el => el.value === item.product_type);
   const scheme = schemeTypesOptions.find(el => el.value === item.scheme);
@@ -82,8 +79,8 @@ export const prepareDetailsToRender = (product: any, productType: string | numbe
   }
 };
 
-export const prepareCurrGeneralProductToRender = (data: ProductItemResp):
-  Partial<ProductItemGeneral> => {
+export const prepareCurrGeneralProductToRender = (data: IProductData):
+  Partial<IProductGeneralDetails> => {
 
   if (!data) {
     return null;
@@ -123,8 +120,8 @@ export const prepareCurrGeneralProductToRender = (data: ProductItemResp):
   };
 };
 
-export const prepareGeneralProductDataToSend = (data: Partial<ProductItemGeneral>):
-  ProductItemResp => {
+export const prepareGeneralProductDataToSend = (data: Partial<IProductGeneralDetails>):
+  IProductData => {
   if (!data) {
     return null;
   }
@@ -166,7 +163,7 @@ export const prepareGeneralProductDataToSend = (data: Partial<ProductItemGeneral
   };
 };
 
-export const prepareRevolvingCreditToRender = (data: RevolvingCreditProductItemResp) => {
+export const prepareRevolvingCreditToRender = (data: IRevCreditProductData) => {
   if (!data) {
     return null;
   }
@@ -188,7 +185,7 @@ export const prepareRevolvingCreditToRender = (data: RevolvingCreditProductItemR
   };
 };
 
-export const prepareRevolvingCreditToSend = (data: RevolvingCreditProductItem) => {
+export const prepareRevolvingCreditToSend = (data: IRevCreditProduct) => {
   if (!data) {
     return null;
   }
@@ -211,7 +208,7 @@ export const prepareRevolvingCreditToSend = (data: RevolvingCreditProductItem) =
   };
 };
 
-export const prepareSavingsToRender = (data: SavingsProductItemResp) => {
+export const prepareSavingsToRender = (data: ISavingsProductData) => {
   if (!data) {
     return null;
   }
@@ -235,7 +232,7 @@ export const prepareSavingsToRender = (data: SavingsProductItemResp) => {
   };
 };
 
-export const prepareSavingsToSend = (data: SavingsProductItem) => {
+export const prepareSavingsToSend = (data: ISavingsProduct) => {
   if (!data) {
     return null;
   }
@@ -259,7 +256,7 @@ export const prepareSavingsToSend = (data: SavingsProductItem) => {
   };
 };
 
-export const preparePrepaidToRender = (data: PrepaidProductItemResp) => {
+export const preparePrepaidToRender = (data: IPrepaidProductData) => {
   if (!data) {
     return null;
   }
@@ -279,7 +276,7 @@ export const preparePrepaidToRender = (data: PrepaidProductItemResp) => {
   };
 };
 
-export const preparePrepaidToSend = (data: PrepaidProductItem) => {
+export const preparePrepaidToSend = (data: IPrepaidProduct) => {
   if (!data) {
     return null;
   }
@@ -299,7 +296,7 @@ export const preparePrepaidToSend = (data: PrepaidProductItem) => {
   };
 };
 
-export const prepareLoanToRender = (data: LoanProductItemResp) => {
+export const prepareLoanToRender = (data: ILoanProductData) => {
   if (!data) {
     return null;
   }
@@ -321,7 +318,7 @@ export const prepareLoanToRender = (data: LoanProductItemResp) => {
   };
 };
 
-export const prepareLoanToSend = (data: LoanProductItem) => {
+export const prepareLoanToSend = (data: ILoanProduct) => {
   if (!data) {
     return null;
   }
@@ -343,7 +340,7 @@ export const prepareLoanToSend = (data: LoanProductItem) => {
   };
 };
 
-export const prepareDebitToRender = (data: DebitProductItemResp) => {
+export const prepareDebitToRender = (data: IDebitProductData) => {
   if (!data) {
     return null;
   }
@@ -361,7 +358,7 @@ export const prepareDebitToRender = (data: DebitProductItemResp) => {
   };
 };
 
-export const prepareDebitToSend = (data: DebitProductItem) => {
+export const prepareDebitToSend = (data: IDebitProduct) => {
   if (!data) {
     return null;
   }
@@ -410,7 +407,7 @@ export const prepareDetailsToSend = (product: any, type: string | number) => {
   }
 };
 
-export const prepareNewProductToSend = (product: Partial<NewProduct>) => {
+export const prepareNewProductToSend = (product: Partial<INewProduct>) => {
   const type = product.productType && product.productType.value;
 
   return {

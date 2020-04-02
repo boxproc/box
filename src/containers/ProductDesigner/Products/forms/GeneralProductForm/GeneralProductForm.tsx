@@ -12,18 +12,15 @@ import {
   OkCancelButtons,
   withSpinner,
 } from 'components';
-
 import { formNamesConst, iconNamesConst } from 'consts';
-
 import { ProductGeneralInfo } from 'containers/ProductDesigner/Products/components';
-
-import { HandleDeleteProduct, HandleGetProduct, HandleUpdateProduct } from 'store';
+import { THandleDeleteProduct, THandleGetProduct, THandleUpdateProduct } from 'store';
 import { ISelectValue } from 'types';
 
 interface IGeneralProductForm extends ISpinner {
-  getProduct: HandleGetProduct;
-  updateProduct: HandleUpdateProduct;
-  deleteProduct: HandleDeleteProduct;
+  getProduct: THandleGetProduct;
+  updateProduct: THandleUpdateProduct;
+  deleteProduct: THandleDeleteProduct;
   currentInstitution: ISelectValue;
   isProductOverride: boolean;
   onCancel?: () => void;

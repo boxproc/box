@@ -4,28 +4,23 @@ import { bindActionCreators, Dispatch } from 'redux';
 import Products from './Products';
 
 import {
-  createLoadingSelector,
   handleDeleteProduct,
   handleFilterProducts,
+  isProductsDeletingSelector,
+  isProductsFilteringSelector,
   isReadOnlySelector,
   IStoreState,
-  ProductsActionTypes,
+  productNameSelector,
+  productsSelector,
   resetProducts,
-  selectProductItems,
-  selectProductName,
   userInstitutionsOptionsSelector,
 } from 'store';
 
-const loadingSelector = createLoadingSelector([
-  ProductsActionTypes.FILTER_PRODUCTS,
-  ProductsActionTypes.DELETE_PRODUCT,
-]);
-
 const mapStateToProps = (state: IStoreState) => ({
-  isLoading: loadingSelector(state),
-  productItems: selectProductItems(state),
+  isLoading: isProductsFilteringSelector(state) || isProductsDeletingSelector(state),
+  productItems: productsSelector(state),
   institutionsOptions: userInstitutionsOptionsSelector(state),
-  currentProductName: selectProductName(state),
+  currentProductName: productNameSelector(state),
   isReadOnly: isReadOnlySelector(state),
 });
 

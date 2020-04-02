@@ -10,11 +10,11 @@ import {
   actionTypesOptionsSelector,
   currentProductRuleSelector,
   currentProductScriptSelector,
+  currentProductTypeSelector,
   handleGetProductRule,
   handleUpdateProductRule,
   isProductRuleLoadingSelector,
   IStoreState,
-  selectCurrentProductType,
 } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.PRODUCT_RULES);
@@ -23,7 +23,7 @@ const mapStateToProps = (state: IStoreState) => ({
   isLoading: isProductRuleLoadingSelector(state),
   currentProductScript: currentProductScriptSelector(state),
   actionTypesOptions: actionTypesOptionsSelector(state),
-  currentProductType: selectCurrentProductType(state),
+  currentProductType: currentProductTypeSelector(state),
   initialValues: {
     ...currentProductRuleSelector(state),
     ...formSelector(
