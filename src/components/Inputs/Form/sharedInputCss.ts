@@ -52,9 +52,10 @@ export const sharedInputCss = css<IInput>`
     }
   `}
 
-  :disabled,
-  :read-only {
+  &:disabled,
+  &:read-only {
     border-color: ${({ theme }) => theme.colors.lightGray};
     user-select: text;
+    pointer-events: none;
   }
 `;
