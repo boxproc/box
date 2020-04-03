@@ -70,7 +70,7 @@ const AuxiliaryCounters: React.FC<IAuxiliaryCounters> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={(isEditMode && !auxCounter1Enabled) || isReadOnly}
+              disabled={(isEditMode && !auxCounter1Enabled) || isReadOnly}
               validate={[
                 formErrorUtil.isNumber,
                 formErrorUtil.isPositive,
@@ -86,7 +86,7 @@ const AuxiliaryCounters: React.FC<IAuxiliaryCounters> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={(isEditMode && !auxCounter2Enabled) || isReadOnly}
+              disabled={(isEditMode && !auxCounter2Enabled) || isReadOnly}
               validate={[
                 formErrorUtil.isNumber,
                 formErrorUtil.isPositive,
@@ -102,7 +102,7 @@ const AuxiliaryCounters: React.FC<IAuxiliaryCounters> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={(isEditMode && !auxCounter3Enabled) || isReadOnly}
+              disabled={(isEditMode && !auxCounter3Enabled) || isReadOnly}
               validate={[
                 formErrorUtil.isNumber,
                 formErrorUtil.isPositive,

@@ -81,7 +81,7 @@ const SystemPropertyForm: React.FC<TSystemPropertyForm> = ({
               placeholder="Enter Property Name"
               component={InputField}
               label="Property Name"
-              readOnly={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isAlphaNumericUnderscoresPoints,
@@ -95,7 +95,7 @@ const SystemPropertyForm: React.FC<TSystemPropertyForm> = ({
                 name="lastDatetime"
                 component={InputField}
                 label="Last Date Time"
-                readOnly={true}
+                disabled={true}
               />
             </Box>
           )}
@@ -106,7 +106,7 @@ const SystemPropertyForm: React.FC<TSystemPropertyForm> = ({
               placeholder="Enter Current Value"
               component={InputField}
               label="Current Value"
-              readOnly={isReadOnly}
+              disabled={isReadOnly}
               validate={[formErrorUtil.isRequired]}
             />
           </Box>
@@ -117,7 +117,7 @@ const SystemPropertyForm: React.FC<TSystemPropertyForm> = ({
                 name="previousValue"
                 component={InputField}
                 label="Previous Value"
-                readOnly={true}
+                disabled={true}
               />
             </Box>
           )}

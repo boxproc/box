@@ -360,7 +360,7 @@ const ProductRules: React.FC<IProductRules> = ({
                 menuId="rulesCodeContextMenu"
                 fontSize={11}
                 height="calc(100vh - 250px)"
-                readOnly={isReadOnly}
+                disabled={isReadOnly}
               />
             </Box>
           </ScriptWrapper>

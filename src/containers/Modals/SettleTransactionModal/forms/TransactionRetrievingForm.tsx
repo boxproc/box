@@ -51,7 +51,7 @@ const TransactionRetrievingForm: React.FC<TTransactionRetrievingForm> = ({
             label="Transaction ID"
             component={InputField}
             isNumber={true}
-            readOnly={isReadonly}
+            disabled={isReadonly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isInteger,

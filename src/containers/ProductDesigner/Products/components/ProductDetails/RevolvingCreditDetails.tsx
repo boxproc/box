@@ -27,7 +27,7 @@ const RevolvingCreditDetails: React.FC<IRevolvingCreditDetails> = ({ isReadOnly 
             fixedDecimalScale={true}
             decimalScale={2}
             label="Minimum Repayment Amount"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
@@ -44,7 +44,7 @@ const RevolvingCreditDetails: React.FC<IRevolvingCreditDetails> = ({ isReadOnly 
             fixedDecimalScale={true}
             decimalScale={2}
             label="Minimum Repayment Rate"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
@@ -60,7 +60,7 @@ const RevolvingCreditDetails: React.FC<IRevolvingCreditDetails> = ({ isReadOnly 
             component={InputField}
             label="Repayment Grace # Of Days"
             isNumber={true}
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isInteger,

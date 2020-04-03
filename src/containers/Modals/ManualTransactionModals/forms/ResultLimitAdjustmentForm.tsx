@@ -28,7 +28,7 @@ const ResultLimitAdjustmentForm: React.FC<TResultLimitAdjustmentForm> = () => {
               fixedDecimalScale={true}
               decimalScale={2}
               label="Balance Limit"
-              readOnly={true}
+              disabled={true}
             />
           </Box>
           <Box width={[1 / 2]} p="8px">
@@ -40,7 +40,7 @@ const ResultLimitAdjustmentForm: React.FC<TResultLimitAdjustmentForm> = () => {
               fixedDecimalScale={true}
               decimalScale={2}
               label="Balance Limit Shared"
-              readOnly={true}
+              disabled={true}
             />
           </Box>
         </Flex>

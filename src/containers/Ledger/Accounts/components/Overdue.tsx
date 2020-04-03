@@ -38,7 +38,7 @@ const Overdue: React.FC<IOverdue> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isNumber,
@@ -55,7 +55,7 @@ const Overdue: React.FC<IOverdue> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isNumber,
@@ -72,7 +72,7 @@ const Overdue: React.FC<IOverdue> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isNumber,
@@ -89,7 +89,7 @@ const Overdue: React.FC<IOverdue> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isNumber,
@@ -106,7 +106,7 @@ const Overdue: React.FC<IOverdue> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isNumber,
@@ -123,7 +123,7 @@ const Overdue: React.FC<IOverdue> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isNumber,
@@ -140,7 +140,7 @@ const Overdue: React.FC<IOverdue> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isNumber,
@@ -157,7 +157,7 @@ const Overdue: React.FC<IOverdue> = ({
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              readOnly={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isNumber,
@@ -174,7 +174,7 @@ const Overdue: React.FC<IOverdue> = ({
               label="Number of Times Overdue Total"
               placeholder="0"
               isRightPlaceholder={true}
-              readOnly={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               isNumber={true}
               validate={[
                 formErrorUtil.isRequired,
@@ -190,7 +190,7 @@ const Overdue: React.FC<IOverdue> = ({
               label="Number of Times Overdue 1 Cycle"
               placeholder="0"
               isRightPlaceholder={true}
-              readOnly={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               isNumber={true}
               validate={[
                 formErrorUtil.isRequired,
@@ -206,7 +206,7 @@ const Overdue: React.FC<IOverdue> = ({
               label="Number of Times Overdue 2 Cycles"
               placeholder="0"
               isRightPlaceholder={true}
-              readOnly={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               isNumber={true}
               validate={[
                 formErrorUtil.isRequired,
@@ -222,7 +222,7 @@ const Overdue: React.FC<IOverdue> = ({
               label="Number of Times Overdue 3 Cycles"
               placeholder="0"
               isRightPlaceholder={true}
-              readOnly={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               isNumber={true}
               validate={[
                 formErrorUtil.isRequired,
@@ -238,7 +238,7 @@ const Overdue: React.FC<IOverdue> = ({
               label="Number of Times Overdue 4 Cycles"
               placeholder="0"
               isRightPlaceholder={true}
-              readOnly={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               isNumber={true}
               validate={[
                 formErrorUtil.isRequired,
@@ -254,7 +254,7 @@ const Overdue: React.FC<IOverdue> = ({
               label="Number of Times Overdue 5 Cycles"
               placeholder="0"
               isRightPlaceholder={true}
-              readOnly={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               isNumber={true}
               validate={[
                 formErrorUtil.isRequired,
@@ -270,7 +270,7 @@ const Overdue: React.FC<IOverdue> = ({
               label="Number of Times Overdue 6 Cycles"
               placeholder="0"
               isRightPlaceholder={true}
-              readOnly={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               isNumber={true}
               validate={[
                 formErrorUtil.isRequired,
@@ -286,7 +286,7 @@ const Overdue: React.FC<IOverdue> = ({
               label="Number of Times Overdue 7 Cycles"
               placeholder="0"
               isRightPlaceholder={true}
-              readOnly={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               isNumber={true}
               validate={[
                 formErrorUtil.isRequired,

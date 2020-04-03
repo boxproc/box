@@ -88,7 +88,7 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
             label="Account ID"
             placeholder="Enter ID"
             isNumber={true}
-            readOnly={isReadonly}
+            disabled={isReadonly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isInteger,

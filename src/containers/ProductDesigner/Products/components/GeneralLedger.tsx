@@ -23,7 +23,7 @@ const GeneralLedger: React.FC<IGeneralLedger> = ({ isReadOnly }) => {
             component={InputField}
             label="Account Assets"
             placeholder="Enter Account Assets"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
           />
         </Box>
         <Box width={[1 / 4]} p="8px">
@@ -33,7 +33,7 @@ const GeneralLedger: React.FC<IGeneralLedger> = ({ isReadOnly }) => {
             component={InputField}
             label="Account Liabilities"
             placeholder="Enter Account Liabilities"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
           />
         </Box>
         <Box width={[1 / 4]} p="8px">
@@ -43,7 +43,7 @@ const GeneralLedger: React.FC<IGeneralLedger> = ({ isReadOnly }) => {
             component={InputField}
             label="Account Profit"
             placeholder="Enter Account Profit"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
           />
         </Box>
         <Box width={[1 / 4]} p="8px">
@@ -53,7 +53,7 @@ const GeneralLedger: React.FC<IGeneralLedger> = ({ isReadOnly }) => {
             component={InputField}
             label="Account Loss"
             placeholder="Enter Account Loss"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
           />
         </Box>
       </Flex>

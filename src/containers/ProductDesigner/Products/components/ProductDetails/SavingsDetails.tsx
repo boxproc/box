@@ -42,7 +42,7 @@ const SavingsDetails: React.FC<ISavingsDetails> = ({ isReadOnly }) => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Apr"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
@@ -59,7 +59,7 @@ const SavingsDetails: React.FC<ISavingsDetails> = ({ isReadOnly }) => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Minimum Deposit Allowed"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
@@ -76,7 +76,7 @@ const SavingsDetails: React.FC<ISavingsDetails> = ({ isReadOnly }) => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Maximum Deposit Allowed"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
@@ -93,7 +93,7 @@ const SavingsDetails: React.FC<ISavingsDetails> = ({ isReadOnly }) => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Maximum Monthly Deposit"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,

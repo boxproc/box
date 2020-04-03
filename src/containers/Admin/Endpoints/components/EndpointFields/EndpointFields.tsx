@@ -46,7 +46,7 @@ const EndpointFields: React.FC<IEndpointFields> = ({
             component={InputField}
             label="Name"
             placeholder="Enter name"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isAlphaNumeric,
@@ -60,7 +60,7 @@ const EndpointFields: React.FC<IEndpointFields> = ({
             component={InputField}
             label="Port"
             placeholder="Enter port"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isPort,
@@ -99,7 +99,7 @@ const EndpointFields: React.FC<IEndpointFields> = ({
             component={InputField}
             label="Private Key Location"
             placeholder="Enter Private Key Location"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
@@ -110,7 +110,7 @@ const EndpointFields: React.FC<IEndpointFields> = ({
             component={InputField}
             label="Log File Location"
             placeholder="Enter Log File Location"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
@@ -121,7 +121,7 @@ const EndpointFields: React.FC<IEndpointFields> = ({
             component={TextareaField}
             label="Connection Attributes"
             placeholder="Enter Connection Attributes"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
           />
         </Box>
         {isEditMode && (
@@ -133,7 +133,7 @@ const EndpointFields: React.FC<IEndpointFields> = ({
                 component={InputField}
                 label="Source IP Address"
                 placeholder="Enter Source IP Address"
-                readOnly={true}
+                disabled={true}
               />
             </Box>
             <Box width={[1 / 3]} p="8px">
@@ -143,7 +143,7 @@ const EndpointFields: React.FC<IEndpointFields> = ({
                 component={InputField}
                 label="Last Message Datetime"
                 placeholder="Enter Last Message Datetime"
-                readOnly={true}
+                disabled={true}
               />
             </Box>
             <Box width={[1 / 3]} p="8px">
@@ -153,7 +153,7 @@ const EndpointFields: React.FC<IEndpointFields> = ({
                 component={InputField}
                 label="Last Fault Datetime"
                 placeholder="Enter Last Fault Datetime"
-                readOnly={true}
+                disabled={true}
               />
             </Box>
           </React.Fragment>

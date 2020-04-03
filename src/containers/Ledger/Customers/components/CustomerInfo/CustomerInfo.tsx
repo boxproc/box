@@ -47,7 +47,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
               component={InputField}
               label="ID"
               placeholder="Enter ID"
-              readOnly={true}
+              disabled={true}
             />
           </Box>
         )}
@@ -96,7 +96,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
               component={InputField}
               label="Identification Number"
               placeholder="Enter Number"
-              readOnly={isReadOnly}
+              disabled={isReadOnly}
               validate={[formErrorUtil.isRequired]}
             />
           </Box>
@@ -109,7 +109,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             component={InputField}
             label="First Name"
             placeholder="Enter First Name"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isAlpha,
@@ -123,7 +123,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             component={InputField}
             label="Last Name"
             placeholder="Enter Last Name"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isAlpha,
@@ -138,7 +138,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             label="Date of Birth"
             placeholder={dateFormatConst.DATE}
             mask={maskFormatConst.DATE}
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isDate,
@@ -152,7 +152,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             component={InputField}
             label="Email"
             placeholder="Enter Email"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isEmail,
@@ -166,7 +166,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             component={InputField}
             label="Mobile Phone Number"
             placeholder="Enter Phone Number"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isMobilePhone,
@@ -210,7 +210,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             component={InputField}
             label="Line 1"
             placeholder="Enter Line 1"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
@@ -221,7 +221,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             component={InputField}
             label="Line 2"
             placeholder="Enter Line 2"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
           />
         </Box>
         <Box width={[1 / 4]} p="8px">
@@ -231,7 +231,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             component={InputField}
             label="Line 3"
             placeholder="Enter Line 3"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
           />
         </Box>
         <Box width={[1 / 4]} p="8px">
@@ -241,7 +241,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             component={InputField}
             label="Line 4"
             placeholder="Enter Line 4"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
           />
         </Box>
         <Box width={[1 / 4]} p="8px">
@@ -251,7 +251,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             component={InputField}
             label="Town"
             placeholder="Enter Town"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
@@ -262,7 +262,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             component={InputField}
             label="Post Code"
             placeholder="Enter Post Code"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isPostalCode,
@@ -278,7 +278,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
                 name="dateCreated"
                 component={InputField}
                 label="Date Created"
-                readOnly={true}
+                disabled={true}
               />
             </Box>
             <Box width="180px" p="8px">
@@ -287,7 +287,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
                 name="dateClosed"
                 component={InputField}
                 label="Date Closed"
-                readOnly={true}
+                disabled={true}
               />
             </Box>
           </React.Fragment>

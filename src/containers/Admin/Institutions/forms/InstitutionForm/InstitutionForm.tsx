@@ -87,7 +87,7 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
                 component={InputField}
                 label="ID"
                 placeholder="Enter ID"
-                readOnly={true}
+                disabled={true}
                 isNumber={true}
               />
             </Box>
@@ -99,7 +99,7 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
               component={InputField}
               label="Name"
               placeholder="Enter Institution"
-              readOnly={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isAlphaNumeric,
@@ -125,7 +125,7 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
               component={InputField}
               label="SFTP Location"
               placeholder="Enter SFTP Location"
-              readOnly={isReadOnly}
+              disabled={isReadOnly}
             />
           </Box>
           <Box width={[1]} p="8px">
@@ -135,7 +135,7 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
               component={InputField}
               label="SFTP Public Key"
               placeholder="Enter SFTP Public Key"
-              readOnly={isReadOnly}
+              disabled={isReadOnly}
             />
           </Box>
           {isMasterInstitutionFlag && (

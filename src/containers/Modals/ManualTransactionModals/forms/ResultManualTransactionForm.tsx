@@ -25,7 +25,7 @@ const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () =
               name="transactionId"
               component={InputField}
               label="Transaction ID"
-              readOnly={true}
+              disabled={true}
               isNumber={true}
             />
           </Box>
@@ -35,7 +35,7 @@ const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () =
               name="status"
               component={InputField}
               label="Status"
-              readOnly={true}
+              disabled={true}
             />
           </Box>
           <Hr />
@@ -48,7 +48,7 @@ const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () =
               fixedDecimalScale={true}
               decimalScale={2}
               label="Balance Settled Before"
-              readOnly={true}
+              disabled={true}
             />
           </Box>
           <Box width={[1 / 4]} p="8px">
@@ -60,7 +60,7 @@ const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () =
               fixedDecimalScale={true}
               decimalScale={2}
               label="Balance Settled After"
-              readOnly={true}
+              disabled={true}
             />
           </Box>
           <Box width={[1 / 4]} p="8px">
@@ -72,7 +72,7 @@ const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () =
               fixedDecimalScale={true}
               decimalScale={2}
               label="Balance Available Before"
-              readOnly={true}
+              disabled={true}
             />
           </Box>
           <Box width={[1 / 4]} p="8px">
@@ -84,7 +84,7 @@ const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () =
               fixedDecimalScale={true}
               decimalScale={2}
               label="Balance Available After"
-              readOnly={true}
+              disabled={true}
             />
           </Box>
         </Flex>

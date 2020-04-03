@@ -59,7 +59,7 @@ const LoanDetails: React.FC<ILoanDetails> = ({
             component={InputField}
             placeholder="Enter #"
             label="Default # of installments"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             isNumber={true}
             validate={[
               formErrorUtil.isRequired,
@@ -78,7 +78,7 @@ const LoanDetails: React.FC<ILoanDetails> = ({
               component={InputField}
               placeholder="Enter #"
               label="Default # of interest free installments"
-              readOnly={isReadOnly}
+              disabled={isReadOnly}
               isNumber={true}
               validate={[
                 formErrorUtil.isRequired,
@@ -98,7 +98,7 @@ const LoanDetails: React.FC<ILoanDetails> = ({
             name="allowOverpayment"
             component={CheckboxField}
             label="Allow overpayment"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
           />
         </Box>
       </Flex>

@@ -43,7 +43,7 @@ const HighlightCode: React.FC<IHighlightCode> = ({
   onContextMenuClick,
   padding = 10,
   placeholder,
-  readOnly,
+  disabled,
   setCursorCurrentPosition,
   value,
   whiteSpacePre = true,
@@ -84,7 +84,7 @@ const HighlightCode: React.FC<IHighlightCode> = ({
       >
         <ContextMenuTrigger
           id={menuId ? menuId : 'context-menu-trigger'}
-          disable={readOnly}
+          disable={disabled}
         >
           <Editor
             value={value.toString()}
@@ -101,7 +101,7 @@ const HighlightCode: React.FC<IHighlightCode> = ({
             tabSize={4}
             padding={padding}
             className="editor"
-            disabled={readOnly}
+            disabled={disabled}
             style={{
               overflow: 'visible',
               fontFamily: '"Roboto Mono", monospace',
@@ -109,7 +109,7 @@ const HighlightCode: React.FC<IHighlightCode> = ({
             }}
           />
         </ContextMenuTrigger>
-        {!readOnly && (contextMenuItems || contextSubMenuItems) && (
+        {!disabled && (contextMenuItems || contextSubMenuItems) && (
           <ContextMenuList
             menuId={menuId}
             onClick={onContextMenuClick}

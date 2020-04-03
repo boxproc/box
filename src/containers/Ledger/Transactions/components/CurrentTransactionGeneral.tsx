@@ -18,7 +18,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             name="id"
             component={InputField}
             label="ID"
-            readOnly={true}
+            disabled={true}
             isNumber={true}
           />
         </Box>
@@ -28,7 +28,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             name="accountId"
             component={InputField}
             label="Account ID"
-            readOnly={true}
+            disabled={true}
             isNumber={true}
           />
         </Box>
@@ -38,7 +38,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             name="transactionTypeId"
             component={InputField}
             label="Transaction Type ID"
-            readOnly={true}
+            disabled={true}
             isNumber={true}
           />
         </Box>
@@ -48,7 +48,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             name="parentTransactionId"
             component={InputField}
             label="Parent Transaction ID"
-            readOnly={true}
+            disabled={true}
             isNumber={true}
           />
         </Box>
@@ -58,7 +58,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             name="status"
             component={InputField}
             label="Status"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 6]} p="8px">
@@ -67,7 +67,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             name="transactionDatetime"
             component={InputField}
             label="Transaction Datetime"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 12]} p="8px">
@@ -76,7 +76,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             name="debitCreditIndicator"
             component={InputField}
             label="Debit Credit Indicator"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 6]} p="8px">
@@ -88,7 +88,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Amount"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 6]} p="8px">
@@ -100,7 +100,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Amount in Original Currency"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 6]} p="8px">
@@ -109,7 +109,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             name="settledDatetime"
             component={InputField}
             label="Settled Datetime"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 6]} p="8px">
@@ -121,7 +121,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Amount Settled"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width="150px" p="8px">
@@ -130,7 +130,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             name="sourceEndpointId"
             component={InputField}
             label="Source Endpoint ID"
-            readOnly={true}
+            disabled={true}
             isNumber={true}
           />
         </Box>
@@ -141,7 +141,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             name="aprRate"
             component={InputField}
             label="APR Rate"
-            readOnly={true}
+            disabled={true}
             isNumber={true}
           />
         </Box>
@@ -151,7 +151,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             name="aprCalculationMethod"
             component={InputField}
             label="APR Calculation Method"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 12]} p="8px">
@@ -160,7 +160,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             name="feeRate"
             component={InputField}
             label="Fee Rate"
-            readOnly={true}
+            disabled={true}
             isNumber={true}
           />
         </Box>
@@ -170,7 +170,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             name="feeApplicationCondition"
             component={InputField}
             label="Fee Application Condition"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 12]} p="8px">
@@ -179,7 +179,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             name="rewardRate"
             component={InputField}
             label="Reward Rate"
-            readOnly={true}
+            disabled={true}
             isNumber={true}
           />
         </Box>
@@ -189,7 +189,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             name="rewardApplicationCondition"
             component={InputField}
             label="Reward Application Condition"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 2]} p="8px">
@@ -198,7 +198,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             name="description"
             component={TextareaField}
             label="Description"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
       </Flex>

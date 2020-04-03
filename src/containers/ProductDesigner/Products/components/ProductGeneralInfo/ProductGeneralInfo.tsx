@@ -135,7 +135,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             placeholder="Enter Name"
             component={InputField}
             label="Name"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isAlphaNumeric,
@@ -162,7 +162,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             component={InputField}
             label="# of Days Card Expires"
             isNumber={true}
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isInteger,
@@ -213,7 +213,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             component={InputField}
             label="Retention # of Days"
             isNumber={true}
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isInteger,
@@ -242,8 +242,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             component={InputField}
             label={statementCycleParameterLabel}
             isNumber={true}
-            readOnly={isReadOnly}
-            disabled={!statementCycleTypeValue}
+            disabled={!statementCycleTypeValue || isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               statementCycleParameterValidation,
@@ -259,7 +258,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             component={TextareaField}
             label="Description"
             height={115}
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
           />
         </Box>
         <Box width={[1]} p="8px">

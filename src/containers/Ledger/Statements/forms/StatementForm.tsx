@@ -24,7 +24,7 @@ const StatementForm: React.FC<TStatementForm> = () => {
               name="id"
               component={InputField}
               label="ID"
-              readOnly={true}
+              disabled={true}
               isNumber={true}
             />
           </Box>
@@ -34,7 +34,7 @@ const StatementForm: React.FC<TStatementForm> = () => {
               name="accountId"
               component={InputField}
               label="Account ID"
-              readOnly={true}
+              disabled={true}
               isNumber={true}
             />
           </Box>
@@ -44,7 +44,7 @@ const StatementForm: React.FC<TStatementForm> = () => {
               name="firstTransactionId"
               component={InputField}
               label="First Transaction ID"
-              readOnly={true}
+              disabled={true}
               isNumber={true}
             />
           </Box>
@@ -54,7 +54,7 @@ const StatementForm: React.FC<TStatementForm> = () => {
               name="lastTransactionId"
               component={InputField}
               label="Last Transaction ID"
-              readOnly={true}
+              disabled={true}
               isNumber={true}
             />
           </Box>
@@ -65,7 +65,7 @@ const StatementForm: React.FC<TStatementForm> = () => {
               name="repaymentStatus"
               component={InputField}
               label="Repayment Status"
-              readOnly={true}
+              disabled={true}
             />
           </Box>
           <Box width="120px" p="8px">
@@ -76,7 +76,7 @@ const StatementForm: React.FC<TStatementForm> = () => {
               label="Statement Date"
               placeholder={dateFormatConst.DATE}
               mask={maskFormatConst.DATE}
-              readOnly={true}
+              disabled={true}
             />
           </Box>
           <Hr />
@@ -89,7 +89,7 @@ const StatementForm: React.FC<TStatementForm> = () => {
               fixedDecimalScale={true}
               decimalScale={2}
               label="Balance open"
-              readOnly={true}
+              disabled={true}
             />
           </Box>
           <Box width={[1 / 6]} p="8px">
@@ -101,7 +101,7 @@ const StatementForm: React.FC<TStatementForm> = () => {
               fixedDecimalScale={true}
               decimalScale={2}
               label="Balance close"
-              readOnly={true}
+              disabled={true}
             />
           </Box>
           <Box width={[1 / 6]} p="8px">
@@ -113,7 +113,7 @@ const StatementForm: React.FC<TStatementForm> = () => {
               fixedDecimalScale={true}
               decimalScale={2}
               label="Minimum amount due repayment"
-              readOnly={true}
+              disabled={true}
             />
           </Box>
           <Box width="150px" p="8px">
@@ -122,7 +122,7 @@ const StatementForm: React.FC<TStatementForm> = () => {
               name="previousStatementId"
               component={InputField}
               label="Previous Statement ID"
-              readOnly={true}
+              disabled={true}
               isNumber={true}
             />
           </Box>

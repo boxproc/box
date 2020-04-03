@@ -137,7 +137,7 @@ const UserForm: React.FC<TUserForm> = ({
               placeholder="Enter First Name"
               component={InputField}
               label="First Name"
-              readOnly={isReadOnly}
+              disabled={isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isAlpha,
@@ -151,7 +151,7 @@ const UserForm: React.FC<TUserForm> = ({
               placeholder="Enter Last Name"
               component={InputField}
               label="Last Name"
-              readOnly={isReadOnly}
+              disabled={isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isAlpha,
@@ -165,7 +165,7 @@ const UserForm: React.FC<TUserForm> = ({
               component={InputField}
               label="Username"
               placeholder="Enter Username"
-              readOnly={isEditMode || isReadOnly}
+              disabled={isEditMode || isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isUsername,
@@ -179,7 +179,7 @@ const UserForm: React.FC<TUserForm> = ({
               placeholder="Enter Email"
               component={InputField}
               label="Email"
-              readOnly={isReadOnly}
+              disabled={isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isEmail,

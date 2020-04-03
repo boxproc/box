@@ -18,7 +18,7 @@ const CurrentTransactionCard: React.FC = () => {
             name="cardId"
             component={InputField}
             label="Card ID"
-            readOnly={true}
+            disabled={true}
             isNumber={true}
           />
         </Box>
@@ -28,7 +28,7 @@ const CurrentTransactionCard: React.FC = () => {
             name="cardTransactionId"
             component={InputField}
             label="Card Transaction ID"
-            readOnly={true}
+            disabled={true}
             isNumber={true}
           />
         </Box>
@@ -38,7 +38,7 @@ const CurrentTransactionCard: React.FC = () => {
             name="cardCurrency"
             component={InputField}
             label="Card Currency"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -50,7 +50,7 @@ const CurrentTransactionCard: React.FC = () => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Card Amount"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -59,7 +59,7 @@ const CurrentTransactionCard: React.FC = () => {
             name="cardAcceptorName"
             component={InputField}
             label="Card Acceptor Name"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -68,7 +68,7 @@ const CurrentTransactionCard: React.FC = () => {
             name="cardAcceptorLocation"
             component={InputField}
             label="Card Acceptor Location"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -80,7 +80,7 @@ const CurrentTransactionCard: React.FC = () => {
             fixedDecimalScale={true}
             decimalScale={3}
             label="Card Conversion Rate"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -89,7 +89,7 @@ const CurrentTransactionCard: React.FC = () => {
             name="cardCurrencyBilling"
             component={InputField}
             label="Card Currency Billing"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -101,7 +101,7 @@ const CurrentTransactionCard: React.FC = () => {
             fixedDecimalScale={true}
             decimalScale={2}
             label="Card Amount Billing"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -110,7 +110,7 @@ const CurrentTransactionCard: React.FC = () => {
             name="cardAcceptorTerminalId"
             component={InputField}
             label="Card Acceptor Terminal ID"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -119,7 +119,7 @@ const CurrentTransactionCard: React.FC = () => {
             name="cardAcceptorIdCode"
             component={InputField}
             label="Card Acceptor ID Code"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -128,7 +128,7 @@ const CurrentTransactionCard: React.FC = () => {
             name="cardStan"
             component={InputField}
             label="Card Stan"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -137,7 +137,7 @@ const CurrentTransactionCard: React.FC = () => {
             name="cardMcc"
             component={InputField}
             label="Card Mcc"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -146,7 +146,7 @@ const CurrentTransactionCard: React.FC = () => {
             name="cardAcquirerId"
             component={InputField}
             label="Card Acquirer ID"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -155,7 +155,7 @@ const CurrentTransactionCard: React.FC = () => {
             name="cardAcquirerCountryCode"
             component={InputField}
             label="Card Acquirer Country Code"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -164,7 +164,7 @@ const CurrentTransactionCard: React.FC = () => {
             name="cardPosEntryMode"
             component={InputField}
             label="Card Pos Entry Mode"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -173,7 +173,7 @@ const CurrentTransactionCard: React.FC = () => {
             name="cardPosConditionData"
             component={InputField}
             label="Card Pos Condition Data"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
         <Box width={[1 / 5]} p="8px">
@@ -182,7 +182,7 @@ const CurrentTransactionCard: React.FC = () => {
             name="cardResponseCode"
             component={InputField}
             label="Card Response Code"
-            readOnly={true}
+            disabled={true}
           />
         </Box>
       </Flex>

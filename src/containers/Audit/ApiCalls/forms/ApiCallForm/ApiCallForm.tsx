@@ -25,7 +25,7 @@ const ApiCallForm: React.FC<TApiCallForm> = () => {
               component={InputField}
               label="ID"
               placeholder="Enter ID"
-              readOnly={true}
+              disabled={true}
             />
           </Box>
           <Box width={[3 / 11]} p="8px">
@@ -47,7 +47,7 @@ const ApiCallForm: React.FC<TApiCallForm> = () => {
               component={InputField}
               label="Event Datetime"
               placeholder="Enter Event Datetime"
-              readOnly={true}
+              disabled={true}
             />
           </Box>
           <Box width={[1 / 3]} p="8px">
@@ -57,7 +57,7 @@ const ApiCallForm: React.FC<TApiCallForm> = () => {
               component={InputField}
               label="API Name"
               placeholder="Enter API Name"
-              readOnly={true}
+              disabled={true}
             />
           </Box>
           <Delimiter />
@@ -68,7 +68,7 @@ const ApiCallForm: React.FC<TApiCallForm> = () => {
               component={InputField}
               label="Endpoint ID"
               placeholder="Enter Endpoint ID"
-              readOnly={true}
+              disabled={true}
             />
           </Box>
           <Box width={[5 / 13]} p="8px">
@@ -78,7 +78,7 @@ const ApiCallForm: React.FC<TApiCallForm> = () => {
               component={InputField}
               label="Endpoint Name"
               placeholder="Enter Endpoint Name"
-              readOnly={true}
+              disabled={true}
             />
           </Box>
           <Box width="100%">
@@ -90,7 +90,7 @@ const ApiCallForm: React.FC<TApiCallForm> = () => {
                   component={TextareaField}
                   label="Request Body"
                   placeholder="Request Body"
-                  readOnly={true}
+                  disabled={true}
                   height={250}
                 />
               </Box>
@@ -101,7 +101,7 @@ const ApiCallForm: React.FC<TApiCallForm> = () => {
                   component={TextareaField}
                   label="Response Body"
                   placeholder="Response Body"
-                  readOnly={true}
+                  disabled={true}
                   height={250}
                 />
               </Box>

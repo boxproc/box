@@ -49,7 +49,7 @@ const InterfaceFields: React.FC<IInterfaceFields> = ({
             component={InputField}
             label="Name"
             placeholder="Enter Name"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isAlphaNumeric,
@@ -63,7 +63,7 @@ const InterfaceFields: React.FC<IInterfaceFields> = ({
             component={InputField}
             label="URL"
             placeholder="Enter URL"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isURL,
@@ -77,7 +77,7 @@ const InterfaceFields: React.FC<IInterfaceFields> = ({
             component={InputField}
             label="Private Key Location"
             placeholder="Enter Private Key Location"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
@@ -115,7 +115,7 @@ const InterfaceFields: React.FC<IInterfaceFields> = ({
                 component={InputField}
                 label="Last Message Datetime"
                 placeholder="Last Message Datetime"
-                readOnly={true}
+                disabled={true}
               />
             </Box>
             <Box width={[1 / 4]} p="8px">
@@ -125,7 +125,7 @@ const InterfaceFields: React.FC<IInterfaceFields> = ({
                 component={InputField}
                 label="Last Fault Datetime"
                 placeholder="Last Fault Datetime"
-                readOnly={true}
+                disabled={true}
               />
             </Box>
           </React.Fragment>
@@ -140,7 +140,7 @@ const InterfaceFields: React.FC<IInterfaceFields> = ({
                 label="Log File Location Attributes"
                 placeholder="Enter Log File Location"
                 height={120}
-                readOnly={isReadOnly}
+                disabled={isReadOnly}
                 validate={[formErrorUtil.isRequired]}
               />
             </Box>
@@ -152,7 +152,7 @@ const InterfaceFields: React.FC<IInterfaceFields> = ({
                 label="Connection Attributes"
                 placeholder="Enter Connection Attributes"
                 height={120}
-                readOnly={isReadOnly}
+                disabled={isReadOnly}
               />
             </Box>
           </Flex>

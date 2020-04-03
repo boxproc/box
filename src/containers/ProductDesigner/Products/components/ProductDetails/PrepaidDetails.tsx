@@ -26,7 +26,7 @@ const PrepaidDetails: React.FC<IPrepaidDetails> = ({ isReadOnly }) => {
             component={InputField}
             label="Dormant After # Of Days"
             isNumber={true}
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isInteger,

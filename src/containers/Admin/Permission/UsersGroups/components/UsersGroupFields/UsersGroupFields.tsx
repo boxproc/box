@@ -54,7 +54,7 @@ const UsersGroupFields: React.FC<IUsersGroupFields> = ({
             component={InputField}
             label="Group Name"
             placeholder="Enter Group Name"
-            readOnly={isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isAlphaNumeric,

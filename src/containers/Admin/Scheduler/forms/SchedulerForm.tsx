@@ -95,7 +95,7 @@ const SchedulerForm: React.FC<TSchedulerForm> = ({
               placeholder="Enter Name"
               component={InputField}
               label="Name"
-              readOnly={isReadOnly}
+              disabled={isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isAlphaNumeric,
@@ -123,7 +123,7 @@ const SchedulerForm: React.FC<TSchedulerForm> = ({
                   component={TextareaField}
                   label="Description"
                   placeholder="Enter Description"
-                  readOnly={isReadOnly}
+                  disabled={isReadOnly}
                 />
               </Box>
               <Box width="50%" p="8px">
@@ -133,7 +133,7 @@ const SchedulerForm: React.FC<TSchedulerForm> = ({
                   component={TextareaField}
                   label="Parameters"
                   placeholder="Enter Parameters"
-                  readOnly={isReadOnly}
+                  disabled={isReadOnly}
                 />
               </Box>
             </Flex>
@@ -157,7 +157,7 @@ const SchedulerForm: React.FC<TSchedulerForm> = ({
               placeholder="Executable"
               component={InputField}
               label="Executable"
-              readOnly={isReadOnly}
+              disabled={isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
               ]}
@@ -170,7 +170,7 @@ const SchedulerForm: React.FC<TSchedulerForm> = ({
               placeholder="Enter Log Location"
               component={InputField}
               label="Log Location"
-              readOnly={isReadOnly}
+              disabled={isReadOnly}
               validate={[formErrorUtil.isRequired]}
             />
           </Box>
@@ -181,7 +181,7 @@ const SchedulerForm: React.FC<TSchedulerForm> = ({
               placeholder="Enter Cron Expression"
               component={InputField}
               label="Cron Expression"
-              readOnly={true}
+              disabled={true}
               validate={[formErrorUtil.isRequired]}
             />
           </Box>
