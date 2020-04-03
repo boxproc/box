@@ -27,7 +27,7 @@ export const sharedInputCss = css<IInput>`
     background-color: ${theme.colors.lighterGrayCell};
     height: auto;
     align-self: flex-start;
-    padding: 0 6px;
+    padding: 0;
 
     &:focus{
       background-color: ${theme.colors.white};

@@ -183,7 +183,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
           {FilterForm}
         </Filter>
       )}
-      <Flex alignItems="center">
+      <Flex alignItems="center" fontSize="0">
         {newModalName && !isReadOnly && (
           <Box mr="20px">
             <Button

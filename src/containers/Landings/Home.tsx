@@ -16,7 +16,7 @@ interface IHome extends IWithModal { }
 const CenterBlock = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh - 230px);
+  height: calc(100vh - 230px);
   align-items: center;
   justify-content: center;
 `;
@@ -59,14 +59,8 @@ const Home: React.FC<IHome> = ({ openModal }) => {
       <CenterBlock>
         {storageUtil.getFirstScreenFlag() && (
           <React.Fragment>
-            <Paragraph bold={true} size={15}>
-              Welcome {userName}!
-            </Paragraph>
-            {lastActivity && (
-              <SmallText>
-                Your last activity: {lastActivity}
-              </SmallText>
-            )}
+            <Paragraph bold={true} size={15}>Welcome {userName}!</Paragraph>
+            {lastActivity && (<SmallText>Your last activity: {lastActivity}</SmallText>)}
           </React.Fragment>
         )}
         {registrationPendingFlag && (

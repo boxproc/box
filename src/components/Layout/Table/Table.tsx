@@ -32,26 +32,10 @@ export const Table: React.FC<ITable> = props => {
     sortable = false,
   } = props;
 
-  const [height, setHeight] = React.useState(null);
-  const tableRef = React.useRef(null);
-
-  React.useEffect(
-    () => {
-      if (data && data.length > pageSize) {
-        setHeight(tableRef.current.clientHeight);
-      } else {
-        setHeight(null);
-      }
-    },
-    [tableRef, data, pageSize]
-  );
-
   return (
     <TableStyled
       activeRowIndex={activeRowIndex}
       isSmaller={isSmaller}
-      ref={tableRef}
-      minHeight={height}
       isScrollbar={isScrollbar}
     >
       <ReactTable

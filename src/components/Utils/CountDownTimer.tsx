@@ -16,7 +16,7 @@ const Wrapper = styled.div<IWrapper>`
   text-align: center;
   color: ${({ theme }) => theme.colors.normalAccent};
   font-weight: 500;
-  line-height: 16.65px;
+  line-height: 15.65px;
   box-shadow: ${({ theme }) => theme.shadows.aroundBox};
 
   svg {

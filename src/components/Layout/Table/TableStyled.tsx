@@ -15,7 +15,6 @@ interface ITableStyled {
   activeRowIndex: number;
   isScrollbar?: boolean;
   isSmaller?: boolean;
-  minHeight?: number;
 }
 
 export const TableStyled = styled.div<ITableStyled>`
@@ -25,10 +24,6 @@ export const TableStyled = styled.div<ITableStyled>`
     box-shadow: ${({ theme }) => theme.shadows.normalBox};
     overflow: ${({ isScrollbar }) => isScrollbar ? 'auto' : 'visible'};
     ${scrollbarCss};
-
-    ${({ minHeight }) => minHeight && `
-      min-height: ${minHeight}px;
-    `};
 
     .rt-table, .rt-tbody {
       overflow: visible;

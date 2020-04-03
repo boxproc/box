@@ -28,11 +28,6 @@ export const TableItemWrapper = styled.div<ITableItemWrapper>`
     padding: 4px 6px;
   `};
 
-  ${({ isEditable }) => isEditable && `
-    padding-left: 0;
-    padding-right: 0;
-  `};
-
   ${({ isSelect }) => isSelect && `
     padding-left: 3px;
     padding-right: 3px;
@@ -75,9 +70,5 @@ export const TableItemWrapper = styled.div<ITableItemWrapper>`
     font-size: 11px;
     line-height: 1.6;
     text-align: center;
-  }
-
-  &:focus {
-    border-color: ${({ theme }) => theme.colors.normalAccent};
   }
 `;
