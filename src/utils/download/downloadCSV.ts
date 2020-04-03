@@ -37,7 +37,7 @@ export const convertArrayOfObjectsToCSV = (data: Array<object>) => {
         result += 'N';
       } else if (item[key] === true) {
         result += 'Y';
-      }  else {
+      } else {
         result += item[key];
       }
 
@@ -59,8 +59,13 @@ export const downloadCSV = (fileName: string, data: Array<object>) => {
 
   const encodedData = encodeURI(csv);
 
-  const link = document.createElement('a');
-  link.setAttribute('href', encodedData);
-  link.setAttribute('download', `${fileName}.csv`);
-  link.click();
+  if (navigator.msSaveBlob) { // IE 10+
+    navigator.msSaveBlob(encodedData, `${fileName}.csv`);
+  } else {
+    const link = document.createElement('a');
+    link.setAttribute('href', encodedData);
+    link.setAttribute('download', `${fileName}.csv`);
+    link.click();
+  }
+
 };

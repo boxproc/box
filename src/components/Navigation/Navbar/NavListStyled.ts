@@ -11,8 +11,8 @@ export const NavListStyled = styled.div`
   .${menuClasses.MENU_TITLE} {
     position: relative;
     display: flex;
-    alignItems: flex-start;
-    justifyContent: space-between;
+    align-items: flex-start;
+    justify-content: space-between;
     padding: 7px 10px 6px;
     text-decoration: none;
 
