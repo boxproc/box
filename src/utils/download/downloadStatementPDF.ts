@@ -211,6 +211,6 @@ export const downloadStatementPDF = (data: {
     );
   }
 
-  doc.output('save', `${fileName}.pdf`);
+  doc.save(`${fileName}.pdf`);
   // doc.output('dataurlnewwindow');
 };
