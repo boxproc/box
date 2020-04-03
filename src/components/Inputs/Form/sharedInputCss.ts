@@ -1,5 +1,4 @@
 import { css } from 'theme';
-
 import { IInput } from './types';
 
 export const sharedInputCss = css<IInput>`
@@ -8,6 +7,7 @@ export const sharedInputCss = css<IInput>`
   width: 100%;
   height: 29px;
   padding: 5px 7px;
+  background-color: ${({ theme }) => theme.colors.white};
   text-align: ${({ isNumber }) => isNumber ? 'right' : 'left'}
   box-shadow: none;
   box-sizing: border-box;
@@ -54,7 +54,6 @@ export const sharedInputCss = css<IInput>`
 
   :disabled,
   :read-only {
-    background-color: ${({ theme }) => theme.colors.white};
     border-color: ${({ theme }) => theme.colors.lightGray};
     user-select: text;
   }

@@ -5,7 +5,6 @@ export const GlobalStyles = createGlobalStyle`
     color: ${theme.colors.black};
     font-size: 14px;
     line-height: 1.35;
-    overflow: auto;
   }
 
   input {
