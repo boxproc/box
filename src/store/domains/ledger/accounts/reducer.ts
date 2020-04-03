@@ -22,16 +22,14 @@ const accountsReducer = (state = accountsInitialState, action: TAccountsAction) 
 
     case ActionTypeKeys.MAKE_TRANSACTION_FULFILLED:
       const mData = action.payload.transaction_result[0];
+      const mAccInd = state.accounts.findIndex(el => el.id === action.meta.accId);
       const mAccounts = state.accounts.asMutable();
-      const mAccInd = mAccounts.findIndex(el => el.id === action.meta.accId);
 
-      if (mAccInd) {
-        mAccounts[mAccInd] = {
-          ...mAccounts[mAccInd],
-          balance_settled: mData.balance_settled_after,
-          balance_available: mData.balance_available_after,
-        };
-      }
+      mAccounts[mAccInd] = {
+        ...mAccounts[mAccInd],
+        balance_settled: mData.balance_settled_after,
+        balance_available: mData.balance_available_after,
+      };
 
       return state
         .set('accounts', mAccounts)
@@ -39,16 +37,14 @@ const accountsReducer = (state = accountsInitialState, action: TAccountsAction) 
 
     case ActionTypeKeys.LIMIT_ADJUSTMENT_FULFILLED:
       const lData = action.payload.transaction_result[0];
+      const lAccInd = state.accounts.findIndex(el => el.id === action.meta.accId);
       const lAccounts = state.accounts.asMutable();
-      const lAccInd = lAccounts.findIndex(el => el.id === action.meta.accId);
 
-      if (lAccInd) {
-        lAccounts[lAccInd] = {
-          ...lAccounts[lAccInd],
-          balance_limit: lData.balance_limit,
-          balance_limit_shared: lData.balance_limit_shared,
-        };
-      }
+      lAccounts[lAccInd] = {
+        ...lAccounts[lAccInd],
+        balance_limit: lData.balance_limit,
+        balance_limit_shared: lData.balance_limit_shared,
+      };
 
       return state
         .set('accounts', lAccounts)

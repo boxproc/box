@@ -4,6 +4,7 @@ import { getFormValues, reset as resetForm } from 'redux-form';
 import { basePath, formNamesConst, modalNamesConst, uiItemsConst } from 'consts';
 
 import { openModal, setIsOpenFilter } from 'store';
+import { closeModal } from 'store/domains/modals';
 import { TLedgerId } from './../customers';
 import {
   ActionTypeKeys,
@@ -198,6 +199,8 @@ export const handleSettleTransaction: THandleSettleTransaction = () =>
             message: 'Transaction is successfully settled.',
           },
         }));
+
+        dispatch(closeModal(modalNamesConst.SETTLE_TRANSACTION));
       },
       dispatch
     );
