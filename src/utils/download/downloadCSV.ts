@@ -51,21 +51,18 @@ export const convertArrayOfObjectsToCSV = (data: Array<object>) => {
 };
 
 export const downloadCSV = (fileName: string, data: Array<object>) => {
-  let csv = convertArrayOfObjectsToCSV(data);
+  const csv = convertArrayOfObjectsToCSV(data);
+  const blob = new Blob([csv]);
 
-  if (csv && !csv.match(/^data:text\/csv/i)) {
-    csv = 'data:text/csv;charset=utf-8,' + csv;
-  }
-
-  const encodedData = encodeURI(csv);
-
-  if (navigator.msSaveBlob) { // IE 10+
-    navigator.msSaveBlob(encodedData, `${fileName}.csv`);
+  if (window.navigator.msSaveOrOpenBlob) { // IE
+    window.navigator.msSaveOrOpenBlob(blob, `${fileName}.csv`);
   } else {
-    const link = document.createElement('a');
-    link.setAttribute('href', encodedData);
-    link.setAttribute('download', `${fileName}.csv`);
-    link.click();
-  }
+    const a = window.document.createElement('a');
 
+    a.href = window.URL.createObjectURL(blob);
+    a.download = `${fileName}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
 };
