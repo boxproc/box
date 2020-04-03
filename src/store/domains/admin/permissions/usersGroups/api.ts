@@ -64,7 +64,7 @@ export const deleteUsersGroupMember = (id: number, userId: number) =>
  * Delete UI item from the users group API
  */
 export const deleteUsersGroupPermission = (id: number, uiItem: string) =>
-  apiClientService.post('ui/administration/permissions', {
+  apiClientService.delete('ui/administration/permissions', {
     data: {
       user_group_id: id,
       ui_item: uiItem,
