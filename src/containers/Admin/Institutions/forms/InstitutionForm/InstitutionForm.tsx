@@ -99,7 +99,7 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
               component={InputField}
               label="Name"
               placeholder="Enter Institution"
-              disabled={isEditMode || isReadOnly}
+              readOnly={isEditMode || isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isAlphaNumeric,

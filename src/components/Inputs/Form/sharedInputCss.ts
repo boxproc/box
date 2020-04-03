@@ -52,10 +52,9 @@ export const sharedInputCss = css<IInput>`
     }
   `}
 
-  &:disabled,
-  &:read-only {
+  &[disabled],
+  &[readonly] {
     border-color: ${({ theme }) => theme.colors.lightGray};
     user-select: text;
-    pointer-events: none;
   }
 `;
