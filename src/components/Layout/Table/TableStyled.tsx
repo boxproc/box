@@ -94,6 +94,7 @@ export const TableStyled = styled.div<ITableStyled>`
 
     .rt-tbody {
       background-color: ${({ theme }) => theme.colors.white};
+      width: 100%;
     }
 
     .rt-tbody .rt-td {
