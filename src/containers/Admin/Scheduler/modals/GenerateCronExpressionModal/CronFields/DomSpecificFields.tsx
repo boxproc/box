@@ -14,7 +14,7 @@ interface IDomSpecificFields {
 
 const DomSpecificFields: React.FC<IDomSpecificFields> = ({ isSpecific }) => {
   return (
-    <React.Fragment>
+    <div>
       Specific day of month (choose one or many)
       {isSpecific && (
         <Box mt="10px">
@@ -39,7 +39,7 @@ const DomSpecificFields: React.FC<IDomSpecificFields> = ({ isSpecific }) => {
           </Flex>
         </Box>
       )}
-    </React.Fragment>
+    </div>
   );
 };
 

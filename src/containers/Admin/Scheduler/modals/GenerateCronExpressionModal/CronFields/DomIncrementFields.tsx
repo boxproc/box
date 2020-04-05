@@ -19,7 +19,7 @@ const daysOfMonthOptions = numbersArray.map(num => {
 
 const DomIncrementFields: React.FC = () => {
   return (
-    <Flex alignItems="baseline">
+    <Flex alignItems="center">
       Every
       <Box width="90px" p="0 7px">
         <Field

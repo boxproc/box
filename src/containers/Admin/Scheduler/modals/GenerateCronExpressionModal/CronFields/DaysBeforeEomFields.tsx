@@ -15,7 +15,7 @@ const options = numbersArray.map(num => {
 
 const DaysBeforeEomFields: React.FC = () => {
   return (
-    <Flex alignItems="baseline">
+    <Flex alignItems="center">
       <Box width="90px" p="0 7px">
         <Field
           id="cronDaysBeforeEomMinus"

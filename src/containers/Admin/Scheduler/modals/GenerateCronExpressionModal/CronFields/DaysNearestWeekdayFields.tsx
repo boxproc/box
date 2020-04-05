@@ -15,7 +15,7 @@ const options = numbersArray.map(num => {
 
 const DaysNearestWeekdayFields: React.FC = () => {
   return (
-    <Flex alignItems="baseline">
+    <Flex alignItems="center">
       Nearest weekday (Monday to Friday) to the
       <Box width="90px" p="0 7px">
         <Field

@@ -17,7 +17,7 @@ const options = numbersArray.map(num => {
 
 const DowIncrementFields: React.FC = () => {
   return (
-    <Flex alignItems="baseline">
+    <Flex alignItems="center">
       Every
       <Box width="90px" p="0 7px">
         <Field
