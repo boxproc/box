@@ -3,9 +3,8 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { monthsOptionsWithStrValue } from 'consts';
-
 import { CheckboxField } from 'components';
+import { monthsOptionsWithStrValue } from 'consts';
 import { dateUtil, stringsUtil } from 'utils';
 
 interface ISpecificFields {
@@ -33,11 +32,7 @@ const SpecificFields: React.FC<ISpecificFields> = ({
   );
 
   return (
-    <Flex
-      alignItems="baseline"
-      flexWrap="wrap"
-      flexDirection="column"
-    >
+    <React.Fragment>
       Specific {unity} (choose one or many)
       {isSpecific && (
         <Box mt="10px">
@@ -76,7 +71,7 @@ const SpecificFields: React.FC<ISpecificFields> = ({
           </Flex>
         </Box>
       )}
-    </Flex>
+    </React.Fragment>
   );
 };
 

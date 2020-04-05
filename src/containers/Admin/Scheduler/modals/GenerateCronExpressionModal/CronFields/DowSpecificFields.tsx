@@ -4,7 +4,6 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { CheckboxField } from 'components';
-
 import { daysOfWeekOptionsWithStrValues } from 'consts';
 
 interface IDowSpecificFields {
@@ -13,7 +12,7 @@ interface IDowSpecificFields {
 
 const DowSpecificFields: React.FC<IDowSpecificFields> = ({ isSpecific }) => {
   return (
-    <Flex alignItems="baseline" flexWrap="wrap">
+    <React.Fragment>
       Specific day of week (choose one or many)
       {isSpecific && (
         <Box mt="10px">
@@ -37,7 +36,7 @@ const DowSpecificFields: React.FC<IDowSpecificFields> = ({ isSpecific }) => {
           </Flex>
         </Box>
       )}
-    </Flex>
+    </React.Fragment>
   );
 };
 

@@ -35,7 +35,7 @@ const RangeFields: React.FC<IRangeFields> = ({ name, unity, count, isMonth, isYe
   );
 
   return (
-    <Flex alignItems="baseline">
+    <Flex alignItems="center">
       Every {unity} between {unity}
       <Box width={isMonth ? '130px' : '90px'} p="0 7px">
         <Field

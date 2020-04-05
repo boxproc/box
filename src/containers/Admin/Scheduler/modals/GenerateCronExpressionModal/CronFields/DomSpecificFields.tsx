@@ -4,7 +4,6 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { CheckboxField } from 'components';
-
 import { stringsUtil } from 'utils';
 
 const numbersArray = stringsUtil.rangeDecimalNumbersArray(31, 1);
@@ -15,7 +14,7 @@ interface IDomSpecificFields {
 
 const DomSpecificFields: React.FC<IDomSpecificFields> = ({ isSpecific }) => {
   return (
-    <Flex alignItems="baseline" flexWrap="wrap">
+    <React.Fragment>
       Specific day of month (choose one or many)
       {isSpecific && (
         <Box mt="10px">
@@ -40,7 +39,7 @@ const DomSpecificFields: React.FC<IDomSpecificFields> = ({ isSpecific }) => {
           </Flex>
         </Box>
       )}
-    </Flex>
+    </React.Fragment>
   );
 };
 
