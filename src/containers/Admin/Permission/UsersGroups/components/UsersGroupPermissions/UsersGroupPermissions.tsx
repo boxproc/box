@@ -42,7 +42,7 @@ export const UsersGroupMembers: React.FC<IUsersGroupMembers> = ({
   const columns = React.useMemo(
     () => [
       {
-        width: 430,
+        minWidth: 400,
         Header: <TableHeader title="UI Item" />,
         accessor: 'uiItem',
         filterable: true,

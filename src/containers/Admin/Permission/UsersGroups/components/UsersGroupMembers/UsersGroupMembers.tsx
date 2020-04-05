@@ -43,7 +43,7 @@ export const UsersGroupMembers: React.FC<IUsersGroupMembers> = ({
   const columns = React.useMemo(
     () => [
       {
-        width: 620,
+        minWidth: 600,
         accessor: 'username',
         Cell: (props: TCell<'username'>) => (
           <TableCell
