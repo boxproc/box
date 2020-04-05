@@ -94,13 +94,16 @@ export const TableStyled = styled.div<ITableStyled>`
 
     .rt-tbody {
       background-color: ${({ theme }) => theme.colors.white};
-      width: 100%;
     }
 
     .rt-tbody .rt-td {
       display: flex;
       min-width: 50px;
       text-align: left;
+    }
+
+    .rt-tbody .rt-tr-group {
+      width: 100%;
     }
 
     .rt-tbody .rt-tr-group,
