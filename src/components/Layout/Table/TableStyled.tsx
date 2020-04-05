@@ -102,10 +102,6 @@ export const TableStyled = styled.div<ITableStyled>`
       text-align: left;
     }
 
-    .rt-tbody .rt-tr-group {
-      width: 100%;
-    }
-
     .rt-tbody .rt-tr-group,
     .rt-tbody .rt-tr-group:last-child {
       position: relative;
