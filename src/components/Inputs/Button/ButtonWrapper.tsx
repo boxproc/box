@@ -10,6 +10,7 @@ interface IButtonWrapper {
 export const ButtonWrapper = styled.button<IButtonWrapper>`
   position: relative;
   display: flex;
+  align-items: center;
   padding: 0;
   background-color: transparent;
   border: 0;

@@ -66,7 +66,7 @@ export const ModalWrapper = styled.div<IModalWrapper>`
     box-sizing: border-box;
     min-width: ${({ containerWidth }) => containerWidth || '350px'};
     width: ${({ containerWidth }) => containerWidth || '500px'};
-    min-height: ${({ minContainerHeight }) => minContainerHeight || '130px'};
+    min-height: ${({ minContainerHeight }) => minContainerHeight || '100px'};
     border-radius: 3px;
     word-break: break-word;
     font-size: 0;

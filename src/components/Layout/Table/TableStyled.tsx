@@ -15,6 +15,7 @@ interface ITableStyled {
   activeRowIndex: number;
   isScrollbar?: boolean;
   isSmaller?: boolean;
+  isNoData?: boolean;
 }
 
 export const TableStyled = styled.div<ITableStyled>`
@@ -24,6 +25,10 @@ export const TableStyled = styled.div<ITableStyled>`
     box-shadow: ${({ theme }) => theme.shadows.normalBox};
     overflow: ${({ isScrollbar }) => isScrollbar ? 'auto' : 'visible'};
     ${scrollbarCss};
+
+    ${({ isNoData }) => isNoData && `
+      overflow: hidden;
+    `};
 
     .rt-table, .rt-tbody {
       overflow: visible;

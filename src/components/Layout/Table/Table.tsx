@@ -36,6 +36,7 @@ export const Table: React.FC<ITable> = props => {
       activeRowIndex={activeRowIndex}
       isSmaller={isSmaller}
       isScrollbar={isScrollbar}
+      isNoData={!data || !data.length}
     >
       <ReactTable
         {...props as ITable}
