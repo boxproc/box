@@ -32,7 +32,7 @@ const SpecificFields: React.FC<ISpecificFields> = ({
   );
 
   return (
-    <div>
+    <Box width="720px">
       Specific {unity} (choose one or many)
       {isSpecific && (
         <Box mt="10px">
@@ -71,7 +71,7 @@ const SpecificFields: React.FC<ISpecificFields> = ({
           </Flex>
         </Box>
       )}
-    </div>
+    </Box>
   );
 };
 

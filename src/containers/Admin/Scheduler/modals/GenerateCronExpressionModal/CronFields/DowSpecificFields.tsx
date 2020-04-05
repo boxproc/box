@@ -12,7 +12,7 @@ interface IDowSpecificFields {
 
 const DowSpecificFields: React.FC<IDowSpecificFields> = ({ isSpecific }) => {
   return (
-    <div>
+    <Box width="720px">
       Specific day of week (choose one or many)
       {isSpecific && (
         <Box mt="10px">
@@ -36,7 +36,7 @@ const DowSpecificFields: React.FC<IDowSpecificFields> = ({ isSpecific }) => {
           </Flex>
         </Box>
       )}
-    </div>
+    </Box>
   );
 };
 
