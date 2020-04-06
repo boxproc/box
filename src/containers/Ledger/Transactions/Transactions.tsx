@@ -32,6 +32,7 @@ interface ITransactions extends IWithModal {
   filterTransactions: THandleFilterTransactions;
   institutionsOptions: Array<ISelectValue>;
   isConvertibleToLoan: boolean;
+  isSettledTr: boolean;
   isLoading: boolean;
   resetTransactions: TResetTransactions;
   transactions: ImmutableArray<ITransaction>;
@@ -47,6 +48,7 @@ const Transactions: React.FC<ITransactions> = ({
   filterTransactions,
   institutionsOptions,
   isConvertibleToLoan,
+  isSettledTr,
   isLoading,
   openModal,
   resetTransactions,
@@ -99,15 +101,6 @@ const Transactions: React.FC<ITransactions> = ({
           name: 'Statements',
           action: () => filterStatementsById({ transaction_id: currentId }),
         },
-        { isDivider: true },
-        {
-          name: 'Settle Transaction',
-          isDisabled: isReadOnlySettleTr,
-          action: () => openModal({
-            name: modalNamesConst.SETTLE_TRANSACTION,
-            payload: { transactionId: currentId },
-          }),
-        },
       ];
 
       const convertItems = [
@@ -122,7 +115,31 @@ const Transactions: React.FC<ITransactions> = ({
         },
       ];
 
-      return isConvertibleToLoan ? [...baseItems, ...convertItems] : baseItems;
+      const settleTrItems = [
+        { isDivider: true },
+        {
+          name: 'Settle Transaction',
+          isDisabled: isReadOnlySettleTr,
+          action: () => openModal({
+            name: modalNamesConst.SETTLE_TRANSACTION,
+            payload: { transactionId: currentId },
+          }),
+        },
+      ];
+
+      if (isConvertibleToLoan && !isSettledTr) {
+        return [...baseItems, ...settleTrItems, ...convertItems];
+      } else {
+        if (isConvertibleToLoan) {
+          return [...baseItems, ...convertItems];
+        }
+
+        if (!isSettledTr) {
+          return [...baseItems, ...settleTrItems];
+        }
+      }
+
+      return baseItems;
     },
     [
       isConvertibleToLoan,
@@ -133,6 +150,7 @@ const Transactions: React.FC<ITransactions> = ({
       filterStatementsById,
       openModal,
       isReadOnlySettleTr,
+      isSettledTr,
     ]
   );
 

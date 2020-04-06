@@ -11,6 +11,7 @@ import {
   handleFilterByIdStatements,
   handleFilterTransactions,
   isLoadingTransactionsSelector,
+  isSettledTrSelector,
   IStoreState,
   isTrConvertibleToLoanSelector,
   resetTransactions,
@@ -25,6 +26,7 @@ const mapStateToProps = (state: IStoreState) => ({
   institutionsOptions: userInstitutionsOptionsSelector(state),
   currentId: activeItemIdSelector(state),
   isConvertibleToLoan: isTrConvertibleToLoanSelector(state),
+  isSettledTr: isSettledTrSelector(state),
   uiItems: uiItemsSelector(state),
 });
 

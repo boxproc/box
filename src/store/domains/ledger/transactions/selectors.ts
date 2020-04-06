@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-import { transactionTypesIds } from 'consts';
+import { transactionStatusConst, transactionStatusOptions, transactionTypesIds } from 'consts';
 
 import { IStoreState } from 'store';
 import { createLoadingSelector } from 'store/domains/loader';
@@ -49,12 +49,25 @@ export const currentTrIdSelector = createSelector(
 
 export const isTrConvertibleToLoanSelector = createSelector(
   currentTransactionSelector,
-  transaction => {
-    if (!transaction) {
+  data => {
+    if (!data) {
       return false;
     }
 
-    return transaction.transactionTypeId === transactionTypesIds.PURCHASE_CARD_PAYMENT;
+    return data.transactionTypeId === transactionTypesIds.PURCHASE_CARD_PAYMENT;
+  });
+
+export const isSettledTrSelector = createSelector(
+  currentTransactionSelector,
+  data => {
+    if (!data) {
+      return false;
+    }
+
+    const { status } = data;
+
+    return status === transactionStatusConst.SETTLED || status === transactionStatusOptions
+      .find(el => el.value === transactionStatusConst.SETTLED).label;
   });
 
 /**
@@ -96,10 +109,10 @@ export const isRetrievedTransactionSelector = createSelector(
  * Settle transaction loading selectors
  */
 
-export const isRetrievingTrSelector = createLoadingSelector([
+export const isRetrievingTrLoadingSelector = createLoadingSelector([
   ActionTypeKeys.RETRIEVE_TRANSACTION,
 ]);
 
-export const isSettlingTrSelector = createLoadingSelector([
+export const isSettlingTrLoadingSelector = createLoadingSelector([
   ActionTypeKeys.SETTLE_TRANSACTION,
 ]);

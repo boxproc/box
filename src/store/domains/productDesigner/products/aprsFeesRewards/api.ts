@@ -26,6 +26,7 @@ export const getProductAprs = (id: number) =>
  */
 export const addProductApr = (data: Partial<IProductAprData>) =>
   apiClientService.post('ui/product_designer/products/aprs/create', { data });
+
 /**
  * Update product APR API
  */

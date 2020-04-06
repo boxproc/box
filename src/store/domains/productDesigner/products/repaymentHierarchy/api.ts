@@ -9,7 +9,7 @@ import { IRepaymentHierarchyReqToSend } from './types';
  */
 export const getRepaymentHierarchy = (id: number) =>
   // throttleUtil.getDataAfter(repaymentHierarchyMock, 500);
-  apiClientService.post('/ui/product_designer/products/hierarchy/get', {
+  apiClientService.post('ui/product_designer/products/hierarchy/get', {
     data: { product_id: id },
   });
 
@@ -18,4 +18,4 @@ export const getRepaymentHierarchy = (id: number) =>
  */
 export const updateRepaymentHierarchy = (data: IRepaymentHierarchyReqToSend) =>
   // throttleUtil.getDataAfter(successResponseMock, 500);
-  apiClientService.post('/ui/product_designer/products/hierarchy/update', { data });
+  apiClientService.post('ui/product_designer/products/hierarchy/update', { data });

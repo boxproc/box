@@ -76,6 +76,7 @@ const Institutions: React.FC<IInstitutions> = ({
       viewingModalName={modalNamesConst.EDIT_INSTITUTION}
       contextMenuItems={contextMenuItems}
       isLoading={isLoading}
+      isSearchable={true}
     />
   );
 };

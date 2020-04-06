@@ -23,7 +23,7 @@ export const TableStyled = styled.div<ITableStyled>`
     height: 100%;
     border: none;
     box-shadow: ${({ theme }) => theme.shadows.normalBox};
-    overflow: ${({ isScrollbar }) => isScrollbar ? 'auto' : 'visible'};
+    overflow-x: ${({ isScrollbar }) => isScrollbar ? 'auto' : 'visible'};
     ${scrollbarCss};
 
     ${({ isNoData }) => isNoData && `
