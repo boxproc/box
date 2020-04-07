@@ -31,6 +31,7 @@ export const TableStyled = styled.div<ITableStyled>`
     `};
 
     .rt-table, .rt-tbody {
+      display: block;
       overflow: visible;
     }
 
