@@ -1,6 +1,6 @@
 import config from 'config';
 
-import { statusConst, yesNoConst } from 'consts';
+import { sessionStorageNamesConst, statusConst, yesNoConst } from 'consts';
 
 import {
   IAuthReq,
@@ -74,8 +74,10 @@ export const prepareChangePasswordDataToSend = (data: Partial<IChangePassword>):
 
 export const setUserDataToStorage = (data: IAuthUserData, isChangingProfile?: boolean) => {
   if (data) {
+    const isAuthPending = sessionStorage.getItem(sessionStorageNamesConst.AUTH_PENDING);
     const is2faLogin = data.status === statusConst.ACTIVE
       && data.requires2faFlag === yesNoConst.YES
+      && !isAuthPending
       && !isChangingProfile;
 
     const isRegistrationPending = data.status === statusConst.REGISTRATION_PENDING;
