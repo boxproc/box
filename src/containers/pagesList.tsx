@@ -35,101 +35,29 @@ import {
   UsersActivity,
 } from 'containers/Audit';
 
-export const pagesList = [
-  {
-    path: uiItemsConst.SYSTEM_PROPERTIES,
-    component: <SystemProperties />,
-  },
-  {
-    path: uiItemsConst.INSTITUTIONS,
-    component: <Institutions />,
-  },
-  {
-    path: uiItemsConst.SCHEDULER,
-    component: <Scheduler />,
-  },
-  {
-    path: uiItemsConst.DICTIONARIES_COUNTRIES,
-    component: <Countries />,
-  },
-  {
-    path: uiItemsConst.DICTIONARIES_CURRENCIES,
-    component: <Currencies />,
-  },
-  {
-    path: uiItemsConst.DICTIONARIES_EVENTS,
-    component: <Events />,
-  },
-  {
-    path: uiItemsConst.DICTIONARIES_EVENT_DATA_ELEMENTS,
-    component: <EventDataElems />,
-  },
-  {
-    path: uiItemsConst.DICTIONARIES_TRANSACTION_TYPES,
-    component: <TransactionTypes />,
-  },
-  {
-    path: uiItemsConst.USERS,
-    component: <Users />,
-  },
-  {
-    path: uiItemsConst.USERS_GROUPS,
-    component: <UsersGroups />,
-  },
-  {
-    path: uiItemsConst.API_CALLS,
-    component: <ApiCalls />,
-  },
-  {
-    path: uiItemsConst.SCHEDULED_JOBS,
-    component: <ScheduledJobs />,
-  },
-  {
-    path: uiItemsConst.SYSTEM_MONITOR,
-    component: <SystemMonitor />,
-  },
-  {
-    path: uiItemsConst.USERS_ACTIVITY,
-    component: <UsersActivity />,
-  },
-  {
-    path: uiItemsConst.UI_SESSIONS,
-    component: <UiSessions />,
-  },
-  {
-    path: uiItemsConst.CARDS,
-    component: <Cards />,
-  },
-  {
-    path: uiItemsConst.ENDPOINTS,
-    component: <Endpoints />,
-  },
-  {
-    path: uiItemsConst.INTERFACES,
-    component: <Interfaces />,
-  },
-  {
-    path: uiItemsConst.CUSTOMERS,
-    component: <Customers />,
-  },
-  {
-    path: uiItemsConst.ACCOUNTS,
-    component: <Accounts />,
-  },
-  {
-    path: uiItemsConst.STATEMENTS,
-    component: <Statements />,
-  },
-  {
-    path: uiItemsConst.TRANSACTIONS,
-    component: <Transactions />,
-  },
-  {
-    path: uiItemsConst.CARDS,
-    component: <Cards />,
-  },
-  {
-    path: uiItemsConst.PRODUCTS,
-    component: <Products />,
-  },
-];
+export const pagesList = {
+  [uiItemsConst.SYSTEM_PROPERTIES]: <SystemProperties />,
+  [uiItemsConst.INSTITUTIONS]: <Institutions />,
+  [uiItemsConst.SCHEDULER]: <Scheduler />,
+  [uiItemsConst.DICTIONARIES_COUNTRIES]: <Countries />,
+  [uiItemsConst.DICTIONARIES_CURRENCIES]: <Currencies />,
+  [uiItemsConst.DICTIONARIES_EVENTS]: <Events />,
+  [uiItemsConst.DICTIONARIES_EVENT_DATA_ELEMENTS]: <EventDataElems />,
+  [uiItemsConst.DICTIONARIES_TRANSACTION_TYPES]: <TransactionTypes />,
+  [uiItemsConst.USERS]: <Users />,
+  [uiItemsConst.USERS_GROUPS]: <UsersGroups />,
+  [uiItemsConst.API_CALLS]: <ApiCalls />,
+  [uiItemsConst.SCHEDULED_JOBS]: <ScheduledJobs />,
+  [uiItemsConst.SYSTEM_MONITOR]: <SystemMonitor />,
+  [uiItemsConst.USERS_ACTIVITY]: <UsersActivity />,
+  [uiItemsConst.UI_SESSIONS]: <UiSessions />,
+  [uiItemsConst.CARDS]: <Cards />,
+  [uiItemsConst.ENDPOINTS]: <Endpoints />,
+  [uiItemsConst.INTERFACES]: <Interfaces />,
+  [uiItemsConst.CUSTOMERS]: <Customers />,
+  [uiItemsConst.ACCOUNTS]: <Accounts />,
+  [uiItemsConst.STATEMENTS]: <Statements />,
+  [uiItemsConst.TRANSACTIONS]: <Transactions />,
+  [uiItemsConst.CARDS]: <Cards />,
+  [uiItemsConst.PRODUCTS]: <Products />,
+};

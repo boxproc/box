@@ -32,38 +32,38 @@ interface IRoot extends ISpinner {
   visibleUiItemsList: ImmutableArray<string>;
 }
 
-const Root: React.FC<IRoot> = ({ visibleUiItemsList }) => {
+const Root: React.FC<IRoot> = ({
+  visibleUiItemsList = [],
+}) => {
   const isLoggedIn = storageUtil.getLoginFlag();
 
-  const routes = React.useMemo(
+  const privateRoutes = React.useMemo(
     () => {
       const preparedRoutes: Array<object> = [];
 
-      isLoggedIn && visibleUiItemsList && pagesList.forEach(page => {
-        if (visibleUiItemsList.includes(page.path)) {
+      for (const page in pagesList) {
+        if (visibleUiItemsList.includes(page)) {
           preparedRoutes.push(
             <PrivateRoute
               exact={true}
-              key={page.path}
-              path={`${basePath}${page.path}`}
-              component={() => page.component}
+              key={page}
+              path={`${basePath}${page}`}
+              component={() => pagesList[page]}
             />
           );
         }
-      });
+      }
 
       return preparedRoutes;
     },
-    [visibleUiItemsList, isLoggedIn]
+    [visibleUiItemsList]
   );
 
   return (
     <React.Fragment>
       <RootWrapper>
         <div>
-          <div>
-            {isLoggedIn && (<Header />)}
-          </div>
+          <div>{isLoggedIn && (<Header />)}</div>
           <main>
             <PagesWrapper>
               <Switch>
@@ -71,10 +71,10 @@ const Root: React.FC<IRoot> = ({ visibleUiItemsList }) => {
                   exact={true}
                   path={`${basePath}login`}
                   render={
-                    () => isLoggedIn ? (<Redirect from="*" to={basePath} />) : (<Login />)
+                    () => isLoggedIn ? <Redirect from="*" to={basePath} /> : <Login />
                   }
                 />
-                {routes}
+                {privateRoutes}
                 <PrivateRoute
                   path={basePath}
                   component={Home}
