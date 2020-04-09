@@ -1,4 +1,9 @@
-import { ICustomersData, IRepaymentDebitCardsData, IRepaymentDirectDebitsData } from './types';
+import {
+  ICurrencyLimitsData,
+  ICustomersData,
+  IRepaymentDebitCardsData,
+  IRepaymentDirectDebitsData,
+} from './types';
 
 import { IResponseStatus, TApiResponse } from 'types';
 
@@ -38,6 +43,14 @@ export enum ActionTypeKeys {
   ADD_REPAYMENT_DIRECT_DEBIT = 'customers/ADD_REPAYMENT_DIRECT_DEBIT',
   ADD_REPAYMENT_DIRECT_DEBIT_FULFILLED = 'customers/ADD_REPAYMENT_DIRECT_DEBIT_FULFILLED',
   ADD_REPAYMENT_DIRECT_DEBIT_REJECTED = 'customers/ADD_REPAYMENT_DIRECT_DEBIT_REJECTED',
+
+  GET_CURRENCY_LIMITS = 'customers/GET_CURRENCY_LIMITS',
+  GET_CURRENCY_LIMITS_FULFILLED = 'customers/GET_CURRENCY_LIMITS_FULFILLED',
+  GET_CURRENCY_LIMITS_REJECTED = 'customers/GET_CURRENCY_LIMITS_REJECTED',
+
+  UPDATE_CURRENCY_LIMIT = 'customers/UPDATE_CURRENCY_LIMIT',
+  UPDATE_CURRENCY_LIMIT_FULFILLED = 'customers/UPDATE_CURRENCY_LIMIT_FULFILLED',
+  UPDATE_CURRENCY_LIMIT_REJECTED = 'customers/UPDATE_CURRENCY_LIMIT_REJECTED',
 
   RESET_CUSTOMERS = 'customers/RESET_CUSTOMERS',
 }
@@ -198,6 +211,40 @@ export interface IAddRepaymentDirectDebitRejectedAction {
   readonly type: ActionTypeKeys.ADD_REPAYMENT_DIRECT_DEBIT_REJECTED;
 }
 
+/** Get customer currency limits action interfaces */
+
+export interface IGetCurrencyLimitsAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_CURRENCY_LIMITS;
+}
+
+export interface IGetCurrencyLimitsFulfilledAction {
+  readonly payload: ICurrencyLimitsData;
+  readonly type: ActionTypeKeys.GET_CURRENCY_LIMITS_FULFILLED;
+}
+
+export interface IGetCurrencyLimitsRejectedAction {
+  readonly payload: TApiResponse;
+  readonly type: ActionTypeKeys.GET_CURRENCY_LIMITS_REJECTED;
+}
+
+/** Get customer currency limits action interfaces */
+
+export interface IUpdateCurrencyLimitAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.UPDATE_CURRENCY_LIMIT;
+}
+
+export interface IUpdateCurrencyLimitFulfilledAction {
+  readonly payload: IResponseStatus;
+  readonly type: ActionTypeKeys.UPDATE_CURRENCY_LIMIT_FULFILLED;
+}
+
+export interface IUpdateCurrencyLimitRejectedAction {
+  readonly payload: TApiResponse;
+  readonly type: ActionTypeKeys.UPDATE_CURRENCY_LIMIT_REJECTED;
+}
+
 /** Reset customers action interface */
 
 export interface IResetCustomersAction {
@@ -214,4 +261,6 @@ export type TCustomersAction =
   | IAddRepaymentDebitCardFulfilledAction
   | IGetRepaymentDirectDebitsFulfilledAction
   | IAddRepaymentDirectDebitFulfilledAction
+  | IGetCurrencyLimitsFulfilledAction
+  | IUpdateCurrencyLimitFulfilledAction
   | IResetCustomersAction;

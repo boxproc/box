@@ -25,7 +25,7 @@ const AddInstitutionModal: React.FC<IAddInstitutionModal> = ({
     <Modal
       name={modalName}
       title="Add Institution"
-      containerWidth="550px"
+      containerWidth="600px"
       withCloseConfirmation={isFormDirty}
       isBluredBackdrop={true}
     >

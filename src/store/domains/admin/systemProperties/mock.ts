@@ -10,7 +10,7 @@ export const sysPropsMock: ISysPropsData = {
       locked_flag: 'N',
     },
     {
-      property_name: 'scheduler filtered',
+      property_name: 'scheduler',
       current_value: '32000',
       previous_value: '32000',
       last_datetime: '2019-07-01 21:44:53',

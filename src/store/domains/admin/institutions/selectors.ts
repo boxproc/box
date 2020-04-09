@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 
 import { IStoreState } from 'store';
+import { defaultDictionaryCurrenciesSelector } from 'store/domains/admin/dictionaries';
 import { createLoadingSelector } from 'store/domains/loader';
 import { activeItemIdSelector } from 'store/domains/utils';
 
@@ -30,10 +31,11 @@ export const institutionsOptionsSelector = createSelector(
 export const currentInstitutionSelector = createSelector(
   defaultInstitutionsSelector,
   activeItemIdSelector,
-  (institutions, currentId) => {
+  defaultDictionaryCurrenciesSelector,
+  (institutions, currentId, currencies) => {
     const currentInst = institutions.find(el => el.id === currentId);
 
-    return prepareDetailsToRender(currentInst);
+    return prepareDetailsToRender(currentInst, currencies);
   }
 );
 

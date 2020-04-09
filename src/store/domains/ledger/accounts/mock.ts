@@ -8,7 +8,7 @@ export const accountsMock: IAccountsData = {
       account_alias: '0001',
       account_alias_additional: 'X456FF',
       customer_id: 1,
-      customer_first_name: 'John Filtered',
+      customer_first_name: 'John',
       customer_last_name: 'Doe',
       institution_id: 1,
       status: 'A',

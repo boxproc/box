@@ -2,6 +2,7 @@
 import { apiClientService } from 'services';
 // import { institutionsMock } from './mock';
 import { IInstitutionData } from './types';
+
 // import { throttleUtil } from 'utils';
 
 /**

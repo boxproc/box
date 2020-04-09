@@ -1,6 +1,8 @@
 import { customerStatusOptions, identificationTypesOptions, statusOptions } from 'consts';
 
 import {
+  ICurrencyLimit,
+  ICurrencyLimitData,
   ICustomerData,
   ICustomerDetails,
   ICustomersFilter,
@@ -105,6 +107,7 @@ export const prepareDataToRender = (data: Partial<ICustomerData>, institution?: 
     address_post_code,
     date_created,
     date_closed,
+    limit_at_customer_level,
   } = data;
 
   const dataStatus = customerStatusOptions.find(el => el.value === status);
@@ -128,6 +131,7 @@ export const prepareDataToRender = (data: Partial<ICustomerData>, institution?: 
     addressPostCode: address_post_code,
     dateCreated: date_created,
     dateClosed: date_closed,
+    limitAtCustomerLevel: limit_at_customer_level === 1,
   };
 };
 
@@ -259,3 +263,40 @@ export const prepareFormDataRepaymentDirectDebitToSend =
         && stringsUtil.toNumber(repaymentInterfaceId.value),
     };
   };
+
+export const prepareCurrencyLimitsToRender = (data: ICurrencyLimitData): ICurrencyLimit => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    customer_id,
+    currency_numeric_code,
+    currency_code,
+    currency_name,
+    limit,
+  } = data;
+
+  return {
+    customerId: customer_id,
+    currencyNumericCode: stringsUtil.padStartN(currency_numeric_code, 3),
+    currencyCode: currency_code,
+    currencyName: currency_name,
+    limit,
+  };
+};
+
+export const prepareCurrencyLimitToSend = (data: Partial<ICurrencyLimit>):
+  Partial<ICurrencyLimitData> => {
+  if (!data) {
+    return null;
+  }
+
+  const { customerId, currencyNumericCode, limit } = data;
+
+  return {
+    customer_id: customerId,
+    currency_numeric_code: stringsUtil.toNumber(currencyNumericCode),
+    limit: stringsUtil.toNumber(limit),
+  };
+};

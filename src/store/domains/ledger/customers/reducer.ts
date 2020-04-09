@@ -7,6 +7,7 @@ export const customersInitialState: ImmutableObject<ICustomersState> = Immutable
   customers: Immutable([]),
   repaymentDebitCards: Immutable([]),
   repaymentDirectDebits: Immutable([]),
+  currencyLimits: Immutable([]),
 });
 
 const customersReducer = (state = customersInitialState, action: TCustomersAction) => {
@@ -29,6 +30,9 @@ const customersReducer = (state = customersInitialState, action: TCustomersActio
 
     case ActionTypeKeys.GET_REPAYMENT_DIRECT_DEBITS_FULFILLED:
       return state.set('repaymentDirectDebits', action.payload.repayment_debit_cards);
+
+    case ActionTypeKeys.GET_CURRENCY_LIMITS_FULFILLED:
+      return state.set('currencyLimits', action.payload.currency_limits);
 
     case ActionTypeKeys.RESET_CUSTOMERS:
       return state = customersInitialState;

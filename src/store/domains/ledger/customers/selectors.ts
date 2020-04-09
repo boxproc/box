@@ -8,6 +8,7 @@ import { userInstitutionsOptionsSelector } from 'store/domains/login';
 import { activeItemIdSelector } from 'store/domains/utils';
 import { ActionTypeKeys } from './actionTypes';
 import {
+  prepareCurrencyLimitsToRender,
   prepareDataToRender,
   prepareDetailsToRender,
   prepareRepaymentDebitCardsToRender,
@@ -67,6 +68,11 @@ export const currentCustomerInstIdSelector = createSelector(
   data => data && data.institutionId.value
 );
 
+export const isLimitAtCustomerLevelSelector = createSelector(
+  currentCustomerSelector,
+  data => data && data.limitAtCustomerLevel
+);
+
 /**
  * Repayment debit cards selectors
  */
@@ -89,6 +95,18 @@ export const defaultRepaymentDirectDebitsSelector = (state: IStoreState) =>
 export const repaymentDirectDebitsSelector = createSelector(
   defaultRepaymentDirectDebitsSelector,
   data => data && data.map(el => prepareRepaymentDirectDebitsToRender(el))
+);
+
+/**
+ * Currency limits selectors
+ */
+
+export const defaultCurrencyLimitsSelector = (state: IStoreState) =>
+  state.ledger.customers.currencyLimits;
+
+export const currencyLimitsSelector = createSelector(
+  defaultCurrencyLimitsSelector,
+  data => data && data.map(el => prepareCurrencyLimitsToRender(el))
 );
 
 /**
@@ -125,4 +143,8 @@ export const isGettingRepaymentDirectDebitsSelector = createLoadingSelector([
 
 export const isAddingRepaymentDirectDebitSelector = createLoadingSelector([
   ActionTypeKeys.ADD_REPAYMENT_DIRECT_DEBIT,
+]);
+
+export const isGettingCurrencyLimitsSelector = createLoadingSelector([
+  ActionTypeKeys.GET_CURRENCY_LIMITS,
 ]);

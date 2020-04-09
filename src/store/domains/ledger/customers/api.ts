@@ -1,14 +1,23 @@
 // import { successResponseMock } from 'consts';
 import { apiClientService } from 'services';
-// import { customersMock } from './mock';
+// import { currencyLimitsMock, customersMock } from './mock';
 import {
+  ICurrencyLimitData,
   ICustomerData,
   ICustomersFilterToSend,
   IRepaymentDebitCardData,
   IRepaymentDirectDebitData,
   TLedgerId,
 } from './types';
+
 // import { throttleUtil } from 'utils';
+
+/**
+ * Filter customers API
+ */
+export const filterCustomers = (data: Partial<ICustomersFilterToSend>) =>
+  // throttleUtil.getDataAfter(customersMock, 500);
+  apiClientService.post('ui/ledger/customers/get', { data });
 
 /**
  * Delete customer API
@@ -34,14 +43,7 @@ export const updateCustomer = (data: Partial<ICustomerData>) =>
   apiClientService.post('ui/ledger/customers/update', { data });
 
 /**
- * Filter customers API
- */
-export const filterCustomers = (data: Partial<ICustomersFilterToSend>) =>
-  // throttleUtil.getDataAfter(customersMock, 500);
-  apiClientService.post('ui/ledger/customers/get', { data });
-
-/**
- * Filter customers API
+ * Filter customers by ID API
  */
 export const filterCustomersById = (data: TLedgerId) =>
   // throttleUtil.getDataAfter(customersMock, 500);
@@ -74,3 +76,19 @@ export const getRepaymentDirectDebits = (data: number) =>
   apiClientService.post('ui/ledger/customers/get_repayment_direct_debits', {
     data: { customer_id: data },
   });
+
+/**
+ * Get customer currency limits API
+ */
+export const getCurrencyLimits = (id: number) =>
+  // throttleUtil.getDataAfter(currencyLimitsMock, 500);
+  apiClientService.post('', {
+    data: { customer_id: id },
+  });
+
+/**
+ * Update customer currency limit API
+ */
+export const updateCurrencyLimit = (data: Partial<ICurrencyLimitData>) =>
+  // throttleUtil.getDataAfter(successResponseMock, 100);
+  apiClientService.post('', { data });

@@ -13,45 +13,57 @@ import {
   SelectField,
   withSpinner,
 } from 'components';
-
 import { formNamesConst, iconNamesConst, statusOptions } from 'consts';
-
 import {
   THandleAddInstitution,
   THandleDeleteInstitution,
+  THandleGetDictionaryCurrencies,
   THandleUpdateInstitution,
 } from 'store';
-
+import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface IInstitutionForm extends ISpinner {
-  currentInstitutionName: string;
+  addInstitution: THandleAddInstitution;
+  currenciesOptions: Array<ISelectValue>;
   currentInstitutionId: number;
+  currentInstitutionName: string;
+  deleteInstitution: THandleDeleteInstitution;
+  getCurrencies: THandleGetDictionaryCurrencies;
+  isCurrenciesLoading: boolean;
+  isEditMode?: boolean;
   isMasterInstitutionFlag: boolean;
   isReadOnly: boolean;
-  isEditMode?: boolean;
-  updateInstitution: THandleUpdateInstitution;
-  addInstitution: THandleAddInstitution;
-  deleteInstitution: THandleDeleteInstitution;
   onCancel: () => void;
+  updateInstitution: THandleUpdateInstitution;
 }
 
 type TInstitutionForm = IInstitutionForm & InjectedFormProps<{}, IInstitutionForm>;
 
 const InstitutionForm: React.FC<TInstitutionForm> = ({
-  onCancel,
-  handleSubmit,
-  updateInstitution,
   addInstitution,
-  deleteInstitution,
-  currentInstitutionName,
+  currenciesOptions,
   currentInstitutionId,
-  isMasterInstitutionFlag,
-  isEditMode,
+  currentInstitutionName,
+  deleteInstitution,
   dirty,
-  pristine,
+  getCurrencies,
+  handleSubmit,
+  isCurrenciesLoading,
+  isEditMode,
+  isMasterInstitutionFlag,
   isReadOnly,
+  onCancel,
+  pristine,
+  updateInstitution,
 }) => {
+  React.useEffect(
+    () => {
+      getCurrencies();
+    },
+    [getCurrencies]
+  );
+
   const deleteConfirmationText = React.useMemo(
     () => `Delete institution "${currentInstitutionName}"?`,
     [currentInstitutionName]
@@ -118,6 +130,31 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
               validate={[formErrorUtil.isRequired]}
             />
           </Box>
+          <Hr />
+          <Box width={[1]} p="8px">
+            <Field
+              id="supportedCurrencies"
+              name="supportedCurrencies"
+              component={SelectField}
+              label="Supported Currencies"
+              isMulti={true}
+              placeholder="Select Currencies"
+              options={currenciesOptions}
+              isLoading={isCurrenciesLoading}
+              isDisabled={isReadOnly}
+              validate={[formErrorUtil.isRequired]}
+            />
+          </Box>
+          <Box width={[1]} p="8px">
+            <Field
+              id="limitAtCustomerLevelFlag"
+              name="limitAtCustomerLevelFlag"
+              component={CheckboxField}
+              label="Limit at Customer Level"
+              disabled={isReadOnly}
+            />
+          </Box>
+          <Hr />
           <Box width={[1]} p="8px">
             <Field
               id="sftpLocation"

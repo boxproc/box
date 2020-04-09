@@ -10,6 +10,7 @@ import {
   currentCustomerInstIdSelector,
   currentCustomerNameSelector,
   handleGetServicesInterfaces,
+  isLimitAtCustomerLevelSelector,
   isServiceInterfacesLoadingSelector,
   IStoreState,
   servicesInterfacesOptionsSelector,
@@ -23,6 +24,7 @@ const mapStateToProps = (state: IStoreState) => ({
   currentCustomerName: currentCustomerNameSelector(state),
   currentCustomerInstitutionId: currentCustomerInstIdSelector(state),
   interfacesOptions: servicesInterfacesOptionsSelector(state),
+  isLimitAtCustomerLevel: isLimitAtCustomerLevelSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

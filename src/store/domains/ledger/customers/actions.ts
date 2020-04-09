@@ -19,11 +19,15 @@ import {
   IDeleteCustomerAction,
   IFilterCustomersAction,
   IFilterCustomersByIdAction,
+  IGetCurrencyLimitsAction,
   IGetRepaymentDebitCardsAction,
   IGetRepaymentDirectDebitsAction,
+  IUpdateCurrencyLimitAction,
   IUpdateCustomerAction,
 } from './actionTypes';
 import {
+  ICurrencyLimit,
+  ICurrencyLimitData,
   ICustomerData,
   ICustomerDetails,
   ICustomersFilterToSend,
@@ -34,6 +38,7 @@ import {
   TLedgerId,
 } from './types';
 import {
+  prepareCurrencyLimitToSend,
   prepareDataToSend,
   prepareFilterToSend,
   prepareFormDataRepaymentDebitCardToSend,
@@ -291,6 +296,57 @@ export const handleAddRepaymentDirectDebit: THandleAddRepaymentDirectDebit = dat
         }));
         await dispatch(handleGetRepaymentDirectDebits());
         dispatch(resetForm(formNamesConst.REPAYMENT_DIRECT_DEBITS));
+      },
+      dispatch
+    );
+  };
+
+/**
+ * Get currency limits action
+ */
+
+export type TGetCurrencyLimits = (id: number) => IGetCurrencyLimitsAction;
+export type THandleGetCurrencyLimits = () => Thunk<void>;
+
+export const getCurrencyLimits: TGetCurrencyLimits = id => ({
+  type: ActionTypeKeys.GET_CURRENCY_LIMITS,
+  payload: api.getCurrencyLimits(id),
+});
+
+export const handleGetCurrencyLimits: THandleGetCurrencyLimits = () =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const customerId = activeItemIdSelector(state);
+
+        await dispatch(getCurrencyLimits(customerId));
+      },
+      dispatch
+    );
+  };
+
+/**
+ * Update currency limits action
+ */
+
+export const updateCurrencyLimit: TUpdateCurrencyLimit = data => ({
+  type: ActionTypeKeys.UPDATE_CURRENCY_LIMIT,
+  payload: api.updateCurrencyLimit(data),
+});
+
+export type TUpdateCurrencyLimit = (data: Partial<ICurrencyLimitData>) =>
+  IUpdateCurrencyLimitAction;
+export type THandleUpdateCurrencyLimit = (data: Partial<ICurrencyLimit>) => Thunk<void>;
+
+export const handleUpdateCurrencyLimit: THandleUpdateCurrencyLimit = data =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedData = prepareCurrencyLimitToSend(data);
+
+        await dispatch(updateCurrencyLimit(preparedData));
+        await dispatch(handleGetCurrencyLimits());
       },
       dispatch
     );

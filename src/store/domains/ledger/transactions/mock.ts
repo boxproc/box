@@ -20,7 +20,7 @@ export const transactionsMock: ITransactionsData = {
       card_id: 1,
       card_transaction_id: 'A',
       debit_credit_indicator: 'C',
-      description: 'description filtered',
+      description: 'description',
       original_currency: 'GBP',
       transaction_datetime: '11/08/2019 00:04:46',
       transaction_type_id: 1,

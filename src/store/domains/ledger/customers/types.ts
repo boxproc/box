@@ -24,6 +24,7 @@ export interface ICustomerData {
   date_closed: string;
   identification_type: string | number;
   identification_number: number;
+  limit_at_customer_level: number; // 0 or 1
 }
 
 export interface ICustomersData {
@@ -46,6 +47,7 @@ interface ICustomerPlain {
   dateCreated: string;
   dateClosed: string;
   identificationNumber?: number;
+  limitAtCustomerLevel: boolean;
 }
 
 export interface ICustomer extends ICustomerPlain {
@@ -191,10 +193,35 @@ export interface IRepaymentDirectDebitFormValues extends IRepaymentDirectDebitPl
 }
 
 /**
+ * Customer currency limits interfaces
+ */
+
+export interface ICurrencyLimitData {
+  customer_id: number;
+  currency_numeric_code: number;
+  currency_code: string;
+  currency_name: string;
+  limit: number;
+}
+
+export interface ICurrencyLimitsData {
+  currency_limits: Array<ICurrencyLimitData>;
+}
+
+export interface ICurrencyLimit {
+  customerId: number;
+  currencyNumericCode: string;
+  currencyCode: string;
+  currencyName: string;
+  limit: number;
+}
+
+/**
  * Customer state interface
  */
 export interface ICustomersState {
   customers: ImmutableArray<ICustomerData>;
   repaymentDebitCards: ImmutableArray<IRepaymentDebitCardData>;
   repaymentDirectDebits: ImmutableArray<IRepaymentDirectDebitData>;
+  currencyLimits: ImmutableArray<ICurrencyLimitData>;
 }

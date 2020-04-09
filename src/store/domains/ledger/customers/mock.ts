@@ -1,11 +1,11 @@
-import { ICustomersData } from './types';
+import { ICurrencyLimitsData, ICustomersData } from './types';
 
 export const customersMock: ICustomersData = {
   customers: [
     {
       id: 1,
       institution_id: 1,
-      first_name: 'John Filtered',
+      first_name: 'John',
       last_name: 'Jones',
       status: 'A',
       date_of_birth: '2019-07-29',
@@ -23,6 +23,7 @@ export const customersMock: ICustomersData = {
       date_closed: '2019-07-29',
       identification_type: 'N',
       identification_number: 1,
+      limit_at_customer_level: 0,
     },
     {
       id: 2,
@@ -45,6 +46,47 @@ export const customersMock: ICustomersData = {
       date_closed: '2019-07-29',
       identification_type: 'N',
       identification_number: 1,
+      limit_at_customer_level: 1,
+    },
+  ],
+};
+
+export const currencyLimitsMock: ICurrencyLimitsData = {
+  currency_limits: [
+    {
+      customer_id: 1,
+      currency_numeric_code: 840,
+      currency_code: 'USD',
+      currency_name: 'United States dollar',
+      limit: 100,
+    },
+    {
+      customer_id: 2,
+      currency_numeric_code: 971,
+      currency_code: 'AFN',
+      currency_name: 'Afghan afghani',
+      limit: 200,
+    },
+    {
+      customer_id: 3,
+      currency_numeric_code: 8,
+      currency_code: 'ALL',
+      currency_name: 'Albanian lek',
+      limit: 300,
+    },
+    {
+      customer_id: 4,
+      currency_numeric_code: 51,
+      currency_code: 'AMD',
+      currency_name: 'Armenian dram',
+      limit: 50,
+    },
+    {
+      customer_id: 5,
+      currency_numeric_code: 532,
+      currency_code: 'ANG',
+      currency_name: 'Netherlands Antillean guilder',
+      limit: 500,
     },
   ],
 };
