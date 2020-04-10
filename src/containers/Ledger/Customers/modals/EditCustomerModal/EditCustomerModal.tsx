@@ -39,7 +39,7 @@ const EditCustomerModal: React.FC<IEditCustomerModal> = ({
   isInterfacesLoading,
   isLimitAtCustomerLevel,
   isReadOnly,
-  isCurrencyLimits = false,
+  isCurrencyLimits = true,
 }) => {
   React.useEffect(
     () => {

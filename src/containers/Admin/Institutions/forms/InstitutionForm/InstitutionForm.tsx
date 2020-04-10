@@ -57,7 +57,7 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
   onCancel,
   pristine,
   updateInstitution,
-  isCurrencyLimits = false,
+  isCurrencyLimits = true,
 }) => {
   React.useEffect(
     () => {
