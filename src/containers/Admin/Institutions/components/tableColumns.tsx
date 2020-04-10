@@ -19,7 +19,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 280,
+    maxWidth: 320,
     Header: <TableHeader title="Name" />,
     accessor: 'institutionName',
     Cell: (props: TCell<'institutionName'>) => (
@@ -39,7 +39,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 280,
+    maxWidth: 320,
     Header: <TableHeader title="SFTP Location" />,
     accessor: 'sftpLocation',
     Cell: (props: TCell<'sftpLocation'>) => (
@@ -49,7 +49,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 280,
+    maxWidth: 320,
     Header: <TableHeader title="SFTP Public Key" />,
     accessor: 'sftpPublicKey',
     Cell: (props: TCell<'sftpPublicKey'>) => (
@@ -58,18 +58,16 @@ export const tableColumns = [
       />
     ),
   },
-  {
-    maxWidth: 100,
-    Header: <TableHeader title="Limit at Customer Level" />,
-    accessor: 'limitAtCustomerLevelFlag',
-    filterable: false,
-    Cell: renderCheckBoxTableCell(),
-  },
+  // {
+  //   maxWidth: 100,
+  //   Header: <TableHeader title="Limit at Customer Level" />,
+  //   accessor: 'limitAtCustomerLevelFlag',
+  //   Cell: renderCheckBoxTableCell(),
+  // },
   {
     maxWidth: 100,
     Header: <TableHeader title="Master Institution" />,
     accessor: 'masterInstitutionFlag',
-    filterable: false,
     Cell: renderCheckBoxTableCell(),
   },
 ];

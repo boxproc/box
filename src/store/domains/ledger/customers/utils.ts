@@ -131,7 +131,7 @@ export const prepareDataToRender = (data: Partial<ICustomerData>, institution?: 
     addressPostCode: address_post_code,
     dateCreated: date_created,
     dateClosed: date_closed,
-    limitAtCustomerLevel: limit_at_customer_level === 1,
+    limitAtCustomerLevel: limit_at_customer_level,
   };
 };
 

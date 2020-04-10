@@ -82,7 +82,7 @@ export const getRepaymentDirectDebits = (data: number) =>
  */
 export const getCurrencyLimits = (id: number) =>
   // throttleUtil.getDataAfter(currencyLimitsMock, 500);
-  apiClientService.post('', {
+  apiClientService.post('ui/ledger/customers/get_limits', {
     data: { customer_id: id },
   });
 
@@ -91,4 +91,4 @@ export const getCurrencyLimits = (id: number) =>
  */
 export const updateCurrencyLimit = (data: Partial<ICurrencyLimitData>) =>
   // throttleUtil.getDataAfter(successResponseMock, 100);
-  apiClientService.post('', { data });
+  apiClientService.put('ui/ledger/customers/update_limit', { data });

@@ -43,8 +43,8 @@ const EditableTableCell: React.FC<IEditableTableCell> = ({
   const updateCellInfo = React.useCallback(
     (e: React.MouseEvent) => {
       const el = e.target as HTMLInputElement;
-      const newValue = el.value.toString();
-      const currentValue = cellInfo.value.toString();
+      const newValue = el.value && el.value.toString();
+      const currentValue = cellInfo.value && cellInfo.value.toString();
       const isChanged = currentValue !== newValue;
 
       isChanged && updateAction({
@@ -72,7 +72,7 @@ const EditableTableCell: React.FC<IEditableTableCell> = ({
       isSmaller={isSmaller}
       isSelect={isSelect}
       defaultSelectValue={cellInfo.value}
-      selectLabel={cellInfo.value.label}
+      selectLabel={cellInfo.value && cellInfo.value.label}
       selectOptions={selectOptions}
       onSelectChange={isSelect ? handleSelectValue : null}
       onKeyUp={isSelect ? null : handleKeyUp}

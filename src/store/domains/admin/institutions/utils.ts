@@ -25,8 +25,8 @@ export const prepareDataToSend = (data: Partial<IInstitutionDetails>) => {
     status: status && status.value,
     sftp_location: sftpLocation,
     sftp_public_key: sftpPublicKey,
-    supported_currencies: supportedCurrencies && supportedCurrencies.map(el => el.value),
-    limit_at_customer_level: limitAtCustomerLevelFlag ? 1 : 0,
+    supported_currencies: supportedCurrencies && supportedCurrencies.map(el => el.value.toString()),
+    limit_at_customer_level: limitAtCustomerLevelFlag ? true : false,
   };
 };
 
@@ -41,7 +41,6 @@ export const prepareDataToRender = (data: any) => { // IInstitutionData
     status,
     sftp_location,
     sftp_public_key,
-    supported_currencies,
     limit_at_customer_level,
     master_institution_flag,
   } = data;
@@ -54,8 +53,7 @@ export const prepareDataToRender = (data: any) => { // IInstitutionData
     status: instStatus && instStatus.label,
     sftpLocation: sftp_location,
     sftpPublicKey: sftp_public_key,
-    supportedCurrencies: supported_currencies && supported_currencies.join(', '),
-    limitAtCustomerLevelFlag: limit_at_customer_level === 1,
+    limitAtCustomerLevelFlag: limit_at_customer_level,
     masterInstitutionFlag: master_institution_flag === yesNoConst.YES,
   };
 };
@@ -71,14 +69,14 @@ export const prepareDetailsToRender = (
   const { status, supported_currencies } = data;
 
   const supportedCurrencies = supported_currencies && supported_currencies.map(el => {
-    const currency = currencies.find(i => i.numeric_code === el);
+    const currency = currencies.find(i => i.numeric_code.toString() === el);
 
     if (!currency) {
       return null;
     }
 
     return {
-      value: currency.numeric_code &&  currency.numeric_code.toString(),
+      value: currency.numeric_code,
       label: `${currency.currency_code} - ${currency.name}`,
     };
   });

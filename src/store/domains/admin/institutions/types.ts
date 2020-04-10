@@ -6,12 +6,12 @@ import { ISelectValue } from 'types';
 export interface IInstitutionData {
   id: number;
   institution_name: string;
-  limit_at_customer_level: number; // 0 or 1
+  limit_at_customer_level: boolean;
   master_institution_flag: string;
   sftp_location: string;
   sftp_public_key: string;
   status: string | number;
-  supported_currencies: Array<string | number>;
+  supported_currencies: Array<string>;
 }
 
 export interface IInstitutionsData {
@@ -29,7 +29,6 @@ interface IInstitutionPlain {
 
 export interface IInstitution extends IInstitutionPlain {
   status: string;
-  supportedCurrencies: string;
 }
 
 export interface IInstitutionDetails extends IInstitutionPlain {
