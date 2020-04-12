@@ -274,6 +274,7 @@ export const prepareCurrencyLimitsToRender = (data: ICurrencyLimitData): ICurren
     currency_numeric_code,
     currency_code,
     currency_name,
+    current_balance,
     limit,
   } = data;
 
@@ -282,6 +283,7 @@ export const prepareCurrencyLimitsToRender = (data: ICurrencyLimitData): ICurren
     currencyNumericCode: stringsUtil.padStartN(currency_numeric_code, 3),
     currencyCode: currency_code,
     currencyName: currency_name,
+    currentBalance: stringsUtil.numberToFixed(current_balance, 2),
     limit: stringsUtil.numberToFixed(limit, 2),
   };
 };

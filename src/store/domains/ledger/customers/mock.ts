@@ -58,6 +58,7 @@ export const currencyLimitsMock: ICurrencyLimitsData = {
       currency_numeric_code: 840,
       currency_code: 'USD',
       currency_name: 'United States dollar',
+      current_balance: 50,
       limit: 100,
     },
     {
@@ -65,6 +66,7 @@ export const currencyLimitsMock: ICurrencyLimitsData = {
       currency_numeric_code: 971,
       currency_code: 'AFN',
       currency_name: 'Afghan afghani',
+      current_balance: 50,
       limit: 200,
     },
     {
@@ -72,6 +74,7 @@ export const currencyLimitsMock: ICurrencyLimitsData = {
       currency_numeric_code: 8,
       currency_code: 'ALL',
       currency_name: 'Albanian lek',
+      current_balance: 50,
       limit: 300,
     },
     {
@@ -79,6 +82,7 @@ export const currencyLimitsMock: ICurrencyLimitsData = {
       currency_numeric_code: 51,
       currency_code: 'AMD',
       currency_name: 'Armenian dram',
+      current_balance: 50,
       limit: 50,
     },
     {
@@ -86,6 +90,7 @@ export const currencyLimitsMock: ICurrencyLimitsData = {
       currency_numeric_code: 532,
       currency_code: 'ANG',
       currency_name: 'Netherlands Antillean guilder',
+      current_balance: 50,
       limit: 500,
     },
   ],

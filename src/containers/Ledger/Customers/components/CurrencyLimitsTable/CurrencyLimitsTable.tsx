@@ -83,7 +83,19 @@ const CurrencyLimitsTable: React.FC<ICurrencyLimitsTable> = ({
         ),
       },
       {
-        maxWidth: 200,
+        maxWidth: 150,
+        accessor: 'currentBalance',
+        Header: <TableHeader title="Current Balance" />,
+        Cell: (props: TCell<'currentBalance'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+            isNumber={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 150,
         accessor: 'limit',
         Header: <TableHeader title="Limit" />,
         Cell: (cellInfo: CellInfo) => (

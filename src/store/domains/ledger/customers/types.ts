@@ -201,6 +201,7 @@ export interface ICurrencyLimitData {
   currency_numeric_code: number;
   currency_code: string;
   currency_name: string;
+  current_balance: number;
   limit: number;
 }
 
@@ -213,6 +214,7 @@ export interface ICurrencyLimit {
   currencyNumericCode: string;
   currencyCode: string;
   currencyName: string;
+  currentBalance: string;
   limit: string;
 }
 
