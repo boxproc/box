@@ -213,7 +213,7 @@ export interface ICurrencyLimit {
   currencyNumericCode: string;
   currencyCode: string;
   currencyName: string;
-  limit: number;
+  limit: string;
 }
 
 /**

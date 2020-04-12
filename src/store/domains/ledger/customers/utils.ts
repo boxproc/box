@@ -282,7 +282,7 @@ export const prepareCurrencyLimitsToRender = (data: ICurrencyLimitData): ICurren
     currencyNumericCode: stringsUtil.padStartN(currency_numeric_code, 3),
     currencyCode: currency_code,
     currencyName: currency_name,
-    limit,
+    limit: stringsUtil.numberToFixed(limit, 2),
   };
 };
 
