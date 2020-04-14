@@ -154,7 +154,7 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
                   id="limitAtCustomerLevelFlag"
                   name="limitAtCustomerLevelFlag"
                   component={CheckboxField}
-                  label="Limit at Customer Level"
+                  label="Apply Limit at Customer Level"
                   disabled={isReadOnly}
                 />
               </Box>
