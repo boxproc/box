@@ -255,12 +255,11 @@ export const prepareFormDataRepaymentDirectDebitToSend =
     } = data;
 
     return {
-      account: stringsUtil.toNumber(account),
+      account,
       account_ext: accountExt,
       accountholder_name: accountholderName,
       status: status && status.value,
-      repayment_interface_id: repaymentInterfaceId
-        && stringsUtil.toNumber(repaymentInterfaceId.value),
+      repayment_interface_id: repaymentInterfaceId && repaymentInterfaceId.value,
     };
   };
 

@@ -158,7 +158,7 @@ export interface IRepaymentDebitCardFormValues extends IRepaymentDebitCardPlain 
 
 export interface IRepaymentDirectDebitData {
   customer_id: number;
-  account: number;
+  account: string;
   account_ext: string;
   accountholder_name: string;
   status: string | number;
@@ -174,7 +174,7 @@ export interface IRepaymentDirectDebitsData {
 
 interface IRepaymentDirectDebitPlain {
   customerId: number;
-  account: number;
+  account: string;
   accountExt: string;
   accountholderName: string;
   lastUpdateDatetime: string;
