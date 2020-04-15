@@ -10,23 +10,21 @@ import { theme, ThemeProvider } from 'theme';
 import { GlobalStyles } from 'theme/styles';
 
 import App from 'containers';
-
-import store, { history } from './store';
-
 import * as serviceWorker from './serviceWorker';
+import store, { history } from './store';
 
 ReactDOM.render(
   (
-      <Provider store={store}>
-        <ConnectedRouter history={history}>
-          <React.Fragment>
-            <GlobalStyles />
-            <ThemeProvider theme={theme}>
-              <App />
-            </ThemeProvider>
-          </React.Fragment>
-        </ConnectedRouter>
-      </Provider>
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <React.Fragment>
+          <GlobalStyles />
+          <ThemeProvider theme={theme}>
+            <App />
+          </ThemeProvider>
+        </React.Fragment>
+      </ConnectedRouter>
+    </Provider>
   ),
   document.getElementById('root') as HTMLElement
 );

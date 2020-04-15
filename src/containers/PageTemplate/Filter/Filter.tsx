@@ -82,7 +82,6 @@ const Filter: React.FC<TFilter> = ({
   const username = React.useMemo(
     () => {
       const userData = storageUtil.getUserData();
-
       return userData && userData.username;
     },
     []

@@ -72,7 +72,6 @@ const UiSessions: React.FC<IUiSessions> = ({
   const loggedInUsername = React.useMemo(
     () => {
       const userData = storageUtil.getUserData();
-
       return userData && userData.username;
     },
     []

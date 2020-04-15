@@ -95,7 +95,7 @@ export const setUserDataToStorage = (data: IAuthUserData, isChangingProfile?: bo
       if (isRegistrationPending) {
         storageUtil.setRegistrationPendingFlag();
       }
-      storageUtil.setLoginStatus(data.sessionId);
+      storageUtil.setLoginFlag(data.sessionId);
       storageUtil.setFirstScreenFlag();
     }
   }

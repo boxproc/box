@@ -93,7 +93,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
 
   React.useEffect(
     () => {
-      const permission = currentUiItem.permission;
+      const permission = currentUiItem && currentUiItem.permission;
 
       setActivePagePermission(permission);
     },
@@ -161,7 +161,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
     <React.Fragment>
       <PageTitle
         title={title}
-        pageId={currentUiItem.id}
+        pageId={currentUiItem && currentUiItem.id}
       />
       {FilterForm && (
         <Box mb="5px">

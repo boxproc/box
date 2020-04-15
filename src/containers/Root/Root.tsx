@@ -1,17 +1,17 @@
 import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
+import { Redirect, Route, RouteComponentProps, Switch, withRouter } from 'react-router-dom';
 import { ImmutableArray } from 'seamless-immutable';
 
 import styled from 'theme';
 
-import { Container, Footer, ISpinner, PrivateRoute } from 'components';
+import { Container, Footer, PrivateRoute } from 'components';
 
 import { basePath } from 'consts';
 
 import Header from 'containers/Header';
 import { Home, Login } from 'containers/Landings';
 import Modals from 'containers/Modals';
-import { pagesList } from 'containers/pagesList';
+import { screensList } from 'containers/screensList';
 
 import { storageUtil } from 'utils';
 
@@ -28,27 +28,49 @@ const PagesWrapper = styled(Container)`
   padding-top: 15px;
 `;
 
-interface IRoot extends ISpinner {
+interface IRoot extends RouteComponentProps {
   visibleUiItemsList: ImmutableArray<string>;
+  isLoadedUiItems: number;
 }
 
 const Root: React.FC<IRoot> = ({
+  isLoadedUiItems,
+  location,
   visibleUiItemsList = [],
 }) => {
   const isLoggedIn = storageUtil.getLoginFlag();
+  const registrationPendingFlag = storageUtil.getRegistrationPendingFlag();
+  const lastPathname = storageUtil.getLastScreenPathname();
+
+  React.useEffect(
+    () => {
+      if (!isLoggedIn) {
+        storageUtil.setLastScreenPathname(location.pathname);
+      } else {
+        if (lastPathname && isLoadedUiItems) {
+          storageUtil.removeLastScreenPathname();
+        }
+      }
+    },
+    [location, isLoggedIn, isLoadedUiItems, lastPathname]
+  );
+
+  const isRedirectionToLastScreen = React.useMemo(
+    () => isLoggedIn && isLoadedUiItems && visibleUiItemsList.includes(lastPathname),
+    [visibleUiItemsList, lastPathname, isLoadedUiItems, isLoggedIn]
+  );
 
   const privateRoutes = React.useMemo(
     () => {
       const preparedRoutes: Array<object> = [];
 
-      for (const page in pagesList) {
-        if (visibleUiItemsList.includes(page)) {
+      for (const path in screensList) {
+        if (visibleUiItemsList.includes(path)) {
           preparedRoutes.push(
             <PrivateRoute
-              exact={true}
-              key={page}
-              path={`${basePath}${page}`}
-              component={() => pagesList[page]}
+              key={path}
+              path={`${basePath}${path}`}
+              component={() => screensList[path]}
             />
           );
         }
@@ -70,16 +92,35 @@ const Root: React.FC<IRoot> = ({
                 <Route
                   exact={true}
                   path={`${basePath}login`}
-                  render={
-                    () => isLoggedIn ? <Redirect from="*" to={basePath} /> : <Login />
+                  render={() => isLoggedIn
+                    ? <Redirect to={basePath} />
+                    : <Login />
                   }
                 />
+
                 {privateRoutes}
-                <PrivateRoute
-                  path={basePath}
-                  component={Home}
-                />
-                {!isLoggedIn && (<Redirect from="*" to={basePath} />)}
+
+                {isRedirectionToLastScreen && (
+                  <Route
+                    path={`${basePath}${lastPathname}`}
+                    render={() => screensList[lastPathname]}
+                  />
+                )}
+
+                {isRedirectionToLastScreen && (
+                  <Redirect from={basePath} to={`${basePath}${lastPathname}`} />
+                )}
+
+                {(isLoadedUiItems || registrationPendingFlag) && !isRedirectionToLastScreen && (
+                  <PrivateRoute
+                    exact={true}
+                    path={basePath}
+                    component={Home}
+                  />
+                )}
+
+                {!isLoggedIn && (<Redirect from="*" to={`${basePath}login`} />)}
+
               </Switch>
             </PagesWrapper>
           </main>
@@ -91,4 +132,4 @@ const Root: React.FC<IRoot> = ({
   );
 };
 
-export default Root;
+export default withRouter(Root);

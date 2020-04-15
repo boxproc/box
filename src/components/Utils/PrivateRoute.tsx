@@ -24,18 +24,16 @@ const PrivateRoute: React.FC<IPrivateRoute> = ({
     <Route
       {...rest}
       exact={exact}
-      render={props => {
-        return (
-          isLoggedIn
-            ? <Component {...props} />
-            : <Redirect
-              to={{
-                pathname: `${basePath}login`,
-                state: { from: props.location },
-              }}
-            />
-        );
-      }}
+      render={props => (
+        isLoggedIn
+          ? <Component {...props} />
+          : <Redirect
+            to={{
+              pathname: `${basePath}login`,
+              state: { from: props.location },
+            }}
+          />
+      )}
     />
   );
 };

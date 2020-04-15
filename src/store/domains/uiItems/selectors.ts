@@ -13,7 +13,7 @@ export const uiItemsSelector = createSelector(
 );
 
 export const isLoadedUiItemsSelector = createSelector(
-  uiItemsSelector,
+  defaultUiItemsSelector,
   data => data && data.length
 );
 

@@ -90,6 +90,15 @@ const MessageModal: React.FC<IMessageModal> = ({
     [setVisibleDetails, isVisibleDetails]
   );
 
+  React.useEffect(
+    () => {
+      if (isReLogin) {
+        storageUtil.setLastScreenPathname(window.location.pathname);
+      }
+    },
+    [isReLogin]
+  );
+
   return (
     <Modal
       containerWidth={modalWidth}
