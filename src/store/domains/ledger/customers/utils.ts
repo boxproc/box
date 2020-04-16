@@ -263,7 +263,8 @@ export const prepareFormDataRepaymentDirectDebitToSend =
     };
   };
 
-export const prepareCurrencyLimitsToRender = (data: ICurrencyLimitData): ICurrencyLimit => {
+export const prepareCurrencyLimitToRender = (data: Partial<ICurrencyLimitData>):
+  Partial<ICurrencyLimit> => {
   if (!data) {
     return null;
   }
@@ -271,19 +272,13 @@ export const prepareCurrencyLimitsToRender = (data: ICurrencyLimitData): ICurren
   const {
     customer_id,
     currency_numeric_code,
-    currency_code,
-    currency_name,
-    current_balance,
     limit,
   } = data;
 
   return {
     customerId: customer_id,
     currencyNumericCode: stringsUtil.padStartN(currency_numeric_code, 3),
-    currencyCode: currency_code,
-    currencyName: currency_name,
-    currentBalance: stringsUtil.numberToFixed(current_balance, 2),
-    limit: stringsUtil.numberToFixed(limit, 2),
+    creditLimit: stringsUtil.numberToFixed(limit, 2),
   };
 };
 
@@ -293,11 +288,11 @@ export const prepareCurrencyLimitToSend = (data: Partial<ICurrencyLimit>):
     return null;
   }
 
-  const { customerId, currencyNumericCode, limit } = data;
+  const { customerId, currencyNumericCode, creditLimit } = data;
 
   return {
     customer_id: customerId,
     currency_numeric_code: stringsUtil.toNumber(currencyNumericCode),
-    limit: stringsUtil.toNumber(limit),
+    limit: stringsUtil.toNumber(creditLimit),
   };
 };

@@ -1,6 +1,6 @@
 // import { successResponseMock } from 'consts';
 import { apiClientService } from 'services';
-// import { currencyLimitsMock, customersMock } from './mock';
+// import { currencyLimitMock, customersMock } from './mock';
 import {
   ICurrencyLimitData,
   ICustomerData,
@@ -80,9 +80,9 @@ export const getRepaymentDirectDebits = (data: number) =>
 /**
  * Get customer currency limits API
  */
-export const getCurrencyLimits = (id: number) =>
-  // throttleUtil.getDataAfter(currencyLimitsMock, 500);
-  apiClientService.post('ui/ledger/customers/get_limits', {
+export const getCurrencyLimit = (id: number) =>
+  // throttleUtil.getDataAfter(currencyLimitMock, 500);
+  apiClientService.post('ui/ledger/customers/get_limit', {
     data: { customer_id: id },
   });
 

@@ -36,7 +36,7 @@ interface IInstitutionForm extends ISpinner {
   isReadOnly: boolean;
   onCancel: () => void;
   updateInstitution: THandleUpdateInstitution;
-  isCurrencyLimits?: boolean;
+  isCurrencyLimit?: boolean;
 }
 
 type TInstitutionForm = IInstitutionForm & InjectedFormProps<{}, IInstitutionForm>;
@@ -57,7 +57,7 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
   onCancel,
   pristine,
   updateInstitution,
-  isCurrencyLimits = true,
+  isCurrencyLimit = true,
 }) => {
   React.useEffect(
     () => {
@@ -132,7 +132,7 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
               validate={[formErrorUtil.isRequired]}
             />
           </Box>
-          {isCurrencyLimits && (
+          {isCurrencyLimit && (
             <React.Fragment>
               <Hr />
               <Box width={[3 / 5]} p="8px">

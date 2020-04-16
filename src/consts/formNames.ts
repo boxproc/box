@@ -43,6 +43,7 @@ export enum formNamesConst {
   API_CALL = 'apiCallForm',
 
   CUSTOMER = 'customerForm',
+  CURRENCY_LIMIT = 'currencyLimit',
   REPAYMENT_DEBIT_CARDS = 'repaymentDebitCardsForm',
   REPAYMENT_DIRECT_DEBITS = 'repaymentDirectDebitsForm',
   ACCOUNT = 'accountForm',

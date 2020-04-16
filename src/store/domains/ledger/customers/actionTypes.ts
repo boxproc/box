@@ -1,5 +1,5 @@
 import {
-  ICurrencyLimitsData,
+  ICurrencyLimitItemData,
   ICustomersData,
   IRepaymentDebitCardsData,
   IRepaymentDirectDebitsData,
@@ -44,9 +44,9 @@ export enum ActionTypeKeys {
   ADD_REPAYMENT_DIRECT_DEBIT_FULFILLED = 'customers/ADD_REPAYMENT_DIRECT_DEBIT_FULFILLED',
   ADD_REPAYMENT_DIRECT_DEBIT_REJECTED = 'customers/ADD_REPAYMENT_DIRECT_DEBIT_REJECTED',
 
-  GET_CURRENCY_LIMITS = 'customers/GET_CURRENCY_LIMITS',
-  GET_CURRENCY_LIMITS_FULFILLED = 'customers/GET_CURRENCY_LIMITS_FULFILLED',
-  GET_CURRENCY_LIMITS_REJECTED = 'customers/GET_CURRENCY_LIMITS_REJECTED',
+  GET_CURRENCY_LIMIT = 'customers/GET_CURRENCY_LIMIT',
+  GET_CURRENCY_LIMIT_FULFILLED = 'customers/GET_CURRENCY_LIMIT_FULFILLED',
+  GET_CURRENCY_LIMIT_REJECTED = 'customers/GET_CURRENCY_LIMIT_REJECTED',
 
   UPDATE_CURRENCY_LIMIT = 'customers/UPDATE_CURRENCY_LIMIT',
   UPDATE_CURRENCY_LIMIT_FULFILLED = 'customers/UPDATE_CURRENCY_LIMIT_FULFILLED',
@@ -213,19 +213,19 @@ export interface IAddRepaymentDirectDebitRejectedAction {
 
 /** Get customer currency limits action interfaces */
 
-export interface IGetCurrencyLimitsAction {
+export interface IGetCurrencyLimitAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_CURRENCY_LIMITS;
+  readonly type: ActionTypeKeys.GET_CURRENCY_LIMIT;
 }
 
-export interface IGetCurrencyLimitsFulfilledAction {
-  readonly payload: ICurrencyLimitsData;
-  readonly type: ActionTypeKeys.GET_CURRENCY_LIMITS_FULFILLED;
+export interface IGetCurrencyLimitFulfilledAction {
+  readonly payload: ICurrencyLimitItemData;
+  readonly type: ActionTypeKeys.GET_CURRENCY_LIMIT_FULFILLED;
 }
 
-export interface IGetCurrencyLimitsRejectedAction {
+export interface IGetCurrencyLimitRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.GET_CURRENCY_LIMITS_REJECTED;
+  readonly type: ActionTypeKeys.GET_CURRENCY_LIMIT_REJECTED;
 }
 
 /** Get customer currency limits action interfaces */
@@ -261,6 +261,6 @@ export type TCustomersAction =
   | IAddRepaymentDebitCardFulfilledAction
   | IGetRepaymentDirectDebitsFulfilledAction
   | IAddRepaymentDirectDebitFulfilledAction
-  | IGetCurrencyLimitsFulfilledAction
+  | IGetCurrencyLimitFulfilledAction
   | IUpdateCurrencyLimitFulfilledAction
   | IResetCustomersAction;

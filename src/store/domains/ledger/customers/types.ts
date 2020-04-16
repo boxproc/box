@@ -205,8 +205,8 @@ export interface ICurrencyLimitData {
   limit: number;
 }
 
-export interface ICurrencyLimitsData {
-  currency_limits: Array<ICurrencyLimitData>;
+export interface ICurrencyLimitItemData {
+  currency_limit: Array<ICurrencyLimitData>;
 }
 
 export interface ICurrencyLimit {
@@ -215,7 +215,7 @@ export interface ICurrencyLimit {
   currencyCode: string;
   currencyName: string;
   currentBalance: string;
-  limit: string;
+  creditLimit: string;
 }
 
 /**
@@ -225,5 +225,5 @@ export interface ICustomersState {
   customers: ImmutableArray<ICustomerData>;
   repaymentDebitCards: ImmutableArray<IRepaymentDebitCardData>;
   repaymentDirectDebits: ImmutableArray<IRepaymentDirectDebitData>;
-  currencyLimits: ImmutableArray<ICurrencyLimitData>;
+  currencyLimit: ICurrencyLimitData;
 }
