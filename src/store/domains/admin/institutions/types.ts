@@ -11,7 +11,7 @@ export interface IInstitutionData {
   sftp_location: string;
   sftp_public_key: string;
   status: string | number;
-  supported_currencies: Array<string>;
+  base_currency: string | number;
 }
 
 export interface IInstitutionsData {
@@ -33,7 +33,7 @@ export interface IInstitution extends IInstitutionPlain {
 
 export interface IInstitutionDetails extends IInstitutionPlain {
   status: ISelectValue;
-  supportedCurrencies: Array<ISelectValue>;
+  baseCurrency: ISelectValue;
 }
 
 /**

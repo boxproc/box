@@ -10,7 +10,7 @@ export const institutionsMock: IInstitutionsData = {
       sftp_public_key: '',
       master_institution_flag: 'Y',
       limit_at_customer_level: false,
-      supported_currencies: ['740', '826'],
+      base_currency: 740,
     },
     {
       id: 2,
@@ -20,7 +20,7 @@ export const institutionsMock: IInstitutionsData = {
       sftp_public_key: '',
       master_institution_flag: 'N',
       limit_at_customer_level: true,
-      supported_currencies: ['740', '533', '214'],
+      base_currency: 533,
     },
   ],
 };

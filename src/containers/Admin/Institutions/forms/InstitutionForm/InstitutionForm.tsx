@@ -135,13 +135,12 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
           {isCurrencyLimits && (
             <React.Fragment>
               <Hr />
-              <Box width={[1]} p="8px">
+              <Box width={[3 / 5]} p="8px">
                 <Field
-                  id="supportedCurrencies"
-                  name="supportedCurrencies"
+                  id="baseCurrency"
+                  name="baseCurrency"
                   component={SelectField}
-                  label="Supported Currencies"
-                  isMulti={true}
+                  label="Base Currency"
                   placeholder="Select Currencies"
                   options={currenciesOptions}
                   isLoading={isCurrenciesLoading}
@@ -149,7 +148,7 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
                   validate={[formErrorUtil.isRequired]}
                 />
               </Box>
-              <Box width={[1]} p="8px">
+              <Box width={[2 / 5]} p="8px">
                 <Field
                   id="limitAtCustomerLevelFlag"
                   name="limitAtCustomerLevelFlag"
