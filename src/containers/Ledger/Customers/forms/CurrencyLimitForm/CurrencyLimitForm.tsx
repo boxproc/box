@@ -53,10 +53,10 @@ const CurrencyLimitForm: React.FC<TCurrencyLimitForm> = ({
       <Flex alignItems="flex-end">
         <Box width={[1 / 5]} p="8px">
           <Field
-            id="creditLimit"
-            name="creditLimit"
+            id="customerLimit"
+            name="customerLimit"
             component={NumberFormatField}
-            label={currencyLimitLabel || 'Credit Limit'}
+            label={currencyLimitLabel || 'Limit'}
             placeholder="0.00"
             fixedDecimalScale={true}
             decimalScale={2}

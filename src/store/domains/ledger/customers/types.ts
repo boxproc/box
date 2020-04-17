@@ -197,12 +197,10 @@ export interface IRepaymentDirectDebitFormValues extends IRepaymentDirectDebitPl
  */
 
 export interface ICurrencyLimitData {
-  customer_id: number;
-  currency_numeric_code: number;
+  base_currency: number;
   currency_code: string;
   currency_name: string;
-  current_balance: number;
-  limit: number;
+  customer_limit: number;
 }
 
 export interface ICurrencyLimitItemData {
@@ -210,12 +208,10 @@ export interface ICurrencyLimitItemData {
 }
 
 export interface ICurrencyLimit {
-  customerId: number;
-  currencyNumericCode: string;
+  baseCurrency: number;
   currencyCode: string;
   currencyName: string;
-  currentBalance: string;
-  creditLimit: string;
+  customerLimit: string;
 }
 
 /**

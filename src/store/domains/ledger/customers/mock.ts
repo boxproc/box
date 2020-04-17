@@ -54,12 +54,10 @@ export const customersMock: ICustomersData = {
 export const currencyLimitMock: ICurrencyLimitItemData = {
   currency_limit: [
     {
-      customer_id: 1,
-      currency_numeric_code: 840,
+      base_currency: 840,
       currency_code: 'USD',
       currency_name: 'United States dollar',
-      current_balance: 50,
-      limit: 100,
+      customer_limit: 100,
     },
   ],
 };

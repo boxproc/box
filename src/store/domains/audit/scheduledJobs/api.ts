@@ -12,7 +12,7 @@ export const filterScheduledJobs = (data: Partial<IScheduledJobsFilterToSend>) =
   apiClientService.post('ui/audit/scheduler_jobs/get', { data });
 
 /**
- * Get scheduled jobs bi ID API
+ * Get scheduled jobs by ID API
  */
 export const filterScheduledJobsById = (data: ISchedulerId) =>
   apiClientService.post('ui/audit/scheduler_jobs/get', { data });

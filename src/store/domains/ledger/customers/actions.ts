@@ -340,10 +340,12 @@ export type TUpdateCurrencyLimit = (data: Partial<ICurrencyLimitData>) =>
 export type THandleUpdateCurrencyLimit = (data: Partial<ICurrencyLimit>) => Thunk<void>;
 
 export const handleUpdateCurrencyLimit: THandleUpdateCurrencyLimit = data =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedData = prepareCurrencyLimitToSend(data);
+        const state = getState();
+        const customerId = activeItemIdSelector(state);
+        const preparedData = prepareCurrencyLimitToSend(data, customerId);
 
         await dispatch(updateCurrencyLimit(preparedData));
         await dispatch(handleGetCurrencyLimit());

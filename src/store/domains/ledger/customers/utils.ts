@@ -270,29 +270,26 @@ export const prepareCurrencyLimitToRender = (data: Partial<ICurrencyLimitData>):
   }
 
   const {
-    customer_id,
-    currency_numeric_code,
-    limit,
+    base_currency,
+    customer_limit,
   } = data;
 
   return {
-    customerId: customer_id,
-    currencyNumericCode: stringsUtil.padStartN(currency_numeric_code, 3),
-    creditLimit: stringsUtil.numberToFixed(limit, 2),
+    baseCurrency: base_currency,
+    customerLimit: stringsUtil.numberToFixed(customer_limit, 2),
   };
 };
 
-export const prepareCurrencyLimitToSend = (data: Partial<ICurrencyLimit>):
-  Partial<ICurrencyLimitData> => {
+export const prepareCurrencyLimitToSend = (data: Partial<ICurrencyLimit>, customerId: number) => {
   if (!data) {
     return null;
   }
 
-  const { customerId, currencyNumericCode, creditLimit } = data;
+  const { baseCurrency, customerLimit } = data;
 
   return {
     customer_id: customerId,
-    currency_numeric_code: stringsUtil.toNumber(currencyNumericCode),
-    limit: stringsUtil.toNumber(creditLimit),
+    base_currency: baseCurrency,
+    customer_limit: stringsUtil.toNumber(customerLimit),
   };
 };
