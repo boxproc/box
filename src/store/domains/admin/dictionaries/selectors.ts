@@ -362,11 +362,6 @@ export const currencyNumsOptionsSelector = createSelector(
   })
 );
 
-export const isCurrenciesLoadedSelector = createSelector(
-  defaultDictionaryCurrenciesSelector,
-  data => data && data.length > 0
-);
-
 export const isCurrenciesLoadingSelector = createLoadingSelector([
   ActionTypeKeys.GET_DICTIONARY_CURRENCIES,
 ]);

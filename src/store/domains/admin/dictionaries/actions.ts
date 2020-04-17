@@ -23,7 +23,6 @@ import {
   isAccountStatusesLoadedSelector,
   isCardStatusesLoadedSelector,
   isCountriesLoadedSelector,
-  isCurrenciesLoadedSelector,
   isEndpointTypesLoadedSelector,
   isInterfaceTypesLoadedSelector,
   isRepaymentTypesLoadedSelector,
@@ -35,7 +34,6 @@ import { IDictionaryEventDataElemsFilter, IDictionaryEventDataElemsFilterToSend 
 import { prepareDictionaryEventIdToSend } from './utils';
 
 import { Thunk, VoidPromiseThunk } from 'types';
-
 import { errorDecoratorUtil } from 'utils';
 
 /**
@@ -236,11 +234,32 @@ export const getDictionaryCurrencies: TGetDictionaryCurrencies = () => ({
 });
 
 export const handleGetDictionaryCurrencies: THandleGetDictionaryCurrencies = () =>
-  async (dispatch, getState) => {
+  async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        if (!isCurrenciesLoadedSelector(getState())) {
-          await dispatch(getDictionaryCurrencies());
+        await dispatch(getDictionaryCurrencies());
+      },
+      dispatch
+    );
+  };
+
+/**
+ * Get convertible institution currencies action
+ */
+export type TGetConvertibleInstCurrencies = (instId: number) => IGetDictionaryCurrenciesAction;
+export type THandleGetConvertibleInstCurrencies = (instId: number) => Thunk<void>;
+
+export const getConvertibleInstCurrencies: TGetConvertibleInstCurrencies = instId => ({
+  type: ActionTypeKeys.GET_DICTIONARY_CURRENCIES,
+  payload: api.getConvertibleInstCurrencies(instId),
+});
+
+export const handleGetConvertibleInstCurrencies: THandleGetConvertibleInstCurrencies = instId =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        if (instId) {
+          await dispatch(getConvertibleInstCurrencies(instId));
         }
       },
       dispatch

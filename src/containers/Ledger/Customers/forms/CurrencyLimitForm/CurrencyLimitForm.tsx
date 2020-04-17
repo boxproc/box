@@ -50,7 +50,7 @@ const CurrencyLimitForm: React.FC<TCurrencyLimitForm> = ({
 
   return (
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
-      <Flex alignItems="flex-end">
+      <Flex alignItems="flex-end" mx="-8px">
         <Box width={[1 / 5]} p="8px">
           <Field
             id="customerLimit"

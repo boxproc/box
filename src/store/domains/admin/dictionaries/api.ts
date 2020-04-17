@@ -79,6 +79,15 @@ export const getDictionaryCurrencies = () =>
   apiClientService.post('ui/administration/dictionaries/currencies');
 
 /**
+ * Get convertible institution currencies API
+ */
+export const getConvertibleInstCurrencies = (instId: number) =>
+  // throttleUtil.getDataAfter(dictionaryCurrenciesMock, 500);
+  apiClientService.post('/ui/product_designer/products/get_currencies', {
+    data: { institution_id: instId },
+  });
+
+/**
  * Get dictionary event data elements API
  */
 export const filterDictionaryEventDataElems = (data: IDictionaryEventDataElemsFilterToSend) =>
