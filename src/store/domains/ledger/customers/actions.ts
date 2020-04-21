@@ -48,6 +48,7 @@ import {
 import { Thunk } from 'types';
 
 import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
+import { openModal } from 'store/domains/modals';
 
 /**
  * Filter customers action
@@ -121,8 +122,14 @@ export const handleAddCustomer: THandleAddCustomer = data =>
         const state = getState();
         const isAccessibleFiltering = isAccessibleFilterSelector(state);
 
-        await dispatch(addCustomer(preparedData));
+        const res = await dispatch(addCustomer(preparedData)) as any;
         dispatch(closeModal(modalNamesConst.ADD_CUSTOMER));
+        dispatch(openModal({
+          name: modalNamesConst.MESSAGE,
+          payload: {
+            title: 'Customer was created',
+            message: `Customer ID: ${res.value.customer_id}` },
+        }));
 
         if (isAccessibleFiltering) {
           await dispatch(handleFilterCustomers());
