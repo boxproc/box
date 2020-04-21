@@ -131,10 +131,11 @@ const AprsTable: React.FC<IAprsTable> = ({
           >
             <Button
               iconName={iconNamesConst.DELETE}
-              title="delete"
+              title={isEditableCell && 'delete'}
               size="10"
               withConfirmation={true}
               confirmationText={`Confirm want you delete APR?`}
+              disabled={!isEditableCell}
               onClick={() => deleteProductApr({
                 productId: cellInfo.original.productId,
                 productAprId: cellInfo.original.productAprId,

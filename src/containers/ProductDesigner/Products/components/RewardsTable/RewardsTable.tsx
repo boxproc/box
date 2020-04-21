@@ -134,10 +134,11 @@ const RewardsTable: React.FC<IRewardsTable> = ({
           >
             <Button
               iconName={iconNamesConst.DELETE}
-              title="Delete"
+              title={isEditableCell && 'delete'}
               size="10"
               withConfirmation={true}
               confirmationText={`Confirm want you delete reward?`}
+              disabled={!isEditableCell}
               onClick={() => deleteProductReward({
                 productId: cellInfo.original.productId,
                 productRewardId: cellInfo.original.productRewardId,
