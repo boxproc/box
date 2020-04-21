@@ -8,6 +8,7 @@ export const utilsInitialState: ImmutableObject<IUtilsState> = Immutable({
   activeTableRowIndex: null,
   activeItemId: null,
   isAutoRefresh: false,
+  isLockedActiveItem: false,
   isOpenFilter: true,
   isAccessibleFiltering: true,
   activePagePermission: null,
@@ -20,7 +21,9 @@ const utilsReducer =
         return state.set('activeTableRowIndex', action.payload);
 
       case ActionTypeKeys.SET_ACTIVE_ITEM_ID:
-        return state.set('activeItemId', action.payload);
+        return state
+          .set('isLockedActiveItem', action.payload.isLocked)
+          .set('activeItemId', action.payload.id);
 
       case ActionTypeKeys.SET_ACTIVE_PAGE_PERMISSION:
         return state.set('activePagePermission', action.payload);

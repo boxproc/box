@@ -6,7 +6,8 @@ export const activeTableRowIndexSelector = (state: IStoreState) => state.utils.a
 export const activeItemIdSelector = (state: IStoreState) => state.utils.activeItemId;
 
 export const isReadOnlySelector = (state: IStoreState) =>
-    state.utils.activePagePermission === permissionTypesConst.READ_ONLY;
+  state.utils.activePagePermission === permissionTypesConst.READ_ONLY
+  || state.utils.isLockedActiveItem;
 
 export const isAutoRefreshSelector = (state: IStoreState) => state.utils.isAutoRefresh;
 

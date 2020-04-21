@@ -19,7 +19,10 @@ export interface ISetActiveTableRowIndexAction {
 }
 
 export interface ISetActiveItemIdAction {
-  readonly payload: number | string;
+  readonly payload: {
+    id: number | string,
+    isLocked: boolean;
+  };
   readonly type: ActionTypeKeys.SET_ACTIVE_ITEM_ID;
 }
 
