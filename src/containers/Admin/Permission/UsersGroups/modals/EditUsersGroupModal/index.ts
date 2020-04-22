@@ -13,7 +13,7 @@ import {
 
 const generalInfoFormDirty = isDirty(formNamesConst.EDIT_USERS_GROUP);
 const userGroupMembersFormDirty = isDirty(formNamesConst.EDIT_USERS_GROUP_MEMBERS);
-const groupPermissionFormDirty = isDirty(formNamesConst.EDIT_USERS_GROUP_PERMISSIONS);
+const groupPermissionFormDirty = isDirty(formNamesConst.ADD_USERS_GROUP_PERMISSIONS);
 
 const mapStateToProps = (state: IStoreState) => ({
   groupName: currentUsersGroupNameSelector(state),

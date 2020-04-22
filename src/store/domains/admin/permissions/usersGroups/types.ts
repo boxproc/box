@@ -83,6 +83,7 @@ export interface IUsersGroupPermissionEditable {
 export interface IUsersGroupPermission {
   permission: string;
   uiItem: string;
+  uiItemLabel: string;
   userGroupId: number;
 }
 

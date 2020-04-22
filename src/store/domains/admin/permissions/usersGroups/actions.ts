@@ -257,7 +257,7 @@ export const handleAddUsersGroupPermission: THandleAddUsersGroupPermissions = da
           dispatch(getUsersGroupUiItems(id)),
         ]);
 
-        dispatch(resetForm(formNamesConst.EDIT_USERS_GROUP_PERMISSIONS));
+        dispatch(resetForm(formNamesConst.ADD_USERS_GROUP_PERMISSIONS));
       },
       dispatch
     );

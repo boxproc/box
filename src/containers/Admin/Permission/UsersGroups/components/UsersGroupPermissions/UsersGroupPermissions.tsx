@@ -44,9 +44,8 @@ export const UsersGroupMembers: React.FC<IUsersGroupMembers> = ({
       {
         minWidth: 400,
         Header: <TableHeader title="UI Item" />,
-        accessor: 'uiItem',
-        filterable: true,
-        Cell: (props: TCell<'uiItem'>) => (
+        accessor: 'uiItemLabel',
+        Cell: (props: TCell<'uiItemLabel'>) => (
           <TableCell
             value={props.value}
             isSmaller={true}
@@ -77,7 +76,7 @@ export const UsersGroupMembers: React.FC<IUsersGroupMembers> = ({
               title="Remove"
               size="10"
               disabled={isReadOnly}
-              confirmationText={`Delete UI item "${cellInfo.original.uiItem}" from the group?`}
+              confirmationText={`Delete UI item "${cellInfo.original.uiItemLabel}" from the group?`}
               withConfirmation={true}
               onClick={() =>
                 deleteGroupPermission(

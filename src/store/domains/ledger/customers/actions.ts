@@ -9,6 +9,7 @@ import {
   activeItemIdSelector,
   closeModal,
   isAccessibleFilterSelector,
+  openModal,
   setIsOpenFilter,
 } from 'store';
 import {
@@ -48,7 +49,6 @@ import {
 import { Thunk } from 'types';
 
 import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
-import { openModal } from 'store/domains/modals';
 
 /**
  * Filter customers action

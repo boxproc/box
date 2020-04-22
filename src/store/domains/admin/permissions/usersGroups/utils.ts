@@ -30,3 +30,16 @@ export const preparePermissionToSend = (data: Partial<IUsersGroupPermissionEdita
     permission: permission ? permissionTypesConst.READ_WRITE : permissionTypesConst.READ_ONLY,
   };
 };
+
+export const prepareUiItemLabel = (pathname: string) => {
+  if (!pathname) {
+    return '';
+  }
+
+  const arr = pathname.split('/');
+
+  return arr.slice(arr.length - 1)
+    .join('/')
+    .replace(/_/g, ' ')
+    .replace(/^./, str => str.toUpperCase());
+};

@@ -4,7 +4,6 @@ import { OptionProps } from 'react-select/lib/components/Option';
 import { Box, Flex } from '@rebass/grid';
 
 import styled from 'theme';
-
 import { CheckedBoxIcon, UncheckedBoxIcon } from './../../../Icons';
 
 interface IIcon {
@@ -20,6 +19,7 @@ const Icon: React.FC<IIcon> = ({ isSelected, onClick }) => {
 
 interface IOptionWrapper {
   isFocused: boolean;
+  isDisabled: boolean;
 }
 
 const OptionWrapper = styled.div<IOptionWrapper>`
@@ -29,6 +29,11 @@ const OptionWrapper = styled.div<IOptionWrapper>`
 
   ${({ isFocused, theme }) => isFocused && `
     background-color: ${theme.colors.lightGray};
+  `}
+
+  ${({ isDisabled }) => isDisabled && `
+    opacity: .3;
+    pointer-events: none;
   `}
 
   svg {
@@ -51,6 +56,7 @@ const MultiSelectOption = <T extends {}>(props: IMultiSelectOption<T>) => {
     children,
     isFocused,
     isSelected,
+    isDisabled,
     innerProps: {
       onMouseOver,
     },
@@ -63,7 +69,11 @@ const MultiSelectOption = <T extends {}>(props: IMultiSelectOption<T>) => {
   const modifiedData = modifySelectOption ? modifySelectOption({ ...props }) : data;
 
   return (
-    <OptionWrapper isFocused={isFocused} onMouseOver={onMouseOver}>
+    <OptionWrapper
+      isFocused={isFocused}
+      onMouseOver={onMouseOver}
+      isDisabled={isDisabled}
+    >
       <Flex alignItems="flex-start">
         <Box mr="5px" mt="1px">
           <Icon

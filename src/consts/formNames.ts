@@ -29,7 +29,7 @@ export enum formNamesConst {
   ADD_USERS_GROUP = 'addUsersGroupForm',
   EDIT_USERS_GROUP = 'editUsersGroupForm',
   EDIT_USERS_GROUP_MEMBERS = 'editUsersGroupMembersForm',
-  EDIT_USERS_GROUP_PERMISSIONS = 'editUsersGroupPermissionsForm',
+  ADD_USERS_GROUP_PERMISSIONS = 'addUsersGroupPermissionsForm',
   USER = 'userForm',
 
   ENDPOINT = 'endpointsForm',

@@ -94,7 +94,7 @@ const EditUsersGroupPermissionsForm: React.FC<TEditGroupPermissionForm> = ({
 };
 
 export default reduxForm<{}, IEditGroupPermissionForm>({
-  form: formNamesConst.EDIT_USERS_GROUP_PERMISSIONS,
+  form: formNamesConst.ADD_USERS_GROUP_PERMISSIONS,
   destroyOnUnmount: true,
   enableReinitialize: true,
 })(EditUsersGroupPermissionsForm);
