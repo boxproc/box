@@ -3,7 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Delimiter, InputField, SelectField, TextareaField } from 'components';
+import { InputField, SelectField, TextareaField } from 'components';
 import { formNamesConst } from 'consts';
 
 interface IApiCallForm { }
@@ -18,13 +18,14 @@ const ApiCallForm: React.FC<TApiCallForm> = () => {
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width="100px" p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="id"
               name="id"
               component={InputField}
               label="ID"
               placeholder="Enter ID"
+              isNumber={true}
               disabled={true}
             />
           </Box>
@@ -40,7 +41,7 @@ const ApiCallForm: React.FC<TApiCallForm> = () => {
               isClearable={false}
             />
           </Box>
-          <Box width={[3 / 11]} p="8px">
+          <Box width="170px" p="8px">
             <Field
               id="eventDatetime"
               name="eventDatetime"
@@ -50,7 +51,18 @@ const ApiCallForm: React.FC<TApiCallForm> = () => {
               disabled={true}
             />
           </Box>
-          <Box width={[1 / 3]} p="8px">
+          <Box width="150px" p="8px">
+            <Field
+              id="endpointId"
+              name="endpointId"
+              component={InputField}
+              label="Endpoint ID"
+              placeholder="Enter Endpoint ID"
+              isNumber={true}
+              disabled={true}
+            />
+          </Box>
+          <Box width={[1 / 2]} p="8px">
             <Field
               id="apiName"
               name="apiName"
@@ -60,18 +72,7 @@ const ApiCallForm: React.FC<TApiCallForm> = () => {
               disabled={true}
             />
           </Box>
-          <Delimiter />
-          <Box width="100px" p="8px">
-            <Field
-              id="endpointId"
-              name="endpointId"
-              component={InputField}
-              label="Endpoint ID"
-              placeholder="Enter Endpoint ID"
-              disabled={true}
-            />
-          </Box>
-          <Box width={[5 / 13]} p="8px">
+          <Box width={[1 / 2]} p="8px">
             <Field
               id="endpointName"
               name="endpointName"
