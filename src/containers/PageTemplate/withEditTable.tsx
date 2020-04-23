@@ -54,9 +54,12 @@ export const withEditTable = <OriginProps extends {}>(
     } = props;
 
     const [isOpenedModal, setIsOpenedModal] = React.useState(null);
+    const [isVisibleContextMenu, setIsVisibleContextMenu] = React.useState(false);
 
     const handleRemoveActiveIds = React.useCallback(
       () => {
+        setIsVisibleContextMenu(false);
+
         handleSetActiveTableRowIndex(null);
         handleSetActiveItemId(null);
       },
@@ -137,6 +140,8 @@ export const withEditTable = <OriginProps extends {}>(
             if (menuItems.length) {
               handleSetActiveItemId(id, isLocked);
               handleSetActiveTableRowIndex(rowIndex);
+
+              setIsVisibleContextMenu(true);
             }
           },
         };
@@ -166,7 +171,7 @@ export const withEditTable = <OriginProps extends {}>(
           menuId="tableContextMenu"
           onClick={onContextMenuClick}
           items={menuItems}
-          isHidden={isOpenedModal}
+          isHidden={isOpenedModal || !isVisibleContextMenu}
           onHide={(!isOpenedModal && activeTableRowIndex) ? handleRemoveActiveIds : null}
         />
       </React.Fragment>
