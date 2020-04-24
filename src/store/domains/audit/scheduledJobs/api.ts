@@ -9,10 +9,10 @@ import { IScheduledJobsFilterToSend, ISchedulerId } from './types';
  */
 export const filterScheduledJobs = (data: Partial<IScheduledJobsFilterToSend>) =>
   // throttleUtil.getDataAfter(scheduledJobsMock, 500);
-  apiClientService.post('ui/audit/scheduler_jobs/get', { data });
+  apiClientService.post('ui/audit/scheduler_jobs', { data });
 
 /**
  * Get scheduled jobs by ID API
  */
 export const filterScheduledJobsById = (data: ISchedulerId) =>
-  apiClientService.post('ui/audit/scheduler_jobs/get', { data });
+  apiClientService.post('ui/audit/scheduler_jobs/id', { data });

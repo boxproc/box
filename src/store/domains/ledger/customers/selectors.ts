@@ -120,6 +120,7 @@ export const currencyLimitLabelSelector = createSelector(
 
 export const isLoadingCustomersSelector = createLoadingSelector([
   ActionTypeKeys.FILTER_CUSTOMERS,
+  ActionTypeKeys.FILTER_CUSTOMERS_BY_ID,
 ]);
 
 export const isDeletingCustomerSelector = createLoadingSelector([

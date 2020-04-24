@@ -76,6 +76,7 @@ export const isSettledTrSelector = createSelector(
 
 export const isLoadingTransactionsSelector = createLoadingSelector([
   ActionTypeKeys.FILTER_TRANSACTIONS,
+  ActionTypeKeys.FILTER_TRANSACTIONS_BY_ID,
 ]);
 
 export const isConvertingTrToLoanSelector = createLoadingSelector([

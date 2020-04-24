@@ -34,8 +34,5 @@ export const currentScheduledJobNameSelector = createSelector(
 
 export const isScheduledJobsLoadingSelector = createLoadingSelector([
   ActionTypeKeys.FILTER_SCHEDULED_JOBS,
-]);
-
-export const isFilteringScheduledJobsByIdSelector = createLoadingSelector([
   ActionTypeKeys.FILTER_SCHEDULED_JOBS_BY_ID,
 ]);

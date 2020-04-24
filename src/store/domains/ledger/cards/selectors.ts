@@ -54,6 +54,7 @@ export const currentCardStatusSelector = createSelector(
 
 export const isLoadingCardsSelector = createLoadingSelector([
   ActionTypeKeys.FILTER_CARDS,
+  ActionTypeKeys.FILTER_CARDS_BY_ID,
 ]);
 
 export const isChangingCardStatusSelector = createLoadingSelector([

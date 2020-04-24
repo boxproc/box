@@ -34,9 +34,6 @@ export const usersActivitySelector = createSelector(
 
 export const isUsersActivityLoadingSelector = createLoadingSelector([
   ActionTypeKeys.FILTER_USERS_ACTIVITY,
-]);
-
-export const isFilteringUsersActivityByIDSelector = createLoadingSelector([
   ActionTypeKeys.FILTER_USERS_ACTIVITY_BY_ID,
 ]);
 
