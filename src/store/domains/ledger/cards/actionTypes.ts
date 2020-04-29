@@ -18,7 +18,7 @@ export enum ActionTypeKeys {
   FILTER_CARDS_BY_ID_FULFILLED = 'cards/FILTER_CARDS_BY_ID_FULFILLED',
   FILTER_CARDS_BY_ID_REJECTED = 'cards/FILTER_CARDS_BY_ID_REJECTED',
 
-  RESET_CARDS = 'accounts/RESET_CARDS',
+  RESET_CARDS = 'cards/RESET_CARDS',
 }
 
 /** Filter cards action interfaces */

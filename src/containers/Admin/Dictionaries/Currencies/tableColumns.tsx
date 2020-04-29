@@ -31,7 +31,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 300,
+    maxWidth: 400,
     Header: <TableHeader title="Name" />,
     accessor: 'name',
     Cell: (props: TCell<'name'>) => (

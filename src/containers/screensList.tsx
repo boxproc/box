@@ -22,6 +22,7 @@ import { Products } from 'containers/ProductDesigner';
 import {
   Accounts,
   Cards,
+  CurrencyRates,
   Customers,
   Statements,
   Transactions,
@@ -39,7 +40,7 @@ export const screensList = {
   [uiItemsConst.ACCOUNTS]: <Accounts />,
   [uiItemsConst.API_CALLS]: <ApiCalls />,
   [uiItemsConst.CARDS]: <Cards />,
-  [uiItemsConst.CARDS]: <Cards />,
+  [uiItemsConst.CURRENCY_RATES]: <CurrencyRates />,
   [uiItemsConst.CUSTOMERS]: <Customers />,
   [uiItemsConst.DICTIONARIES_COUNTRIES]: <Countries />,
   [uiItemsConst.DICTIONARIES_CURRENCIES]: <Currencies />,

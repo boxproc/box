@@ -4,6 +4,7 @@ export enum uiItemsConst {
   ACCOUNTS = 'ledger/accounts',
   API_CALLS = 'audit/api_calls',
   CARDS = 'ledger/cards',
+  CURRENCY_RATES = 'ledger/currency_rates',
   CUSTOMERS = 'ledger/customers',
   DICTIONARIES_COUNTRIES = 'administration/dictionaries/countries',
   DICTIONARIES_CURRENCIES = 'administration/dictionaries/currencies',

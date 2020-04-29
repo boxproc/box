@@ -79,5 +79,5 @@ export interface ILogData {
 export type TChangeFieldValue = (
   fieldName: string,
   formName: string,
-  value: string | number | ISelectValue
+  value: string | number | ISelectValue | Array<ISelectValue>
 ) => void;
