@@ -5,6 +5,7 @@ import {
   activeItemIdSelector,
   handleDeleteUsersGroupPermission,
   handleGetUsersGroupPermissions,
+  handleUpdateUsersGroupPermission,
   isLoadingUsersGroupPermissionsSelector,
   IStoreState,
   usersGroupPermissionsSelector,
@@ -22,6 +23,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getGroupPermission: handleGetUsersGroupPermissions,
     deleteGroupPermission: handleDeleteUsersGroupPermission,
+    updateUsersGroupPermission: handleUpdateUsersGroupPermission,
   },
   dispatch
 );

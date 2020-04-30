@@ -133,7 +133,7 @@ export const usersGroupPermissionsSelector = createSelector(
       userGroupId: item.user_group_id,
       uiItem: item.ui_item,
       uiItemLabel,
-      permission: permission && permission.label,
+      permission,
     };
   })
 );

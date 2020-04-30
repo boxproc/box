@@ -81,7 +81,7 @@ export interface IUsersGroupPermissionEditable {
 }
 
 export interface IUsersGroupPermission {
-  permission: string;
+  permission: ISelectValue;
   uiItem: string;
   uiItemLabel: string;
   userGroupId: number;
@@ -96,7 +96,7 @@ export interface IUsersGroupUiItems {
 }
 
 export interface IUsersGroupPermissionReq {
-  permission: string;
+  permission: string | number;
   ui_items: Array<string | number>;
   user_group_id: number;
 }

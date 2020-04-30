@@ -65,7 +65,6 @@ export const TableCell: React.FC<ITableCell> = ({
     } else if (isSelect) {
       return (
         <SelectInput
-          placeholder="Select APR"
           isClearable={false}
           options={selectOptions}
           defaultValue={defaultSelectValue}

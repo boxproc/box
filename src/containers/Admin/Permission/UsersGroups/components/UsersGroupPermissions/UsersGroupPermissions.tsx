@@ -4,33 +4,46 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { Flex } from '@rebass/grid';
 
-import { Button, T4, Table, TableCell, TableHeader, withSpinner } from 'components';
-import { iconNamesConst } from 'consts';
+import {
+  Button,
+  EditableTableCell,
+  T4,
+  Table,
+  TableCell,
+  TableHeader,
+  withSpinner,
+} from 'components';
+import { iconNamesConst, permissionTypesOptions } from 'consts';
 
 import {
   IUsersGroupPermission,
   THandleDeleteUsersGroupPermission,
   THandleGetUsersGroupPermissions,
+  THandleUpdateUsersGroupPermission,
 } from 'store';
 
 import { ITableCell } from 'types';
 
 interface IUsersGroupMembers {
-  memberId: number;
-  getGroupPermission: THandleGetUsersGroupPermissions;
   deleteGroupPermission: THandleDeleteUsersGroupPermission;
+  getGroupPermission: THandleGetUsersGroupPermissions;
   groupPermissions: ImmutableArray<IUsersGroupPermission>;
+  isLoading: boolean;
   isReadOnly: boolean;
+  memberId: number;
+  updateUsersGroupPermission: THandleUpdateUsersGroupPermission;
 }
 
 type TCell<T extends keyof IUsersGroupPermission> = ITableCell<IUsersGroupPermission[T]>;
 
 export const UsersGroupMembers: React.FC<IUsersGroupMembers> = ({
-  getGroupPermission,
-  memberId,
-  groupPermissions,
   deleteGroupPermission,
+  getGroupPermission,
+  groupPermissions,
+  isLoading,
   isReadOnly,
+  memberId,
+  updateUsersGroupPermission,
 }) => {
   React.useEffect(
     () => {
@@ -39,27 +52,35 @@ export const UsersGroupMembers: React.FC<IUsersGroupMembers> = ({
     [getGroupPermission, memberId]
   );
 
+  const isEditableCell = React.useMemo(
+    () => !isReadOnly && !isLoading,
+    [isReadOnly, isLoading]
+  );
+
   const columns = React.useMemo(
     () => [
       {
-        minWidth: 400,
+        minWidth: 300,
         Header: <TableHeader title="UI Item" />,
         accessor: 'uiItemLabel',
         Cell: (props: TCell<'uiItemLabel'>) => (
           <TableCell
             value={props.value}
-            isSmaller={true}
           />
         ),
       },
       {
-        maxWidth: 200,
+        maxWidth: 300,
         Header: <TableHeader title="Permission" />,
         accessor: 'permission',
-        Cell: (props: TCell<'permission'>) => (
-          <TableCell
-            value={props.value}
+        Cell: (cellInfo: CellInfo) => (
+          <EditableTableCell
+            updateAction={updateUsersGroupPermission}
             isSmaller={true}
+            cellInfo={cellInfo}
+            isSelect={true}
+            selectOptions={permissionTypesOptions}
+            isEditable={isEditableCell}
           />
         ),
       },
@@ -89,7 +110,7 @@ export const UsersGroupMembers: React.FC<IUsersGroupMembers> = ({
         ),
       },
     ],
-    [deleteGroupPermission, isReadOnly]
+    [deleteGroupPermission, isReadOnly, isEditableCell, updateUsersGroupPermission]
   );
 
   return (
@@ -98,8 +119,9 @@ export const UsersGroupMembers: React.FC<IUsersGroupMembers> = ({
       <Table
         data={groupPermissions}
         columns={columns}
-        pageSize={10}
+        pageSize={8}
         isSmaller={true}
+        isScrollbar={false}
       />
     </React.Fragment>
   );
