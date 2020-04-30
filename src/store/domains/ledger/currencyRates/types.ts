@@ -3,13 +3,13 @@ import { ISelectValue } from 'types';
 
 export interface ICurrencyRateData {
   id: number;
-  institution_id: number;
+  institution_id: number | string;
   institution_name: string;
-  provider: string;
-  from_currency: string;
-  from_currency_num_code: number;
-  to_currency: string;
-  to_currency_num_code: number;
+  rate_provider: number | string;
+  source_currency: number | string;
+  source_currency_num_code: number;
+  target_currency: number | string;
+  target_currency_num_code: number;
   spot_rate: number;
   buy_rate: number;
   sell_rate: number;
@@ -33,16 +33,16 @@ interface ICurrencyRatePlain {
 }
 
 export interface ICurrencyRate extends ICurrencyRatePlain {
-  institutionId: number;
+  institutionId: number | string;
   institutionName: string;
-  provider: string;
-  fromCurrency: string;
-  toCurrency: string;
+  rateProvider: number | string;
+  fromCurrency: number | string;
+  toCurrency: number | string;
 }
 
 export interface ICurrencyRateEditable extends ICurrencyRatePlain {
   institutionId: ISelectValue;
-  provider: ISelectValue;
+  rateProvider: ISelectValue;
   fromCurrency: ISelectValue;
   toCurrency: ISelectValue;
 }
@@ -51,7 +51,7 @@ export interface ICurrencyRateEditable extends ICurrencyRatePlain {
 
 export interface ICurrencyRatesFilter {
   institutionId: ISelectValue;
-  provider: ISelectValue;
+  rateProvider: ISelectValue;
   providerDateFrom: string;
   providerDateTo: string;
   createdDateFrom: string;
@@ -62,13 +62,13 @@ export interface ICurrencyRatesFilter {
 
 export interface ICurrencyRatesFilterToSend {
   institution_id: number | string;
-  provider: number | string;
+  rateProvider: number | string;
   provider_date_from: string;
   provider_date_to: string;
   created_date_from: string;
   created_date_to: string;
-  from_currency: number | string;
-  to_currency: number | string;
+  source_currency: number | string;
+  target_currency: number | string;
 }
 
 /** Currency rates state interface */

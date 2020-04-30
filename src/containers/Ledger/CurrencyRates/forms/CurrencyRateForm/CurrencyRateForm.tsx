@@ -12,49 +12,48 @@ import {
   SelectField,
   withSpinner,
 } from 'components';
-import { formNamesConst } from 'consts';
+import { currencyRatesProvidersOptions, formNamesConst } from 'consts';
+import { THandleAddCurrencyRate } from 'store';
 
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface ICurrencyRateForm extends ISpinner {
-  addCurrencyRate: any;
-  isEditMode?: boolean;
-  isReadOnly: boolean;
-  onCancel: () => void;
-  updateCurrencyRate: any;
-  institutionOptions: Array<ISelectValue>;
-  isLoadingCurrencies: boolean;
+  addCurrencyRate: THandleAddCurrencyRate;
   currenciesOptions: Array<ISelectValue>;
+  institutionOptions: Array<ISelectValue>;
+  isEditMode?: boolean;
+  isLoadingCurrencies: boolean;
+  onCancel: () => void;
+  providerValue: ISelectValue;
 }
 
 type TCurrencyRateForm = ICurrencyRateForm & InjectedFormProps<{}, ICurrencyRateForm>;
 
 const CurrencyRateForm: React.FC<TCurrencyRateForm> = ({
   addCurrencyRate,
+  currenciesOptions,
   dirty,
   handleSubmit,
+  institutionOptions,
   isEditMode,
-  isReadOnly,
+  isLoadingCurrencies,
   onCancel,
   pristine,
-  updateCurrencyRate,
-  institutionOptions,
-  isLoadingCurrencies,
-  currenciesOptions,
+  providerValue,
 }) => {
-  const submitAction = React.useMemo(
-    () => isEditMode ? updateCurrencyRate : addCurrencyRate,
-    [isEditMode, updateCurrencyRate, addCurrencyRate]
+  const isCustomProvider = React.useMemo(
+    () => !providerValue || (providerValue && providerValue.value === 'custom'),
+    [providerValue]
   );
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(submitAction),
-    [handleSubmit, submitAction]
+    handleSubmit(addCurrencyRate),
+    [handleSubmit, addCurrencyRate]
   );
 
   return (
-    <form onSubmit={isReadOnly ? null : handleSubmitForm}>
+    <form onSubmit={isEditMode ? null : handleSubmitForm}>
       <Flex
         alignItems="flex-end"
         flexWrap="wrap"
@@ -80,25 +79,20 @@ const CurrencyRateForm: React.FC<TCurrencyRateForm> = ({
             label="Institution"
             placeholder="Select Institution"
             options={institutionOptions}
-            isDisabled={isEditMode || isReadOnly}
+            isDisabled={isEditMode}
             isClearable={false}
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Box width={[isEditMode ? 1 / 3 : 1 / 2]} p="8px">
           <Field
-            id="provider"
-            name="provider"
+            id="rateProvider"
+            name="rateProvider"
             component={SelectField}
             label="Provider"
             placeholder="Select Provider"
-            options={[
-              { value: 1, label: 'Mastercard' },
-              { value: 2, label: 'Visa' },
-              { value: 3, label: 'Reuters' },
-              { value: 4, label: 'Custom' },
-            ]}
-            isDisabled={isReadOnly}
+            options={currencyRatesProvidersOptions}
+            isDisabled={isEditMode}
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
@@ -112,7 +106,7 @@ const CurrencyRateForm: React.FC<TCurrencyRateForm> = ({
             placeholder="Select From Currency"
             options={currenciesOptions}
             isLoading={isLoadingCurrencies}
-            isDisabled={isReadOnly}
+            isDisabled={isEditMode}
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
@@ -125,7 +119,7 @@ const CurrencyRateForm: React.FC<TCurrencyRateForm> = ({
             placeholder="Select To Currency"
             options={currenciesOptions}
             isLoading={isLoadingCurrencies}
-            isDisabled={isReadOnly}
+            isDisabled={isEditMode}
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
@@ -139,8 +133,9 @@ const CurrencyRateForm: React.FC<TCurrencyRateForm> = ({
             placeholder="0.00000"
             fixedDecimalScale={true}
             decimalScale={5}
-            disabled={isReadOnly}
+            disabled={isEditMode || !isCustomProvider}
             validate={[
+              formErrorUtil.isRequired,
               formErrorUtil.isNumber,
               formErrorUtil.isPositive,
             ]}
@@ -155,9 +150,8 @@ const CurrencyRateForm: React.FC<TCurrencyRateForm> = ({
             placeholder="0.00000"
             fixedDecimalScale={true}
             decimalScale={5}
-            disabled={isReadOnly}
+            disabled={isEditMode || !isCustomProvider}
             validate={[
-              formErrorUtil.isNumber,
               formErrorUtil.isPositive,
             ]}
           />
@@ -171,35 +165,33 @@ const CurrencyRateForm: React.FC<TCurrencyRateForm> = ({
             placeholder="0.00000"
             fixedDecimalScale={true}
             decimalScale={5}
-            disabled={isReadOnly}
+            disabled={isEditMode || !isCustomProvider}
             validate={[
-              formErrorUtil.isNumber,
               formErrorUtil.isPositive,
             ]}
           />
         </Box>
         {isEditMode && (
-          <React.Fragment>
-            <Hr />
-            <Box width="180px" p="8px">
-              <Field
-                id="providerDatetime"
-                name="providerDatetime"
-                component={InputField}
-                label="Provider Datetime"
-                disabled={true}
-              />
-            </Box>
-            <Box width="180px" p="8px">
-              <Field
-                id="createdDatetime"
-                name="createdDatetime"
-                component={InputField}
-                label="Created Datetime"
-                disabled={true}
-              />
-            </Box>
-          </React.Fragment>
+          <Box width="180px" p="8px">
+            <Field
+              id="createdDatetime"
+              name="createdDatetime"
+              component={InputField}
+              label="Created Datetime"
+              disabled={true}
+            />
+          </Box>
+        )}
+        {!isCustomProvider && (
+          <Box width="180px" p="8px">
+            <Field
+              id="providerDatetime"
+              name="providerDatetime"
+              component={InputField}
+              label="Provider Datetime"
+              disabled={true}
+            />
+          </Box>
         )}
       </Flex>
       <Hr />
@@ -213,7 +205,7 @@ const CurrencyRateForm: React.FC<TCurrencyRateForm> = ({
           onCancel={onCancel}
           withCancelConfirmation={dirty}
           disabledOk={pristine}
-          hideOk={isReadOnly}
+          hideOk={isEditMode}
         />
       </Flex>
     </form >

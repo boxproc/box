@@ -49,7 +49,7 @@ export const isNumber = (value: string | number) => {
 };
 
 export const isPositive = (value: string) =>
-  Number(value) >= 0
+  Number(value) >= 0 || value === undefined
     ? undefined
     : 'Must be greater than zero';
 

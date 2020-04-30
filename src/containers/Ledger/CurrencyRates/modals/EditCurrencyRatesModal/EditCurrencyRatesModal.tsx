@@ -19,7 +19,6 @@ const modalName = modalNamesConst.EDIT_CURRENCY_RATE;
 const EditCurrencyRateModal: React.FC<IEditCurrencyRateModal> = ({
   closeModal,
   isFormDirty,
-  isReadOnly,
   currencyRate,
 }) => {
   const handleOnCancel = React.useCallback(
@@ -38,7 +37,6 @@ const EditCurrencyRateModal: React.FC<IEditCurrencyRateModal> = ({
       <CurrencyRateForm
         initialValues={currencyRate}
         isEditMode={true}
-        isReadOnly={isReadOnly}
         onCancel={handleOnCancel}
       />
     </Modal>

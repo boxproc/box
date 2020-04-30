@@ -1,15 +1,22 @@
 import { getFormValues } from 'redux-form';
 
-import { formNamesConst } from 'consts';
+import { formNamesConst, modalNamesConst } from 'consts';
+
 import {
-  ActionTypeKeys, IFilterCurrencyRatesAction,
+  closeModal,
+  isAccessibleFilterSelector,
+  openModal,
+} from 'store';
+import {
+  ActionTypeKeys,
+  IAddCurrencyRateAction,
+  IFilterCurrencyRatesAction,
 } from './actionTypes';
 import * as api from './api';
-import { ICurrencyRatesFilterToSend } from './types';
-import { prepareFilterToSend } from './utils';
+import { ICurrencyRateData, ICurrencyRateEditable, ICurrencyRatesFilterToSend } from './types';
+import { prepareDataToSend, prepareFilterToSend } from './utils';
 
 import { Thunk } from 'types';
-
 import { errorDecoratorUtil } from 'utils';
 
 /**
@@ -35,6 +42,44 @@ export const handleFilterCurrencyRates: THandleFilterCurrencyRates = () =>
 
         if (preparedData) {
           await dispatch(filterCurrencyRates(preparedData));
+        }
+      },
+      dispatch
+    );
+  };
+
+/**
+ * Add currency rate action
+ */
+
+export type TAddCurrencyRate = (data: Partial<ICurrencyRateData>) => IAddCurrencyRateAction;
+export type THandleAddCurrencyRate = (data: Partial<ICurrencyRateEditable>) => Thunk<void>;
+
+export const addCurrencyRate: TAddCurrencyRate = data => ({
+  type: ActionTypeKeys.ADD_CURRENCY_RATE,
+  payload: api.addCurrencyRate(data),
+});
+
+export const handleAddCurrencyRate: THandleAddCurrencyRate = data =>
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedData = prepareDataToSend(data);
+        const state = getState();
+        const isAccessibleFiltering = isAccessibleFilterSelector(state);
+
+        const res = await dispatch(addCurrencyRate(preparedData)) as any;
+        dispatch(closeModal(modalNamesConst.ADD_CURRENCY_RATE));
+        dispatch(openModal({
+          name: modalNamesConst.MESSAGE,
+          payload: {
+            title: 'Currency rate was created',
+            message: `Rate ID: ${res.value.currency_rate_id}`,
+          },
+        }));
+
+        if (isAccessibleFiltering) {
+          await dispatch(handleFilterCurrencyRates());
         }
       },
       dispatch

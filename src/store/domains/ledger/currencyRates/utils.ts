@@ -1,6 +1,7 @@
 import {
   ICurrencyRate,
   ICurrencyRateData,
+  ICurrencyRateEditable,
   ICurrencyRatesFilter,
 } from './types';
 
@@ -15,9 +16,9 @@ export const prepareDataToRender = (data: Partial<ICurrencyRateData>): Partial<I
   const {
     id,
     institution_name,
-    provider,
-    from_currency,
-    to_currency,
+    rate_provider,
+    source_currency,
+    target_currency,
     spot_rate,
     provider_datetime,
     created_datetime,
@@ -26,9 +27,9 @@ export const prepareDataToRender = (data: Partial<ICurrencyRateData>): Partial<I
   return {
     id,
     institutionName: institution_name,
-    provider,
-    fromCurrency: from_currency,
-    toCurrency: to_currency,
+    rateProvider: rate_provider,
+    fromCurrency: source_currency,
+    toCurrency: target_currency,
     spotRate: stringsUtil.numberToFixed(spot_rate, 5),
     providerDatetime: provider_datetime,
     createdDatetime: created_datetime,
@@ -47,9 +48,9 @@ export const prepareDetailsToRender = (
     id,
     institution_id,
     institution_name,
-    provider,
-    from_currency_num_code,
-    to_currency_num_code,
+    rate_provider,
+    source_currency_num_code,
+    target_currency_num_code,
     spot_rate,
     buy_rate,
     sell_rate,
@@ -63,12 +64,12 @@ export const prepareDetailsToRender = (
       value: institution_id,
       label: institution_name,
     },
-    provider: {
-      value: provider,
-      label: provider,
+    rateProvider: {
+      value: rate_provider,
+      label: rate_provider,
     },
-    fromCurrency: currenciesOptions.find(el => el.value === from_currency_num_code),
-    toCurrency: currenciesOptions.find(el => el.value === to_currency_num_code),
+    fromCurrency: currenciesOptions.find(el => el.value === source_currency_num_code),
+    toCurrency: currenciesOptions.find(el => el.value === target_currency_num_code),
     spotRate: stringsUtil.numberToFixed(spot_rate, 5),
     buyRate: stringsUtil.numberToFixed(buy_rate, 5),
     sellRate: stringsUtil.numberToFixed(sell_rate, 5),
@@ -84,7 +85,7 @@ export const prepareFilterToSend = (data: Partial<ICurrencyRatesFilter>) => {
 
   const {
     institutionId,
-    provider,
+    rateProvider,
     providerDateFrom,
     providerDateTo,
     createdDateFrom,
@@ -95,12 +96,38 @@ export const prepareFilterToSend = (data: Partial<ICurrencyRatesFilter>) => {
 
   return {
     institution_id: institutionId ? institutionId.value : null,
-    provider: provider ? provider.value : null,
+    rate_provider: rateProvider ? rateProvider.value : null,
     provider_date_from: providerDateFrom,
     provider_date_to: providerDateTo,
     created_date_from: createdDateFrom,
     created_date_to: createdDateTo,
-    from_currency: fromCurrency ? fromCurrency.value : null,
-    to_currency: toCurrency ? toCurrency.value : null,
+    source_currency: fromCurrency ? fromCurrency.value : null,
+    target_currency: toCurrency ? toCurrency.value : null,
+  };
+};
+
+export const prepareDataToSend = (data: Partial<ICurrencyRateEditable>) => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    spotRate,
+    buyRate,
+    sellRate,
+    institutionId,
+    rateProvider,
+    fromCurrency,
+    toCurrency,
+  } = data;
+
+  return {
+    spot_rate: stringsUtil.toNumber(spotRate),
+    buy_rate: stringsUtil.toNumber(buyRate),
+    sell_rate: stringsUtil.toNumber(sellRate),
+    institution_id: institutionId && institutionId.value,
+    rate_provider: rateProvider && rateProvider.value,
+    source_currency: fromCurrency && fromCurrency.value,
+    target_currency: toCurrency && toCurrency.value,
   };
 };

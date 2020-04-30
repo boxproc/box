@@ -20,8 +20,8 @@ export const tableColumns = [
   {
     maxWidth: 200,
     Header: <TableHeader title="Provider" />,
-    accessor: 'provider',
-    Cell: (props: TCell<'provider'>) => (
+    accessor: 'rateProvider',
+    Cell: (props: TCell<'rateProvider'>) => (
       <TableCell
         value={props.value}
       />

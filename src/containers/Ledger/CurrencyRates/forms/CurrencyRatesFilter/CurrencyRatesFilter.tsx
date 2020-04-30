@@ -6,7 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 import styled from 'theme';
 
 import { Delimiter, MaskField, SelectField } from 'components';
-import { dateFormatConst, maskFormatConst } from 'consts';
+import { currencyRatesProvidersOptions, dateFormatConst, maskFormatConst } from 'consts';
 
 import { THandleGetDictionaryCurrencies } from 'store';
 
@@ -58,19 +58,13 @@ const CurrencyRatesFilter: React.FC<ICurrencyRatesFilter> = ({
       </Box>
       <Box width={[1 / 4]} p="8px">
         <Field
-          id="provider"
-          name="provider"
+          id="rateProvider"
+          name="rateProvider"
           component={SelectField}
           label="Provider"
           placeholder="Select Provider"
-          options={[
-            { value: 1, label: 'Mastercard' },
-            { value: 2, label: 'Visa' },
-            { value: 3, label: 'Reuters' },
-            { value: 4, label: 'Custom' },
-          ]}
+          options={currencyRatesProvidersOptions}
           isDisabled={isDisabled}
-          validate={[formErrorUtil.isRequired]}
         />
       </Box>
       <Box width={[1 / 8]} p="8px">
@@ -157,7 +151,7 @@ const CurrencyRatesFilter: React.FC<ICurrencyRatesFilter> = ({
             label="To Currency"
             placeholder="Select To Currency"
             options={[
-              { value: '*', label: 'Select All' },
+              { value: '', label: 'Select All' },
               ...currenciesOptions,
             ]}
             isDisabled={isDisabled}

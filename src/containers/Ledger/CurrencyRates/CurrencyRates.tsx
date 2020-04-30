@@ -1,7 +1,6 @@
 import React from 'react';
 import { ImmutableArray } from 'seamless-immutable';
 
-import { Paragraph } from 'components';
 import PageTemplate from 'containers/PageTemplate';
 
 import { modalNamesConst } from 'consts';
@@ -61,26 +60,23 @@ const CurrencyRates: React.FC<ICurrencyRates> = ({
   );
 
   return (
-    <React.Fragment>
-      <Paragraph>Works on mocks</Paragraph>
-      <PageTemplate
-        title="Currency Rates"
-        data={currencyRatesData}
-        columns={tableColumns}
-        newModalName={modalNamesConst.ADD_CURRENCY_RATE}
-        viewingModalName={modalNamesConst.EDIT_CURRENCY_RATE}
-        filterAction={filterCurrencyRates}
-        isDownloadButton={true}
-        isLoading={isLoading}
-        initialFilterValues={initialFilterValues}
-        FilterForm={
-          <CurrencyRatesFilter
-            isDisabled={isLoading}
-            institutionsOptions={institutionsOptions}
-          />
-        }
-      />
-    </React.Fragment>
+    <PageTemplate
+      title="Currency Rates"
+      data={currencyRatesData}
+      columns={tableColumns}
+      newModalName={modalNamesConst.ADD_CURRENCY_RATE}
+      viewingModalName={modalNamesConst.EDIT_CURRENCY_RATE}
+      filterAction={filterCurrencyRates}
+      isDownloadButton={true}
+      isLoading={isLoading}
+      initialFilterValues={initialFilterValues}
+      FilterForm={
+        <CurrencyRatesFilter
+          isDisabled={isLoading}
+          institutionsOptions={institutionsOptions}
+        />
+      }
+    />
   );
 };
 

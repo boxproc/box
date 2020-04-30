@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { bindActionCreators, Dispatch } from 'redux';
 import { isDirty } from 'redux-form';
 
 import { formNamesConst } from 'consts';
@@ -18,12 +17,6 @@ const mapStateToProps = (state: IStoreState) => ({
   currencyRate: currentCurrencyRateSelector(state),
 });
 
-const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
-  {},
-  dispatch
-);
-
 export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+  mapStateToProps
 )(EditCurrencyRatesModal);
