@@ -141,7 +141,7 @@ export const usersGroupPermissionsSelector = createSelector(
 export const usersGroupUiItemsSelector = createSelector(
   defaultUsersGroupUiItemsSelector,
   getFormValues(formNamesConst.ADD_USERS_GROUP_PERMISSIONS),
-  (data, formData) => data && data.length && data.asMutable().map(el => {
+  (data, formData) => data && data.asMutable().map(el => {
     const itemValue = el.ui_item;
     const itemLabel = prepareUiItemLabel(el.ui_item);
 
