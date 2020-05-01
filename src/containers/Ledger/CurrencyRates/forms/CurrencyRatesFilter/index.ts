@@ -4,7 +4,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import CurrencyRatesFilter from './CurrencyRatesFilter';
 
 import {
-  currencyNumsOptionsSelector,
+  currenciesOptionsSelector,
   handleGetDictionaryCurrencies,
   isCurrenciesLoadingSelector,
   IStoreState,
@@ -12,7 +12,7 @@ import {
 
 const mapStateToProps = (state: IStoreState) => ({
   isLoadingCurrencies: isCurrenciesLoadingSelector(state),
-  currenciesOptions: currencyNumsOptionsSelector(state),
+  currenciesOptions: currenciesOptionsSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

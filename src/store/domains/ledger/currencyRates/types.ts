@@ -7,9 +7,7 @@ export interface ICurrencyRateData {
   institution_name: string;
   rate_provider: number | string;
   source_currency: number | string;
-  source_currency_num_code: number;
   target_currency: number | string;
-  target_currency_num_code: number;
   spot_rate: number;
   buy_rate: number;
   sell_rate: number;
@@ -23,8 +21,6 @@ export interface ICurrencyRatesData {
 
 interface ICurrencyRatePlain {
   id: number;
-  fromCurrencyNumCode: number;
-  toCurrencyNumCode: number;
   spotRate: string;
   buyRate: string;
   sellRate: string;

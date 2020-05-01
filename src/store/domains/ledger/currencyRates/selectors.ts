@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 import { IStoreState } from 'store';
-import { currencyNumsOptionsSelector } from 'store/domains/admin';
+import { currenciesOptionsSelector } from 'store/domains/admin';
 import { createLoadingSelector } from 'store/domains/loader';
 import { activeItemIdSelector } from 'store/domains/utils';
 import { ActionTypeKeys } from './actionTypes';
@@ -18,7 +18,7 @@ export const currencyRatesSelector = createSelector(
 export const currentCurrencyRateSelector = createSelector(
   defaultCurrencyRatesSelector,
   activeItemIdSelector,
-  currencyNumsOptionsSelector,
+  currenciesOptionsSelector,
   (rates, currentId, currenciesOptions) => {
     const currentRate = rates && rates.find(rate => rate.id === currentId);
 
@@ -32,4 +32,8 @@ export const currentCurrencyRateSelector = createSelector(
 
 export const isLoadingCurrencyRatesSelector = createLoadingSelector([
   ActionTypeKeys.FILTER_CURRENCY_RATES,
+]);
+
+export const isLoadingAddingRatesSelector = createLoadingSelector([
+  ActionTypeKeys.ADD_CURRENCY_RATE,
 ]);

@@ -49,13 +49,13 @@ export const prepareDetailsToRender = (
     institution_id,
     institution_name,
     rate_provider,
-    source_currency_num_code,
-    target_currency_num_code,
     spot_rate,
     buy_rate,
     sell_rate,
     provider_datetime,
     created_datetime,
+    source_currency,
+    target_currency,
   } = data;
 
   return {
@@ -68,8 +68,8 @@ export const prepareDetailsToRender = (
       value: rate_provider,
       label: rate_provider,
     },
-    fromCurrency: currenciesOptions.find(el => el.value === source_currency_num_code),
-    toCurrency: currenciesOptions.find(el => el.value === target_currency_num_code),
+    fromCurrency: currenciesOptions.find(el => el.value === source_currency),
+    toCurrency: currenciesOptions.find(el => el.value === target_currency),
     spotRate: stringsUtil.numberToFixed(spot_rate, 5),
     buyRate: stringsUtil.numberToFixed(buy_rate, 5),
     sellRate: stringsUtil.numberToFixed(sell_rate, 5),

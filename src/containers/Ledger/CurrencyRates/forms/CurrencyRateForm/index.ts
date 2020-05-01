@@ -7,9 +7,10 @@ import CurrencyRateForm from './CurrencyRateForm';
 import { formNamesConst } from 'consts';
 
 import {
-  currencyNumsOptionsSelector,
+  currenciesOptionsSelector,
   handleAddCurrencyRate,
   isCurrenciesLoadingSelector,
+  isLoadingAddingRatesSelector,
   IStoreState,
   userInstitutionsOptionsSelector,
 } from 'store';
@@ -17,9 +18,10 @@ import {
 const formSelector = formValueSelector(formNamesConst.CURRENCY_RATES);
 
 const mapStateToProps = (state: IStoreState) => ({
+  isLoading: isLoadingAddingRatesSelector(state),
   institutionOptions: userInstitutionsOptionsSelector(state),
   isLoadingCurrencies: isCurrenciesLoadingSelector(state),
-  currenciesOptions: currencyNumsOptionsSelector(state),
+  currenciesOptions: currenciesOptionsSelector(state),
   providerValue: formSelector(state, 'rateProvider'),
 });
 
