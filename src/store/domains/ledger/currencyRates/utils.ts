@@ -15,6 +15,7 @@ export const prepareDataToRender = (data: Partial<ICurrencyRateData>): Partial<I
 
   const {
     id,
+    institution_id,
     institution_name,
     rate_provider,
     source_currency,
@@ -27,6 +28,7 @@ export const prepareDataToRender = (data: Partial<ICurrencyRateData>): Partial<I
   return {
     id,
     institutionName: institution_name,
+    institutionId: institution_id,
     rateProvider: rate_provider,
     fromCurrency: source_currency,
     toCurrency: target_currency,
@@ -86,10 +88,10 @@ export const prepareFilterToSend = (data: Partial<ICurrencyRatesFilter>) => {
   const {
     institutionId,
     rateProvider,
-    providerDateFrom,
-    providerDateTo,
-    createdDateFrom,
-    createdDateTo,
+    providerDatetimeFrom,
+    providerDatetimeTo,
+    createdDatetimeFrom,
+    createdDatetimeTo,
     fromCurrency,
     toCurrency,
   } = data;
@@ -97,10 +99,10 @@ export const prepareFilterToSend = (data: Partial<ICurrencyRatesFilter>) => {
   return {
     institution_id: institutionId ? institutionId.value : null,
     rate_provider: rateProvider ? rateProvider.value : null,
-    provider_date_from: providerDateFrom,
-    provider_date_to: providerDateTo,
-    created_date_from: createdDateFrom,
-    created_date_to: createdDateTo,
+    provider_date_from: providerDatetimeFrom,
+    provider_date_to: providerDatetimeTo,
+    created_date_from: createdDatetimeFrom,
+    created_date_to: createdDatetimeTo,
     source_currency: fromCurrency ? fromCurrency.value : null,
     target_currency: toCurrency ? toCurrency.value : null,
   };

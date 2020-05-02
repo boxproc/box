@@ -8,6 +8,17 @@ type TCell<T extends keyof ICurrencyRate> = ITableCell<ICurrencyRate[T]>;
 
 export const tableColumns = [
   {
+    maxWidth: 100,
+    Header: <TableHeader title="Institution ID" />,
+    accessor: 'institutionId',
+    Cell: (props: TCell<'institutionId'>) => (
+      <TableCell
+        value={props.value}
+        isNumber={true}
+      />
+    ),
+  },
+  {
     maxWidth: 200,
     Header: <TableHeader title="Institution" />,
     accessor: 'institutionName',
@@ -62,9 +73,9 @@ export const tableColumns = [
   },
   {
     maxWidth: 160,
-    Header: <TableHeader title="Provider Datetime" />,
-    accessor: 'providerDatetime',
-    Cell: (props: TCell<'providerDatetime'>) => (
+    Header: <TableHeader title="Created Datetime" />,
+    accessor: 'createdDatetime',
+    Cell: (props: TCell<'createdDatetime'>) => (
       <TableCell
         value={props.value}
         isDate={true}

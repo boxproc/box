@@ -25,17 +25,17 @@ const CurrencyRates: React.FC<ICurrencyRates> = ({
   institutionsOptions,
   isLoading,
 }) => {
-  const [providerDateFrom, setProviderDateFrom] = React.useState(null);
-  const [providerDateTo, setProviderDateTo] = React.useState(null);
-  const [createdDateFrom, setCreatedDateFrom] = React.useState(null);
-  const [createdDateTo, setCreatedDateTo] = React.useState(null);
+  const [providerDatetimeFrom, setProviderDatetimeFrom] = React.useState(null);
+  const [providerDatetimeTo, setProviderDatetimeTo] = React.useState(null);
+  const [createdDatetimeFrom, setCreatedDatetimeFrom] = React.useState(null);
+  const [createdDatetimeTo, setCreatedDatetimeTo] = React.useState(null);
 
   React.useEffect(
     () => {
-      setProviderDateFrom(dateUtil.yesterdayDate());
-      setProviderDateTo(dateUtil.todayDate());
-      setCreatedDateFrom(dateUtil.yesterdayDate());
-      setCreatedDateTo(dateUtil.todayDate());
+      setProviderDatetimeFrom(dateUtil.yesterdayDateTime());
+      setProviderDatetimeTo(dateUtil.todayDateTime());
+      setCreatedDatetimeFrom(dateUtil.yesterdayDateTime());
+      setCreatedDatetimeTo(dateUtil.todayDateTime());
     },
     []
   );
@@ -44,18 +44,18 @@ const CurrencyRates: React.FC<ICurrencyRates> = ({
     () => {
       return {
         institutionId: institutionsOptions[0],
-        providerDateFrom,
-        providerDateTo,
-        createdDateFrom,
-        createdDateTo,
+        providerDatetimeFrom,
+        providerDatetimeTo,
+        createdDatetimeFrom,
+        createdDatetimeTo,
       };
     },
     [
       institutionsOptions,
-      providerDateFrom,
-      providerDateTo,
-      createdDateFrom,
-      createdDateTo,
+      providerDatetimeFrom,
+      providerDatetimeTo,
+      createdDatetimeFrom,
+      createdDatetimeTo,
     ]
   );
 

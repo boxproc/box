@@ -1,22 +1,15 @@
 import React from 'react';
 import { Field } from 'redux-form';
 
-import { Box, Flex } from '@rebass/grid';
+import { Box } from '@rebass/grid';
 
-import styled from 'theme';
-
-import { Delimiter, MaskField, SelectField } from 'components';
+import { MaskField, SelectField } from 'components';
 import { currencyRatesProvidersOptions, dateFormatConst, maskFormatConst } from 'consts';
 
 import { THandleGetDictionaryCurrencies } from 'store';
 
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
-
-const CurrencyWrapper = styled(Box)`
-  min-width: 235px
-  max-width: 480px;
-`;
 
 interface ICurrencyRatesFilter {
   currenciesOptions: Array<ISelectValue>;
@@ -67,100 +60,97 @@ const CurrencyRatesFilter: React.FC<ICurrencyRatesFilter> = ({
           isDisabled={isDisabled}
         />
       </Box>
-      <Box width={[1 / 8]} p="8px">
+      <Box width={[1 / 4]} p="8px">
         <Field
-          id="providerDateFrom"
-          name="providerDateFrom"
+          id="fromCurrency"
+          name="fromCurrency"
+          component={SelectField}
+          label="From Currency"
+          placeholder="Select From Currency"
+          options={currenciesOptions}
+          isDisabled={isDisabled}
+          isRequired={true}
+          isLoading={isLoadingCurrencies}
+          validate={[formErrorUtil.isRequired]}
+        />
+      </Box>
+      <Box width={[1 / 4]} p="8px">
+        <Field
+          id="toCurrency"
+          name="toCurrency"
+          component={SelectField}
+          label="To Currency"
+          placeholder="Select To Currency"
+          options={[
+            { value: '', label: 'Select All' },
+            ...currenciesOptions,
+          ]}
+          isDisabled={isDisabled}
+          isRequired={true}
+          isLoading={isLoadingCurrencies}
+          validate={[formErrorUtil.isRequired]}
+        />
+      </Box>
+      <Box width="160px" p="8px">
+        <Field
+          id="providerDatetimeFrom"
+          name="providerDatetimeFrom"
           component={MaskField}
-          label="Provider Date From"
-          placeholder={dateFormatConst.DATE}
-          mask={maskFormatConst.DATE}
+          label="Provider Datetime From"
+          placeholder={dateFormatConst.DATE_TIME}
+          mask={maskFormatConst.DATE_TIME}
           disabled={isDisabled}
           validate={[
             formErrorUtil.isRequired,
-            formErrorUtil.isDate,
+            formErrorUtil.isDateTime,
           ]}
         />
       </Box>
-      <Box width={[1 / 8]} p="8px">
+      <Box width="160px" p="8px">
         <Field
-          id="providerDateTo"
-          name="providerDateTo"
+          id="providerDatetimeTo"
+          name="providerDatetimeTo"
           component={MaskField}
-          label="Provider Date To"
-          placeholder={dateFormatConst.DATE}
-          mask={maskFormatConst.DATE}
+          label="Provider Datetime To"
+          placeholder={dateFormatConst.DATE_TIME}
+          mask={maskFormatConst.DATE_TIME}
           disabled={isDisabled}
           validate={[
             formErrorUtil.isRequired,
-            formErrorUtil.isDate,
+            formErrorUtil.isDateTime,
           ]}
         />
       </Box>
-      <Box width={[1 / 8]} p="8px">
+      <Box width="160px" p="8px">
         <Field
-          id="createdDateFrom"
-          name="createdDateFrom"
+          id="createdDatetimeFrom"
+          name="createdDatetimeFrom"
           component={MaskField}
-          label="Created Date From"
-          placeholder={dateFormatConst.DATE}
-          mask={maskFormatConst.DATE}
+          label="Created Datetime From"
+          placeholder={dateFormatConst.DATE_TIME}
+          mask={maskFormatConst.DATE_TIME}
           disabled={isDisabled}
           validate={[
             formErrorUtil.isRequired,
-            formErrorUtil.isDate,
+            formErrorUtil.isDateTime,
           ]}
         />
       </Box>
-      <Box width={[1 / 8]} p="8px">
+      <Box width="160px" p="8px">
         <Field
-          id="createdDateTo"
-          name="createdDateTo"
+          id="createdDatetimeTo"
+          name="createdDatetimeTo"
           component={MaskField}
-          label="Created Date To"
-          placeholder={dateFormatConst.DATE}
-          mask={maskFormatConst.DATE}
+          label="Created Datetime To"
+          placeholder={dateFormatConst.DATE_TIME}
+          mask={maskFormatConst.DATE_TIME}
           disabled={isDisabled}
           validate={[
             formErrorUtil.isRequired,
-            formErrorUtil.isDate,
+            formErrorUtil.isDateTime,
           ]}
         />
       </Box>
-      <Delimiter />
-      <Flex width={[1]} alignItems="flex-start">
-        <Box width={[1 / 4]} p="8px">
-          <Field
-            id="fromCurrency"
-            name="fromCurrency"
-            component={SelectField}
-            label="From Currency"
-            placeholder="Select From Currency"
-            options={currenciesOptions}
-            isDisabled={isDisabled}
-            isRequired={true}
-            isLoading={isLoadingCurrencies}
-            validate={[formErrorUtil.isRequired]}
-          />
-        </Box>
-        <CurrencyWrapper p="8px">
-          <Field
-            id="toCurrency"
-            name="toCurrency"
-            component={SelectField}
-            label="To Currency"
-            placeholder="Select To Currency"
-            options={[
-              { value: '', label: 'Select All' },
-              ...currenciesOptions,
-            ]}
-            isDisabled={isDisabled}
-            isRequired={true}
-            isLoading={isLoadingCurrencies}
-            validate={[formErrorUtil.isRequired]}
-          />
-        </CurrencyWrapper>
-      </Flex>
     </React.Fragment>
   );
 };

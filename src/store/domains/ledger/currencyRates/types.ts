@@ -48,10 +48,10 @@ export interface ICurrencyRateEditable extends ICurrencyRatePlain {
 export interface ICurrencyRatesFilter {
   institutionId: ISelectValue;
   rateProvider: ISelectValue;
-  providerDateFrom: string;
-  providerDateTo: string;
-  createdDateFrom: string;
-  createdDateTo: string;
+  providerDatetimeFrom: string;
+  providerDatetimeTo: string;
+  createdDatetimeFrom: string;
+  createdDatetimeTo: string;
   fromCurrency: ISelectValue;
   toCurrency: ISelectValue;
 }
