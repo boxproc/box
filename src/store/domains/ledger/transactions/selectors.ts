@@ -37,6 +37,11 @@ export const currentTrAmountSelector = createSelector(
   data => data && data.amount
 );
 
+export const currentTrInstitutionSelector = createSelector(
+  currentTransactionSelector,
+  data => data && data.institutionId
+);
+
 export const currentTrAccountIdSelector = createSelector(
   currentTransactionSelector,
   data => data && data.accountId

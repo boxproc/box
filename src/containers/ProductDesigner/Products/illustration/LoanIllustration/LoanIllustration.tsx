@@ -12,6 +12,7 @@ import {
   ILoanIllustration,
   ILoanProduct,
   THandleConvertTrToLoan,
+  THandleGetInstProducts,
   THandleGetProductDetails,
   THandleIllustrateLoan,
   TResetProductIllustration,
@@ -19,47 +20,60 @@ import {
 import { ISelectValue } from 'types';
 
 interface ILoanIllust {
-  productIllustrationData: ImmutableArray<ILoanIllustration>;
-  loanProductsOptions: Array<ISelectValue>;
-  illustrateLoanProduct: THandleIllustrateLoan;
   convertTransactionToLoan: THandleConvertTrToLoan;
+  currentInstitution: number;
+  getInstProducts: THandleGetInstProducts;
   getProductDetails: THandleGetProductDetails;
-  resetProductIllustration: TResetProductIllustration;
-  loanDetails: Partial<ILoanProduct>;
+  illustrateLoanProduct: THandleIllustrateLoan;
   initialFormValues: object;
-  isLoading: boolean;
-  isIllustrationLoading: boolean;
   isConversionLoading: boolean;
+  isIllustrationLoading: boolean;
+  isLoading: boolean;
+  isReadOnly: boolean;
+  loanDetails: Partial<ILoanProduct>;
+  loanProductsOptions: Array<ISelectValue>;
+  onCancel?: () => void;
+  productId?: number;
+  productIllustrationData: ImmutableArray<ILoanIllustration>;
+  resetProductIllustration: TResetProductIllustration;
+  selectedLoanProduct?: ISelectValue;
   withConvertToLoan?: boolean;
   withLoanSelection?: boolean;
-  selectedLoanProduct?: ISelectValue;
-  productId?: number;
-  isReadOnly: boolean;
-  onCancel?: () => void;
 }
 
 const LoanIllustration: React.FC<ILoanIllust> = ({
-  illustrateLoanProduct,
   convertTransactionToLoan,
-  productIllustrationData,
-  loanProductsOptions,
+  currentInstitution,
+  getInstProducts,
   getProductDetails,
-  onCancel,
-  isLoading,
-  isIllustrationLoading,
+  illustrateLoanProduct,
+  initialFormValues,
   isConversionLoading,
-  resetProductIllustration,
+  isIllustrationLoading,
+  isLoading,
+  isReadOnly,
   loanDetails,
+  loanProductsOptions,
+  onCancel,
+  productId,
+  productIllustrationData,
+  resetProductIllustration,
+  selectedLoanProduct,
   withConvertToLoan,
   withLoanSelection,
-  initialFormValues,
-  selectedLoanProduct,
-  productId,
-  isReadOnly,
 }) => {
   const loanProductId = React.useMemo(
     () => selectedLoanProduct && Number(selectedLoanProduct.value),
     [selectedLoanProduct]
+  );
+
+  React.useEffect(
+    () => {
+      if (currentInstitution) {
+        getInstProducts(currentInstitution);
+      }
+    },
+    [currentInstitution, getInstProducts]
   );
 
   React.useEffect(

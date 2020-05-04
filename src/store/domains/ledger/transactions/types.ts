@@ -13,6 +13,7 @@ interface ITransactionPlain {
 export interface ITransactionData extends ITransactionPlain {
   amount: number;
   account_id: number;
+  institution_id: number;
   transaction_datetime: string;
   transaction_type_id: number;
   debit_credit_indicator: string;
@@ -64,6 +65,7 @@ export interface ITransactionsData {
 export interface ITransaction extends ITransactionPlain {
   amount: string;
   accountId: number;
+  institutionId: number;
   transactionDatetime: string;
   transactionTypeId: number;
   debitCreditIndicator: string;
