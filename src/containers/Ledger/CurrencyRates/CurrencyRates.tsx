@@ -3,7 +3,7 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import PageTemplate from 'containers/PageTemplate';
 
-import { modalNamesConst } from 'consts';
+import { modalNamesConst, currencyRatesProvidersOptions } from 'consts';
 
 import { ICurrencyRate, THandleFilterCurrencyRates } from 'store';
 import { tableColumns } from './components';
@@ -44,6 +44,7 @@ const CurrencyRates: React.FC<ICurrencyRates> = ({
     () => {
       return {
         institutionId: institutionsOptions[0],
+        rateProvider: currencyRatesProvidersOptions.find(el => el.value === 'custom'),
         providerDatetimeFrom,
         providerDatetimeTo,
         createdDatetimeFrom,

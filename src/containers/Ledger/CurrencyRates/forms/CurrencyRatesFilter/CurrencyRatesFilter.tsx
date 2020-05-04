@@ -57,6 +57,7 @@ const CurrencyRatesFilter: React.FC<ICurrencyRatesFilter> = ({
           label="Provider"
           placeholder="Select Provider"
           options={currencyRatesProvidersOptions}
+          isClearable={false}
           isDisabled={isDisabled}
         />
       </Box>
