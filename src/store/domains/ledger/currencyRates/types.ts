@@ -6,8 +6,8 @@ export interface ICurrencyRateData {
   institution_id: number | string;
   institution_name: string;
   rate_provider: number | string;
-  source_currency: number | string;
-  target_currency: number | string;
+  from_currency: number | string;
+  to_currency: number | string;
   spot_rate: number;
   buy_rate: number;
   sell_rate: number;
@@ -63,8 +63,8 @@ export interface ICurrencyRatesFilterToSend {
   provider_date_to: string;
   created_date_from: string;
   created_date_to: string;
-  source_currency: number | string;
-  target_currency: number | string;
+  from_currency: number | string;
+  to_currency: number | string;
 }
 
 /** Currency rates state interface */

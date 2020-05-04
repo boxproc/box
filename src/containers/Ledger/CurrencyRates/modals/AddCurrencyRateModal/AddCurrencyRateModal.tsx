@@ -26,6 +26,7 @@ const AddCurrencyRateModal: React.FC<IAddCurrencyRateModal> = ({
       name={modalName}
       title="Add Currency Rate"
       containerWidth="500px"
+      minContainerHeight="416px"
       withCloseConfirmation={isFormDirty}
       isBluredBackdrop={true}
     >

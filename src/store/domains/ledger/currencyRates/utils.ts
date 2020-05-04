@@ -18,8 +18,8 @@ export const prepareDataToRender = (data: Partial<ICurrencyRateData>): Partial<I
     institution_id,
     institution_name,
     rate_provider,
-    source_currency,
-    target_currency,
+    from_currency,
+    to_currency,
     spot_rate,
     provider_datetime,
     created_datetime,
@@ -30,8 +30,8 @@ export const prepareDataToRender = (data: Partial<ICurrencyRateData>): Partial<I
     institutionName: institution_name,
     institutionId: institution_id,
     rateProvider: rate_provider,
-    fromCurrency: source_currency,
-    toCurrency: target_currency,
+    fromCurrency: from_currency,
+    toCurrency: to_currency,
     spotRate: stringsUtil.numberToFixed(spot_rate, 5),
     providerDatetime: provider_datetime,
     createdDatetime: created_datetime,
@@ -56,8 +56,8 @@ export const prepareDetailsToRender = (
     sell_rate,
     provider_datetime,
     created_datetime,
-    source_currency,
-    target_currency,
+    from_currency,
+    to_currency,
   } = data;
 
   return {
@@ -70,8 +70,8 @@ export const prepareDetailsToRender = (
       value: rate_provider,
       label: rate_provider,
     },
-    fromCurrency: currenciesOptions.find(el => el.value === source_currency),
-    toCurrency: currenciesOptions.find(el => el.value === target_currency),
+    fromCurrency: currenciesOptions.find(el => el.value === from_currency),
+    toCurrency: currenciesOptions.find(el => el.value === to_currency),
     spotRate: stringsUtil.numberToFixed(spot_rate, 5),
     buyRate: stringsUtil.numberToFixed(buy_rate, 5),
     sellRate: stringsUtil.numberToFixed(sell_rate, 5),
@@ -103,8 +103,8 @@ export const prepareFilterToSend = (data: Partial<ICurrencyRatesFilter>) => {
     provider_date_to: providerDatetimeTo,
     created_date_from: createdDatetimeFrom,
     created_date_to: createdDatetimeTo,
-    source_currency: fromCurrency ? fromCurrency.value : null,
-    target_currency: toCurrency ? toCurrency.value : null,
+    from_currency: fromCurrency ? fromCurrency.value : null,
+    to_currency: (toCurrency && toCurrency.value) ? toCurrency.value : null,
   };
 };
 
@@ -129,7 +129,7 @@ export const prepareDataToSend = (data: Partial<ICurrencyRateEditable>) => {
     sell_rate: stringsUtil.toNumber(sellRate),
     institution_id: institutionId && institutionId.value,
     rate_provider: rateProvider && rateProvider.value,
-    source_currency: fromCurrency && fromCurrency.value,
-    target_currency: toCurrency && toCurrency.value,
+    from_currency: fromCurrency && fromCurrency.value,
+    to_currency: toCurrency && toCurrency.value,
   };
 };
