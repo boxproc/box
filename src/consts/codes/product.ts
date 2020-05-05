@@ -104,6 +104,16 @@ export const aprTypesOptions = [
   { value: 'D', label: 'Actual/360' },
 ];
 
+export enum aprDateConst {
+  IMMEDIATE = 'I',
+  FUTURE = 'F',
+}
+
+export const aprDateOptions = [
+  { value: aprDateConst.IMMEDIATE, label: 'Immediate' },
+  { value: aprDateConst.FUTURE, label: 'Future date' },
+];
+
 /**
  * Fees and rewards
  */

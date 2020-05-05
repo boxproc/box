@@ -120,6 +120,11 @@ export const isDate = (value: string) =>
     ? undefined
     : 'Invalid date';
 
+export const isFutureDate = (value: string) =>
+  validator.isAfter(value)
+    ? undefined
+    : 'Must be a future date';
+
 const exactNumberValue = (exactNumber: number) => (value: string) =>
   value && value.length !== exactNumber
     ? `Enter ${exactNumber} digits`

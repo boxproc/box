@@ -12,7 +12,8 @@ export interface IProductAprData {
   description: string;
   calculation_method: string | number;
   rate: number;
-  grace_number_of_days: number;
+  initial_interest_free_days: number;
+  apr_start_date: string;
 }
 
 export interface IProductAprsData {
@@ -27,15 +28,18 @@ export interface IProductAprIds {
 export interface IProductAprPlain extends IProductAprIds {
   description: string;
   rate: string;
-  graceNumberOfDays: number;
+  initialInterestFreeDays: number;
+  aprFutureStartDate?: string;
 }
 
 export interface IProductApr extends IProductAprPlain {
   calculationMethod: string;
+  aprStartDate: string;
 }
 
 export interface IProductAprFormValues extends IProductAprPlain {
   calculationMethod: ISelectValue;
+  aprStartDate: ISelectValue;
 }
 
 export interface IProductFeeAprData {

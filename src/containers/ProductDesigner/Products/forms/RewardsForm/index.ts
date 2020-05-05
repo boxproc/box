@@ -3,7 +3,6 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { formValueSelector } from 'redux-form';
 
 import { formNamesConst } from 'consts';
-
 import RewardsForm from './RewardsForm';
 
 import {

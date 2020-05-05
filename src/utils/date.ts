@@ -14,6 +14,9 @@ export const todayDate = () =>
 export const yesterdayDate = () =>
   moment().subtract(1, 'day').format(dateFormatConst.DATE);
 
+export const tomorrowDate = () =>
+  moment().add(1, 'day').format(dateFormatConst.DATE);
+
 export const getCurrentYear = () => moment().year();
 
 export const getCurrentYearStr = () => moment().format('YYYY');

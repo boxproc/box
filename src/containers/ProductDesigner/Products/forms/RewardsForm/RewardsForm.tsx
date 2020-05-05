@@ -1,35 +1,43 @@
 import React from 'react';
-import { InjectedFormProps, reduxForm } from 'redux-form';
+import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button } from 'components';
-import { feeRewardsTypesConst, formNamesConst } from 'consts';
-import { ProductRewards, RewardsTable } from 'containers/ProductDesigner/Products/components';
+import { Button, InputField, NumberFormatField, SelectField } from 'components';
+import { feeRewardsTypesConst, formNamesConst, iconNamesConst, rewardsTypesOptions } from 'consts';
 import { THandleAddProductReward } from 'store';
 import { ISelectValue } from 'types';
+import { formErrorUtil } from 'utils';
+
+const numberFieldsValidators = [
+  formErrorUtil.isRequired,
+  formErrorUtil.isNumber,
+  formErrorUtil.isPositive,
+];
 
 interface IRewardsForm {
-  addProductReward: THandleAddProductReward;
+  isOnlyRate: boolean;
+  isOnlyAmount: boolean;
   isLoading: boolean;
+  addProductReward: THandleAddProductReward;
   rewardApplicationConditionValue: ISelectValue;
-  onCancel: () => void;
-  isReadOnly: boolean;
 }
 
 type TRewardsForm = IRewardsForm & InjectedFormProps<{}, IRewardsForm>;
 
 const RewardsForm: React.FC<TRewardsForm> = ({
-  onCancel,
   addProductReward,
-  handleSubmit,
-  pristine,
-  dirty,
-  isLoading,
-  rewardApplicationConditionValue,
   change,
-  isReadOnly,
+  handleSubmit,
+  isLoading,
+  pristine,
+  rewardApplicationConditionValue,
 }) => {
+  const buttonText = React.useMemo(
+    () => isLoading ? 'Adding...' : 'Add Reward',
+    [isLoading]
+  );
+
   const isOnlyAmount = React.useMemo(
     () => {
       return rewardApplicationConditionValue
@@ -64,35 +72,87 @@ const RewardsForm: React.FC<TRewardsForm> = ({
     [isOnlyRate, change]
   );
 
+  const rateValidators = React.useMemo(
+    () => !isOnlyAmount ? numberFieldsValidators : null,
+    [isOnlyAmount]
+  );
+
+  const amountValidators = React.useMemo(
+    () => !isOnlyRate ? numberFieldsValidators : null,
+    [isOnlyRate]
+  );
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(addProductReward),
     [handleSubmit, addProductReward]
   );
 
   return (
-    <React.Fragment>
-      {!isReadOnly && (
-        <form onSubmit={handleSubmitForm}>
-          <ProductRewards
-            isDisabled={isLoading}
-            isLoading={isLoading}
-            pristine={pristine}
-            isOnlyRate={isOnlyRate}
-            isOnlyAmount={isOnlyAmount}
+    <form onSubmit={handleSubmitForm}>
+      <Flex
+        alignItems="flex-end"
+        flexWrap="wrap"
+        mx="-8px"
+      >
+        <Box width={[1 / 5]} p="8px">
+          <Field
+            id="description"
+            name="description"
+            component={InputField}
+            label="Description"
+            placeholder="Enter Description"
+            disabled={isLoading}
+            validate={[formErrorUtil.isRequired]}
           />
-        </form>
-      )}
-      <Box pt="10px">
-        <RewardsTable isReadOnly={isReadOnly} />
-      </Box>
-      <Flex justifyContent="flex-end">
-        <Button
-          text="Close"
-          onClick={onCancel}
-          withConfirmation={dirty}
-        />
+        </Box>
+        <Box width={[1 / 5]} p="8px">
+          <Field
+            id="rewardApplicationCondition"
+            name="rewardApplicationCondition"
+            component={SelectField}
+            label="Reward Application Condition"
+            options={rewardsTypesOptions}
+            placeholder="Select Condition"
+            isDisabled={isLoading}
+            isClearable={false}
+            validate={[formErrorUtil.isRequired]}
+          />
+        </Box>
+        <Box width={[1 / 5]} p="8px">
+          <Field
+            id="rate"
+            name="rate"
+            component={NumberFormatField}
+            label="Rate"
+            disabled={isLoading || isOnlyAmount}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
+            validate={rateValidators}
+          />
+        </Box>
+        <Box width={[1 / 5]} p="8px">
+          <Field
+            id="amount"
+            name="amount"
+            component={NumberFormatField}
+            label="Amount"
+            disabled={isLoading || isOnlyRate}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
+            validate={amountValidators}
+          />
+        </Box>
+        <Box pb="15px">
+          <Button
+            text={buttonText}
+            iconName={iconNamesConst.PLUS}
+            disabled={pristine || isLoading}
+          />
+        </Box>
       </Flex>
-    </React.Fragment>
+    </form>
   );
 };
 

@@ -266,7 +266,6 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             placeholder="Enter Description"
             component={TextareaField}
             label="Description"
-            height={115}
             disabled={isReadOnly}
           />
         </Box>

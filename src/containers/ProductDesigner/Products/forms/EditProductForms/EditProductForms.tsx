@@ -2,18 +2,20 @@ import React from 'react';
 
 import { Tabs, TabsPanel } from 'components';
 import {
-  AprsForm,
   AuxiliaryCountersForm,
-  FeesForm,
   GeneralLedgerFrom,
   GeneralProductForm,
   ProductDetailsForm,
   ProductRulesForm,
   ProductServicesForm,
-  RewardsForm,
 } from 'containers/ProductDesigner/Products/forms';
 
-import { RepaymentHierarchyTable } from 'containers/ProductDesigner/Products/components';
+import {
+  Aprs,
+  Fees,
+  RepaymentHierarchyTable,
+  Rewards,
+} from 'containers/ProductDesigner/Products/components';
 
 import {
   LoanIllustration,
@@ -105,7 +107,7 @@ const EditProductForms: React.FC<IEditProductForms> = ({
         title="APRs"
         withConfirmation={isAnyFormDirty}
       >
-        <AprsForm
+        <Aprs
           onCancel={onCancel}
           isReadOnly={isReadOnly}
         />
@@ -114,7 +116,7 @@ const EditProductForms: React.FC<IEditProductForms> = ({
         title="Fees"
         withConfirmation={isAnyFormDirty}
       >
-        <FeesForm
+        <Fees
           onCancel={onCancel}
           isReadOnly={isReadOnly}
         />
@@ -123,7 +125,7 @@ const EditProductForms: React.FC<IEditProductForms> = ({
         title="Rewards"
         withConfirmation={isAnyFormDirty}
       >
-        <RewardsForm
+        <Rewards
           onCancel={onCancel}
           isReadOnly={isReadOnly}
         />
