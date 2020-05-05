@@ -120,7 +120,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 120,
+    maxWidth: 80,
     Header: <TableHeader title="APR Rate" />,
     accessor: 'aprRate',
     Cell: (props: TCell<'aprRate'>) => (
@@ -131,7 +131,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 120,
+    maxWidth: 80,
     Header: <TableHeader title="Fee Rate" />,
     accessor: 'feeRate',
     Cell: (props: TCell<'feeRate'>) => (
@@ -142,7 +142,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 120,
+    maxWidth: 80,
     Header: <TableHeader title="Reward Rate" />,
     accessor: 'rewardRate',
     Cell: (props: TCell<'rewardRate'>) => (

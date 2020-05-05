@@ -36,7 +36,6 @@ interface IInstitutionForm extends ISpinner {
   isReadOnly: boolean;
   onCancel: () => void;
   updateInstitution: THandleUpdateInstitution;
-  isCurrencyLimit?: boolean;
 }
 
 type TInstitutionForm = IInstitutionForm & InjectedFormProps<{}, IInstitutionForm>;
@@ -57,7 +56,6 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
   onCancel,
   pristine,
   updateInstitution,
-  isCurrencyLimit = true,
 }) => {
   React.useEffect(
     () => {
@@ -132,34 +130,32 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
               validate={[formErrorUtil.isRequired]}
             />
           </Box>
-          {isCurrencyLimit && (
-            <React.Fragment>
-              <Hr />
-              <Box width={[3 / 5]} p="8px">
-                <Field
-                  id="baseCurrency"
-                  name="baseCurrency"
-                  component={SelectField}
-                  label="Base Currency"
-                  placeholder="Select Currencies"
-                  options={currenciesOptions}
-                  isLoading={isCurrenciesLoading}
-                  isDisabled={isReadOnly}
-                  validate={[formErrorUtil.isRequired]}
-                />
-              </Box>
-              <Box width={[2 / 5]} p="8px">
-                <Field
-                  id="limitAtCustomerLevelFlag"
-                  name="limitAtCustomerLevelFlag"
-                  component={CheckboxField}
-                  label="Apply Limit at Customer Level"
-                  disabled={isReadOnly}
-                />
-              </Box>
-              <Hr />
-            </React.Fragment>
-          )}
+          <React.Fragment>
+            <Hr />
+            <Box width={[3 / 5]} p="8px">
+              <Field
+                id="baseCurrency"
+                name="baseCurrency"
+                component={SelectField}
+                label="Base Currency"
+                placeholder="Select Currencies"
+                options={currenciesOptions}
+                isLoading={isCurrenciesLoading}
+                isDisabled={isReadOnly}
+                validate={[formErrorUtil.isRequired]}
+              />
+            </Box>
+            <Box width={[2 / 5]} p="8px">
+              <Field
+                id="limitAtCustomerLevelFlag"
+                name="limitAtCustomerLevelFlag"
+                component={CheckboxField}
+                label="Apply Limit at Customer Level"
+                disabled={isReadOnly}
+              />
+            </Box>
+            <Hr />
+          </React.Fragment>
           <Box width={[1]} p="8px">
             <Field
               id="sftpLocation"

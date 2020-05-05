@@ -3,7 +3,7 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import PageTemplate from 'containers/PageTemplate';
 
-import { modalNamesConst, currencyRatesProvidersOptions } from 'consts';
+import { currencyRatesProvidersOptions, modalNamesConst } from 'consts';
 
 import { ICurrencyRate, THandleFilterCurrencyRates } from 'store';
 import { tableColumns } from './components';
