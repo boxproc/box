@@ -23,6 +23,7 @@ import {
   IUsersGroupEditable,
   IUsersGroupMemberReq,
   IUsersGroupMemberReqToSend,
+  IUsersGroupPermission,
   IUsersGroupPermissionEditable,
   IUsersGroupPermissionReq,
 } from './types';
@@ -257,7 +258,32 @@ export const handleAddUsersGroupPermission: THandleAddUsersGroupPermissions = da
           dispatch(getUsersGroupUiItems(id)),
         ]);
 
-        dispatch(resetForm(formNamesConst.EDIT_USERS_GROUP_PERMISSIONS));
+        dispatch(resetForm(formNamesConst.ADD_USERS_GROUP_PERMISSIONS));
+      },
+      dispatch
+    );
+  };
+
+/** Update permission action */
+
+export type THandleUpdateUsersGroupPermission = (data: Partial<IUsersGroupPermission>) =>
+  Thunk<void>;
+
+export const handleUpdateUsersGroupPermission: THandleUpdateUsersGroupPermission = data =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const { uiItem, userGroupId, permission } = data;
+
+        const preparedData = {
+          user_group_id: userGroupId,
+          ui_items: [uiItem],
+          permission: permission && permission.value,
+        };
+
+        await dispatch(deleteUsersGroupPermission(userGroupId, uiItem));
+        await dispatch(addGroupPermission(preparedData));
+        await dispatch(getUsersGroupPermissions(userGroupId));
       },
       dispatch
     );

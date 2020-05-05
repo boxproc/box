@@ -37,6 +37,11 @@ export const currentTrAmountSelector = createSelector(
   data => data && data.amount
 );
 
+export const currentTrInstitutionSelector = createSelector(
+  currentTransactionSelector,
+  data => data && data.institutionId
+);
+
 export const currentTrAccountIdSelector = createSelector(
   currentTransactionSelector,
   data => data && data.accountId
@@ -76,6 +81,7 @@ export const isSettledTrSelector = createSelector(
 
 export const isLoadingTransactionsSelector = createLoadingSelector([
   ActionTypeKeys.FILTER_TRANSACTIONS,
+  ActionTypeKeys.FILTER_TRANSACTIONS_BY_ID,
 ]);
 
 export const isConvertingTrToLoanSelector = createLoadingSelector([

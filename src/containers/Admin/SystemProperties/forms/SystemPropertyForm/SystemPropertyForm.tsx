@@ -74,7 +74,7 @@ const SystemPropertyForm: React.FC<TSystemPropertyForm> = ({
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[1 / 2]} p="8px">
+          <Box width={[isEditMode ? 2 / 3 : 1 / 2]} p="8px">
             <Field
               id="id"
               name="id"
@@ -89,7 +89,7 @@ const SystemPropertyForm: React.FC<TSystemPropertyForm> = ({
             />
           </Box>
           {isEditMode && (
-            <Box width={[1 / 2]} p="8px">
+            <Box width={[1 / 3]} p="8px">
               <Field
                 id="lastDatetime"
                 name="lastDatetime"

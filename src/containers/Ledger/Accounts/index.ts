@@ -17,11 +17,11 @@ import {
   handleFilterByIdCustomers,
   handleFilterByIdStatements,
   handleFilterByIdTransactions,
-  handleSetActiveItemId,
   isAccountLoadingSelector,
   isReadOnlySelector,
   IStoreState,
   resetAccounts,
+  setActiveItemId,
   uiItemsSelector,
   userInstitutionsOptionsSelector,
 } from 'store';
@@ -48,7 +48,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     filterTransactionsById: handleFilterByIdTransactions,
     filterStatementsById: handleFilterByIdStatements,
     addProductOverride: handleAddProductOverride,
-    setActiveItemId: handleSetActiveItemId,
+    setActiveItemId,
     resetAccounts,
   },
   dispatch

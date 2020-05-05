@@ -21,6 +21,7 @@ import { systemPropertiesModals } from 'containers/Admin/SystemProperties/modals
 import { apiCallsModals } from 'containers/Audit/ApiCalls/modals';
 import { accountsModals } from 'containers/Ledger/Accounts/modals';
 import { cardsModals } from 'containers/Ledger/Cards/modals';
+import { currencyRatesModals } from 'containers/Ledger/CurrencyRates/modals';
 import { customersModals } from 'containers/Ledger/Customers/modals';
 import { statementsModals } from 'containers/Ledger/Statements/modals';
 import { transactionsModals } from 'containers/Ledger/Transactions/modals';
@@ -76,4 +77,5 @@ export const modalsList = [
   ...transactionsModals,
   ...productsModals,
   ...apiCallsModals,
+  ...currencyRatesModals,
 ];

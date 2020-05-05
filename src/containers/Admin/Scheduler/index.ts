@@ -11,7 +11,6 @@ import {
   handleFilterByIdScheduledJobs,
   handleFilterSchedulerJobs,
   handleGetLogData,
-  isFilteringScheduledJobsByIdSelector,
   isReadOnlySelector,
   isSchedulerJobDeletingSelector,
   isSchedulerJobsFilteringSelector,
@@ -28,7 +27,6 @@ const mapStateToProps = (state: IStoreState) => ({
   currentSchedulerName: currentSchedulerNameSelector(state),
   institutionsOptions: userInstitutionsOptionsSelector(state),
   isLoading: isSysMonitorLoadingLogDataSelector(state)
-    || isFilteringScheduledJobsByIdSelector(state)
     || isSchedulerJobsFilteringSelector(state)
     || isSchedulerJobUpdatingSelector(state)
     || isSchedulerJobDeletingSelector(state),

@@ -158,10 +158,11 @@ const FeesTable: React.FC<IFeesTable> = ({
           >
             <Button
               iconName={iconNamesConst.DELETE}
-              title="delete"
+              title={isEditableCell && 'delete'}
               size="10"
               withConfirmation={true}
               confirmationText={`Confirm want you delete fee?`}
+              disabled={!isEditableCell}
               onClick={() => deleteProductFee({
                 productId: cellInfo.original.productId,
                 productFeeId: cellInfo.original.productFeeId,

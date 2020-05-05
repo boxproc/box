@@ -197,25 +197,21 @@ export interface IRepaymentDirectDebitFormValues extends IRepaymentDirectDebitPl
  */
 
 export interface ICurrencyLimitData {
-  customer_id: number;
-  currency_numeric_code: number;
+  base_currency: number;
   currency_code: string;
   currency_name: string;
-  current_balance: number;
-  limit: number;
+  customer_limit: number;
 }
 
-export interface ICurrencyLimitsData {
-  currency_limits: Array<ICurrencyLimitData>;
+export interface ICurrencyLimitItemData {
+  currency_limit: Array<ICurrencyLimitData>;
 }
 
 export interface ICurrencyLimit {
-  customerId: number;
-  currencyNumericCode: string;
+  baseCurrency: number;
   currencyCode: string;
   currencyName: string;
-  currentBalance: string;
-  limit: string;
+  customerLimit: string;
 }
 
 /**
@@ -225,5 +221,5 @@ export interface ICustomersState {
   customers: ImmutableArray<ICustomerData>;
   repaymentDebitCards: ImmutableArray<IRepaymentDebitCardData>;
   repaymentDirectDebits: ImmutableArray<IRepaymentDirectDebitData>;
-  currencyLimits: ImmutableArray<ICurrencyLimitData>;
+  currencyLimit: ICurrencyLimitData;
 }

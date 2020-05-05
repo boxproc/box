@@ -8,7 +8,6 @@ import {
   handleFilterByIdUsersActivity,
   handleFilterUsers,
   isAddingUserSelector,
-  isFilteringUsersActivityByIDSelector,
   isFilteringUsersSelector,
   IStoreState,
   isUpdatingUserSelector,
@@ -21,8 +20,7 @@ const mapStateToProps = (state: IStoreState) => ({
   currentUserId: activeItemIdSelector(state),
   institutionsOptions: userInstitutionsOptionsSelector(state),
   users: usersSelector(state),
-  isLoading: isFilteringUsersActivityByIDSelector(state)
-    || isAddingUserSelector(state)
+  isLoading: isAddingUserSelector(state)
     || isUpdatingUserSelector(state)
     || isFilteringUsersSelector(state),
 });

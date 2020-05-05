@@ -168,7 +168,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             placeholder="Enter Phone Number"
             disabled={isReadOnly}
             // tslint:disable-next-line: max-line-length
-            hint="Phone number must be supplied with the country code and therefore must start with +."
+            hint="Phone number must be supplied with the country code, therefore must start with '+' and omit the leading zero."
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isMobilePhone,

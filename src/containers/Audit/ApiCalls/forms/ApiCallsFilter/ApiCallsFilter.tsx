@@ -70,7 +70,7 @@ const ApiCallsFilter: React.FC<IApiCallsFilter> = ({
           validate={[formErrorUtil.isRequired]}
         />
       </Box>
-      <Box width={[1 / 4]} p="8px">
+      <Box width={[1 / 3]} p="8px">
         <Field
           id="apiName"
           name="apiName"

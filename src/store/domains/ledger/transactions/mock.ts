@@ -6,6 +6,7 @@ export const transactionsMock: ITransactionsData = {
     {
       id: 2,
       account_id: 1,
+      institution_id: 1,
       amount: 10.2,
       amount_in_original_currency: 10.2,
       balance_available_after: 10.2,

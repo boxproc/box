@@ -27,6 +27,7 @@ export const prepareDataToRender = (data: ITransactionData): ITransaction => {
   const {
     id,
     account_id,
+    institution_id,
     status,
     transaction_datetime,
     transaction_type_id,
@@ -83,6 +84,7 @@ export const prepareDataToRender = (data: ITransactionData): ITransaction => {
   return {
     id,
     accountId: account_id,
+    institutionId: institution_id,
     transactionTypeId: transaction_type_id,
     status: transactionStatus && transactionStatus.label,
     transactionDatetime: transaction_datetime,

@@ -1,12 +1,16 @@
+import { getFormValues } from 'redux-form';
 import { createSelector } from 'reselect';
 
-import { permissionTypesOptions } from 'consts';
+import { formNamesConst, permissionTypesOptions } from 'consts';
 
 import { IStoreState } from 'store';
 import { institutionsOptionsSelector } from 'store/domains/admin/institutions';
 import { createLoadingSelector } from 'store/domains/loader';
 import { activeItemIdSelector } from 'store/domains/utils';
 import { ActionTypeKeys } from './actionTypes';
+import { prepareUiItemLabel } from './utils';
+
+import { ISelectValue } from 'types';
 
 /**
  * Users groups selectors
@@ -123,24 +127,38 @@ export const usersGroupPermissionsSelector = createSelector(
   defaultUsersGroupPermissionsSelector,
   items => items && items.map(item => {
     const permission = permissionTypesOptions.find(el => el.value === item.permission);
+    const uiItemLabel = prepareUiItemLabel(item.ui_item);
 
     return {
       userGroupId: item.user_group_id,
       uiItem: item.ui_item,
-      permission: permission && permission.label,
+      uiItemLabel,
+      permission,
     };
   })
 );
 
 export const usersGroupUiItemsSelector = createSelector(
   defaultUsersGroupUiItemsSelector,
-  data => data && data.asMutable().map(el => {
+  getFormValues(formNamesConst.ADD_USERS_GROUP_PERMISSIONS),
+  (data, formData) => data && data.asMutable().map(el => {
+    const itemValue = el.ui_item;
+    const itemLabel = prepareUiItemLabel(el.ui_item);
+
+    const arr = el.ui_item.split('/');
+    const parentItem = arr.slice(0, arr.length - 1).join('/');
+
+    const isParentChosen = formData && formData['uiItems']
+      && formData['uiItems'].find((item: ISelectValue) => item.value === parentItem);
+    const isParentNotInGroup = data.find(item => item.ui_item === parentItem);
+    const isDisabled = isParentNotInGroup && !isParentChosen;
+
     return {
-      value: el.ui_item,
-      label: el.ui_item,
+      value: itemValue,
+      label: itemLabel,
+      isDisabled,
     };
-  })
-);
+  }));
 
 export const isLoadingUsersGroupPermissionsSelector = createLoadingSelector([
   ActionTypeKeys.GET_USERS_GROUP_PERMISSIONS,

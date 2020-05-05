@@ -8,8 +8,8 @@ import {
   IStoreState,
   isUsersActivityLoadingSelector,
   resetUsersActivity,
-  usersActivitySelector,
   userInstitutionsOptionsSelector,
+  usersActivitySelector,
 } from 'store';
 
 const mapStateToProps = (state: IStoreState) => ({

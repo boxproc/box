@@ -83,7 +83,7 @@ export const tableColumns = [
   },
   {
     maxWidth: 80,
-    Header: <TableHeader title="Currency code" />,
+    Header: <TableHeader title="Currency Code" />,
     accessor: 'currencyCode',
     Cell: (props: TCell<'currencyCode'>) => (
       <TableCell

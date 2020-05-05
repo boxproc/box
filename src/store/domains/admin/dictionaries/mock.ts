@@ -112,8 +112,12 @@ export const dictionaryCountriesMock: IDictionaryCountriesData = {
 /** Dictionary currencies mock */
 export const dictionaryCurrenciesMock: IDictionaryCurrenciesData = {
   currencies: [
-    { currency_code: 'United Arab Emirates dirham', numeric_code: 784, name: 'AED' },
-    { currency_code: 'Afghan afghani', numeric_code: 971, name: 'AFN' },
+    { currency_code: 'United States dollar', numeric_code: 840, name: 'USD' },
+    { currency_code: 'Australian dollar', numeric_code: 36, name: 'AUD' },
+    { currency_code: 'South African rand', numeric_code: 710, name: 'ZAR' },
+    { currency_code: 'Japanese yen', numeric_code: 392, name: 'JPY' },
+    { currency_code: 'Ukrainian hryvnia', numeric_code: 980, name: 'UAH' },
+    { currency_code: 'Pound sterling', numeric_code: 826, name: 'GBP' },
   ],
 };
 

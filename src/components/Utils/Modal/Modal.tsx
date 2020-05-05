@@ -19,6 +19,13 @@ const ModalTitle = styled(T2)`
   padding-right: 15px;
   font-size: 20px;
   text-transform: none;
+
+  sup {
+    margin-left: 5px;
+    font-size: 12px;
+    font-weight: 500;
+    opacity: .4;
+  }
 `;
 
 interface IModal extends IWithModal {
@@ -48,6 +55,9 @@ interface IModal extends IWithModal {
 
   /** Opens confirmation modal by modal window close */
   withCloseConfirmation?: boolean;
+
+  /** Defines appearance of label 'Read Only' */
+  isReadonly?: boolean;
 }
 
 const Modal: React.FC<IModal> = ({
@@ -56,6 +66,7 @@ const Modal: React.FC<IModal> = ({
   containerWidth = '720px',
   hideCloseIcon,
   isBluredBackdrop,
+  isReadOnly,
   minContainerHeight,
   name,
   openModal,
@@ -109,7 +120,12 @@ const Modal: React.FC<IModal> = ({
               <Box mb="5px">{TitleIcon}</Box>
             )}
             {title && (
-              <ModalTitle>{title}</ModalTitle>
+              <ModalTitle>
+                {title}
+                {isReadOnly && (
+                  <sup>Read only</sup>
+                )}
+              </ModalTitle>
             )}
           </Flex>
           {children}

@@ -6,12 +6,11 @@ import { IWithModal, withModal } from 'HOCs';
 import { modalNamesConst, modalTypesConst } from 'consts';
 
 import {
+  CurrencyLimitForm,
   CustomerForm,
   RepaymentDebitCardsForm,
   RepaymentDirectDebitsForm,
 } from './../../forms';
-
-import { CurrencyLimitsTable } from './../../components';
 
 import { THandleGetServicesInterfaces } from 'store';
 import { ISelectValue } from 'types';
@@ -24,7 +23,6 @@ interface IEditCustomerModal extends IWithModal {
   isFormDirty: boolean;
   isInterfacesLoading: boolean;
   isLimitAtCustomerLevel: boolean;
-  isCurrencyLimits?: boolean;
 }
 
 const modalName = modalNamesConst.EDIT_CUSTOMER;
@@ -39,7 +37,6 @@ const EditCustomerModal: React.FC<IEditCustomerModal> = ({
   isInterfacesLoading,
   isLimitAtCustomerLevel,
   isReadOnly,
-  isCurrencyLimits = true,
 }) => {
   React.useEffect(
     () => {
@@ -91,9 +88,9 @@ const EditCustomerModal: React.FC<IEditCustomerModal> = ({
             onCancel={handleOnCancel}
           />
         </TabsPanel>
-        {isCurrencyLimits && isLimitAtCustomerLevel && (
-          <TabsPanel title="Limits">
-            <CurrencyLimitsTable
+        {isLimitAtCustomerLevel && (
+          <TabsPanel title="Limit">
+            <CurrencyLimitForm
               isReadOnly={isReadOnly}
               onCancel={handleOnCancel}
             />

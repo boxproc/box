@@ -13,15 +13,17 @@ import {
   statusOptions,
 } from 'consts';
 
-import { THandleGetDictionaryCurrencies, THandleGetDictionaryStatementCycleTypes } from 'store';
+import {
+  THandleGetConvertibleInstCurrencies,
+  THandleGetDictionaryStatementCycleTypes,
+} from 'store';
 
 import { ISelectValue } from 'types';
-
 import { formErrorUtil } from 'utils';
 
 interface IProductGeneralInfo {
   currenciesOptions: Array<ISelectValue>;
-  getCurrencyCodes: THandleGetDictionaryCurrencies;
+  getCurrencyCodes: THandleGetConvertibleInstCurrencies;
   getStatementCycleTypes: THandleGetDictionaryStatementCycleTypes;
   institutionsOptions: Array<ISelectValue>;
   isCurrenciesLoading: boolean;
@@ -30,6 +32,7 @@ interface IProductGeneralInfo {
   isStatementCycleTypesLoading: boolean;
   statementCycleTypesOptions: Array<ISelectValue>;
   statementCycleTypeValue: ISelectValue;
+  institutionValue: ISelectValue;
 }
 
 const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
@@ -43,15 +46,21 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
   getStatementCycleTypes,
   isStatementCycleTypesLoading,
   statementCycleTypeValue,
+  institutionValue,
 }) => {
+  const institutionId = React.useMemo(
+    () => institutionValue && Number(institutionValue.value),
+    [institutionValue]
+  );
+
   React.useEffect(
     () => {
       Promise.all([
-        getCurrencyCodes(),
+        getCurrencyCodes(institutionId),
         getStatementCycleTypes(),
       ]);
     },
-    [getStatementCycleTypes, getCurrencyCodes]
+    [getStatementCycleTypes, getCurrencyCodes, institutionId]
   );
 
   const statementCycleParameterLabel = React.useMemo(
@@ -199,7 +208,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             component={SelectField}
             label="Currency Code"
             placeholder="Select Currency Code"
-            options={currenciesOptions}
+            options={institutionId && currenciesOptions}
             isLoading={isCurrenciesLoading}
             isDisabled={isReadOnly}
             validate={[formErrorUtil.isRequired]}

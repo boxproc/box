@@ -10,6 +10,7 @@ export enum sessionStorageNamesConst {
   AUTH_REGISTRATION_PENDING = 'authRegistrationPending',
   IS_LOGIN = 'isLogin',
   REQUIRES_2FA_FLAG = 'requires2faFlag',
+  LAST_SCREEN_PATHNAME = 'lastScreenPathname',
 }
 
 export enum cookiesExpiresConst {

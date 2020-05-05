@@ -8,7 +8,7 @@ import { formNamesConst } from 'consts';
 
 import {
   currenciesOptionsSelector,
-  handleGetDictionaryCurrencies,
+  handleGetConvertibleInstCurrencies,
   handleGetDictionaryStatementCycleTypes,
   isCurrenciesLoadingSelector,
   isStatementCycleTypesLoading,
@@ -28,12 +28,14 @@ const mapStateToProps = (state: IStoreState) => ({
   currenciesOptions: currenciesOptionsSelector(state),
   statementCycleTypeValue: formSelectorGeneralProduct(state, 'statementCycleTypeId')
     || formSelectorAddProduct(state, 'statementCycleTypeId'),
+  institutionValue: formSelectorGeneralProduct(state, 'institutionId')
+    || formSelectorAddProduct(state, 'institutionId'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getStatementCycleTypes: handleGetDictionaryStatementCycleTypes,
-    getCurrencyCodes: handleGetDictionaryCurrencies,
+    getCurrencyCodes: handleGetConvertibleInstCurrencies,
   },
   dispatch
 );

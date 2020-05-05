@@ -14,7 +14,7 @@ const apiCallsReducer = (state = apiCallsInitialState, action: TApiCallsAction) 
       return state.set('apiCalls', action.payload.api_calls);
 
     case ActionTypeKeys.GET_DETAILS_API_CALLS_FULFILLED:
-      return state.set('apiCallDetails', action.payload.api_call);
+      return state.set('apiCallDetails', action.payload.api_call[0]);
 
     case ActionTypeKeys.RESET_API_CALLS:
       return state = apiCallsInitialState;

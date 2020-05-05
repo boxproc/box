@@ -15,7 +15,7 @@ export const prepareDataToSend = (data: Partial<IInstitutionDetails>) => {
     status,
     sftpLocation,
     sftpPublicKey,
-    supportedCurrencies,
+    baseCurrency,
     limitAtCustomerLevelFlag,
   } = data;
 
@@ -25,7 +25,7 @@ export const prepareDataToSend = (data: Partial<IInstitutionDetails>) => {
     status: status && status.value,
     sftp_location: sftpLocation,
     sftp_public_key: sftpPublicKey,
-    supported_currencies: supportedCurrencies && supportedCurrencies.map(el => el.value.toString()),
+    base_currency: baseCurrency && baseCurrency.value,
     limit_at_customer_level: limitAtCustomerLevelFlag ? true : false,
   };
 };
@@ -66,24 +66,15 @@ export const prepareDetailsToRender = (
     return null;
   }
 
-  const { status, supported_currencies } = data;
-
-  const supportedCurrencies = supported_currencies && supported_currencies.map(el => {
-    const currency = currencies.find(i => i.numeric_code.toString() === el);
-
-    if (!currency) {
-      return null;
-    }
-
-    return {
-      value: currency.numeric_code,
-      label: `${currency.currency_code} - ${currency.name}`,
-    };
-  });
+  const { status, base_currency } = data;
+  const currency = currencies.find(el => el.numeric_code === base_currency);
 
   return {
     ...prepareDataToRender(data),
-    supportedCurrencies,
     status: statusOptions.find(el => el.value === status),
+    baseCurrency: currency && {
+      value: currency.numeric_code,
+      label: `${currency.currency_code} - ${currency.name}`,
+    },
   };
 };

@@ -18,8 +18,8 @@ import {
   THandleFilterCustomersById,
   THandleFilterStatementsById,
   THandleFilterTransactionsById,
-  THandleSetActiveItemId,
   TResetAccounts,
+  TSetActiveItemId,
 } from 'store';
 import { ISelectValue } from 'types';
 
@@ -41,7 +41,7 @@ interface IAccounts extends IWithModal {
   isReadOnly: boolean;
   productOverrideId: number;
   resetAccounts: TResetAccounts;
-  setActiveItemId: THandleSetActiveItemId;
+  setActiveItemId: TSetActiveItemId;
   uiItems: Array<IUiItem>;
 }
 

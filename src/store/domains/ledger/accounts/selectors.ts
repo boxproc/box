@@ -120,6 +120,7 @@ export const currentAccHasProductOverrideSelector = createSelector(
 
 export const isAccountLoadingSelector = createLoadingSelector([
   ActionTypeKeys.FILTER_ACCOUNTS,
+  ActionTypeKeys.FILTER_ACCOUNTS_BY_ID,
 ]);
 
 export const isUpdatingAccountSelector = createLoadingSelector([

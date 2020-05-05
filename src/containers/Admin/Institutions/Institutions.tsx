@@ -60,7 +60,6 @@ const Institutions: React.FC<IInstitutions> = ({
   const isMasterInstitution = React.useMemo(
     () => {
       const userData = storageUtil.getUserData();
-
       return userData && userData.changeProfileAllowedFlag === yesNoConst.YES;
     },
     []

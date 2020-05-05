@@ -82,7 +82,6 @@ const Filter: React.FC<TFilter> = ({
   const username = React.useMemo(
     () => {
       const userData = storageUtil.getUserData();
-
       return userData && userData.username;
     },
     []
@@ -224,7 +223,7 @@ const Filter: React.FC<TFilter> = ({
       <div className="title">Filter</div>
       <form onSubmit={handleSubmitForm}>
         <Flex
-          width="940px"
+          width="960px"
           alignItems="flex-end"
           flexWrap="wrap"
           m="0 -8px 5px"

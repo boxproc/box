@@ -12,14 +12,14 @@ import { modalsList } from 'containers/Modals/modalsList';
 
 import {
   activeTableRowIndexSelector,
-  handleSetActiveItemId,
-  handleSetActiveTableRowIndex,
   IStoreState,
   modalsStateListSelector,
   openModal,
-  THandleSetActiveItemId,
-  THandleSetActiveTableRowIndex,
+  setActiveItemId,
+  setActiveTableRowIndex,
   TOpenModal,
+  TSetActiveItemId,
+  TSetActiveTableRowIndex,
 } from 'store';
 
 import { IContextMenuItem } from 'types';
@@ -32,8 +32,8 @@ export interface IWithEditTable {
   handleOpenModal: TOpenModal;
   modalsStateList: object;
   onRowClick: () => object;
-  setActiveItemId: THandleSetActiveItemId;
-  setActiveTableRowIndex: THandleSetActiveTableRowIndex;
+  handleSetActiveItemId: TSetActiveItemId;
+  handleSetActiveTableRowIndex: TSetActiveTableRowIndex;
   viewingModalName: string;
 }
 
@@ -47,21 +47,23 @@ export const withEditTable = <OriginProps extends {}>(
       handleOpenModal,
       modalsStateList,
       onRowClick,
-      setActiveItemId,
-      setActiveTableRowIndex,
+      handleSetActiveItemId,
+      handleSetActiveTableRowIndex,
       viewingModalName,
       ...originProps
     } = props;
 
     const [isOpenedModal, setIsOpenedModal] = React.useState(null);
-    const [isHiddenContextMenu, setIsHiddenContextMenu] = React.useState(false);
+    const [isVisibleContextMenu, setIsVisibleContextMenu] = React.useState(false);
 
     const handleRemoveActiveIds = React.useCallback(
       () => {
-        setActiveTableRowIndex(null);
-        setActiveItemId(null);
+        setIsVisibleContextMenu(false);
+
+        handleSetActiveTableRowIndex(null);
+        handleSetActiveItemId(null);
       },
-      [setActiveTableRowIndex, setActiveItemId]
+      [handleSetActiveTableRowIndex, handleSetActiveItemId]
     );
 
     React.useEffect(
@@ -127,19 +129,19 @@ export const withEditTable = <OriginProps extends {}>(
 
         return {
           onDoubleClick: () => {
-            if (viewingModalName && !isLocked) {
-              setActiveItemId(id);
-              setActiveTableRowIndex(rowIndex);
+            if (viewingModalName) {
+              handleSetActiveItemId(id, isLocked);
+              handleSetActiveTableRowIndex(rowIndex);
 
               openCurrentRowInModal();
             }
           },
           onContextMenu: () => {
-            setIsHiddenContextMenu(isLocked);
+            if (menuItems.length) {
+              handleSetActiveItemId(id, isLocked);
+              handleSetActiveTableRowIndex(rowIndex);
 
-            if (menuItems.length && !isLocked) {
-              setActiveItemId(id);
-              setActiveTableRowIndex(rowIndex);
+              setIsVisibleContextMenu(true);
             }
           },
         };
@@ -148,8 +150,8 @@ export const withEditTable = <OriginProps extends {}>(
         openCurrentRowInModal,
         viewingModalName,
         menuItems,
-        setActiveItemId,
-        setActiveTableRowIndex,
+        handleSetActiveItemId,
+        handleSetActiveTableRowIndex,
       ]
     );
 
@@ -169,7 +171,7 @@ export const withEditTable = <OriginProps extends {}>(
           menuId="tableContextMenu"
           onClick={onContextMenuClick}
           items={menuItems}
-          isHidden={isOpenedModal || isHiddenContextMenu}
+          isHidden={isOpenedModal || !isVisibleContextMenu}
           onHide={(!isOpenedModal && activeTableRowIndex) ? handleRemoveActiveIds : null}
         />
       </React.Fragment>
@@ -186,8 +188,8 @@ export const withEditTable = <OriginProps extends {}>(
   const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     {
       handleOpenModal: openModal,
-      setActiveItemId: handleSetActiveItemId,
-      setActiveTableRowIndex: handleSetActiveTableRowIndex,
+      handleSetActiveItemId: setActiveItemId,
+      handleSetActiveTableRowIndex: setActiveTableRowIndex,
     },
     dispatch
   );

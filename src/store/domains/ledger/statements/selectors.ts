@@ -38,6 +38,7 @@ export const currentStatementSelector = createSelector(
 
 export const isStatementsLoadingSelector = createLoadingSelector([
   ActionTypeKeys.FILTER_STATEMENTS,
+  ActionTypeKeys.FILTER_STATEMENTS_BY_ID,
 ]);
 
 /**

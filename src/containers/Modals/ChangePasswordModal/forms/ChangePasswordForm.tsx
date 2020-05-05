@@ -23,14 +23,12 @@ const ChangePasswordForm: React.FC<TChangePasswordForm> = ({
   onCancel,
   pristine,
 }) => {
-  const userData = React.useMemo(
-    () => storageUtil.getUserData(),
-    []
-  );
-
   const isRequires2faFlag = React.useMemo(
-    () => userData && userData.requires2faFlag === yesNoConst.YES,
-    [userData]
+    () => {
+      const userData = storageUtil.getUserData();
+      return userData && userData.requires2faFlag === yesNoConst.YES;
+    },
+    []
   );
 
   const handleSubmitForm = React.useCallback(

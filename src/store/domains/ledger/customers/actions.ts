@@ -9,6 +9,7 @@ import {
   activeItemIdSelector,
   closeModal,
   isAccessibleFilterSelector,
+  openModal,
   setIsOpenFilter,
 } from 'store';
 import {
@@ -19,7 +20,7 @@ import {
   IDeleteCustomerAction,
   IFilterCustomersAction,
   IFilterCustomersByIdAction,
-  IGetCurrencyLimitsAction,
+  IGetCurrencyLimitAction,
   IGetRepaymentDebitCardsAction,
   IGetRepaymentDirectDebitsAction,
   IUpdateCurrencyLimitAction,
@@ -121,8 +122,14 @@ export const handleAddCustomer: THandleAddCustomer = data =>
         const state = getState();
         const isAccessibleFiltering = isAccessibleFilterSelector(state);
 
-        await dispatch(addCustomer(preparedData));
+        const res = await dispatch(addCustomer(preparedData)) as any;
         dispatch(closeModal(modalNamesConst.ADD_CUSTOMER));
+        dispatch(openModal({
+          name: modalNamesConst.MESSAGE,
+          payload: {
+            title: 'Customer was created',
+            message: `Customer ID: ${res.value.customer_id}` },
+        }));
 
         if (isAccessibleFiltering) {
           await dispatch(handleFilterCustomers());
@@ -305,22 +312,22 @@ export const handleAddRepaymentDirectDebit: THandleAddRepaymentDirectDebit = dat
  * Get currency limits action
  */
 
-export type TGetCurrencyLimits = (id: number) => IGetCurrencyLimitsAction;
-export type THandleGetCurrencyLimits = () => Thunk<void>;
+export type TGetCurrencyLimit = (id: number) => IGetCurrencyLimitAction;
+export type THandleGetCurrencyLimit = () => Thunk<void>;
 
-export const getCurrencyLimits: TGetCurrencyLimits = id => ({
-  type: ActionTypeKeys.GET_CURRENCY_LIMITS,
-  payload: api.getCurrencyLimits(id),
+export const getCurrencyLimit: TGetCurrencyLimit = id => ({
+  type: ActionTypeKeys.GET_CURRENCY_LIMIT,
+  payload: api.getCurrencyLimit(id),
 });
 
-export const handleGetCurrencyLimits: THandleGetCurrencyLimits = () =>
+export const handleGetCurrencyLimit: THandleGetCurrencyLimit = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
         const customerId = activeItemIdSelector(state);
 
-        await dispatch(getCurrencyLimits(customerId));
+        await dispatch(getCurrencyLimit(customerId));
       },
       dispatch
     );
@@ -340,13 +347,15 @@ export type TUpdateCurrencyLimit = (data: Partial<ICurrencyLimitData>) =>
 export type THandleUpdateCurrencyLimit = (data: Partial<ICurrencyLimit>) => Thunk<void>;
 
 export const handleUpdateCurrencyLimit: THandleUpdateCurrencyLimit = data =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const preparedData = prepareCurrencyLimitToSend(data);
+        const state = getState();
+        const customerId = activeItemIdSelector(state);
+        const preparedData = prepareCurrencyLimitToSend(data, customerId);
 
         await dispatch(updateCurrencyLimit(preparedData));
-        await dispatch(handleGetCurrencyLimits());
+        await dispatch(handleGetCurrencyLimit());
       },
       dispatch
     );

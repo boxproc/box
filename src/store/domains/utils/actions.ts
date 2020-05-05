@@ -25,29 +25,22 @@ import { stringsUtil } from 'utils';
  */
 
 export type TSetActiveTableRowIndex = (index: number) => ISetActiveTableRowIndexAction;
-export type THandleSetActiveTableRowIndex = (index: number) => void;
 
 export const setActiveTableRowIndex: TSetActiveTableRowIndex = index => ({
   type: ActionTypeKeys.SET_ACTIVE_TABLE_ROW_INDEX,
   payload: index,
 });
 
-export const handleSetActiveTableRowIndex: THandleSetActiveTableRowIndex = index =>
-  setActiveTableRowIndex(index);
-
 /**
  * Set active item ID util action
  */
 
-export type TSetActiveItemId = (id: number | string) => ISetActiveItemIdAction;
-export type THandleSetActiveItemId = (id: number | string) => void;
+export type TSetActiveItemId = (id: number | string, isLocked?: boolean) => ISetActiveItemIdAction;
 
-export const setActiveItemId: TSetActiveItemId = id => ({
+export const setActiveItemId: TSetActiveItemId = (id, isLocked = false) => ({
   type: ActionTypeKeys.SET_ACTIVE_ITEM_ID,
-  payload: id,
+  payload: { id, isLocked },
 });
-
-export const handleSetActiveItemId: THandleSetActiveItemId = id => setActiveItemId(id);
 
 /**
  * Set permission for active page util action

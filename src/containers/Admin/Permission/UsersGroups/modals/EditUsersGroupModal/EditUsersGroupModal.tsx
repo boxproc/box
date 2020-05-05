@@ -26,7 +26,7 @@ const EditUsersGroupModal: React.FC<IEditUsersGroupModal> = ({
   isReadOnly,
 }) => {
   const modalTitle = React.useMemo(
-    () => `Edit User Group: "${groupName}" (${institutionName})`,
+    () => `Edit User Group: "${groupName}"${institutionName ? ` (${institutionName})` : ''}`,
     [groupName, institutionName]
   );
 

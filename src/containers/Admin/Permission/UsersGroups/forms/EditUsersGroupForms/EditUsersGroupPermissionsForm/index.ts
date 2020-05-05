@@ -14,7 +14,7 @@ import {
   usersGroupUiItemsSelector,
 } from 'store';
 
-const formSelector = formValueSelector(formNamesConst.EDIT_USERS_GROUP_PERMISSIONS);
+const formSelector = formValueSelector(formNamesConst.ADD_USERS_GROUP_PERMISSIONS);
 
 const mapStateToProps = (state: IStoreState) => ({
   isLoading: isAddingUsersGroupPermissionsSelector(state),
