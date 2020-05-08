@@ -125,7 +125,8 @@ export interface IRevCreditProduct {
 export interface ILoanProductData {
   product_id: number;
   def_num_of_installments: number;
-  def_num_of_intrst_free_instlmts: number;
+  def_num_interest_only_instlmts: number;
+  def_num_deferred_instlmts: number;
   interest_distribution_type: number | string;
   allow_overpayment: number | string;
 }
@@ -137,7 +138,8 @@ export interface ILoanProductDataResp {
 export interface ILoanProduct {
   productId: number;
   defNumOfInstallments: number;
-  defNumOfIntrstFreeInstlmts: number;
+  defNumInterestOnlyInstlmts: number;
+  defNumDeferredInstlmts: number;
   interestDistributionType: ISelectValue;
   allowOverpayment: number | string;
 }
@@ -248,13 +250,13 @@ export type INewProductToSend = IProductDetailsResp & IProductData;
 
 export interface IInstProductData extends IPlainInfo {
   product_type: string;
-  def_num_of_intrst_free_instlmts: number;
+  def_num_interest_only_instlmts: number;
   def_num_of_installments: number;
 }
 
 export interface IInstProduct extends IPlainInfo {
   productType: string;
-  defNumOfIntrstFreeInstlmts: number;
+  defNumInterestOnlyInstlmts: number;
   defNumOfInstallments: number;
 }
 

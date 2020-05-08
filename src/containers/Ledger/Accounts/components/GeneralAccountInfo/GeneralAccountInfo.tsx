@@ -220,13 +220,13 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
         )}
         {isChosenLoanProductType && (
           <React.Fragment>
-            <Box width="140px" p="8px">
+            <Box width="130px" p="8px">
               <Field
                 id="numOfInstallments"
                 name="numOfInstallments"
                 component={InputField}
                 label="Number of Installments"
-                placeholder="Enter Number"
+                placeholder="Enter #"
                 disabled={isReadOnly}
                 isNumber={true}
                 validate={[
@@ -235,17 +235,30 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
                 ]}
               />
             </Box>
-            <Box width="140px" p="8px">
+            <Box width="130px" p="8px">
               <Field
-                id="numOfInterestFreeInstllmnts"
-                name="numOfInterestFreeInstllmnts"
+                id="numInterestOnlyInstlmts"
+                name="numInterestOnlyInstlmts"
                 component={InputField}
-                label="Number of Interest Free Installments"
-                placeholder="Enter Number"
+                label="Number of Interest Only"
+                placeholder="Enter #"
                 disabled={isReadOnly}
                 isNumber={true}
                 validate={[
-                  formErrorUtil.isRequired,
+                  formErrorUtil.isInteger,
+                ]}
+              />
+            </Box>
+            <Box width="130px" p="8px">
+              <Field
+                id="numDeferredInstlmts"
+                name="numDeferredInstlmts"
+                component={InputField}
+                label="Number of Deferred Repayments"
+                placeholder="Enter #"
+                disabled={isReadOnly}
+                isNumber={true}
+                validate={[
                   formErrorUtil.isInteger,
                 ]}
               />
@@ -253,7 +266,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
           </React.Fragment>
         )}
         {isChosenLoanProductType && (
-          <Box width="150px" p="8px">
+          <Box width="130px" p="8px">
             <Field
               id="loanStartDate"
               name="loanStartDate"

@@ -171,7 +171,7 @@ export const prepareDataToConvert = (data: Partial<IConvertTrToLoanReq>) => {
 
   const {
     defNumOfInstallments,
-    defNumOfIntrstFreeInstlmts,
+    defNumInterestOnlyInstlmts,
     accountId,
     amount,
     transactionId,
@@ -180,7 +180,7 @@ export const prepareDataToConvert = (data: Partial<IConvertTrToLoanReq>) => {
 
   return {
     num_of_installments: stringsUtil.toNumber(defNumOfInstallments),
-    num_of_interest_free_instllmnts: stringsUtil.toNumber(defNumOfIntrstFreeInstlmts),
+    num_interest_only_instlmts: stringsUtil.toNumber(defNumInterestOnlyInstlmts),
     account_id: stringsUtil.toNumber(accountId),
     transaction_id: stringsUtil.toNumber(transactionId),
     product_id: productId,
