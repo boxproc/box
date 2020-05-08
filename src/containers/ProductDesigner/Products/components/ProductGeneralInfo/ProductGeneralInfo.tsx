@@ -252,20 +252,19 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             label={statementCycleParameterLabel}
             isNumber={true}
             disabled={!statementCycleTypeValue || isReadOnly}
+            hint={!statementCycleTypeValue && 'Select Statement Cycle Type'}
             validate={[
               formErrorUtil.isRequired,
               statementCycleParameterValidation,
             ]}
-            hint={!statementCycleTypeValue && 'Select Statement Cycle Type'}
           />
         </Box>
-        <Box width={[1]} p="8px">
+        <Box width={[1]} p="8px 8px 0">
           <Field
-            id="description"
-            name="description"
-            placeholder="Enter Description"
-            component={TextareaField}
-            label="Description"
+            id="enabledForCustomerLimit"
+            name="enabledForCustomerLimit"
+            component={CheckboxField}
+            label="Enabled for Customer Limit"
             disabled={isReadOnly}
           />
         </Box>
@@ -275,6 +274,16 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             name="lockedFlag"
             component={CheckboxField}
             label="Locked"
+            disabled={isReadOnly}
+          />
+        </Box>
+        <Box width={[1]} p="8px">
+          <Field
+            id="description"
+            name="description"
+            placeholder="Enter Description"
+            component={TextareaField}
+            label="Description"
             disabled={isReadOnly}
           />
         </Box>

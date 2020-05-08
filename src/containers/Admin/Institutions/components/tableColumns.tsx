@@ -60,12 +60,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 100,
-    Header: <TableHeader title="Limit at Customer Level" />,
-    accessor: 'limitAtCustomerLevelFlag',
-    Cell: renderCheckBoxTableCell(),
-  },
-  {
-    maxWidth: 100,
     Header: <TableHeader title="Master Institution" />,
     accessor: 'masterInstitutionFlag',
     Cell: renderCheckBoxTableCell(),

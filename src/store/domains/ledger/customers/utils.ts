@@ -107,7 +107,6 @@ export const prepareDataToRender = (data: Partial<ICustomerData>, institution?: 
     address_post_code,
     date_created,
     date_closed,
-    limit_at_customer_level,
   } = data;
 
   const dataStatus = customerStatusOptions.find(el => el.value === status);
@@ -131,7 +130,6 @@ export const prepareDataToRender = (data: Partial<ICustomerData>, institution?: 
     addressPostCode: address_post_code,
     dateCreated: date_created,
     dateClosed: date_closed,
-    limitAtCustomerLevel: limit_at_customer_level,
   };
 };
 

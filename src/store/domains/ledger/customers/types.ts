@@ -24,7 +24,6 @@ export interface ICustomerData {
   date_closed: string;
   identification_type: string | number;
   identification_number: number;
-  limit_at_customer_level: boolean;
 }
 
 export interface ICustomersData {
@@ -47,7 +46,6 @@ interface ICustomerPlain {
   dateCreated: string;
   dateClosed: string;
   identificationNumber?: number;
-  limitAtCustomerLevel: boolean;
 }
 
 export interface ICustomer extends ICustomerPlain {
