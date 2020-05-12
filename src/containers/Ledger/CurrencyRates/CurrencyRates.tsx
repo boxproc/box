@@ -5,7 +5,7 @@ import PageTemplate from 'containers/PageTemplate';
 
 import { currencyRatesProvidersOptions, modalNamesConst } from 'consts';
 
-import { ICurrencyRate, THandleFilterCurrencyRates } from 'store';
+import { ICurrencyRate, THandleFilterCurrencyRates, TResetCurrencyRates } from 'store';
 import { tableColumns } from './components';
 import { CurrencyRatesFilter } from './forms';
 
@@ -17,6 +17,7 @@ interface ICurrencyRates {
   filterCurrencyRates: THandleFilterCurrencyRates;
   institutionsOptions: Array<ISelectValue>;
   isLoading: boolean;
+  resetCurrencyRates: TResetCurrencyRates;
 }
 
 const CurrencyRates: React.FC<ICurrencyRates> = ({
@@ -24,6 +25,7 @@ const CurrencyRates: React.FC<ICurrencyRates> = ({
   filterCurrencyRates,
   institutionsOptions,
   isLoading,
+  resetCurrencyRates,
 }) => {
   const [providerDatetimeFrom, setProviderDatetimeFrom] = React.useState(null);
   const [providerDatetimeTo, setProviderDatetimeTo] = React.useState(null);
@@ -38,6 +40,13 @@ const CurrencyRates: React.FC<ICurrencyRates> = ({
       setCreatedDatetimeTo(dateUtil.todayDateTime());
     },
     []
+  );
+
+  React.useEffect(
+    () => {
+      return () => resetCurrencyRates();
+    },
+    [resetCurrencyRates]
   );
 
   const initialFilterValues = React.useMemo(
