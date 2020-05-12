@@ -113,6 +113,7 @@ export const institutionProductsMock: IInstProductsData = {
       product_type: 'C',
       def_num_interest_only_instlmts: 1,
       def_num_of_installments: 1,
+      def_num_deferred_instlmts: 1,
     },
     {
       id: 2,
@@ -120,6 +121,7 @@ export const institutionProductsMock: IInstProductsData = {
       product_type: 'D',
       def_num_interest_only_instlmts: 1,
       def_num_of_installments: 1,
+      def_num_deferred_instlmts: 1,
     },
   ],
 };

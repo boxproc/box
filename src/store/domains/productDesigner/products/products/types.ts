@@ -254,12 +254,14 @@ export interface IInstProductData extends IPlainInfo {
   product_type: string;
   def_num_interest_only_instlmts: number;
   def_num_of_installments: number;
+  def_num_deferred_instlmts: number;
 }
 
 export interface IInstProduct extends IPlainInfo {
   productType: string;
   defNumInterestOnlyInstlmts: number;
   defNumOfInstallments: number;
+  defNumDeferredInstlmts: number;
 }
 
 export interface IInstProductsData {

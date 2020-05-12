@@ -29,4 +29,5 @@ export const accountInitialFormValues = {
   loanStartDate: dateUtil.todayDate(),
   numOfInstallments: 0,
   numInterestOnlyInstlmts: 0,
+  numDeferredInstlmts: 0,
 };

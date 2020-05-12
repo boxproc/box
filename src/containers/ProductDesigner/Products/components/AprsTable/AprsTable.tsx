@@ -106,7 +106,8 @@ const AprsTable: React.FC<IAprsTable> = ({
             isEditable={isEditableCell}
           />
         ),
-      }, {
+      },
+      {
         maxWidth: 120,
         accessor: 'aprStartDate',
         Header: <TableHeader title="Start Date" />,
@@ -122,13 +123,11 @@ const AprsTable: React.FC<IAprsTable> = ({
         maxWidth: 100,
         accessor: 'initialInterestFreeDays',
         Header: <TableHeader title="Initial Interest Free Days" />,
-        Cell: (cellInfo: CellInfo) => (
-          <EditableTableCell
-            updateAction={updateProductApr}
+        Cell: (props: TCell<'aprStartDate'>) => (
+          <TableCell
+            value={props.value}
             isSmaller={true}
             isNumber={true}
-            cellInfo={cellInfo}
-            isEditable={isEditableCell}
           />
         ),
       },
@@ -142,7 +141,7 @@ const AprsTable: React.FC<IAprsTable> = ({
           >
             <Button
               iconName={iconNamesConst.DELETE}
-              title={isEditableCell && 'delete'}
+              title={isEditableCell ? 'delete' : ''}
               size="10"
               withConfirmation={true}
               confirmationText={`Confirm want you delete APR?`}

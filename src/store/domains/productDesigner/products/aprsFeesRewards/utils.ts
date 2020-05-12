@@ -20,6 +20,7 @@ import {
   IProductRewardPlain,
 } from './types';
 
+import { ISelectValue } from 'types';
 import { stringsUtil } from 'utils';
 
 export const prepareProductAprsToRender = (data: IProductAprData): IProductApr => {
@@ -79,12 +80,28 @@ export const prepareFormDataProductAprsToSend = (data: Partial<IProductAprFormVa
   }
 
   const { calculationMethod, aprStartDate, aprFutureStartDate } = data;
-  const isFutureDate = aprStartDate && aprStartDate.value === aprDateConst.FUTURE;
+
+  const startDate = (date: ISelectValue) => {
+    if (!date) {
+      return null;
+    }
+
+    const isFutureDate = date && date.value === aprDateConst.FUTURE;
+    const isNextBillingDate = date && date.value === aprDateConst.NEXT_BILLING_DAY;
+
+    if (isFutureDate) {
+      return aprFutureStartDate;
+    } else if (isNextBillingDate) {
+      return date.value;
+    } else {
+      return null;
+    }
+  };
 
   return {
     ...prepareProductAprs(data),
     calculation_method: calculationMethod && calculationMethod.value,
-    apr_start_date: isFutureDate ? aprFutureStartDate : null,
+    apr_start_date: startDate(aprStartDate),
   };
 };
 

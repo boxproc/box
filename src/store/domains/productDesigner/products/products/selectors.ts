@@ -139,6 +139,7 @@ export const instProductsSelector = createSelector(
       productType: el.product_type,
       defNumInterestOnlyInstlmts: el.def_num_interest_only_instlmts,
       defNumOfInstallments: el.def_num_of_installments,
+      defNumDeferredInstlmts: el.def_num_deferred_instlmts,
     };
   })
 );
@@ -189,14 +190,14 @@ export const isProductDetailsLoadingSelector = createLoadingSelector([
   ActionTypeKeys.GET_PRODUCT_DETAILS,
 ]);
 
-export  const isProductDetailsUpdatingSelector = createLoadingSelector([
+export const isProductDetailsUpdatingSelector = createLoadingSelector([
   ActionTypeKeys.UPDATE_PRODUCT_DETAILS,
 ]);
 
-export  const isProductsFilteringSelector = createLoadingSelector([
+export const isProductsFilteringSelector = createLoadingSelector([
   ActionTypeKeys.FILTER_PRODUCTS,
 ]);
 
-export  const isProductsDeletingSelector = createLoadingSelector([
+export const isProductsDeletingSelector = createLoadingSelector([
   ActionTypeKeys.DELETE_PRODUCT,
 ]);
