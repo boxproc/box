@@ -15,6 +15,7 @@ import {
 
 import {
   THandleGetConvertibleInstCurrencies,
+  THandleGetDictionaryCurrencies,
   THandleGetDictionaryStatementCycleTypes,
 } from 'store';
 
@@ -23,30 +24,36 @@ import { formErrorUtil } from 'utils';
 
 interface IProductGeneralInfo {
   currenciesOptions: Array<ISelectValue>;
-  getCurrencyCodes: THandleGetConvertibleInstCurrencies;
+  enabledForCustomerLimitValue: boolean;
+  getConvertibleInstCurrencies: THandleGetConvertibleInstCurrencies;
+  getDictionaryCurrencies: THandleGetDictionaryCurrencies;
   getStatementCycleTypes: THandleGetDictionaryStatementCycleTypes;
   institutionsOptions: Array<ISelectValue>;
+  institutionValue: ISelectValue;
   isCurrenciesLoading: boolean;
   isEditMode?: boolean;
   isReadOnly: boolean;
   isStatementCycleTypesLoading: boolean;
   statementCycleTypesOptions: Array<ISelectValue>;
   statementCycleTypeValue: ISelectValue;
-  institutionValue: ISelectValue;
+  formChange: any;
 }
 
 const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
   currenciesOptions,
-  isCurrenciesLoading,
-  getCurrencyCodes,
-  isEditMode = false,
-  institutionsOptions,
-  isReadOnly,
-  statementCycleTypesOptions,
+  enabledForCustomerLimitValue,
+  formChange,
+  getConvertibleInstCurrencies,
+  getDictionaryCurrencies,
   getStatementCycleTypes,
-  isStatementCycleTypesLoading,
-  statementCycleTypeValue,
+  institutionsOptions,
   institutionValue,
+  isCurrenciesLoading,
+  isEditMode = false,
+  isReadOnly,
+  isStatementCycleTypesLoading,
+  statementCycleTypesOptions,
+  statementCycleTypeValue,
 }) => {
   const institutionId = React.useMemo(
     () => institutionValue && Number(institutionValue.value),
@@ -55,12 +62,36 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
 
   React.useEffect(
     () => {
-      Promise.all([
-        getCurrencyCodes(institutionId),
-        getStatementCycleTypes(),
-      ]);
+      getStatementCycleTypes();
     },
-    [getStatementCycleTypes, getCurrencyCodes, institutionId]
+    [getStatementCycleTypes]
+  );
+
+  React.useEffect(
+    () => {
+      if (!enabledForCustomerLimitValue) {
+        getDictionaryCurrencies();
+      }
+    },
+    [
+      enabledForCustomerLimitValue,
+      getDictionaryCurrencies,
+    ]
+  );
+
+  React.useEffect(
+    () => {
+      if (enabledForCustomerLimitValue && institutionId) {
+        formChange('currencyCode', '');
+        getConvertibleInstCurrencies(institutionId);
+      }
+    },
+    [
+      formChange,
+      enabledForCustomerLimitValue,
+      getConvertibleInstCurrencies,
+      institutionId,
+    ]
   );
 
   const statementCycleParameterLabel = React.useMemo(
@@ -208,7 +239,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             component={SelectField}
             label="Currency Code"
             placeholder="Select Currency Code"
-            options={institutionId && currenciesOptions}
+            options={currenciesOptions}
             isLoading={isCurrenciesLoading}
             isDisabled={isReadOnly}
             validate={[formErrorUtil.isRequired]}

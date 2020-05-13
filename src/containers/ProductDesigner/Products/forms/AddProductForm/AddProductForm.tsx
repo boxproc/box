@@ -25,14 +25,15 @@ interface IAddProductForm extends ISpinner {
 type TAddProductForm = IAddProductForm & InjectedFormProps<{}, IAddProductForm>;
 
 const AddProductForm: React.FC<TAddProductForm> = ({
-  currentProductType,
   addProduct,
-  onCancel,
+  change,
   currentInstitution,
-  handleSubmit,
+  currentProductType,
   dirty,
-  pristine,
+  handleSubmit,
   interestDistributionValue,
+  onCancel,
+  pristine,
 }) => {
   const productType = React.useMemo(
     () => currentProductType && currentProductType.value,
@@ -50,6 +51,7 @@ const AddProductForm: React.FC<TAddProductForm> = ({
         <TabsPanel title="General">
           <ProductGeneralInfo
             currentInstitution={currentInstitution}
+            formChange={change}
           />
         </TabsPanel>
         <TabsPanel
