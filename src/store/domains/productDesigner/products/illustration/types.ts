@@ -42,7 +42,7 @@ export interface ILoanIllustrationReq {
   amount: number;
   startDate: string;
   defNumOfInstallments: number;
-  defNumInterestOnlyInstlmts: number;
+  defNumInterestFreeInstlmts: number;
   defNumDeferredInstlmts: number;
 }
 
@@ -51,8 +51,8 @@ export interface ILoanIllustrationReqToSend {
   amount: number;
   start_date: string;
   nr_loan_cycles: number;
-  nr_interest_only: number;
-  nr_deferred_repayments: number;
+  num_interest_free_instlmts: number;
+  num_deferred_instlmts: number;
 }
 
 /**

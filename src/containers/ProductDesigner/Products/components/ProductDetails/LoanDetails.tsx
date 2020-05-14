@@ -73,11 +73,11 @@ const LoanDetails: React.FC<ILoanDetails> = ({
             p="8px"
           >
             <Field
-              id="defNumInterestOnlyInstlmts"
-              name="defNumInterestOnlyInstlmts"
+              id="defNumInterestFreeInstlmts"
+              name="defNumInterestFreeInstlmts"
               component={InputField}
               placeholder="Enter #"
-              label="Default # of Interest Only"
+              label="Default # of Interest Free Installments"
               disabled={isReadOnly}
               isNumber={true}
               validate={[
@@ -95,7 +95,7 @@ const LoanDetails: React.FC<ILoanDetails> = ({
             name="defNumDeferredInstlmts"
             component={InputField}
             placeholder="Enter #"
-            label="Default # of Deferred Repayments"
+            label="Default # of Deferred Installments"
             disabled={isReadOnly}
             isNumber={true}
             validate={[

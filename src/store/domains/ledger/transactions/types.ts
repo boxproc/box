@@ -116,7 +116,7 @@ export interface IConvertTrToLoanReq {
   amount: number;
   accountId: number;
   defNumOfInstallments: number;
-  defNumInterestOnlyInstlmts: number;
+  defNumInterestFreeInstlmts: number;
   transactionId: number;
   productId: number;
 }
@@ -125,7 +125,7 @@ export interface IConvertTrToLoanReqToSend {
   amount: number;
   account_id: number;
   num_of_installments: number;
-  num_interest_only_instlmts: number;
+  num_interest_free_instlmts: number;
   transaction_id: number;
   product_id: number;
 }

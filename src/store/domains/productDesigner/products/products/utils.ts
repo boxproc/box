@@ -309,7 +309,7 @@ export const prepareLoanToRender = (data: ILoanProductData) => {
   const {
     product_id,
     def_num_of_installments,
-    def_num_interest_only_instlmts,
+    def_num_interest_free_instlmts,
     interest_distribution_type,
     allow_overpayment,
     def_num_deferred_instlmts,
@@ -318,7 +318,7 @@ export const prepareLoanToRender = (data: ILoanProductData) => {
   return {
     productId: product_id,
     defNumOfInstallments: def_num_of_installments,
-    defNumInterestOnlyInstlmts: def_num_interest_only_instlmts,
+    defNumInterestFreeInstlmts: def_num_interest_free_instlmts,
     defNumDeferredInstlmts: def_num_deferred_instlmts,
     interestDistributionType: loanTypesOptions.find(el => el.value === interest_distribution_type),
     allowOverpayment: allow_overpayment ? yesNoConst.YES : yesNoConst.NO,
@@ -333,7 +333,7 @@ export const prepareLoanToSend = (data: ILoanProduct) => {
   const {
     productId,
     defNumOfInstallments,
-    defNumInterestOnlyInstlmts,
+    defNumInterestFreeInstlmts,
     defNumDeferredInstlmts,
     interestDistributionType,
     allowOverpayment,
@@ -342,7 +342,7 @@ export const prepareLoanToSend = (data: ILoanProduct) => {
   return {
     product_id: productId,
     def_num_of_installments: stringsUtil.toNumber(defNumOfInstallments),
-    def_num_interest_only_instlmts: stringsUtil.toNumber(defNumInterestOnlyInstlmts),
+    def_num_interest_free_instlmts: stringsUtil.toNumber(defNumInterestFreeInstlmts),
     def_num_deferred_instlmts: stringsUtil.toNumber(defNumDeferredInstlmts),
     interest_distribution_type: interestDistributionType && interestDistributionType.value,
     allow_overpayment: allowOverpayment ? yesNoConst.YES : yesNoConst.NO,

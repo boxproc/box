@@ -21,7 +21,7 @@ export const prepareLoanToSend = (data: Partial<ILoanIllustrationReq>):
     productId,
     amount,
     defNumOfInstallments,
-    defNumInterestOnlyInstlmts,
+    defNumInterestFreeInstlmts,
     defNumDeferredInstlmts,
     startDate,
   } = data;
@@ -30,8 +30,8 @@ export const prepareLoanToSend = (data: Partial<ILoanIllustrationReq>):
     product_id: productId,
     amount,
     nr_loan_cycles: stringsUtil.toNumber(defNumOfInstallments),
-    nr_interest_only: stringsUtil.toNumber(defNumInterestOnlyInstlmts),
-    nr_deferred_repayments: stringsUtil.toNumber(defNumDeferredInstlmts),
+    num_interest_free_instlmts: stringsUtil.toNumber(defNumInterestFreeInstlmts),
+    num_deferred_instlmts: stringsUtil.toNumber(defNumDeferredInstlmts),
     start_date: startDate,
   };
 };

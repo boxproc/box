@@ -237,10 +237,10 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             </Box>
             <Box width="130px" p="8px">
               <Field
-                id="numInterestOnlyInstlmts"
-                name="numInterestOnlyInstlmts"
+                id="numInterestFreeInstlmts"
+                name="numInterestFreeInstlmts"
                 component={InputField}
-                label="# of Interest Only"
+                label="# of Interest Free Installments"
                 placeholder="Enter #"
                 disabled={isReadOnly}
                 isNumber={true}
@@ -254,7 +254,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
                 id="numDeferredInstlmts"
                 name="numDeferredInstlmts"
                 component={InputField}
-                label="# of Deferred Repayments"
+                label="# of Deferred Installments"
                 placeholder="Enter #"
                 disabled={isReadOnly}
                 isNumber={true}
