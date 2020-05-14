@@ -26,7 +26,6 @@ type TAddProductForm = IAddProductForm & InjectedFormProps<{}, IAddProductForm>;
 
 const AddProductForm: React.FC<TAddProductForm> = ({
   addProduct,
-  change,
   currentInstitution,
   currentProductType,
   dirty,
@@ -51,7 +50,6 @@ const AddProductForm: React.FC<TAddProductForm> = ({
         <TabsPanel title="General">
           <ProductGeneralInfo
             currentInstitution={currentInstitution}
-            formChange={change}
           />
         </TabsPanel>
         <TabsPanel

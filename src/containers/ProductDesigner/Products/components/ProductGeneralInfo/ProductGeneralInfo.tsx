@@ -36,13 +36,11 @@ interface IProductGeneralInfo {
   isStatementCycleTypesLoading: boolean;
   statementCycleTypesOptions: Array<ISelectValue>;
   statementCycleTypeValue: ISelectValue;
-  formChange: any;
 }
 
 const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
   currenciesOptions,
   enabledForCustomerLimitValue,
-  formChange,
   getConvertibleInstCurrencies,
   getDictionaryCurrencies,
   getStatementCycleTypes,
@@ -82,12 +80,10 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
   React.useEffect(
     () => {
       if (enabledForCustomerLimitValue && institutionId) {
-        formChange('currencyCode', '');
         getConvertibleInstCurrencies(institutionId);
       }
     },
     [
-      formChange,
       enabledForCustomerLimitValue,
       getConvertibleInstCurrencies,
       institutionId,

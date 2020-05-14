@@ -32,7 +32,6 @@ interface IGeneralProductForm extends ISpinner {
 type TGeneralProductForm = IGeneralProductForm & InjectedFormProps<{}, IGeneralProductForm>;
 
 const GeneralProductForm: React.FC<TGeneralProductForm> = ({
-  change,
   currentInstitution,
   currentProductName,
   deleteProduct,
@@ -82,7 +81,6 @@ const GeneralProductForm: React.FC<TGeneralProductForm> = ({
           isEditMode={true}
           currentInstitution={currentInstitution}
           isReadOnly={isReadOnly || isUpdatingOrDeleting}
-          formChange={change}
         />
         <Hr />
         <Flex
