@@ -7,12 +7,14 @@ interface IProductPlainData extends IPlainInfo {
   description: string;
   history_retention_number_of_day: number;
   locked_flag: string;
+  enabled_for_customer_limit: string;
 }
 
 interface IProductPlain extends IPlainInfo {
   description: string;
   historyRetentionNumberOfDays: number;
   lockedFlag: boolean;
+  enabledForCustomerLimit: boolean;
   overridesProductId?: number;
   statementCycleParameter: number;
 }
@@ -125,7 +127,8 @@ export interface IRevCreditProduct {
 export interface ILoanProductData {
   product_id: number;
   def_num_of_installments: number;
-  def_num_of_intrst_free_instlmts: number;
+  def_num_interest_free_instlmts: number;
+  def_num_deferred_instlmts: number;
   interest_distribution_type: number | string;
   allow_overpayment: number | string;
 }
@@ -137,7 +140,8 @@ export interface ILoanProductDataResp {
 export interface ILoanProduct {
   productId: number;
   defNumOfInstallments: number;
-  defNumOfIntrstFreeInstlmts: number;
+  defNumInterestFreeInstlmts: number;
+  defNumDeferredInstlmts: number;
   interestDistributionType: ISelectValue;
   allowOverpayment: number | string;
 }
@@ -248,14 +252,16 @@ export type INewProductToSend = IProductDetailsResp & IProductData;
 
 export interface IInstProductData extends IPlainInfo {
   product_type: string;
-  def_num_of_intrst_free_instlmts: number;
+  def_num_interest_free_instlmts: number;
   def_num_of_installments: number;
+  def_num_deferred_instlmts: number;
 }
 
 export interface IInstProduct extends IPlainInfo {
   productType: string;
-  defNumOfIntrstFreeInstlmts: number;
+  defNumInterestFreeInstlmts: number;
   defNumOfInstallments: number;
+  defNumDeferredInstlmts: number;
 }
 
 export interface IInstProductsData {

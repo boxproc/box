@@ -17,13 +17,21 @@ export const prepareLoanToSend = (data: Partial<ILoanIllustrationReq>):
     return null;
   }
 
-  const { productId, amount, defNumOfInstallments, defNumOfIntrstFreeInstlmts, startDate } = data;
+  const {
+    productId,
+    amount,
+    defNumOfInstallments,
+    defNumInterestFreeInstlmts,
+    defNumDeferredInstlmts,
+    startDate,
+  } = data;
 
   return {
     product_id: productId,
     amount,
     nr_loan_cycles: stringsUtil.toNumber(defNumOfInstallments),
-    nr_interest_free: stringsUtil.toNumber(defNumOfIntrstFreeInstlmts),
+    num_interest_free_instlmts: stringsUtil.toNumber(defNumInterestFreeInstlmts),
+    num_deferred_instlmts: stringsUtil.toNumber(defNumDeferredInstlmts),
     start_date: startDate,
   };
 };

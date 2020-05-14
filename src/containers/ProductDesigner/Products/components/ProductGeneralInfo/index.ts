@@ -9,6 +9,7 @@ import { formNamesConst } from 'consts';
 import {
   currenciesOptionsSelector,
   handleGetConvertibleInstCurrencies,
+  handleGetDictionaryCurrencies,
   handleGetDictionaryStatementCycleTypes,
   isCurrenciesLoadingSelector,
   isStatementCycleTypesLoading,
@@ -30,12 +31,15 @@ const mapStateToProps = (state: IStoreState) => ({
     || formSelectorAddProduct(state, 'statementCycleTypeId'),
   institutionValue: formSelectorGeneralProduct(state, 'institutionId')
     || formSelectorAddProduct(state, 'institutionId'),
+  enabledForCustomerLimitValue: formSelectorGeneralProduct(state, 'enabledForCustomerLimit')
+    || formSelectorAddProduct(state, 'enabledForCustomerLimit'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getStatementCycleTypes: handleGetDictionaryStatementCycleTypes,
-    getCurrencyCodes: handleGetConvertibleInstCurrencies,
+    getConvertibleInstCurrencies: handleGetConvertibleInstCurrencies,
+    getDictionaryCurrencies: handleGetDictionaryCurrencies,
   },
   dispatch
 );

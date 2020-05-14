@@ -8,6 +8,7 @@ import {
   handleFilterCurrencyRates,
   isLoadingCurrencyRatesSelector,
   IStoreState,
+  resetCurrencyRates,
   userInstitutionsOptionsSelector,
 } from 'store';
 
@@ -20,6 +21,7 @@ const mapStateToProps = (state: IStoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterCurrencyRates: handleFilterCurrencyRates,
+    resetCurrencyRates,
   },
   dispatch
 );

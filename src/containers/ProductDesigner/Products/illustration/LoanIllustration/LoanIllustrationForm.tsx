@@ -47,7 +47,7 @@ const LoanIllustrationForm: React.FC<TLoanIllustrationForm> = ({
 
       if (withLoanSelection && !loanId) {
         change('defNumOfInstallments', null);
-        change('defNumOfIntrstFreeInstlmts', null);
+        change('defNumInterestFreeInstlmts', null);
       }
     },
     [change, selectedLoanProduct, withLoanSelection]
@@ -159,7 +159,7 @@ const LoanIllustrationForm: React.FC<TLoanIllustrationForm> = ({
             ]}
           />
         </Box>
-        <Box width="150px" p="8px">
+        <Box width="130px" p="8px">
           <Field
             id="defNumOfInstallments"
             name="defNumOfInstallments"
@@ -174,13 +174,28 @@ const LoanIllustrationForm: React.FC<TLoanIllustrationForm> = ({
             ]}
           />
         </Box>
-        <Box width="150px" p="8px">
+        <Box width="130px" p="8px">
           <Field
-            id="defNumOfIntrstFreeInstlmts"
-            name="defNumOfIntrstFreeInstlmts"
+            id="defNumInterestFreeInstlmts"
+            name="defNumInterestFreeInstlmts"
             component={InputField}
             isNumber={true}
-            label="# of Interest Free"
+            label="# of Interest Free Installments"
+            placeholder="Enter #"
+            disabled={isDisabledDetails}
+            validate={[
+              formErrorUtil.isRequired,
+              formErrorUtil.isInteger,
+            ]}
+          />
+        </Box>
+        <Box width="130px" p="8px">
+          <Field
+            id="defNumDeferredInstlmts"
+            name="defNumDeferredInstlmts"
+            component={InputField}
+            isNumber={true}
+            label="# of Deferred Installments"
             placeholder="Enter #"
             disabled={isDisabledDetails}
             validate={[

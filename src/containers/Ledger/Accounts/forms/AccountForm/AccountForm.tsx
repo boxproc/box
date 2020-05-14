@@ -101,8 +101,10 @@ const AccountForm: React.FC<TAccountForm> = ({
         .find(product => product.id === selectedProductId);
 
       const numOfInstallments = currentProductItem && currentProductItem.defNumOfInstallments;
-      const numOfInterestFreeInstllmnts = currentProductItem
-        && currentProductItem.defNumOfIntrstFreeInstlmts;
+      const numInterestFreeInstlmts = currentProductItem
+        && currentProductItem.defNumInterestFreeInstlmts;
+      const numDeferredInstlmts = currentProductItem
+        && currentProductItem.defNumDeferredInstlmts;
 
       const repaymentTypeInstalments = repaymentTypesOptions
         .find(type => type.value === repaymentTypesConst.INSTALMENTS);
@@ -111,7 +113,8 @@ const AccountForm: React.FC<TAccountForm> = ({
 
       const resetLoanValues = () => {
         change('numOfInstallments', 0);
-        change('numOfInterestFreeInstllmnts', 0);
+        change('numInterestFreeInstlmts', 0);
+        change('numDeferredInstlmts', 0);
         change('loanStartDate', dateUtil.todayDate());
       };
 
@@ -121,7 +124,8 @@ const AccountForm: React.FC<TAccountForm> = ({
 
           if (isChosenLoanProductType) {
             change('numOfInstallments', numOfInstallments);
-            change('numOfInterestFreeInstllmnts', numOfInterestFreeInstllmnts);
+            change('numInterestFreeInstlmts', numInterestFreeInstlmts);
+            change('numDeferredInstlmts', numDeferredInstlmts);
             change('repaymentType', repaymentTypeInstalments);
           } else if (isChosenRevCreditProductType) {
             change('repaymentType', repaymentTypeMinimumRepayment);

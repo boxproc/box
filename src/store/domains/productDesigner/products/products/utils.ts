@@ -56,7 +56,8 @@ export const prepareGeneralProductToRender = (item: IProductData, institutionNam
     scheme: scheme && scheme.label,
     historyRetentionNumberOfDays: item.history_retention_number_of_day,
     currencyCode: item.currency_code,
-    lockedFlag: item.locked_flag === yesNoConst.YES ? true : false,
+    lockedFlag: item.locked_flag === yesNoConst.YES,
+    enabledForCustomerLimit: item.enabled_for_customer_limit === yesNoConst.YES,
     overridesProductId: item.overrides_product_id,
     statementCycleType: item.statement_cycle_type_name,
     statementCycleParameter: item.statement_cycle_parameter,
@@ -95,6 +96,7 @@ export const prepareCurrGeneralProductToRender = (data: IProductData):
     status,
     scheme,
     locked_flag,
+    enabled_for_customer_limit,
     overrides_product_id,
     card_form_factor,
     number_of_days_card_expires,
@@ -111,7 +113,8 @@ export const prepareCurrGeneralProductToRender = (data: IProductData):
     productType: productTypesOptions.find(el => el.value === product_type),
     status: statusOptions.find(el => el.value === status),
     scheme: schemeTypesOptions.find(el => el.value === scheme),
-    lockedFlag: locked_flag === yesNoConst.YES ? true : false,
+    lockedFlag: locked_flag === yesNoConst.YES,
+    enabledForCustomerLimit: enabled_for_customer_limit === yesNoConst.YES,
     overridesProductId: overrides_product_id,
     cardFormFactor: cardFormFactorOptions.find(el => el.value === card_form_factor),
     numberOfDaysCardExpires: number_of_days_card_expires,
@@ -137,6 +140,7 @@ export const prepareGeneralProductDataToSend = (data: Partial<IProductGeneralDet
     scheme,
     historyRetentionNumberOfDays,
     lockedFlag,
+    enabledForCustomerLimit,
     overridesProductId,
     cardFormFactor,
     numberOfDaysCardExpires,
@@ -148,15 +152,16 @@ export const prepareGeneralProductDataToSend = (data: Partial<IProductGeneralDet
     id,
     name,
     description,
-    status: status.value,
-    institution_id: institutionId.value,
-    currency_code: currencyCode.value,
-    product_type: productType.value,
-    scheme: scheme.value,
+    status: status && status.value,
+    institution_id: institutionId && institutionId.value,
+    currency_code: currencyCode && currencyCode.value,
+    product_type: productType && productType.value,
+    scheme: scheme && scheme.value,
     history_retention_number_of_day: stringsUtil.toNumber(historyRetentionNumberOfDays),
     locked_flag: lockedFlag ? yesNoConst.YES : yesNoConst.NO,
+    enabled_for_customer_limit: enabledForCustomerLimit ? yesNoConst.YES : yesNoConst.NO,
     overrides_product_id: overridesProductId,
-    card_form_factor: cardFormFactor.value,
+    card_form_factor: cardFormFactor && cardFormFactor.value,
     number_of_days_card_expires: stringsUtil.toNumber(numberOfDaysCardExpires),
     statement_cycle_type_id: statementCycleTypeId && statementCycleTypeId.value,
     statement_cycle_parameter: stringsUtil.toNumber(statementCycleParameter),
@@ -252,7 +257,7 @@ export const prepareSavingsToSend = (data: ISavingsProduct) => {
     minimum_deposit_allowed: stringsUtil.toNumber(minimumDepositAllowed),
     maximum_deposit_allowed: stringsUtil.toNumber(maximumDepositAllowed),
     maximum_monthly_deposit: stringsUtil.toNumber(maximumMonthlyDeposit),
-    savings_type: savingsType.value,
+    savings_type: savingsType && savingsType.value,
   };
 };
 
@@ -304,15 +309,17 @@ export const prepareLoanToRender = (data: ILoanProductData) => {
   const {
     product_id,
     def_num_of_installments,
-    def_num_of_intrst_free_instlmts,
+    def_num_interest_free_instlmts,
     interest_distribution_type,
     allow_overpayment,
+    def_num_deferred_instlmts,
   } = data;
 
   return {
     productId: product_id,
     defNumOfInstallments: def_num_of_installments,
-    defNumOfIntrstFreeInstlmts: def_num_of_intrst_free_instlmts,
+    defNumInterestFreeInstlmts: def_num_interest_free_instlmts,
+    defNumDeferredInstlmts: def_num_deferred_instlmts,
     interestDistributionType: loanTypesOptions.find(el => el.value === interest_distribution_type),
     allowOverpayment: allow_overpayment ? yesNoConst.YES : yesNoConst.NO,
   };
@@ -326,7 +333,8 @@ export const prepareLoanToSend = (data: ILoanProduct) => {
   const {
     productId,
     defNumOfInstallments,
-    defNumOfIntrstFreeInstlmts,
+    defNumInterestFreeInstlmts,
+    defNumDeferredInstlmts,
     interestDistributionType,
     allowOverpayment,
   } = data;
@@ -334,7 +342,8 @@ export const prepareLoanToSend = (data: ILoanProduct) => {
   return {
     product_id: productId,
     def_num_of_installments: stringsUtil.toNumber(defNumOfInstallments),
-    def_num_of_intrst_free_instlmts: stringsUtil.toNumber(defNumOfIntrstFreeInstlmts),
+    def_num_interest_free_instlmts: stringsUtil.toNumber(defNumInterestFreeInstlmts),
+    def_num_deferred_instlmts: stringsUtil.toNumber(defNumDeferredInstlmts),
     interest_distribution_type: interestDistributionType && interestDistributionType.value,
     allow_overpayment: allowOverpayment ? yesNoConst.YES : yesNoConst.NO,
   };

@@ -25,14 +25,14 @@ interface IAddProductForm extends ISpinner {
 type TAddProductForm = IAddProductForm & InjectedFormProps<{}, IAddProductForm>;
 
 const AddProductForm: React.FC<TAddProductForm> = ({
-  currentProductType,
   addProduct,
-  onCancel,
   currentInstitution,
-  handleSubmit,
+  currentProductType,
   dirty,
-  pristine,
+  handleSubmit,
   interestDistributionValue,
+  onCancel,
+  pristine,
 }) => {
   const productType = React.useMemo(
     () => currentProductType && currentProductType.value,

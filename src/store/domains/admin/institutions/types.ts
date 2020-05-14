@@ -6,7 +6,6 @@ import { ISelectValue } from 'types';
 export interface IInstitutionData {
   id: number;
   institution_name: string;
-  limit_at_customer_level: boolean;
   master_institution_flag: string;
   sftp_location: string;
   sftp_public_key: string;
@@ -24,7 +23,6 @@ interface IInstitutionPlain {
   masterInstitutionFlag: boolean;
   sftpLocation: string;
   sftpPublicKey: string;
-  limitAtCustomerLevelFlag: boolean;
 }
 
 export interface IInstitution extends IInstitutionPlain {

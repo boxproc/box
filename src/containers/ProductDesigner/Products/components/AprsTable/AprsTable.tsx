@@ -94,7 +94,7 @@ const AprsTable: React.FC<IAprsTable> = ({
         ),
       },
       {
-        maxWidth: 120,
+        maxWidth: 80,
         accessor: 'rate',
         Header: <TableHeader title="Rate %" />,
         Cell: (cellInfo: CellInfo) => (
@@ -108,16 +108,26 @@ const AprsTable: React.FC<IAprsTable> = ({
         ),
       },
       {
-        maxWidth: 155,
-        accessor: 'graceNumberOfDays',
-        Header: <TableHeader title="Grace Number of&nbsp;Days" />,
-        Cell: (cellInfo: CellInfo) => (
-          <EditableTableCell
-            updateAction={updateProductApr}
+        maxWidth: 120,
+        accessor: 'aprStartDate',
+        Header: <TableHeader title="Start Date" />,
+        Cell: (props: TCell<'aprStartDate'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+            isDate={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 100,
+        accessor: 'initialInterestFreeDays',
+        Header: <TableHeader title="Initial Interest Free Days" />,
+        Cell: (props: TCell<'aprStartDate'>) => (
+          <TableCell
+            value={props.value}
             isSmaller={true}
             isNumber={true}
-            cellInfo={cellInfo}
-            isEditable={isEditableCell}
           />
         ),
       },
@@ -131,7 +141,7 @@ const AprsTable: React.FC<IAprsTable> = ({
           >
             <Button
               iconName={iconNamesConst.DELETE}
-              title={isEditableCell && 'delete'}
+              title={isEditableCell ? 'delete' : ''}
               size="10"
               withConfirmation={true}
               confirmationText={`Confirm want you delete APR?`}

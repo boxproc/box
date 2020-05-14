@@ -33,7 +33,7 @@ const LoanDetails: React.FC<ILoanDetails> = ({
         flexWrap="wrap"
       >
         <Box
-          width={[1 / 3]}
+          width={[1 / 4]}
           p="8px"
           pt="26px"
         >
@@ -49,7 +49,7 @@ const LoanDetails: React.FC<ILoanDetails> = ({
           />
         </Box>
         <Box
-          width={[1 / 6]}
+          width="130px"
           p="8px"
           pt="26px"
         >
@@ -69,24 +69,40 @@ const LoanDetails: React.FC<ILoanDetails> = ({
         </Box>
         {isEqualOrActualDistribution && (
           <Box
-            width={[1 / 6]}
+            width="130px"
             p="8px"
           >
             <Field
-              id="defNumOfIntrstFreeInstlmts"
-              name="defNumOfIntrstFreeInstlmts"
+              id="defNumInterestFreeInstlmts"
+              name="defNumInterestFreeInstlmts"
               component={InputField}
               placeholder="Enter #"
-              label="Default # of interest free installments"
+              label="Default # of Interest Free Installments"
               disabled={isReadOnly}
               isNumber={true}
               validate={[
-                formErrorUtil.isRequired,
                 formErrorUtil.isInteger,
               ]}
             />
           </Box>
         )}
+        <Box
+          width="130px"
+          p="8px"
+        >
+          <Field
+            id="defNumDeferredInstlmts"
+            name="defNumDeferredInstlmts"
+            component={InputField}
+            placeholder="Enter #"
+            label="Default # of Deferred Installments"
+            disabled={isReadOnly}
+            isNumber={true}
+            validate={[
+              formErrorUtil.isInteger,
+            ]}
+          />
+        </Box>
         <Box
           width="160px"
           p="8px"

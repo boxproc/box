@@ -182,7 +182,7 @@ const CurrencyRateForm: React.FC<TCurrencyRateForm> = ({
             />
           </Box>
         )}
-        {!isCustomProvider && (
+        {isEditMode && (
           <Box width="180px" p="8px">
             <Field
               id="providerDatetime"

@@ -23,7 +23,6 @@ export const customersMock: ICustomersData = {
       date_closed: '2019-07-29',
       identification_type: 'N',
       identification_number: 1,
-      limit_at_customer_level: false,
     },
     {
       id: 2,
@@ -46,7 +45,6 @@ export const customersMock: ICustomersData = {
       date_closed: '2019-07-29',
       identification_type: 'N',
       identification_number: 1,
-      limit_at_customer_level: true,
     },
   ],
 };

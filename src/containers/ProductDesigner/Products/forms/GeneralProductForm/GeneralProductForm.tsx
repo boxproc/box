@@ -32,18 +32,18 @@ interface IGeneralProductForm extends ISpinner {
 type TGeneralProductForm = IGeneralProductForm & InjectedFormProps<{}, IGeneralProductForm>;
 
 const GeneralProductForm: React.FC<TGeneralProductForm> = ({
-  getProduct,
-  deleteProduct,
-  updateProduct,
-  handleSubmit,
-  onCancel,
-  dirty,
-  pristine,
-  isProductOverride,
   currentInstitution,
   currentProductName,
+  deleteProduct,
+  dirty,
+  getProduct,
+  handleSubmit,
+  isProductOverride,
   isReadOnly,
   isUpdatingOrDeleting,
+  onCancel,
+  pristine,
+  updateProduct,
 }) => {
   React.useEffect(
     () => {

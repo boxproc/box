@@ -32,7 +32,7 @@ export const currencyRatesMock: ICurrencyRatesData = {
       id: 3,
       institution_id: 1,
       institution_name: 'BOX',
-      rate_provider: 'fixer.io',
+      rate_provider: 'custom',
       from_currency: 'NOK',
       to_currency: 'GBP',
       spot_rate: 9.74948,

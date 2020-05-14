@@ -22,7 +22,6 @@ interface IEditCustomerModal extends IWithModal {
   interfacesOptions: Array<ISelectValue>;
   isFormDirty: boolean;
   isInterfacesLoading: boolean;
-  isLimitAtCustomerLevel: boolean;
 }
 
 const modalName = modalNamesConst.EDIT_CUSTOMER;
@@ -35,7 +34,6 @@ const EditCustomerModal: React.FC<IEditCustomerModal> = ({
   interfacesOptions,
   isFormDirty,
   isInterfacesLoading,
-  isLimitAtCustomerLevel,
   isReadOnly,
 }) => {
   React.useEffect(
@@ -88,14 +86,12 @@ const EditCustomerModal: React.FC<IEditCustomerModal> = ({
             onCancel={handleOnCancel}
           />
         </TabsPanel>
-        {isLimitAtCustomerLevel && (
-          <TabsPanel title="Limit">
-            <CurrencyLimitForm
-              isReadOnly={isReadOnly}
-              onCancel={handleOnCancel}
-            />
-          </TabsPanel>
-        )}
+        <TabsPanel title="Limit">
+          <CurrencyLimitForm
+            isReadOnly={isReadOnly}
+            onCancel={handleOnCancel}
+          />
+        </TabsPanel>
       </Tabs>
     </Modal>
   );

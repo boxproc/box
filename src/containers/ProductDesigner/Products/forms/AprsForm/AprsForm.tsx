@@ -1,60 +1,154 @@
 import React from 'react';
-import { InjectedFormProps, reduxForm } from 'redux-form';
+import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button } from 'components';
-import { formNamesConst } from 'consts';
-import { AprsTable, ProductAprs } from 'containers/ProductDesigner/Products/components';
+import { Button, InputField, MaskField, NumberFormatField, SelectField } from 'components';
+import {
+  aprDateConst,
+  aprDateOptions,
+  aprTypesOptions,
+  dateFormatConst,
+  formNamesConst,
+  iconNamesConst,
+  maskFormatConst,
+} from 'consts';
 import { THandleAddProductApr } from 'store';
+import { ISelectValue } from 'types';
+import { formErrorUtil } from 'utils';
 
 interface IAprsForm {
   addProductApr: THandleAddProductApr;
   isLoading: boolean;
-  onCancel: () => void;
-  isReadOnly: boolean;
+  startDateValue: ISelectValue;
 }
 
 type TAprsForm = IAprsForm & InjectedFormProps<{}, IAprsForm>;
 
 const AprsForm: React.FC<TAprsForm> = ({
-  onCancel,
   addProductApr,
   handleSubmit,
-  pristine,
-  dirty,
   isLoading,
-  isReadOnly,
+  pristine,
+  startDateValue,
 }) => {
+  const buttonText = React.useMemo(
+    () => isLoading ? 'Adding...' : 'Add APR',
+    [isLoading]
+  );
+
+  const isFutureDate = React.useMemo(
+    () => startDateValue && startDateValue.value === aprDateConst.FUTURE,
+    [startDateValue]
+  );
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(addProductApr),
     [handleSubmit, addProductApr]
   );
 
   return (
-    <React.Fragment>
-      {!isReadOnly && (
-        <form onSubmit={handleSubmitForm}>
-          <Flex alignItems="flex-end" flexWrap="wrap">
-            <ProductAprs
-              isLoading={isLoading}
-              isDisabled={isLoading}
-              pristine={pristine}
+    <form onSubmit={handleSubmitForm}>
+      <Flex
+        alignItems="flex-end"
+        flexWrap="wrap"
+        mx="-8px"
+        width="100%"
+      >
+        <Box width={[1 / 5]} p="8px">
+          <Field
+            id="description"
+            name="description"
+            component={InputField}
+            label="Description"
+            placeholder="Enter Description"
+            disabled={isLoading}
+            validate={[formErrorUtil.isRequired]}
+          />
+        </Box>
+        <Box width={[1 / 5]} p="8px">
+          <Field
+            id="calculationMethod"
+            name="calculationMethod"
+            component={SelectField}
+            label="Calculation Method"
+            options={aprTypesOptions}
+            placeholder="Select Method"
+            isDisabled={isLoading}
+            isClearable={false}
+            validate={[formErrorUtil.isRequired]}
+          />
+        </Box>
+        <Box width="80px" p="8px">
+          <Field
+            id="rate"
+            name="rate"
+            component={NumberFormatField}
+            label="Rate %"
+            disabled={isLoading}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
+            validate={[
+              formErrorUtil.isRequired,
+              formErrorUtil.isNumber,
+              formErrorUtil.isPositive,
+            ]}
+          />
+        </Box>
+        <Box width="155px" p="8px">
+          <Field
+            id="aprStartDate"
+            name="aprStartDate"
+            component={SelectField}
+            label="Start Date"
+            options={aprDateOptions}
+            placeholder="Select Start Date"
+            isDisabled={isLoading}
+            validate={[formErrorUtil.isRequired]}
+          />
+        </Box>
+        {isFutureDate && (
+          <Box width="120px" p="8px">
+            <Field
+              id="aprFutureStartDate"
+              name="aprFutureStartDate"
+              component={MaskField}
+              label="Future Date"
+              placeholder={dateFormatConst.DATE}
+              mask={maskFormatConst.DATE}
+              disabled={isLoading}
+              autoFocus={true}
+              validate={[
+                formErrorUtil.isRequired,
+                formErrorUtil.isFutureDate,
+              ]}
             />
-          </Flex>
-        </form>
-      )}
-      <Box pt="10px">
-        <AprsTable isReadOnly={isReadOnly} />
-      </Box>
-      <Flex justifyContent="flex-end">
-        <Button
-          text="Close"
-          onClick={onCancel}
-          withConfirmation={dirty}
-        />
+          </Box>
+        )}
+        <Box width="125px" p="8px">
+          <Field
+            id="initialInterestFreeDays"
+            name="initialInterestFreeDays"
+            component={InputField}
+            label="Initial Interest Free Days"
+            placeholder="Enter Free Days"
+            isNumber={true}
+            disabled={isLoading}
+            validate={[
+              formErrorUtil.isInteger,
+            ]}
+          />
+        </Box>
+        <Box pb="15px">
+          <Button
+            text={buttonText}
+            iconName={iconNamesConst.PLUS}
+            disabled={pristine || isLoading}
+          />
+        </Box>
       </Flex>
-    </React.Fragment>
+    </form>
   );
 };
 

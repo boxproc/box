@@ -8,7 +8,8 @@ export const productAprsMock: IProductAprsData = {
       description: 'Base APR',
       calculation_method: 'A',
       rate: 2.5,
-      grace_number_of_days: 1,
+      apr_start_date: '05/05/2020',
+      initial_interest_free_days: 1,
     },
     {
       product_id: 3,
@@ -16,7 +17,8 @@ export const productAprsMock: IProductAprsData = {
       description: 'APR',
       calculation_method: 'A',
       rate: 2.5,
-      grace_number_of_days: 1,
+      apr_start_date: '05/05/2020',
+      initial_interest_free_days: 1,
     },
     {
       product_id: 3,
@@ -24,7 +26,8 @@ export const productAprsMock: IProductAprsData = {
       description: 'APR',
       calculation_method: 'A',
       rate: 2.5,
-      grace_number_of_days: 1,
+      apr_start_date: '05/05/2020',
+      initial_interest_free_days: 1,
     },
   ],
 };

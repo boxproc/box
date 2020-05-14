@@ -83,7 +83,7 @@ export const getDictionaryCurrencies = () =>
  */
 export const getConvertibleInstCurrencies = (instId: number) =>
   // throttleUtil.getDataAfter(dictionaryCurrenciesMock, 500);
-  apiClientService.post('/ui/product_designer/products/get_currencies', {
+  apiClientService.post('ui/product_designer/products/get_currencies', {
     data: { institution_id: instId },
   });
 

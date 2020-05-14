@@ -16,7 +16,6 @@ export const prepareDataToSend = (data: Partial<IInstitutionDetails>) => {
     sftpLocation,
     sftpPublicKey,
     baseCurrency,
-    limitAtCustomerLevelFlag,
   } = data;
 
   return {
@@ -26,7 +25,6 @@ export const prepareDataToSend = (data: Partial<IInstitutionDetails>) => {
     sftp_location: sftpLocation,
     sftp_public_key: sftpPublicKey,
     base_currency: baseCurrency && baseCurrency.value,
-    limit_at_customer_level: limitAtCustomerLevelFlag ? true : false,
   };
 };
 
@@ -41,7 +39,6 @@ export const prepareDataToRender = (data: any) => { // IInstitutionData
     status,
     sftp_location,
     sftp_public_key,
-    limit_at_customer_level,
     master_institution_flag,
   } = data;
 
@@ -53,7 +50,6 @@ export const prepareDataToRender = (data: any) => { // IInstitutionData
     status: instStatus && instStatus.label,
     sftpLocation: sftp_location,
     sftpPublicKey: sftp_public_key,
-    limitAtCustomerLevelFlag: limit_at_customer_level,
     masterInstitutionFlag: master_institution_flag === yesNoConst.YES,
   };
 };

@@ -145,15 +145,6 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
                 validate={[formErrorUtil.isRequired]}
               />
             </Box>
-            <Box width={[2 / 5]} p="8px">
-              <Field
-                id="limitAtCustomerLevelFlag"
-                name="limitAtCustomerLevelFlag"
-                component={CheckboxField}
-                label="Apply Limit at Customer Level"
-                disabled={isReadOnly}
-              />
-            </Box>
             <Hr />
           </React.Fragment>
           <Box width={[1]} p="8px">

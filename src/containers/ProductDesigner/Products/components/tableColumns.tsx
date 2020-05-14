@@ -52,7 +52,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 90,
+    maxWidth: 80,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
     Cell: (props: TCell<'status'>) => (
@@ -82,7 +82,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 80,
+    maxWidth: 70,
     Header: <TableHeader title="Currency Code" />,
     accessor: 'currencyCode',
     Cell: (props: TCell<'currencyCode'>) => (

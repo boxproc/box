@@ -1,4 +1,5 @@
 import {
+  aprDateConst,
   aprTypesOptions,
   feeTypesOptions,
   rewardsTypesOptions,
@@ -19,6 +20,7 @@ import {
   IProductRewardPlain,
 } from './types';
 
+import { ISelectValue } from 'types';
 import { stringsUtil } from 'utils';
 
 export const prepareProductAprsToRender = (data: IProductAprData): IProductApr => {
@@ -32,7 +34,8 @@ export const prepareProductAprsToRender = (data: IProductAprData): IProductApr =
     description,
     calculation_method,
     rate,
-    grace_number_of_days,
+    apr_start_date,
+    initial_interest_free_days,
   } = data;
 
   const calculationMethod = aprTypesOptions.find(el => el.value === calculation_method);
@@ -43,7 +46,8 @@ export const prepareProductAprsToRender = (data: IProductAprData): IProductApr =
     description,
     calculationMethod: calculationMethod && calculationMethod.label,
     rate: stringsUtil.numberToFixed(rate, 2),
-    graceNumberOfDays: grace_number_of_days,
+    aprStartDate: apr_start_date,
+    initialInterestFreeDays: initial_interest_free_days,
   };
 };
 
@@ -57,7 +61,7 @@ export const prepareProductAprs = (data: Partial<IProductAprPlain>): Partial<IPr
     productId,
     description,
     rate,
-    graceNumberOfDays,
+    initialInterestFreeDays,
   } = data;
 
   return {
@@ -65,7 +69,7 @@ export const prepareProductAprs = (data: Partial<IProductAprPlain>): Partial<IPr
     product_id: productId,
     description,
     rate: stringsUtil.toNumber(rate),
-    grace_number_of_days: stringsUtil.toNumber(graceNumberOfDays),
+    initial_interest_free_days: stringsUtil.toNumber(initialInterestFreeDays),
   };
 };
 
@@ -75,11 +79,29 @@ export const prepareFormDataProductAprsToSend = (data: Partial<IProductAprFormVa
     return null;
   }
 
-  const { calculationMethod } = data;
+  const { calculationMethod, aprStartDate, aprFutureStartDate } = data;
+
+  const startDate = (date: ISelectValue) => {
+    if (!date) {
+      return null;
+    }
+
+    const isFutureDate = date && date.value === aprDateConst.FUTURE;
+    const isNextBillingDate = date && date.value === aprDateConst.NEXT_BILLING_DAY;
+
+    if (isFutureDate) {
+      return aprFutureStartDate;
+    } else if (isNextBillingDate) {
+      return date.value;
+    } else {
+      return null;
+    }
+  };
 
   return {
     ...prepareProductAprs(data),
     calculation_method: calculationMethod && calculationMethod.value,
+    apr_start_date: startDate(aprStartDate),
   };
 };
 

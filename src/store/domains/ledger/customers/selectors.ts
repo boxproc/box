@@ -68,11 +68,6 @@ export const currentCustomerInstIdSelector = createSelector(
   data => data && data.institutionId.value
 );
 
-export const isLimitAtCustomerLevelSelector = createSelector(
-  currentCustomerSelector,
-  data => data && data.limitAtCustomerLevel
-);
-
 /**
  * Repayment debit cards selectors
  */

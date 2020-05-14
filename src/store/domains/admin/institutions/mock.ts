@@ -9,7 +9,6 @@ export const institutionsMock: IInstitutionsData = {
       sftp_location: '',
       sftp_public_key: '',
       master_institution_flag: 'Y',
-      limit_at_customer_level: false,
       base_currency: 740,
     },
     {
@@ -19,7 +18,6 @@ export const institutionsMock: IInstitutionsData = {
       sftp_location: '',
       sftp_public_key: '',
       master_institution_flag: 'N',
-      limit_at_customer_level: true,
       base_currency: 533,
     },
   ],
