@@ -1,7 +1,13 @@
 import { push } from 'react-router-redux';
 import { getFormValues } from 'redux-form';
 
-import { basePath, formNamesConst, modalNamesConst, uiItemsConst } from 'consts';
+import {
+  basePath,
+  cardStatusesOptions,
+  formNamesConst,
+  modalNamesConst,
+  uiItemsConst,
+} from 'consts';
 
 import { openModal, setIsOpenFilter } from 'store';
 import {
@@ -70,7 +76,7 @@ export const handleActivateCard: THandleActivateCard = cardId =>
         dispatch(openModal({
           name: modalNamesConst.MESSAGE,
           payload: {
-            title: 'Card was activated.',
+            title: 'Card was activated',
             message: `Card ID: ${cardId}`,
           },
         }));
@@ -97,12 +103,15 @@ export const handleChangeCardStatus: THandleChangeCardStatus = ids =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const preparedData = prepareCardIds(ids);
+        const statusOption = cardStatusesOptions.find(el => el.value === ids.cardStatusId);
+        const statusName = statusOption ? `Status: ${statusOption.label}.` : '';
 
         await dispatch(changeCardStatus(preparedData));
         dispatch(openModal({
           name: modalNamesConst.MESSAGE,
           payload: {
-            title: 'Status was changed.',
+            title: 'Status was changed',
+            message: `Card ID: ${ids.cardId}. ${statusName}`,
           },
         }));
       },

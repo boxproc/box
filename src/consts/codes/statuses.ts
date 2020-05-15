@@ -148,7 +148,7 @@ export enum cardStatusesConst {
 export const cardStatusesOptions = [
   { value: cardStatusesConst.UNSPECIFIED, label: 'Unspecified' },
   { value: cardStatusesConst.ACTIVE, label: 'Active' },
-  { value: cardStatusesConst.INACTIVE, label: 'Inactive ' },
+  { value: cardStatusesConst.INACTIVE, label: 'Inactive' },
   { value: cardStatusesConst.CARD_LOST, label: 'Card lost' },
   { value: cardStatusesConst.CARD_STOLEN, label: 'Card stolen' },
   { value: cardStatusesConst.PIN_TRIES_EXCEEDED, label: 'PIN tries exceeded' },

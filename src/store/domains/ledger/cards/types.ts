@@ -8,7 +8,7 @@ export interface ICardData {
   expiry_date: string;
   account_id: number;
   customer_id: number;
-  card_status_id: number;
+  card_status_id: number | string;
   card_status_name: string;
 }
 

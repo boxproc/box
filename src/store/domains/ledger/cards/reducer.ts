@@ -1,6 +1,6 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
-// import { cardStatusesConst, cardStatusesOptions } from 'consts';
+import { cardStatusesConst, cardStatusesOptions } from 'consts';
 import { ActionTypeKeys, TCardsAction } from './actionTypes';
 import { ICardsState } from './types';
 
@@ -16,36 +16,30 @@ const cardsReducer = (state = cardsInitialState, action: TCardsAction) => {
     case ActionTypeKeys.FILTER_CARDS_BY_ID_FULFILLED:
       return state.set('cards', action.payload.cards);
 
-    // case ActionTypeKeys.ACTIVATE_CARD_FULFILLED:
-    //   const updatedCard = {
-    //     ...state.cards.find(card => card.id === action.meta.cardId),
-    //     status: cardStatusesConst.ACTIVE,
-    //     card_status_name: 'Active',
-    //   };
+    case ActionTypeKeys.ACTIVATE_CARD_FULFILLED:
+      const aCardInd = state.cards.findIndex(el => el.id === action.meta.cardId);
+      const aCards = state.cards.asMutable();
 
-    //   return state.set(
-    //     'cards',
-    //     [
-    //       ...state.cards.filter(card => card.id !== action.meta.cardId).asMutable(),
-    //       updatedCard,
-    //     ].sort((a, b) => (a.id > b.id) ? 1 : -1)
-    //   );
+      aCards[aCardInd] = {
+        ...aCards[aCardInd],
+        card_status_id: cardStatusesConst.ACTIVE,
+        card_status_name: 'Active',
+      };
 
-    // case ActionTypeKeys.CHANGE_CARD_STATUS_FULFILLED:
-    //   const statusName = cardStatusesOptions.find(card => card.value === action.meta.cardStatusId);
-    //   const sUpdatedCard = {
-    //     ...state.cards.find(card => card.id === action.meta.cardId),
-    //     status: action.meta.cardStatusId,
-    //     card_status_name: statusName && statusName.label,
-    //   };
+      return state.set('cards', aCards);
 
-    //   return state.set(
-    //     'cards',
-    //     [
-    //       ...state.cards.filter(card => card.id !== action.meta.cardId).asMutable(),
-    //       sUpdatedCard,
-    //     ].sort((a, b) => (a.id > b.id) ? 1 : -1)
-    //   );
+    case ActionTypeKeys.CHANGE_CARD_STATUS_FULFILLED:
+      const statusName = cardStatusesOptions.find(el => el.value === action.meta.card_status_id);
+      const cCardInd = state.cards.findIndex(el => el.id === action.meta.card_id);
+      const cCards = state.cards.asMutable();
+
+      cCards[cCardInd] = {
+        ...cCards[cCardInd],
+        card_status_id: action.meta.card_status_id,
+        card_status_name: statusName && statusName.label,
+      };
+
+      return state.set('cards', cCards);
 
     case ActionTypeKeys.RESET_CARDS:
       return state = cardsInitialState;
