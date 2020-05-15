@@ -1,5 +1,5 @@
 import { IResponseStatus, TApiResponse } from 'types';
-import { ICardIds, ICardsData } from './types';
+import { ICardIdsToSend, ICardsData } from './types';
 
 export enum ActionTypeKeys {
   FILTER_CARDS = 'cards/FILTER_CARDS',
@@ -66,7 +66,7 @@ export interface IChangeCardStatusAction {
 export interface IChangeCardStatusFulfilledAction {
   readonly payload: IResponseStatus;
   readonly type: ActionTypeKeys.CHANGE_CARD_STATUS_FULFILLED;
-  readonly meta: ICardIds;
+  readonly meta: ICardIdsToSend;
 }
 
 export interface IChangeCardStatusRejectedAction {
