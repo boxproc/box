@@ -58,6 +58,7 @@ export type THandleActivateCard = (cardId: number) => Thunk<void>;
 export const activateCard: TActivateCard = cardId => ({
   type: ActionTypeKeys.ACTIVATE_CARD,
   payload: api.activateCard(cardId),
+  meta: { cardId },
 });
 
 export const handleActivateCard: THandleActivateCard = cardId =>
@@ -65,11 +66,13 @@ export const handleActivateCard: THandleActivateCard = cardId =>
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(activateCard(cardId));
-        await dispatch(handleFilterCards());
 
         dispatch(openModal({
           name: modalNamesConst.MESSAGE,
-          payload: { message: 'Card was activated.' },
+          payload: {
+            title: 'Card was activated.',
+            message: `Card ID: ${cardId}`,
+          },
         }));
       },
       dispatch
@@ -86,6 +89,7 @@ export type THandleChangeCardStatus = (ids: ICardIds) => Thunk<void>;
 export const changeCardStatus: TChangeCardStatus = ids => ({
   type: ActionTypeKeys.CHANGE_CARD_STATUS,
   payload: api.changeCardStatus(ids),
+  meta: ids,
 });
 
 export const handleChangeCardStatus: THandleChangeCardStatus = ids =>
@@ -95,7 +99,12 @@ export const handleChangeCardStatus: THandleChangeCardStatus = ids =>
         const preparedData = prepareCardIds(ids);
 
         await dispatch(changeCardStatus(preparedData));
-        await dispatch(handleFilterCards());
+        dispatch(openModal({
+          name: modalNamesConst.MESSAGE,
+          payload: {
+            title: 'Status was changed.',
+          },
+        }));
       },
       dispatch
     );
