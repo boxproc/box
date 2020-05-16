@@ -30,21 +30,21 @@ import {
 import { productTypesConst } from 'consts';
 
 interface IEditProductForms {
-  currentProductType: string | number;
   currentProductId: number;
-  isProductOverride: boolean;
+  currentProductType: string | number;
   isAnyFormDirty: boolean;
-  onCancel: () => void;
+  isProductOverride: boolean;
   isReadOnly: boolean;
+  onCancel: () => void;
 }
 
 const EditProductForms: React.FC<IEditProductForms> = ({
-  currentProductType,
   currentProductId,
-  isProductOverride,
+  currentProductType,
   isAnyFormDirty,
-  onCancel,
+  isProductOverride,
   isReadOnly,
+  onCancel,
 }) => {
   const isLoanType = React.useMemo(
     () => currentProductType === productTypesConst.LOAN,

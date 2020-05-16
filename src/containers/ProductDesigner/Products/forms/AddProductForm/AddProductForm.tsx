@@ -15,11 +15,14 @@ import { THandleAddProduct } from 'store';
 import { ISelectValue } from 'types';
 
 interface IAddProductForm extends ISpinner {
-  currentProductType: ISelectValue;
   addProduct: THandleAddProduct;
   currentInstitution: ISelectValue;
+  currentProductType: ISelectValue;
+  enabledForCustomerLimitValue: ISelectValue;
+  institutionValue: ISelectValue;
   interestDistributionValue: ISelectValue;
   onCancel: () => void;
+  statementCycleTypeValue: ISelectValue;
 }
 
 type TAddProductForm = IAddProductForm & InjectedFormProps<{}, IAddProductForm>;
@@ -29,10 +32,13 @@ const AddProductForm: React.FC<TAddProductForm> = ({
   currentInstitution,
   currentProductType,
   dirty,
+  enabledForCustomerLimitValue,
   handleSubmit,
+  institutionValue,
   interestDistributionValue,
   onCancel,
   pristine,
+  statementCycleTypeValue,
 }) => {
   const productType = React.useMemo(
     () => currentProductType && currentProductType.value,
@@ -50,6 +56,9 @@ const AddProductForm: React.FC<TAddProductForm> = ({
         <TabsPanel title="General">
           <ProductGeneralInfo
             currentInstitution={currentInstitution}
+            enabledForCustomerLimitValue={enabledForCustomerLimitValue}
+            institutionValue={institutionValue}
+            statementCycleTypeValue={statementCycleTypeValue}
           />
         </TabsPanel>
         <TabsPanel
