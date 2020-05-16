@@ -332,19 +332,22 @@ export const dictionaryCurrenciesSelector = createSelector(
 
 export const currenciesOptionsSelector = createSelector(
   defaultDictionaryCurrenciesSelector,
-  data => data && data.asMutable().map(el => {
-    if (!el) {
-      return null;
-    }
+  data => {
+    const checkedData = data && data.filter(el => Object.keys(el).length !== 0);
 
-    const { currency_code, name } = el;
+    return checkedData && checkedData.asMutable().map(el => {
+      if (!el) {
+        return null;
+      }
 
-    return {
-      value: currency_code,
-      label: `${currency_code} - ${name}`,
-    };
-  })
-);
+      const { currency_code, name } = el;
+
+      return {
+        value: currency_code,
+        label: `${currency_code} - ${name}`,
+      };
+    });
+  });
 
 export const currencyNumsOptionsSelector = createSelector(
   defaultDictionaryCurrenciesSelector,
