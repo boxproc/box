@@ -69,22 +69,13 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
     () => {
       if (!enabledForCustomerLimitValue) {
         getDictionaryCurrencies();
-      }
-    },
-    [
-      enabledForCustomerLimitValue,
-      getDictionaryCurrencies,
-    ]
-  );
-
-  React.useEffect(
-    () => {
-      if (enabledForCustomerLimitValue && institutionId) {
+      } else if (enabledForCustomerLimitValue && institutionId) {
         getConvertibleInstCurrencies(institutionId);
       }
     },
     [
       enabledForCustomerLimitValue,
+      getDictionaryCurrencies,
       getConvertibleInstCurrencies,
       institutionId,
     ]
