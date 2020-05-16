@@ -18,15 +18,18 @@ import { THandleDeleteProduct, THandleGetProduct, THandleUpdateProduct } from 's
 import { ISelectValue } from 'types';
 
 interface IGeneralProductForm extends ISpinner {
-  getProduct: THandleGetProduct;
-  updateProduct: THandleUpdateProduct;
-  deleteProduct: THandleDeleteProduct;
   currentInstitution: ISelectValue;
-  isProductOverride: boolean;
-  onCancel?: () => void;
   currentProductName: string;
+  deleteProduct: THandleDeleteProduct;
+  enabledForCustomerLimitValue: ISelectValue;
+  getProduct: THandleGetProduct;
+  institutionValue: ISelectValue;
+  isProductOverride: boolean;
   isReadOnly: boolean;
   isUpdatingOrDeleting: boolean;
+  onCancel?: () => void;
+  statementCycleTypeValue: ISelectValue;
+  updateProduct: THandleUpdateProduct;
 }
 
 type TGeneralProductForm = IGeneralProductForm & InjectedFormProps<{}, IGeneralProductForm>;
@@ -36,13 +39,16 @@ const GeneralProductForm: React.FC<TGeneralProductForm> = ({
   currentProductName,
   deleteProduct,
   dirty,
+  enabledForCustomerLimitValue,
   getProduct,
   handleSubmit,
+  institutionValue,
   isProductOverride,
   isReadOnly,
   isUpdatingOrDeleting,
   onCancel,
   pristine,
+  statementCycleTypeValue,
   updateProduct,
 }) => {
   React.useEffect(
@@ -80,6 +86,9 @@ const GeneralProductForm: React.FC<TGeneralProductForm> = ({
         <ProductGeneralInfo
           isEditMode={true}
           currentInstitution={currentInstitution}
+          enabledForCustomerLimitValue={enabledForCustomerLimitValue}
+          institutionValue={institutionValue}
+          statementCycleTypeValue={statementCycleTypeValue}
           isReadOnly={isReadOnly || isUpdatingOrDeleting}
         />
         <Hr />

@@ -24,6 +24,9 @@ const mapStateToProps = (state: IStoreState) => ({
   currentProductType: formSelector(state, 'productType'),
   currentInstitution: formSelector(state, 'institutionId'),
   interestDistributionValue: formSelector(state, 'interestDistributionType'),
+  enabledForCustomerLimitValue: formSelector(state, 'enabledForCustomerLimit'),
+  institutionValue: formSelector(state, 'institutionId'),
+  statementCycleTypeValue: formSelector(state, 'statementCycleTypeId'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
