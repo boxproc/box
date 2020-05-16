@@ -125,5 +125,5 @@ const GeneralProductForm: React.FC<TGeneralProductForm> = ({
 export default reduxForm<{}, IGeneralProductForm>({
   form: formNamesConst.GENERAL_PRODUCT,
   destroyOnUnmount: true,
-  enableReinitialize: true,
+  enableReinitialize: false,
 })(withSpinner()(GeneralProductForm));
