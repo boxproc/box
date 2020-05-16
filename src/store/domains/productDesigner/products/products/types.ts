@@ -7,7 +7,7 @@ interface IProductPlainData extends IPlainInfo {
   description: string;
   history_retention_number_of_day: number;
   locked_flag: string;
-  enabled_for_customer_limit: string;
+  enabled_for_customer_limit: boolean;
 }
 
 interface IProductPlain extends IPlainInfo {
