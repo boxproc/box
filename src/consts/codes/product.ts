@@ -23,14 +23,25 @@ export const productTypesOptions = [
  */
 
 export enum loanInterestConst {
-  REDUCING_BALANCE_METHOD = 'R',
+  REDUCING_BALANCE_METHOD_SIMPLE = 'R',
+  REDUCING_BALANCE_METHOD_COMPOUND = 'C',
   FLAT_RATE_METHOD = 'F',
   ALL_INTEREST_IN_LAST_INSTALLMENT = 'A',
 }
 
 export const loanTypesOptions = [
-  { value: loanInterestConst.REDUCING_BALANCE_METHOD, label: 'Reducing-balance method' },
-  { value: loanInterestConst.FLAT_RATE_METHOD, label: 'Flat-rate (daily accrual) method' },
+  {
+    value: loanInterestConst.REDUCING_BALANCE_METHOD_SIMPLE,
+    label: 'Reducing-balance method (simple)',
+  },
+  {
+    value: loanInterestConst.REDUCING_BALANCE_METHOD_COMPOUND,
+    label: 'Reducing-balance method (compound)',
+  },
+  {
+    value: loanInterestConst.FLAT_RATE_METHOD,
+    label: 'Flat-rate (daily accrual) method',
+  },
   {
     value: loanInterestConst.ALL_INTEREST_IN_LAST_INSTALLMENT,
     label: 'All interest in last installment',
