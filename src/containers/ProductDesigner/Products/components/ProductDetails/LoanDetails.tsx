@@ -21,7 +21,8 @@ const LoanDetails: React.FC<ILoanDetails> = ({
 }) => {
   const isEqualOrActualDistribution = React.useMemo(
     () => interestDistributionValue
-      && (interestDistributionValue.value === loanInterestConst.REDUCING_BALANCE_METHOD
+      && (interestDistributionValue.value === loanInterestConst.REDUCING_BALANCE_METHOD_SIMPLE
+        || interestDistributionValue.value === loanInterestConst.REDUCING_BALANCE_METHOD_COMPOUND
         || interestDistributionValue.value === loanInterestConst.FLAT_RATE_METHOD),
     [interestDistributionValue]
   );
