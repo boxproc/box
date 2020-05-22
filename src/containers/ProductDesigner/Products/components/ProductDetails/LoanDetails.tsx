@@ -34,7 +34,7 @@ const LoanDetails: React.FC<ILoanDetails> = ({
         flexWrap="wrap"
       >
         <Box
-          width={[1 / 4]}
+          width={[1 / 3]}
           p="8px"
           pt="26px"
         >
