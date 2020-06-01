@@ -14,11 +14,11 @@ const CheckBoxWrapper = styled.div`
 `;
 
 export const renderCheckBoxTableCell = () => (cellInfo: CellInfo) => {
-  const isLocked = cellInfo.value === true;
+  const isChecked = cellInfo.value === true;
 
   return (
     <CheckBoxWrapper>
-      {isLocked ? (<CheckedBoxIcon />) : (<UncheckedBoxIcon />)}
+      {isChecked ? (<CheckedBoxIcon />) : (<UncheckedBoxIcon />)}
     </CheckBoxWrapper>
   );
 };

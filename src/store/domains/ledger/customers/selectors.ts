@@ -11,8 +11,9 @@ import {
   prepareCurrencyLimitToRender,
   prepareDataToRender,
   prepareDetailsToRender,
+  prepareDirectDebitAccountsToRender,
+  prepareDirectDebitMandatesToRender,
   prepareRepaymentDebitCardsToRender,
-  prepareRepaymentDirectDebitsToRender,
 } from './utils';
 
 export const defaultCustomersSelector = (state: IStoreState) => state.ledger.customers.customers;
@@ -81,15 +82,27 @@ export const repaymentDebitCardsSelector = createSelector(
 );
 
 /**
- * Repayment direct debit selectors
+ * Direct debit account selectors
  */
 
-export const defaultRepaymentDirectDebitsSelector = (state: IStoreState) =>
-  state.ledger.customers.repaymentDirectDebits;
+export const defaultDirectDebitAccountsSelector = (state: IStoreState) =>
+  state.ledger.customers.directDebitAccounts;
 
-export const repaymentDirectDebitsSelector = createSelector(
-  defaultRepaymentDirectDebitsSelector,
-  data => data && data.map(el => prepareRepaymentDirectDebitsToRender(el))
+export const directDebitsAccountsSelector = createSelector(
+  defaultDirectDebitAccountsSelector,
+  data => data && data.map(el => prepareDirectDebitAccountsToRender(el))
+);
+
+/**
+ * Direct debit mandates selectors
+ */
+
+export const defaultDirectDebitMandatesSelector = (state: IStoreState) =>
+  state.ledger.customers.directDebitMandates;
+
+export const directDebitsMandatesSelector = createSelector(
+  defaultDirectDebitMandatesSelector,
+  data => data && data.map(el => prepareDirectDebitMandatesToRender(el))
 );
 
 /**
@@ -138,12 +151,20 @@ export const isAddingRepaymentDebitCardSelector = createLoadingSelector([
   ActionTypeKeys.ADD_REPAYMENT_DEBIT_CARD,
 ]);
 
-export const isGettingRepaymentDirectDebitsSelector = createLoadingSelector([
-  ActionTypeKeys.GET_REPAYMENT_DIRECT_DEBITS,
+export const isGettingDirectDebitAccountsSelector = createLoadingSelector([
+  ActionTypeKeys.GET_DIRECT_DEBIT_ACCOUNTS,
 ]);
 
-export const isAddingRepaymentDirectDebitSelector = createLoadingSelector([
-  ActionTypeKeys.ADD_REPAYMENT_DIRECT_DEBIT,
+export const isAddingDirectDebitAccountSelector = createLoadingSelector([
+  ActionTypeKeys.ADD_DIRECT_DEBIT_ACCOUNT,
+]);
+
+export const isGettingDirectDebitMandatesSelector = createLoadingSelector([
+  ActionTypeKeys.GET_DIRECT_DEBIT_MANDATES,
+]);
+
+export const isAddingDirectDebitMandateSelector = createLoadingSelector([
+  ActionTypeKeys.ADD_DIRECT_DEBIT_MANDATE,
 ]);
 
 export const isGettingCurrencyLimitSelector = createLoadingSelector([

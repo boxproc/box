@@ -1,14 +1,18 @@
 // import { successResponseMock } from 'consts';
+import { successResponseMock } from 'consts';
 import { apiClientService } from 'services';
-// import { currencyLimitMock, customersMock } from './mock';
+// import { currencyLimitMock, customersMock, directDebitAccountsMock } from './mock';
+import { directDebitAccountsMock, directDebitMandatesMock } from './mock';
 import {
   ICurrencyLimitData,
   ICustomerData,
   ICustomersFilterToSend,
+  IDirectDebitAccountData,
   IRepaymentDebitCardData,
-  IRepaymentDirectDebitData,
   TLedgerId,
 } from './types';
+
+import { throttleUtil } from 'utils';
 
 // import { throttleUtil } from 'utils';
 
@@ -64,18 +68,37 @@ export const getRepaymentDebitCards = (data: number) =>
   });
 
 /**
- * Add repayment direct debit API
+ * Add direct debit account API
  */
-export const addRepaymentDirectDebit = (data: Partial<IRepaymentDirectDebitData>) =>
+export const addDirectDebitAccount = (data: Partial<IDirectDebitAccountData>) =>
   apiClientService.post('ui/ledger/customers/create_repayment_direct_debits', { data });
 
 /**
- * Get repayment direct debits API
+ * Get direct debit accounts API
  */
-export const getRepaymentDirectDebits = (data: number) =>
-  apiClientService.post('ui/ledger/customers/get_repayment_direct_debits', {
-    data: { customer_id: data },
-  });
+export const getDirectDebitAccounts = (data: number) =>
+  throttleUtil.getDataAfter(directDebitAccountsMock, 500);
+// apiClientService.post('ui/ledger/customers/get_repayment_direct_debits', {
+//   data: { customer_id: data },
+// });
+
+/**
+ * Add direct debit mandate API
+ */
+export const addDirectDebitMandate = (data: number) =>
+  throttleUtil.getDataAfter(successResponseMock, 500);
+// apiClientService.post('', {
+//   data: { account_id: data },
+// });
+
+/**
+ * Get direct debit mandates API
+ */
+export const getDirectDebitMandates = (data: number) =>
+  throttleUtil.getDataAfter(directDebitMandatesMock, 500);
+// apiClientService.post('', {
+//   data: { account_id: data },
+// });
 
 /**
  * Get customer currency limits API

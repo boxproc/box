@@ -15,14 +15,16 @@ import {
 import {
   ActionTypeKeys,
   IAddCustomerAction,
+  IAddDirectDebitAccountAction,
+  IAddDirectDebitMandateAction,
   IAddRepaymentDebitCardAction,
-  IAddRepaymentDirectDebitAction,
   IDeleteCustomerAction,
   IFilterCustomersAction,
   IFilterCustomersByIdAction,
   IGetCurrencyLimitAction,
+  IGetDirectDebitAccountsAction,
+  IGetDirectDebitMandatesAction,
   IGetRepaymentDebitCardsAction,
-  IGetRepaymentDirectDebitsAction,
   IUpdateCurrencyLimitAction,
   IUpdateCustomerAction,
 } from './actionTypes';
@@ -32,18 +34,18 @@ import {
   ICustomerData,
   ICustomerDetails,
   ICustomersFilterToSend,
+  IDirectDebitAccount,
+  IDirectDebitAccountData,
   IRepaymentDebitCardData,
   IRepaymentDebitCardFormValues,
-  IRepaymentDirectDebitData,
-  IRepaymentDirectDebitFormValues,
   TLedgerId,
 } from './types';
 import {
   prepareCurrencyLimitToSend,
   prepareDataToSend,
   prepareFilterToSend,
+  prepareFormDataDirectDebitAccountToSend,
   prepareFormDataRepaymentDebitCardToSend,
-  prepareFormDataRepaymentDirectDebitToSend,
 } from './utils';
 
 import { Thunk } from 'types';
@@ -128,7 +130,8 @@ export const handleAddCustomer: THandleAddCustomer = data =>
           name: modalNamesConst.MESSAGE,
           payload: {
             title: 'Customer was created',
-            message: `Customer ID: ${res.value.customer_id}` },
+            message: `Customer ID: ${res.value.customer_id}`,
+          },
         }));
 
         if (isAccessibleFiltering) {
@@ -251,58 +254,110 @@ export const handleAddRepaymentDebitCard: THandleAddRepaymentDebitCard = data =>
   };
 
 /**
- * Get repayment direct debits action
+ * Get direct debit accounts action
  */
 
-export type TGetRepaymentDirectDebits = (id: number) => IGetRepaymentDirectDebitsAction;
-export type THandleGetRepaymentDirectDebits = () => Thunk<void>;
+export type TGetDirectDebitAccounts = (id: number) => IGetDirectDebitAccountsAction;
+export type THandleGetDirectDebitAccounts = () => Thunk<void>;
 
-export const getRepaymentDirectDebits: TGetRepaymentDirectDebits = id => ({
-  type: ActionTypeKeys.GET_REPAYMENT_DIRECT_DEBITS,
-  payload: api.getRepaymentDirectDebits(id),
+export const getDirectDebitAccounts: TGetDirectDebitAccounts = id => ({
+  type: ActionTypeKeys.GET_DIRECT_DEBIT_ACCOUNTS,
+  payload: api.getDirectDebitAccounts(id),
 });
 
-export const handleGetRepaymentDirectDebits: THandleGetRepaymentDirectDebits = () =>
+export const handleGetDirectDebitAccounts: THandleGetDirectDebitAccounts = () =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
         const customerId = activeItemIdSelector(state);
 
-        await dispatch(getRepaymentDirectDebits(customerId));
+        await dispatch(getDirectDebitAccounts(customerId));
       },
       dispatch
     );
   };
 
 /**
- * Add repayment direct debit action
+ * Add direct debit account action
  */
 
-export type TAddRepaymentDirectDebit = (data: Partial<IRepaymentDirectDebitData>) =>
-  IAddRepaymentDirectDebitAction;
-export type THandleAddRepaymentDirectDebit = (data: Partial<IRepaymentDirectDebitFormValues>) =>
+export type TAddDirectDebitAccount = (data: Partial<IDirectDebitAccountData>) =>
+  IAddDirectDebitAccountAction;
+export type THandleAddDirectDebitAccount = (data: Partial<IDirectDebitAccount>) =>
   Thunk<void>;
 
-export const addRepaymentDirectDebit: TAddRepaymentDirectDebit = data => ({
-  type: ActionTypeKeys.ADD_REPAYMENT_DIRECT_DEBIT,
-  payload: api.addRepaymentDirectDebit(data),
+export const addDirectDebitAccount: TAddDirectDebitAccount = data => ({
+  type: ActionTypeKeys.ADD_DIRECT_DEBIT_ACCOUNT,
+  payload: api.addDirectDebitAccount(data),
 });
 
-export const handleAddRepaymentDirectDebit: THandleAddRepaymentDirectDebit = data =>
+export const handleAddDirectDebitAccount: THandleAddDirectDebitAccount = data =>
   async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
         const state = getState();
         const customerId = activeItemIdSelector(state);
-        const preparedData = prepareFormDataRepaymentDirectDebitToSend(data);
+        const preparedData = prepareFormDataDirectDebitAccountToSend(data);
 
-        await dispatch(addRepaymentDirectDebit({
+        await dispatch(addDirectDebitAccount({
           ...preparedData,
           customer_id: customerId,
         }));
-        await dispatch(handleGetRepaymentDirectDebits());
-        dispatch(resetForm(formNamesConst.REPAYMENT_DIRECT_DEBITS));
+        await dispatch(handleGetDirectDebitAccounts());
+        dispatch(resetForm(formNamesConst.DIRECT_DEBIT_ACCOUNTS));
+      },
+      dispatch
+    );
+  };
+
+/**
+ * Get direct debit mandates action
+ */
+
+export type TGetDirectDebitMandates = (accountId: number) => IGetDirectDebitMandatesAction;
+export type THandleGetDirectDebitMandates = (accountId: number) => Thunk<void>;
+
+export const getDirectDebitMandates: TGetDirectDebitMandates = accountId => ({
+  type: ActionTypeKeys.GET_DIRECT_DEBIT_MANDATES,
+  payload: api.getDirectDebitMandates(accountId),
+});
+
+export const handleGetDirectDebitMandates: THandleGetDirectDebitMandates = accountId =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(getDirectDebitMandates(accountId));
+      },
+      dispatch
+    );
+  };
+
+/**
+ * Add direct debit mandate action
+ */
+
+export type TAddDirectDebitMandate = (accountId: number) => IAddDirectDebitMandateAction;
+export type THandleAddDirectDebitMandate = (accountId: number) => Thunk<void>;
+
+export const addDirectDebitMandate: TAddDirectDebitMandate = accountId => ({
+  type: ActionTypeKeys.ADD_DIRECT_DEBIT_MANDATE,
+  payload: api.addDirectDebitMandate(accountId),
+});
+
+export const handleAddDirectDebitMandate: THandleAddDirectDebitMandate = accountId =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const res = await dispatch(addDirectDebitMandate(accountId)) as any;
+
+        dispatch(openModal({
+          name: modalNamesConst.MESSAGE,
+          payload: {
+            title: 'Mandate was created',
+            message: `Mandate ID: ${res.value.mandate_id}`,
+          },
+        }));
       },
       dispatch
     );

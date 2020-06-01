@@ -151,43 +151,79 @@ export interface IRepaymentDebitCardFormValues extends IRepaymentDebitCardPlain 
 }
 
 /**
- * Repayment direct debit interfaces
+ * Direct debit accounts interfaces
  */
 
-export interface IRepaymentDirectDebitData {
+export interface IDirectDebitAccountData {
+  id: number;
   customer_id: number;
-  account: string;
-  account_ext: string;
+  provider_account_ref: string;
+  provider_customer_ref: string;
+  account_field_1: string;
+  account_field_2: string;
+  account_field_3: string;
   accountholder_name: string;
-  status: string | number;
-  repayment_interface_id: number | string;
-  interface_name: string;
-  last_update_datetime: string;
-  repay_provider_customer_id: string;
+  country_code: string;
+  account_type: string;
+  status: string;
 }
 
-export interface IRepaymentDirectDebitsData {
-  repayment_debit_cards: Array<IRepaymentDirectDebitData>;
+export interface IDirectDebitAccountsData {
+  direct_debit_accounts: Array<IDirectDebitAccountData>;
 }
 
-interface IRepaymentDirectDebitPlain {
+export interface IDirectDebitAccount {
+  id: number;
   customerId: number;
-  account: string;
-  accountExt: string;
+  providerAccountRef: string;
+  providerCustomerRef: string;
+  accountField1: string;
+  accountField2: string;
+  accountField3: string;
   accountholderName: string;
-  lastUpdateDatetime: string;
-  repaymentInterfaceName: string;
-  repayProviderCustomerId: string;
+  countryCode: string;
+  accountType: string;
+  status: string;
 }
 
-export interface IRepaymentDirectDebit extends IRepaymentDirectDebitPlain {
-  status: string | number;
-  repaymentInterfaceId: string | number;
+/**
+ * Direct debit mandates interface
+ */
+
+export interface IDirectDebitMandateData {
+  id: number;
+  customer_id: number;
+  interface_id: number;
+  provider_customer_ref: string;
+  provider_account_ref: string;
+  provider_ref: string;
+  description: string;
+  status: string;
+  country_code: string;
+  currency_code: string;
+  dd_account_id: number;
+  account_alias: string;
+  last_update_timestamp: string;
 }
 
-export interface IRepaymentDirectDebitFormValues extends IRepaymentDirectDebitPlain {
-  status: ISelectValue;
-  repaymentInterfaceId: ISelectValue;
+export interface IDirectDebitMandatesData {
+  direct_debit_mandates: Array<IDirectDebitMandateData>;
+}
+
+export interface IDirectDebitMandate {
+  id: number;
+  customerId: number;
+  interfaceId: number;
+  providerCustomerRef: string;
+  providerAccountRef: string;
+  providerRef: string;
+  description: string;
+  status: string;
+  countryCode: string;
+  currencyCode: string;
+  ddAccountId: number;
+  accountAlias: string;
+  lastUpdateTimestamp: string;
 }
 
 /**
@@ -218,6 +254,7 @@ export interface ICurrencyLimit {
 export interface ICustomersState {
   customers: ImmutableArray<ICustomerData>;
   repaymentDebitCards: ImmutableArray<IRepaymentDebitCardData>;
-  repaymentDirectDebits: ImmutableArray<IRepaymentDirectDebitData>;
+  directDebitAccounts: ImmutableArray<IDirectDebitAccountData>;
+  directDebitMandates: ImmutableArray<IDirectDebitMandateData>;
   currencyLimit: ICurrencyLimitData;
 }

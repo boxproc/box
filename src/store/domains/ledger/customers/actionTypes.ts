@@ -1,8 +1,9 @@
 import {
   ICurrencyLimitItemData,
   ICustomersData,
+  IDirectDebitAccountsData,
+  IDirectDebitMandatesData,
   IRepaymentDebitCardsData,
-  IRepaymentDirectDebitsData,
 } from './types';
 
 import { IResponseStatus, TApiResponse } from 'types';
@@ -36,13 +37,21 @@ export enum ActionTypeKeys {
   ADD_REPAYMENT_DEBIT_CARD_FULFILLED = 'customers/ADD_REPAYMENT_DEBIT_CARD_FULFILLED',
   ADD_REPAYMENT_DEBIT_CARD_REJECTED = 'customers/ADD_REPAYMENT_DEBIT_CARD_REJECTED',
 
-  GET_REPAYMENT_DIRECT_DEBITS = 'customers/GET_REPAYMENT_DIRECT_DEBITS',
-  GET_REPAYMENT_DIRECT_DEBITS_FULFILLED = 'customers/GET_REPAYMENT_DIRECT_DEBITS_FULFILLED',
-  GET_REPAYMENT_DIRECT_DEBITS_REJECTED = 'customers/GET_REPAYMENT_DIRECT_DEBITS_REJECTED',
+  GET_DIRECT_DEBIT_ACCOUNTS = 'customers/GET_DIRECT_DEBIT_ACCOUNTS',
+  GET_DIRECT_DEBIT_ACCOUNTS_FULFILLED = 'customers/GET_DIRECT_DEBIT_ACCOUNTS_FULFILLED',
+  GET_DIRECT_DEBIT_ACCOUNTS_REJECTED = 'customers/GET_DIRECT_DEBIT_ACCOUNTS_REJECTED',
 
-  ADD_REPAYMENT_DIRECT_DEBIT = 'customers/ADD_REPAYMENT_DIRECT_DEBIT',
-  ADD_REPAYMENT_DIRECT_DEBIT_FULFILLED = 'customers/ADD_REPAYMENT_DIRECT_DEBIT_FULFILLED',
-  ADD_REPAYMENT_DIRECT_DEBIT_REJECTED = 'customers/ADD_REPAYMENT_DIRECT_DEBIT_REJECTED',
+  ADD_DIRECT_DEBIT_ACCOUNT = 'customers/ADD_DIRECT_DEBIT_ACCOUNT',
+  ADD_DIRECT_DEBIT_ACCOUNT_FULFILLED = 'customers/ADD_DIRECT_DEBIT_ACCOUNT_FULFILLED',
+  ADD_DIRECT_DEBIT_ACCOUNT_REJECTED = 'customers/ADD_DIRECT_DEBIT_ACCOUNT_REJECTED',
+
+  GET_DIRECT_DEBIT_MANDATES = 'customers/GET_DIRECT_DEBIT_MANDATES',
+  GET_DIRECT_DEBIT_MANDATES_FULFILLED = 'customers/GET_DIRECT_DEBIT_MANDATES_FULFILLED',
+  GET_DIRECT_DEBIT_MANDATES_REJECTED = 'customers/GET_DIRECT_DEBIT_MANDATES_REJECTED',
+
+  ADD_DIRECT_DEBIT_MANDATE = 'customers/ADD_DIRECT_DEBIT_MANDATE',
+  ADD_DIRECT_DEBIT_MANDATE_FULFILLED = 'customers/ADD_DIRECT_DEBIT_MANDATE_FULFILLED',
+  ADD_DIRECT_DEBIT_MANDATE_REJECTED = 'customers/ADD_DIRECT_DEBIT_MANDATE_REJECTED',
 
   GET_CURRENCY_LIMIT = 'customers/GET_CURRENCY_LIMIT',
   GET_CURRENCY_LIMIT_FULFILLED = 'customers/GET_CURRENCY_LIMIT_FULFILLED',
@@ -177,38 +186,72 @@ export interface IAddRepaymentDebitCardRejectedAction {
   readonly type: ActionTypeKeys.ADD_REPAYMENT_DEBIT_CARD_REJECTED;
 }
 
-/** Get repayment direct debits action interface */
+/** Get direct debits accounts action interface */
 
-export interface IGetRepaymentDirectDebitsAction {
+export interface IGetDirectDebitAccountsAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_REPAYMENT_DIRECT_DEBITS;
+  readonly type: ActionTypeKeys.GET_DIRECT_DEBIT_ACCOUNTS;
 }
 
-export interface IGetRepaymentDirectDebitsFulfilledAction {
-  readonly payload: IRepaymentDirectDebitsData;
-  readonly type: ActionTypeKeys.GET_REPAYMENT_DIRECT_DEBITS_FULFILLED;
+export interface IGetDirectDebitAccountsFulfilledAction {
+  readonly payload: IDirectDebitAccountsData;
+  readonly type: ActionTypeKeys.GET_DIRECT_DEBIT_ACCOUNTS_FULFILLED;
 }
 
-export interface IGetRepaymentDirectDebitsRejectedAction {
+export interface IGetDirectDebitAccountsRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.GET_REPAYMENT_DIRECT_DEBITS_REJECTED;
+  readonly type: ActionTypeKeys.GET_DIRECT_DEBIT_ACCOUNTS_REJECTED;
 }
 
-/** Add repayment direct debit action interface */
+/** Add direct debit accounts action interface */
 
-export interface IAddRepaymentDirectDebitAction {
+export interface IAddDirectDebitAccountAction {
   readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.ADD_REPAYMENT_DIRECT_DEBIT;
+  readonly type: ActionTypeKeys.ADD_DIRECT_DEBIT_ACCOUNT;
 }
 
-export interface IAddRepaymentDirectDebitFulfilledAction {
+export interface IAddDirectDebitAccountFulfilledAction {
   readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.ADD_REPAYMENT_DIRECT_DEBIT_FULFILLED;
+  readonly type: ActionTypeKeys.ADD_DIRECT_DEBIT_ACCOUNT_FULFILLED;
 }
 
-export interface IAddRepaymentDirectDebitRejectedAction {
+export interface IAddDirectDebitAccountRejectedAction {
   readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.ADD_REPAYMENT_DIRECT_DEBIT_REJECTED;
+  readonly type: ActionTypeKeys.ADD_DIRECT_DEBIT_ACCOUNT_REJECTED;
+}
+
+/** Get direct debits mandates action interface */
+
+export interface IGetDirectDebitMandatesAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_DIRECT_DEBIT_MANDATES;
+}
+
+export interface IGetDirectDebitMandatesFulfilledAction {
+  readonly payload: IDirectDebitMandatesData;
+  readonly type: ActionTypeKeys.GET_DIRECT_DEBIT_MANDATES_FULFILLED;
+}
+
+export interface IGetDirectDebitMandatesRejectedAction {
+  readonly payload: TApiResponse;
+  readonly type: ActionTypeKeys.GET_DIRECT_DEBIT_MANDATES_REJECTED;
+}
+
+/** Add direct debit mandate action interface */
+
+export interface IAddDirectDebitMandateAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.ADD_DIRECT_DEBIT_MANDATE;
+}
+
+export interface IAddDirectDebitMandateFulfilledAction {
+  readonly payload: IResponseStatus;
+  readonly type: ActionTypeKeys.ADD_DIRECT_DEBIT_MANDATE_FULFILLED;
+}
+
+export interface IAddDirectDebitMandateRejectedAction {
+  readonly payload: TApiResponse;
+  readonly type: ActionTypeKeys.ADD_DIRECT_DEBIT_MANDATE_REJECTED;
 }
 
 /** Get customer currency limits action interfaces */
@@ -259,8 +302,10 @@ export type TCustomersAction =
   | IFilterCustomersByIdFulfilledAction
   | IGetRepaymentDebitCardsFulfilledAction
   | IAddRepaymentDebitCardFulfilledAction
-  | IGetRepaymentDirectDebitsFulfilledAction
-  | IAddRepaymentDirectDebitFulfilledAction
+  | IGetDirectDebitAccountsFulfilledAction
+  | IAddDirectDebitAccountFulfilledAction
+  | IGetDirectDebitMandatesFulfilledAction
+  | IAddDirectDebitMandateFulfilledAction
   | IGetCurrencyLimitFulfilledAction
   | IUpdateCurrencyLimitFulfilledAction
   | IResetCustomersAction;

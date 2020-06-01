@@ -1,15 +1,14 @@
 import React from 'react';
 
-import { Modal, Tabs, TabsPanel } from 'components';
+import { Modal, SmallText, Tabs, TabsPanel } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
-
+import { DirectDebitAccounts } from './../../components';
 import {
   CurrencyLimitForm,
   CustomerForm,
   RepaymentDebitCardsForm,
-  RepaymentDirectDebitsForm,
 } from './../../forms';
 
 import { THandleGetServicesInterfaces } from 'store';
@@ -78,10 +77,9 @@ const EditCustomerModal: React.FC<IEditCustomerModal> = ({
             onCancel={handleOnCancel}
           />
         </TabsPanel>
-        <TabsPanel title="Repayment Direct Debits">
-          <RepaymentDirectDebitsForm
-            interfacesOptions={interfacesOptions}
-            isInterfacesLoading={isInterfacesLoading}
+        <TabsPanel title="Direct Debits Accounts">
+          <SmallText accentColor={true} bold={true}>Only layout</SmallText>
+          <DirectDebitAccounts
             isReadOnly={isReadOnly}
             onCancel={handleOnCancel}
           />

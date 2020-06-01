@@ -6,12 +6,13 @@ import {
   ICustomerData,
   ICustomerDetails,
   ICustomersFilter,
+  IDirectDebitAccount,
+  IDirectDebitAccountData,
+  IDirectDebitMandate,
+  IDirectDebitMandateData,
   IRepaymentDebitCard,
   IRepaymentDebitCardData,
   IRepaymentDebitCardFormValues,
-  IRepaymentDirectDebit,
-  IRepaymentDirectDebitData,
-  IRepaymentDirectDebitFormValues,
 } from './types';
 
 import { ISelectValue } from 'types';
@@ -209,57 +210,82 @@ export const prepareFormDataRepaymentDebitCardToSend =
     };
   };
 
-export const prepareRepaymentDirectDebitsToRender = (data: IRepaymentDirectDebitData):
-  IRepaymentDirectDebit => {
+export const prepareDirectDebitAccountsToRender = (data: IDirectDebitAccountData):
+  IDirectDebitAccount => {
   if (!data) {
     return null;
   }
 
   const {
+    id,
     customer_id,
-    account,
-    account_ext,
+    provider_account_ref,
+    provider_customer_ref,
+    account_field_1,
+    account_field_2,
+    account_field_3,
     accountholder_name,
+    country_code,
+    account_type,
     status,
-    repayment_interface_id,
-    interface_name,
-    last_update_datetime,
-    repay_provider_customer_id,
   } = data;
 
-  const currentStatus = statusOptions.find(el => el.value === status);
-
   return {
+    id,
     customerId: customer_id,
-    account,
-    accountExt: account_ext,
+    providerAccountRef: provider_account_ref,
+    providerCustomerRef: provider_customer_ref,
+    accountField1: `••••••${account_field_1}`,
+    accountField2: account_field_2,
+    accountField3: account_field_3,
     accountholderName: accountholder_name,
-    status: currentStatus && currentStatus.label,
-    repaymentInterfaceId: repayment_interface_id,
-    repaymentInterfaceName: interface_name,
-    lastUpdateDatetime: last_update_datetime,
-    repayProviderCustomerId: repay_provider_customer_id,
+    countryCode: country_code,
+    accountType: account_type,
+    status,
   };
 };
 
-export const prepareFormDataRepaymentDirectDebitToSend =
-  (data: Partial<IRepaymentDirectDebitFormValues>): Partial<IRepaymentDirectDebitData> => {
+export const prepareFormDataDirectDebitAccountToSend =
+  (data: Partial<IDirectDebitAccount>): Partial<IDirectDebitAccountData> => {
     const {
-      account,
-      accountExt,
+      accountField1,
+      accountField2,
       accountholderName,
-      status,
-      repaymentInterfaceId,
     } = data;
 
     return {
-      account,
-      account_ext: accountExt,
+      account_field_1: accountField1,
+      account_field_2: accountField2,
       accountholder_name: accountholderName,
-      status: status && status.value,
-      repayment_interface_id: repaymentInterfaceId && repaymentInterfaceId.value,
     };
   };
+
+export const prepareDirectDebitMandatesToRender = (data: Partial<IDirectDebitMandateData>):
+  Partial<IDirectDebitMandate> => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    id,
+    provider_ref,
+    description,
+    status,
+    country_code,
+    currency_code,
+    last_update_timestamp,
+  } = data;
+
+  return {
+    id,
+    providerRef: provider_ref,
+    description,
+    status,
+    countryCode: country_code,
+    currencyCode: currency_code,
+    lastUpdateTimestamp: last_update_timestamp,
+  };
+};
 
 export const prepareCurrencyLimitToRender = (data: Partial<ICurrencyLimitData>):
   Partial<ICurrencyLimit> => {

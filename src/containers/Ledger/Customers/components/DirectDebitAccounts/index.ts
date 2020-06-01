@@ -1,21 +1,21 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import RepaymentDirectDebitsForm from './RepaymentDirectDebitsForm';
+import DirectDebitAccounts from './DirectDebitAccounts';
 
 import {
-  handleAddRepaymentDirectDebit,
-  isAddingRepaymentDirectDebitSelector,
+  handleAddDirectDebitAccount,
+  isAddingDirectDebitAccountSelector,
   IStoreState,
 } from 'store';
 
 const mapStateToProps = (state: IStoreState) => ({
-  isLoading: isAddingRepaymentDirectDebitSelector(state),
+  isLoading: isAddingDirectDebitAccountSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    addRepaymentDirectDebit: handleAddRepaymentDirectDebit,
+    addDirectDebitAccount: handleAddDirectDebitAccount,
   },
   dispatch
 );
@@ -23,4 +23,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(RepaymentDirectDebitsForm);
+)(DirectDebitAccounts);

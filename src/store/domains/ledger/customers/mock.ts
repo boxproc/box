@@ -1,4 +1,9 @@
-import { ICurrencyLimitItemData, ICustomersData } from './types';
+import {
+  ICurrencyLimitItemData,
+  ICustomersData,
+  IDirectDebitAccountsData,
+  IDirectDebitMandatesData,
+} from './types';
 
 export const customersMock: ICustomersData = {
   customers: [
@@ -45,6 +50,100 @@ export const customersMock: ICustomersData = {
       date_closed: '2019-07-29',
       identification_type: 'N',
       identification_number: 1,
+    },
+  ],
+};
+
+export const directDebitAccountsMock: IDirectDebitAccountsData = {
+  direct_debit_accounts: [
+    {
+      id: 1,
+      customer_id: 5754,
+      provider_account_ref: 'BA0009Y525FAGB',
+      provider_customer_ref: 'CU00076KGE0TQZ',
+      account_field_1: '11',
+      account_field_2: 'BARCLAYS BANK PLC',
+      account_field_3: null,
+      accountholder_name: 'John Doe',
+      country_code: 'GB',
+      account_type: null,
+      status: 'Active',
+    },
+    {
+      id: 2,
+      customer_id: 5754,
+      provider_account_ref: 'BA0109Y525FDGB',
+      provider_customer_ref: 'CU00076KGE0TQZ',
+      account_field_1: '04',
+      account_field_2: 'Bank of England',
+      account_field_3: null,
+      accountholder_name: 'John Doe',
+      country_code: 'GB',
+      account_type: null,
+      status: 'Inactive',
+    },
+    {
+      id: 3,
+      customer_id: 5754,
+      provider_account_ref: 'BA0009Y525FAGB',
+      provider_customer_ref: 'CU00076KGE0TQZ',
+      account_field_1: '11',
+      account_field_2: 'Barclays Bank',
+      account_field_3: null,
+      accountholder_name: 'John Doe',
+      country_code: 'GB',
+      account_type: null,
+      status: 'Active',
+    },
+  ],
+};
+
+export const directDebitMandatesMock: IDirectDebitMandatesData = {
+  direct_debit_mandates: [
+    {
+      id: 1,
+      customer_id: 5754,
+      interface_id: 1,
+      provider_customer_ref: 'CU00076KGE0TQZ',
+      provider_account_ref: 'BA0109Y525FDGB',
+      provider_ref: 'MD0008XXRW3FNG',
+      description: 'Description 1',
+      status: 'Active',
+      country_code: 'GB',
+      currency_code: 'GBP',
+      dd_account_id: 1,
+      account_alias: '04',
+      last_update_timestamp: '1/06/2020 09:13:00',
+    },
+    {
+      id: 2,
+      customer_id: 5754,
+      interface_id: 1,
+      provider_customer_ref: 'CU00076KGE0TQZ',
+      provider_account_ref: 'BA0109Y525FDGB',
+      provider_ref: 'MD0008XXRW3FNG',
+      description: 'Description 2',
+      status: 'Submitted',
+      country_code: 'GB',
+      currency_code: 'GBP',
+      dd_account_id: 1,
+      account_alias: '04',
+      last_update_timestamp: '25/05/2020 10:54:00',
+    },
+    {
+      id: 3,
+      customer_id: 5754,
+      interface_id: 1,
+      provider_customer_ref: 'CU00076KGE0TQZ',
+      provider_account_ref: 'BA0109Y525FDGB',
+      provider_ref: 'MD0008XXRW3FNG',
+      description: 'Description 3',
+      status: 'Cancelled',
+      country_code: 'GB',
+      currency_code: 'GBP',
+      dd_account_id: 1,
+      account_alias: '04',
+      last_update_timestamp: '25/05/2020 12:53:00',
     },
   ],
 };

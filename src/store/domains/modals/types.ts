@@ -1,3 +1,5 @@
+import { IDirectDebitAccount } from './../ledger';
+
 export interface IModalsData {
   name: string;
   payload?: object;
@@ -39,6 +41,8 @@ export interface IPayloadSettleTransactionModal {
   transactionId?: number;
 }
 
+export interface IPayloadDirectDebitAccountModal extends IDirectDebitAccount {}
+
 export interface IModalsState {
   isMessageModal: boolean;
   payloadMessageModal: IPayloadMessageModal;
@@ -47,4 +51,5 @@ export interface IModalsState {
   payloadManualTransactionModal: IPayloadManualTransactionModal;
   payloadTransactionModal: IPayloadTransactionModal;
   payloadSettleTransactionModal: IPayloadSettleTransactionModal;
+  payloadDirectDebitAccountModal: IPayloadDirectDebitAccountModal;
 }

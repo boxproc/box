@@ -1,5 +1,4 @@
 import React from 'react';
-
 import styled from 'theme';
 
 const CircleListWrapper = styled.ul`
