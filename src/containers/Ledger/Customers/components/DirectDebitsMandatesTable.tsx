@@ -40,7 +40,7 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
         ),
       },
       {
-        maxWidth: 140,
+        maxWidth: 120,
         accessor: 'status',
         Header: <TableHeader title="Status" />,
         Cell: (props: TCell<'status'>) => (
@@ -51,7 +51,7 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
         ),
       },
       {
-        maxWidth: 170,
+        maxWidth: 150,
         accessor: 'providerRef',
         Header: <TableHeader title="Provider Reference" />,
         Cell: (props: TCell<'providerRef'>) => (
@@ -62,7 +62,7 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
         ),
       },
       {
-        maxWidth: 170,
+        maxWidth: 180,
         accessor: 'description',
         Header: <TableHeader title="Description" />,
         Cell: (props: TCell<'description'>) => (
@@ -73,7 +73,7 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
         ),
       },
       {
-        maxWidth: 120,
+        maxWidth: 115,
         accessor: 'lastUpdateTimestamp',
         Header: <TableHeader title="Last Update Datetime" />,
         Cell: (props: TCell<'lastUpdateTimestamp'>) => (
@@ -100,9 +100,9 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
               withConfirmation={true}
               confirmationText={cellInfo.original.status !== 'Cancelled'
                 // tslint:disable-next-line: max-line-length
-                ? `Confirm that you want to cancel this mandate \n ${cellInfo.original.providerRef}.`
+                ? `Confirm that you want to cancel this mandate: ${cellInfo.original.description}.`
                 // tslint:disable-next-line: max-line-length
-                : `Confirm that you want to reinstate this mandate \n ${cellInfo.original.providerRef}.`
+                : `Confirm that you want to reinstate this mandate: ${cellInfo.original.description}.`
               }
               onClick={() => console.log('---')}
             />

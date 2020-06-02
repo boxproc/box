@@ -112,7 +112,7 @@ const DirectDebitAccountsTable: React.FC<IDirectDebitAccountsTable> = ({
       {
         maxWidth: 80,
         accessor: 'accountField2',
-        Header: <TableHeader title="Bank Name" />,
+        Header: <TableHeader title="Branch code" />,
         Cell: (props: TCell<'accountField2'>) => (
           <TableCell
             value={props.value}
@@ -166,15 +166,33 @@ const DirectDebitAccountsTable: React.FC<IDirectDebitAccountsTable> = ({
         ),
       },
       {
+        maxWidth: 50,
+        Header: <TableHeader title="Details" />,
+        Cell: (cellInfo: CellInfo) => (
+          <Flex alignItems="flex-start" p="10px 5px">
+            <Button
+              iconName={iconNamesConst.SHORT_TEXT}
+              title="Details"
+              type="reset"
+              onClick={() => handleOpenModal(cellInfo)}
+            />
+          </Flex>
+        ),
+      },
+      {
         maxWidth: 90,
         accessor: 'createMandate',
         Cell: (cellInfo: CellInfo) => (
           <Flex alignItems="flex-start" p="7px 5px">
             <Button
               text="+ Mandate"
-              title="Create mandate"
+              title="Create a mandate"
               size="10"
               disabled={isButtonsDisabled}
+              withConfirmation={true}
+              confirmationTitle="Create a mandate?"
+              // tslint:disable-next-line: max-line-length
+              confirmationText={`Bank account: ${cellInfo.original.accountField1}`}
               onClick={() => addMandate(cellInfo.original.id)}
             />
           </Flex>
@@ -200,20 +218,6 @@ const DirectDebitAccountsTable: React.FC<IDirectDebitAccountsTable> = ({
             </Flex>
           );
         },
-      },
-      {
-        maxWidth: 50,
-        Header: <TableHeader title="Details" />,
-        Cell: (cellInfo: CellInfo) => (
-          <Flex alignItems="flex-start" p="10px 5px">
-            <Button
-              iconName={iconNamesConst.SHORT_TEXT}
-              title="Details"
-              type="reset"
-              onClick={() => handleOpenModal(cellInfo)}
-            />
-          </Flex>
-        ),
       },
     ],
     [isReadOnly, handleOpenModal, isButtonsDisabled, addMandate]

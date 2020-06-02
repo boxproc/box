@@ -5,9 +5,7 @@ import Customers from './Customers';
 
 import {
   activeItemIdSelector,
-  currentCustomerNameSelector,
   customersSelector,
-  handleDeleteCustomer,
   handleFilterByIdAccounts,
   handleFilterByIdCards,
   handleFilterByIdStatements,
@@ -24,7 +22,6 @@ const mapStateToProps = (state: IStoreState) => ({
   isLoading: isLoadingCustomersSelector(state),
   institutionsOptions: userInstitutionsOptionsSelector(state),
   customers: customersSelector(state),
-  currentCustomerName: currentCustomerNameSelector(state),
   currentId: activeItemIdSelector(state),
   isReadOnly: isReadOnlySelector(state),
 });
@@ -32,7 +29,6 @@ const mapStateToProps = (state: IStoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     filterCustomers: handleFilterCustomers,
-    deleteCustomer: handleDeleteCustomer,
     filterCardsById: handleFilterByIdCards,
     filterTransactionsById: handleFilterByIdTransactions,
     filterStatementsById: handleFilterByIdStatements,

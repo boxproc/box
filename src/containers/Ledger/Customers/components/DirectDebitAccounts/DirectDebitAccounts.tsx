@@ -13,6 +13,8 @@ interface IDirectDebitAccounts {
   onCancel: () => void;
   isReadOnly: boolean;
   addDirectDebitAccount: THandleAddDirectDebitAccount;
+  customerId: number;
+  customerCountryCode: string;
 }
 
 const DirectDebitAccounts: React.FC<IDirectDebitAccounts> = ({
@@ -20,6 +22,8 @@ const DirectDebitAccounts: React.FC<IDirectDebitAccounts> = ({
   isLoading,
   isReadOnly,
   addDirectDebitAccount,
+  customerId,
+  customerCountryCode,
 }) => {
   return (
     <React.Fragment>
@@ -28,6 +32,8 @@ const DirectDebitAccounts: React.FC<IDirectDebitAccounts> = ({
           isDisabled={isLoading}
           isLoading={isLoading}
           addDirectDebitAccount={addDirectDebitAccount}
+          customerId={customerId}
+          customerCountryCode={customerCountryCode}
         />
       )}
       <Box pt="10px">

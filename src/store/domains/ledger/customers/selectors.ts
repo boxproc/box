@@ -69,6 +69,11 @@ export const currentCustomerInstIdSelector = createSelector(
   data => data && data.institutionId.value
 );
 
+export const currentCustomerCountryCodeSelector = createSelector(
+  currentCustomerSelector,
+  data => data && data.addressCountryCode.value
+);
+
 /**
  * Repayment debit cards selectors
  */
@@ -129,10 +134,6 @@ export const currencyLimitLabelSelector = createSelector(
 export const isLoadingCustomersSelector = createLoadingSelector([
   ActionTypeKeys.FILTER_CUSTOMERS,
   ActionTypeKeys.FILTER_CUSTOMERS_BY_ID,
-]);
-
-export const isDeletingCustomerSelector = createLoadingSelector([
-  ActionTypeKeys.DELETE_CUSTOMER,
 ]);
 
 export const isUpdatingCustomerSelector = createLoadingSelector([

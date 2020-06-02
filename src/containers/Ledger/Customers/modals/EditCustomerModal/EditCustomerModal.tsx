@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Modal, SmallText, Tabs, TabsPanel } from 'components';
+import { Modal, Tabs, TabsPanel } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
@@ -58,7 +58,7 @@ const EditCustomerModal: React.FC<IEditCustomerModal> = ({
       type={modalTypesConst.VIEWING}
       title={modalTitle}
       containerWidth="1010px"
-      minContainerHeight="600px"
+      minContainerHeight="570px"
       withCloseConfirmation={isFormDirty}
     >
       <Tabs>
@@ -77,8 +77,7 @@ const EditCustomerModal: React.FC<IEditCustomerModal> = ({
             onCancel={handleOnCancel}
           />
         </TabsPanel>
-        <TabsPanel title="Direct Debits Accounts">
-          <SmallText accentColor={true} bold={true}>Only layout</SmallText>
+        <TabsPanel title="Direct Debit Accounts">
           <DirectDebitAccounts
             isReadOnly={isReadOnly}
             onCancel={handleOnCancel}

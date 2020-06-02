@@ -9,10 +9,6 @@ import {
 import { IResponseStatus, TApiResponse } from 'types';
 
 export enum ActionTypeKeys {
-  DELETE_CUSTOMER = 'customers/DELETE_CUSTOMER',
-  DELETE_CUSTOMER_FULFILLED = 'customers/DELETE_CUSTOMER_FULFILLED',
-  DELETE_CUSTOMER_REJECTED = 'customers/DELETE_CUSTOMER_REJECTED',
-
   ADD_CUSTOMER = 'customers/ADD_CUSTOMER',
   ADD_CUSTOMER_FULFILLED = 'customers/ADD_CUSTOMER_FULFILLED',
   ADD_CUSTOMER_REJECTED = 'customers/ADD_CUSTOMER_REJECTED',
@@ -62,26 +58,6 @@ export enum ActionTypeKeys {
   UPDATE_CURRENCY_LIMIT_REJECTED = 'customers/UPDATE_CURRENCY_LIMIT_REJECTED',
 
   RESET_CUSTOMERS = 'customers/RESET_CUSTOMERS',
-}
-
-/** Delete customer action interface */
-
-export interface IDeleteCustomerAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.DELETE_CUSTOMER;
-}
-
-export interface IDeleteCustomerFulfilledAction {
-  readonly payload: IResponseStatus;
-  readonly type: ActionTypeKeys.DELETE_CUSTOMER_FULFILLED;
-  readonly meta: {
-    id: number;
-  };
-}
-
-export interface IDeleteCustomerRejectedAction {
-  readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.DELETE_CUSTOMER_REJECTED;
 }
 
 /** Add customer action interface */
@@ -296,7 +272,6 @@ export interface IResetCustomersAction {
 
 export type TCustomersAction =
   | IAddCustomerFulfilledAction
-  | IDeleteCustomerFulfilledAction
   | IUpdateCustomerFulfilledAction
   | IFilterCustomersFulfilledAction
   | IFilterCustomersByIdFulfilledAction

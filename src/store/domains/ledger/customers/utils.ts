@@ -8,6 +8,8 @@ import {
   ICustomersFilter,
   IDirectDebitAccount,
   IDirectDebitAccountData,
+  IDirectDebitAccountForm,
+  IDirectDebitAccountFormData,
   IDirectDebitMandate,
   IDirectDebitMandateData,
   IRepaymentDebitCard,
@@ -246,17 +248,21 @@ export const prepareDirectDebitAccountsToRender = (data: IDirectDebitAccountData
 };
 
 export const prepareFormDataDirectDebitAccountToSend =
-  (data: Partial<IDirectDebitAccount>): Partial<IDirectDebitAccountData> => {
+  (data: Partial<IDirectDebitAccountForm>): Partial<IDirectDebitAccountFormData> => {
     const {
+      customerId,
       accountField1,
       accountField2,
       accountholderName,
+      accountType,
     } = data;
 
     return {
+      customer_id: customerId,
       account_field_1: accountField1,
       account_field_2: accountField2,
       accountholder_name: accountholderName,
+      account_type: accountType && accountType.value,
     };
   };
 

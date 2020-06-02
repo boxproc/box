@@ -1,7 +1,7 @@
 import React from 'react';
 import { ImmutableArray } from 'seamless-immutable';
 
-import { iconNamesConst, modalNamesConst } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
@@ -9,7 +9,6 @@ import { CustomersFilter } from './forms';
 
 import {
   ICustomer,
-  THandleDeleteCustomer,
   THandleFilterAccountsById,
   THandleFilterCardsById,
   THandleFilterCustomers,
@@ -21,10 +20,8 @@ import {
 import { ISelectValue } from 'types';
 
 interface ICustomers {
-  currentCustomerName: string;
   currentId: number;
   customers: ImmutableArray<ICustomer>;
-  deleteCustomer: THandleDeleteCustomer;
   filterAccountsById: THandleFilterAccountsById;
   filterCardsById: THandleFilterCardsById;
   filterCustomers: THandleFilterCustomers;
@@ -40,8 +37,6 @@ const Customers: React.FC<ICustomers> = ({
   institutionsOptions,
   customers,
   filterCustomers,
-  deleteCustomer,
-  currentCustomerName,
   currentId,
   filterCardsById,
   filterTransactionsById,
@@ -61,15 +56,6 @@ const Customers: React.FC<ICustomers> = ({
   const contextMenuItems = React.useMemo(
     () => [
       {
-        name: 'Delete',
-        icon: iconNamesConst.DELETE,
-        isDisabled: isReadOnly,
-        action: () => deleteCustomer(currentId),
-        withConfirmation: true,
-        confirmationText: `Delete customer "${currentCustomerName}"?`,
-      },
-      { isDivider: true },
-      {
         name: 'Accounts',
         action: () => filterAccountsById({ customer_id: currentId }),
       },
@@ -87,8 +73,6 @@ const Customers: React.FC<ICustomers> = ({
       },
     ],
     [
-      deleteCustomer,
-      currentCustomerName,
       filterTransactionsById,
       filterStatementsById,
       filterCardsById,

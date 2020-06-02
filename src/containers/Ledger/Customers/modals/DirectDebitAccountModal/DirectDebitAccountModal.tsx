@@ -51,7 +51,7 @@ const DirectDebitAccountModal: React.FC<IDirectDebitAccountModal> = ({
       ['Customer ID', account.customerId],
       ['Account holder', account.accountholderName],
       ['Account no. ending', account.accountField1],
-      ['Bank name', account.accountField2],
+      ['Branch code', account.accountField2],
       ['Country code', account.countryCode],
       ['Provider Account Ref', account.providerAccountRef],
       ['Provider Customer Ref', account.providerCustomerRef],
@@ -78,7 +78,7 @@ const DirectDebitAccountModal: React.FC<IDirectDebitAccountModal> = ({
         data={mandates}
       />
 
-      <Flex justifyContent="flex-end" mt="15px">
+      <Flex justifyContent="flex-end" mt="10px">
         <Button
           text="Close"
           onClick={handleOnCancel}

@@ -7,16 +7,12 @@ import { formNamesConst } from 'consts';
 import CustomerForm from './CustomerForm';
 
 import {
-  activeItemIdSelector,
   countriesOptionsSelector,
-  currentCustomerNameSelector,
   currentCustomerSelector,
   handleAddCustomer,
-  handleDeleteCustomer,
   handleGetDictionaryCountries,
   handleUpdateCustomer,
   isAddingCustomerSelector,
-  isDeletingCustomerSelector,
   IStoreState,
   isUpdatingCustomerSelector,
 } from 'store';
@@ -25,19 +21,15 @@ const formSelector = formValueSelector(formNamesConst.CUSTOMER);
 
 const mapStateToProps = (state: IStoreState) => ({
   isLoading: isAddingCustomerSelector(state)
-    || isUpdatingCustomerSelector(state)
-    || isDeletingCustomerSelector(state),
+    || isUpdatingCustomerSelector(state),
   initialValues: currentCustomerSelector(state),
-  currentCustomerName: currentCustomerNameSelector(state),
   countryCodes: countriesOptionsSelector(state),
-  currentId: activeItemIdSelector(state),
   identificationTypeValue: formSelector(state, 'identificationType'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     addCustomer: handleAddCustomer,
-    deleteCustomer: handleDeleteCustomer,
     updateCustomer: handleUpdateCustomer,
     loadCountryCodes: handleGetDictionaryCountries,
   },

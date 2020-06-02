@@ -2,12 +2,12 @@
 import { successResponseMock } from 'consts';
 import { apiClientService } from 'services';
 // import { currencyLimitMock, customersMock, directDebitAccountsMock } from './mock';
-import { directDebitAccountsMock, directDebitMandatesMock } from './mock';
+import { directDebitMandatesMock } from './mock';
 import {
   ICurrencyLimitData,
   ICustomerData,
   ICustomersFilterToSend,
-  IDirectDebitAccountData,
+  IDirectDebitAccountFormData,
   IRepaymentDebitCardData,
   TLedgerId,
 } from './types';
@@ -22,15 +22,6 @@ import { throttleUtil } from 'utils';
 export const filterCustomers = (data: Partial<ICustomersFilterToSend>) =>
   // throttleUtil.getDataAfter(customersMock, 500);
   apiClientService.post('ui/ledger/customers/get', { data });
-
-/**
- * Delete customer API
- */
-export const deleteCustomer = (id: number) =>
-  // throttleUtil.getDataAfter(successResponseMock, 500);
-  apiClientService.post('ui/ledger/customers/delete', {
-    data: { id },
-  });
 
 /**
  * Add customer API
@@ -70,17 +61,17 @@ export const getRepaymentDebitCards = (data: number) =>
 /**
  * Add direct debit account API
  */
-export const addDirectDebitAccount = (data: Partial<IDirectDebitAccountData>) =>
-  apiClientService.post('ui/ledger/customers/create_repayment_direct_debits', { data });
+export const addDirectDebitAccount = (data: Partial<IDirectDebitAccountFormData>) =>
+  apiClientService.post('ui/ledger/direct_debits', { data });
 
 /**
  * Get direct debit accounts API
  */
 export const getDirectDebitAccounts = (data: number) =>
-  throttleUtil.getDataAfter(directDebitAccountsMock, 500);
-// apiClientService.post('ui/ledger/customers/get_repayment_direct_debits', {
-//   data: { customer_id: data },
-// });
+  // throttleUtil.getDataAfter(directDebitAccountsMock, 500);
+  apiClientService.post('ui/ledger/direct_debits/get', {
+    data: { customer_id: data },
+  });
 
 /**
  * Add direct debit mandate API

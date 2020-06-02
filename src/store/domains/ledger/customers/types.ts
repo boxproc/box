@@ -186,6 +186,22 @@ export interface IDirectDebitAccount {
   status: string;
 }
 
+export interface IDirectDebitAccountForm {
+  customerId: number;
+  accountField1: string;
+  accountField2: string;
+  accountholderName: string;
+  accountType?: ISelectValue;
+}
+
+export interface IDirectDebitAccountFormData {
+  customer_id: number;
+  account_field_1: string;
+  account_field_2: string;
+  accountholder_name: string;
+  account_type?: string | number;
+}
+
 /**
  * Direct debit mandates interface
  */

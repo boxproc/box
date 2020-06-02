@@ -3,13 +3,15 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, InputField } from 'components';
+import { Button, InputField, SelectField } from 'components';
 import { formNamesConst, iconNamesConst } from 'consts';
 import { THandleAddDirectDebitAccount } from 'store';
 import { formErrorUtil } from 'utils';
 
 interface IDirectDebitForm {
   addDirectDebitAccount: THandleAddDirectDebitAccount;
+  customerCountryCode: string;
+  customerId: number;
   isDisabled: boolean;
   isLoading: boolean;
 }
@@ -18,6 +20,8 @@ type TDirectDebitForm = IDirectDebitForm & InjectedFormProps<{}, IDirectDebitFor
 
 const DirectDebitForm: React.FC<TDirectDebitForm> = ({
   addDirectDebitAccount,
+  customerCountryCode,
+  customerId,
   handleSubmit,
   isDisabled,
   isLoading,
@@ -28,9 +32,17 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
     [isLoading]
   );
 
+  const isUSACountryCode = React.useMemo(
+    () => customerCountryCode === 'USA',
+    [customerCountryCode]
+  );
+
   const handleSubmitForm = React.useCallback(
-    handleSubmit(addDirectDebitAccount),
-    [handleSubmit]
+    handleSubmit(data => addDirectDebitAccount({
+      ...data,
+      customerId,
+    })),
+    [handleSubmit, customerId]
   );
 
   return (
@@ -75,6 +87,22 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
               validate={[formErrorUtil.isRequired]}
             />
           </Box>
+          {isUSACountryCode && (
+            <Box width="130px" p="8px">
+              <Field
+                id="accountType"
+                name="accountType"
+                component={SelectField}
+                label="Account Type"
+                placeholder="Select Type"
+                options={[
+                  { value: 'checking', label: 'checking' },
+                  { value: 'savings', label: 'savings' },
+                ]}
+                disabled={isDisabled}
+              />
+            </Box>
+          )}
           <Box pb="15px">
             <Button
               text={buttonText}

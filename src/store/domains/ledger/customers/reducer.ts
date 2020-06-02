@@ -13,13 +13,6 @@ export const customersInitialState: ImmutableObject<ICustomersState> = Immutable
 
 const customersReducer = (state = customersInitialState, action: TCustomersAction) => {
   switch (action.type) {
-    case ActionTypeKeys.DELETE_CUSTOMER_FULFILLED:
-      return state
-        .set(
-          'customers',
-          state.customers.filter(el => el.id !== action.meta.id)
-        );
-
     case ActionTypeKeys.FILTER_CUSTOMERS_FULFILLED:
       return state.set('customers', action.payload.customers);
 

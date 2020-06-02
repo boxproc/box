@@ -3,13 +3,12 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Flex } from '@rebass/grid';
 
-import { Button, Hr, ISpinner, OkCancelButtons, withSpinner } from 'components';
-import { formNamesConst, iconNamesConst, identificationTypesConst } from 'consts';
+import { Hr, ISpinner, OkCancelButtons, withSpinner } from 'components';
+import { formNamesConst, identificationTypesConst } from 'consts';
 import { CustomerInfo } from './../../components';
 
 import {
   THandleAddCustomer,
-  THandleDeleteCustomer,
   THandleGetDictionaryCountries,
   THandleUpdateCustomer,
 } from 'store';
@@ -19,9 +18,6 @@ import { ISelectValue } from 'types';
 interface IEditCustomerForm extends ISpinner {
   addCustomer: THandleAddCustomer;
   countryCodes: Array<ISelectValue>;
-  currentCustomerName: string;
-  currentId: number;
-  deleteCustomer: THandleDeleteCustomer;
   identificationTypeValue: ISelectValue;
   isEditMode?: boolean;
   isReadOnly: boolean;
@@ -36,17 +32,14 @@ const EditCustomerForm: React.FC<TEditCustomerForm> = ({
   onCancel,
   handleSubmit,
   addCustomer,
-  deleteCustomer,
   updateCustomer,
   dirty,
   pristine,
-  currentCustomerName,
   isEditMode,
   identificationTypeValue,
   loadCountryCodes,
   countryCodes,
   isReadOnly,
-  currentId,
 }) => {
   React.useEffect(
     () => {
@@ -71,11 +64,6 @@ const EditCustomerForm: React.FC<TEditCustomerForm> = ({
     [identificationTypeValue]
   );
 
-  const handleDeleteCustomer = React.useCallback(
-    () => deleteCustomer(currentId),
-    [deleteCustomer, currentId]
-  );
-
   return (
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <CustomerInfo
@@ -85,22 +73,7 @@ const EditCustomerForm: React.FC<TEditCustomerForm> = ({
         isReadOnly={isReadOnly}
       />
       <Hr />
-      <Flex
-        alignItems="center"
-        justifyContent={isEditMode ? 'space-between' : 'flex-end'}
-      >
-        <div>
-          {isEditMode && !isReadOnly && (
-            <Button
-              text="delete"
-              iconName={iconNamesConst.DELETE}
-              type="reset"
-              withConfirmation={true}
-              confirmationText={`Delete customer "${currentCustomerName}"?`}
-              onClick={handleDeleteCustomer}
-            />
-          )}
-        </div>
+      <Flex justifyContent="flex-end">
         <OkCancelButtons
           okText="Save"
           cancelText="Close"
