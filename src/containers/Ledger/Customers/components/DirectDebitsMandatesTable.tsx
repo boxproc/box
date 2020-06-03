@@ -40,7 +40,7 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
         ),
       },
       {
-        maxWidth: 120,
+        maxWidth: 130,
         accessor: 'status',
         Header: <TableHeader title="Status" />,
         Cell: (props: TCell<'status'>) => (
@@ -124,15 +124,15 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
         Cell: (cellInfo: CellInfo) => (
           <Flex alignItems="flex-start" p="7px 5px">
             <Button
-              text={cellInfo.original.status !== 'Cancelled' ? 'Cancel' : 'Reinstate'}
-              title={cellInfo.original.status !== 'Cancelled'
+              text={cellInfo.original.status !== 'cancelled' ? 'Cancel' : 'Reinstate'}
+              title={cellInfo.original.status !== 'cancelled'
                 ? 'Cancel mandate'
                 : 'Reinstate mandate'
               }
               size="10"
               disabled={isReadOnly}
               withConfirmation={true}
-              confirmationText={cellInfo.original.status !== 'Cancelled'
+              confirmationText={cellInfo.original.status !== 'cancelled'
                 // tslint:disable-next-line: max-line-length
                 ? `Confirm that you want to cancel this mandate: ${cellInfo.original.description}.`
                 // tslint:disable-next-line: max-line-length

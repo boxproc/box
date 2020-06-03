@@ -10,6 +10,7 @@ export const debitCreditIndicatorOptions = [
   { value: debitCreditIndicatorConst.NOT_APPLICABLE, label: 'Not applicable' },
 ];
 
-export enum debitCreditIndicatorIds {
+export enum transactionTypesIdsConst {
   LIMIT_ADJUSTMENT = 14,
+  DIRECT_DEBIT = 24,
 }

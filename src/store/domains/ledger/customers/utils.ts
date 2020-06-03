@@ -287,11 +287,13 @@ export const prepareDirectDebitMandatesToRender = (data: Partial<IDirectDebitMan
     last_update_timestamp,
   } = data;
 
+  const preparedStatus = status && status.replace(/_/g, ' ');
+
   return {
     id,
     providerRef: provider_ref,
     description,
-    status,
+    status: preparedStatus,
     countryCode: country_code,
     currencyCode: currency_code,
     scheme,

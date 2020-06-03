@@ -5,13 +5,13 @@ import RepaymentDebitCardsTable from './RepaymentDebitCardsTable';
 
 import {
   handleGetRepaymentDebitCards,
-  isGettingRepaymentDebitCardsSelector,
+  isLoadingRepaymentDebitCardsSelector,
   IStoreState,
   repaymentDebitCardsSelector,
 } from 'store';
 
 const mapStateToProps = (state: IStoreState) => ({
-  isLoading: isGettingRepaymentDebitCardsSelector(state),
+  isLoading: isLoadingRepaymentDebitCardsSelector(state),
   repaymentDebitCards: repaymentDebitCardsSelector(state),
 });
 

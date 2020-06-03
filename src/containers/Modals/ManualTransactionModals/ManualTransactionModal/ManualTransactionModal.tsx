@@ -10,13 +10,19 @@ import {
   withModal,
 } from 'HOCs';
 
-import { modalNamesConst, modalTypesConst, uiItemsConst } from 'consts';
+import {
+  modalNamesConst,
+  modalTypesConst,
+  transactionTypesIdsConst,
+  uiItemsConst,
+} from 'consts';
 
 import PageTitle from 'containers/PageTemplate/PageTitle';
 
 import {
   IPayloadManualTransactionModal,
   THandleGetDictionaryCurrencies,
+  THandleGetDirectDebitMandates,
   THandleMakeLimitAdjustment,
   THandleMakeTransaction,
 } from 'store';
@@ -24,34 +30,56 @@ import {
 import { ISelectValue } from 'types';
 
 interface IManualTransactionModal extends IWithModal, IWithLoadTransactionTypes {
+  accountIdValue: number;
   currenciesOptions: Array<ISelectValue>;
   getCurrencies: THandleGetDictionaryCurrencies;
+  getDirectDebitMandates: THandleGetDirectDebitMandates;
   isCurrenciesLoading: boolean;
+  isDirectDebitMandatesLoading: boolean;
   isLimitAdjustment: boolean;
   makeLimitAdjustment: THandleMakeLimitAdjustment;
   makeTransaction: THandleMakeTransaction;
+  mandateOptions: Array<ISelectValue>;
   modalPayload: IPayloadManualTransactionModal;
+  trTypeValue: ISelectValue;
 }
 const modalName = modalNamesConst.MANUAL_TRANSACTION;
 
 const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
+  accountIdValue,
   closeModal,
   currenciesOptions,
   getCurrencies,
+  getDirectDebitMandates,
   isCurrenciesLoading,
+  isDirectDebitMandatesLoading,
   isLimitAdjustment,
   isTransTypesLoading,
   limitAdjTypeOptions,
   makeLimitAdjustment,
   makeTransaction,
+  mandateOptions,
   manualTransTypesOptions,
   modalPayload,
+  trTypeValue,
 }) => {
   React.useEffect(
     () => {
       getCurrencies();
     },
     [getCurrencies]
+  );
+
+  React.useEffect(
+    () => {
+      if (accountIdValue) {
+        getDirectDebitMandates({
+          accountId: accountIdValue,
+          isBoxAccount: true,
+        });
+      }
+    },
+    [getDirectDebitMandates, accountIdValue]
   );
 
   const modalTitle = React.useMemo(
@@ -62,6 +90,11 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
   const transactionTypes = React.useMemo(
     () => isLimitAdjustment ? limitAdjTypeOptions : manualTransTypesOptions,
     [isLimitAdjustment, manualTransTypesOptions, limitAdjTypeOptions]
+  );
+
+  const isDirectDebitTrType = React.useMemo(
+    () => trTypeValue && trTypeValue.value === transactionTypesIdsConst.DIRECT_DEBIT,
+    [trTypeValue]
   );
 
   const initialFormValues = React.useMemo(
@@ -114,7 +147,7 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
     <Modal
       name={modalName}
       type={modalTypesConst.VIEWING}
-      containerWidth="550px"
+      containerWidth="635px"
       isBluredBackdrop={!initialFormValues.accountId}
     >
       <PageTitle
@@ -123,8 +156,10 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
       />
       <ManualTransactionForm
         currenciesOptions={currenciesOptions}
+        mandateOptions={mandateOptions}
         initialValues={initialFormValues}
         isCurrenciesLoading={isCurrenciesLoading}
+        isDirectDebitMandatesLoading={isDirectDebitMandatesLoading}
         isLimitAdjustment={isLimitAdjustment}
         isReadonly={isReadonlyId}
         isTransTypesLoading={isTransTypesLoading}
@@ -132,6 +167,8 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
         makeTransaction={makeTransaction}
         onCancel={handleOnCancel}
         transactionTypes={transactionTypes}
+        isDirectDebitTrType={isDirectDebitTrType}
+        accountIdValue={accountIdValue}
       />
     </Modal>
   );

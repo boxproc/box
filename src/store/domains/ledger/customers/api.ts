@@ -87,11 +87,15 @@ export const addDirectDebitMandate = (data: number) =>
 /**
  * Get direct debit mandates API
  */
-export const getDirectDebitMandates = (data: number) =>
-  // throttleUtil.getDataAfter(directDebitMandatesMock, 500);
-  apiClientService.post('ui/ledger/direct_debits/mandates/get', {
-    data: { account_id: data },
-  });
+export const getDirectDebitMandates = (data: {
+  accountId: number;
+  isBoxAccount: boolean;
+}) => {
+  const path = data.isBoxAccount ? '' : 'ui/ledger/direct_debits/mandates/get';
+
+  // return throttleUtil.getDataAfter(directDebitMandatesMock, 500);
+  return apiClientService.post(path, { data: { account_id: data.accountId } });
+};
 
 /**
  * Get customer currency limits API

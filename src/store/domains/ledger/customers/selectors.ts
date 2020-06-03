@@ -66,12 +66,12 @@ export const currentCustomerNameSelector = createSelector(
 
 export const currentCustomerInstIdSelector = createSelector(
   currentCustomerSelector,
-  data => data && data.institutionId.value
+  data => data && data.institutionId && data.institutionId.value
 );
 
 export const currentCustomerCountryCodeSelector = createSelector(
   currentCustomerSelector,
-  data => data && data.addressCountryCode.value
+  data => data && data.addressCountryCode && data.addressCountryCode.value
 );
 
 /**
@@ -110,6 +110,16 @@ export const directDebitsMandatesSelector = createSelector(
   data => data && data.map(el => prepareDirectDebitMandatesToRender(el))
 );
 
+export const directDebitsMandatesOptionsSelector = createSelector(
+  defaultDirectDebitMandatesSelector,
+  data => data && data.asMutable().map(el => {
+    return {
+      value: el.id,
+      label: `${el.description}, account: ••••••${el.account_alias}`,
+    };
+  })
+);
+
 /**
  * Currency limits selectors
  */
@@ -144,7 +154,7 @@ export const isAddingCustomerSelector = createLoadingSelector([
   ActionTypeKeys.ADD_CUSTOMER,
 ]);
 
-export const isGettingRepaymentDebitCardsSelector = createLoadingSelector([
+export const isLoadingRepaymentDebitCardsSelector = createLoadingSelector([
   ActionTypeKeys.GET_REPAYMENT_DEBIT_CARDS,
 ]);
 

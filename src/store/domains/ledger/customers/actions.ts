@@ -285,19 +285,28 @@ export const handleAddDirectDebitAccount: THandleAddDirectDebitAccount = data =>
  * Get direct debit mandates action
  */
 
-export type TGetDirectDebitMandates = (accountId: number) => IGetDirectDebitMandatesAction;
-export type THandleGetDirectDebitMandates = (accountId: number) => Thunk<void>;
+export type TGetDirectDebitMandates = (data: {
+  accountId: number;
+  isBoxAccount: boolean;
+}) =>
+  IGetDirectDebitMandatesAction;
 
-export const getDirectDebitMandates: TGetDirectDebitMandates = accountId => ({
+export type THandleGetDirectDebitMandates = (data: {
+  accountId: number;
+  isBoxAccount: boolean;
+}) =>
+  Thunk<void>;
+
+export const getDirectDebitMandates: TGetDirectDebitMandates = data => ({
   type: ActionTypeKeys.GET_DIRECT_DEBIT_MANDATES,
-  payload: api.getDirectDebitMandates(accountId),
+  payload: api.getDirectDebitMandates(data),
 });
 
-export const handleGetDirectDebitMandates: THandleGetDirectDebitMandates = accountId =>
+export const handleGetDirectDebitMandates: THandleGetDirectDebitMandates = data =>
   async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        await dispatch(getDirectDebitMandates(accountId));
+        await dispatch(getDirectDebitMandates(data));
       },
       dispatch
     );
@@ -326,7 +335,7 @@ export const handleAddDirectDebitMandate: THandleAddDirectDebitMandate = account
           name: modalNamesConst.MESSAGE,
           payload: {
             title: 'Mandate was created',
-            message: `Mandate ID: ${mandateId || '' }`,
+            message: `Mandate ID: ${mandateId || ''}`,
           },
         }));
       },

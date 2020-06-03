@@ -10,10 +10,11 @@ export interface IManualTransactionReq {
 
 export interface IManualTransactionFromData {
   transactionType: ISelectValue;
-  currencyCode: ISelectValue;
+  currencyCode?: ISelectValue;
   accountId: string;
   amount: string;
   description: string;
+  mandate?: ISelectValue;
 }
 
 export interface IManualTransactionResultData {

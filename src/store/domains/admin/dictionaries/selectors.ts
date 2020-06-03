@@ -3,8 +3,8 @@ import { createSelector } from 'reselect';
 import {
   dataTypesOptions,
   debitCreditIndicatorConst,
-  debitCreditIndicatorIds,
   debitCreditIndicatorOptions,
+  transactionTypesIdsConst,
 } from 'consts';
 
 import { IStoreState } from 'store';
@@ -222,7 +222,7 @@ export const dictionaryManualTrTypesOptionsSelector = createSelector(
 export const dictionaryLimitAdjTypesOptionsSelector = createSelector(
   dictionaryTransTypesSelector,
   data => {
-    const limitAdjType = data.find(el => el.id === debitCreditIndicatorIds.LIMIT_ADJUSTMENT);
+    const limitAdjType = data.find(el => el.id === transactionTypesIdsConst.LIMIT_ADJUSTMENT);
 
     return limitAdjType && [limitAdjType].map(type => {
       if (!type) {

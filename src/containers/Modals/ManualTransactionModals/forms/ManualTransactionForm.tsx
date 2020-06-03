@@ -5,6 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import {
   Button,
+  Delimiter,
   InputField,
   NumberFormatField,
   OkCancelButtons,
@@ -20,13 +21,17 @@ import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface IManualTransactionForm {
+  accountIdValue: number;
   currenciesOptions: Array<ISelectValue>;
   isCurrenciesLoading: boolean;
+  isDirectDebitMandatesLoading: boolean;
+  isDirectDebitTrType: boolean;
   isLimitAdjustment: boolean;
   isReadonly: boolean;
   isTransTypesLoading: boolean;
   makeLimitAdjustment: THandleMakeLimitAdjustment;
   makeTransaction: THandleMakeTransaction;
+  mandateOptions: Array<ISelectValue>;
   onCancel: () => void;
   transactionTypes: Array<ISelectValue>;
 }
@@ -35,20 +40,37 @@ type TManualTransactionForm = IManualTransactionForm
   & InjectedFormProps<{}, IManualTransactionForm>;
 
 const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
+  accountIdValue,
   currenciesOptions,
   dirty,
   handleSubmit,
   isCurrenciesLoading,
+  isDirectDebitMandatesLoading,
+  isDirectDebitTrType,
   isLimitAdjustment,
   isReadonly,
   isTransTypesLoading,
   makeLimitAdjustment,
   makeTransaction,
+  mandateOptions,
   onCancel,
   pristine,
   reset,
   transactionTypes,
+  change,
 }) => {
+  const [currentAccountId, setCurrentAccountId] = React.useState(null);
+
+  React.useEffect(
+    () => {
+      if (currentAccountId !== accountIdValue) {
+        change('mandate', '');
+        setCurrentAccountId(accountIdValue);
+      }
+    },
+    [currentAccountId, accountIdValue, change]
+  );
+
   const submitFormAction = React.useMemo(
     () => isLimitAdjustment ? makeLimitAdjustment : makeTransaction,
     [isLimitAdjustment, makeLimitAdjustment, makeTransaction]
@@ -66,7 +88,7 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
         flexWrap="wrap"
         mx="-8px"
       >
-        <Box width={[1]} p="8px">
+        <Box width={[1 / 2]} p="8px">
           <Field
             id="transactionType"
             name="transactionType"
@@ -79,8 +101,24 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
+        {isDirectDebitTrType && (
+          <Box width={[1 / 2]} p="8px">
+            <Field
+              id="mandate"
+              name="mandate"
+              component={SelectField}
+              label="Mandate"
+              placeholder="Select Mandate"
+              hint={!accountIdValue && 'Enter account ID'}
+              options={mandateOptions}
+              isDisabled={!accountIdValue}
+              isLoading={isDirectDebitMandatesLoading}
+              validate={[formErrorUtil.isRequired]}
+            />
+          </Box>
         )}
-          <Box width={[2 / 7]} p="8px">
+        <Delimiter />
+        <Box width={[2 / 7]} p="8px">
           <Field
             id="accountId"
             name="accountId"
@@ -97,18 +135,20 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
         </Box>
         {!isLimitAdjustment && (
           <React.Fragment>
-            <Box width={[3 / 7]} p="8px">
-              <Field
-                id="currencyCode"
-                name="currencyCode"
-                component={SelectField}
-                label="Currency"
-                placeholder="Select Currency"
-                options={currenciesOptions}
-                isLoading={isCurrenciesLoading}
-                validate={[formErrorUtil.isRequired]}
-              />
-            </Box>
+            {!isDirectDebitTrType && (
+              <Box width={[3 / 7]} p="8px">
+                <Field
+                  id="currencyCode"
+                  name="currencyCode"
+                  component={SelectField}
+                  label="Currency"
+                  placeholder="Select Currency"
+                  options={currenciesOptions}
+                  isLoading={isCurrenciesLoading}
+                  validate={[formErrorUtil.isRequired]}
+                />
+              </Box>
+            )}
             <Box width={[2 / 7]} p="8px">
               <Field
                 id="amount"

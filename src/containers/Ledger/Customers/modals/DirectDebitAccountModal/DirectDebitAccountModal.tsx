@@ -35,7 +35,10 @@ const DirectDebitAccountModal: React.FC<IDirectDebitAccountModal> = ({
   React.useEffect(
     () => {
       if (account) {
-        getMandates(account.id);
+        getMandates({
+          accountId: account.id,
+          isBoxAccount: false,
+        });
       }
     },
     [getMandates, account]
