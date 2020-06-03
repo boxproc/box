@@ -1,7 +1,7 @@
 import React from 'react';
 import { ImmutableArray } from 'seamless-immutable';
 
-import { Flex } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
 import { Button, List, Modal, T4 } from 'components';
 import { IWithModal, withModal } from 'HOCs';
@@ -46,17 +46,52 @@ const DirectDebitAccountModal: React.FC<IDirectDebitAccountModal> = ({
     [closeModal]
   );
 
-  const accountData = React.useMemo(
-    () => account && [
-      ['Customer ID', account.customerId],
-      ['Account holder', account.accountholderName],
-      ['Account no. ending', account.accountField1],
-      ['Branch code', account.accountField2],
-      ['Country code', account.countryCode],
-      ['Provider Account Ref', account.providerAccountRef],
-      ['Provider Customer Ref', account.providerCustomerRef],
-      ['Status', account.status],
-    ],
+  const accountData1 = React.useMemo(
+    () => {
+      if (!account) {
+        return null;
+      }
+
+      const {
+        customerId,
+        accountholderName,
+        accountField1,
+        accountField3,
+        accountType,
+        countryCode,
+      } = account;
+
+      return [
+        ['Customer ID', customerId],
+        ['Account holder', accountholderName],
+        ['Account no. ending', accountField1],
+        ['Bank name', accountField3],
+        ['Account type', accountType],
+        ['Country code', countryCode],
+      ];
+    },
+    [account]
+  );
+  const accountData2 = React.useMemo(
+    () => {
+      if (!account) {
+        return null;
+      }
+
+      const {
+        providerAccountRef,
+        providerCustomerRef,
+        status,
+        providerName,
+      } = account;
+
+      return [
+        ['Provider Account Ref', providerAccountRef],
+        ['Provider Customer Ref', providerCustomerRef],
+        ['Provider', providerName],
+        ['Status', status],
+      ];
+    },
     [account]
   );
 
@@ -64,14 +99,19 @@ const DirectDebitAccountModal: React.FC<IDirectDebitAccountModal> = ({
     <Modal
       name={modalName}
       title="Account details"
-      containerWidth="750px"
+      containerWidth="950px"
       minContainerHeight="550px"
       isBluredBackdrop={true}
     >
 
-      <List items={accountData} />
+      <Flex alignItems="flex-start">
+        <Box pr="10px">
+          <List items={accountData1} />
+        </Box>
+        <List items={accountData2} />
+      </Flex>
 
-      <T4>Direct Debit Mandates</T4>
+      <T4>Mandates</T4>
       <DirectDebitsMandatesTable
         isReadOnly={isReadOnly}
         isLoading={isMandatesLoading}

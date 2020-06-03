@@ -39,3 +39,8 @@ export enum transactionTypesIds {
   CASH_WITHDRAWAL_ATM = 3,
   BALANCE_TRANSFER_DEBIT = 27,
 }
+
+export const accountTypesOptions = [
+  { value: 'checking', label: 'checking' },
+  { value: 'savings', label: 'savings' },
+];

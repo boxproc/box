@@ -4,8 +4,9 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button, InputField, SelectField } from 'components';
-import { formNamesConst, iconNamesConst } from 'consts';
+import { accountTypesOptions, formNamesConst, iconNamesConst } from 'consts';
 import { THandleAddDirectDebitAccount } from 'store';
+import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface IDirectDebitForm {
@@ -14,6 +15,8 @@ interface IDirectDebitForm {
   customerId: number;
   isDisabled: boolean;
   isLoading: boolean;
+  interfacesOptions: Array<ISelectValue>;
+  isInterfacesLoading: boolean;
 }
 
 type TDirectDebitForm = IDirectDebitForm & InjectedFormProps<{}, IDirectDebitForm>;
@@ -26,6 +29,8 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
   isDisabled,
   isLoading,
   pristine,
+  interfacesOptions,
+  isInterfacesLoading,
 }) => {
   const buttonText = React.useMemo(
     () => isLoading ? 'Adding...' : 'Add Account',
@@ -76,7 +81,7 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
               validate={[formErrorUtil.isRequired]}
             />
           </Box>
-          <Box width="280px" p="8px">
+          <Box width="230px" p="8px">
             <Field
               id="accountholderName"
               name="accountholderName"
@@ -95,14 +100,24 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
                 component={SelectField}
                 label="Account Type"
                 placeholder="Select Type"
-                options={[
-                  { value: 'checking', label: 'checking' },
-                  { value: 'savings', label: 'savings' },
-                ]}
+                options={accountTypesOptions}
                 disabled={isDisabled}
               />
             </Box>
           )}
+          <Box width="300px" p="8px">
+            <Field
+              id="interfaceId"
+              name="interfaceId"
+              component={SelectField}
+              label="Repayment Interface"
+              placeholder="Select Interface"
+              options={interfacesOptions}
+              isLoading={isInterfacesLoading}
+              disabled={isDisabled}
+              validate={[formErrorUtil.isRequired]}
+            />
+          </Box>
           <Box pb="15px">
             <Button
               text={buttonText}

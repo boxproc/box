@@ -32,7 +32,7 @@ const List: React.FC<IList> = ({ items }) => {
         {items && items.length && items.map((item, index) => (
           <tr key={index}>
             <td>{item[0]}</td>
-            <td>{item[1]}</td>
+            <td>{item[1] ? item[1] : '-'}</td>
           </tr>
         ))}
       </tbody>

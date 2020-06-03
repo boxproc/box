@@ -7,6 +7,7 @@ import { DirectDebitAccountsTable } from './../../components';
 import { DirectDebitForm } from './../../forms';
 
 import { THandleAddDirectDebitAccount } from 'store';
+import { ISelectValue } from 'types';
 
 interface IDirectDebitAccounts {
   isLoading: boolean;
@@ -15,6 +16,8 @@ interface IDirectDebitAccounts {
   addDirectDebitAccount: THandleAddDirectDebitAccount;
   customerId: number;
   customerCountryCode: string;
+  interfacesOptions: Array<ISelectValue>;
+  isInterfacesLoading: boolean;
 }
 
 const DirectDebitAccounts: React.FC<IDirectDebitAccounts> = ({
@@ -24,6 +27,8 @@ const DirectDebitAccounts: React.FC<IDirectDebitAccounts> = ({
   addDirectDebitAccount,
   customerId,
   customerCountryCode,
+  interfacesOptions,
+  isInterfacesLoading,
 }) => {
   return (
     <React.Fragment>
@@ -34,6 +39,8 @@ const DirectDebitAccounts: React.FC<IDirectDebitAccounts> = ({
           addDirectDebitAccount={addDirectDebitAccount}
           customerId={customerId}
           customerCountryCode={customerCountryCode}
+          interfacesOptions={interfacesOptions}
+          isInterfacesLoading={isInterfacesLoading}
         />
       )}
       <Box pt="10px">

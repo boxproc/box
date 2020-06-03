@@ -68,6 +68,7 @@ export const directDebitAccountsMock: IDirectDebitAccountsData = {
       country_code: 'GB',
       account_type: null,
       status: 'Active',
+      provider_name: 'GoCardless',
     },
     {
       id: 2,
@@ -81,6 +82,7 @@ export const directDebitAccountsMock: IDirectDebitAccountsData = {
       country_code: 'GB',
       account_type: null,
       status: 'Inactive',
+      provider_name: 'GoCardless',
     },
     {
       id: 3,
@@ -94,6 +96,7 @@ export const directDebitAccountsMock: IDirectDebitAccountsData = {
       country_code: 'GB',
       account_type: null,
       status: 'Active',
+      provider_name: 'GoCardless',
     },
   ],
 };
@@ -114,6 +117,7 @@ export const directDebitMandatesMock: IDirectDebitMandatesData = {
       dd_account_id: 1,
       account_alias: '04',
       last_update_timestamp: '1/06/2020 09:13:00',
+      scheme: 'bacs',
     },
     {
       id: 2,
@@ -129,6 +133,7 @@ export const directDebitMandatesMock: IDirectDebitMandatesData = {
       dd_account_id: 1,
       account_alias: '04',
       last_update_timestamp: '25/05/2020 10:54:00',
+      scheme: 'bacs',
     },
     {
       id: 3,
@@ -144,6 +149,7 @@ export const directDebitMandatesMock: IDirectDebitMandatesData = {
       dd_account_id: 1,
       account_alias: '04',
       last_update_timestamp: '25/05/2020 12:53:00',
+      scheme: 'bacs',
     },
   ],
 };

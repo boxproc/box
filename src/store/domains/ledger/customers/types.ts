@@ -166,6 +166,7 @@ export interface IDirectDebitAccountData {
   country_code: string;
   account_type: string;
   status: string;
+  provider_name: string;
 }
 
 export interface IDirectDebitAccountsData {
@@ -184,6 +185,7 @@ export interface IDirectDebitAccount {
   countryCode: string;
   accountType: string;
   status: string;
+  providerName: string;
 }
 
 export interface IDirectDebitAccountForm {
@@ -192,6 +194,7 @@ export interface IDirectDebitAccountForm {
   accountField2: string;
   accountholderName: string;
   accountType?: ISelectValue;
+  interfaceId: ISelectValue;
 }
 
 export interface IDirectDebitAccountFormData {
@@ -200,6 +203,7 @@ export interface IDirectDebitAccountFormData {
   account_field_2: string;
   accountholder_name: string;
   account_type?: string | number;
+  interface_id?: string | number;
 }
 
 /**
@@ -220,6 +224,7 @@ export interface IDirectDebitMandateData {
   dd_account_id: number;
   account_alias: string;
   last_update_timestamp: string;
+  scheme: string;
 }
 
 export interface IDirectDebitMandatesData {
@@ -240,6 +245,7 @@ export interface IDirectDebitMandate {
   ddAccountId: number;
   accountAlias: string;
   lastUpdateTimestamp: string;
+  scheme: string;
 }
 
 /**

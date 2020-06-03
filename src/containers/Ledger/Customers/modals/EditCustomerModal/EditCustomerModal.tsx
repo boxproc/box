@@ -79,6 +79,8 @@ const EditCustomerModal: React.FC<IEditCustomerModal> = ({
         </TabsPanel>
         <TabsPanel title="Direct Debit Accounts">
           <DirectDebitAccounts
+            interfacesOptions={interfacesOptions}
+            isInterfacesLoading={isInterfacesLoading}
             isReadOnly={isReadOnly}
             onCancel={handleOnCancel}
           />

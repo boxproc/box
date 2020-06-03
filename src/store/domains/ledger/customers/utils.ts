@@ -230,6 +230,7 @@ export const prepareDirectDebitAccountsToRender = (data: IDirectDebitAccountData
     country_code,
     account_type,
     status,
+    provider_name,
   } = data;
 
   return {
@@ -244,6 +245,7 @@ export const prepareDirectDebitAccountsToRender = (data: IDirectDebitAccountData
     countryCode: country_code,
     accountType: account_type,
     status,
+    providerName: provider_name,
   };
 };
 
@@ -255,6 +257,7 @@ export const prepareFormDataDirectDebitAccountToSend =
       accountField2,
       accountholderName,
       accountType,
+      interfaceId,
     } = data;
 
     return {
@@ -263,6 +266,7 @@ export const prepareFormDataDirectDebitAccountToSend =
       account_field_2: accountField2,
       accountholder_name: accountholderName,
       account_type: accountType && accountType.value,
+      interface_id: interfaceId && interfaceId.value,
     };
   };
 
@@ -279,6 +283,7 @@ export const prepareDirectDebitMandatesToRender = (data: Partial<IDirectDebitMan
     status,
     country_code,
     currency_code,
+    scheme,
     last_update_timestamp,
   } = data;
 
@@ -289,6 +294,7 @@ export const prepareDirectDebitMandatesToRender = (data: Partial<IDirectDebitMan
     status,
     countryCode: country_code,
     currencyCode: currency_code,
+    scheme,
     lastUpdateTimestamp: last_update_timestamp,
   };
 };

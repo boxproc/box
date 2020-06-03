@@ -44,7 +44,6 @@ const Customers: React.FC<ICustomers> = ({
   filterAccountsById,
   resetCustomers,
   isLoading,
-  isReadOnly,
 }) => {
   React.useEffect(
     () => {
@@ -78,7 +77,6 @@ const Customers: React.FC<ICustomers> = ({
       filterCardsById,
       filterAccountsById,
       currentId,
-      isReadOnly,
     ]
   );
 

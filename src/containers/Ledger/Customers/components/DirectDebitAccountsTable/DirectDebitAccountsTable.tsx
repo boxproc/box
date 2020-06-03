@@ -75,30 +75,6 @@ const DirectDebitAccountsTable: React.FC<IDirectDebitAccountsTable> = ({
     () => [
       {
         maxWidth: 70,
-        accessor: 'id',
-        Header: <TableHeader title="ID" />,
-        Cell: (props: TCell<'id'>) => (
-          <TableCell
-            value={props.value}
-            isSmaller={true}
-            isNumber={true}
-          />
-        ),
-      },
-      {
-        maxWidth: 70,
-        accessor: 'customerId',
-        Header: <TableHeader title="Customer ID" />,
-        Cell: (props: TCell<'customerId'>) => (
-          <TableCell
-            value={props.value}
-            isSmaller={true}
-            isNumber={true}
-          />
-        ),
-      },
-      {
-        maxWidth: 70,
         accessor: 'accountField1',
         Header: <TableHeader title="Account" />,
         Cell: (props: TCell<'accountField1'>) => (
@@ -110,10 +86,10 @@ const DirectDebitAccountsTable: React.FC<IDirectDebitAccountsTable> = ({
         ),
       },
       {
-        maxWidth: 80,
-        accessor: 'accountField2',
-        Header: <TableHeader title="Branch code" />,
-        Cell: (props: TCell<'accountField2'>) => (
+        maxWidth: 90,
+        accessor: 'accountField3',
+        Header: <TableHeader title="Bank Name" />,
+        Cell: (props: TCell<'accountField3'>) => (
           <TableCell
             value={props.value}
             isSmaller={true}
@@ -159,6 +135,17 @@ const DirectDebitAccountsTable: React.FC<IDirectDebitAccountsTable> = ({
         accessor: 'providerAccountRef',
         Header: <TableHeader title="Provider Account Ref" />,
         Cell: (props: TCell<'providerAccountRef'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 100,
+        accessor: 'providerName',
+        Header: <TableHeader title="Provider" />,
+        Cell: (props: TCell<'providerName'>) => (
           <TableCell
             value={props.value}
             isSmaller={true}

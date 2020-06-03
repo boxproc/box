@@ -62,6 +62,30 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
         ),
       },
       {
+        maxWidth: 60,
+        accessor: 'countryCode',
+        Header: <TableHeader title="Country Code" />,
+        Cell: (props: TCell<'countryCode'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+            onCenter={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 60,
+        accessor: 'currencyCode',
+        Header: <TableHeader title="Currency Code" />,
+        Cell: (props: TCell<'currencyCode'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+            onCenter={true}
+          />
+        ),
+      },
+      {
         maxWidth: 180,
         accessor: 'description',
         Header: <TableHeader title="Description" />,
@@ -71,9 +95,19 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
             isSmaller={true}
           />
         ),
+      },      {
+        maxWidth: 100,
+        accessor: 'scheme',
+        Header: <TableHeader title="Scheme" />,
+        Cell: (props: TCell<'scheme'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+          />
+        ),
       },
       {
-        maxWidth: 115,
+        maxWidth: 125,
         accessor: 'lastUpdateTimestamp',
         Header: <TableHeader title="Last Update Datetime" />,
         Cell: (props: TCell<'lastUpdateTimestamp'>) => (
