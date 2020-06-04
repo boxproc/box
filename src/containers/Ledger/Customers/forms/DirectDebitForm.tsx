@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, InputField, SelectField } from 'components';
 import { accountTypesOptions, formNamesConst, iconNamesConst } from 'consts';
-import { THandleAddDirectDebitAccount, THandleGetDirectDebitMandates } from 'store';
+import { THandleAddDirectDebitAccount } from 'store';
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
@@ -13,7 +13,6 @@ interface IDirectDebitForm {
   addDirectDebitAccount: THandleAddDirectDebitAccount;
   customerCountryCode: string;
   customerId: number;
-  getMandates: THandleGetDirectDebitMandates;
   interfacesOptions: Array<ISelectValue>;
   isDisabled: boolean;
   isInterfacesLoading: boolean;
@@ -26,7 +25,6 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
   addDirectDebitAccount,
   customerCountryCode,
   customerId,
-  getMandates,
   handleSubmit,
   isDisabled,
   isLoading,
@@ -45,14 +43,13 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
   );
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(async data => {
-      await addDirectDebitAccount({
+    handleSubmit(data => {
+      addDirectDebitAccount({
         ...data,
         customerId,
       });
-      getMandates({ customerId });
     }),
-    [customerId, getMandates, handleSubmit]
+    [customerId, handleSubmit]
   );
 
   return (
@@ -106,7 +103,7 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
                 label="Account Type"
                 placeholder="Select Type"
                 options={accountTypesOptions}
-                disabled={isDisabled}
+                isDisabled={isDisabled}
               />
             </Box>
           )}
@@ -130,7 +127,7 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
               placeholder="Select Interface"
               options={interfacesOptions}
               isLoading={isInterfacesLoading}
-              disabled={isDisabled}
+              isDisabled={isDisabled}
               validate={[formErrorUtil.isRequired]}
             />
           </Box>

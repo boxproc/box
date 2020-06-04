@@ -49,7 +49,6 @@ const DirectDebit: React.FC<IDirectDebit> = ({
           isDisabled={isLoading}
           isLoading={isLoading}
           addDirectDebitAccount={addDirectDebitAccount}
-          getMandates={getMandates}
           customerId={customerId}
           customerCountryCode={customerCountryCode}
           interfacesOptions={interfacesOptions}

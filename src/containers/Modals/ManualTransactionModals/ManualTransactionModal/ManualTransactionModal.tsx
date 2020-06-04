@@ -70,13 +70,18 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
     [getCurrencies]
   );
 
+  const isDirectDebitTrType = React.useMemo(
+    () => trTypeValue && trTypeValue.value === transactionTypesIdsConst.DIRECT_DEBIT,
+    [trTypeValue]
+  );
+
   React.useEffect(
     () => {
-      if (accountIdValue) {
+      if (accountIdValue && isDirectDebitTrType) {
         getDirectDebitMandates({ accountId: accountIdValue });
       }
     },
-    [getDirectDebitMandates, accountIdValue]
+    [getDirectDebitMandates, accountIdValue, isDirectDebitTrType]
   );
 
   const modalTitle = React.useMemo(
@@ -87,11 +92,6 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
   const transactionTypes = React.useMemo(
     () => isLimitAdjustment ? limitAdjTypeOptions : manualTransTypesOptions,
     [isLimitAdjustment, manualTransTypesOptions, limitAdjTypeOptions]
-  );
-
-  const isDirectDebitTrType = React.useMemo(
-    () => trTypeValue && trTypeValue.value === transactionTypesIdsConst.DIRECT_DEBIT,
-    [trTypeValue]
   );
 
   const initialFormValues = React.useMemo(

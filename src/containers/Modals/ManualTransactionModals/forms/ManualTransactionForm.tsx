@@ -88,7 +88,7 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
         flexWrap="wrap"
         mx="-8px"
       >
-        <Box width={[2 / 3]} p="8px">
+        <Box width={[1 / 2]} p="8px">
           <Field
             id="transactionType"
             name="transactionType"
@@ -102,7 +102,7 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
           />
         </Box>
         {isDirectDebitTrType && (
-          <Box width={[1 / 3]} p="8px">
+          <Box width={[1 / 2]} p="8px">
             <Field
               id="mandate"
               name="mandate"

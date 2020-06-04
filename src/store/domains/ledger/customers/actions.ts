@@ -272,12 +272,15 @@ export const addDirectDebitAccount: TAddDirectDebitAccount = data => ({
 });
 
 export const handleAddDirectDebitAccount: THandleAddDirectDebitAccount = data =>
-  async dispatch => {
+  async (dispatch, getState) => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
+        const state = getState();
+        const customerId = activeItemIdSelector(state);
         const preparedData = prepareFormDataDirectDebitAccountToSend(data);
 
         await dispatch(addDirectDebitAccount(preparedData));
+        await dispatch(getDirectDebitMandates({ customerId }));
         dispatch(resetForm(formNamesConst.DIRECT_DEBIT_ACCOUNTS));
       },
       dispatch
