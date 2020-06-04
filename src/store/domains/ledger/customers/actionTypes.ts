@@ -40,6 +40,10 @@ export enum ActionTypeKeys {
   GET_DIRECT_DEBIT_MANDATES_FULFILLED = 'customers/GET_DIRECT_DEBIT_MANDATES_FULFILLED',
   GET_DIRECT_DEBIT_MANDATES_REJECTED = 'customers/GET_DIRECT_DEBIT_MANDATES_REJECTED',
 
+  CHANGE_DIRECT_DEBIT_MANDATE = 'customers/CHANGE_DIRECT_DEBIT_MANDATE',
+  CHANGE_DIRECT_DEBIT_MANDATE_FULFILLED = 'customers/CHANGE_DIRECT_DEBIT_MANDATE_FULFILLED',
+  CHANGE_DIRECT_DEBIT_MANDATE_REJECTED = 'customers/CHANGE_DIRECT_DEBIT_MANDATE_REJECTED',
+
   GET_CURRENCY_LIMIT = 'customers/GET_CURRENCY_LIMIT',
   GET_CURRENCY_LIMIT_FULFILLED = 'customers/GET_CURRENCY_LIMIT_FULFILLED',
   GET_CURRENCY_LIMIT_REJECTED = 'customers/GET_CURRENCY_LIMIT_REJECTED',
@@ -187,6 +191,26 @@ export interface IGetDirectDebitMandatesRejectedAction {
   readonly type: ActionTypeKeys.GET_DIRECT_DEBIT_MANDATES_REJECTED;
 }
 
+/**
+ * Change direct debit mandate interfaces
+ */
+
+export interface IChangeDirectDebitMandateAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.CHANGE_DIRECT_DEBIT_MANDATE;
+}
+
+export interface IChangeDirectDebitMandateFulfilledAction {
+  readonly payload: { status: string };
+  readonly type: ActionTypeKeys.CHANGE_DIRECT_DEBIT_MANDATE_FULFILLED;
+  readonly meta: { id: number };
+}
+
+export interface IChangeDirectDebitMandateRejectedAction {
+  readonly payload: TApiResponse;
+  readonly type: ActionTypeKeys.CHANGE_DIRECT_DEBIT_MANDATE_REJECTED;
+}
+
 /** Get customer currency limits action interfaces */
 
 export interface IGetCurrencyLimitAction {
@@ -236,6 +260,7 @@ export type TCustomersAction =
   | IAddRepaymentDebitCardFulfilledAction
   | IAddDirectDebitAccountFulfilledAction
   | IGetDirectDebitMandatesFulfilledAction
+  | IChangeDirectDebitMandateFulfilledAction
   | IGetCurrencyLimitFulfilledAction
   | IUpdateCurrencyLimitFulfilledAction
   | IResetCustomersAction;

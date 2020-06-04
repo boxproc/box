@@ -8,14 +8,17 @@ import {
   currentCustomerCountryCodeSelector,
   directDebitsMandatesSelector,
   handleAddDirectDebitAccount,
+  handleChangeDirectDebitMandate,
   handleGetDirectDebitMandates,
   isAddingDirectDebitAccountSelector,
+  isChangingDirectDebitMandateSelector,
   isGettingDirectDebitMandatesSelector,
   IStoreState,
 } from 'store';
 
 const mapStateToProps = (state: IStoreState) => ({
   isLoading: isAddingDirectDebitAccountSelector(state),
+  isChangingMandate: isChangingDirectDebitMandateSelector(state),
   customerId: activeItemIdSelector(state),
   customerCountryCode: currentCustomerCountryCodeSelector(state),
   isMandatesLoading: isGettingDirectDebitMandatesSelector(state),
@@ -26,6 +29,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     addDirectDebitAccount: handleAddDirectDebitAccount,
     getMandates: handleGetDirectDebitMandates,
+    changeMandate: handleChangeDirectDebitMandate,
   },
   dispatch
 );

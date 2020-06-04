@@ -17,6 +17,7 @@ import {
   IAddCustomerAction,
   IAddDirectDebitAccountAction,
   IAddRepaymentDebitCardAction,
+  IChangeDirectDebitMandateAction,
   IFilterCustomersAction,
   IFilterCustomersByIdAction,
   IGetCurrencyLimitAction,
@@ -98,6 +99,7 @@ export const handleAddCustomer: THandleAddCustomer = data =>
         const isAccessibleFiltering = isAccessibleFilterSelector(state);
 
         const res = await dispatch(addCustomer(preparedData)) as any;
+
         dispatch(closeModal(modalNamesConst.ADD_CUSTOMER));
         dispatch(openModal({
           name: modalNamesConst.MESSAGE,
@@ -233,14 +235,12 @@ export const handleAddRepaymentDebitCard: THandleAddRepaymentDebitCard = data =>
 export type TGetDirectDebitMandates = (data: {
   accountId?: number;
   customerId?: number;
-}) =>
-  IGetDirectDebitMandatesAction;
+}) => IGetDirectDebitMandatesAction;
 
 export type THandleGetDirectDebitMandates = (data: {
   accountId?: number;
   customerId?: number;
-}) =>
-  Thunk<void>;
+}) => Thunk<void>;
 
 export const getDirectDebitMandates: TGetDirectDebitMandates = data => ({
   type: ActionTypeKeys.GET_DIRECT_DEBIT_MANDATES,
@@ -252,6 +252,48 @@ export const handleGetDirectDebitMandates: THandleGetDirectDebitMandates = data 
     errorDecoratorUtil.withErrorHandler(
       async () => {
         await dispatch(getDirectDebitMandates(data));
+      },
+      dispatch
+    );
+  };
+
+/**
+ * Change direct debit mandate action
+ */
+
+export type TChangeDirectDebitMandate = (data: {
+  cancel?: boolean;
+  reinstate?: boolean;
+  id: number;
+}) => IChangeDirectDebitMandateAction;
+
+export type THandleChangeDirectDebitMandate = (data: {
+  cancel?: boolean;
+  reinstate?: boolean;
+  id: number;
+}) => Thunk<void>;
+
+export const changeDirectDebitMandate: TChangeDirectDebitMandate = data => ({
+  type: ActionTypeKeys.CHANGE_DIRECT_DEBIT_MANDATE,
+  payload: api.changeDirectDebitMandate(data),
+  meta: { id: data.id },
+});
+
+export const handleChangeDirectDebitMandate: THandleChangeDirectDebitMandate = data =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const res = await dispatch(changeDirectDebitMandate(data)) as any;
+        const statusMessage = res.value.status ? `Status: ${res.value.status}` : '';
+        const isCancelling = data.cancel;
+
+        dispatch(openModal({
+          name: modalNamesConst.MESSAGE,
+          payload: {
+            title: isCancelling ? 'Mandate was cancelled' : 'Mandate was reinstated',
+            message: statusMessage,
+          },
+        }));
       },
       dispatch
     );

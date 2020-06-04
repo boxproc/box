@@ -24,6 +24,20 @@ const customersReducer = (state = customersInitialState, action: TCustomersActio
     case ActionTypeKeys.GET_DIRECT_DEBIT_MANDATES_FULFILLED:
       return state.set('directDebitMandates', action.payload.direct_debit_mandates);
 
+    case ActionTypeKeys.CHANGE_DIRECT_DEBIT_MANDATE_FULFILLED:
+      const status = action.payload.status;
+      const mandateId = action.meta.id;
+
+      const mandateInd = state.directDebitMandates.findIndex(el => el.id === mandateId);
+      const mandates = state.directDebitMandates.asMutable();
+
+      mandates[mandateInd] = {
+        ...mandates[mandateInd],
+        status,
+      };
+
+      return state.set('directDebitMandates', mandates);
+
     case ActionTypeKeys.GET_CURRENCY_LIMIT_FULFILLED:
       return state.set('currencyLimit', action.payload.currency_limit[0]);
 

@@ -157,6 +157,10 @@ export const isGettingDirectDebitMandatesSelector = createLoadingSelector([
   ActionTypeKeys.GET_DIRECT_DEBIT_MANDATES,
 ]);
 
+export const isChangingDirectDebitMandateSelector = createLoadingSelector([
+  ActionTypeKeys.CHANGE_DIRECT_DEBIT_MANDATE,
+]);
+
 export const isGettingCurrencyLimitSelector = createLoadingSelector([
   ActionTypeKeys.GET_CURRENCY_LIMIT,
 ]);

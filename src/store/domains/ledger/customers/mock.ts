@@ -86,6 +86,14 @@ export const directDebitMandatesMock: IDirectDebitMandatesData = {
   ],
 };
 
+export const cancelDirectDebitMandateMock: { status: string } = {
+  status: 'Inactive',
+};
+
+export const reinstateDirectDebitMandateMock: { status: string } = {
+  status: 'Active',
+};
+
 export const currencyLimitMock: ICurrencyLimitItemData = {
   currency_limit: [
     {

@@ -10,31 +10,36 @@ import { DirectDebitForm } from './../../forms';
 import {
   // IDirectDebitMandate,
   THandleAddDirectDebitAccount,
+  THandleChangeDirectDebitMandate,
   THandleGetDirectDebitMandates,
 } from 'store';
 import { ISelectValue } from 'types';
 
 interface IDirectDebit {
   addDirectDebitAccount: THandleAddDirectDebitAccount;
+  // mandates: ImmutableArray<IDirectDebitMandate>;
+  changeMandate: THandleChangeDirectDebitMandate;
   customerCountryCode: string;
   customerId: number;
   getMandates: THandleGetDirectDebitMandates;
   interfacesOptions: Array<ISelectValue>;
+  isChangingMandate: boolean;
   isInterfacesLoading: boolean;
   isLoading: boolean;
   isMandatesLoading: boolean;
   isReadOnly: boolean;
-  // mandates: ImmutableArray<IDirectDebitMandate>;
   mandates: any;
   onCancel: () => void;
 }
 
 const DirectDebit: React.FC<IDirectDebit> = ({
   addDirectDebitAccount,
+  changeMandate,
   customerCountryCode,
   customerId,
   getMandates,
   interfacesOptions,
+  isChangingMandate,
   isInterfacesLoading,
   isLoading,
   isMandatesLoading,
@@ -55,10 +60,12 @@ const DirectDebit: React.FC<IDirectDebit> = ({
           isInterfacesLoading={isInterfacesLoading}
         />
       )}
-      <Box pt="10px">
+      <Box py="10px">
         <DirectDebitsMandatesTable
           customerId={customerId}
+          changeMandate={changeMandate}
           getMandates={getMandates}
+          isChangingMandate={isChangingMandate}
           isLoading={isMandatesLoading}
           isReadOnly={isReadOnly}
           mandates={mandates}

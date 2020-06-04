@@ -13,22 +13,30 @@ import {
 } from 'components';
 import { iconNamesConst, modalNamesConst } from 'consts';
 import { IWithModal, withModal } from 'HOCs';
-import { IDirectDebitMandate, THandleGetDirectDebitMandates } from 'store';
+import {
+  IDirectDebitMandate,
+  THandleChangeDirectDebitMandate,
+  THandleGetDirectDebitMandates,
+} from 'store';
 import { ITableCell } from 'types';
 
 type TCell<T extends keyof IDirectDebitMandate> = ITableCell<IDirectDebitMandate[T]>;
 
 interface IDirectDebitsMandatesTable extends IWithModal {
+  changeMandate: THandleChangeDirectDebitMandate;
   customerId: number;
   getMandates: THandleGetDirectDebitMandates;
+  isChangingMandate: boolean;
+  isLoading: boolean;
   isReadOnly: boolean;
   mandates: ImmutableArray<IDirectDebitMandate>;
-  isLoading: boolean;
 }
 
 const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
+  changeMandate,
   customerId,
   getMandates,
+  isChangingMandate,
   isReadOnly,
   mandates,
   openModal,
@@ -123,30 +131,35 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
       {
         maxWidth: 100,
         accessor: 'actionMandate',
-        Cell: (cellInfo: CellInfo) => (
-          <Flex alignItems="flex-start" p="7px 5px">
-            <Button
-              text={cellInfo.original.status !== 'cancelled' ? 'Cancel' : 'Reinstate'}
-              title={cellInfo.original.status !== 'cancelled'
-                ? 'Cancel mandate'
-                : 'Reinstate mandate'
-              }
-              size="10"
-              disabled={isReadOnly}
-              withConfirmation={true}
-              confirmationText={cellInfo.original.status !== 'cancelled'
-                // tslint:disable-next-line: max-line-length
-                ? `Confirm that you want to cancel this mandate: ${cellInfo.original.description}.`
-                // tslint:disable-next-line: max-line-length
-                : `Confirm that you want to reinstate this mandate: ${cellInfo.original.description}.`
-              }
-              onClick={() => console.log('---')}
-            />
-          </Flex>
-        ),
+        Cell: (cellInfo: CellInfo) => {
+          const status = cellInfo.original.status;
+          const isCancelled = status && status.toLowerCase() === 'inactive';
+          const description = cellInfo.original.description;
+          const id = cellInfo.original.id;
+
+          return (
+            <Flex alignItems="flex-start" p="7px 5px">
+              <Button
+                text={isCancelled ? 'Reinstate' : 'Cancel'}
+                title={isCancelled ? 'Reinstate mandate' : 'Cancel mandate'}
+                size="10"
+                disabled={isReadOnly || isChangingMandate}
+                withConfirmation={true}
+                confirmationText={isCancelled
+                  ? `Confirm that you want to reinstate this mandate: ${description}.`
+                  : `Confirm that you want to cancel this mandate: ${description}.`
+                }
+                onClick={isCancelled
+                  ? () => changeMandate({ reinstate: true, id })
+                  : () => changeMandate({ cancel: true, id })
+                }
+              />
+            </Flex>
+          );
+        },
       },
     ],
-    [isReadOnly, handleOpenModal]
+    [isReadOnly, isChangingMandate, handleOpenModal, changeMandate]
   );
 
   return (

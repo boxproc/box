@@ -1,10 +1,17 @@
 // import { successResponseMock } from 'consts';
 import { apiClientService } from 'services';
 // import {
+//   changeDirectDebitMandateMock
 //   currencyLimitMock,
 //   customersMock,
 //   directDebitMandatesMock,
+//   reinstateDirectDebitMandateMock,
 // } from './mock';
+
+import {
+  cancelDirectDebitMandateMock,
+  reinstateDirectDebitMandateMock,
+} from './mock';
 
 import {
   ICurrencyLimitData,
@@ -15,7 +22,7 @@ import {
   TLedgerId,
 } from './types';
 
-// import { throttleUtil } from 'utils';
+import { throttleUtil } from 'utils';
 
 /**
  * Filter customers API
@@ -79,6 +86,25 @@ export const getDirectDebitMandates = (data: {
 
   // return throttleUtil.getDataAfter(directDebitMandatesMock, 500);
   return apiClientService.post(path, { data: preparedData });
+};
+
+/**
+ * Change direct debit mandate API
+ */
+export const changeDirectDebitMandate = (data: {
+  cancel?: boolean;
+  reinstate?: boolean;
+  id: number;
+}) => {
+  // const path = data.cancel ? '/cancel' : '/reinstate';
+
+  return throttleUtil.getDataAfter(
+    data.cancel
+      ? cancelDirectDebitMandateMock
+      : reinstateDirectDebitMandateMock,
+    500
+  );
+  // return apiClientService.post(path, { data: { id: data.id } });
 };
 
 /**
