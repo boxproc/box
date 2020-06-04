@@ -24,7 +24,7 @@ export enum modalNamesConst {
   ADD_ACCOUNT = 'AddAccountModal',
   ADD_CURRENCY_RATE = 'AddCurrencyRateModal',
   ADD_CUSTOMER = 'AddCustomerModal',
-  DIRECT_DEBIT_ACCOUNT = 'DirectDebitAccountModal',
+  DIRECT_DEBIT_MANDATE = 'DirectDebitMandateModal',
   EDIT_ACCOUNT = 'EditAccountModal',
   EDIT_CURRENCY_RATE = 'EditCurrencyRate',
   EDIT_CUSTOMER = 'EditCustomerModal',

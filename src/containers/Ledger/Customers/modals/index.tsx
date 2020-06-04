@@ -3,7 +3,7 @@ import React from 'react';
 import { modalNamesConst } from 'consts';
 
 import AddCustomerModal from './AddCustomerModal';
-import DirectDebitAccountModal from './DirectDebitAccountModal';
+import DirectDebitMandateModal from './DirectDebitMandateModal';
 import EditCustomerModal from './EditCustomerModal';
 
 export const customersModals = [
@@ -16,7 +16,7 @@ export const customersModals = [
     component: <EditCustomerModal />,
   },
   {
-    name: modalNamesConst.DIRECT_DEBIT_ACCOUNT,
-    component: <DirectDebitAccountModal />,
+    name: modalNamesConst.DIRECT_DEBIT_MANDATE,
+    component: <DirectDebitMandateModal />,
   },
 ];

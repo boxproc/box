@@ -3,7 +3,6 @@ import { apiClientService } from 'services';
 // import {
 //   currencyLimitMock,
 //   customersMock,
-//   directDebitAccountsMock,
 //   directDebitMandatesMock,
 // } from './mock';
 
@@ -67,34 +66,19 @@ export const addDirectDebitAccount = (data: Partial<IDirectDebitAccountFormData>
   apiClientService.post('ui/ledger/direct_debits', { data });
 
 /**
- * Get direct debit accounts API
- */
-export const getDirectDebitAccounts = (data: number) =>
-  // throttleUtil.getDataAfter(directDebitAccountsMock, 500);
-  apiClientService.post('ui/ledger/direct_debits/get', {
-    data: { customer_id: data },
-  });
-
-/**
- * Add direct debit mandate API
- */
-export const addDirectDebitMandate = (data: number) =>
-  // throttleUtil.getDataAfter(successResponseMock, 500);
-  apiClientService.post('ui/ledger/direct_debits/mandate', {
-    data: { account_id: data },
-  });
-
-/**
  * Get direct debit mandates API
  */
 export const getDirectDebitMandates = (data: {
-  accountId: number;
-  isBoxAccount: boolean;
+  accountId?: number;
+  customerId?: number;
 }) => {
-  const path = data.isBoxAccount ? '' : 'ui/ledger/direct_debits/mandates/get';
+  const path = data.accountId ? '' : 'ui/ledger/direct_debits/mandates/get';
+  const preparedData = data.accountId
+    ? { account_id: data.accountId }
+    : { customer_id: data.customerId };
 
   // return throttleUtil.getDataAfter(directDebitMandatesMock, 500);
-  return apiClientService.post(path, { data: { account_id: data.accountId } });
+  return apiClientService.post(path, { data: preparedData });
 };
 
 /**

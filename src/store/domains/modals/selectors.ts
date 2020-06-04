@@ -23,5 +23,5 @@ export const payloadTransactionModalSelector = (state: IStoreState) =>
 export const payloadSettleTrModalSelector = (state: IStoreState) =>
   state.modals.payloadSettleTransactionModal;
 
-export const payloadDirectDebitAccountModalSelector = (state: IStoreState) =>
-  state.modals.payloadDirectDebitAccountModal;
+export const payloadDirectDebitMandateModalSelector = (state: IStoreState) =>
+  state.modals.payloadDirectDebitMandateModal;

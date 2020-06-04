@@ -1,5 +1,5 @@
 import React from 'react';
-import { CellInfo } from 'react-table';
+import { CellInfo, RowInfo } from 'react-table';
 import { ImmutableArray } from 'seamless-immutable';
 
 import { Flex } from '@rebass/grid';
@@ -11,31 +11,76 @@ import {
   TableHeader,
   withSpinner,
 } from 'components';
-import { IDirectDebitMandate } from 'store';
+import { iconNamesConst, modalNamesConst } from 'consts';
+import { IWithModal, withModal } from 'HOCs';
+import { IDirectDebitMandate, THandleGetDirectDebitMandates } from 'store';
 import { ITableCell } from 'types';
 
 type TCell<T extends keyof IDirectDebitMandate> = ITableCell<IDirectDebitMandate[T]>;
 
-interface IDirectDebitsMandatesTable {
-  data: ImmutableArray<IDirectDebitMandate>;
+interface IDirectDebitsMandatesTable extends IWithModal {
+  customerId: number;
+  getMandates: THandleGetDirectDebitMandates;
   isReadOnly: boolean;
+  mandates: ImmutableArray<IDirectDebitMandate>;
+  isLoading: boolean;
 }
 
 const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
-  data,
+  customerId,
+  getMandates,
   isReadOnly,
+  mandates,
+  openModal,
 }) => {
+  React.useEffect(
+    () => {
+      getMandates({ customerId });
+    },
+    [getMandates, customerId]
+  );
+
+  const handleOpenModal = React.useCallback(
+    cellInfo => {
+      openModal({
+        name: modalNamesConst.DIRECT_DEBIT_MANDATE,
+        payload: cellInfo.original,
+      });
+    },
+    [openModal]
+  );
+
+  const handleClickOnRow = React.useCallback(
+    (_, rowInfo: RowInfo) => {
+      return {
+        onDoubleClick: () => handleOpenModal(rowInfo),
+      };
+    },
+    [handleOpenModal]
+  );
+
   const columns = React.useMemo(
     () => [
       {
-        maxWidth: 80,
-        accessor: 'id',
-        Header: <TableHeader title="ID" />,
-        Cell: (props: TCell<'id'>) => (
+        maxWidth: 120,
+        accessor: 'accountAlias',
+        Header: <TableHeader title="Account Alias" />,
+        Cell: (props: TCell<'accountAlias'>) => (
           <TableCell
             value={props.value}
             isSmaller={true}
             isNumber={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 200,
+        accessor: 'bankName',
+        Header: <TableHeader title="Bank Name" />,
+        Cell: (props: TCell<'bankName'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
           />
         ),
       },
@@ -51,10 +96,10 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
         ),
       },
       {
-        maxWidth: 150,
-        accessor: 'providerRef',
-        Header: <TableHeader title="Provider Reference" />,
-        Cell: (props: TCell<'providerRef'>) => (
+        maxWidth: 200,
+        accessor: 'interfaceName',
+        Header: <TableHeader title="Direct Debit Provider" />,
+        Cell: (props: TCell<'interfaceName'>) => (
           <TableCell
             value={props.value}
             isSmaller={true}
@@ -62,60 +107,17 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
         ),
       },
       {
-        maxWidth: 60,
-        accessor: 'countryCode',
-        Header: <TableHeader title="Country Code" />,
-        Cell: (props: TCell<'countryCode'>) => (
-          <TableCell
-            value={props.value}
-            isSmaller={true}
-            onCenter={true}
-          />
-        ),
-      },
-      {
-        maxWidth: 60,
-        accessor: 'currencyCode',
-        Header: <TableHeader title="Currency Code" />,
-        Cell: (props: TCell<'currencyCode'>) => (
-          <TableCell
-            value={props.value}
-            isSmaller={true}
-            onCenter={true}
-          />
-        ),
-      },
-      {
-        maxWidth: 180,
-        accessor: 'description',
-        Header: <TableHeader title="Description" />,
-        Cell: (props: TCell<'description'>) => (
-          <TableCell
-            value={props.value}
-            isSmaller={true}
-          />
-        ),
-      },      {
-        maxWidth: 100,
-        accessor: 'scheme',
-        Header: <TableHeader title="Scheme" />,
-        Cell: (props: TCell<'scheme'>) => (
-          <TableCell
-            value={props.value}
-            isSmaller={true}
-          />
-        ),
-      },
-      {
-        maxWidth: 125,
-        accessor: 'lastUpdateTimestamp',
-        Header: <TableHeader title="Last Update Datetime" />,
-        Cell: (props: TCell<'lastUpdateTimestamp'>) => (
-          <TableCell
-            value={props.value}
-            isSmaller={true}
-            isDate={true}
-          />
+        maxWidth: 50,
+        Header: <TableHeader title="Details" />,
+        Cell: (cellInfo: CellInfo) => (
+          <Flex alignItems="flex-start" p="10px 5px">
+            <Button
+              iconName={iconNamesConst.SHORT_TEXT}
+              title="Details"
+              type="reset"
+              onClick={() => handleOpenModal(cellInfo)}
+            />
+          </Flex>
         ),
       },
       {
@@ -144,16 +146,17 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
         ),
       },
     ],
-    [isReadOnly]
+    [isReadOnly, handleOpenModal]
   );
 
   return (
     <Table
-      data={data}
+      data={mandates}
       columns={columns}
       isSmaller={true}
+      getTrGroupProps={handleClickOnRow}
     />
   );
 };
 
-export default withSpinner()(DirectDebitsMandatesTable);
+export default withModal(withSpinner()(DirectDebitsMandatesTable));

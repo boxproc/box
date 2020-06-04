@@ -73,10 +73,7 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
   React.useEffect(
     () => {
       if (accountIdValue) {
-        getDirectDebitMandates({
-          accountId: accountIdValue,
-          isBoxAccount: true,
-        });
+        getDirectDebitMandates({ accountId: accountIdValue });
       }
     },
     [getDirectDebitMandates, accountIdValue]

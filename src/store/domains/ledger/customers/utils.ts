@@ -6,8 +6,6 @@ import {
   ICustomerData,
   ICustomerDetails,
   ICustomersFilter,
-  IDirectDebitAccount,
-  IDirectDebitAccountData,
   IDirectDebitAccountForm,
   IDirectDebitAccountFormData,
   IDirectDebitMandate,
@@ -212,49 +210,13 @@ export const prepareFormDataRepaymentDebitCardToSend =
     };
   };
 
-export const prepareDirectDebitAccountsToRender = (data: IDirectDebitAccountData):
-  IDirectDebitAccount => {
-  if (!data) {
-    return null;
-  }
-
-  const {
-    id,
-    customer_id,
-    provider_account_ref,
-    provider_customer_ref,
-    account_field_1,
-    account_field_2,
-    account_field_3,
-    accountholder_name,
-    country_code,
-    account_type,
-    status,
-    provider_name,
-  } = data;
-
-  return {
-    id,
-    customerId: customer_id,
-    providerAccountRef: provider_account_ref,
-    providerCustomerRef: provider_customer_ref,
-    accountField1: `••••••${account_field_1}`,
-    accountField2: account_field_2,
-    accountField3: account_field_3,
-    accountholderName: accountholder_name,
-    countryCode: country_code,
-    accountType: account_type,
-    status,
-    providerName: provider_name,
-  };
-};
-
 export const prepareFormDataDirectDebitAccountToSend =
   (data: Partial<IDirectDebitAccountForm>): Partial<IDirectDebitAccountFormData> => {
     const {
       customerId,
       accountField1,
       accountField2,
+      accountField3,
       accountholderName,
       accountType,
       interfaceId,
@@ -264,6 +226,7 @@ export const prepareFormDataDirectDebitAccountToSend =
       customer_id: customerId,
       account_field_1: accountField1,
       account_field_2: accountField2,
+      account_field_3: accountField3,
       accountholder_name: accountholderName,
       account_type: accountType && accountType.value,
       interface_id: interfaceId && interfaceId.value,
@@ -278,26 +241,32 @@ export const prepareDirectDebitMandatesToRender = (data: Partial<IDirectDebitMan
 
   const {
     id,
-    provider_ref,
+    customer_id,
+    interface_name,
     description,
     status,
     country_code,
     currency_code,
-    scheme,
+    account_alias,
     last_update_timestamp,
+    scheme,
+    bank_name,
+    accountholder_name,
   } = data;
-
-  const preparedStatus = status && status.replace(/_/g, ' ');
 
   return {
     id,
-    providerRef: provider_ref,
+    customerId: customer_id,
+    interfaceName: interface_name,
     description,
-    status: preparedStatus,
+    status,
     countryCode: country_code,
     currencyCode: currency_code,
-    scheme,
+    accountAlias: `••••${account_alias}`,
     lastUpdateTimestamp: last_update_timestamp,
+    scheme,
+    bankName: bank_name,
+    accountholderName: accountholder_name,
   };
 };
 

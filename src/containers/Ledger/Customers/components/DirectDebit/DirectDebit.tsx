@@ -1,34 +1,46 @@
 import React from 'react';
+// import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components';
-import { DirectDebitAccountsTable } from './../../components';
+import { DirectDebitsMandatesTable } from './../../components';
 import { DirectDebitForm } from './../../forms';
 
-import { THandleAddDirectDebitAccount } from 'store';
+import {
+  // IDirectDebitMandate,
+  THandleAddDirectDebitAccount,
+  THandleGetDirectDebitMandates,
+} from 'store';
 import { ISelectValue } from 'types';
 
-interface IDirectDebitAccounts {
-  isLoading: boolean;
-  onCancel: () => void;
-  isReadOnly: boolean;
+interface IDirectDebit {
   addDirectDebitAccount: THandleAddDirectDebitAccount;
-  customerId: number;
   customerCountryCode: string;
+  customerId: number;
+  getMandates: THandleGetDirectDebitMandates;
   interfacesOptions: Array<ISelectValue>;
   isInterfacesLoading: boolean;
+  isLoading: boolean;
+  isMandatesLoading: boolean;
+  isReadOnly: boolean;
+  // mandates: ImmutableArray<IDirectDebitMandate>;
+  mandates: any;
+  onCancel: () => void;
 }
 
-const DirectDebitAccounts: React.FC<IDirectDebitAccounts> = ({
-  onCancel,
-  isLoading,
-  isReadOnly,
+const DirectDebit: React.FC<IDirectDebit> = ({
   addDirectDebitAccount,
-  customerId,
   customerCountryCode,
+  customerId,
+  getMandates,
   interfacesOptions,
   isInterfacesLoading,
+  isLoading,
+  isMandatesLoading,
+  isReadOnly,
+  mandates,
+  onCancel,
 }) => {
   return (
     <React.Fragment>
@@ -37,6 +49,7 @@ const DirectDebitAccounts: React.FC<IDirectDebitAccounts> = ({
           isDisabled={isLoading}
           isLoading={isLoading}
           addDirectDebitAccount={addDirectDebitAccount}
+          getMandates={getMandates}
           customerId={customerId}
           customerCountryCode={customerCountryCode}
           interfacesOptions={interfacesOptions}
@@ -44,9 +57,12 @@ const DirectDebitAccounts: React.FC<IDirectDebitAccounts> = ({
         />
       )}
       <Box pt="10px">
-        <DirectDebitAccountsTable
+        <DirectDebitsMandatesTable
+          customerId={customerId}
+          getMandates={getMandates}
+          isLoading={isMandatesLoading}
           isReadOnly={isReadOnly}
-          isDisabled={isLoading}
+          mandates={mandates}
         />
       </Box>
       <Flex justifyContent="flex-end">
@@ -59,4 +75,4 @@ const DirectDebitAccounts: React.FC<IDirectDebitAccounts> = ({
   );
 };
 
-export default DirectDebitAccounts;
+export default DirectDebit;

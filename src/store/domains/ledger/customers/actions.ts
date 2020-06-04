@@ -16,12 +16,10 @@ import {
   ActionTypeKeys,
   IAddCustomerAction,
   IAddDirectDebitAccountAction,
-  IAddDirectDebitMandateAction,
   IAddRepaymentDebitCardAction,
   IFilterCustomersAction,
   IFilterCustomersByIdAction,
   IGetCurrencyLimitAction,
-  IGetDirectDebitAccountsAction,
   IGetDirectDebitMandatesAction,
   IGetRepaymentDebitCardsAction,
   IUpdateCurrencyLimitAction,
@@ -229,25 +227,31 @@ export const handleAddRepaymentDebitCard: THandleAddRepaymentDebitCard = data =>
   };
 
 /**
- * Get direct debit accounts action
+ * Get direct debit mandates action
  */
 
-export type TGetDirectDebitAccounts = (id: number) => IGetDirectDebitAccountsAction;
-export type THandleGetDirectDebitAccounts = () => Thunk<void>;
+export type TGetDirectDebitMandates = (data: {
+  accountId?: number;
+  customerId?: number;
+}) =>
+  IGetDirectDebitMandatesAction;
 
-export const getDirectDebitAccounts: TGetDirectDebitAccounts = id => ({
-  type: ActionTypeKeys.GET_DIRECT_DEBIT_ACCOUNTS,
-  payload: api.getDirectDebitAccounts(id),
+export type THandleGetDirectDebitMandates = (data: {
+  accountId?: number;
+  customerId?: number;
+}) =>
+  Thunk<void>;
+
+export const getDirectDebitMandates: TGetDirectDebitMandates = data => ({
+  type: ActionTypeKeys.GET_DIRECT_DEBIT_MANDATES,
+  payload: api.getDirectDebitMandates(data),
 });
 
-export const handleGetDirectDebitAccounts: THandleGetDirectDebitAccounts = () =>
-  async (dispatch, getState) => {
+export const handleGetDirectDebitMandates: THandleGetDirectDebitMandates = data =>
+  async dispatch => {
     errorDecoratorUtil.withErrorHandler(
       async () => {
-        const state = getState();
-        const customerId = activeItemIdSelector(state);
-
-        await dispatch(getDirectDebitAccounts(customerId));
+        await dispatch(getDirectDebitMandates(data));
       },
       dispatch
     );
@@ -274,70 +278,7 @@ export const handleAddDirectDebitAccount: THandleAddDirectDebitAccount = data =>
         const preparedData = prepareFormDataDirectDebitAccountToSend(data);
 
         await dispatch(addDirectDebitAccount(preparedData));
-        await dispatch(handleGetDirectDebitAccounts());
         dispatch(resetForm(formNamesConst.DIRECT_DEBIT_ACCOUNTS));
-      },
-      dispatch
-    );
-  };
-
-/**
- * Get direct debit mandates action
- */
-
-export type TGetDirectDebitMandates = (data: {
-  accountId: number;
-  isBoxAccount: boolean;
-}) =>
-  IGetDirectDebitMandatesAction;
-
-export type THandleGetDirectDebitMandates = (data: {
-  accountId: number;
-  isBoxAccount: boolean;
-}) =>
-  Thunk<void>;
-
-export const getDirectDebitMandates: TGetDirectDebitMandates = data => ({
-  type: ActionTypeKeys.GET_DIRECT_DEBIT_MANDATES,
-  payload: api.getDirectDebitMandates(data),
-});
-
-export const handleGetDirectDebitMandates: THandleGetDirectDebitMandates = data =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        await dispatch(getDirectDebitMandates(data));
-      },
-      dispatch
-    );
-  };
-
-/**
- * Add direct debit mandate action
- */
-
-export type TAddDirectDebitMandate = (accountId: number) => IAddDirectDebitMandateAction;
-export type THandleAddDirectDebitMandate = (accountId: number) => Thunk<void>;
-
-export const addDirectDebitMandate: TAddDirectDebitMandate = accountId => ({
-  type: ActionTypeKeys.ADD_DIRECT_DEBIT_MANDATE,
-  payload: api.addDirectDebitMandate(accountId),
-});
-
-export const handleAddDirectDebitMandate: THandleAddDirectDebitMandate = accountId =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const res = await dispatch(addDirectDebitMandate(accountId)) as any;
-        const mandateId = res.value.mandate_id;
-
-        dispatch(openModal({
-          name: modalNamesConst.MESSAGE,
-          payload: {
-            title: 'Mandate was created',
-            message: `Mandate ID: ${mandateId || ''}`,
-          },
-        }));
       },
       dispatch
     );

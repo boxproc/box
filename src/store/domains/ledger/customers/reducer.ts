@@ -6,7 +6,6 @@ import { ICustomersState } from './types';
 export const customersInitialState: ImmutableObject<ICustomersState> = Immutable({
   customers: Immutable([]),
   repaymentDebitCards: Immutable([]),
-  directDebitAccounts: Immutable([]),
   directDebitMandates: Immutable([]),
   currencyLimit: null,
 });
@@ -21,9 +20,6 @@ const customersReducer = (state = customersInitialState, action: TCustomersActio
 
     case ActionTypeKeys.GET_REPAYMENT_DEBIT_CARDS_FULFILLED:
       return state.set('repaymentDebitCards', action.payload.repayment_debit_cards);
-
-    case ActionTypeKeys.GET_DIRECT_DEBIT_ACCOUNTS_FULFILLED:
-      return state.set('directDebitAccounts', action.payload.direct_debit_accounts);
 
     case ActionTypeKeys.GET_DIRECT_DEBIT_MANDATES_FULFILLED:
       return state.set('directDebitMandates', action.payload.direct_debit_mandates);

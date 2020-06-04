@@ -11,7 +11,6 @@ import {
   prepareCurrencyLimitToRender,
   prepareDataToRender,
   prepareDetailsToRender,
-  prepareDirectDebitAccountsToRender,
   prepareDirectDebitMandatesToRender,
   prepareRepaymentDebitCardsToRender,
 } from './utils';
@@ -87,18 +86,6 @@ export const repaymentDebitCardsSelector = createSelector(
 );
 
 /**
- * Direct debit account selectors
- */
-
-export const defaultDirectDebitAccountsSelector = (state: IStoreState) =>
-  state.ledger.customers.directDebitAccounts;
-
-export const directDebitsAccountsSelector = createSelector(
-  defaultDirectDebitAccountsSelector,
-  data => data && data.map(el => prepareDirectDebitAccountsToRender(el))
-);
-
-/**
  * Direct debit mandates selectors
  */
 
@@ -115,7 +102,7 @@ export const directDebitsMandatesOptionsSelector = createSelector(
   data => data && data.asMutable().map(el => {
     return {
       value: el.id,
-      label: `${el.description}, account: ••••••${el.account_alias}`,
+      label: `Account: ••••••${el.account_alias}`,
     };
   })
 );
@@ -162,20 +149,12 @@ export const isAddingRepaymentDebitCardSelector = createLoadingSelector([
   ActionTypeKeys.ADD_REPAYMENT_DEBIT_CARD,
 ]);
 
-export const isGettingDirectDebitAccountsSelector = createLoadingSelector([
-  ActionTypeKeys.GET_DIRECT_DEBIT_ACCOUNTS,
-]);
-
 export const isAddingDirectDebitAccountSelector = createLoadingSelector([
   ActionTypeKeys.ADD_DIRECT_DEBIT_ACCOUNT,
 ]);
 
 export const isGettingDirectDebitMandatesSelector = createLoadingSelector([
   ActionTypeKeys.GET_DIRECT_DEBIT_MANDATES,
-]);
-
-export const isAddingDirectDebitMandateSelector = createLoadingSelector([
-  ActionTypeKeys.ADD_DIRECT_DEBIT_MANDATE,
 ]);
 
 export const isGettingCurrencyLimitSelector = createLoadingSelector([

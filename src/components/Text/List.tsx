@@ -4,7 +4,7 @@ import styled from 'theme';
 const ListWrapper = styled.table`
   margin-top: 10px;
   margin-bottom: 10px;
-  font-size: 12px;
+  font-size: 13px;
   list-style-type: none;
 
   td {

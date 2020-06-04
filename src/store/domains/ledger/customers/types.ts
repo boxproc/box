@@ -154,44 +154,11 @@ export interface IRepaymentDebitCardFormValues extends IRepaymentDebitCardPlain 
  * Direct debit accounts interfaces
  */
 
-export interface IDirectDebitAccountData {
-  id: number;
-  customer_id: number;
-  provider_account_ref: string;
-  provider_customer_ref: string;
-  account_field_1: string;
-  account_field_2: string;
-  account_field_3: string;
-  accountholder_name: string;
-  country_code: string;
-  account_type: string;
-  status: string;
-  provider_name: string;
-}
-
-export interface IDirectDebitAccountsData {
-  direct_debit_accounts: Array<IDirectDebitAccountData>;
-}
-
-export interface IDirectDebitAccount {
-  id: number;
-  customerId: number;
-  providerAccountRef: string;
-  providerCustomerRef: string;
-  accountField1: string;
-  accountField2: string;
-  accountField3: string;
-  accountholderName: string;
-  countryCode: string;
-  accountType: string;
-  status: string;
-  providerName: string;
-}
-
 export interface IDirectDebitAccountForm {
   customerId: number;
   accountField1: string;
   accountField2: string;
+  accountField3?: string;
   accountholderName: string;
   accountType?: ISelectValue;
   interfaceId: ISelectValue;
@@ -201,6 +168,7 @@ export interface IDirectDebitAccountFormData {
   customer_id: number;
   account_field_1: string;
   account_field_2: string;
+  account_field_3?: string;
   accountholder_name: string;
   account_type?: string | number;
   interface_id?: string | number;
@@ -213,18 +181,16 @@ export interface IDirectDebitAccountFormData {
 export interface IDirectDebitMandateData {
   id: number;
   customer_id: number;
-  interface_id: number;
-  provider_customer_ref: string;
-  provider_account_ref: string;
-  provider_ref: string;
+  interface_name: string;
   description: string;
   status: string;
   country_code: string;
   currency_code: string;
-  dd_account_id: number;
   account_alias: string;
   last_update_timestamp: string;
   scheme: string;
+  bank_name: string;
+  accountholder_name: string;
 }
 
 export interface IDirectDebitMandatesData {
@@ -234,18 +200,16 @@ export interface IDirectDebitMandatesData {
 export interface IDirectDebitMandate {
   id: number;
   customerId: number;
-  interfaceId: number;
-  providerCustomerRef: string;
-  providerAccountRef: string;
-  providerRef: string;
+  interfaceName: string;
   description: string;
   status: string;
   countryCode: string;
   currencyCode: string;
-  ddAccountId: number;
   accountAlias: string;
   lastUpdateTimestamp: string;
   scheme: string;
+  bankName: string;
+  accountholderName: string;
 }
 
 /**
@@ -276,7 +240,6 @@ export interface ICurrencyLimit {
 export interface ICustomersState {
   customers: ImmutableArray<ICustomerData>;
   repaymentDebitCards: ImmutableArray<IRepaymentDebitCardData>;
-  directDebitAccounts: ImmutableArray<IDirectDebitAccountData>;
   directDebitMandates: ImmutableArray<IDirectDebitMandateData>;
   currencyLimit: ICurrencyLimitData;
 }

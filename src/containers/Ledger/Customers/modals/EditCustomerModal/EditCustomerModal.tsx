@@ -4,7 +4,7 @@ import { Modal, Tabs, TabsPanel } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
-import { DirectDebitAccounts } from './../../components';
+import { DirectDebit } from './../../components';
 import {
   CurrencyLimitForm,
   CustomerForm,
@@ -77,8 +77,8 @@ const EditCustomerModal: React.FC<IEditCustomerModal> = ({
             onCancel={handleOnCancel}
           />
         </TabsPanel>
-        <TabsPanel title="Direct Debit Accounts">
-          <DirectDebitAccounts
+        <TabsPanel title="Direct Debit Mandates">
+          <DirectDebit
             interfacesOptions={interfacesOptions}
             isInterfacesLoading={isInterfacesLoading}
             isReadOnly={isReadOnly}

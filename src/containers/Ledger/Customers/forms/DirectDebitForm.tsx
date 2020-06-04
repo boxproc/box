@@ -5,7 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Button, InputField, SelectField } from 'components';
 import { accountTypesOptions, formNamesConst, iconNamesConst } from 'consts';
-import { THandleAddDirectDebitAccount } from 'store';
+import { THandleAddDirectDebitAccount, THandleGetDirectDebitMandates } from 'store';
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
@@ -13,10 +13,11 @@ interface IDirectDebitForm {
   addDirectDebitAccount: THandleAddDirectDebitAccount;
   customerCountryCode: string;
   customerId: number;
-  isDisabled: boolean;
-  isLoading: boolean;
+  getMandates: THandleGetDirectDebitMandates;
   interfacesOptions: Array<ISelectValue>;
+  isDisabled: boolean;
   isInterfacesLoading: boolean;
+  isLoading: boolean;
 }
 
 type TDirectDebitForm = IDirectDebitForm & InjectedFormProps<{}, IDirectDebitForm>;
@@ -25,6 +26,7 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
   addDirectDebitAccount,
   customerCountryCode,
   customerId,
+  getMandates,
   handleSubmit,
   isDisabled,
   isLoading,
@@ -33,7 +35,7 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
   isInterfacesLoading,
 }) => {
   const buttonText = React.useMemo(
-    () => isLoading ? 'Adding...' : 'Add Account',
+    () => isLoading ? 'Add...' : 'Add',
     [isLoading]
   );
 
@@ -43,11 +45,14 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
   );
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(data => addDirectDebitAccount({
-      ...data,
-      customerId,
-    })),
-    [handleSubmit, customerId]
+    handleSubmit(async data => {
+      await addDirectDebitAccount({
+        ...data,
+        customerId,
+      });
+      getMandates({ customerId });
+    }),
+    [customerId, getMandates, handleSubmit]
   );
 
   return (
@@ -81,19 +86,19 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
               validate={[formErrorUtil.isRequired]}
             />
           </Box>
-          <Box width="230px" p="8px">
+          <Box width="100px" p="8px">
             <Field
-              id="accountholderName"
-              name="accountholderName"
+              id="accountField3"
+              name="accountField3"
               component={InputField}
-              label="Accountholder Name"
-              placeholder="Enter Accountholder Name"
+              label="Account suffix"
+              placeholder="Enter suffix"
+              isNumber={true}
               disabled={isDisabled}
-              validate={[formErrorUtil.isRequired]}
             />
           </Box>
           {isUSACountryCode && (
-            <Box width="130px" p="8px">
+            <Box width="120px" p="8px">
               <Field
                 id="accountType"
                 name="accountType"
@@ -105,7 +110,18 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
               />
             </Box>
           )}
-          <Box width="300px" p="8px">
+          <Box width="230px" p="8px">
+            <Field
+              id="accountholderName"
+              name="accountholderName"
+              component={InputField}
+              label="Accountholder Name"
+              placeholder="Enter Accountholder Name"
+              disabled={isDisabled}
+              validate={[formErrorUtil.isRequired]}
+            />
+          </Box>
+          <Box width="250px" p="8px">
             <Field
               id="interfaceId"
               name="interfaceId"
