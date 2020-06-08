@@ -54,6 +54,7 @@ const Customers: React.FC<ICustomers> = ({
 
   const contextMenuItems = React.useMemo(
     () => [
+      { isDivider: true },
       {
         name: 'Accounts',
         action: () => filterAccountsById({ customer_id: currentId }),

@@ -40,6 +40,8 @@ export enum ActionTypeKeys {
   GET_DIRECT_DEBIT_MANDATES_FULFILLED = 'customers/GET_DIRECT_DEBIT_MANDATES_FULFILLED',
   GET_DIRECT_DEBIT_MANDATES_REJECTED = 'customers/GET_DIRECT_DEBIT_MANDATES_REJECTED',
 
+  RESET_DIRECT_DEBIT_MANDATES = 'customers/RESET_DIRECT_DEBIT_MANDATES',
+
   CHANGE_DIRECT_DEBIT_MANDATE = 'customers/CHANGE_DIRECT_DEBIT_MANDATE',
   CHANGE_DIRECT_DEBIT_MANDATE_FULFILLED = 'customers/CHANGE_DIRECT_DEBIT_MANDATE_FULFILLED',
   CHANGE_DIRECT_DEBIT_MANDATE_REJECTED = 'customers/CHANGE_DIRECT_DEBIT_MANDATE_REJECTED',
@@ -211,6 +213,10 @@ export interface IChangeDirectDebitMandateRejectedAction {
   readonly type: ActionTypeKeys.CHANGE_DIRECT_DEBIT_MANDATE_REJECTED;
 }
 
+export interface IResetDirectDebitMandatesAction {
+  readonly type: ActionTypeKeys.RESET_DIRECT_DEBIT_MANDATES;
+}
+
 /** Get customer currency limits action interfaces */
 
 export interface IGetCurrencyLimitAction {
@@ -261,6 +267,7 @@ export type TCustomersAction =
   | IAddDirectDebitAccountFulfilledAction
   | IGetDirectDebitMandatesFulfilledAction
   | IChangeDirectDebitMandateFulfilledAction
+  | IResetDirectDebitMandatesAction
   | IGetCurrencyLimitFulfilledAction
   | IUpdateCurrencyLimitFulfilledAction
   | IResetCustomersAction;

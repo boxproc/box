@@ -258,6 +258,16 @@ export const handleGetDirectDebitMandates: THandleGetDirectDebitMandates = data 
   };
 
 /**
+ * Reset direct debit mandate action
+ */
+
+export type TResetDirectDebitMandates = () => void;
+
+export const resetDirectDebitMandates: TResetDirectDebitMandates = () => ({
+  type: ActionTypeKeys.RESET_DIRECT_DEBIT_MANDATES,
+});
+
+/**
  * Change direct debit mandate action
  */
 

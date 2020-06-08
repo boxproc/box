@@ -12,6 +12,7 @@ import {
   THandleAddDirectDebitAccount,
   THandleChangeDirectDebitMandate,
   THandleGetDirectDebitMandates,
+  TResetDirectDebitMandates,
 } from 'store';
 import { ISelectValue } from 'types';
 
@@ -30,6 +31,7 @@ interface IDirectDebit {
   isReadOnly: boolean;
   mandates: any;
   onCancel: () => void;
+  resetDirectDebitMandates: TResetDirectDebitMandates;
 }
 
 const DirectDebit: React.FC<IDirectDebit> = ({
@@ -46,7 +48,15 @@ const DirectDebit: React.FC<IDirectDebit> = ({
   isReadOnly,
   mandates,
   onCancel,
+  resetDirectDebitMandates,
 }) => {
+  React.useEffect(
+    () => {
+      return () => resetDirectDebitMandates();
+    },
+    [resetDirectDebitMandates]
+  );
+
   return (
     <React.Fragment>
       {!isReadOnly && (

@@ -14,6 +14,7 @@ import {
   isChangingDirectDebitMandateSelector,
   isGettingDirectDebitMandatesSelector,
   IStoreState,
+  resetDirectDebitMandates,
 } from 'store';
 
 const mapStateToProps = (state: IStoreState) => ({
@@ -30,6 +31,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     addDirectDebitAccount: handleAddDirectDebitAccount,
     getMandates: handleGetDirectDebitMandates,
     changeMandate: handleChangeDirectDebitMandate,
+    resetDirectDebitMandates,
   },
   dispatch
 );

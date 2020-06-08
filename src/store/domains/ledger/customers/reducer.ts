@@ -38,6 +38,9 @@ const customersReducer = (state = customersInitialState, action: TCustomersActio
 
       return state.set('directDebitMandates', mandates);
 
+    case ActionTypeKeys.RESET_DIRECT_DEBIT_MANDATES:
+      return state.set('directDebitMandates', Immutable([]));
+
     case ActionTypeKeys.GET_CURRENCY_LIMIT_FULFILLED:
       return state.set('currencyLimit', action.payload.currency_limit[0]);
 

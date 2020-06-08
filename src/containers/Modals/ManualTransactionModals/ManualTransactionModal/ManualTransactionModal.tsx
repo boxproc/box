@@ -25,6 +25,7 @@ import {
   THandleGetDirectDebitMandates,
   THandleMakeLimitAdjustment,
   THandleMakeTransaction,
+  TResetDirectDebitMandates,
 } from 'store';
 
 import { ISelectValue } from 'types';
@@ -42,6 +43,7 @@ interface IManualTransactionModal extends IWithModal, IWithLoadTransactionTypes 
   mandateOptions: Array<ISelectValue>;
   modalPayload: IPayloadManualTransactionModal;
   trTypeValue: ISelectValue;
+  resetDirectDebitMandates: TResetDirectDebitMandates;
 }
 const modalName = modalNamesConst.MANUAL_TRANSACTION;
 
@@ -62,12 +64,20 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
   manualTransTypesOptions,
   modalPayload,
   trTypeValue,
+  resetDirectDebitMandates,
 }) => {
   React.useEffect(
     () => {
       getCurrencies();
     },
     [getCurrencies]
+  );
+
+  React.useEffect(
+    () => {
+      return () => resetDirectDebitMandates();
+    },
+    [resetDirectDebitMandates]
   );
 
   const isDirectDebitTrType = React.useMemo(

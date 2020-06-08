@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Flex } from '@rebass/grid';
 
-import { Button, List, Modal } from 'components';
+import { Button, Hr, List, Modal } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
@@ -68,6 +68,8 @@ const DirectDebitMandateModal: React.FC<IDirectDebitMandateModal> = ({
     >
 
       <List items={data} />
+
+      <Hr />
 
       <Flex justifyContent="flex-end" mt="10px">
         <Button

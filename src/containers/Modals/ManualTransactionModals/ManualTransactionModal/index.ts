@@ -20,6 +20,7 @@ import {
   IStoreState,
   manualTrModalIsLimitAdjSelector,
   payloadManualTrModalSelector,
+  resetDirectDebitMandates,
 } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.MANUAL_TRANSACTION);
@@ -42,6 +43,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     makeLimitAdjustment: handleMakeLimitAdjustment,
     getCurrencies: handleGetDictionaryCurrencies,
     getDirectDebitMandates: handleGetDirectDebitMandates,
+    resetDirectDebitMandates,
   },
   dispatch
 );
