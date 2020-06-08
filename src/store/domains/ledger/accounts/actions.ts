@@ -8,7 +8,6 @@ import {
   isAccessibleFilterSelector,
   openModal,
   setActiveItemId,
-  setIsOpenFilter,
 } from 'store';
 import { TLedgerId } from './../customers';
 import {
@@ -31,7 +30,7 @@ import {
 } from './types';
 import { ILimitAdjReq, ILimitAdjustmentFromData } from './typesLimitAdj';
 import { IManualTransactionFromData, IManualTransactionReq } from './typesManualTr';
-import { prepareDataToSend, prepareFilterToSend } from './utils';
+import { prepareDataToSend, prepareFilterToSend, prepareFilterToSet } from './utils';
 import { prepareLimitAdjDataToSend } from './utilsLimitAdj';
 import { prepareManualTrDataToSend } from './utilsManualTr';
 
@@ -221,10 +220,15 @@ export const handleFilterByIdAccounts: THandleFilterAccountsById = id =>
         const userData = storageUtil.getUserData();
         const loggedInUsername = userData && userData.username;
 
-        cookiesUtil.remove(`${basePath}${uiItemsConst.ACCOUNTS}-${loggedInUsername}`);
+        const res = await dispatch(filterAccountsById(id)) as any;
+        const filterData = prepareFilterToSet(res.value.accounts[0]);
+
+        cookiesUtil.set(
+          `${basePath}${uiItemsConst.ACCOUNTS}-${loggedInUsername}`,
+          JSON.stringify(filterData)
+        );
+
         dispatch(push(`${basePath}${uiItemsConst.ACCOUNTS}`));
-        await dispatch(filterAccountsById(id));
-        dispatch(setIsOpenFilter(false));
       },
       dispatch
     );

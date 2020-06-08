@@ -35,6 +35,19 @@ export const prepareFilterToSend = (data: Partial<IAccountsFilter>) => {
   };
 };
 
+export const prepareFilterToSet = (data: Partial<IAccountData>): Partial<IAccountsFilter> => {
+  if (!data) {
+    return null;
+  }
+
+  const { customer_first_name, customer_last_name } = data;
+
+  return {
+    firstName: customer_first_name,
+    lastName: customer_last_name,
+  };
+};
+
 export const prepareDataToSend = (data: Partial<IAccountDetails>) => {
   if (!data) {
     return null;

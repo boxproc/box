@@ -33,6 +33,20 @@ export const prepareFilterToSend = (data: Partial<ICustomersFilter>) => {
   };
 };
 
+export const prepareFilterToSet = (data: Partial<ICustomerData>): Partial<ICustomersFilter> => {
+  if (!data) {
+    return null;
+  }
+
+  const { first_name, last_name, id } = data;
+
+  return {
+    firstName: first_name,
+    lastName: last_name,
+    customerId: id,
+  };
+};
+
 export const prepareDataToSend = (data: Partial<ICustomerDetails>) => {
   if (!data) {
     return null;

@@ -2,15 +2,11 @@ import { push } from 'react-router-redux';
 import { getFormValues, reset as resetForm } from 'redux-form';
 
 import { basePath, formNamesConst, modalNamesConst, uiItemsConst } from 'consts';
-
-import * as api from './api';
-
 import {
   activeItemIdSelector,
   closeModal,
   isAccessibleFilterSelector,
   openModal,
-  setIsOpenFilter,
 } from 'store';
 import {
   ActionTypeKeys,
@@ -26,6 +22,7 @@ import {
   IUpdateCurrencyLimitAction,
   IUpdateCustomerAction,
 } from './actionTypes';
+import * as api from './api';
 import {
   ICurrencyLimit,
   ICurrencyLimitData,
@@ -42,12 +39,12 @@ import {
   prepareCurrencyLimitToSend,
   prepareDataToSend,
   prepareFilterToSend,
+  prepareFilterToSet,
   prepareFormDataDirectDebitAccountToSend,
   prepareFormDataRepaymentDebitCardToSend,
 } from './utils';
 
 import { Thunk } from 'types';
-
 import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
 
 /**
@@ -161,10 +158,15 @@ export const handleFilterByIdCustomers: THandleFilterCustomersById = id =>
         const userData = storageUtil.getUserData();
         const loggedInUsername = userData && userData.username;
 
-        cookiesUtil.remove(`${basePath}${uiItemsConst.CUSTOMERS}-${loggedInUsername}`);
+        const res = await dispatch(filterCustomersById(id)) as any;
+        const filterData = prepareFilterToSet(res.value.customers[0]);
+
+        cookiesUtil.set(
+          `${basePath}${uiItemsConst.CUSTOMERS}-${loggedInUsername}`,
+          JSON.stringify(filterData)
+        );
+
         dispatch(push(`${basePath}${uiItemsConst.CUSTOMERS}`));
-        await dispatch(filterCustomersById(id));
-        dispatch(setIsOpenFilter(false));
       },
       dispatch
     );

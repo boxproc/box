@@ -131,7 +131,7 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
 
       return {
         ...initialFilterValues,
-        ...storedFilter && JSON.parse(storedFilter),
+        ...(storedFilter ? JSON.parse(storedFilter) : {}),
       };
     },
     [initialFilterValues, location]

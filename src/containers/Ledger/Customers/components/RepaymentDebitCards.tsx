@@ -26,7 +26,7 @@ const RepaymentDebitCards: React.FC<IRepaymentDebitCards> = ({
   isInterfacesLoading,
 }) => {
   const buttonText = React.useMemo(
-    () => isLoading ? 'Adding...' : 'Add Card',
+    () => isLoading ? 'Adding...' : 'Add',
     [isLoading]
   );
 
@@ -36,7 +36,7 @@ const RepaymentDebitCards: React.FC<IRepaymentDebitCards> = ({
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 5]} p="8px">
+        <Box width="120px" p="8px">
           <Field
             id="panAlias"
             name="panAlias"
@@ -47,13 +47,13 @@ const RepaymentDebitCards: React.FC<IRepaymentDebitCards> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width={[1 / 5]} p="8px">
+        <Box width="120px" p="8px">
           <Field
             id="panMasked"
             name="panMasked"
             component={InputField}
             label="Pan Masked"
-            placeholder="Enter Pan Masked"
+            placeholder="Enter Pan"
             disabled={isDisabled}
             validate={[formErrorUtil.isRequired]}
           />
@@ -72,7 +72,7 @@ const RepaymentDebitCards: React.FC<IRepaymentDebitCards> = ({
             ]}
           />
         </Box>
-        <Box width={[1 / 5]} p="8px">
+        <Box width="120px" p="8px">
           <Field
             id="cvv2Encrypted"
             name="cvv2Encrypted"
@@ -82,18 +82,18 @@ const RepaymentDebitCards: React.FC<IRepaymentDebitCards> = ({
             disabled={isDisabled}
           />
         </Box>
-        <Box width={[1 / 5]} p="8px">
+        <Box width={[1 / 7]} p="8px">
           <Field
             id="cardholderName"
             name="cardholderName"
             component={InputField}
             label="Cardholder Name"
-            placeholder="Enter Cardholder Name"
+            placeholder="Enter Name"
             disabled={isDisabled}
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width="150px" p="8px">
+        <Box width="130px" p="8px">
           <Field
             id="status"
             name="status"
@@ -106,7 +106,7 @@ const RepaymentDebitCards: React.FC<IRepaymentDebitCards> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width="300px" p="8px">
+        <Box width={[1 / 6]} p="8px">
           <Field
             id="repaymentInterfaceId"
             name="repaymentInterfaceId"
@@ -119,7 +119,7 @@ const RepaymentDebitCards: React.FC<IRepaymentDebitCards> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width={[1 / 5]} pb="15px">
+        <Box pb="15px">
           <Button
             text={buttonText}
             iconName={iconNamesConst.PLUS}

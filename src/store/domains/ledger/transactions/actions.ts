@@ -117,7 +117,7 @@ export const handleConvertTrToLoan: THandleConvertTrToLoan = data =>
         });
 
         await dispatch(convertTransactionToLoan(preparedData));
-        await dispatch(handleFilterTransactions());
+        // await dispatch(handleFilterTransactions());
 
         dispatch(openModal({
           name: modalNamesConst.MESSAGE,
