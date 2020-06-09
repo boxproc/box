@@ -5,13 +5,9 @@ import { apiClientService } from 'services';
 //   currencyLimitMock,
 //   customersMock,
 //   directDebitMandatesMock,
+//   cancelDirectDebitMandateMock,
 //   reinstateDirectDebitMandateMock,
 // } from './mock';
-
-import {
-  cancelDirectDebitMandateMock,
-  reinstateDirectDebitMandateMock,
-} from './mock';
 
 import {
   ICurrencyLimitData,
@@ -22,7 +18,7 @@ import {
   IRepaymentDebitCardData,
 } from './types';
 
-import { throttleUtil } from 'utils';
+// import { throttleUtil } from 'utils';
 
 /**
  * Filter customers API
@@ -96,15 +92,17 @@ export const changeDirectDebitMandate = (data: {
   reinstate?: boolean;
   id: number;
 }) => {
-  // const path = data.cancel ? '/cancel' : '/reinstate';
+  const path = data.cancel
+    ? 'ui/ledger/direct_debits/mandates/cancel'
+    : 'ui/ledger/direct_debits/mandates/reinstate';
 
-  return throttleUtil.getDataAfter(
-    data.cancel
-      ? cancelDirectDebitMandateMock
-      : reinstateDirectDebitMandateMock,
-    500
-  );
-  // return apiClientService.post(path, { data: { id: data.id } });
+  // return throttleUtil.getDataAfter(
+  //   data.cancel
+  //     ? cancelDirectDebitMandateMock
+  //     : reinstateDirectDebitMandateMock,
+  //   500
+  // );
+  return apiClientService.post(path, { data: { id: data.id } });
 };
 
 /**
