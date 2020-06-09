@@ -9,7 +9,7 @@ import {
   openModal,
   setActiveItemId,
 } from 'store';
-import { TLedgerId } from './../customers';
+import { ILedgerId } from './../customers';
 import {
   ActionTypeKeys,
   IAddAccountAction,
@@ -205,8 +205,8 @@ export const handleAddProductOverride: THandleAddProductOverride = (
  * Filter accounts by ID action
  */
 
-export type TFilterAccountsById = (id: TLedgerId) => IFilterAccountsByIdAction;
-export type THandleFilterAccountsById = (id: TLedgerId) => Thunk<void>;
+export type TFilterAccountsById = (id: ILedgerId) => IFilterAccountsByIdAction;
+export type THandleFilterAccountsById = (id: ILedgerId) => Thunk<void>;
 
 export const filterAccountsById: TFilterAccountsById = data => ({
   type: ActionTypeKeys.FILTER_ACCOUNTS_BY_ID,

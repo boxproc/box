@@ -24,7 +24,7 @@ import { prepareCardIds, prepareFilterToSend } from './utils';
 import { Thunk } from 'types';
 
 import { cookiesUtil, errorDecoratorUtil, storageUtil } from 'utils';
-import { TLedgerId } from './../customers';
+import { ILedgerId } from './../customers';
 
 /**
  * Filter cards action
@@ -123,8 +123,8 @@ export const handleChangeCardStatus: THandleChangeCardStatus = ids =>
  * Filter cards by ID action
  */
 
-export type TFilterCardsById = (id: TLedgerId) => IFilterCardsByIdAction;
-export type THandleFilterCardsById = (id: TLedgerId) => Thunk<void>;
+export type TFilterCardsById = (id: ILedgerId) => IFilterCardsByIdAction;
+export type THandleFilterCardsById = (id: ILedgerId) => Thunk<void>;
 
 export const filterCardsById: TFilterCardsById = data => ({
   type: ActionTypeKeys.FILTER_CARDS_BY_ID,

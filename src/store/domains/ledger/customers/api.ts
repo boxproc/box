@@ -18,8 +18,8 @@ import {
   ICustomerData,
   ICustomersFilterToSend,
   IDirectDebitAccountFormData,
+  ILedgerId,
   IRepaymentDebitCardData,
-  TLedgerId,
 } from './types';
 
 import { throttleUtil } from 'utils';
@@ -48,7 +48,7 @@ export const updateCustomer = (data: Partial<ICustomerData>) =>
 /**
  * Filter customers by ID API
  */
-export const filterCustomersById = (data: TLedgerId) =>
+export const filterCustomersById = (data: ILedgerId) =>
   // throttleUtil.getDataAfter(customersMock, 500);
   apiClientService.post('ui/ledger/customers/get', { data });
 

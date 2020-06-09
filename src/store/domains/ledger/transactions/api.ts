@@ -1,7 +1,7 @@
 // import { successResponseMock } from 'consts';
 import { apiClientService } from 'services';
 
-import { TLedgerId } from './../customers';
+import { ILedgerId } from './../customers';
 // import {
 //   transactionsMock,
 //   settleTransactionMock
@@ -24,7 +24,7 @@ export const filterTransactions = (data: Partial<ITransactionsFilterToSend>) =>
 /**
  * Filter transactions by ID API
  */
-export const filterTransactionsById = (data: TLedgerId) =>
+export const filterTransactionsById = (data: ILedgerId) =>
   apiClientService.post('ui/ledger/transactions/get', { data });
 
 /**

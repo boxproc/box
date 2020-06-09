@@ -5,7 +5,7 @@ import { basePath, formNamesConst, modalNamesConst, uiItemsConst } from 'consts'
 
 import { openModal, setIsOpenFilter } from 'store';
 import { closeModal } from 'store/domains/modals';
-import { TLedgerId } from './../customers';
+import { ILedgerId } from './../customers';
 import {
   ActionTypeKeys,
   IConvertTrToLoanAction,
@@ -69,8 +69,8 @@ export const handleFilterTransactions: THandleFilterTransactions = () =>
  * Filter transactions by ID action
  */
 
-export type TFilterTransactionsById = (id: TLedgerId) => IFilterTransactionsByIdAction;
-export type THandleFilterTransactionsById = (id: TLedgerId) => Thunk<void>;
+export type TFilterTransactionsById = (id: ILedgerId) => IFilterTransactionsByIdAction;
+export type THandleFilterTransactionsById = (id: ILedgerId) => Thunk<void>;
 
 export const filterTransactionsById: TFilterTransactionsById = data => ({
   type: ActionTypeKeys.FILTER_TRANSACTIONS_BY_ID,

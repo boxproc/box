@@ -86,27 +86,13 @@ export interface ICustomersFilterToSend {
  * Ledger IDs interfaces
  */
 
-export interface ICardId {
-  card_id: number;
+export interface ILedgerId {
+  card_id?: number;
+  customer_id?: number;
+  account_id?: number;
+  transaction_id?: number;
+  statement_id?: number;
 }
-
-export interface ICustomerId {
-  customer_id: number;
-}
-
-export interface IAccountId {
-  account_id: number;
-}
-
-export interface ITransactionId {
-  transaction_id: number;
-}
-
-export interface IStatementId {
-  statement_id: number;
-}
-
-export type TLedgerId = ICardId | IAccountId | ITransactionId | IStatementId | ICustomerId;
 
 /**
  * Repayment debit cards interfaces

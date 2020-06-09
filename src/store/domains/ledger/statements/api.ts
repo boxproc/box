@@ -1,6 +1,6 @@
 import { apiClientService } from 'services';
 
-import { TLedgerId } from './../customers';
+import { ILedgerId } from './../customers';
 // import {
 //   accountStatementsMock,
 //   statementAprsMock,
@@ -34,7 +34,7 @@ export const getStatementTransactions = (data: IStatementTransReq) =>
 /**
  * Filter statements by ID API
  */
-export const filterStatementsById = (data: TLedgerId) =>
+export const filterStatementsById = (data: ILedgerId) =>
   // throttleUtil.getDataAfter(statementsMock, 500);
   apiClientService.post('ui/ledger/statements/get', { data });
 

@@ -1,6 +1,6 @@
 // import { successResponseMock } from 'consts';
 import { apiClientService } from 'services';
-import { TLedgerId } from './../customers';
+import { ILedgerId } from './../customers';
 // import { accountsMock } from './mock';
 import { IAccountData, IAccountsFilterToSend } from './types';
 import { ILimitAdjReq } from './typesLimitAdj';
@@ -56,8 +56,28 @@ export const orderAccountCard = (accountId: number) =>
 /**
  * Filter accounts by account ID API
  */
-export const filterAccountsById = (data: TLedgerId) =>
-  apiClientService.post('ui/ledger/accounts/get', { data });
+
+const getAccountsPath = (data: ILedgerId) => {
+  let path;
+
+  if (data.customer_id) {
+    path = 'ui/ledger/accounts/get_by_customer_id';
+  } else if (data.card_id) {
+    path = 'ui/ledger/accounts/get_by_card_id';
+  } else if (data.statement_id) {
+    path = 'ui/ledger/accounts/get_by_statement_id';
+  } else if (data.transaction_id) {
+    path = 'ui/ledger/accounts/get_by_transaction_id';
+  }
+
+  return path;
+};
+
+export const filterAccountsById = (data: ILedgerId) => {
+  const path = getAccountsPath(data);
+
+  return apiClientService.post(path, { data });
+};
 
 /**
  * Manual transaction API

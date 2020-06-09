@@ -31,9 +31,9 @@ import {
   ICustomersFilterToSend,
   IDirectDebitAccountForm,
   IDirectDebitAccountFormData,
+  ILedgerId,
   IRepaymentDebitCardData,
   IRepaymentDebitCardFormValues,
-  TLedgerId,
 } from './types';
 import {
   prepareCurrencyLimitToSend,
@@ -143,8 +143,8 @@ export const handleUpdateCustomer: THandleUpdateCustomer = data =>
  * Filter customers by ID action
  */
 
-export type TFilterCustomersById = (id: TLedgerId) => IFilterCustomersByIdAction;
-export type THandleFilterCustomersById = (id: TLedgerId) => Thunk<void>;
+export type TFilterCustomersById = (id: ILedgerId) => IFilterCustomersByIdAction;
+export type THandleFilterCustomersById = (id: ILedgerId) => Thunk<void>;
 
 export const filterCustomersById: TFilterCustomersById = data => ({
   type: ActionTypeKeys.FILTER_CUSTOMERS_BY_ID,
