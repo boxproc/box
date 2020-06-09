@@ -75,7 +75,10 @@ export const getDirectDebitMandates = (data: {
   accountId?: number;
   customerId?: number;
 }) => {
-  const path = data.accountId ? '' : 'ui/ledger/direct_debits/mandates/get';
+  const path = data.accountId
+    ? 'ui/ledger/direct_debits/mandates/get_by_account_id'
+    : 'ui/ledger/direct_debits/mandates/get';
+
   const preparedData = data.accountId
     ? { account_id: data.accountId }
     : { customer_id: data.customerId };
