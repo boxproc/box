@@ -4,30 +4,22 @@ import React from 'react';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button } from 'components';
-import { DirectDebitsMandatesTable } from './../../components';
-import { DirectDebitForm } from './../../forms';
+import DirectDebitsMandatesTable from './DirectDebitsMandatesTable';
 
 import {
   // IDirectDebitMandate,
-  THandleAddDirectDebitAccount,
-  THandleChangeDirectDebitMandate,
   THandleGetDirectDebitMandates,
+  THandleMakeDefaultDirectDebitMandate,
   TResetDirectDebitMandates,
 } from 'store';
-import { ISelectValue } from 'types';
 
 interface IDirectDebit {
-  addDirectDebitAccount: THandleAddDirectDebitAccount;
   // mandates: ImmutableArray<IDirectDebitMandate>;
-  changeMandate: THandleChangeDirectDebitMandate;
-  customerCountryCode: string;
-  customerId: number;
+  makeDefault: THandleMakeDefaultDirectDebitMandate;
+  accountId: number;
   getMandates: THandleGetDirectDebitMandates;
-  interfacesOptions: Array<ISelectValue>;
   isChangingMandate: boolean;
-  isInterfacesLoading: boolean;
   isLoading: boolean;
-  isMandatesLoading: boolean;
   isReadOnly: boolean;
   mandates: any;
   onCancel: () => void;
@@ -35,16 +27,11 @@ interface IDirectDebit {
 }
 
 const DirectDebit: React.FC<IDirectDebit> = ({
-  addDirectDebitAccount,
-  changeMandate,
-  customerCountryCode,
-  customerId,
+  makeDefault,
+  accountId,
   getMandates,
-  interfacesOptions,
   isChangingMandate,
-  isInterfacesLoading,
   isLoading,
-  isMandatesLoading,
   isReadOnly,
   mandates,
   onCancel,
@@ -52,32 +39,22 @@ const DirectDebit: React.FC<IDirectDebit> = ({
 }) => {
   React.useEffect(
     () => {
-      getMandates({ customerId });
+      getMandates({ accountId });
       return () => resetDirectDebitMandates();
     },
-    [getMandates, resetDirectDebitMandates, customerId]
+    [getMandates, resetDirectDebitMandates, accountId]
   );
 
   return (
     <React.Fragment>
-      {!isReadOnly && (
-        <DirectDebitForm
-          isDisabled={isLoading}
-          isLoading={isLoading}
-          addDirectDebitAccount={addDirectDebitAccount}
-          customerId={customerId}
-          customerCountryCode={customerCountryCode}
-          interfacesOptions={interfacesOptions}
-          isInterfacesLoading={isInterfacesLoading}
-        />
-      )}
       <Box py="10px">
         <DirectDebitsMandatesTable
-          changeMandate={changeMandate}
+          makeDefault={makeDefault}
           isChangingMandate={isChangingMandate}
-          isLoading={isMandatesLoading}
+          isLoading={isLoading}
           isReadOnly={isReadOnly}
           mandates={mandates}
+          accountId={accountId}
         />
       </Box>
       <Flex justifyContent="flex-end">

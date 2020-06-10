@@ -1,59 +1,40 @@
 import React from 'react';
-import { CellInfo, RowInfo } from 'react-table';
+import { CellInfo } from 'react-table';
 import { ImmutableArray } from 'seamless-immutable';
 
 import { Flex } from '@rebass/grid';
 
 import {
   Button,
+  renderCheckBoxTableCell,
   Table,
   TableCell,
   TableHeader,
   withSpinner,
 } from 'components';
-import { iconNamesConst, modalNamesConst } from 'consts';
-import { IWithModal, withModal } from 'HOCs';
 import {
   IDirectDebitMandate,
-  THandleChangeDirectDebitMandate,
+  THandleMakeDefaultDirectDebitMandate,
 } from 'store';
 import { ITableCell } from 'types';
 
 type TCell<T extends keyof IDirectDebitMandate> = ITableCell<IDirectDebitMandate[T]>;
 
-interface IDirectDebitsMandatesTable extends IWithModal {
-  changeMandate: THandleChangeDirectDebitMandate;
+interface IDirectDebitsMandatesTable {
+  accountId: number;
+  makeDefault: THandleMakeDefaultDirectDebitMandate;
   isChangingMandate: boolean;
   isReadOnly: boolean;
   mandates: ImmutableArray<IDirectDebitMandate>;
 }
 
 const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
-  changeMandate,
+  accountId,
+  makeDefault,
   isChangingMandate,
   isReadOnly,
   mandates,
-  openModal,
 }) => {
-  const handleOpenModal = React.useCallback(
-    cellInfo => {
-      openModal({
-        name: modalNamesConst.DIRECT_DEBIT_MANDATE,
-        payload: cellInfo.original,
-      });
-    },
-    [openModal]
-  );
-
-  const handleClickOnRow = React.useCallback(
-    (_, rowInfo: RowInfo) => {
-      return {
-        onDoubleClick: () => handleOpenModal(rowInfo),
-      };
-    },
-    [handleOpenModal]
-  );
-
   const columns = React.useMemo(
     () => [
       {
@@ -102,51 +83,37 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
         ),
       },
       {
-        maxWidth: 50,
-        Header: <TableHeader title="Details" />,
-        Cell: (cellInfo: CellInfo) => (
-          <Flex alignItems="flex-start" p="10px 5px">
-            <Button
-              iconName={iconNamesConst.SHORT_TEXT}
-              title="Details"
-              type="reset"
-              onClick={() => handleOpenModal(cellInfo)}
-            />
-          </Flex>
-        ),
+        maxWidth: 65,
+        Header: <TableHeader title="Default" />,
+        accessor: 'defaultFlag',
+        Cell: renderCheckBoxTableCell(),
       },
       {
         maxWidth: 100,
         accessor: 'actionMandate',
         Cell: (cellInfo: CellInfo) => {
-          const status = cellInfo.original.status;
-          const isCancelled = status && status.toLowerCase() === 'inactive';
-          const description = cellInfo.original.description;
           const id = cellInfo.original.id;
+          const alias = cellInfo.original.accountAlias;
+          const isDefault = cellInfo.original.defaultFlag;
 
-          return (
+          return !isDefault && (
             <Flex alignItems="flex-start" p="7px 5px">
               <Button
-                text={isCancelled ? 'Reinstate' : 'Cancel'}
-                title={isCancelled ? 'Reinstate mandate' : 'Cancel mandate'}
+                text="Apply"
+                title="Apply mandate"
                 size="10"
                 disabled={isReadOnly || isChangingMandate}
                 withConfirmation={true}
-                confirmationText={isCancelled
-                  ? `Confirm that you want to reinstate this mandate: ${description}.`
-                  : `Confirm that you want to cancel this mandate: ${description}.`
-                }
-                onClick={isCancelled
-                  ? () => changeMandate({ reinstate: true, id })
-                  : () => changeMandate({ cancel: true, id })
-                }
+                confirmationTitle={`Apply this mandate`}
+                confirmationText={`Account no. ending: ••••${alias}`}
+                onClick={() => makeDefault({ id, accountId })}
               />
             </Flex>
           );
         },
       },
     ],
-    [isReadOnly, isChangingMandate, handleOpenModal, changeMandate]
+    [accountId, isReadOnly, isChangingMandate, makeDefault]
   );
 
   return (
@@ -154,9 +121,8 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
       data={mandates}
       columns={columns}
       isSmaller={true}
-      getTrGroupProps={handleClickOnRow}
     />
   );
 };
 
-export default withModal(withSpinner()(DirectDebitsMandatesTable));
+export default withSpinner()(DirectDebitsMandatesTable);

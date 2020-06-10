@@ -1,11 +1,12 @@
-// import { successResponseMock } from 'consts';
+import { successResponseMock } from 'consts';
 import { apiClientService } from 'services';
 // import {
+//   cancelDirectDebitMandateMock,
 //   changeDirectDebitMandateMock
 //   currencyLimitMock,
 //   customersMock,
+//   directDebitAccountMandatesMock,
 //   directDebitMandatesMock,
-//   cancelDirectDebitMandateMock,
 //   reinstateDirectDebitMandateMock,
 // } from './mock';
 
@@ -17,6 +18,8 @@ import {
   ILedgerId,
   IRepaymentDebitCardData,
 } from './types';
+
+import { throttleUtil } from 'utils';
 
 // import { throttleUtil } from 'utils';
 
@@ -83,7 +86,12 @@ export const getDirectDebitMandates = (data: {
     ? { account_id: data.accountId }
     : { customer_id: data.customerId };
 
-  // return throttleUtil.getDataAfter(directDebitMandatesMock, 500);
+  // return throttleUtil.getDataAfter(
+  //   data.accountId
+  //     ? directDebitAccountMandatesMock
+  //     : directDebitMandatesMock,
+  //   500
+  // );
   return apiClientService.post(path, { data: preparedData });
 };
 
@@ -107,6 +115,13 @@ export const changeDirectDebitMandate = (data: {
   // );
   return apiClientService.post(path, { data: { id: data.id } });
 };
+
+/**
+ * Make default direct debit mandate API
+ */
+export const makeDefaultDirectDebitMandate = (accountId: number) =>
+  throttleUtil.getDataAfter(successResponseMock, 100);
+  // apiClientService.post('', { data: { account_id: accountId } });
 
 /**
  * Get customer currency limits API

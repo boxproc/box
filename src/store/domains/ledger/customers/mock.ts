@@ -1,6 +1,7 @@
 import {
   ICurrencyLimitItemData,
   ICustomersData,
+  IDirectDebitAccountMandatesData,
   IDirectDebitMandatesData,
 } from './types';
 
@@ -82,6 +83,35 @@ export const directDebitMandatesMock: IDirectDebitMandatesData = {
       scheme: 'bacs',
       bank_name: 'Bank of England',
       accountholder_name: 'John Doe',
+    },
+  ],
+};
+
+export const directDebitAccountMandatesMock: IDirectDebitAccountMandatesData = {
+  direct_debit_mandates: [
+    {
+      id: 2,
+      interface_name: 'GoCardless',
+      status: 'Active',
+      account_alias: '1235',
+      bank_name: 'Bank of Scotland',
+      default_flag: 'N',
+    },
+    {
+      id: 1,
+      interface_name: 'GoCardless',
+      status: 'Active',
+      account_alias: '1234',
+      bank_name: 'Lloyds TSB Bank',
+      default_flag: 'Y',
+    },
+    {
+      id: 3,
+      interface_name: 'GoCardless',
+      status: 'Active',
+      account_alias: '4526',
+      bank_name: 'Santander Bank',
+      default_flag: 'N',
     },
   ],
 };

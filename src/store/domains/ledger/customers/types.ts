@@ -177,10 +177,15 @@ export interface IDirectDebitMandateData {
   scheme: string;
   bank_name: string;
   accountholder_name: string;
+  default_flag?: string;
 }
 
 export interface IDirectDebitMandatesData {
   direct_debit_mandates: Array<IDirectDebitMandateData>;
+}
+
+export interface IDirectDebitAccountMandatesData {
+  direct_debit_mandates: Array<Partial<IDirectDebitMandateData>>;
 }
 
 export interface IDirectDebitMandate {
@@ -196,6 +201,7 @@ export interface IDirectDebitMandate {
   scheme: string;
   bankName: string;
   accountholderName: string;
+  defaultFlag?: boolean;
 }
 
 /**

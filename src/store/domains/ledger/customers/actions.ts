@@ -19,6 +19,7 @@ import {
   IGetCurrencyLimitAction,
   IGetDirectDebitMandatesAction,
   IGetRepaymentDebitCardsAction,
+  IMakeDefaultDirectDebitMandateAction,
   IUpdateCurrencyLimitAction,
   IUpdateCustomerAction,
 } from './actionTypes';
@@ -305,6 +306,42 @@ export const handleChangeDirectDebitMandate: THandleChangeDirectDebitMandate = d
             title: isCancelling ? 'Mandate was cancelled' : 'Mandate was reinstated',
             message: statusMessage,
           },
+        }));
+      },
+      dispatch
+    );
+  };
+
+/**
+ * Make default direct debit mandate action
+ */
+
+export type TMakeDefaultDirectDebitMandate = (data: {
+  id: number,
+  accountId: number,
+}) => IMakeDefaultDirectDebitMandateAction;
+
+export type THandleMakeDefaultDirectDebitMandate = (data: {
+  id: number,
+  accountId: number,
+}) => Thunk<void>;
+
+export const makeDefaultDirectDebitMandate: TMakeDefaultDirectDebitMandate = data => ({
+  type: ActionTypeKeys.MAKE_DEFAULT_DIRECT_DEBIT_MANDATE,
+  payload: api.makeDefaultDirectDebitMandate(data.accountId),
+  meta: { id: data.id },
+});
+
+export const handleMakeDefaultDirectDebitMandate: THandleMakeDefaultDirectDebitMandate = data =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(makeDefaultDirectDebitMandate(data));
+        await dispatch(getDirectDebitMandates({accountId: data.accountId}));
+
+        dispatch(openModal({
+          name: modalNamesConst.MESSAGE,
+          payload: { title: 'Mandate was applied' },
         }));
       },
       dispatch

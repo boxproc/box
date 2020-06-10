@@ -40,6 +40,12 @@ export enum ActionTypeKeys {
   GET_DIRECT_DEBIT_MANDATES_FULFILLED = 'customers/GET_DIRECT_DEBIT_MANDATES_FULFILLED',
   GET_DIRECT_DEBIT_MANDATES_REJECTED = 'customers/GET_DIRECT_DEBIT_MANDATES_REJECTED',
 
+  MAKE_DEFAULT_DIRECT_DEBIT_MANDATE = 'customers/MAKE_DEFAULT_DIRECT_DEBIT_MANDATE',
+  MAKE_DEFAULT_DIRECT_DEBIT_MANDATE_FULFILLED =
+  'customers/MAKE_DEFAULT_DIRECT_DEBIT_MANDATE_FULFILLED',
+  MAKE_DEFAULT_DIRECT_DEBIT_MANDATE_REJECTED =
+  'customers/MAKE_DEFAULT_DIRECT_DEBIT_MANDATE_REJECTED',
+
   RESET_DIRECT_DEBIT_MANDATES = 'customers/RESET_DIRECT_DEBIT_MANDATES',
 
   CHANGE_DIRECT_DEBIT_MANDATE = 'customers/CHANGE_DIRECT_DEBIT_MANDATE',
@@ -213,6 +219,26 @@ export interface IChangeDirectDebitMandateRejectedAction {
   readonly type: ActionTypeKeys.CHANGE_DIRECT_DEBIT_MANDATE_REJECTED;
 }
 
+/**
+ * Make default direct debit mandate interfaces
+ */
+
+export interface IMakeDefaultDirectDebitMandateAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.MAKE_DEFAULT_DIRECT_DEBIT_MANDATE;
+}
+
+export interface IMakeDefaultDirectDebitMandateFulfilledAction {
+  readonly payload: IResponseStatus;
+  readonly type: ActionTypeKeys.MAKE_DEFAULT_DIRECT_DEBIT_MANDATE_FULFILLED;
+  readonly meta: { id: number };
+}
+
+export interface IMakeDefaultDirectDebitMandateRejectedAction {
+  readonly payload: TApiResponse;
+  readonly type: ActionTypeKeys.MAKE_DEFAULT_DIRECT_DEBIT_MANDATE_REJECTED;
+}
+
 export interface IResetDirectDebitMandatesAction {
   readonly type: ActionTypeKeys.RESET_DIRECT_DEBIT_MANDATES;
 }
@@ -270,4 +296,5 @@ export type TCustomersAction =
   | IResetDirectDebitMandatesAction
   | IGetCurrencyLimitFulfilledAction
   | IUpdateCurrencyLimitFulfilledAction
+  | IMakeDefaultDirectDebitMandateFulfilledAction
   | IResetCustomersAction;

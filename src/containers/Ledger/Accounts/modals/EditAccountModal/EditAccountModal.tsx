@@ -4,7 +4,7 @@ import { Modal, ProductImages, Tabs, TabsPanel } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
-import { AccountStatements, Cards } from './../../components';
+import { AccountStatements, Cards, DirectDebit } from './../../components';
 import { AccountForm } from './../../forms';
 
 import { IAccountDetails } from 'store';
@@ -67,6 +67,12 @@ const EditAccountModal: React.FC<IEditAccountModal> = ({
         </TabsPanel>
         <TabsPanel title="Cards">
           <Cards
+            onCancel={handleOnCancel}
+            isReadOnly={isReadOnly}
+          />
+        </TabsPanel>
+        <TabsPanel title="Direct Debit Mandates">
+          <DirectDebit
             onCancel={handleOnCancel}
             isReadOnly={isReadOnly}
           />
