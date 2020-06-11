@@ -7,7 +7,6 @@ import {
   IDictionaryEventDataElemsData,
   IDictionaryEventsData,
   IDictionaryInterfaceTypesData,
-  IDictionaryRepaymentTypesData,
   IDictionaryTransactionTypesData,
 } from './types';
 
@@ -61,16 +60,6 @@ export const dictionaryInterfaceTypesMock: IDictionaryInterfaceTypesData = {
     { id: 3, name: 'Tribe' },
     { id: 4, name: 'QRails' },
     { id: 5, name: 'GoCardless' },
-  ],
-};
-
-/** Dictionary repayment types mock */
-export const dictionaryRepaymentTypesMock: IDictionaryRepaymentTypesData = {
-  repayment_types: [
-    { type: 'M', description: 'Minimum Repayment' },
-    { type: 'O', description: 'Outstanding Balance' },
-    { type: 'F', description: 'Fixed Amount' },
-    { type: 'I', description: 'Instalments' },
   ],
 };
 

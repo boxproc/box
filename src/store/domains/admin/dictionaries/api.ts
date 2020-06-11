@@ -8,13 +8,10 @@ import { apiClientService } from 'services';
 //   dictionaryEndpointTypesMock,
 //   dictionaryEventsMock,
 //   dictionaryInterfaceTypesMock,
-//   dictionaryRepaymentTypesMock,
 //   dictionaryTransactionTypesMock,
 // } from './mock';
-import { dictionaryRepaymentTypesMock } from './mock';
 import { IDictionaryEventDataElemsFilterToSend } from './types';
-
-import { throttleUtil } from 'utils';
+// import { throttleUtil } from 'utils';
 
 /**
  * Get dictionary account statuses API
@@ -49,13 +46,6 @@ export const getDictionaryInterfaceTypes = () =>
  */
 export const getDictionaryStatementCycleTypes = () =>
   apiClientService.post('ui/ledger/statements/get_statement_cycle_types');
-
-/**
- * Get dictionary repayment types API
- */
-export const getDictionaryRepaymentTypes = () =>
-  throttleUtil.getDataAfter(dictionaryRepaymentTypesMock, 500);
-// apiClient.post('ui/administration/dictionaries/repayment_types');
 
 /**
  * Get dictionary transaction types API

@@ -48,19 +48,6 @@ export interface IDictionaryStatementCycleTypesData {
 }
 
 /**
- * Repayment types interfaces
- */
-
-export interface IDictionaryRepaymentType {
-  description: string;
-  type: string;
-}
-
-export interface IDictionaryRepaymentTypesData {
-  repayment_types: Array<IDictionaryRepaymentType>;
-}
-
-/**
  * Transaction types interfaces
  */
 
@@ -173,7 +160,6 @@ export interface IDictionariesState {
   eventDataElems: ImmutableArray<IDictionaryEventDataElem>;
   events: ImmutableArray<IIdNamePair>;
   interfaceTypes: ImmutableArray<IIdNamePair>;
-  repaymentTypes: ImmutableArray<IDictionaryRepaymentType>;
   statementCycleTypes: ImmutableArray<IIdNamePair>;
   transactionTypes: ImmutableArray<IDictionaryTransactionType>;
 }

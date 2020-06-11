@@ -1,11 +1,11 @@
 import { createSelector } from 'reselect';
 
 import { IStoreState } from 'store';
-import { dictionaryRepaymentTypesOptionsSelector } from 'store/domains/admin';
 import { createLoadingSelector } from 'store/domains/loader';
 import { userInstitutionsOptionsSelector } from 'store/domains/login';
 import { instProductsOptionsSelector } from 'store/domains/productDesigner';
 import { activeItemIdSelector } from 'store/domains/utils';
+import { directDebitsMandatesOptionsSelector } from './../customers';
 import { ActionTypeKeys } from './actionTypes';
 import { prepareCardsToRender, prepareDataToRender, prepareDetailsToRender } from './utils';
 import { prepareResultLimitAdjDataToRender } from './utilsLimitAdj';
@@ -51,17 +51,25 @@ export const currentAccSelector = createSelector(
   userInstitutionsOptionsSelector,
   instProductsOptionsSelector,
   defaultAccountsSelector,
-  dictionaryRepaymentTypesOptionsSelector,
-  (currentId, institutions, institutionProducts, accounts, repaymentTypesOptions) => {
+  directDebitsMandatesOptionsSelector,
+  (currentId, institutions, institutionProducts, accounts, mandates) => {
     const currentAcc = accounts.find(el => el.id === currentId);
-    const repaymentType = currentAcc && currentAcc.repayment_type;
+
+    if (!currentAcc) {
+      return null;
+    }
+
+    const mandateId = currentAcc.direct_debit_mandate_id;
+
+    const currentMandate = mandates.find(el => el.value === mandateId);
+    const currentProduct = institutionProducts.find(el => el.value === currentAcc.product_id);
+    const currentInstitution = institutions.find(el => el.value === currentAcc.institution_id);
 
     return {
       ...prepareDetailsToRender(currentAcc),
-      institutionId: currentAcc && institutions
-        .find(el => el.value === currentAcc.institution_id),
-      product: currentAcc && institutionProducts.find(el => el.value === currentAcc.product_id),
-      repaymentType: repaymentTypesOptions.find(el => el.value === repaymentType),
+      institutionId: currentInstitution,
+      product: currentProduct,
+      directDebitMandateId: currentMandate,
     };
   }
 );

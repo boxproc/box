@@ -14,7 +14,6 @@ import {
   IGetDictionaryEndpointTypesAction,
   IGetDictionaryEventsAction,
   IGetDictionaryInterfaceTypesAction,
-  IGetDictionaryRepaymentTypesAction,
   IGetDictionaryStatementCycleTypesAction,
   IGetDictionaryTransactionTypesAction,
 } from './actionTypes';
@@ -25,7 +24,6 @@ import {
   isCountriesLoadedSelector,
   isEndpointTypesLoadedSelector,
   isInterfaceTypesLoadedSelector,
-  isRepaymentTypesLoadedSelector,
   isStatementCycleTypesLoadedSelector,
   isTransTypesLoadedSelector,
 } from 'store';
@@ -145,29 +143,6 @@ export const handleGetDictionaryStatementCycleTypes: THandleGetDictionaryStateme
       async () => {
         if (!isStatementCycleTypesLoadedSelector(getState())) {
           await dispatch(getDictionaryStatementCycleTypes());
-        }
-      },
-      dispatch
-    );
-  };
-
-/**
- * Get repayment types action
- */
-export type TGetDictionaryRepaymentTypes = () => IGetDictionaryRepaymentTypesAction;
-export type THandleGetDictionaryRepaymentTypes = VoidPromiseThunk;
-
-export const getDictionaryRepaymentTypes: TGetDictionaryRepaymentTypes = () => ({
-  type: ActionTypeKeys.GET_DICTIONARY_REPAYMENT_TYPES,
-  payload: api.getDictionaryRepaymentTypes(),
-});
-
-export const handleGetDictionaryRepaymentTypes: THandleGetDictionaryRepaymentTypes = () =>
-  async (dispatch, getState) => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        if (!isRepaymentTypesLoadedSelector(getState())) {
-          await dispatch(getDictionaryRepaymentTypes());
         }
       },
       dispatch

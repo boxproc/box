@@ -60,6 +60,8 @@ export interface IAccountData {
   product_type: string;
   repayment_amount_due: number;
   repayment_type: number | string;
+  repayment_method: number | string;
+  direct_debit_mandate_id?: number | string;
   statement_cycle_repayment_day: number;
   status_name: string;
   status: string | number;
@@ -136,6 +138,8 @@ export interface IAccountDetails extends IAccountPlain {
   loanStartDate?: string;
   product: ISelectValue;
   repaymentType: ISelectValue;
+  repaymentMethod: ISelectValue;
+  directDebitMandateId?: ISelectValue;
   status: ISelectValue;
 }
 

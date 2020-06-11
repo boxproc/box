@@ -1,7 +1,7 @@
 import Immutable, { ImmutableObject } from 'seamless-immutable';
 
 import { ActionTypeKeys, TCustomersAction } from './actionTypes';
-import { ICustomersState, IDirectDebitMandateData } from './types';
+import { ICustomersState } from './types';
 
 export const customersInitialState: ImmutableObject<ICustomersState> = Immutable({
   customers: Immutable([]),
@@ -22,14 +22,7 @@ const customersReducer = (state = customersInitialState, action: TCustomersActio
       return state.set('repaymentDebitCards', action.payload.repayment_debit_cards);
 
     case ActionTypeKeys.GET_DIRECT_DEBIT_MANDATES_FULFILLED:
-      return state.set(
-        'directDebitMandates',
-        action.payload.direct_debit_mandates
-          .sort((
-            a: IDirectDebitMandateData,
-            b: IDirectDebitMandateData
-          ) => a.default_flag < b.default_flag ? 1 : -1)
-      );
+      return state.set('directDebitMandates', action.payload.direct_debit_mandates);
 
     case ActionTypeKeys.CHANGE_DIRECT_DEBIT_MANDATE_FULFILLED:
       const status = action.payload.status;

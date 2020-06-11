@@ -1,4 +1,4 @@
-import { yesNoConst } from 'consts';
+import { repaymentMethodsOptions, repaymentTypesOptions, yesNoConst } from 'consts';
 import {
   IAccountCardData,
   IAccountData,
@@ -97,6 +97,8 @@ export const prepareDataToSend = (data: Partial<IAccountDetails>) => {
     numberOfTimesOverdue7Cycles,
     statementCycleRepaymentDay,
     repaymentType,
+    repaymentMethod,
+    directDebitMandateId,
   } = data;
 
   return {
@@ -144,6 +146,8 @@ export const prepareDataToSend = (data: Partial<IAccountDetails>) => {
     number_of_times_overdue_7_cycle: stringsUtil.toNumber(numberOfTimesOverdue7Cycles),
     statement_cycle_repayment_day: stringsUtil.toNumber(statementCycleRepaymentDay),
     repayment_type: repaymentType && repaymentType.value,
+    repayment_method: repaymentMethod && repaymentMethod.value,
+    direct_debit_mandate_id: directDebitMandateId && directDebitMandateId.value,
   };
 };
 
@@ -295,10 +299,17 @@ export const prepareDetailsToRender = (data: Partial<IAccountData>) => {
     return null;
   }
 
-  const { status, status_name } = data;
+  const {
+    status,
+    status_name,
+    repayment_type,
+    repayment_method,
+  } = data;
 
   return {
     ...prepareDataToRender(data),
     status: { value: status, label: status_name },
+    repaymentType: repaymentTypesOptions.find(el => el.value === repayment_type),
+    repaymentMethod: repaymentMethodsOptions.find(el => el.value === repayment_method),
   };
 };

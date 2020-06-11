@@ -95,7 +95,6 @@ export const directDebitAccountMandatesMock: IDirectDebitAccountMandatesData = {
       status: 'Active',
       account_alias: '1235',
       bank_name: 'Bank of Scotland',
-      default_flag: 'N',
     },
     {
       id: 1,
@@ -103,7 +102,6 @@ export const directDebitAccountMandatesMock: IDirectDebitAccountMandatesData = {
       status: 'Active',
       account_alias: '1234',
       bank_name: 'Lloyds TSB Bank',
-      default_flag: 'Y',
     },
     {
       id: 3,
@@ -111,7 +109,6 @@ export const directDebitAccountMandatesMock: IDirectDebitAccountMandatesData = {
       status: 'Active',
       account_alias: '4526',
       bank_name: 'Santander Bank',
-      default_flag: 'N',
     },
   ],
 };

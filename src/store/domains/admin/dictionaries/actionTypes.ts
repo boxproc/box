@@ -7,7 +7,6 @@ import {
   IDictionaryEventDataElemsData,
   IDictionaryEventsData,
   IDictionaryInterfaceTypesData,
-  IDictionaryRepaymentTypesData,
   IDictionaryStatementCycleTypesData,
   IDictionaryTransactionTypesData,
 } from './types';
@@ -44,12 +43,6 @@ export enum ActionTypeKeys {
   'dictionaries/GET_DICTIONARY_STATEMENT_CYCLE_TYPES_FULFILLED',
   GET_DICTIONARY_STATEMENT_CYCLE_TYPES_REJECTED =
   'dictionaries/GET_DICTIONARY_STATEMENT_CYCLE_TYPES_REJECTED',
-
-  /** Repayment types action type keys */
-  GET_DICTIONARY_REPAYMENT_TYPES = 'dictionaries/GET_DICTIONARY_REPAYMENT_TYPES',
-  GET_DICTIONARY_REPAYMENT_TYPES_FULFILLED =
-  'dictionaries/GET_DICTIONARY_REPAYMENT_TYPES_FULFILLED',
-  GET_DICTIONARY_REPAYMENT_TYPES_REJECTED = 'dictionaries/GET_DICTIONARY_REPAYMENT_TYPES_REJECTED',
 
   /** Transaction types action types keys */
   GET_DICTIONARY_TRANSACTION_TYPES = 'dictionaries/GET_DICTIONARY_TRANSACTION_TYPES',
@@ -168,23 +161,6 @@ export interface IGetDictionaryStatementCycleTypesRejectedAction {
   readonly type: ActionTypeKeys.GET_DICTIONARY_STATEMENT_CYCLE_TYPES_REJECTED;
 }
 
-/** Repayment types action interfaces */
-
-export interface IGetDictionaryRepaymentTypesAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_DICTIONARY_REPAYMENT_TYPES;
-}
-
-export interface IGetDictionaryRepaymentTypesFulfilledAction {
-  readonly payload: IDictionaryRepaymentTypesData;
-  readonly type: ActionTypeKeys.GET_DICTIONARY_REPAYMENT_TYPES_FULFILLED;
-}
-
-export interface IGetDictionaryRepaymentTypesRejectedAction {
-  readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.GET_DICTIONARY_REPAYMENT_TYPES_REJECTED;
-}
-
 /** Transaction types action interfaces */
 
 export interface IGetDictionaryTransactionTypesAction {
@@ -281,7 +257,6 @@ export type TDictionaryAction =
   | IGetDictionaryInterfaceTypesFulfilledAction
   | IGetDictionaryStatementCycleTypesFulfilledAction
   | IGetDictionaryTransactionTypesFulfilledAction
-  | IGetDictionaryRepaymentTypesFulfilledAction
   | IGetDictionaryCountriesFulfilledAction
   | IGetDictionaryCurrenciesFulfilledAction
   | IFilterDictionaryEventDataElemsFulfilledAction

@@ -3,108 +3,155 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 import { ImmutableArray } from 'seamless-immutable';
 
 import { ISpinner, Tabs, TabsPanel, withSpinner } from 'components';
-import { formNamesConst, productTypesConst, repaymentTypesConst } from 'consts';
+import {
+  formNamesConst,
+  productTypesConst,
+  repaymentMethodsConst,
+  repaymentTypesConst,
+  repaymentTypesOptions,
+} from 'consts';
 import { AuxiliaryCounters, GeneralAccountInfo, Overdue } from './../../components';
 
 import {
   IAccountDetails,
   IInstProduct,
   THandleAddAccount,
+  THandleGetDirectDebitMandates,
   THandleUpdateAccount,
+  TResetDirectDebitMandates,
 } from 'store';
 
 import { ISelectValue } from 'types';
 import { dateUtil } from 'utils';
 
 interface IAccountForm extends ISpinner {
-  institutionsOptions: Array<ISelectValue>;
-  institutionProducts: ImmutableArray<IInstProduct>;
-  currentAccAuxCounters: Partial<IAccountDetails>;
-  currentProduct: ISelectValue;
-  currentInstitution: ISelectValue;
-  updateAccount: THandleUpdateAccount;
   addAccount: THandleAddAccount;
-  repaymentTypesOptions: Array<ISelectValue>;
-  onCancel: () => void;
+  currentAccountId: number;
+  currentAccAuxCounters: Partial<IAccountDetails>;
+  customerIdValue: number;
+  institutionValue: ISelectValue;
+  productValue: ISelectValue;
+  repaymentMethodValue: ISelectValue;
+  institutionProducts: ImmutableArray<IInstProduct>;
   isEditMode?: boolean;
   isReadOnly?: boolean;
+  onCancel: () => void;
+  updateAccount: THandleUpdateAccount;
+  getDirectDebitMandates: THandleGetDirectDebitMandates;
+  resetDirectDebitMandates: TResetDirectDebitMandates;
 }
 
 type TAccountForm = IAccountForm & InjectedFormProps<{}, IAccountForm>;
 
 const AccountForm: React.FC<TAccountForm> = ({
-  onCancel,
-  handleSubmit,
-  updateAccount,
-  addAccount,
-  institutionsOptions,
-  currentProduct,
-  currentInstitution,
+  customerIdValue,
+  institutionValue,
+  productValue,
   currentAccAuxCounters,
+  currentAccountId,
   institutionProducts,
-  repaymentTypesOptions,
+  repaymentMethodValue,
   isEditMode,
+  isReadOnly,
   dirty,
   pristine,
-  isReadOnly,
+  addAccount,
+  updateAccount,
+  getDirectDebitMandates,
+  resetDirectDebitMandates,
+  onCancel,
+  handleSubmit,
   change,
 }) => {
-  const [currentInstId, setCurrentInstId] = React.useState(null);
-  const [currentProductId, setCurrentProductId] = React.useState(null);
+  const [institutionIdState, setStateInstitutionId] = React.useState(null);
+  const [productIdState, setStateProductId] = React.useState(null);
+  const [customerIdState, setStateCustomerId] = React.useState(null);
+
+  const selectedProductId = React.useMemo(
+    () => productValue && Number(productValue.value),
+    [productValue]
+  );
+
+  const selectedProductType = React.useMemo(
+    () => {
+      const product = institutionProducts.find(el => el.id === selectedProductId);
+      return product && product.productType;
+    },
+    [institutionProducts, selectedProductId]
+  );
+
+  const isSelectedLoan = React.useMemo(
+    () => selectedProductType === productTypesConst.LOAN,
+    [selectedProductType]
+  );
+
+  const isSelectedRevCredit = React.useMemo(
+    () => selectedProductType === productTypesConst.REVOLVING_CREDIT,
+    [selectedProductType]
+  );
+
+  const selectedInstitutionId = React.useMemo(
+    () => institutionValue && Number(institutionValue.value),
+    [institutionValue]
+  );
+
+  const isDirectDebitRepayment = React.useMemo(
+    () => repaymentMethodValue && repaymentMethodValue.value === repaymentMethodsConst.DIRECT_DEBIT,
+    [repaymentMethodValue]
+  );
 
   // reset products list if institution changed (adding mode)
   React.useEffect(
     () => {
-      if (!isEditMode && currentInstitution) {
-        if (currentInstId !== currentInstitution.value) {
+      if (!isEditMode) {
+        if (institutionIdState !== selectedInstitutionId) {
           change('product', '');
-          setCurrentInstId(currentInstitution.value);
+          setStateInstitutionId(selectedInstitutionId);
         }
       }
     },
-    [currentInstitution, currentInstId, change, isEditMode]
+    [selectedInstitutionId, institutionIdState, change, isEditMode]
   );
 
-  const submitFormAction = React.useMemo(
-    () => isEditMode ? updateAccount : addAccount,
-    [updateAccount, addAccount, isEditMode]
-  );
-
-  const currentProductType = React.useMemo(
+  // reset mandates list if customer or product changed (adding mode)
+  React.useEffect(
     () => {
-      if (!currentProduct) {
-        return undefined;
+      const resetMandatesList = () => {
+        resetDirectDebitMandates();
+        change('directDebitMandateId', '');
+      };
+
+      if (!isEditMode && isDirectDebitRepayment) {
+        if (customerIdState !== customerIdValue) {
+          resetMandatesList();
+          setStateCustomerId(customerIdValue);
+        }
+
+        if (productIdState !== selectedProductId) {
+          resetMandatesList();
+          setStateProductId(selectedProductId);
+        }
       }
-
-      const productId = currentProduct.value;
-      const product = institutionProducts.find(el => el.id === productId);
-
-      return product && product.productType;
     },
-    [institutionProducts, currentProduct]
-  );
-
-  const isChosenLoanProductType = React.useMemo(
-    () => currentProductType === productTypesConst.LOAN,
-    [currentProductType]
-  );
-
-  const isChosenRevCreditProductType = React.useMemo(
-    () => currentProductType === productTypesConst.REVOLVING_CREDIT,
-    [currentProductType]
+    [
+      change,
+      customerIdValue,
+      customerIdState,
+      isDirectDebitRepayment,
+      isEditMode,
+      productIdState,
+      resetDirectDebitMandates,
+      selectedProductId,
+    ]
   );
 
   React.useEffect(
     () => {
-      const selectedProductId = currentProduct && currentProduct.value;
-      const currentProductItem = institutionProducts
-        .find(product => product.id === selectedProductId);
+      const selectedProduct = institutionProducts.find(product => product.id === selectedProductId);
 
-      const numOfInstallments = currentProductItem && currentProductItem.defNumOfInstallments;
-      const numInterestFreeInstlmts = currentProductItem
-        && currentProductItem.defNumInterestFreeInstlmts;
-      const numDeferredInstlmts = currentProductItem
-        && currentProductItem.defNumDeferredInstlmts;
+      const numOfInstallments = selectedProduct && selectedProduct.defNumOfInstallments;
+      const numInterestFreeInstlmts = selectedProduct && selectedProduct.defNumInterestFreeInstlmts;
+      const numDeferredInstlmts = selectedProduct && selectedProduct.defNumDeferredInstlmts;
 
       const repaymentTypeInstalments = repaymentTypesOptions
         .find(type => type.value === repaymentTypesConst.INSTALMENTS);
@@ -119,43 +166,79 @@ const AccountForm: React.FC<TAccountForm> = ({
       };
 
       if (!isEditMode) {
-        if (currentProductId !== selectedProductId) {
-          setCurrentProductId(selectedProductId);
+        if (productIdState !== selectedProductId) {
+          setStateProductId(selectedProductId);
 
-          if (isChosenLoanProductType) {
+          if (isSelectedLoan) {
             change('numOfInstallments', numOfInstallments);
             change('numInterestFreeInstlmts', numInterestFreeInstlmts);
             change('numDeferredInstlmts', numDeferredInstlmts);
             change('repaymentType', repaymentTypeInstalments);
-          } else if (isChosenRevCreditProductType) {
+          } else if (isSelectedRevCredit) {
             change('repaymentType', repaymentTypeMinimumRepayment);
           }
         }
 
-        if (!isChosenLoanProductType) {
+        if (!isSelectedLoan) {
           resetLoanValues();
         }
 
-        if (!isChosenLoanProductType && !isChosenRevCreditProductType) {
+        if (!isSelectedLoan && !isSelectedRevCredit) {
           change('repaymentType', '');
         }
       }
     },
     [
-      currentProductId,
-      institutionProducts,
-      currentProduct,
       change,
-      isChosenLoanProductType,
-      isChosenRevCreditProductType,
+      institutionProducts,
+      isSelectedLoan,
+      isSelectedRevCredit,
       isEditMode,
-      repaymentTypesOptions,
+      productValue,
+      productIdState,
+      selectedProductId,
+    ]
+  );
+
+  React.useEffect(
+    () => {
+      if (isEditMode && isDirectDebitRepayment) {
+        getDirectDebitMandates({
+          accountId: currentAccountId,
+          forAccount: true,
+        });
+      }
+    },
+    [
+      getDirectDebitMandates,
+      currentAccountId,
+      isEditMode,
+      isDirectDebitRepayment,
+    ]
+  );
+
+  React.useEffect(
+    () => {
+      if (!isEditMode && isDirectDebitRepayment && customerIdValue && selectedProductId) {
+        getDirectDebitMandates({
+          customerId: customerIdValue,
+          productId: selectedProductId,
+          forAccount: true,
+        });
+      }
+    },
+    [
+      getDirectDebitMandates,
+      customerIdValue,
+      isEditMode,
+      isDirectDebitRepayment,
+      selectedProductId,
     ]
   );
 
   const handleSubmitForm = React.useCallback(
-    handleSubmit(submitFormAction),
-    [handleSubmit, submitFormAction]
+    handleSubmit(isEditMode ? updateAccount : addAccount),
+    [handleSubmit, updateAccount, addAccount, isEditMode]
   );
 
   return (
@@ -163,14 +246,17 @@ const AccountForm: React.FC<TAccountForm> = ({
       <Tabs>
         <TabsPanel title="General">
           <GeneralAccountInfo
-            institutionsOptions={institutionsOptions}
-            isEditMode={isEditMode}
-            isChosenLoanProductType={isChosenLoanProductType}
-            isChosenRevCreditProductType={isChosenRevCreditProductType}
-            onCancel={onCancel}
             dirty={dirty}
-            pristine={pristine}
+            institutionValue={institutionValue}
+            isSelectedLoan={isSelectedLoan}
+            isDirectDebitRepayment={isDirectDebitRepayment}
+            isEditMode={isEditMode}
             isReadOnly={isReadOnly}
+            isRepaymentType={isSelectedLoan || isSelectedRevCredit}
+            customerId={customerIdValue}
+            productId={selectedProductId}
+            onCancel={onCancel}
+            pristine={pristine}
           />
         </TabsPanel>
         <TabsPanel title="Aux Counters">

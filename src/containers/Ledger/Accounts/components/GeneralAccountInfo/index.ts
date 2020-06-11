@@ -1,38 +1,32 @@
-import { bindActionCreators, Dispatch } from 'redux';
-
 import { connect } from 'react-redux';
-import { formValueSelector } from 'redux-form';
-
-import { formNamesConst } from 'consts';
-
+import { bindActionCreators, Dispatch } from 'redux';
 import GeneralAccountInfo from './GeneralAccountInfo';
 
 import {
   currentAccHasProductOverrideSelector,
   dictionaryAccountStatusesOptionsSelector,
-  dictionaryRepaymentTypesOptionsSelector,
+  directDebitsMandatesOptionsSelector,
   handleGetDictionaryAccountStatuses,
-  handleGetDictionaryRepaymentTypes,
   handleGetInstProducts,
   instProductsOptionsSelector,
+  isGettingDirectDebitMandatesSelector,
   IStoreState,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
-const formSelector = formValueSelector(formNamesConst.ACCOUNT);
-
 const mapStateToProps = (state: IStoreState) => ({
-  institutionProductsOptions: instProductsOptionsSelector(state),
+  isLoadingMandates: isGettingDirectDebitMandatesSelector(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
+  directDebitMandatesOptions: directDebitsMandatesOptionsSelector(state),
   hasProductOverride: currentAccHasProductOverrideSelector(state),
+  institutionProductsOptions: instProductsOptionsSelector(state),
   statusesOptions: dictionaryAccountStatusesOptionsSelector(state),
-  repaymentTypesOptions: dictionaryRepaymentTypesOptionsSelector(state),
-  currentInstitution: formSelector(state, 'institutionId'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getInstProducts: handleGetInstProducts,
     getAccountStatuses: handleGetDictionaryAccountStatuses,
-    getRepaymentTypes: handleGetDictionaryRepaymentTypes,
   },
   dispatch
 );

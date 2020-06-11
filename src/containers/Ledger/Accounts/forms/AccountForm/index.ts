@@ -7,14 +7,15 @@ import { formNamesConst } from 'consts';
 import AccountForm from './AccountForm';
 
 import {
-  dictionaryRepaymentTypesOptionsSelector,
+  activeItemIdSelector,
   handleAddAccount,
+  handleGetDirectDebitMandates,
   handleUpdateAccount,
   instProductsSelector,
   isAddingAccountSelector,
   IStoreState,
   isUpdatingAccountSelector,
-  userInstitutionsOptionsSelector,
+  resetDirectDebitMandates,
 } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.ACCOUNT);
@@ -22,16 +23,19 @@ const formSelector = formValueSelector(formNamesConst.ACCOUNT);
 const mapStateToProps = (state: IStoreState) => ({
   isLoading: isAddingAccountSelector(state) || isUpdatingAccountSelector(state),
   institutionProducts: instProductsSelector(state),
-  institutionsOptions: userInstitutionsOptionsSelector(state),
-  repaymentTypesOptions: dictionaryRepaymentTypesOptionsSelector(state),
-  currentProduct: formSelector(state, 'product'),
-  currentInstitution: formSelector(state, 'institutionId'),
+  currentAccountId: activeItemIdSelector(state),
+  productValue: formSelector(state, 'product'),
+  institutionValue: formSelector(state, 'institutionId'),
+  repaymentMethodValue: formSelector(state, 'repaymentMethod'),
+  customerIdValue: formSelector(state, 'customerId'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     updateAccount: handleUpdateAccount,
     addAccount: handleAddAccount,
+    getDirectDebitMandates: handleGetDirectDebitMandates,
+    resetDirectDebitMandates,
   },
   dispatch
 );

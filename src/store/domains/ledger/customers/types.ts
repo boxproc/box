@@ -177,7 +177,6 @@ export interface IDirectDebitMandateData {
   scheme: string;
   bank_name: string;
   accountholder_name: string;
-  default_flag?: string;
 }
 
 export interface IDirectDebitMandatesData {

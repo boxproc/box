@@ -2,7 +2,6 @@ import {
   customerStatusOptions,
   identificationTypesOptions,
   statusOptions,
-  yesNoConst,
 } from 'consts';
 
 import {
@@ -271,7 +270,6 @@ export const prepareDirectDebitMandatesToRender = (data: Partial<IDirectDebitMan
     scheme,
     bank_name,
     accountholder_name,
-    default_flag,
   } = data;
 
   return {
@@ -287,7 +285,6 @@ export const prepareDirectDebitMandatesToRender = (data: Partial<IDirectDebitMan
     scheme,
     bankName: bank_name,
     accountholderName: accountholder_name,
-    defaultFlag: default_flag === yesNoConst.YES,
   };
 };
 

@@ -4,6 +4,7 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import {
+  Delimiter,
   Hr,
   InputField,
   MaskField,
@@ -14,75 +15,93 @@ import {
 
 import {
   THandleGetDictionaryAccountStatuses,
-  THandleGetDictionaryRepaymentTypes,
   THandleGetInstProducts,
 } from 'store';
 
-import { dateFormatConst, maskFormatConst } from 'consts';
+import {
+  dateFormatConst,
+  maskFormatConst,
+  repaymentMethodsOptions,
+  repaymentTypesOptions,
+} from 'consts';
 
 import { ISelectValue } from 'types';
-
 import { formErrorUtil } from 'utils';
 
 interface IGeneralAccountInfo {
-  institutionsOptions: Array<ISelectValue>;
-  institutionProductsOptions: Array<ISelectValue>;
-  statusesOptions: Array<ISelectValue>;
-  currentInstitution: ISelectValue;
-  repaymentTypesOptions: Array<ISelectValue>;
-  isEditMode?: boolean;
-  hasProductOverride: boolean;
-  isChosenLoanProductType: boolean;
-  isChosenRevCreditProductType: boolean;
+  directDebitMandatesOptions: Array<ISelectValue>;
   dirty: boolean;
-  pristine: boolean;
-  isReadOnly: boolean;
-  getInstProducts: THandleGetInstProducts;
   getAccountStatuses: THandleGetDictionaryAccountStatuses;
-  getRepaymentTypes: THandleGetDictionaryRepaymentTypes;
+  getInstProducts: THandleGetInstProducts;
+  hasProductOverride: boolean;
+  institutionProductsOptions: Array<ISelectValue>;
+  institutionsOptions: Array<ISelectValue>;
+  institutionValue: ISelectValue;
+  isSelectedLoan: boolean;
+  isDirectDebitRepayment: boolean;
+  isEditMode?: boolean;
+  isLoadingMandates: boolean;
+  isReadOnly: boolean;
+  isRepaymentType: boolean;
   onCancel: () => void;
+  pristine: boolean;
+  statusesOptions: Array<ISelectValue>;
+  customerId: number;
+  productId: number;
 }
 
 const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
-  institutionsOptions,
-  currentInstitution,
-  institutionProductsOptions,
-  statusesOptions,
-  getInstProducts,
-  getAccountStatuses,
-  isEditMode,
-  isChosenLoanProductType,
-  isChosenRevCreditProductType,
-  hasProductOverride,
-  repaymentTypesOptions,
-  getRepaymentTypes,
-  onCancel,
+  institutionValue,
+  directDebitMandatesOptions,
   dirty,
-  pristine,
+  getAccountStatuses,
+  getInstProducts,
+  hasProductOverride,
+  institutionProductsOptions,
+  institutionsOptions,
+  isSelectedLoan,
+  isDirectDebitRepayment,
+  isEditMode,
+  isLoadingMandates,
   isReadOnly,
+  isRepaymentType,
+  onCancel,
+  pristine,
+  statusesOptions,
+  customerId,
+  productId,
 }) => {
   React.useEffect(
     () => {
-      Promise.all([
-        getAccountStatuses(),
-        getRepaymentTypes(),
-      ]);
+      getAccountStatuses();
     },
-    [getAccountStatuses, getRepaymentTypes]
+    [getAccountStatuses]
   );
 
   React.useEffect(
     () => {
-      if (currentInstitution) {
-        getInstProducts(currentInstitution.value);
+      if (institutionValue) {
+        getInstProducts(institutionValue.value);
       }
     },
-    [getInstProducts, currentInstitution]
+    [getInstProducts, institutionValue]
   );
 
-  const isRepaymentType = React.useMemo(
-    () => isChosenLoanProductType || isChosenRevCreditProductType,
-    [isChosenLoanProductType, isChosenRevCreditProductType]
+  const hint = React.useMemo(
+    () => {
+      let text = '';
+
+      if (!customerId && !productId) {
+        text = 'Fill customer ID and select a product.';
+      } else if (!customerId) {
+        text = 'Enter a customer ID.';
+      } else if (!productId) {
+        text = 'Select a product.';
+      }
+
+      return text;
+    },
+    [customerId, productId]
   );
 
   return (
@@ -93,7 +112,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
         mx="-8px"
       >
         {isEditMode && (
-          <Box width="150px" p="8px">
+          <Box width="100px" p="8px">
             <Field
               id="id"
               name="id"
@@ -105,7 +124,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             />
           </Box>
         )}
-        <Box width={[1 / 6]} p="8px">
+        <Box width={[1 / 5]} p="8px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -118,7 +137,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width="150px" p="8px">
+        <Box width="100px" p="8px">
           <Field
             id="customerId"
             name="customerId"
@@ -153,7 +172,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             disabled={isReadOnly}
           />
         </Box>
-        <Box width={[1 / 6]} p="8px">
+        <Box width="150px" p="8px">
           <Field
             id="status"
             name="status"
@@ -165,8 +184,9 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
+        <Delimiter />
         {isEditMode && (
-          <Box width="150px" p="8px">
+          <Box width="100px" p="8px">
             <Field
               id="productId"
               name="productId"
@@ -190,6 +210,36 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
+        <Box width="150px" p="8px">
+          <Field
+            id="repaymentMethod"
+            name="repaymentMethod"
+            component={SelectField}
+            label="Repayment Method"
+            placeholder="Select Method"
+            isDisabled={isReadOnly}
+            options={repaymentMethodsOptions}
+            validate={[formErrorUtil.isRequired]}
+          />
+        </Box>
+        {isDirectDebitRepayment && (
+          <Box width="280px" p="8px">
+            <Field
+              id="directDebitMandateId"
+              name="directDebitMandateId"
+              component={SelectField}
+              label="Direct Debit Mandate"
+              placeholder="Select Mandate"
+              isDisabled={isReadOnly || hint}
+              isLoading={isLoadingMandates}
+              hint={hint}
+              options={directDebitMandatesOptions}
+            />
+          </Box>
+        )}
+        {isSelectedLoan && (
+          <Delimiter />
+        )}
         {isRepaymentType && (
           <Box width={[1 / 5]} p="8px">
             <Field
@@ -198,14 +248,14 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
               component={SelectField}
               label="Repayment Type"
               placeholder="Select Type"
-              isDisabled={isChosenLoanProductType || isReadOnly}
+              isDisabled={isSelectedLoan || isReadOnly}
               options={repaymentTypesOptions}
               validate={[formErrorUtil.isRequired]}
             />
           </Box>
         )}
         {isEditMode && (
-          <Box width="150px" p="8px">
+          <Box width="120px" p="8px">
             <Field
               id="statementCycleRepaymentDay"
               name="statementCycleRepaymentDay"
@@ -218,9 +268,9 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             />
           </Box>
         )}
-        {isChosenLoanProductType && (
+        {isSelectedLoan && (
           <React.Fragment>
-            <Box width="130px" p="8px">
+            <Box width="110px" p="8px">
               <Field
                 id="numOfInstallments"
                 name="numOfInstallments"
@@ -235,7 +285,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
                 ]}
               />
             </Box>
-            <Box width="130px" p="8px">
+            <Box width="110px" p="8px">
               <Field
                 id="numInterestFreeInstlmts"
                 name="numInterestFreeInstlmts"
@@ -249,7 +299,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
                 ]}
               />
             </Box>
-            <Box width="130px" p="8px">
+            <Box width="110px" p="8px">
               <Field
                 id="numDeferredInstlmts"
                 name="numDeferredInstlmts"
@@ -263,24 +313,22 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
                 ]}
               />
             </Box>
+            <Box width="115px" p="8px">
+              <Field
+                id="loanStartDate"
+                name="loanStartDate"
+                component={MaskField}
+                label="Loan Start Date"
+                placeholder={dateFormatConst.DATE}
+                mask={maskFormatConst.DATE}
+                disabled={isReadOnly || isEditMode}
+                validate={[
+                  formErrorUtil.isRequired,
+                  formErrorUtil.isDate,
+                ]}
+              />
+            </Box>
           </React.Fragment>
-        )}
-        {isChosenLoanProductType && (
-          <Box width="130px" p="8px">
-            <Field
-              id="loanStartDate"
-              name="loanStartDate"
-              component={MaskField}
-              label="Loan Start Date"
-              placeholder={dateFormatConst.DATE}
-              mask={maskFormatConst.DATE}
-              disabled={isReadOnly || isEditMode}
-              validate={[
-                formErrorUtil.isRequired,
-                formErrorUtil.isDate,
-              ]}
-            />
-          </Box>
         )}
         {hasProductOverride && (
           <React.Fragment>

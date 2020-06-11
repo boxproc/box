@@ -127,34 +127,6 @@ export const isStatementCycleTypesLoading = createLoadingSelector([
 ]);
 
 /**
- * Repayment types selectors
- */
-
-export const defaultDictionaryRepaymentTypesSelector = (state: IStoreState) =>
-  state.admin.dictionaries.repaymentTypes;
-
-export const dictionaryRepaymentTypesOptionsSelector = createSelector(
-  defaultDictionaryRepaymentTypesSelector,
-  data => data && data.asMutable().map(el => {
-    if (!el) {
-      return null;
-    }
-
-    const { type, description } = el;
-
-    return {
-      value: type,
-      label: description,
-    };
-  })
-);
-
-export const isRepaymentTypesLoadedSelector = createSelector(
-  defaultDictionaryRepaymentTypesSelector,
-  data => data && data.length > 0
-);
-
-/**
  * Transaction types selectors
  */
 
