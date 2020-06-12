@@ -241,7 +241,7 @@ export const prepareFormDataDirectDebitAccountToSend =
     } = data;
 
     return {
-      customer_id: customerId,
+      customer_id: stringsUtil.toNumber(customerId),
       account_field_1: accountField1,
       account_field_2: accountField2,
       account_field_3: accountField3,
@@ -313,7 +313,7 @@ export const prepareCurrencyLimitToSend = (data: Partial<ICurrencyLimit>, custom
   const { baseCurrency, customerLimit } = data;
 
   return {
-    customer_id: customerId,
+    customer_id: stringsUtil.toNumber(customerId),
     base_currency: baseCurrency,
     customer_limit: stringsUtil.toNumber(customerLimit),
   };

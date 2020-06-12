@@ -22,7 +22,7 @@ import {
 } from 'store';
 
 import { ISelectValue } from 'types';
-import { dateUtil } from 'utils';
+import { dateUtil, stringsUtil } from 'utils';
 
 interface IAccountForm extends ISpinner {
   addAccount: THandleAddAccount;
@@ -221,7 +221,7 @@ const AccountForm: React.FC<TAccountForm> = ({
     () => {
       if (!isEditMode && isDirectDebitRepayment && customerIdValue && selectedProductId) {
         getDirectDebitMandates({
-          customerId: customerIdValue,
+          customerId: stringsUtil.toNumber(customerIdValue),
           productId: selectedProductId,
           forAccount: true,
         });
