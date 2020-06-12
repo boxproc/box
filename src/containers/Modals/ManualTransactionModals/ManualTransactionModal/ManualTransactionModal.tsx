@@ -88,7 +88,10 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
   React.useEffect(
     () => {
       if (accountIdValue && isDirectDebitTrType) {
-        getDirectDebitMandates({ accountId: accountIdValue });
+        getDirectDebitMandates({
+          accountId: accountIdValue,
+          forAccount: true,
+         });
       }
     },
     [getDirectDebitMandates, accountIdValue, isDirectDebitTrType]
