@@ -147,7 +147,7 @@ export const prepareDataToSend = (data: Partial<IAccountDetails>) => {
     statement_cycle_repayment_day: stringsUtil.toNumber(statementCycleRepaymentDay),
     repayment_type: repaymentType && repaymentType.value,
     repayment_method: repaymentMethod && repaymentMethod.value,
-    direct_debit_mandate_id: directDebitMandateId && directDebitMandateId.value,
+    direct_debit_mandate_id: directDebitMandateId ? directDebitMandateId.value : null,
   };
 };
 
