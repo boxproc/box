@@ -16,7 +16,7 @@ import {
 const mapStateToProps = (state: IStoreState) => ({
   eventDataElemsData: dictionaryEventDataElemsSelector(state),
   eventsOptions: [
-    { label: 'Select All', value: '' },
+    { label: 'Select all', value: '' },
     ...dictionaryEventsOptionsSelector(state),
   ],
   isLoading: isEventDataElemsLoadingSelector(state),

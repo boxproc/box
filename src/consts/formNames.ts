@@ -47,6 +47,7 @@ export enum formNamesConst {
   CARD = 'cardForm',
   CHANGE_CARD_STATUS = 'changeCardStatusForm',
   CURRENCY_LIMIT = 'currencyLimit',
+  DIRECT_DEBIT_MANDATES_FILTER = 'directDebitMandatesFilterForm',
   CURRENCY_RATES = 'currencyRatesForm',
   CUSTOMER = 'customerForm',
   MANUAL_TRANSACTION = 'manualTransaction',

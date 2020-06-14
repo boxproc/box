@@ -83,7 +83,7 @@ const CurrencyRatesFilter: React.FC<ICurrencyRatesFilter> = ({
           label="To Currency"
           placeholder="Select To Currency"
           options={[
-            { value: '', label: 'Select All' },
+            { value: '', label: 'Select all' },
             ...currenciesOptions,
           ]}
           isDisabled={isDisabled}
