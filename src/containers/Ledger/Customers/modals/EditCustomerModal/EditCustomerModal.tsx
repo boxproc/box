@@ -37,7 +37,9 @@ const EditCustomerModal: React.FC<IEditCustomerModal> = ({
 }) => {
   React.useEffect(
     () => {
-      getInterfaces(currentCustomerInstitutionId);
+      if (currentCustomerInstitutionId) {
+        getInterfaces(currentCustomerInstitutionId);
+      }
     },
     [getInterfaces, currentCustomerInstitutionId]
   );

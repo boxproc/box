@@ -134,6 +134,15 @@ export const handleUpdateCustomer: THandleUpdateCustomer = data =>
 
         await dispatch(updateCustomer(preparedData));
         await dispatch(handleFilterCustomers());
+
+        dispatch(closeModal(modalNamesConst.EDIT_CUSTOMER));
+        dispatch(openModal({
+          name: modalNamesConst.MESSAGE,
+          payload: {
+            title: 'Customer was updated',
+            message: `Customer ID: ${data.id}`,
+          },
+        }));
       },
       dispatch
     );
