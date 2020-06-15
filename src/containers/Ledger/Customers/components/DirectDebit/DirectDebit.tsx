@@ -122,6 +122,7 @@ const DirectDebit: React.FC<IDirectDebit> = ({
       <MandatesFilterForm
         options={statusOptions}
         onSubmit={filterMandates}
+        isFiltering={isFiltering}
         initialValues={{
           status: statusOptions.find(el => el.label === status),
         }}

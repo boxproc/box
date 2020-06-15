@@ -10,16 +10,20 @@ import { formNamesConst } from 'consts';
 import { ISelectValue } from 'types';
 
 interface IMandatesFilterForm {
-  options: Array<ISelectValue>;
+  isFiltering: boolean;
   onSubmit: (formValues: object) => void;
+  options: Array<ISelectValue>;
 }
 
 type TMandatesFilterForm = IMandatesFilterForm & InjectedFormProps<{}, IMandatesFilterForm>;
 
 const MandatesFilterForm: React.FC<TMandatesFilterForm> = ({
   handleSubmit,
+  isFiltering,
   onSubmit,
   options,
+  pristine,
+  dirty,
 }) => {
 
   const handleSubmitForm = React.useCallback(
@@ -38,10 +42,16 @@ const MandatesFilterForm: React.FC<TMandatesFilterForm> = ({
             label="Status"
             placeholder="Select status"
             options={options}
+            isDisabled={isFiltering}
+            isClearable={false}
           />
         </Box>
         <Box ml="16px">
-          <Button text="Show" />
+          <Button
+            text={isFiltering ? 'Show...' : 'Show'}
+            disabled={isFiltering || pristine}
+            isFocused={dirty}
+          />
         </Box>
       </Flex>
     </form >
