@@ -29,7 +29,7 @@ const TransactionModal: React.FC<ITransactionModal> = ({
   isConvertibleToLoan,
 }) => {
   const modalTitle = React.useMemo(
-    () => `Transaction ${currentTransactionId}`,
+    () => `Transaction: ${currentTransactionId}`,
     [currentTransactionId]
   );
 
@@ -59,7 +59,7 @@ const TransactionModal: React.FC<ITransactionModal> = ({
       type={modalTypesConst.VIEWING}
       title={modalTitle}
       containerWidth="1010px"
-      minContainerHeight="580px"
+      minContainerHeight="530px"
     >
       {!isConvertibleToLoan && (
         <TransactionForm onCancel={handleOnCancel} />
