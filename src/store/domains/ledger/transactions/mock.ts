@@ -1,4 +1,8 @@
-import { ISettleTransactionDataReq, ITransactionsData } from './types';
+import {
+  IDirectDebitPaymentHistoryData,
+  ISettleTransactionDataReq,
+  ITransactionsData,
+} from './types';
 
 /** Transactions mock */
 export const transactionsMock: ITransactionsData = {
@@ -24,7 +28,7 @@ export const transactionsMock: ITransactionsData = {
       description: 'description',
       original_currency: 'GBP',
       transaction_datetime: '11/08/2019 00:04:46',
-      transaction_type_id: 1,
+      transaction_type_id: 24,
       status: 'S',
       settled_datetime: '11/08/2019 00:04:46',
       amount_settled: 0,
@@ -51,6 +55,59 @@ export const transactionsMock: ITransactionsData = {
       card_pos_condition_data: null,
       card_response_code: null,
       parent_transaction_id: null,
+    },
+  ],
+};
+
+export const directDebitPaymentMock: IDirectDebitPaymentHistoryData = {
+  payment: [
+    {
+      id: 2,
+      transaction_id: 1234,
+      event_id: 2,
+      mandate_id: 123,
+      created_timestamp: '17/06/2019 00:00:00',
+      provider_timestamp: '17/06/2019 00:00:00',
+      amount: 10,
+      status: 'Submitted',
+      account_alias: '9438',
+      bank_name: 'National Westminster Bank (NatWest)',
+    },
+    {
+      id: 3,
+      transaction_id: 1234,
+      event_id: 3,
+      mandate_id: 123,
+      created_timestamp: '18/06/2019 00:00:00',
+      provider_timestamp: '18/06/2019 00:00:00',
+      amount: 10,
+      status: 'Verified',
+      account_alias: '9438',
+      bank_name: 'National Westminster Bank (NatWest)',
+    },
+    {
+      id: 4,
+      transaction_id: 1234,
+      event_id: 4,
+      mandate_id: 123,
+      created_timestamp: '19/06/2019 00:00:00',
+      provider_timestamp: '19/06/2019 00:00:00',
+      amount: 10,
+      status: 'Completed',
+      account_alias: '9438',
+      bank_name: 'National Westminster Bank (NatWest)',
+    },
+    {
+      id: 1,
+      transaction_id: 1234,
+      event_id: 1,
+      mandate_id: 123,
+      created_timestamp: '16/06/2019 00:00:00',
+      provider_timestamp: '16/06/2019 00:00:00',
+      amount: 10,
+      status: 'Pending',
+      account_alias: '9438',
+      bank_name: 'National Westminster Bank (NatWest)',
     },
   ],
 };

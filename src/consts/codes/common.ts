@@ -34,10 +34,12 @@ export const executableTypeOptions = [
   { value: 'S', label: 'Shell script' },
 ];
 
-export enum transactionTypesIds {
+export enum transactionTypesIdsConst {
   PURCHASE_CARD_PAYMENT = 1,
   CASH_WITHDRAWAL_ATM = 3,
   BALANCE_TRANSFER_DEBIT = 27,
+  LIMIT_ADJUSTMENT = 14,
+  DIRECT_DEBIT = 24,
 }
 
 export const accountTypesOptions = [

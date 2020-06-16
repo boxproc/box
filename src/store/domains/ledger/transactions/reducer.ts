@@ -6,6 +6,7 @@ import { ITransactionsState } from './types';
 export const transactionsInitialState: ImmutableObject<ITransactionsState> = Immutable({
   transactions: Immutable([]),
   settledTransaction: Immutable([]),
+  directDebitPayment: Immutable([]),
 });
 
 const transactionsReducer = (state = transactionsInitialState, action: TTransactionsAction) => {
@@ -16,8 +17,8 @@ const transactionsReducer = (state = transactionsInitialState, action: TTransact
     case ActionTypeKeys.FILTER_TRANSACTIONS_BY_ID_FULFILLED:
       return state.set('transactions', action.payload.transactions);
 
-    case ActionTypeKeys.RESET_TRANSACTIONS:
-      return state = transactionsInitialState;
+    case ActionTypeKeys.GET_DIRECT_DEBIT_PAYMENT_FULFILLED:
+      return state.set('directDebitPayment', action.payload.payment);
 
     case ActionTypeKeys.RETRIEVE_TRANSACTION_FULFILLED:
       return state.set('settledTransaction', action.payload.transaction);
@@ -38,6 +39,9 @@ const transactionsReducer = (state = transactionsInitialState, action: TTransact
 
     case ActionTypeKeys.RESET_RETRIEVED_TRANSACTION:
       return state.set('settledTransaction', Immutable([]));
+
+    case ActionTypeKeys.RESET_TRANSACTIONS:
+      return state = transactionsInitialState;
 
     default: return state;
   }

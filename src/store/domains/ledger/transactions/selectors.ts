@@ -1,12 +1,21 @@
 import { createSelector } from 'reselect';
 
-import { transactionStatusConst, transactionStatusOptions, transactionTypesIds } from 'consts';
+import {
+  transactionStatusConst,
+  transactionStatusOptions,
+  transactionTypesIdsConst,
+} from 'consts';
 
 import { IStoreState } from 'store';
 import { createLoadingSelector } from 'store/domains/loader';
 import { activeItemIdSelector } from 'store/domains/utils';
 import { ActionTypeKeys } from './actionTypes';
-import { prepareDataToRender, prepareSettleTrDataToRender } from './utils';
+import {
+  prepareDataToRender,
+  prepareDirectDebitPaymentHistory,
+  prepareDirectDebitPaymentToRender,
+  prepareSettleTrDataToRender,
+} from './utils';
 
 export const defaultTransactionsSelector = (state: IStoreState) =>
   state.ledger.transactions.transactions;
@@ -52,6 +61,11 @@ export const currentTrIdSelector = createSelector(
   data => data && data.id
 );
 
+export const isDirectDebitTrSelector = createSelector(
+  currentTransactionSelector,
+  data => data && data.transactionTypeId === transactionTypesIdsConst.DIRECT_DEBIT
+);
+
 export const isTrConvertibleToLoanSelector = createSelector(
   currentTransactionSelector,
   data => {
@@ -59,7 +73,7 @@ export const isTrConvertibleToLoanSelector = createSelector(
       return false;
     }
 
-    return data.transactionTypeId === transactionTypesIds.PURCHASE_CARD_PAYMENT;
+    return data.transactionTypeId === transactionTypesIdsConst.PURCHASE_CARD_PAYMENT;
   });
 
 export const isSettledTrSelector = createSelector(
@@ -76,6 +90,23 @@ export const isSettledTrSelector = createSelector(
   });
 
 /**
+ * Direct debit payment selectors
+ */
+
+export const defaultDirectDebitPaymentSelector = (state: IStoreState) =>
+  state.ledger.transactions.directDebitPayment;
+
+export const directDebitPaymentSelector = createSelector(
+  defaultDirectDebitPaymentSelector,
+  data => prepareDirectDebitPaymentToRender(data)
+);
+
+export const directDebitPaymentHistorySelector = createSelector(
+  defaultDirectDebitPaymentSelector,
+  data => prepareDirectDebitPaymentHistory(data)
+);
+
+/**
  * Transactions loading selectors
  */
 
@@ -86,6 +117,10 @@ export const isLoadingTransactionsSelector = createLoadingSelector([
 
 export const isConvertingTrToLoanSelector = createLoadingSelector([
   ActionTypeKeys.CONVERT_TRANSACTION_TO_LOAN,
+]);
+
+export const isLoadingDirectDebitPaymentSelector = createLoadingSelector([
+  ActionTypeKeys.GET_DIRECT_DEBIT_PAYMENT,
 ]);
 
 /**

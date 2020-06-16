@@ -27,6 +27,8 @@ export default interface Theme {
 
     white: string;
     whiteOpacity: string;
+
+    green: string;
   };
   shadows: {
     aroundBox: string;
@@ -49,7 +51,7 @@ export const theme: Theme = {
     black: '#333333',
     blackOpacity: 'rgba(0, 0, 0, .7)',
 
-    red: '#FF0000',
+    red: '#f94943',
 
     darkGray: '#6c6c6c',
     gray: '#999999',
@@ -60,6 +62,8 @@ export const theme: Theme = {
 
     white: '#ffffff',
     whiteOpacity: 'rgba(255, 255, 255, .8)',
+
+    green: '#5ed866',
   },
   shadows: {
     aroundBox: '0 1px 2px 0 rgba(60, 64, 67, .3), 0 2px 6px 2px rgba(60, 64, 67, .15)',

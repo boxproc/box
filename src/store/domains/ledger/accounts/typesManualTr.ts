@@ -6,6 +6,7 @@ export interface IManualTransactionReq {
   account_id: number;
   amount: number;
   description: string;
+  mandate_id?: number | string;
 }
 
 export interface IManualTransactionFromData {

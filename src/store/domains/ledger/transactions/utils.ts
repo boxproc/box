@@ -1,7 +1,9 @@
+import moment from 'moment';
 import { ImmutableArray } from 'seamless-immutable';
 
 import {
   aprTypesOptions,
+  dateFormatConst,
   feeTypesOptions,
   rewardsTypesOptions,
   transactionStatusOptions,
@@ -9,6 +11,7 @@ import {
 
 import {
   IConvertTrToLoanReq,
+  IDirectDebitPaymentData,
   IRetrieveTrFormValues,
   ISettleTransactionReq,
   ISettleTrFormValues,
@@ -228,3 +231,60 @@ export const prepareSettleTrDataToRender = (data: ImmutableArray<ISettleTransact
     settledDatetime: dateUtil.todayDateTime(),
   };
 };
+
+const sortPaymentData = (data: ImmutableArray<IDirectDebitPaymentData>) =>
+  data.asMutable().sort((a, b) => {
+    const dateA = moment(a.created_timestamp, dateFormatConst.DATE_TIME);
+    const dateB = moment(b.created_timestamp, dateFormatConst.DATE_TIME);
+
+    return dateA < dateB ? -1 : 1;
+  });
+
+export const prepareDirectDebitPaymentToRender =
+  (data: ImmutableArray<IDirectDebitPaymentData>) => {
+    if (!data || !data.length) {
+      return null;
+    }
+
+    const sortedData = sortPaymentData(data);
+    const lastState = sortedData[sortedData.length - 1];
+
+    const {
+      id,
+      transaction_id,
+      event_id,
+      mandate_id,
+      created_timestamp,
+      provider_timestamp,
+      amount,
+      status,
+      account_alias,
+      bank_name,
+    } = lastState;
+
+    return {
+      directDebitId: id,
+      directDebitTransactionId: transaction_id,
+      directDebitEventId: event_id,
+      directDebitMandateId: mandate_id,
+      directDebitCreatedTimestamp: created_timestamp,
+      directDebitProviderTimestamp: provider_timestamp,
+      directDebitAmount: amount,
+      directDebitStatus: status,
+      directDebitAccountAlias: `••••${account_alias}`,
+      directDebitBankName: bank_name,
+    };
+  };
+
+export const prepareDirectDebitPaymentHistory =
+  (data: ImmutableArray<IDirectDebitPaymentData>) => {
+    if (!data || !data.length) {
+      return null;
+    }
+
+    const sortedData = sortPaymentData(data);
+
+    return sortedData.map(el => {
+      return { date: el.created_timestamp, event: el.status };
+    });
+  };

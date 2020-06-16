@@ -3,6 +3,7 @@ import {
   TApiResponse,
 } from 'types';
 import {
+  IDirectDebitPaymentHistoryData,
   ISettleTransactionDataReq,
   ISettleTransactionResp,
   ITransactionsData,
@@ -34,6 +35,11 @@ export enum ActionTypeKeys {
   SETTLE_TRANSACTION_REJECTED = 'settleTransaction/SETTLE_TRANSACTION_REJECTED',
 
   RESET_RETRIEVED_TRANSACTION = 'settleTransaction/RESET_RETRIEVED_TRANSACTION',
+
+  /** Direct debit payment action types keys */
+  GET_DIRECT_DEBIT_PAYMENT = 'transactions/GET_DIRECT_DEBIT_PAYMENT',
+  GET_DIRECT_DEBIT_PAYMENT_FULFILLED = 'transactions/GET_DIRECT_DEBIT_PAYMENT_FULFILLED',
+  GET_DIRECT_DEBIT_PAYMENT_REJECTED = 'transactions/GET_DIRECT_DEBIT_PAYMENT_REJECTED',
 }
 
 /** Filter transactions action interfaces */
@@ -133,6 +139,23 @@ export interface IResetRetrievedTransactionAction {
   readonly type: ActionTypeKeys.RESET_RETRIEVED_TRANSACTION;
 }
 
+/** Get direct debit payment action interfaces */
+
+export interface IGetDirectDebitPaymentAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.GET_DIRECT_DEBIT_PAYMENT;
+}
+
+export interface IGetDirectDebitPaymentFulfilledAction {
+  readonly payload: IDirectDebitPaymentHistoryData;
+  readonly type: ActionTypeKeys.GET_DIRECT_DEBIT_PAYMENT_FULFILLED;
+}
+
+export interface IGetDirectDebitPaymentRejectedAction {
+  readonly payload: TApiResponse;
+  readonly type: ActionTypeKeys.GET_DIRECT_DEBIT_PAYMENT_REJECTED;
+}
+
 export type TTransactionsAction =
   | IFilterTransactionsFulfilledAction
   | IFilterTransactionsByIdFulfilledAction
@@ -140,4 +163,5 @@ export type TTransactionsAction =
   | IResetTransactionsAction
   | IRetrieveTransactionFulfilledAction
   | ISettleTransactionFulfilledAction
+  | IGetDirectDebitPaymentFulfilledAction
   | IResetRetrievedTransactionAction;

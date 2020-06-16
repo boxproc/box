@@ -3,8 +3,7 @@ import React from 'react';
 import { Flex } from '@rebass/grid';
 
 import { Button } from 'components';
-
-import { transactionTypesIds } from 'consts';
+import { transactionTypesIdsConst } from 'consts';
 
 import { IWithLoadTransactionTypes, withLoadTransactionTypes } from 'HOCs';
 import RevolvingCreditIllustrationForm from './RevolvingCreditIllustrationForm';
@@ -42,19 +41,19 @@ const RevolvingCreditIllustration: React.FC<IRevolvingCreditIllustration> = ({
 
   const initialPurchaseType = React.useMemo(
     () => transactionTypesOptions
-      .find(type => type.value === transactionTypesIds.PURCHASE_CARD_PAYMENT),
+      .find(type => type.value === transactionTypesIdsConst.PURCHASE_CARD_PAYMENT),
     [transactionTypesOptions]
   );
 
   const initialCahWithdrawalType = React.useMemo(
     () => transactionTypesOptions
-      .find(type => type.value === transactionTypesIds.CASH_WITHDRAWAL_ATM),
+      .find(type => type.value === transactionTypesIdsConst.CASH_WITHDRAWAL_ATM),
     [transactionTypesOptions]
   );
 
   const initialBalanceTransferType = React.useMemo(
     () => transactionTypesOptions
-      .find(type => type.value === transactionTypesIds.BALANCE_TRANSFER_DEBIT),
+      .find(type => type.value === transactionTypesIdsConst.BALANCE_TRANSFER_DEBIT),
     [transactionTypesOptions]
   );
 

@@ -26,7 +26,7 @@ export const prepareManualTrDataToSend = (data: Partial<IManualTransactionFromDa
   return {
     transaction_type_id: transactionTypeValue,
     currency_num_code: mandateValue ? null : currencyValue,
-    mandate: mandateValue,
+    mandate_id: mandateValue,
     account_id: stringsUtil.toNumber(accountId),
     amount: stringsUtil.toNumber(amount),
     description,

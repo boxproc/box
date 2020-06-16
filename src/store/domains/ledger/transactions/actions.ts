@@ -11,6 +11,7 @@ import {
   IConvertTrToLoanAction,
   IFilterTransactionsAction,
   IFilterTransactionsByIdAction,
+  IGetDirectDebitPaymentAction,
   IRetrieveTransactionAction,
   ISettleTransactionAction,
 } from './actionTypes';
@@ -88,6 +89,27 @@ export const handleFilterByIdTransactions: THandleFilterTransactionsById = id =>
         dispatch(push(`${basePath}${uiItemsConst.TRANSACTIONS}`));
         await dispatch(filterTransactionsById(id));
         dispatch(setIsOpenFilter(false));
+      },
+      dispatch
+    );
+  };
+
+/**
+ * Get direct debit payment action
+ */
+export type TGetDirectDebitPayment = (transactionId: number) => IGetDirectDebitPaymentAction;
+export type THandleGetDirectDebitPayment = (transactionId: number) => Thunk<void>;
+
+export const getDirectDebitPayment: TGetDirectDebitPayment = transactionId => ({
+  type: ActionTypeKeys.GET_DIRECT_DEBIT_PAYMENT,
+  payload: api.getDirectDebitPayment(transactionId),
+});
+
+export const handleGetDirectDebitPayment: THandleGetDirectDebitPayment = transactionId =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(getDirectDebitPayment(transactionId));
       },
       dispatch
     );

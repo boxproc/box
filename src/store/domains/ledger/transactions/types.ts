@@ -110,6 +110,38 @@ export interface ITransaction extends ITransactionPlain {
   sourceEndpointId: number;
 }
 
+/** Direct debit payment interfaces */
+
+export interface IDirectDebitPaymentData {
+  id: number;
+  transaction_id: number;
+  event_id: number;
+  mandate_id: number;
+  created_timestamp: string;
+  provider_timestamp: string;
+  amount: number;
+  status: string;
+  account_alias: string;
+  bank_name: string;
+}
+
+export interface IDirectDebitPaymentHistoryData {
+  payment: Array<IDirectDebitPaymentData>;
+}
+
+export interface IDirectDebitPayment {
+  directDebitId: number;
+  directDebitTransactionId: number;
+  directDebitEventId: number;
+  directDebitMandateId: number;
+  directDebitCreatedTimestamp: string;
+  directDebitProviderTimestamp: string;
+  directDebitAmount: number;
+  directDebitStatus: string;
+  directDebitAccountAlias: string;
+  directDebitBankName: string;
+}
+
 /** Convert transaction loan request interfaces */
 
 export interface IConvertTrToLoanReq {
@@ -203,4 +235,5 @@ export interface ISettleTransactionResp {
 export interface ITransactionsState {
   transactions: ImmutableArray<ITransactionData>;
   settledTransaction: ImmutableArray<ISettleTransactionReq>;
+  directDebitPayment: ImmutableArray<IDirectDebitPaymentData>;
 }

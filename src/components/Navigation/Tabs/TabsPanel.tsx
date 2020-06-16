@@ -4,6 +4,7 @@ interface ITabsPanel {
   hasTabs?: boolean;
   hintIfDisabled?: string;
   isDisabled?: boolean;
+  isLoading?: boolean;
   title: string;
   withConfirmation?: boolean;
 }

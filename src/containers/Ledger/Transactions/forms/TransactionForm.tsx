@@ -4,23 +4,21 @@ import { InjectedFormProps, reduxForm } from 'redux-form';
 import { Flex } from '@rebass/grid';
 
 import { Button, Hr, Tabs, TabsPanel } from 'components';
-
 import { formNamesConst } from 'consts';
 
 import {
   CurrentTransactionBalance,
   CurrentTransactionCard,
   CurrentTransactionGeneral,
-} from './../../components';
+} from './../components';
 
 interface ITransactionForm {
   onCancel: () => void;
 }
 
-type TTransactionsFilterForm = ITransactionForm &
-  InjectedFormProps<{}, ITransactionForm>;
+type TTransactionForm = ITransactionForm & InjectedFormProps<{}, ITransactionForm>;
 
-const TransactionForm: React.FC<TTransactionsFilterForm> = ({
+const TransactionForm: React.FC<TTransactionForm> = ({
   onCancel,
 }) => {
   return (

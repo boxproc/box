@@ -47,7 +47,14 @@ const Tabs: React.FC<ITabs> = ({
               return null;
             }
 
-            const { title, hintIfDisabled, isDisabled, withConfirmation, hasTabs } = child['props'];
+            const {
+              title,
+              hintIfDisabled,
+              isDisabled,
+              isLoading,
+              withConfirmation,
+              hasTabs,
+            } = child['props'];
 
             const handleClick = () =>
               withConfirmation
@@ -64,11 +71,11 @@ const Tabs: React.FC<ITabs> = ({
             return (
               <TabTitle
                 className={i === activeTabIndex && 'is-active'}
-                isDisabled={isDisabled}
+                isDisabled={isDisabled || isLoading}
                 hasTabs={hasTabs}
                 onClick={(isDisabled || i === activeTabIndex) ? null : handleClick}
               >
-                <div className="title">{title}</div>
+                <div className="title">{isLoading ? `${title}...` : title}</div>
                 {hintIfDisabled && isDisabled && (
                   <Hint
                     text={hintIfDisabled}

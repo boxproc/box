@@ -57,4 +57,5 @@ export enum formNamesConst {
   RESULT_MANUAL_TRANSACTION = 'resultManualTransaction',
   STATEMENT = 'statementForm',
   TRANSACTION = 'transactionForm',
+  DIRECT_DEBIT_TRANSACTION = 'directDebitTransactionForm',
 }
