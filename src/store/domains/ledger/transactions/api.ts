@@ -1,9 +1,7 @@
 // import { successResponseMock } from 'consts';
 import { apiClientService } from 'services';
 
-import { throttleUtil } from 'utils';
 import { ILedgerId } from './../customers';
-import { directDebitPaymentMock } from './mock';
 // import {
 //   transactionsMock,
 //   settleTransactionMock,
@@ -34,11 +32,11 @@ export const filterTransactionsById = (data: ILedgerId) =>
  * Get direct debit payment API
  */
 export const getDirectDebitPayment = (transactionId: number) =>
-  throttleUtil.getDataAfter(directDebitPaymentMock, 500);
-// apiClientService.post(
-//   'ui/ledger/transactions/get',
-//   { data: { transaction_id: transactionId} }
-// );
+  // throttleUtil.getDataAfter(directDebitPaymentMock, 500);
+  apiClientService.post(
+    'ui/ledger/transactions/get_direct_debit_payment',
+    { data: { transaction_id: transactionId } }
+  );
 
 /**
  * Convert transaction to loan API

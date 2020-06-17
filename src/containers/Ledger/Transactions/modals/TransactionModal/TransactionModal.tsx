@@ -25,7 +25,7 @@ interface ITransactionModal extends IWithModal {
   isLoadingDirectDebitPayment: boolean;
   payloadTransactionModal: IPayloadTransactionModal;
   transactionAmount: number;
-  directDebitPaymentHistory: any;
+  directDebitPaymentHistory: Array<{ date: string; event: string; }>;
   directDebitPayment: IDirectDebitPayment;
 }
 
