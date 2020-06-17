@@ -20,6 +20,9 @@ const transactionsReducer = (state = transactionsInitialState, action: TTransact
     case ActionTypeKeys.GET_DIRECT_DEBIT_PAYMENT_FULFILLED:
       return state.set('directDebitPayment', action.payload.payment);
 
+    case ActionTypeKeys.RESET_DIRECT_DEBIT_PAYMENT:
+      return state.set('directDebitPayment', Immutable([]));
+
     case ActionTypeKeys.RETRIEVE_TRANSACTION_FULFILLED:
       return state.set('settledTransaction', action.payload.transaction);
 

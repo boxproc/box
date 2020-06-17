@@ -71,6 +71,6 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = () => {
 
 export default reduxForm<{}, IDirectDebitForm>({
   form: formNamesConst.DIRECT_DEBIT_TRANSACTION,
-  destroyOnUnmount: false,
+  destroyOnUnmount: true,
   enableReinitialize: true,
 })(DirectDebitForm);

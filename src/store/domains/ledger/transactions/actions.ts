@@ -116,6 +116,16 @@ export const handleGetDirectDebitPayment: THandleGetDirectDebitPayment = transac
   };
 
 /**
+ * Reset direct debit payment action
+ */
+
+export type TResetDirectDebitPayment = () => void;
+
+export const resetDirectDebitPayment: TResetDirectDebitPayment = () => ({
+  type: ActionTypeKeys.RESET_DIRECT_DEBIT_PAYMENT,
+});
+
+/**
  * Convert transaction to loan action
  */
 

@@ -15,6 +15,7 @@ import {
   IStoreState,
   isTrConvertibleToLoanSelector,
   payloadTransactionModalSelector,
+  resetDirectDebitPayment,
 } from 'store';
 
 const mapStateToProps = (state: IStoreState) => ({
@@ -32,6 +33,7 @@ const mapStateToProps = (state: IStoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getDirectDebitPayment: handleGetDirectDebitPayment,
+    resetDirectDebitPayment,
   },
   dispatch
 );

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, Hr, Modal, SmallText, T4, Tabs, TabsPanel, Timeline } from 'components';
+import { Button, Hr, Modal, T4, Tabs, TabsPanel, Timeline } from 'components';
 import { modalNamesConst, modalTypesConst } from 'consts';
 import LoanIllustration from 'containers/ProductDesigner/Products/illustration/LoanIllustration';
 import { IWithModal, withModal } from 'HOCs';
@@ -13,20 +13,22 @@ import {
   IPayloadTransactionModal,
   ITransaction,
   THandleGetDirectDebitPayment,
+  TResetDirectDebitPayment,
 } from 'store';
 import { dateUtil } from 'utils';
 
 interface ITransactionModal extends IWithModal {
   currentTransaction: Array<ITransaction>;
   currentTransactionId: number;
+  directDebitPayment: IDirectDebitPayment;
+  directDebitPaymentHistory: Array<{ date: string; event: string; }>;
   getDirectDebitPayment: THandleGetDirectDebitPayment;
   isConvertibleToLoan: boolean;
   isDirectDebitTr: boolean;
   isLoadingDirectDebitPayment: boolean;
   payloadTransactionModal: IPayloadTransactionModal;
+  resetDirectDebitPayment: TResetDirectDebitPayment;
   transactionAmount: number;
-  directDebitPaymentHistory: Array<{ date: string; event: string; }>;
-  directDebitPayment: IDirectDebitPayment;
 }
 
 const modalName = modalNamesConst.TRANSACTION;
@@ -43,6 +45,7 @@ const TransactionModal: React.FC<ITransactionModal> = ({
   isLoadingDirectDebitPayment,
   isReadOnly,
   payloadTransactionModal,
+  resetDirectDebitPayment,
   transactionAmount,
 }) => {
   React.useEffect(
@@ -52,6 +55,13 @@ const TransactionModal: React.FC<ITransactionModal> = ({
       }
     },
     [isDirectDebitTr, currentTransactionId, getDirectDebitPayment]
+  );
+
+  React.useEffect(
+    () => {
+      return () => resetDirectDebitPayment();
+    },
+    [resetDirectDebitPayment]
   );
 
   const activeTab = React.useMemo(
@@ -97,7 +107,6 @@ const TransactionModal: React.FC<ITransactionModal> = ({
             title="Direct Debit"
             isLoading={isLoadingDirectDebitPayment}
           >
-            <SmallText accentColor={true}>Only layout</SmallText>
             <DirectDebitForm initialValues={directDebitPayment} />
             <Box my="15px">
               <Box mb="20px">

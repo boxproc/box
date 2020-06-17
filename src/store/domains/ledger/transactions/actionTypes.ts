@@ -40,6 +40,8 @@ export enum ActionTypeKeys {
   GET_DIRECT_DEBIT_PAYMENT = 'transactions/GET_DIRECT_DEBIT_PAYMENT',
   GET_DIRECT_DEBIT_PAYMENT_FULFILLED = 'transactions/GET_DIRECT_DEBIT_PAYMENT_FULFILLED',
   GET_DIRECT_DEBIT_PAYMENT_REJECTED = 'transactions/GET_DIRECT_DEBIT_PAYMENT_REJECTED',
+
+  RESET_DIRECT_DEBIT_PAYMENT = 'transaction/RESET_DIRECT_DEBIT_PAYMENT',
 }
 
 /** Filter transactions action interfaces */
@@ -156,6 +158,12 @@ export interface IGetDirectDebitPaymentRejectedAction {
   readonly type: ActionTypeKeys.GET_DIRECT_DEBIT_PAYMENT_REJECTED;
 }
 
+/** Reset direct debit payment action interfaces */
+
+export interface IResetDirectDebitPaymentAction {
+  readonly type: ActionTypeKeys.RESET_DIRECT_DEBIT_PAYMENT;
+}
+
 export type TTransactionsAction =
   | IFilterTransactionsFulfilledAction
   | IFilterTransactionsByIdFulfilledAction
@@ -164,4 +172,5 @@ export type TTransactionsAction =
   | IRetrieveTransactionFulfilledAction
   | ISettleTransactionFulfilledAction
   | IGetDirectDebitPaymentFulfilledAction
-  | IResetRetrievedTransactionAction;
+  | IResetRetrievedTransactionAction
+  | IResetDirectDebitPaymentAction;

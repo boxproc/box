@@ -114,7 +114,7 @@ interface ITimeline {
 const Timeline: React.FC<ITimeline> = ({ items }) => {
   return (
     <div>
-      {items.length && items.map((item, index) => (
+      {items && items.length && items.map((item, index) => (
         <TimelineWrapper
           event={item.event}
           key={index}
