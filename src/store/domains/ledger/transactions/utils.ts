@@ -252,7 +252,6 @@ export const prepareDirectDebitPaymentToRender =
     const {
       id,
       transaction_id,
-      event_id,
       mandate_id,
       created_timestamp,
       provider_timestamp,
@@ -265,7 +264,6 @@ export const prepareDirectDebitPaymentToRender =
     return {
       directDebitId: id,
       directDebitTransactionId: transaction_id,
-      directDebitEventId: event_id,
       directDebitMandateId: mandate_id,
       directDebitCreatedTimestamp: created_timestamp,
       directDebitProviderTimestamp: provider_timestamp,

@@ -404,7 +404,6 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
-              formErrorUtil.isPositive,
             ]}
           />
         </Box>
@@ -421,7 +420,6 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
-              formErrorUtil.isPositive,
             ]}
           />
         </Box>

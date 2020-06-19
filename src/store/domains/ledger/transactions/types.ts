@@ -115,7 +115,6 @@ export interface ITransaction extends ITransactionPlain {
 export interface IDirectDebitPaymentData {
   id: number;
   transaction_id: number;
-  event_id: number;
   mandate_id: number;
   created_timestamp: string;
   provider_timestamp: string;
@@ -132,7 +131,6 @@ export interface IDirectDebitPaymentHistoryData {
 export interface IDirectDebitPayment {
   directDebitId: number;
   directDebitTransactionId: number;
-  directDebitEventId: number;
   directDebitMandateId: number;
   directDebitCreatedTimestamp: string;
   directDebitProviderTimestamp: string;

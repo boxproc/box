@@ -31,7 +31,7 @@ export const prepareFilterToSend = (data: Partial<IAccountsFilter>) => {
     product: (product && product.length) ? product.map(name => name.value) : null,
     account_alias: accountAlias ? accountAlias : null,
     account_alias_additional: accountAliasAdditional ? accountAliasAdditional : null,
-    id: accountId ? accountId : null,
+    id: accountId ? stringsUtil.toNumber(accountId) : null,
   };
 };
 

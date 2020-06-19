@@ -64,7 +64,6 @@ export const directDebitPaymentMock: IDirectDebitPaymentHistoryData = {
     {
       id: 2,
       transaction_id: 1234,
-      event_id: 2,
       mandate_id: 123,
       created_timestamp: '17/06/2019 00:00:00',
       provider_timestamp: '17/06/2019 00:00:00',
@@ -76,7 +75,6 @@ export const directDebitPaymentMock: IDirectDebitPaymentHistoryData = {
     {
       id: 3,
       transaction_id: 1234,
-      event_id: 3,
       mandate_id: 123,
       created_timestamp: '18/06/2019 00:00:00',
       provider_timestamp: '18/06/2019 00:00:00',
@@ -88,7 +86,6 @@ export const directDebitPaymentMock: IDirectDebitPaymentHistoryData = {
     {
       id: 4,
       transaction_id: 1234,
-      event_id: 4,
       mandate_id: 123,
       created_timestamp: '19/06/2019 00:00:00',
       provider_timestamp: '19/06/2019 00:00:00',
@@ -100,7 +97,6 @@ export const directDebitPaymentMock: IDirectDebitPaymentHistoryData = {
     {
       id: 1,
       transaction_id: 1234,
-      event_id: 1,
       mandate_id: 123,
       created_timestamp: '16/06/2019 00:00:00',
       provider_timestamp: '16/06/2019 00:00:00',

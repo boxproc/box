@@ -210,7 +210,7 @@ const CurrentTransactionGeneral: React.FC = () => {
               id="description"
               name="description"
               component={TextareaField}
-              height={95}
+              height={161}
               label="Description"
               disabled={true}
             />
