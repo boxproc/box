@@ -88,7 +88,7 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
         flexWrap="wrap"
         mx="-8px"
       >
-        <Box width={[1 / 2]} p="8px">
+        <Box width={[1]} p="8px">
           <Field
             id="transactionType"
             name="transactionType"
@@ -102,7 +102,7 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
           />
         </Box>
         {isDirectDebitTrType && (
-          <Box width={[1 / 2]} p="8px">
+          <Box width={[1]} p="8px">
             <Field
               id="mandate"
               name="mandate"
@@ -118,7 +118,7 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
           </Box>
         )}
         <Delimiter />
-        <Box width={[2 / 7]} p="8px">
+        <Box width={[2 / 9]} p="8px">
           <Field
             id="accountId"
             name="accountId"
@@ -136,7 +136,7 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
         {!isLimitAdjustment && (
           <React.Fragment>
             {!isDirectDebitTrType && (
-              <Box width={[3 / 7]} p="8px">
+              <Box width={[4 / 9]} p="8px">
                 <Field
                   id="currencyCode"
                   name="currencyCode"
@@ -149,7 +149,7 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
                 />
               </Box>
             )}
-            <Box width={[2 / 7]} p="8px">
+            <Box width={[1 / 3]} p="8px">
               <Field
                 id="amount"
                 name="amount"
@@ -169,7 +169,7 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
         )}
         {isLimitAdjustment && (
           <React.Fragment>
-            <Box width={[2 / 7]} p="8px">
+            <Box width={[1 / 3]} p="8px">
               <Field
                 id="balanceLimit"
                 name="balanceLimit"
@@ -185,7 +185,7 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
                 ]}
               />
             </Box>
-            <Box width={[2 / 7]} p="8px">
+            <Box width={[1 / 3]} p="8px">
               <Field
                 id="balanceLimitShared"
                 name="balanceLimitShared"

@@ -19,7 +19,7 @@ const CardsFilter: React.FC<ICardsFilter> = ({
 }) => {
   return (
     <React.Fragment>
-      <Box width={[1 / 4]} p="8px">
+      <Box width="240px" p="8px">
         <Field
           id="institutionId"
           name="institutionId"
@@ -33,7 +33,7 @@ const CardsFilter: React.FC<ICardsFilter> = ({
           validate={[formErrorUtil.isRequired]}
         />
       </Box>
-      <Box width="130px" p="8px">
+      <Box width="120px" p="8px">
         <Field
           id="cardId"
           name="cardId"
@@ -45,7 +45,7 @@ const CardsFilter: React.FC<ICardsFilter> = ({
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
-      <Box width="130px" p="8px">
+      <Box width="120px" p="8px">
         <Field
           id="accountId"
           name="accountId"
@@ -57,7 +57,7 @@ const CardsFilter: React.FC<ICardsFilter> = ({
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
-      <Box width="130px" p="8px">
+      <Box width="120px" p="8px">
         <Field
           id="customerId"
           name="customerId"
@@ -69,7 +69,7 @@ const CardsFilter: React.FC<ICardsFilter> = ({
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
-      <Box width={[1 / 4]} p="8px">
+      <Box width="240px" p="8px">
         <Field
           id="panAlias"
           name="panAlias"

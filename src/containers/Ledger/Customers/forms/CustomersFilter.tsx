@@ -19,7 +19,7 @@ const CustomersFilter: React.FC<ICustomersFilter> = ({
 }) => {
   return (
     <React.Fragment>
-      <Box width={[1 / 4]} p="8px">
+      <Box width="240px" p="8px">
         <Field
           id="institutionId"
           name="institutionId"
@@ -33,27 +33,7 @@ const CustomersFilter: React.FC<ICustomersFilter> = ({
           validate={[formErrorUtil.isRequired]}
         />
       </Box>
-      <Box width={[1 / 4]} p="8px">
-        <Field
-          id="firstName"
-          name="firstName"
-          component={InputField}
-          label="First Name"
-          placeholder="Enter First Name"
-          disabled={isDisabled}
-        />
-      </Box>
-      <Box width={[1 / 4]} p="8px">
-        <Field
-          id="lastName"
-          name="lastName"
-          component={InputField}
-          label="Last Name"
-          placeholder="Enter Last Name"
-          disabled={isDisabled}
-        />
-      </Box>
-      <Box width="130px" p="8px">
+      <Box width="120px" p="8px">
         <Field
           id="customerId"
           name="customerId"
@@ -63,6 +43,26 @@ const CustomersFilter: React.FC<ICustomersFilter> = ({
           isNumber={true}
           disabled={isDisabled}
           validate={[formErrorUtil.isInteger]}
+        />
+      </Box>
+      <Box width="300px" p="8px">
+        <Field
+          id="firstName"
+          name="firstName"
+          component={InputField}
+          label="First Name"
+          placeholder="Enter First Name"
+          disabled={isDisabled}
+        />
+      </Box>
+      <Box width="300px" p="8px">
+        <Field
+          id="lastName"
+          name="lastName"
+          component={InputField}
+          label="Last Name"
+          placeholder="Enter Last Name"
+          disabled={isDisabled}
         />
       </Box>
     </React.Fragment>

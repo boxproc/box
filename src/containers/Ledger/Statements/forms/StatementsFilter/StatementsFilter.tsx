@@ -45,7 +45,7 @@ const StatementsFilter: React.FC<IStatementsFilter> = ({
       alignItems="flex-start"
       flexWrap="wrap"
     >
-      <Box width={[1 / 4]} p="8px">
+      <Box width="240px" p="8px">
         <Field
           id="institutionId"
           name="institutionId"
@@ -59,7 +59,7 @@ const StatementsFilter: React.FC<IStatementsFilter> = ({
           validate={[formErrorUtil.isRequired]}
         />
       </Box>
-      <Box width="130px" p="8px">
+      <Box width="120px" p="8px">
         <Field
           id="accountId"
           name="accountId"
@@ -71,7 +71,7 @@ const StatementsFilter: React.FC<IStatementsFilter> = ({
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
-      <Box width={[1 / 4]} p="8px">
+      <Box width="240px" p="8px">
         <Field
           id="accountAlias"
           name="accountAlias"
@@ -113,7 +113,7 @@ const StatementsFilter: React.FC<IStatementsFilter> = ({
           ]}
         />
       </Box>
-      <Box width={[1 / 4]} p="8px">
+      <Box width="240px" p="8px">
         <Field
           id="product"
           name="product"
@@ -126,7 +126,7 @@ const StatementsFilter: React.FC<IStatementsFilter> = ({
           isDisabled={isDisabled}
         />
       </Box>
-      <Box width={[1 / 4]} p="8px">
+      <Box width="300px" p="8px">
         <Field
           id="firstName"
           name="firstName"
@@ -136,7 +136,7 @@ const StatementsFilter: React.FC<IStatementsFilter> = ({
           disabled={isDisabled}
         />
       </Box>
-      <Box width={[1 / 4]} p="8px">
+      <Box width="300px" p="8px">
         <Field
           id="lastName"
           name="lastName"
