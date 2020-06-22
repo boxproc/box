@@ -70,15 +70,6 @@ const CurrentTransactionGeneral: React.FC = () => {
           />
         </Box>
         <Delimiter />
-        <Box width="100px" p="8px">
-          <Field
-            id="debitCreditIndicator"
-            name="debitCreditIndicator"
-            component={InputField}
-            label="Debit Credit Indicator"
-            disabled={true}
-          />
-        </Box>
         <Box width="150px" p="8px">
           <Field
             id="amount"
@@ -103,12 +94,12 @@ const CurrentTransactionGeneral: React.FC = () => {
             disabled={true}
           />
         </Box>
-        <Box width="170px" p="8px">
+        <Box width="100px" p="8px">
           <Field
-            id="settledDatetime"
-            name="settledDatetime"
+            id="debitCreditIndicator"
+            name="debitCreditIndicator"
             component={InputField}
-            label="Settled Datetime"
+            label="Debit Credit Indicator"
             disabled={true}
           />
         </Box>
@@ -134,13 +125,22 @@ const CurrentTransactionGeneral: React.FC = () => {
             isNumber={true}
           />
         </Box>
+        <Box width="170px" p="8px">
+          <Field
+            id="settledDatetime"
+            name="settledDatetime"
+            component={InputField}
+            label="Settled Datetime"
+            disabled={true}
+          />
+        </Box>
         <Hr />
         <Flex
           alignItems="flex-start"
           width={[1]}
           flexWrap="wrap"
         >
-          <Box width={[2 / 5]}>
+          <Box width={[5 / 11]}>
             <Flex alignItems="flex-end">
               <Box width={[1 / 3]} p="8px">
                 <Field
@@ -184,28 +184,28 @@ const CurrentTransactionGeneral: React.FC = () => {
               </Box>
             </Flex>
             <Flex alignItems="flex-end">
-            <Box width={[1 / 3]} p="8px">
-              <Field
-                id="rewardRate"
-                name="rewardRate"
-                component={InputField}
-                label="Reward Rate"
-                disabled={true}
-                isNumber={true}
-              />
-            </Box>
-            <Box width={[2 / 3]} p="8px">
-              <Field
-                id="rewardApplicationCondition"
-                name="rewardApplicationCondition"
-                component={InputField}
-                label="Reward Application Condition"
-                disabled={true}
-              />
-            </Box>
-          </Flex>
+              <Box width={[1 / 3]} p="8px">
+                <Field
+                  id="rewardRate"
+                  name="rewardRate"
+                  component={InputField}
+                  label="Reward Rate"
+                  disabled={true}
+                  isNumber={true}
+                />
+              </Box>
+              <Box width={[2 / 3]} p="8px">
+                <Field
+                  id="rewardApplicationCondition"
+                  name="rewardApplicationCondition"
+                  component={InputField}
+                  label="Reward Application Condition"
+                  disabled={true}
+                />
+              </Box>
+            </Flex>
           </Box>
-          <Box width={[3 / 5]} p="8px">
+          <Box width={[6 / 11]} p="8px">
             <Field
               id="description"
               name="description"
