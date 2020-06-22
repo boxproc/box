@@ -42,7 +42,7 @@ const TransactionsFilter: React.FC<ITransactionsFilter> = ({
 
   return (
     <React.Fragment>
-      <Box width={[1 / 4]} p="8px">
+      <Box width="240px" p="8px">
         <Field
           id="institutionId"
           name="institutionId"
@@ -56,7 +56,7 @@ const TransactionsFilter: React.FC<ITransactionsFilter> = ({
           validate={[formErrorUtil.isRequired]}
         />
       </Box>
-      <Box width={[1 / 4]} p="8px">
+      <Box width="240px" p="8px">
         <Field
           id="productName"
           name="productName"
@@ -68,7 +68,7 @@ const TransactionsFilter: React.FC<ITransactionsFilter> = ({
           isDisabled={isDisabled}
         />
       </Box>
-      <Box width="180px" p="8px">
+      <Box width="160px" p="8px">
         <Field
           id="transactionsDateTimeFrom"
           name="transactionsDateTimeFrom"
@@ -84,7 +84,7 @@ const TransactionsFilter: React.FC<ITransactionsFilter> = ({
           ]}
         />
       </Box>
-      <Box width="180px" p="8px">
+      <Box width="160px" p="8px">
         <Field
           id="transactionsDateTimeTo"
           name="transactionsDateTimeTo"
@@ -101,7 +101,7 @@ const TransactionsFilter: React.FC<ITransactionsFilter> = ({
         />
       </Box>
       <Delimiter />
-      <Box width="130px" p="8px">
+      <Box width="120px" p="8px">
         <Field
           id="customerId"
           name="customerId"
@@ -113,18 +113,19 @@ const TransactionsFilter: React.FC<ITransactionsFilter> = ({
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
-      <Box width="130px" p="8px">
+      <Box width="120px" p="8px">
         <Field
           id="transactionId"
           name="transactionId"
           component={InputField}
           label="Transaction ID"
           placeholder="Enter ID"
+          isNumber={true}
           disabled={isDisabled}
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
-      <Box width="130px" p="8px">
+      <Box width="120px" p="8px">
         <Field
           id="accountId"
           name="accountId"
@@ -136,7 +137,7 @@ const TransactionsFilter: React.FC<ITransactionsFilter> = ({
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
-      <Box width="130px" p="8px">
+      <Box width="120px" p="8px">
         <Field
           id="cardId"
           name="cardId"
@@ -148,7 +149,7 @@ const TransactionsFilter: React.FC<ITransactionsFilter> = ({
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
-      <Box width={[1 / 4]} p="8px">
+      <Box width="320px" p="8px">
         <Field
           id="panAlias"
           name="panAlias"

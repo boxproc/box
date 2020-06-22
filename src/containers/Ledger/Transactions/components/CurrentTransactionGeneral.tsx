@@ -31,7 +31,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             isNumber={true}
           />
         </Box>
-        <Box width="100px" p="8px">
+        <Box width="115px" p="8px">
           <Field
             id="transactionTypeId"
             name="transactionTypeId"
@@ -94,7 +94,7 @@ const CurrentTransactionGeneral: React.FC = () => {
             disabled={true}
           />
         </Box>
-        <Box width="100px" p="8px">
+        <Box width="115px" p="8px">
           <Field
             id="debitCreditIndicator"
             name="debitCreditIndicator"
