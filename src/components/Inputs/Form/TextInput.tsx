@@ -15,7 +15,7 @@ const TextInput: React.FC<ICommonInput> = ({ value, ...props }) => {
   return (
     <TextInputWrapper
       value={val}
-      onChange={e => setVal(e.target.value)}
+      onChange={(e: any) => setVal(e.target.value)}
       {...props}
     />
   );
