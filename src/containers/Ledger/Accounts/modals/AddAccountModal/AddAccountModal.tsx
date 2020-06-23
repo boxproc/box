@@ -41,7 +41,7 @@ const AddAccountModal: React.FC<IAddAccountModal> = ({
     <Modal
       name={modalName}
       title="Add Account"
-      containerWidth="1010px"
+      containerWidth="860px"
       minContainerHeight="560px"
       withCloseConfirmation={isFormDirty}
       isBluredBackdrop={true}

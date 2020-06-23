@@ -102,7 +102,7 @@ export const directDebitsMandatesOptionsSelector = createSelector(
   data => data && data.asMutable().map(el => {
     return {
       value: el.id,
-      label: `Account: ••••••${el.account_alias}, ${el.bank_name}`,
+      label: `••••••${el.account_alias}, ${el.bank_name}`,
     };
   })
 );

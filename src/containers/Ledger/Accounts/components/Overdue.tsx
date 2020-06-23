@@ -29,7 +29,7 @@ const Overdue: React.FC<IOverdue> = ({
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="amountOverdue"
               name="amountOverdue"
@@ -46,7 +46,7 @@ const Overdue: React.FC<IOverdue> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="amountOverdue1Cycle"
               name="amountOverdue1Cycle"
@@ -63,7 +63,7 @@ const Overdue: React.FC<IOverdue> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="amountOverdue2Cycles"
               name="amountOverdue2Cycles"
@@ -80,7 +80,7 @@ const Overdue: React.FC<IOverdue> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="amountOverdue3Cycles"
               name="amountOverdue3Cycles"
@@ -97,7 +97,7 @@ const Overdue: React.FC<IOverdue> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="amountOverdue4Cycles"
               name="amountOverdue4Cycles"
@@ -114,7 +114,7 @@ const Overdue: React.FC<IOverdue> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="amountOverdue5Cycles"
               name="amountOverdue5Cycles"
@@ -131,7 +131,7 @@ const Overdue: React.FC<IOverdue> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="amountOverdue6Cycles"
               name="amountOverdue6Cycles"
@@ -148,7 +148,7 @@ const Overdue: React.FC<IOverdue> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="amountOverdue7Cycles"
               name="amountOverdue7Cycles"
@@ -166,7 +166,7 @@ const Overdue: React.FC<IOverdue> = ({
             />
           </Box>
           <Hr />
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="numberOfTimesOverdueTotal"
               name="numberOfTimesOverdueTotal"
@@ -182,7 +182,7 @@ const Overdue: React.FC<IOverdue> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="numberOfTimesOverdue1Cycle"
               name="numberOfTimesOverdue1Cycle"
@@ -198,7 +198,7 @@ const Overdue: React.FC<IOverdue> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="numberOfTimesOverdue2Cycles"
               name="numberOfTimesOverdue2Cycles"
@@ -214,7 +214,7 @@ const Overdue: React.FC<IOverdue> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="numberOfTimesOverdue3Cycles"
               name="numberOfTimesOverdue3Cycles"
@@ -230,7 +230,7 @@ const Overdue: React.FC<IOverdue> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="numberOfTimesOverdue4Cycles"
               name="numberOfTimesOverdue4Cycles"
@@ -246,7 +246,7 @@ const Overdue: React.FC<IOverdue> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="numberOfTimesOverdue5Cycles"
               name="numberOfTimesOverdue5Cycles"
@@ -262,7 +262,7 @@ const Overdue: React.FC<IOverdue> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="numberOfTimesOverdue6Cycles"
               name="numberOfTimesOverdue6Cycles"
@@ -278,7 +278,7 @@ const Overdue: React.FC<IOverdue> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="numberOfTimesOverdue7Cycles"
               name="numberOfTimesOverdue7Cycles"

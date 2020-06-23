@@ -61,7 +61,7 @@ const AuxiliaryCounters: React.FC<IAuxiliaryCounters> = ({
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="auxCounter1"
               name="auxCounter1"
@@ -77,7 +77,7 @@ const AuxiliaryCounters: React.FC<IAuxiliaryCounters> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="auxCounter2"
               name="auxCounter2"
@@ -93,7 +93,7 @@ const AuxiliaryCounters: React.FC<IAuxiliaryCounters> = ({
               ]}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="auxCounter3"
               name="auxCounter3"

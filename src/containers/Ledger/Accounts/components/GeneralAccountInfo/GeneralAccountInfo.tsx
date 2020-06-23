@@ -4,7 +4,6 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import {
-  Delimiter,
   Hr,
   InputField,
   MaskField,
@@ -112,7 +111,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
         mx="-8px"
       >
         {isEditMode && (
-          <Box width="100px" p="8px">
+          <Box width="120px" p="8px">
             <Field
               id="id"
               name="id"
@@ -124,7 +123,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             />
           </Box>
         )}
-        <Box width={[1 / 5]} p="8px">
+        <Box width="240px" p="8px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -137,7 +136,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width="100px" p="8px">
+        <Box width="120px" p="8px">
           <Field
             id="customerId"
             name="customerId"
@@ -152,7 +151,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             ]}
           />
         </Box>
-        <Box width={[1 / 6]} p="8px">
+        <Box width="235px" p="8px">
           <Field
             id="accountAlias"
             name="accountAlias"
@@ -162,7 +161,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             disabled={isReadOnly}
           />
         </Box>
-        <Box width={[1 / 6]} p="8px">
+        <Box width="235px" p="8px">
           <Field
             id="accountAliasAdditional"
             name="accountAliasAdditional"
@@ -172,7 +171,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             disabled={isReadOnly}
           />
         </Box>
-        <Box width="150px" p="8px">
+        <Box width="240px" p="8px">
           <Field
             id="status"
             name="status"
@@ -184,9 +183,8 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Delimiter />
         {isEditMode && (
-          <Box width="100px" p="8px">
+          <Box width="120px" p="8px">
             <Field
               id="productId"
               name="productId"
@@ -198,7 +196,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             />
           </Box>
         )}
-        <Box width={[1 / 5]} p="8px">
+        <Box width="240px" p="8px">
           <Field
             id="product"
             name="product"
@@ -222,8 +220,22 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
+        {isRepaymentType && (
+          <Box width="200px" p="8px">
+            <Field
+              id="repaymentType"
+              name="repaymentType"
+              component={SelectField}
+              label="Repayment Type"
+              placeholder="Select Type"
+              isDisabled={isSelectedLoan || isReadOnly}
+              options={repaymentTypesOptions}
+              validate={[formErrorUtil.isRequired]}
+            />
+          </Box>
+        )}
         {isDirectDebitRepayment && (
-          <Box width="280px" p="8px">
+          <Box width="300px" p="8px">
             <Field
               id="directDebitMandateId"
               name="directDebitMandateId"
@@ -234,23 +246,6 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
               isLoading={isLoadingMandates}
               hint={hint}
               options={directDebitMandatesOptions}
-            />
-          </Box>
-        )}
-        {isSelectedLoan && (
-          <Delimiter />
-        )}
-        {isRepaymentType && (
-          <Box width={[1 / 5]} p="8px">
-            <Field
-              id="repaymentType"
-              name="repaymentType"
-              component={SelectField}
-              label="Repayment Type"
-              placeholder="Select Type"
-              isDisabled={isSelectedLoan || isReadOnly}
-              options={repaymentTypesOptions}
-              validate={[formErrorUtil.isRequired]}
             />
           </Box>
         )}
@@ -270,7 +265,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
         )}
         {isSelectedLoan && (
           <React.Fragment>
-            <Box width="110px" p="8px">
+            <Box width="120px" p="8px">
               <Field
                 id="numOfInstallments"
                 name="numOfInstallments"
@@ -285,7 +280,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
                 ]}
               />
             </Box>
-            <Box width="110px" p="8px">
+            <Box width="120px" p="8px">
               <Field
                 id="numInterestFreeInstlmts"
                 name="numInterestFreeInstlmts"
@@ -299,7 +294,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
                 ]}
               />
             </Box>
-            <Box width="110px" p="8px">
+            <Box width="120px" p="8px">
               <Field
                 id="numDeferredInstlmts"
                 name="numDeferredInstlmts"
@@ -332,6 +327,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
         )}
         {hasProductOverride && (
           <React.Fragment>
+            <Hr />
             <Box width="150px" p="8px">
               <Field
                 id="productOverrideId"
@@ -357,7 +353,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
           </React.Fragment>
         )}
         <Hr />
-        <Box width={[1 / 7]} p="8px">
+        <Box width="150px" p="8px">
           <Field
             id="balanceLimit"
             name="balanceLimit"
@@ -374,7 +370,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             ]}
           />
         </Box>
-        <Box width={[1 / 7]} p="8px">
+        <Box width="150px" p="8px">
           <Field
             id="balanceLimitShared"
             name="balanceLimitShared"
@@ -391,7 +387,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             ]}
           />
         </Box>
-        <Box width={[1 / 7]} p="8px">
+        <Box width="150px" p="8px">
           <Field
             id="balanceSettled"
             name="balanceSettled"
@@ -407,7 +403,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             ]}
           />
         </Box>
-        <Box width={[1 / 7]} p="8px">
+        <Box width="150px" p="8px">
           <Field
             id="balanceAvailable"
             name="balanceAvailable"
@@ -424,7 +420,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
           />
         </Box>
         <Hr />
-        <Box width={[1 / 7]} p="8px">
+        <Box width="150px" p="8px">
           <Field
             id="repaymentAmountDue"
             name="repaymentAmountDue"
@@ -441,7 +437,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             ]}
           />
         </Box>
-        <Box width={[1 / 7]} p="8px">
+        <Box width="150px" p="8px">
           <Field
             id="accruedInterest"
             name="accruedInterest"
@@ -460,7 +456,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
         </Box>
         {isEditMode && (
           <React.Fragment>
-            <Box width={[1 / 7]} p="8px">
+            <Box width="150px" p="8px">
               <Field
                 id="totalOverdueAmount"
                 name="totalOverdueAmount"

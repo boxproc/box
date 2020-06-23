@@ -8,7 +8,7 @@ export const sharedInputCss = css<IInput>`
   height: 29px;
   padding: 5px 7px;
   background-color: ${({ theme }) => theme.colors.white};
-  text-align: ${({ isNumber }) => isNumber ? 'right' : 'left'}
+  text-align: ${({ isNumber }) => isNumber ? 'right' : 'left'};
   box-shadow: none;
   box-sizing: border-box;
   outline: none;
