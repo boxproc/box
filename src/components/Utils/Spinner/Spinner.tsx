@@ -14,7 +14,7 @@ const Container = styled.div<IContainer>`
   top: 0;
   width: 100%;
   height: 100%;
-  max-height: ${({ maxHeight }) => maxHeight || 'none'}
+  max-height: ${({ maxHeight }) => maxHeight || 'none'};
   display: flex;
   justify-content: center;
   align-items: center;

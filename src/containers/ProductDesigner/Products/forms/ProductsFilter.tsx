@@ -13,7 +13,7 @@ import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 const ProductWrapper = styled(Box)`
-  min-width: 235px
+  min-width: 235px;
   max-width: 500px;
 `;
 
