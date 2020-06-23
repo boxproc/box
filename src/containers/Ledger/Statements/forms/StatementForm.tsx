@@ -3,14 +3,18 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Delimiter, Hr, InputField, NumberFormatField } from 'components';
+import { Button, Delimiter, Hr, InputField, NumberFormatField } from 'components';
 import { dateFormatConst, formNamesConst, maskFormatConst } from 'consts';
 
-interface IStatementForm { }
+interface IStatementForm {
+  changeMinimumAmount: () => void;
+}
 
 type TStatementForm = IStatementForm & InjectedFormProps<{}, IStatementForm>;
 
-const StatementForm: React.FC<TStatementForm> = () => {
+const StatementForm: React.FC<TStatementForm> = ({
+  changeMinimumAmount,
+}) => {
   return (
     <form>
       <Box mx="-8px">
@@ -18,7 +22,7 @@ const StatementForm: React.FC<TStatementForm> = () => {
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width="150px" p="8px">
+          <Box width="120px" p="8px">
             <Field
               id="id"
               name="id"
@@ -28,7 +32,7 @@ const StatementForm: React.FC<TStatementForm> = () => {
               isNumber={true}
             />
           </Box>
-          <Box width="150px" p="8px">
+          <Box width="120px" p="8px">
             <Field
               id="accountId"
               name="accountId"
@@ -38,7 +42,7 @@ const StatementForm: React.FC<TStatementForm> = () => {
               isNumber={true}
             />
           </Box>
-          <Box width="150px" p="8px">
+          <Box width="120px" p="8px">
             <Field
               id="firstTransactionId"
               name="firstTransactionId"
@@ -48,7 +52,7 @@ const StatementForm: React.FC<TStatementForm> = () => {
               isNumber={true}
             />
           </Box>
-          <Box width="150px" p="8px">
+          <Box width="120px" p="8px">
             <Field
               id="lastTransactionId"
               name="lastTransactionId"
@@ -59,15 +63,6 @@ const StatementForm: React.FC<TStatementForm> = () => {
             />
           </Box>
           <Delimiter />
-          <Box width="200px" p="8px">
-            <Field
-              id="repaymentStatus"
-              name="repaymentStatus"
-              component={InputField}
-              label="Repayment Status"
-              disabled={true}
-            />
-          </Box>
           <Box width="120px" p="8px">
             <Field
               id="statementDate"
@@ -79,8 +74,27 @@ const StatementForm: React.FC<TStatementForm> = () => {
               disabled={true}
             />
           </Box>
+          <Box width="240px" p="8px">
+            <Field
+              id="repaymentStatus"
+              name="repaymentStatus"
+              component={InputField}
+              label="Repayment Status"
+              disabled={true}
+            />
+          </Box>
+          <Box width="120px" p="8px">
+            <Field
+              id="previousStatementId"
+              name="previousStatementId"
+              component={InputField}
+              label="Previous Statement ID"
+              disabled={true}
+              isNumber={true}
+            />
+          </Box>
           <Hr />
-          <Box width={[1 / 6]} p="8px">
+          <Box width="160px" p="8px">
             <Field
               id="balanceOpen"
               name="balanceOpen"
@@ -92,7 +106,7 @@ const StatementForm: React.FC<TStatementForm> = () => {
               disabled={true}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="160px" p="8px">
             <Field
               id="balanceClose"
               name="balanceClose"
@@ -104,7 +118,7 @@ const StatementForm: React.FC<TStatementForm> = () => {
               disabled={true}
             />
           </Box>
-          <Box width={[1 / 6]} p="8px">
+          <Box width="160px" p="8px">
             <Field
               id="repaymentMinimumAmountDue"
               name="repaymentMinimumAmountDue"
@@ -116,14 +130,11 @@ const StatementForm: React.FC<TStatementForm> = () => {
               disabled={true}
             />
           </Box>
-          <Box width="150px" p="8px">
-            <Field
-              id="previousStatementId"
-              name="previousStatementId"
-              component={InputField}
-              label="Previous Statement ID"
-              disabled={true}
-              isNumber={true}
+          <Box p="8px">
+            <Button
+              text="Change minimum amount"
+              type="reset"
+              onClick={changeMinimumAmount}
             />
           </Box>
         </Flex>

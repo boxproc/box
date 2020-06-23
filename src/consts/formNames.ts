@@ -56,6 +56,7 @@ export enum formNamesConst {
   RESULT_LIMIT_ADJUSTMENT = 'limitAdjustment',
   RESULT_MANUAL_TRANSACTION = 'resultManualTransaction',
   STATEMENT = 'statementForm',
+  MINIMUM_REPAYMENT = 'minimumRepaymentForm',
   TRANSACTION = 'transactionForm',
   DIRECT_DEBIT_TRANSACTION = 'directDebitTransactionForm',
 }

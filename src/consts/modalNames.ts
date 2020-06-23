@@ -33,6 +33,7 @@ export enum modalNamesConst {
   MANUAL_TRANSACTION_RESULT = 'ManualTransactionResultModal',
   STATEMENT_APRS = 'StatementAprsModal',
   STATEMENTS = 'StatementsModal',
+  MINIMUM_REPAYMENT = 'MinimumRepaymentModal',
   TRANSACTION = 'TransactionModal',
 
   ADD_ACTIVE_USER = 'AddActiveUserModal',

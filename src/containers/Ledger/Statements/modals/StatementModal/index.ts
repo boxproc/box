@@ -27,7 +27,7 @@ const mapStateToProps = (state: IStoreState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    generateTransactionsAprs: handleDownloadStatement,
+    downloadStatement: handleDownloadStatement,
     getStatementAprs: handleGetStatementAprs,
     getStatementTransactions: handleGetStatementTransactions,
   },

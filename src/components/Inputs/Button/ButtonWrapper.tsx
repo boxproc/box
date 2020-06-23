@@ -1,11 +1,28 @@
-import styled from 'theme';
+import styled, { css } from 'theme';
 
 interface IButtonWrapper {
-  classNames?: Array<string>;
   hasIcon?: boolean;
   size?: string;
   width?: string;
 }
+
+const borderStyles = css`
+  padding: 7px 10px 5px;
+  justify-content: center;
+  background-color: ${({ theme }) => theme.colors.lighterGray};
+  border: 1px solid ${({ theme }) => theme.colors.lightGray};
+  border-radius: 2px;
+
+  &:hover:not(:disabled),
+  &.is-focused:not(:disabled):hover {
+    background-color: ${({ theme }) => theme.colors.lighterGrayHover};
+    box-shadow: ${({ theme }) => theme.shadows.bottomBox};
+  }
+
+  &:disabled {
+    background-color: transparent;
+  }
+`;
 
 export const ButtonWrapper = styled.button<IButtonWrapper>`
   position: relative;
@@ -36,23 +53,11 @@ export const ButtonWrapper = styled.button<IButtonWrapper>`
     z-index: 1;
   }
 
-  ${({ hasIcon, theme }) => !hasIcon && `
-    padding: 7px 10px 5px;
-    justify-content: center;
-    background-color: ${theme.colors.lighterGray};
-    border: 1px solid ${theme.colors.lightGray};
-    border-radius: 2px;
+  ${({ hasIcon }) => !hasIcon && borderStyles};
 
-    &:hover:not(:disabled),
-    &.is-focused:not(:disabled):hover {
-      background-color: ${theme.colors.lighterGrayHover};
-      box-shadow: ${theme.shadows.bottomBox};
-    }
-
-    &:disabled {
-      background-color: transparent;
-    }
-  `};
+  &.is-bordered {
+    ${borderStyles}
+  }
 
   &.is-tabs {
     background-color: transparent;

@@ -3,7 +3,7 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, Hr, Modal, T4, Tabs, TabsPanel, withSpinner } from 'components';
+import { Button, Hr, Modal, T4, Tabs, TabsPanel } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { StatementAprsTable, TransactionsTable } from './../../components';
@@ -15,6 +15,7 @@ import {
   IStatement,
   IStatementApr,
   IStatementTransaction,
+  THandleDownloadStatement,
   THandleGetStatementAprs,
   THandleGetStatementTransactions,
 } from 'store';
@@ -22,12 +23,13 @@ import {
 interface IStatementModal extends IWithModal {
   currentStatement: IStatement;
   currentStatementId: number;
-  generateTransactionsAprs: THandleGetStatementAprs;
+  downloadStatement: THandleDownloadStatement;
   getStatementAprs: THandleGetStatementAprs;
   getStatementTransactions: THandleGetStatementTransactions;
   statementAprs: ImmutableArray<IStatementApr>;
   statementPendingTransactions: ImmutableArray<IStatementTransaction>;
   statementTransactions: ImmutableArray<IStatementTransaction>;
+  isLoading: boolean;
 }
 
 const modalName = modalNamesConst.STATEMENTS;
@@ -36,9 +38,11 @@ const StatementModal: React.FC<IStatementModal> = ({
   closeModal,
   currentStatement,
   currentStatementId,
-  generateTransactionsAprs,
+  downloadStatement,
   getStatementAprs,
   getStatementTransactions,
+  isLoading,
+  openModal,
   statementAprs,
   statementPendingTransactions,
   statementTransactions,
@@ -58,6 +62,11 @@ const StatementModal: React.FC<IStatementModal> = ({
     [closeModal]
   );
 
+  const changeMinimumAmount = React.useCallback(
+    () => openModal({ name: modalNamesConst.MINIMUM_REPAYMENT }),
+    [openModal]
+  );
+
   return (
     <Modal
       name={modalName}
@@ -69,11 +78,17 @@ const StatementModal: React.FC<IStatementModal> = ({
       <Tabs>
 
         <TabsPanel title="Totals">
-          <StatementForm initialValues={currentStatement} />
+          <StatementForm
+            initialValues={currentStatement}
+            changeMinimumAmount={changeMinimumAmount}
+          />
           <Hr />
         </TabsPanel>
 
-        <TabsPanel title="Transactions">
+        <TabsPanel
+          title="Transactions"
+          isLoading={isLoading}
+        >
           <Box mt="20px" mb="10px">
             <T4>Pending Transactions</T4>
             <TransactionsTable data={statementPendingTransactions} />
@@ -84,7 +99,10 @@ const StatementModal: React.FC<IStatementModal> = ({
           </Box>
         </TabsPanel>
 
-        <TabsPanel title="Accrued Interest">
+        <TabsPanel
+          title="Accrued Interest"
+          isLoading={isLoading}
+        >
           <Box mt="20px" mb="10px">
             <StatementAprsTable data={statementAprs} />
           </Box>
@@ -99,7 +117,9 @@ const StatementModal: React.FC<IStatementModal> = ({
         <Button
           text="Open pdf statement"
           iconName={iconNamesConst.FILE_PDF}
-          onClick={generateTransactionsAprs}
+          classNames={['is-bordered']}
+          disabled={isLoading}
+          onClick={downloadStatement}
         />
         <Button
           text="Close"
@@ -110,6 +130,4 @@ const StatementModal: React.FC<IStatementModal> = ({
   );
 };
 
-export default withSpinner({
-  isFixed: true,
-})(withModal(StatementModal));
+export default withModal(StatementModal);
