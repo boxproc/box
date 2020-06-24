@@ -3,8 +3,7 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, Table, withSpinner } from 'components';
-
+import { Button, Hr, T3, Table, withSpinner } from 'components';
 import { tableColumns } from './tableColumns';
 
 import {
@@ -47,7 +46,7 @@ export const Cards: React.FC<IAccountCards> = ({
   return (
     <React.Fragment>
       {!isReadOnly && (
-        <Box mt="20px" mb="15px">
+        <Box mt="20px" mb="10px">
           <Button
             disabled={isOrderingCard}
             type="reset"
@@ -57,7 +56,8 @@ export const Cards: React.FC<IAccountCards> = ({
           />
         </Box>
       )}
-      <Box mt="15px">
+      <T3>Cards</T3>
+      <Box width="550px" mb="20px">
         <Table
           title="Account Cards"
           pageSize={8}
@@ -66,6 +66,7 @@ export const Cards: React.FC<IAccountCards> = ({
           isSmaller={true}
         />
       </Box>
+      <Hr />
       <Flex justifyContent="flex-end">
         <Box mt="10px">
           <Button

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Modal, ProductImages, Tabs, TabsPanel } from 'components';
+import { Modal, ProductImages, T3, Tabs, TabsPanel } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
@@ -47,7 +47,7 @@ const EditAccountModal: React.FC<IEditAccountModal> = ({
       name={modalName}
       type={modalTypesConst.VIEWING}
       title={modalTitle}
-      containerWidth="1010px"
+      containerWidth="965px"
       minContainerHeight="600px"
       withCloseConfirmation={isFormDirty}
       TitleIcon={ProductImages[currentProductType]}
@@ -72,6 +72,7 @@ const EditAccountModal: React.FC<IEditAccountModal> = ({
           />
         </TabsPanel>
         <TabsPanel title="Statements">
+          <T3>Statements</T3>
           <AccountStatements onCancel={handleOnCancel} />
         </TabsPanel>
       </Tabs>

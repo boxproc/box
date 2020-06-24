@@ -21,6 +21,7 @@ import {
 } from './types';
 
 import { dateUtil, stringsUtil } from 'utils';
+import { ILedgerId } from './../customers';
 
 export const prepareDataToRender = (data: ITransactionData): ITransaction => {
   if (!data) {
@@ -167,6 +168,21 @@ export const prepareFilterToSend = (data: Partial<ITransactionsFilter>) => {
   };
 };
 
+export const prepareFilterToSet = (data: ILedgerId) => {
+  if (!data) {
+    return null;
+  }
+
+  const { transaction_id, customer_id, account_id, card_id } = data;
+
+  return {
+    transactionId: transaction_id,
+    customerId: customer_id,
+    accountId: account_id,
+    cardId: card_id,
+  };
+};
+
 export const prepareDataToConvert = (data: Partial<IConvertTrToLoanReq>) => {
   if (!data) {
     return null;
@@ -283,6 +299,6 @@ export const prepareDirectDebitPaymentHistory =
     const sortedData = sortPaymentData(data);
 
     return sortedData.map(el => {
-      return { date: el.created_timestamp, event: el.status };
+      return { date: el.provider_timestamp, event: el.status };
     });
   };

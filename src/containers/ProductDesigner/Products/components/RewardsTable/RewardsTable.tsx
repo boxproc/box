@@ -113,7 +113,7 @@ const RewardsTable: React.FC<IRewardsTable> = ({
         ),
       },
       {
-        maxWidth: 300,
+        maxWidth: 305,
         minWidth: 240,
         accessor: 'rewardApplicationCondition',
         Header: <TableHeader title="Reward Application Condition" />,

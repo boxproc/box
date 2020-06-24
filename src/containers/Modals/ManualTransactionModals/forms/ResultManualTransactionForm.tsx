@@ -19,7 +19,7 @@ const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () =
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width={[1 / 4]} p="8px">
+          <Box width="120px" p="8px">
             <Field
               id="transactionId"
               name="transactionId"
@@ -29,7 +29,7 @@ const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () =
               isNumber={true}
             />
           </Box>
-          <Box width={[1 / 4]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="status"
               name="status"
@@ -39,7 +39,7 @@ const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () =
             />
           </Box>
           <Hr />
-          <Box width={[1 / 4]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="balanceSettledBefore"
               name="balanceSettledBefore"
@@ -51,7 +51,7 @@ const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () =
               disabled={true}
             />
           </Box>
-          <Box width={[1 / 4]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="balanceSettledAfter"
               name="balanceSettledAfter"
@@ -63,7 +63,7 @@ const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () =
               disabled={true}
             />
           </Box>
-          <Box width={[1 / 4]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="balanceAvailableBefore"
               name="balanceAvailableBefore"
@@ -75,7 +75,7 @@ const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () =
               disabled={true}
             />
           </Box>
-          <Box width={[1 / 4]} p="8px">
+          <Box width="150px" p="8px">
             <Field
               id="balanceAvailableAfter"
               name="balanceAvailableAfter"

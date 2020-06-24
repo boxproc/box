@@ -161,7 +161,7 @@ const AccountStatements: React.FC<IAccountStatements> = ({
           >
             <Button
               iconName={iconNamesConst.SHORT_TEXT}
-              title="Details"
+              title="Sow details"
               type="reset"
               onClick={() => getStatementAprs(
                 cellInfo.original.id,
@@ -176,7 +176,7 @@ const AccountStatements: React.FC<IAccountStatements> = ({
   );
 
   return (
-    <Box mt="20px">
+    <React.Fragment>
       <Table
         pageSize={5}
         data={accountStatements}
@@ -193,7 +193,7 @@ const AccountStatements: React.FC<IAccountStatements> = ({
           />
         </Box>
       </Flex>
-    </Box>
+    </React.Fragment>
   );
 };
 

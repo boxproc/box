@@ -91,6 +91,7 @@ const EndpointForm: React.FC<TEndpointForm> = ({
               type="reset"
               withConfirmation={true}
               confirmationText={`Delete endpoint "${currentEndpointName}"?`}
+              classNames={['is-bordered']}
               onClick={handleDeleteEndpoint}
             />
           )}

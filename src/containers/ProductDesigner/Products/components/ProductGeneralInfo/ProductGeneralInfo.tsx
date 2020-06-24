@@ -181,131 +181,142 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width="270px" p="8px">
-          <Field
-            id="currencyCode"
-            name="currencyCode"
-            component={SelectField}
-            label="Currency Code"
-            placeholder="Select Currency Code"
-            options={currenciesOptions}
-            isLoading={isCurrenciesLoading}
-            isDisabled={isReadOnly}
-            validate={[formErrorUtil.isRequired]}
-          />
-        </Box>
-        <Box width="170px" p="8px">
-          <Field
-            id="cardFormFactor"
-            name="cardFormFactor"
-            component={SelectField}
-            label="Card Form Factor"
-            placeholder="Select Card"
-            options={cardFormFactorOptions}
-            isDisabled={isReadOnly}
-            validate={[formErrorUtil.isRequired]}
-          />
-        </Box>
-        <Box width="90px" p="8px">
-          <Field
-            id="numberOfDaysCardExpires"
-            name="numberOfDaysCardExpires"
-            placeholder="Enter #"
-            component={InputField}
-            label="# of Days Card Expires"
-            isNumber={true}
-            disabled={isReadOnly}
-            validate={[
-              formErrorUtil.isRequired,
-              formErrorUtil.isInteger,
-            ]}
-          />
-        </Box>
-        <Box width="150px" p="8px">
-          <Field
-            id="scheme"
-            name="scheme"
-            component={SelectField}
-            label="Scheme"
-            placeholder="Select Scheme"
-            isDisabled={isReadOnly}
-            options={schemeTypesOptions}
-          />
-        </Box>
-        <Box width="90px" p="8px">
-          <Field
-            id="historyRetentionNumberOfDays"
-            name="historyRetentionNumberOfDays"
-            placeholder="Enter # of Days"
-            component={InputField}
-            label="Retention # of Days"
-            isNumber={true}
-            disabled={isReadOnly}
-            validate={[
-              formErrorUtil.isRequired,
-              formErrorUtil.isInteger,
-            ]}
-          />
-        </Box>
-        <Delimiter />
-        <Box width="200px" p="8px">
-          <Field
-            id="statementCycleTypeId"
-            name="statementCycleTypeId"
-            component={SelectField}
-            label="Statement Cycle Type"
-            placeholder="Select Type"
-            options={statementCycleTypesOptions}
-            isLoading={isStatementCycleTypesLoading}
-            isDisabled={isReadOnly}
-            validate={[formErrorUtil.isRequired]}
-          />
-        </Box>
-        <Box width="130px" p="8px">
-          <Field
-            id="statementCycleParameter"
-            name="statementCycleParameter"
-            placeholder="Enter day"
-            component={InputField}
-            label={statementCycleParameterLabel}
-            isNumber={true}
-            disabled={!statementCycleTypeValue || isReadOnly}
-            hint={!statementCycleTypeValue && 'Select Statement Cycle Type'}
-            validate={[
-              formErrorUtil.isRequired,
-              statementCycleParameterValidation,
-            ]}
-          />
-        </Box>
-        <Box width={[1]} p="8px 8px 0">
-          <Field
-            id="enabledForCustomerLimit"
-            name="enabledForCustomerLimit"
-            component={CheckboxField}
-            label="Enabled for Customer Limit"
-            disabled={isReadOnly}
-          />
-        </Box>
-        <Box width={[1]} p="8px">
-          <Field
-            id="lockedFlag"
-            name="lockedFlag"
-            component={CheckboxField}
-            label="Locked"
-            disabled={isReadOnly}
-          />
-        </Box>
-        <Box width={[1]} p="8px">
-          <Field
-            id="description"
-            name="description"
-            placeholder="Enter Description"
-            component={TextareaField}
-            label="Description"
-            height={70}
-            disabled={isReadOnly}
-          />
-        </Box>
+        <Flex alignItems="flex-start">
+          <Flex
+            alignItems="flex-end"
+            flexWrap="wrap"
+            width="330px"
+          >
+            <Box width="200px" p="8px">
+              <Field
+                id="cardFormFactor"
+                name="cardFormFactor"
+                component={SelectField}
+                label="Card Form Factor"
+                placeholder="Select Card"
+                options={cardFormFactorOptions}
+                isDisabled={isReadOnly}
+                validate={[formErrorUtil.isRequired]}
+              />
+            </Box>
+            <Box width="130px" p="8px">
+              <Field
+                id="numberOfDaysCardExpires"
+                name="numberOfDaysCardExpires"
+                placeholder="Enter #"
+                component={InputField}
+                label="# of Days Card Expires"
+                isNumber={true}
+                disabled={isReadOnly}
+                validate={[
+                  formErrorUtil.isRequired,
+                  formErrorUtil.isInteger,
+                ]}
+              />
+            </Box>
+            <Delimiter />
+            <Box width="200px" p="8px">
+              <Field
+                id="scheme"
+                name="scheme"
+                component={SelectField}
+                label="Scheme"
+                placeholder="Select Scheme"
+                isDisabled={isReadOnly}
+                options={schemeTypesOptions}
+              />
+            </Box>
+            <Box width="130px" p="8px">
+              <Field
+                id="historyRetentionNumberOfDays"
+                name="historyRetentionNumberOfDays"
+                placeholder="Enter # of Days"
+                component={InputField}
+                label="Retention # of Days"
+                isNumber={true}
+                disabled={isReadOnly}
+                validate={[
+                  formErrorUtil.isRequired,
+                  formErrorUtil.isInteger,
+                ]}
+              />
+            </Box>
+            <Delimiter />
+            <Box width="200px" p="8px" pt="25px">
+              <Field
+                id="statementCycleTypeId"
+                name="statementCycleTypeId"
+                component={SelectField}
+                label="Statement Cycle Type"
+                placeholder="Select Type"
+                options={statementCycleTypesOptions}
+                isLoading={isStatementCycleTypesLoading}
+                isDisabled={isReadOnly}
+                validate={[formErrorUtil.isRequired]}
+              />
+            </Box>
+            <Box width="130px" p="8px">
+              <Field
+                id="statementCycleParameter"
+                name="statementCycleParameter"
+                placeholder="Enter day"
+                component={InputField}
+                label={statementCycleParameterLabel}
+                isNumber={true}
+                disabled={!statementCycleTypeValue || isReadOnly}
+                hint={!statementCycleTypeValue && 'Select Statement Cycle Type'}
+                validate={[
+                  formErrorUtil.isRequired,
+                  statementCycleParameterValidation,
+                ]}
+              />
+            </Box>
+          </Flex>
+          <Box width="500px" pt="15px">
+            <Box width="350px" p="8px">
+              <Field
+                id="currencyCode"
+                name="currencyCode"
+                component={SelectField}
+                label="Currency Code"
+                placeholder="Select Currency Code"
+                options={currenciesOptions}
+                isLoading={isCurrenciesLoading}
+                isDisabled={isReadOnly}
+                validate={[formErrorUtil.isRequired]}
+              />
+            </Box>
+            <Box width={[1]} p="8px">
+              <Field
+                id="description"
+                name="description"
+                placeholder="Enter Description"
+                component={TextareaField}
+                label="Description"
+                height={50}
+                disabled={isReadOnly}
+              />
+            </Box>
+            <Box width={[1]} p="8px 8px 0">
+              <Field
+                id="enabledForCustomerLimit"
+                name="enabledForCustomerLimit"
+                component={CheckboxField}
+                label="Enabled for Customer Limit"
+                disabled={isReadOnly}
+              />
+            </Box>
+            <Box width={[1]} p="8px">
+              <Field
+                id="lockedFlag"
+                name="lockedFlag"
+                component={CheckboxField}
+                label="Locked"
+                disabled={isReadOnly}
+              />
+            </Box>
+          </Box>
+        </Flex>
       </Flex>
     </Box>
   );

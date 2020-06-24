@@ -209,6 +209,7 @@ const SchedulerForm: React.FC<TSchedulerForm> = ({
               type="reset"
               withConfirmation={true}
               confirmationText={`Delete scheduler "${currentSchedulerName}"?`}
+              classNames={['is-bordered']}
               onClick={deleteSchedulerJob}
             />
           )}

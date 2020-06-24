@@ -74,7 +74,7 @@ const EditProductModal: React.FC<IEditProductModal> = ({
       type={modalTypesConst.VIEWING}
       title={modalTitle}
       containerWidth="1010px"
-      minContainerHeight="calc(100vh - 10px)"
+      minContainerHeight="560px"
       withCloseConfirmation={isAnyFormDirty}
       TitleIcon={ProductImages[currentProductType]}
     >

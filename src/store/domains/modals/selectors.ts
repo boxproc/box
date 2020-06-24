@@ -14,8 +14,11 @@ export const payloadLogModalSelector = (state: IStoreState) => state.modals.payl
 export const payloadManualTrModalSelector = (state: IStoreState) =>
   state.modals.payloadManualTransactionModal;
 
-export const manualTrModalIsLimitAdjSelector = (state: IStoreState) =>
-  state.modals.payloadManualTransactionModal.isLimitAdjustmentMode;
+export const manualTrModalIsLimitAdjSelector = (state: IStoreState) => {
+  const payload = state.modals.payloadManualTransactionModal;
+
+  return payload && payload.isLimitAdjustmentMode;
+};
 
 export const payloadTransactionModalSelector = (state: IStoreState) =>
   state.modals.payloadTransactionModal;

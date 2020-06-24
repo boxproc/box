@@ -235,7 +235,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
           </Box>
         )}
         {isDirectDebitRepayment && (
-          <Box width="300px" p="8px">
+          <Box width="240px" p="8px">
             <Field
               id="directDebitMandateId"
               name="directDebitMandateId"
@@ -468,7 +468,6 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
                 disabled={true}
               />
             </Box>
-            <Hr />
             <Box width="120px" p="8px">
               <Field
                 id="lastCycleDate"

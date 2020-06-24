@@ -59,7 +59,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 110,
     Header: <TableHeader title="Master Institution" />,
     accessor: 'masterInstitutionFlag',
     Cell: renderCheckBoxTableCell(),

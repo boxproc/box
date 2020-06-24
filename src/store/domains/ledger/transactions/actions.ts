@@ -30,6 +30,7 @@ import {
 import {
   prepareDataToConvert,
   prepareFilterToSend,
+  prepareFilterToSet,
   prepareRetrieveTransactionRequest,
   prepareSettleTrDataToSend,
 } from './utils';
@@ -85,9 +86,16 @@ export const handleFilterByIdTransactions: THandleFilterTransactionsById = id =>
         const userData = storageUtil.getUserData();
         const loggedInUsername = userData && userData.username;
 
-        cookiesUtil.remove(`${basePath}${uiItemsConst.TRANSACTIONS}-${loggedInUsername}`);
-        dispatch(push(`${basePath}${uiItemsConst.TRANSACTIONS}`));
         await dispatch(filterTransactionsById(id));
+        const filterData = prepareFilterToSet(id);
+
+        cookiesUtil.remove(`${basePath}${uiItemsConst.TRANSACTIONS}-${loggedInUsername}`);
+        cookiesUtil.set(
+          `${basePath}${uiItemsConst.TRANSACTIONS}-${loggedInUsername}`,
+          JSON.stringify(filterData)
+        );
+
+        dispatch(push(`${basePath}${uiItemsConst.TRANSACTIONS}`));
         dispatch(setIsOpenFilter(false));
       },
       dispatch
@@ -149,7 +157,6 @@ export const handleConvertTrToLoan: THandleConvertTrToLoan = data =>
         });
 
         await dispatch(convertTransactionToLoan(preparedData));
-        // await dispatch(handleFilterTransactions());
 
         dispatch(openModal({
           name: modalNamesConst.MESSAGE,

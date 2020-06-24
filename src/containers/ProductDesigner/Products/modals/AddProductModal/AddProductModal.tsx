@@ -1,11 +1,9 @@
 import React from 'react';
 
 import { Modal } from 'components';
-import { IWithModal, withModal } from 'HOCs';
-
 import { modalNamesConst } from 'consts';
-
 import { AddProductForm } from 'containers/ProductDesigner/Products/forms';
+import { IWithModal, withModal } from 'HOCs';
 
 interface IAddProductModal extends IWithModal {
   isFormDirty: boolean;
@@ -27,7 +25,7 @@ const AddProductModal: React.FC<IAddProductModal> = ({
       name={modalName}
       title="Add New Product"
       containerWidth="850px"
-      minContainerHeight="560px"
+      minContainerHeight="465px"
       withCloseConfirmation={isFormDirty}
       isBluredBackdrop={true}
     >

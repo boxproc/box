@@ -104,6 +104,7 @@ const GeneralProductForm: React.FC<TGeneralProductForm> = ({
                 type="reset"
                 withConfirmation={true}
                 confirmationText={deleteConfirmationText}
+                classNames={['is-bordered']}
                 onClick={deleteProduct}
               />
             )}

@@ -145,6 +145,7 @@ const SystemPropertyForm: React.FC<TSystemPropertyForm> = ({
               type="reset"
               withConfirmation={true}
               confirmationText={deleteConfirmationText}
+              classNames={['is-bordered']}
               onClick={handleDelete}
             />
           )}

@@ -94,6 +94,7 @@ const InterfaceForm: React.FC<TInterfaceForm> = ({
               type="reset"
               withConfirmation={true}
               confirmationText={deleteConfirmationText}
+              classNames={['is-bordered']}
               onClick={handleDeleteInterface}
             />
           )}
