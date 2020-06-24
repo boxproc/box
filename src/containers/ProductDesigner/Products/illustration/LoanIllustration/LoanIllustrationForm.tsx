@@ -114,7 +114,7 @@ const LoanIllustrationForm: React.FC<TLoanIllustrationForm> = ({
         mx="-8px"
       >
         {withLoanSelection && (
-          <Box width={[1 / 4]} p="8px">
+          <Box width="240px" p="8px">
             <Field
               id="loanProduct"
               name="loanProduct"
@@ -142,7 +142,7 @@ const LoanIllustrationForm: React.FC<TLoanIllustrationForm> = ({
             ]}
           />
         </Box>
-        <Box width="180px" ml="1px" p="8px">
+        <Box width="150px" ml="1px" p="8px">
           <Field
             id="amount"
             name="amount"

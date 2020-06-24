@@ -34,9 +34,8 @@ const LoanDetails: React.FC<ILoanDetails> = ({
         flexWrap="wrap"
       >
         <Box
-          width={[1 / 3]}
+          width="300px"
           p="8px"
-          pt="26px"
         >
           <Field
             id="interestDistributionType"
@@ -52,7 +51,6 @@ const LoanDetails: React.FC<ILoanDetails> = ({
         <Box
           width="130px"
           p="8px"
-          pt="26px"
         >
           <Field
             id="defNumOfInstallments"
@@ -105,10 +103,8 @@ const LoanDetails: React.FC<ILoanDetails> = ({
           />
         </Box>
         <Box
-          width="160px"
+          width={[1]}
           p="8px"
-          pt="26px"
-          m="1px"
         >
           <Field
             id="allowOverpayment"

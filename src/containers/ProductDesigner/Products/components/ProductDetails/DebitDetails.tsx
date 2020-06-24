@@ -18,7 +18,7 @@ const DebitDetails: React.FC<IDebitDetails> = ({ isReadOnly }) => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width="160px" p="8px">
+        <Box width="150px" p="8px">
           <Field
             id="aprOverdraft"
             name="aprOverdraft"

@@ -140,7 +140,7 @@ const CurrentTransactionGeneral: React.FC = () => {
           width={[1]}
           flexWrap="wrap"
         >
-          <Box width={[5 / 11]}>
+          <Box width={[7 / 15]}>
             <Flex alignItems="flex-end">
               <Box width={[1 / 3]} p="8px">
                 <Field
@@ -205,7 +205,7 @@ const CurrentTransactionGeneral: React.FC = () => {
               </Box>
             </Flex>
           </Box>
-          <Box width={[6 / 11]} p="8px">
+          <Box width={[8 / 15]} p="8px">
             <Field
               id="description"
               name="description"

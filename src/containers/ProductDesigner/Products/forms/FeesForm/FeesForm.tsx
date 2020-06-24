@@ -3,7 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, InputField, NumberFormatField, SelectField } from 'components';
+import { Button, Delimiter, InputField, NumberFormatField, SelectField } from 'components';
 import { feeRewardsTypesConst, feeTypesOptions, formNamesConst, iconNamesConst } from 'consts';
 import { THandleAddProductFee } from 'store';
 import { ISelectValue } from 'types';
@@ -70,7 +70,7 @@ const FeesForm: React.FC<TFeesForm> = ({
   );
 
   const buttonText = React.useMemo(
-    () => isLoading ? 'Adding...' : 'Add Fee',
+    () => isLoading ? 'Adding...' : 'Add',
     [isLoading]
   );
 
@@ -96,7 +96,7 @@ const FeesForm: React.FC<TFeesForm> = ({
         flexWrap="wrap"
         mx="-8px"
       >
-        <Box width={[1 / 5]} p="8px">
+        <Box width="240px" p="8px">
           <Field
             id="description"
             name="description"
@@ -107,7 +107,7 @@ const FeesForm: React.FC<TFeesForm> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width={[1 / 5]} p="8px">
+        <Box width="300px" p="8px">
           <Field
             id="feeApplicationCondition"
             name="feeApplicationCondition"
@@ -120,7 +120,7 @@ const FeesForm: React.FC<TFeesForm> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width={[1 / 5]} p="8px">
+        <Box width="300px" p="8px">
           <Field
             id="apr"
             name="apr"
@@ -133,7 +133,8 @@ const FeesForm: React.FC<TFeesForm> = ({
             isClearable={false}
           />
         </Box>
-        <Box width={[1 / 7]} ml="1px" p="8px">
+        <Delimiter />
+        <Box width="120px" p="8px">
           <Field
             id="rate"
             name="rate"
@@ -146,7 +147,7 @@ const FeesForm: React.FC<TFeesForm> = ({
             validate={rateValidators}
           />
         </Box>
-        <Box width={[1 / 7]} p="8px">
+        <Box width="120px" p="8px">
           <Field
             id="amount"
             name="amount"
@@ -159,10 +160,11 @@ const FeesForm: React.FC<TFeesForm> = ({
             validate={amountValidators}
           />
         </Box>
-        <Box pb="15px">
+        <Box p="8px">
           <Button
             text={buttonText}
             iconName={iconNamesConst.PLUS}
+            classNames={['is-bordered']}
             disabled={pristine || isLoading}
           />
         </Box>

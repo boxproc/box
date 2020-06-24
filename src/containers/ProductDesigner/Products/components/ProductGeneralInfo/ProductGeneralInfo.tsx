@@ -130,7 +130,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 5]} p="8px">
+        <Box width="200px" p="8px">
           <Field
             id="productType"
             name="productType"
@@ -142,7 +142,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width={[1 / 5]} p="8px">
+        <Box width="240px" p="8px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -155,7 +155,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width={[4 / 15]} p="8px">
+        <Box width="240px" p="8px">
           <Field
             id="name"
             name="name"
@@ -169,34 +169,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             ]}
           />
         </Box>
-        <Box width={[1 / 5]} p="8px">
-          <Field
-            id="cardFormFactor"
-            name="cardFormFactor"
-            component={SelectField}
-            label="Card Form Factor"
-            placeholder="Select Card"
-            options={cardFormFactorOptions}
-            isDisabled={isReadOnly}
-            validate={[formErrorUtil.isRequired]}
-          />
-        </Box>
-        <Box width={[2 / 15]} p="8px">
-          <Field
-            id="numberOfDaysCardExpires"
-            name="numberOfDaysCardExpires"
-            placeholder="Enter # of Days"
-            component={InputField}
-            label="# of Days Card Expires"
-            isNumber={true}
-            disabled={isReadOnly}
-            validate={[
-              formErrorUtil.isRequired,
-              formErrorUtil.isInteger,
-            ]}
-          />
-        </Box>
-        <Box width={[1 / 5]} p="8px">
+        <Box width="150px" p="8px">
           <Field
             id="status"
             name="status"
@@ -208,18 +181,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width={[1 / 5]} p="8px">
-          <Field
-            id="scheme"
-            name="scheme"
-            component={SelectField}
-            label="Scheme"
-            placeholder="Select Scheme"
-            isDisabled={isReadOnly}
-            options={schemeTypesOptions}
-          />
-        </Box>
-        <Box width={[4 / 15]} p="8px">
+        <Box width="270px" p="8px">
           <Field
             id="currencyCode"
             name="currencyCode"
@@ -232,7 +194,45 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width={[2 / 15]} p="8px">
+        <Box width="170px" p="8px">
+          <Field
+            id="cardFormFactor"
+            name="cardFormFactor"
+            component={SelectField}
+            label="Card Form Factor"
+            placeholder="Select Card"
+            options={cardFormFactorOptions}
+            isDisabled={isReadOnly}
+            validate={[formErrorUtil.isRequired]}
+          />
+        </Box>
+        <Box width="90px" p="8px">
+          <Field
+            id="numberOfDaysCardExpires"
+            name="numberOfDaysCardExpires"
+            placeholder="Enter #"
+            component={InputField}
+            label="# of Days Card Expires"
+            isNumber={true}
+            disabled={isReadOnly}
+            validate={[
+              formErrorUtil.isRequired,
+              formErrorUtil.isInteger,
+            ]}
+          />
+        </Box>
+        <Box width="150px" p="8px">
+          <Field
+            id="scheme"
+            name="scheme"
+            component={SelectField}
+            label="Scheme"
+            placeholder="Select Scheme"
+            isDisabled={isReadOnly}
+            options={schemeTypesOptions}
+          />
+        </Box>
+        <Box width="90px" p="8px">
           <Field
             id="historyRetentionNumberOfDays"
             name="historyRetentionNumberOfDays"
@@ -248,7 +248,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
           />
         </Box>
         <Delimiter />
-        <Box width={[1 / 5]} p="8px">
+        <Box width="200px" p="8px">
           <Field
             id="statementCycleTypeId"
             name="statementCycleTypeId"
@@ -261,11 +261,11 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width={[2 / 15]} p="8px">
+        <Box width="130px" p="8px">
           <Field
             id="statementCycleParameter"
             name="statementCycleParameter"
-            placeholder="Enter Parameter"
+            placeholder="Enter day"
             component={InputField}
             label={statementCycleParameterLabel}
             isNumber={true}
@@ -302,6 +302,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             placeholder="Enter Description"
             component={TextareaField}
             label="Description"
+            height={70}
             disabled={isReadOnly}
           />
         </Box>

@@ -34,7 +34,7 @@ const RewardsForm: React.FC<TRewardsForm> = ({
   rewardApplicationConditionValue,
 }) => {
   const buttonText = React.useMemo(
-    () => isLoading ? 'Adding...' : 'Add Reward',
+    () => isLoading ? 'Adding...' : 'Add',
     [isLoading]
   );
 
@@ -94,7 +94,7 @@ const RewardsForm: React.FC<TRewardsForm> = ({
         flexWrap="wrap"
         mx="-8px"
       >
-        <Box width={[1 / 5]} p="8px">
+        <Box width="240px" p="8px">
           <Field
             id="description"
             name="description"
@@ -105,7 +105,7 @@ const RewardsForm: React.FC<TRewardsForm> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width={[1 / 5]} p="8px">
+        <Box width="300px" p="8px">
           <Field
             id="rewardApplicationCondition"
             name="rewardApplicationCondition"
@@ -118,7 +118,7 @@ const RewardsForm: React.FC<TRewardsForm> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width={[1 / 5]} p="8px">
+        <Box width="120px" p="8px">
           <Field
             id="rate"
             name="rate"
@@ -131,7 +131,7 @@ const RewardsForm: React.FC<TRewardsForm> = ({
             validate={rateValidators}
           />
         </Box>
-        <Box width={[1 / 5]} p="8px">
+        <Box width="120px" p="8px">
           <Field
             id="amount"
             name="amount"
@@ -144,10 +144,11 @@ const RewardsForm: React.FC<TRewardsForm> = ({
             validate={amountValidators}
           />
         </Box>
-        <Box pb="15px">
+        <Box p="8px">
           <Button
             text={buttonText}
             iconName={iconNamesConst.PLUS}
+            classNames={['is-bordered']}
             disabled={pristine || isLoading}
           />
         </Box>

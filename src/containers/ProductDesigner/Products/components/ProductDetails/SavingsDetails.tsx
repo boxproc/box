@@ -20,20 +20,19 @@ const SavingsDetails: React.FC<ISavingsDetails> = ({ isReadOnly }) => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 5]} p="8px">
+        <Box width="200px" p="8px">
           <Field
             id="savingsType"
             name="savingsType"
             component={SelectField}
             label="Savings Type"
-            placeholder="Select Savings Type"
+            placeholder="Select Type"
             options={savingsTypesOptions}
             isDisabled={isReadOnly}
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Delimiter />
-        <Box width={[1 / 5]} p="8px">
+        <Box width="150px" p="8px">
           <Field
             id="apr"
             name="apr"
@@ -50,7 +49,8 @@ const SavingsDetails: React.FC<ISavingsDetails> = ({ isReadOnly }) => {
             ]}
           />
         </Box>
-        <Box width={[1 / 5]} p="8px">
+        <Delimiter />
+        <Box width="150px" p="8px">
           <Field
             id="minimumDepositAllowed"
             name="minimumDepositAllowed"
@@ -67,7 +67,7 @@ const SavingsDetails: React.FC<ISavingsDetails> = ({ isReadOnly }) => {
             ]}
           />
         </Box>
-        <Box width={[1 / 5]} p="8px">
+        <Box width="150px" p="8px">
           <Field
             id="maximumDepositAllowed"
             name="maximumDepositAllowed"
@@ -84,7 +84,7 @@ const SavingsDetails: React.FC<ISavingsDetails> = ({ isReadOnly }) => {
             ]}
           />
         </Box>
-        <Box width={[1 / 5]} p="8px">
+        <Box width="150px" p="8px">
           <Field
             id="maximumMonthlyDeposit"
             name="maximumMonthlyDeposit"

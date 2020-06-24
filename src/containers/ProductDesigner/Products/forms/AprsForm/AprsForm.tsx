@@ -33,7 +33,7 @@ const AprsForm: React.FC<TAprsForm> = ({
   startDateValue,
 }) => {
   const buttonText = React.useMemo(
-    () => isLoading ? 'Adding...' : 'Add APR',
+    () => isLoading ? 'Adding...' : 'Add',
     [isLoading]
   );
 
@@ -55,7 +55,7 @@ const AprsForm: React.FC<TAprsForm> = ({
         mx="-8px"
         width="100%"
       >
-        <Box width={[1 / 5]} p="8px">
+        <Box width="210px" p="8px">
           <Field
             id="description"
             name="description"
@@ -66,7 +66,7 @@ const AprsForm: React.FC<TAprsForm> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width={[1 / 5]} p="8px">
+        <Box width="160px" p="8px">
           <Field
             id="calculationMethod"
             name="calculationMethod"
@@ -96,7 +96,7 @@ const AprsForm: React.FC<TAprsForm> = ({
             ]}
           />
         </Box>
-        <Box width="155px" p="8px">
+        <Box width="170px" p="8px">
           <Field
             id="aprStartDate"
             name="aprStartDate"
@@ -126,13 +126,13 @@ const AprsForm: React.FC<TAprsForm> = ({
             />
           </Box>
         )}
-        <Box width="125px" p="8px">
+        <Box width="120px" p="8px">
           <Field
             id="initialInterestFreeDays"
             name="initialInterestFreeDays"
             component={InputField}
             label="Initial Interest Free Days"
-            placeholder="Enter Free Days"
+            placeholder="Enter Days"
             isNumber={true}
             disabled={isLoading}
             validate={[
@@ -140,10 +140,11 @@ const AprsForm: React.FC<TAprsForm> = ({
             ]}
           />
         </Box>
-        <Box pb="15px">
+        <Box p="8px">
           <Button
             text={buttonText}
             iconName={iconNamesConst.PLUS}
+            classNames={['is-bordered']}
             disabled={pristine || isLoading}
           />
         </Box>

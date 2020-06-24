@@ -18,7 +18,7 @@ const RevolvingCreditDetails: React.FC<IRevolvingCreditDetails> = ({ isReadOnly 
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width={[1 / 6]} p="8px">
+        <Box width="150px" p="8px">
           <Field
             id="minimumRepaymentAmount"
             name="minimumRepaymentAmount"
@@ -35,7 +35,7 @@ const RevolvingCreditDetails: React.FC<IRevolvingCreditDetails> = ({ isReadOnly 
             ]}
           />
         </Box>
-        <Box width={[1 / 6]} p="8px">
+        <Box width="150px" p="8px">
           <Field
             id="minimumRepaymentRate"
             name="minimumRepaymentRate"
@@ -52,7 +52,7 @@ const RevolvingCreditDetails: React.FC<IRevolvingCreditDetails> = ({ isReadOnly 
             ]}
           />
         </Box>
-        <Box width={[1 / 6]} p="8px">
+        <Box width="150px" p="8px">
           <Field
             id="repaymentGraceNumberOfDays"
             name="repaymentGraceNumberOfDays"

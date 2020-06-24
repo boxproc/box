@@ -18,7 +18,7 @@ const PrepaidDetails: React.FC<IPrepaidDetails> = ({ isReadOnly }) => {
         alignItems="flex-end"
         flexWrap="wrap"
       >
-        <Box width="160px" p="8px">
+        <Box width="150px" p="8px">
           <Field
             id="dormantAfterNumberOfDays"
             name="dormantAfterNumberOfDays"
@@ -33,7 +33,7 @@ const PrepaidDetails: React.FC<IPrepaidDetails> = ({ isReadOnly }) => {
             ]}
           />
         </Box>
-        <Box width={[1]} p="8px">
+        <Box width={[1]} p="8px" pb="0">
           <Field
             id="breakagesAllowed"
             name="breakagesAllowed"
