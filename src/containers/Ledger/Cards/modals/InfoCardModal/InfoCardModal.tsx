@@ -33,11 +33,6 @@ const InfoAccountModal: React.FC<IInfoAccountModal> = ({
   isLoading,
   isReadOnly,
 }) => {
-  const buttonText = React.useMemo(
-    () => isLoading ? 'Activating...' : 'Activate Card',
-    [isLoading]
-  );
-
   const isStatusActive = React.useMemo(
     () => currentStatus === cardStatusesConst.ACTIVE,
     [currentStatus]
@@ -65,10 +60,11 @@ const InfoAccountModal: React.FC<IInfoAccountModal> = ({
         <React.Fragment>
           <Box mb="10px">
             <Button
-              disabled={isStatusActive || isLoading}
+              text="Activate Card"
+              disabled={isStatusActive}
               type="reset"
               onClick={handleActivateCard}
-              text={buttonText}
+              isLoading={isLoading}
               isFocused={true}
             />
           </Box>

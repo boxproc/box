@@ -39,11 +39,6 @@ const RevolvingCreditIllustrationForm: React.FC<TTGeneralProductForm> = ({
 }) => {
   const [isOpenFilter, setIsOpenFilter] = React.useState(true);
 
-  const submitButtonText = React.useMemo(
-    () => isLoading ? 'Illustrate...' : 'Illustrate',
-    [isLoading]
-  );
-
   const filterButtonText = React.useMemo(
     () => isOpenFilter ? 'Hide Parameters' : 'Show Parameters',
     [isOpenFilter]
@@ -285,8 +280,8 @@ const RevolvingCreditIllustrationForm: React.FC<TTGeneralProductForm> = ({
               <Hr />
               <Flex justifyContent="flex-end" width="100%">
                 <Button
-                  text={submitButtonText}
-                  disabled={isLoading}
+                  text="Illustrate"
+                  isLoading={isLoading}
                 />
               </Flex>
             </Box>

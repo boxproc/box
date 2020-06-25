@@ -33,11 +33,6 @@ const RewardsForm: React.FC<TRewardsForm> = ({
   pristine,
   rewardApplicationConditionValue,
 }) => {
-  const buttonText = React.useMemo(
-    () => isLoading ? 'Adding...' : 'Add',
-    [isLoading]
-  );
-
   const isOnlyAmount = React.useMemo(
     () => {
       return rewardApplicationConditionValue
@@ -146,10 +141,11 @@ const RewardsForm: React.FC<TRewardsForm> = ({
         </Box>
         <Box p="8px">
           <Button
-            text={buttonText}
+            text="Add"
+            isLoading={isLoading}
             iconName={iconNamesConst.PLUS}
             classNames={['is-bordered']}
-            disabled={pristine || isLoading}
+            disabled={pristine}
           />
         </Box>
       </Flex>

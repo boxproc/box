@@ -53,16 +53,6 @@ const LoanIllustrationForm: React.FC<TLoanIllustrationForm> = ({
     [change, selectedLoanProduct, withLoanSelection]
   );
 
-  const illustrationButtonText = React.useMemo(
-    () => isIllustrationLoading ? 'Illustrate...' : 'Illustrate',
-    [isIllustrationLoading]
-  );
-
-  const conversionButtonText = React.useMemo(
-    () => isConversionLoading ? 'Convert...' : 'Convert',
-    [isConversionLoading]
-  );
-
   const isDisabledIllustrationButton = React.useMemo(
     () => withLoanSelection
       ? isDisabled || !selectedLoanProduct
@@ -213,7 +203,8 @@ const LoanIllustrationForm: React.FC<TLoanIllustrationForm> = ({
           {withConvertToLoan && (
             <Box mr="7px">
               <Button
-                text={conversionButtonText}
+                text="Convert"
+                isLoading={isConversionLoading}
                 disabled={isDisabledConversionButton || isReadOnly}
                 hint={convertToLoanHint}
                 isFocused={!isDisabledConversionButton}
@@ -222,7 +213,8 @@ const LoanIllustrationForm: React.FC<TLoanIllustrationForm> = ({
             </Box>
           )}
           <Button
-            text={illustrationButtonText}
+            text="Illustrate"
+            isLoading={isIllustrationLoading}
             disabled={isDisabledIllustrationButton}
             hint={hintText}
             onClick={handleSubmitFormIllustrate}

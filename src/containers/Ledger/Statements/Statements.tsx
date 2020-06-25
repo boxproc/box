@@ -121,7 +121,7 @@ const Statements: React.FC<IStatements> = ({
       return [
         {
           maxWidth: 50,
-          accessor: 'deleteButton',
+          accessor: 'openPdfButton',
           Cell: (cellInfo: CellInfo) => (
             <Flex
               justifyContent="center"
@@ -131,7 +131,7 @@ const Statements: React.FC<IStatements> = ({
                 iconName={iconNamesConst.FILE_PDF}
                 onClick={() => handleClickOnPdfReportButton(cellInfo.original.id)}
                 title="Open pdf statement"
-                disabled={isLoadingStatement}
+                isLoading={isLoadingStatement}
               />
             </Flex>
           ),

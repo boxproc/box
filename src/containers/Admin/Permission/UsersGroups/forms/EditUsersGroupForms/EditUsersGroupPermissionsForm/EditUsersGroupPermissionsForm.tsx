@@ -13,7 +13,6 @@ import { ISelectValue } from 'types';
 
 interface IEditGroupPermissionForm {
   uiItemsOptions: Array<ISelectValue>;
-  selectedUiItem: Array<ISelectValue>;
   currentUsersGroupId: number;
   isLoading: boolean;
   getUiItems: THandleGetUsersGroupUiItems;
@@ -29,24 +28,14 @@ const EditUsersGroupPermissionsForm: React.FC<TEditGroupPermissionForm> = ({
   addGroupPermission,
   currentUsersGroupId,
   uiItemsOptions,
-  selectedUiItem,
   isLoading,
+  pristine,
 }) => {
   React.useEffect(
     () => {
       getUiItems(currentUsersGroupId);
     },
     [getUiItems, currentUsersGroupId]
-  );
-
-  const buttonText = React.useMemo(
-    () => isLoading ? 'Adding...' : 'Add to the group',
-    [isLoading]
-  );
-
-  const isDisabledButton = React.useMemo(
-    () => !selectedUiItem || !selectedUiItem.length || isLoading,
-    [selectedUiItem, isLoading]
   );
 
   const handleSubmitForm = React.useCallback(
@@ -81,11 +70,13 @@ const EditUsersGroupPermissionsForm: React.FC<TEditGroupPermissionForm> = ({
             disabled={isLoading}
           />
         </Box>
-        <Box width={[1 / 3]} pt="27px">
+        <Box width={[1 / 3]} pt="19px">
           <Button
             iconName={iconNamesConst.PLUS}
-            text={buttonText}
-            disabled={isDisabledButton}
+            text="Add to the group"
+            disabled={pristine}
+            classNames={['is-bordered']}
+            isLoading={isLoading}
           />
         </Box>
       </Flex>

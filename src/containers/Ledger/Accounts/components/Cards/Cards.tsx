@@ -48,11 +48,11 @@ export const Cards: React.FC<IAccountCards> = ({
       {!isReadOnly && (
         <Box mt="20px" mb="10px">
           <Button
-            disabled={isOrderingCard}
-            type="reset"
+            text="Order Card"
             onClick={handleOrderAccountCard}
-            text={isOrderingCard ? 'Ordering...' : 'Order Card'}
+            isLoading={isOrderingCard}
             isFocused={true}
+            type="reset"
           />
         </Box>
       )}

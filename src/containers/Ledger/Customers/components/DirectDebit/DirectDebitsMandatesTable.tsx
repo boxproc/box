@@ -11,7 +11,7 @@ import {
   TableHeader,
   withSpinner,
 } from 'components';
-import { iconNamesConst, modalNamesConst } from 'consts';
+import { modalNamesConst } from 'consts';
 import { IWithModal, withModal } from 'HOCs';
 import {
   IDirectDebitMandate,
@@ -102,13 +102,13 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
         ),
       },
       {
-        maxWidth: 50,
-        Header: <TableHeader title="Details" />,
+        maxWidth: 75,
         Cell: (cellInfo: CellInfo) => (
-          <Flex alignItems="flex-start" p="10px 5px">
+          <Flex alignItems="flex-start" p="7px 5px">
             <Button
-              iconName={iconNamesConst.SHORT_TEXT}
-              title="Details"
+              title="View details"
+              text="Details"
+              size="10"
               type="reset"
               onClick={() => handleOpenModal(cellInfo)}
             />

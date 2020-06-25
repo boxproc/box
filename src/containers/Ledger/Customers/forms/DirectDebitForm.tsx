@@ -32,11 +32,6 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
   interfacesOptions,
   isInterfacesLoading,
 }) => {
-  const buttonText = React.useMemo(
-    () => isLoading ? 'Add...' : 'Add',
-    [isLoading]
-  );
-
   const isUSACountryCode = React.useMemo(
     () => customerCountryCode === 'USA',
     [customerCountryCode]
@@ -133,9 +128,10 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
           </Box>
           <Box pb="15px">
             <Button
-              text={buttonText}
+              text="Add"
+              isLoading={isLoading}
               iconName={iconNamesConst.PLUS}
-              disabled={pristine || isDisabled}
+              disabled={pristine}
             />
           </Box>
         </Flex>

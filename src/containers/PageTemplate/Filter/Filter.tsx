@@ -74,11 +74,6 @@ const Filter: React.FC<TFilter> = ({
   isHidden,
   isLoading,
 }) => {
-  const buttonText = React.useMemo(
-    () => isLoading ? 'Show...' : 'Show',
-    [isLoading]
-  );
-
   const username = React.useMemo(
     () => {
       const userData = storageUtil.getUserData();
@@ -190,8 +185,8 @@ const Filter: React.FC<TFilter> = ({
   );
 
   const isDisabled = React.useMemo(
-    () => invalid || !isAccessibleButton() || isLoading,
-    [isAccessibleButton, invalid, isLoading]
+    () => invalid || !isAccessibleButton(),
+    [isAccessibleButton, invalid]
   );
 
   React.useEffect(
@@ -231,7 +226,8 @@ const Filter: React.FC<TFilter> = ({
           {children}
         </Flex>
         <Button
-          text={buttonText}
+          text="Show"
+          isLoading={isLoading}
           disabled={isDisabled}
         />
       </form>

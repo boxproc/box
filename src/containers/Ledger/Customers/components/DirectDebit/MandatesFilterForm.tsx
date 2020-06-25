@@ -48,8 +48,9 @@ const MandatesFilterForm: React.FC<TMandatesFilterForm> = ({
         </Box>
         <Box ml="16px">
           <Button
-            text={isFiltering ? 'Show...' : 'Show'}
-            disabled={isFiltering || pristine}
+            text="Show"
+            isLoading={isFiltering}
+            disabled={pristine}
             isFocused={dirty}
           />
         </Box>

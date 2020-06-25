@@ -11,7 +11,6 @@ import { formErrorUtil } from 'utils';
 
 interface IEditUsersGroupMembersForm {
   activeUsersItemsOptions: Array<ISelectValue>;
-  selectedUser: ISelectValue;
   currentUsersGroupId: number;
   isLoading: boolean;
   getUsersGroupUsers: THandleUsersGroupUsers;
@@ -26,25 +25,15 @@ const EditUsersGroupMembersForm: React.FC<TEditUsersGroupMembers> = ({
   addUsersGroupMember,
   getUsersGroupUsers,
   currentUsersGroupId,
-  selectedUser,
   activeUsersItemsOptions,
   isLoading,
+  pristine,
 }) => {
   React.useEffect(
     () => {
       getUsersGroupUsers(currentUsersGroupId);
     },
     [getUsersGroupUsers, currentUsersGroupId]
-  );
-
-  const buttonText = React.useMemo(
-    () => isLoading ? 'Adding...' : 'Add to the group',
-    [isLoading]
-  );
-
-  const isDisabledButton = React.useMemo(
-    () => !selectedUser || isLoading,
-    [selectedUser, isLoading]
   );
 
   const handleSubmitForm = React.useCallback(
@@ -70,11 +59,13 @@ const EditUsersGroupMembersForm: React.FC<TEditUsersGroupMembers> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width={[1 / 2]} pb="21px">
+        <Box width={[1 / 2]} pb="15px">
           <Button
             iconName={iconNamesConst.PLUS}
-            text={buttonText}
-            disabled={isDisabledButton}
+            text="Add to the group"
+            classNames={['is-bordered']}
+            isLoading={isLoading}
+            disabled={pristine}
           />
         </Box>
       </Flex>

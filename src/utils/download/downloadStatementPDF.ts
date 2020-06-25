@@ -112,11 +112,9 @@ export const downloadStatementPDF = (data: {
     const isTransactions = id === 'transactions';
 
     if (items && items.length) {
-      const tableHead = items.length
-        && Object.keys(items[0]).map(key => formatKey(formatValue(key)));
+      const tableHead = Object.keys(items[0]).map(key => formatKey(formatValue(key)));
 
-      const tableBody = items.length
-        && items.map(item => Object.values(item));
+      const tableBody = items.map(item => Object.values(item));
 
       const startY = () => isFirstTable ? 320 : doc.previousAutoTable.finalY + 35;
 
@@ -174,8 +172,6 @@ export const downloadStatementPDF = (data: {
         );
       }
 
-      doc.autoTable(tableContent);
-
       // set titles for next tables
       if (!isFirstTable) {
         doc.setFontSize(13);
@@ -183,10 +179,12 @@ export const downloadStatementPDF = (data: {
         doc.setTextColor(theme.colors.darkGray);
         doc.text(
           30,
-          doc.previousAutoTable.pageStartY - 10,
+          doc.previousAutoTable.finalY + 26,
           title
         );
       }
+
+      doc.autoTable(tableContent);
     }
   });
 

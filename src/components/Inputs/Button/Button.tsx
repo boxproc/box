@@ -19,6 +19,7 @@ interface IButton extends IWithModal {
   hint?: string | React.ReactChild;
   iconName?: string;
   isFocused?: boolean;
+  isLoading?: boolean;
   onClick?: () => void;
   size?: string;
   text: string;
@@ -36,6 +37,7 @@ const Button: React.FC<IButton> = ({
   hint,
   iconName,
   isFocused,
+  isLoading,
   onClick,
   openModal,
   size,
@@ -75,7 +77,7 @@ const Button: React.FC<IButton> = ({
     <ButtonWrapper
       title={title}
       width={width}
-      disabled={disabled}
+      disabled={disabled || isLoading}
       type={type}
       size={size}
       hasIcon={!!iconName}
@@ -89,7 +91,7 @@ const Button: React.FC<IButton> = ({
       )}
       {text && (
         <span className="text-wrapper">
-          {text}
+          {isLoading ? `${text}...` : text}
         </span>
       )}
       {hint && (

@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
-import { formValueSelector } from 'redux-form';
 
-import { formNamesConst } from 'consts';
 import EditUsersGroupPermissionsForm from './EditUsersGroupPermissionsForm';
 
 import {
@@ -14,13 +12,10 @@ import {
   usersGroupUiItemsSelector,
 } from 'store';
 
-const formSelector = formValueSelector(formNamesConst.ADD_USERS_GROUP_PERMISSIONS);
-
 const mapStateToProps = (state: IStoreState) => ({
   isLoading: isAddingUsersGroupPermissionsSelector(state),
   currentUsersGroupId: activeItemIdSelector(state),
   uiItemsOptions: usersGroupUiItemsSelector(state),
-  selectedUiItem: formSelector(state, 'uiItems'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

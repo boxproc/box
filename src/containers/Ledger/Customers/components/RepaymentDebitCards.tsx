@@ -25,11 +25,6 @@ const RepaymentDebitCards: React.FC<IRepaymentDebitCards> = ({
   interfacesOptions,
   isInterfacesLoading,
 }) => {
-  const buttonText = React.useMemo(
-    () => isLoading ? 'Adding...' : 'Add',
-    [isLoading]
-  );
-
   return (
     <Box width="100%">
       <Flex
@@ -121,9 +116,10 @@ const RepaymentDebitCards: React.FC<IRepaymentDebitCards> = ({
         </Box>
         <Box pb="15px">
           <Button
-            text={buttonText}
+            text="Add"
+            isLoading={isLoading}
             iconName={iconNamesConst.PLUS}
-            disabled={pristine || isDisabled}
+            disabled={pristine}
           />
         </Box>
       </Flex>
