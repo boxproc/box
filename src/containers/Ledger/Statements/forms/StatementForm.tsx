@@ -4,17 +4,32 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { Button, Delimiter, Hr, InputField, NumberFormatField } from 'components';
-import { dateFormatConst, formNamesConst, maskFormatConst } from 'consts';
+import {
+  dateFormatConst,
+  formNamesConst,
+  maskFormatConst,
+  repaymentStatusConst,
+  repaymentStatusOptions,
+} from 'consts';
+import { IStatement } from 'store';
 
 interface IStatementForm {
   changeMinimumAmount: () => void;
+  initialValues: IStatement;
 }
 
 type TStatementForm = IStatementForm & InjectedFormProps<{}, IStatementForm>;
 
 const StatementForm: React.FC<TStatementForm> = ({
   changeMinimumAmount,
+  initialValues,
 }) => {
+  const isNewStatement = React.useMemo(
+    () => initialValues.repaymentStatus === repaymentStatusOptions
+      .find(el => el.value === repaymentStatusConst.NEW).label,
+    [initialValues]
+  );
+
   return (
     <form>
       <Box mx="-8px">
@@ -130,13 +145,15 @@ const StatementForm: React.FC<TStatementForm> = ({
               disabled={true}
             />
           </Box>
-          <Box p="8px">
-            <Button
-              text="Change minimum amount"
-              type="reset"
-              onClick={changeMinimumAmount}
-            />
-          </Box>
+          {isNewStatement && (
+            <Box p="8px">
+              <Button
+                text="Change minimum amount"
+                type="reset"
+                onClick={changeMinimumAmount}
+              />
+            </Box>
+          )}
         </Flex>
       </Box>
     </form>

@@ -1,4 +1,3 @@
-import { successResponseMock } from 'consts';
 import { apiClientService } from 'services';
 // import {
 //   cancelDirectDebitMandateMock,
@@ -19,7 +18,6 @@ import {
   IRepaymentDebitCardData,
 } from './types';
 
-import { throttleUtil } from 'utils';
 // import { directDebitAccountMandatesMock, directDebitMandatesMock } from './mock';
 
 // import { throttleUtil } from 'utils';
@@ -128,13 +126,6 @@ export const changeDirectDebitMandate = (data: {
   // );
   return apiClientService.post(path, { data: { id: data.id } });
 };
-
-/**
- * Make default direct debit mandate API
- */
-export const makeDefaultDirectDebitMandate = (accountId: number) =>
-  throttleUtil.getDataAfter(successResponseMock, 100);
-// apiClientService.post('', { data: { account_id: accountId } });
 
 /**
  * Get customer currency limits API

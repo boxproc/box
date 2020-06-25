@@ -32,6 +32,7 @@ export const statementsMock: IStatementsData = {
       repayment_minimum_amount_due: 1,
       repayment_status: 'R',
       statement_date: '07/10/2019',
+      repayment_date: '27/10/2019',
     },
     {
       account_alias_additional: 'test',
@@ -57,6 +58,7 @@ export const statementsMock: IStatementsData = {
       repayment_minimum_amount_due: 2,
       repayment_status: 'R',
       statement_date: '07/10/2019',
+      repayment_date: '29/10/2019',
     },
   ],
 };

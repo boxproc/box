@@ -5,45 +5,37 @@ import { Box, Flex } from '@rebass/grid';
 
 import { Hr, InputField, NumberFormatField, OkCancelButtons } from 'components';
 import { dateFormatConst, formNamesConst, maskFormatConst } from 'consts';
+import { THandleChangeMinimumRepayment } from 'store';
 import { formErrorUtil } from 'utils';
 
 interface IMinimumRepaymentForm {
+  changeMinimumRepayment: THandleChangeMinimumRepayment;
+  isLoading: boolean;
   onCancel: () => void;
+  outstandingBalance: number;
+  validateAmount: (value: string | number) => void;
 }
 
 type TMinimumRepaymentForm = IMinimumRepaymentForm & InjectedFormProps<{}, IMinimumRepaymentForm>;
 
 const MinimumRepaymentForm: React.FC<TMinimumRepaymentForm> = ({
+  changeMinimumRepayment,
   handleSubmit,
-  pristine,
+  isLoading,
   onCancel,
+  outstandingBalance,
+  pristine,
+  validateAmount,
 }) => {
-  const rangeValue = React.useCallback(
-    (value: string | number) => {
-      if (!value) {
-        return undefined;
-      }
-
-      if (Number(value) < 10) {
-        return 'Must be more than minimum amount';
-      } else if (Number(value) > 100) {
-        return 'Cannot exceed outstanding balance';
-      } else {
-        return undefined;
-      }
-    },
-    []
-  );
-
   const handleSubmitForm = React.useCallback(
-    handleSubmit(() => console.log('---')),
-    [handleSubmit]
+    handleSubmit(changeMinimumRepayment),
+    [handleSubmit, changeMinimumRepayment]
   );
 
   return (
     <form onSubmit={handleSubmitForm}>
       <Flex alignItems="flex-end" mx="-8px">
-        <Box width="195px" p="8px">
+        <Box width="185px" p="8px">
           <Field
             id="minimumRepayment"
             name="minimumRepayment"
@@ -52,14 +44,16 @@ const MinimumRepaymentForm: React.FC<TMinimumRepaymentForm> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             label="Minimum amount due repayment"
-            hint="Cannot exceed outstanding balance"
+            hint={`Cannot exceed outstanding balance: ${outstandingBalance}`}
+            disabled={isLoading}
             validate={[
               formErrorUtil.isRequired,
-              rangeValue,
+              formErrorUtil.isPositive,
+              validateAmount,
             ]}
           />
         </Box>
-        <Box width="110px" p="8px">
+        <Box width="120px" p="8px">
           <Field
             id="repaymentDate"
             name="repaymentDate"
@@ -68,13 +62,17 @@ const MinimumRepaymentForm: React.FC<TMinimumRepaymentForm> = ({
             placeholder={dateFormatConst.DATE}
             mask={maskFormatConst.DATE}
             disabled={true}
+            validate={[
+              formErrorUtil.isRequired,
+            ]}
           />
         </Box>
       </Flex>
       <Hr />
       <OkCancelButtons
         okText="Change"
-        disabledOk={pristine}
+        disabledOk={pristine || isLoading}
+        disabledCancel={isLoading}
         onCancel={onCancel}
       />
     </form>

@@ -33,6 +33,7 @@ export interface IStatementData {
   repayment_type?: string;
   start_date?: string;
   statement_date: string;
+  repayment_date: string;
 }
 
 export interface IStatementsData {
@@ -66,6 +67,17 @@ export interface IStatement {
   repaymentType?: string;
   startDate?: string;
   statementDate: string;
+  repaymentDate: string;
+}
+
+export interface IChangeMinimumAmountRequest {
+  statementId: number;
+  minimumRepayment: number;
+}
+
+export interface IChangeMinimumAmountRequestData {
+  statement_id: number;
+  repayment_minimum_amount_due: number;
 }
 
 /**

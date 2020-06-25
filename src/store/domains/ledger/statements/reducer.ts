@@ -30,6 +30,17 @@ const statementsReducer = (state = statementsInitialState, action: TStatementsAc
     case ActionTypeKeys.GET_STATEMENT_APRS_FULFILLED:
       return state.set('statementAprs', action.payload.statement_aprs);
 
+    case ActionTypeKeys.CHANGE_MINIMUM_REPAYMENT_FULFILLED:
+      const statementInd = state.statements.findIndex(el => el.id === action.meta.statement_id);
+      const statements = state.statements.asMutable();
+
+      statements[statementInd] = {
+        ...statements[statementInd],
+        repayment_minimum_amount_due: action.meta.repayment_minimum_amount_due,
+      };
+
+      return state.set('statements', statements);
+
     case ActionTypeKeys.RESET_STATEMENTS:
       return state = statementsInitialState;
 

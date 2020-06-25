@@ -1,3 +1,4 @@
+// import { successResponseMock } from 'consts';
 import { apiClientService } from 'services';
 
 import { ILedgerId } from './../customers';
@@ -7,7 +8,11 @@ import { ILedgerId } from './../customers';
 //   statementsMock,
 //   statementTransMock,
 // } from './mock';
-import { IStatementsFilterToSend, IStatementTransReq } from './types';
+import {
+  IChangeMinimumAmountRequestData,
+  IStatementsFilterToSend,
+  IStatementTransReq,
+} from './types';
 
 // import { throttleUtil } from 'utils';
 
@@ -55,3 +60,10 @@ export const getAccountStatementAprs = (statementId: number) =>
   apiClientService.post('ui/ledger/accounts/get_statement_aprs', {
     data: { statement_id: statementId },
   });
+
+/**
+ * Change minimum repayment API
+ */
+export const changeMinimumRepayment = (data: IChangeMinimumAmountRequestData) =>
+  // throttleUtil.getDataAfter(successResponseMock, 500);
+  apiClientService.put('/ui/ledger/statements/minimum_repayment', { data });

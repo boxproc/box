@@ -99,17 +99,25 @@ export const hierarchyElemsStatusOptions = [
  */
 
 export enum repaymentStatusConst {
-  NOT_REPAID = 'N',
-  REPAID_IN_FULL = 'R',
-  REPAID_PARTIALLY = 'P',
+  REPAYMENT_DUE = 'D',
+  REPAYMENT_OVERDUE = 'A',
+  PARTIAL_REPAYMENT = 'P',
+  LATE_PAYMENT_RECEIVED = 'L',
+  MINIMUM_REPAID = 'M',
+  REPAID_IN_FULL = 'F',
   OVERPAID = 'O',
+  NEW = 'N',
 }
 
 export const repaymentStatusOptions = [
-  { value: repaymentStatusConst.NOT_REPAID, label: 'Not repaid' },
+  { value: repaymentStatusConst.REPAYMENT_DUE, label: 'Repayment due' },
+  { value: repaymentStatusConst.REPAYMENT_OVERDUE, label: 'Repayment overdue' },
+  { value: repaymentStatusConst.PARTIAL_REPAYMENT, label: 'Partial repayment' },
+  { value: repaymentStatusConst.LATE_PAYMENT_RECEIVED, label: 'Late payment received' },
+  { value: repaymentStatusConst.MINIMUM_REPAID, label: 'Minimum repaid' },
   { value: repaymentStatusConst.REPAID_IN_FULL, label: 'Repaid in full' },
-  { value: repaymentStatusConst.REPAID_PARTIALLY, label: 'Repaid partially' },
   { value: repaymentStatusConst.OVERPAID, label: 'Overpaid' },
+  { value: repaymentStatusConst.NEW, label: 'New' },
 ];
 
 /**

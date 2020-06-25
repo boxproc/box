@@ -1,6 +1,7 @@
-import { TApiResponse } from 'types';
+import { IResponseStatus, TApiResponse } from 'types';
 import {
   IAccountStatementsData,
+  IChangeMinimumAmountRequestData,
   IStatementAprsData,
   IStatementsData,
   IStatementTransactionsData,
@@ -31,6 +32,11 @@ export enum ActionTypeKeys {
   GET_STATEMENT_APRS = 'statements/GET_STATEMENT_APRS',
   GET_STATEMENT_APRS_FULFILLED = 'statements/GET_STATEMENT_APRS_FULFILLED',
   GET_STATEMENT_APRS_REJECTED = 'statements/GET_STATEMENT_APRS_REJECTED',
+
+  /** Change minimum repayment action type keys */
+  CHANGE_MINIMUM_REPAYMENT = 'statements/CHANGE_MINIMUM_REPAYMENT',
+  CHANGE_MINIMUM_REPAYMENT_FULFILLED = 'statements/CHANGE_MINIMUM_REPAYMENT_FULFILLED',
+  CHANGE_MINIMUM_REPAYMENT_REJECTED = 'statements/CHANGE_MINIMUM_REPAYMENT_REJECTED',
 
   /** Reset statements action type keys */
   RESET_STATEMENTS = 'statements/RESET_STATEMENTS',
@@ -116,6 +122,23 @@ export interface IGetStatementAprsRejectedAction {
   readonly type: ActionTypeKeys.GET_STATEMENT_APRS_REJECTED;
 }
 
+/** Change minimum repayment action interfaces */
+export interface IChangeMinimumRepaymentAction {
+  readonly payload: Promise<object>;
+  readonly type: ActionTypeKeys.CHANGE_MINIMUM_REPAYMENT;
+}
+
+export interface IChangeMinimumRepaymentFulfilledAction {
+  readonly payload: IResponseStatus;
+  readonly type: ActionTypeKeys.CHANGE_MINIMUM_REPAYMENT_FULFILLED;
+  readonly meta: IChangeMinimumAmountRequestData;
+}
+
+export interface IChangeMinimumRepaymentRejectedAction {
+  readonly payload: TApiResponse;
+  readonly type: ActionTypeKeys.CHANGE_MINIMUM_REPAYMENT_REJECTED;
+}
+
 /** Reset statements action interfaces */
 export interface IResetStatementsAction {
   readonly type: ActionTypeKeys.RESET_STATEMENTS;
@@ -127,4 +150,5 @@ export type TStatementsAction =
   | IFilterStatementsByIdFulfilledAction
   | IGetAccountStatementsFulfilledAction
   | IGetStatementAprsFulfilledAction
+  | IChangeMinimumRepaymentFulfilledAction
   | IResetStatementsAction;

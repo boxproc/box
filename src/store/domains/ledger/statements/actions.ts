@@ -1,18 +1,19 @@
 import { push } from 'connected-react-router';
 import { getFormValues } from 'redux-form';
 
-import { basePath, formNamesConst, uiItemsConst } from 'consts';
+import { basePath, formNamesConst, modalNamesConst, uiItemsConst } from 'consts';
 
 import { activeItemIdSelector, openModal, setIsOpenFilter } from 'store';
 import { ILedgerId } from './../customers';
 
 import {
   ActionTypeKeys,
+  IChangeMinimumRepaymentAction,
   IFilterStatementsAction,
   IFilterStatementsByIdAction,
   IGetAccountStatementsAction,
   IGetStatementAprsAction,
-  IGetStatementTransAction
+  IGetStatementTransAction,
 } from './actionTypes';
 
 import * as api from './api';
@@ -24,15 +25,20 @@ import {
 } from './selectors';
 
 import {
+  IChangeMinimumAmountRequest,
+  IChangeMinimumAmountRequestData,
   IStatementsFilterToSend,
   IStatementTransReq,
 } from './types';
 
 import {
+  prepareChangeMinimumRepaymentReq,
   prepareFilterToSend,
   prepareStatementAprsForReport,
   prepareStatementTransactionsForReport,
 } from './utils';
+
+import { closeModal } from 'store/domains/modals';
 
 import { Thunk } from 'types';
 import { cookiesUtil, downloadUtil, errorDecoratorUtil, storageUtil } from 'utils';
@@ -168,6 +174,34 @@ export const handleGetStatementAprs: THandleGetStatementAprs = (statementId, ope
   };
 
 /**
+ * Change minimum repayment action
+ */
+
+export type TChangeMinimumRepayment = (data: IChangeMinimumAmountRequestData) =>
+  IChangeMinimumRepaymentAction;
+export type THandleChangeMinimumRepayment = (data: Partial<IChangeMinimumAmountRequest>) =>
+  Thunk<void>;
+
+export const changeMinimumRepayment: TChangeMinimumRepayment = data => ({
+  type: ActionTypeKeys.CHANGE_MINIMUM_REPAYMENT,
+  payload: api.changeMinimumRepayment(data),
+  meta: data,
+});
+
+export const handleChangeMinimumRepayment: THandleChangeMinimumRepayment = data =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const preparedData = prepareChangeMinimumRepaymentReq(data);
+
+        await dispatch(changeMinimumRepayment(preparedData));
+        dispatch(closeModal(modalNamesConst.MINIMUM_REPAYMENT));
+      },
+      dispatch
+    );
+  };
+
+/**
  * Download statement action
  */
 
@@ -228,5 +262,5 @@ export const handleDownloadStatement: THandleDownloadStatement = () =>
 export type TResetStatements = () => void;
 
 export const resetStatements: TResetStatements = () => ({
-  type: ActionTypeKeys.FILTER_STATEMENTS,
+  type: ActionTypeKeys.RESET_STATEMENTS,
 });

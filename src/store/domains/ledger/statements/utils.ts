@@ -2,6 +2,8 @@ import { repaymentStatusOptions, repaymentTypesOptions } from 'consts';
 
 import {
   IAccountStatementData,
+  IChangeMinimumAmountRequest,
+  IChangeMinimumAmountRequestData,
   IStatementApr,
   IStatementAprData,
   IStatementData,
@@ -27,6 +29,7 @@ export const prepareStatementToRender = (
     first_transaction_id,
     last_transaction_id,
     statement_date,
+    repayment_date,
     balance_open,
     balance_close,
     repayment_minimum_amount_due,
@@ -67,6 +70,7 @@ export const prepareStatementToRender = (
     statement: {
       id,
       statementDate: statement_date,
+      repaymentDate: repayment_date,
       productName: product_name,
       firstTransactionId: first_transaction_id,
       lastTransactionId: last_transaction_id,
@@ -250,4 +254,17 @@ export const prepareStatementAprsForReport = (data: Array<IStatementAprData>) =>
       accruedInterest: null,
     }];
   }
+};
+
+export const prepareChangeMinimumRepaymentReq = (data: Partial<IChangeMinimumAmountRequest>):
+  IChangeMinimumAmountRequestData => {
+  if (!data) {
+    return null;
+  }
+
+  const { statementId, minimumRepayment } = data;
+  return {
+    statement_id: statementId,
+    repayment_minimum_amount_due: Number(minimumRepayment),
+  };
 };

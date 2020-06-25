@@ -175,3 +175,7 @@ export const isTransArsLoadingSelector = createLoadingSelector([
   ActionTypeKeys.GET_STATEMENT_TRANSACTIONS,
   ActionTypeKeys.GET_STATEMENT_APRS,
 ]);
+
+export const isChangingMinimumRepaymentSelector = createLoadingSelector([
+  ActionTypeKeys.CHANGE_MINIMUM_REPAYMENT,
+]);
