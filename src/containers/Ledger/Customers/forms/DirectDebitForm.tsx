@@ -37,6 +37,11 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
     [customerCountryCode]
   );
 
+  const isGBRCountryCode = React.useMemo(
+    () => customerCountryCode === 'GBR',
+    [customerCountryCode]
+  );
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => {
       addDirectDebitAccount({
@@ -71,7 +76,7 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
               id="accountField2"
               name="accountField2"
               component={InputField}
-              label="Branch code"
+              label={isGBRCountryCode ? 'Sort code' : 'Branch code'}
               placeholder="Enter code"
               isNumber={true}
               disabled={isDisabled}
