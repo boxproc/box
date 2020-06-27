@@ -5,5 +5,6 @@ export * from './products/services';
 export * from './products/generalLedger';
 export * from './products/illustration';
 export * from './products/aprsFeesRewards';
+export * from './products/repayment';
 export * from './products/repaymentHierarchy';
 export * from './types';

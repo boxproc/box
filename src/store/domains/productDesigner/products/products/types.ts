@@ -46,6 +46,8 @@ export interface IProductData extends IProductPlainData {
   statement_cycle_type_id: number | string;
   statement_cycle_type_name?: string;
   statement_cycle_parameter: number;
+  repayment_clearing_nr_days?: number;
+  direct_debit_submission_nr_days?: number;
 }
 
 export interface IProductsDataResp {

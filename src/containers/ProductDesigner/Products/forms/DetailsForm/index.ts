@@ -4,7 +4,7 @@ import { formValueSelector } from 'redux-form';
 
 import { formNamesConst } from 'consts';
 
-import ProductDetailsForm from './ProductDetailsForm';
+import DetailsForm from './DetailsForm';
 
 import {
   activeItemIdSelector,
@@ -37,4 +37,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProductDetailsForm);
+)(DetailsForm);

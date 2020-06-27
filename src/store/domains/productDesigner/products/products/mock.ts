@@ -33,6 +33,8 @@ export const productsMock: IProductDataResp = {
     statement_cycle_type_id: 1,
     statement_cycle_type_name: 'Test cycle',
     statement_cycle_parameter: 1,
+    repayment_clearing_nr_days: 5,
+    direct_debit_submission_nr_days: 3,
   },
 };
 
@@ -64,6 +66,8 @@ export const productsFilteredMock: IProductsDataResp = {
       statement_cycle_type_id: 1,
       statement_cycle_type_name: 'Test cycle',
       statement_cycle_parameter: 1,
+      repayment_clearing_nr_days: 6,
+      direct_debit_submission_nr_days: 4,
     },
     {
       currency_code: 'AFN',
@@ -91,6 +95,8 @@ export const productsFilteredMock: IProductsDataResp = {
       statement_cycle_type_id: 1,
       statement_cycle_type_name: 'Test cycle',
       statement_cycle_parameter: 1,
+      repayment_clearing_nr_days: 7,
+      direct_debit_submission_nr_days: 5,
     },
   ],
 };

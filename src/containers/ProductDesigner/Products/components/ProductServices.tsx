@@ -4,14 +4,11 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { Delimiter, SelectField } from 'components';
-import { THandleGetProductServices } from 'store';
 import { ISelectValue } from 'types';
 
 interface IProductServices {
   servicesEndpointsOptions: Array<ISelectValue>;
   servicesInterfacesOptions: Array<ISelectValue>;
-  getProductServices: THandleGetProductServices;
-  currentInstitutionId: number;
   isLoadingInterfaces: boolean;
   isLoadingEndpoints: boolean;
   isReadOnly: boolean;
@@ -20,19 +17,10 @@ interface IProductServices {
 const ProductServices: React.FC<IProductServices> = ({
   servicesInterfacesOptions,
   servicesEndpointsOptions,
-  getProductServices,
-  currentInstitutionId,
   isLoadingInterfaces,
   isLoadingEndpoints,
   isReadOnly,
 }) => {
-  React.useEffect(
-    () => {
-      getProductServices(currentInstitutionId);
-    },
-    [getProductServices, currentInstitutionId]
-  );
-
   return (
     <Box mx="-8px">
       <Flex

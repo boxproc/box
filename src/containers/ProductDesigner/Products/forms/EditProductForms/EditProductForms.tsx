@@ -3,11 +3,12 @@ import React from 'react';
 import { Tabs, TabsPanel } from 'components';
 import {
   AuxiliaryCountersForm,
+  DetailsForm,
   GeneralLedgerFrom,
   GeneralProductForm,
-  ProductDetailsForm,
   ProductRulesForm,
-  ProductServicesForm,
+  RepaymentForm,
+  ServicesForm,
 } from 'containers/ProductDesigner/Products/forms';
 
 import {
@@ -79,7 +80,7 @@ const EditProductForms: React.FC<IEditProductForms> = ({
         hintIfDisabled="Select Product Type"
         withConfirmation={isAnyFormDirty}
       >
-        <ProductDetailsForm
+        <DetailsForm
           productType={currentProductType}
           onCancel={onCancel}
           isReadOnly={isReadOnly}
@@ -130,6 +131,14 @@ const EditProductForms: React.FC<IEditProductForms> = ({
           isReadOnly={isReadOnly}
         />
       </TabsPanel>
+      {(isRevolvingCreditType || isLoanType) && (
+        <TabsPanel title="Repayment">
+          <RepaymentForm
+            onCancel={onCancel}
+            isReadOnly={isReadOnly}
+          />
+        </TabsPanel>
+      )}
       {isRevolvingCreditType && (
         <TabsPanel title="Repayment Hierarchy">
           <RepaymentHierarchyTable />
@@ -139,7 +148,7 @@ const EditProductForms: React.FC<IEditProductForms> = ({
         title="Services"
         withConfirmation={isAnyFormDirty}
       >
-        <ProductServicesForm
+        <ServicesForm
           onCancel={onCancel}
           isReadOnly={isReadOnly}
         />

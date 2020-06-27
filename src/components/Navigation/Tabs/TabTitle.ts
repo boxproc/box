@@ -7,7 +7,7 @@ interface ITabTitle {
 
 export const TabTitle = styled.div<ITabTitle>`
   position: relative;
-  padding: 8px 15px;
+  padding: 8px 10px;
   text-transform: uppercase;
   font-weight: 500;
   cursor: ${({ isDisabled }) => isDisabled ? 'auto' : 'pointer'};

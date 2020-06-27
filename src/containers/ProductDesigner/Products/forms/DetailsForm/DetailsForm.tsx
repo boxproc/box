@@ -10,7 +10,7 @@ import {
 } from 'store';
 import { ISelectValue } from 'types';
 
-interface IProductDetailsForm extends ISpinner {
+interface IDetailsForm extends ISpinner {
   onCancel?: () => void;
   productType: string;
   getProductDetails: THandleGetProductDetails;
@@ -21,9 +21,9 @@ interface IProductDetailsForm extends ISpinner {
   currentProductId: number;
 }
 
-type TProductDetailsForm = IProductDetailsForm & InjectedFormProps<{}, IProductDetailsForm>;
+type TDetailsForm = IDetailsForm & InjectedFormProps<{}, IDetailsForm>;
 
-const ProductDetailsForm: React.FC<TProductDetailsForm> = ({
+const DetailsForm: React.FC<TDetailsForm> = ({
   handleSubmit,
   onCancel,
   productType,
@@ -69,8 +69,8 @@ const ProductDetailsForm: React.FC<TProductDetailsForm> = ({
   );
 };
 
-export default reduxForm<{}, IProductDetailsForm>({
+export default reduxForm<{}, IDetailsForm>({
   form: formNamesConst.PRODUCT_DETAILS,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(withSpinner()(ProductDetailsForm));
+})(withSpinner()(DetailsForm));

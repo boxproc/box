@@ -43,6 +43,7 @@ const ErrorWrapper = styled.div`
 interface IInputField extends Partial<BaseFieldProps> {
   focusOnLabelClick?: boolean;
   hint?: string | React.ReactChild;
+  hintPosition?: 'top' | 'right' | 'bottom' | 'left';
   id?: string;
   invalid?: boolean;
   isRequired?: boolean;
@@ -67,6 +68,7 @@ export type FieldProps = WrappedFieldProps & IInputField;
 const InputWrapper: React.FC<IInputWrapper & FieldProps> = ({
   focusOnLabelClick = false,
   hint,
+  hintPosition = 'top',
   id,
   invalid: defaultInvalid,
   isRequired,
@@ -105,7 +107,11 @@ const InputWrapper: React.FC<IInputWrapper & FieldProps> = ({
               {label}
               {isRequired && (<span className="is-red">*</span>)}
             </span>
-            {hint && (<Hint text={hint} position="top" />)}
+            {hint && (
+              <Hint
+                text={hint}
+                position={hintPosition}
+              />)}
           </Flex>
         </Label>
       )}

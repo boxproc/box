@@ -24,6 +24,7 @@ export enum formNamesConst {
   PRODUCT_REWARDS = 'productRewardsForm',
   PRODUCT_RULES = 'productRulesForm',
   PRODUCT_SERVICES = 'productServicesForm',
+  PRODUCT_REPAYMENT = 'productRepaymentForm',
 
   ADD_USERS_GROUP = 'addUsersGroupForm',
   ADD_USERS_GROUP_PERMISSIONS = 'addUsersGroupPermissionsForm',

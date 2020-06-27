@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
-import ProductServicesForm from './ProductServicesForm';
+import ServicesForm from './ServicesForm';
 
 import {
   activeItemIdSelector,
@@ -39,4 +39,4 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(ProductServicesForm);
+)(ServicesForm);

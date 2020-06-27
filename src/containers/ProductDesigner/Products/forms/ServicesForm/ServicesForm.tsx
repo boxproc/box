@@ -8,35 +8,42 @@ import { THandleGetProductServices, THandleUpdateProductServices } from 'store';
 import { ISelectValue } from 'types';
 
 interface IServicesForm extends ISpinner {
-  onCancel?: () => void;
-  currentUsersGroupId: number;
   currentInstitutionId: number;
-  updateProductServices: THandleUpdateProductServices;
+  currentUsersGroupId: number;
+  getProductServices: THandleGetProductServices;
+  isLoadingEndpoints: boolean;
+  isLoadingInterfaces: boolean;
+  isReadOnly: boolean;
+  onCancel?: () => void;
   servicesEndpointsOptions: Array<ISelectValue>;
   servicesInterfacesOptions: Array<ISelectValue>;
-  getProductServices: THandleGetProductServices;
-  isLoadingInterfaces: boolean;
-  isLoadingEndpoints: boolean;
-  isReadOnly: boolean;
+  updateProductServices: THandleUpdateProductServices;
 }
 
 type TServicesForm = IServicesForm & InjectedFormProps<{}, IServicesForm>;
 
 const ServicesForm: React.FC<TServicesForm> = ({
-  currentUsersGroupId,
   currentInstitutionId,
-  updateProductServices,
+  currentUsersGroupId,
+  dirty,
+  getProductServices,
   handleSubmit,
+  isLoadingEndpoints,
+  isLoadingInterfaces,
+  isReadOnly,
   onCancel,
+  pristine,
   servicesEndpointsOptions,
   servicesInterfacesOptions,
-  getProductServices,
-  isLoadingInterfaces,
-  isLoadingEndpoints,
-  dirty,
-  pristine,
-  isReadOnly,
+  updateProductServices,
 }) => {
+  React.useEffect(
+    () => {
+      getProductServices(currentInstitutionId);
+    },
+    [getProductServices, currentInstitutionId]
+  );
+
   const handleSubmitForm = React.useCallback(
     handleSubmit(data => updateProductServices({
       ...data,
@@ -50,10 +57,8 @@ const ServicesForm: React.FC<TServicesForm> = ({
       <Services
         servicesEndpointsOptions={servicesEndpointsOptions}
         servicesInterfacesOptions={servicesInterfacesOptions}
-        getProductServices={getProductServices}
         isLoadingInterfaces={isLoadingInterfaces}
         isLoadingEndpoints={isLoadingEndpoints}
-        currentInstitutionId={currentInstitutionId}
         isReadOnly={isReadOnly}
       />
       <Hr />
