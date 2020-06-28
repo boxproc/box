@@ -30,6 +30,7 @@ interface IGeneralProductForm extends ISpinner {
   onCancel?: () => void;
   statementCycleTypeValue: ISelectValue;
   updateProduct: THandleUpdateProduct;
+  initialValues: any;
 }
 
 type TGeneralProductForm = IGeneralProductForm & InjectedFormProps<{}, IGeneralProductForm>;
@@ -50,6 +51,7 @@ const GeneralProductForm: React.FC<TGeneralProductForm> = ({
   pristine,
   statementCycleTypeValue,
   updateProduct,
+  initialValues,
 }) => {
   React.useEffect(
     () => {
@@ -126,5 +128,5 @@ const GeneralProductForm: React.FC<TGeneralProductForm> = ({
 export default reduxForm<{}, IGeneralProductForm>({
   form: formNamesConst.GENERAL_PRODUCT,
   destroyOnUnmount: true,
-  enableReinitialize: false,
+  enableReinitialize: true,
 })(withSpinner()(GeneralProductForm));
