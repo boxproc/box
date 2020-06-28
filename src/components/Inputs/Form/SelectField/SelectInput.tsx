@@ -1,10 +1,10 @@
 import React from 'react';
 
 import Select, { components } from 'react-select';
-import { IndicatorProps } from 'react-select/lib/components/indicators';
-import { MultiValueRemoveProps } from 'react-select/lib/components/MultiValue';
-import { OptionProps } from 'react-select/lib/components/Option';
-import { Props as SelectProps } from 'react-select/lib/Select';
+import { IndicatorProps } from 'react-select/src/components/indicators';
+import { MultiValueRemoveProps } from 'react-select/src/components/MultiValue';
+import { OptionProps } from 'react-select/src/components/Option';
+import { Props as SelectProps } from 'react-select/src/Select';
 
 import styled from 'theme';
 import { scrollbarCss } from 'theme/styles';

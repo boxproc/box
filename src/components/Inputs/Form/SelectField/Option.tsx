@@ -1,5 +1,5 @@
 import React from 'react';
-import { OptionProps } from 'react-select/lib/components/Option';
+import { OptionProps } from 'react-select/src/components/Option';
 
 import { Box, Flex } from '@rebass/grid';
 

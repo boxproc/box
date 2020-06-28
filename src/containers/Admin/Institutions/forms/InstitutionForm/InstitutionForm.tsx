@@ -132,7 +132,7 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
           </Box>
           <React.Fragment>
             <Hr />
-            <Box width={[3 / 5]} p="8px">
+            <Box width={[2 / 3]} p="8px">
               <Field
                 id="baseCurrency"
                 name="baseCurrency"

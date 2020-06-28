@@ -131,11 +131,12 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
               validate={[formErrorUtil.isRequired]}
             />
           </Box>
-          <Box pb="15px">
+          <Box pb="8px">
             <Button
               text="Add"
               isLoading={isLoading}
               iconName={iconNamesConst.PLUS}
+              classNames={['is-bordered']}
               disabled={pristine}
             />
           </Box>
