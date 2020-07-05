@@ -9,7 +9,6 @@ import {
   currentInterfaceNameSelector,
   currentInterfaceSelector,
   IStoreState,
-  userInstitutionsOptionsSelector,
 } from 'store';
 
 const dirty = isDirty(formNamesConst.INTERFACE);
@@ -17,7 +16,6 @@ const dirty = isDirty(formNamesConst.INTERFACE);
 const mapStateToProps = (state: IStoreState) => ({
   isFormDirty: dirty(state),
   currentInterface: currentInterfaceSelector(state),
-  institutionsOptions: userInstitutionsOptionsSelector(state),
   currentInterfaceName: currentInterfaceNameSelector(state),
 });
 

@@ -17,9 +17,10 @@ import { ISelectValue } from 'types';
 
 interface IInterfaceForm extends ISpinner {
   interfaceTypesOptions: Array<ISelectValue>;
+  institutionsOptions: Array<ISelectValue>;
   currentInterfaceName?: string;
   currentInterfaceId: number;
-  isReadOnly: boolean;
+  isReadOnly?: boolean;
   isLoadingTypesSelector: boolean;
   isEditMode?: boolean;
   updateInterface: THandleUpdateInterface;
@@ -45,6 +46,7 @@ const InterfaceForm: React.FC<TInterfaceForm> = ({
   getDictionaryInterfaceTypes,
   isLoadingTypesSelector,
   interfaceTypesOptions,
+  institutionsOptions,
   currentInterfaceId,
 }) => {
   React.useEffect(
@@ -78,6 +80,7 @@ const InterfaceForm: React.FC<TInterfaceForm> = ({
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <InterfaceFields
         interfaceTypesOptions={interfaceTypesOptions}
+        institutionsOptions={institutionsOptions}
         isEditMode={isEditMode}
         isLoadingTypesSelector={isLoadingTypesSelector}
         isReadOnly={isReadOnly}

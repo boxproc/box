@@ -6,10 +6,7 @@ import { IWithModal, withModal } from 'HOCs';
 import { modalNamesConst } from 'consts';
 import { InterfaceForm } from './../../forms';
 
-import { ISelectValue } from 'types';
-
 interface IAddInterfaceModal extends IWithModal {
-  institutionsOptions: Array<ISelectValue>;
   isFormDirty: boolean;
 }
 
@@ -17,7 +14,6 @@ const modalName = modalNamesConst.ADD_INTERFACE;
 
 const AddInterfaceModal: React.FC<IAddInterfaceModal> = ({
   closeModal,
-  institutionsOptions,
   isFormDirty,
 }) => {
   const handleOnCancel = React.useCallback(
@@ -33,10 +29,7 @@ const AddInterfaceModal: React.FC<IAddInterfaceModal> = ({
       withCloseConfirmation={isFormDirty}
       isBluredBackdrop={true}
     >
-      <InterfaceForm
-        institutionsOptions={institutionsOptions}
-        onCancel={handleOnCancel}
-      />
+      <InterfaceForm onCancel={handleOnCancel} />
     </Modal>
   );
 };

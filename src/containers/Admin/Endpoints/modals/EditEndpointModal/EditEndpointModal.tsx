@@ -7,22 +7,19 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 import { EndpointForm } from './../../forms';
 
 import { IEndpointDetails } from 'store';
-import { ISelectValue } from 'types';
 
-interface IEditAccountModal extends IWithModal {
+interface IEditEndpointModal extends IWithModal {
   currentEndpoint: Partial<IEndpointDetails>;
   currentEndpointName: string;
-  institutionsOptions: Array<ISelectValue>;
   isFormDirty: boolean;
 }
 
 const modalName = modalNamesConst.EDIT_ENDPOINT;
 
-const EditAccountModal: React.FC<IEditAccountModal> = ({
+const EditEndpointModal: React.FC<IEditEndpointModal> = ({
   closeModal,
   currentEndpoint,
   currentEndpointName,
-  institutionsOptions,
   isFormDirty,
   isReadOnly,
 }) => {
@@ -52,7 +49,6 @@ const EditAccountModal: React.FC<IEditAccountModal> = ({
         onCancel={handleOnCancel}
         isEditMode={true}
         initialValues={currentEndpoint}
-        institutionsOptions={institutionsOptions}
         currentEndpointName={currentEndpointName}
         isReadOnly={isReadOnly}
       />
@@ -60,4 +56,4 @@ const EditAccountModal: React.FC<IEditAccountModal> = ({
   );
 };
 
-export default withModal(EditAccountModal);
+export default withModal(EditEndpointModal);

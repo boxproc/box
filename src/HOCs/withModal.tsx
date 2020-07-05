@@ -6,8 +6,8 @@ import {
   closeAllModals,
   closeModal,
   isReadOnlySelector,
-  openModal,
   IStoreState,
+  openModal,
   TCloseAllModals,
   TCloseModal,
   TOpenModal,
@@ -42,7 +42,7 @@ export const withModal = <OriginProps extends {}>(
     dispatch
   );
 
-  return connect(
+  return connect<Partial<IWithModal>, Partial<IWithModal>, any, IStoreState>(
     mapStateToProps,
     mapDispatchToProps
   )(WithModal);

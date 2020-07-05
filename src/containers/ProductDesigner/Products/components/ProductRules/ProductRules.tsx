@@ -1,5 +1,5 @@
-import React from 'react';
-import { Field } from 'redux-form';
+import React, { ChangeEvent } from 'react';
+import { EventWithDataHandler, Field } from 'redux-form';
 import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
@@ -70,7 +70,7 @@ interface IProductRules {
   isEventsLoading: boolean;
   isLoading: boolean;
   isReadOnly: boolean;
-  onChangeValues: () => void;
+  onChangeValues: EventWithDataHandler<ChangeEvent<any>>;
   productAprsItems: ImmutableArray<IContextItem>;
   productFeesItems: ImmutableArray<IContextItem>;
   productRewardsItems: ImmutableArray<IContextItem>;

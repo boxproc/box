@@ -10,11 +10,9 @@ import { PasswordForm } from './forms';
 import {
   THandleSetUserCurrentRegisterStep,
   THandleUserConfirmAuthKey,
-  THandleUserGetAuthKey,
 } from 'store';
 
 interface IRegister2faModal {
-  userGetAuthKey: THandleUserGetAuthKey;
   currentRegisterStep: number;
   setUserCurrentRegisterStep: THandleSetUserCurrentRegisterStep;
   userConfirmAuthKey: THandleUserConfirmAuthKey;
@@ -25,7 +23,6 @@ interface IRegister2faModal {
 const modalName = modalNamesConst.REGISTER_2FA;
 
 const Register2faModal: React.FC<IRegister2faModal> = ({
-  userGetAuthKey,
   currentRegisterStep,
   setUserCurrentRegisterStep,
   userConfirmAuthKey,
@@ -77,10 +74,7 @@ const Register2faModal: React.FC<IRegister2faModal> = ({
           />
         )
         : (
-          <PasswordForm
-            onSubmit={userGetAuthKey}
-            setUserCurrentRegisterStep={setUserCurrentRegisterStep}
-          />
+          <PasswordForm />
         )}
     </Modal>
   );

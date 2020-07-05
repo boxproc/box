@@ -22,7 +22,7 @@ interface IButton extends IWithModal {
   isLoading?: boolean;
   onClick?: () => void;
   size?: string;
-  text: string;
+  text?: string;
   title?: string;
   type?: 'reset' | 'submit';
   width?: string;

@@ -13,7 +13,7 @@ interface IUsersGroupFields {
   isEditMode?: boolean;
   isInstitutionsLoading: boolean;
   getInstitutions: THandleGetInstitutions;
-  isReadOnly: boolean;
+  isReadOnly?: boolean;
 }
 
 const UsersGroupFields: React.FC<IUsersGroupFields> = ({

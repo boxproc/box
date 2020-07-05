@@ -25,7 +25,6 @@ const mapStateToProps = (state: IStoreState) => ({
   isUpdatingOrDeleting: isProductDeletingSelector(state) || isProductUpdatingSelector(state),
   initialValues: currentProductSelector(state),
   currentProductName: currentProductNameSelector(state),
-  currentInstitution: formSelector(state, 'institutionId'),
   enabledForCustomerLimitValue: formSelector(state, 'enabledForCustomerLimit'),
   institutionValue: formSelector(state, 'institutionId'),
   statementCycleTypeValue: formSelector(state, 'statementCycleTypeId'),

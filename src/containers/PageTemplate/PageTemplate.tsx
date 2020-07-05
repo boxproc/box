@@ -175,13 +175,12 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
       {FilterForm && (
         <Filter
           filterAction={filterAction}
-          location={location}
-          isHidden={!isOpenFilter}
           initialValues={filterInitialValues}
+          isHidden={!isOpenFilter}
           isLoading={isLoading}
-        >
-          {FilterForm}
-        </Filter>
+          location={location}
+          FilterForm={FilterForm}
+        />
       )}
       <Flex alignItems="center" fontSize="0px">
         {newModalName && !isReadOnly && (
@@ -215,13 +214,13 @@ export const PageTemplate: React.FC<PageTemplateProps> = props => {
               selectable={false}
               isDisabled={!isData}
               dropdownListPosition="center"
-              ToggleButtonComponent={
+              ToggleButtonComponent={(
                 <Button
                   text="Download"
                   iconName={iconNamesConst.DOWNLOAD}
                   disabled={isLoading}
                 />
-              }
+              )}
             >
               <DropdownOption>
                 <Button

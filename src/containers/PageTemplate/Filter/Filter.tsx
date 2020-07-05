@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactChild } from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Flex } from '@rebass/grid';
@@ -39,12 +39,13 @@ const FilterWrapper = styled.div<IFilterWrapper>`
 interface IFilter {
   filterAction: () => void;
   filterValues: object;
-  stopAutoRefresh: TStopAutoRefresh;
   isAutoRefresh: boolean;
-  location: H.Location;
-  setIsAccessibleFiltering: TSetIsAccessibleFiltering;
   isHidden: boolean;
   isLoading: boolean;
+  location: H.Location;
+  setIsAccessibleFiltering: TSetIsAccessibleFiltering;
+  stopAutoRefresh: TStopAutoRefresh;
+  FilterForm: ReactChild;
 }
 
 export const filteredFieldsToStore = (data: object) => {
@@ -62,17 +63,17 @@ export const filteredFieldsToStore = (data: object) => {
 type TFilter = IFilter & InjectedFormProps<{}, IFilter>;
 
 const Filter: React.FC<TFilter> = ({
+  FilterForm,
   filterAction,
-  children,
+  filterValues,
   handleSubmit,
   invalid,
-  filterValues,
-  stopAutoRefresh,
   isAutoRefresh,
-  location,
-  setIsAccessibleFiltering,
   isHidden,
   isLoading,
+  location,
+  setIsAccessibleFiltering,
+  stopAutoRefresh,
 }) => {
   const username = React.useMemo(
     () => {
@@ -223,7 +224,7 @@ const Filter: React.FC<TFilter> = ({
           flexWrap="wrap"
           m="0 -8px 5px"
         >
-          {children}
+          {FilterForm}
         </Flex>
         <Button
           text="Show"

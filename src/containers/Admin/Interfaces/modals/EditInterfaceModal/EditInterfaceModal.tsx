@@ -7,11 +7,9 @@ import { modalNamesConst, modalTypesConst } from 'consts';
 import { InterfaceForm } from './../../forms';
 
 import { IInterfaceDetails } from 'store';
-import { ISelectValue } from 'types';
 
 interface IEditInterfaceModal extends IWithModal {
   currentInterface: IInterfaceDetails;
-  institutionsOptions: Array<ISelectValue>;
   currentInterfaceName: string;
   isFormDirty: boolean;
 }
@@ -21,7 +19,6 @@ const modalName = modalNamesConst.EDIT_INTERFACE;
 const EditAccountModal: React.FC<IEditInterfaceModal> = ({
   closeModal,
   currentInterface,
-  institutionsOptions,
   currentInterfaceName,
   isFormDirty,
   isReadOnly,
@@ -53,7 +50,6 @@ const EditAccountModal: React.FC<IEditInterfaceModal> = ({
         onCancel={handleOnCancel}
         isEditMode={true}
         initialValues={currentInterface}
-        institutionsOptions={institutionsOptions}
         currentInterfaceName={currentInterfaceName}
         isReadOnly={isReadOnly}
       />

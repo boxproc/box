@@ -16,8 +16,8 @@ const numberFieldsValidators = [
 ];
 
 interface IRewardsForm {
-  isOnlyRate: boolean;
-  isOnlyAmount: boolean;
+  isOnlyRate?: boolean;
+  isOnlyAmount?: boolean;
   isLoading: boolean;
   addProductReward: THandleAddProductReward;
   rewardApplicationConditionValue: ISelectValue;

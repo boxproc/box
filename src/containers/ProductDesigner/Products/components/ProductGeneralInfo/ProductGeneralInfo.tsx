@@ -32,7 +32,7 @@ interface IProductGeneralInfo {
   institutionValue: ISelectValue;
   isCurrenciesLoading: boolean;
   isEditMode?: boolean;
-  isReadOnly: boolean;
+  isReadOnly?: boolean;
   isStatementCycleTypesLoading: boolean;
   statementCycleTypesOptions: Array<ISelectValue>;
   statementCycleTypeValue: ISelectValue;

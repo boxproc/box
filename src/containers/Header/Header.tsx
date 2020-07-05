@@ -56,27 +56,22 @@ const Wrapper = styled.header`
 `;
 
 interface IHeader extends RouteComponentProps {
-  firstName: string;
   getInstitutions: THandleGetUserInstitutions;
   getUiItems: THandleGetUiItems;
   helpLink: string;
   institutions: ImmutableArray<IUserInstitution>;
   isReadOnly: boolean;
-  lastName: string;
   uiItems: Array<IUiItem>;
   userLogout: THandleUserLogout;
-  username: string;
 }
 
 const Header: React.FC<IHeader> = ({
   getInstitutions,
   getUiItems,
   helpLink,
-  history,
   institutions,
   isReadOnly,
   location,
-  match,
   uiItems,
   userLogout,
 }) => {
@@ -119,12 +114,7 @@ const Header: React.FC<IHeader> = ({
               <Logo />
             </Box>
             {uiItems && (
-              <Navbar
-                uiItems={uiItems}
-                history={history}
-                location={location}
-                match={match}
-              />
+              <Navbar uiItems={uiItems} />
             )}
           </Flex>
           <Box

@@ -13,12 +13,14 @@ import {
   isLoadingEndpointsTypesSelector,
   IStoreState,
   isUpdatingEndpointSelector,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
 const mapStateToProps = (state: IStoreState) => ({
   isLoading: isUpdatingEndpointSelector(state),
   isLoadingTypesSelector: isLoadingEndpointsTypesSelector(state),
   endpointTypesOptions: endpointTypesOptionsSelector(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
   currentEndpointId: activeItemIdSelector(state),
 });
 

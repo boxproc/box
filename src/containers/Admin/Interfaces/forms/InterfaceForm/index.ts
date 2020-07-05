@@ -13,12 +13,14 @@ import {
   isLoadingInterfacesTypesSelector,
   IStoreState,
   isUpdatingInterfaceSelector,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
 const mapStateToProps = (state: IStoreState) => ({
   isLoading: isUpdatingInterfaceSelector(state),
   isLoadingTypesSelector: isLoadingInterfacesTypesSelector(state),
   interfaceTypesOptions: interfaceTypesOptionsSelector(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
   currentInterfaceId: activeItemIdSelector(state),
 });
 

@@ -50,7 +50,7 @@ interface IRepaymentHierarchyTable {
   data: ImmutableArray<IRepaymentHierarchy>;
   getRepaymentHierarchy: THandleGetRepaymentHierarchy;
   updateRepaymentHierarchy: THandleUpdateRepaymentHierarchy;
-  isReadOnly: boolean;
+  isReadOnly?: boolean;
   isUpdating: boolean;
 }
 

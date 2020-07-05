@@ -29,7 +29,7 @@ interface ISystemPropertyForm extends ISpinner {
   deleteSystemProperty: THandleDeleteSysProp;
   currentSystemPropertyId: number | string;
   isEditMode?: boolean;
-  isReadOnly: boolean;
+  isReadOnly?: boolean;
   onCancel: () => void;
 }
 

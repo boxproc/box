@@ -12,13 +12,13 @@ import RevolvingCreditIllustrationTables from './RevolvingCreditIllustrationTabl
 import { THandleIllustrateRevCredit, TResetProductIllustration } from 'store';
 
 interface IRevolvingCreditIllustration extends IWithLoadTransactionTypes {
-  illustrateRevolvingCreditProduct: THandleIllustrateRevCredit;
-  resetProductIllustration: TResetProductIllustration;
-  initialFormValues: object;
-  productId: number;
   dirty: boolean;
-  onCancel?: () => void;
+  illustrateRevolvingCreditProduct: THandleIllustrateRevCredit;
+  initialFormValues: object;
   isLoading: boolean;
+  onCancel?: () => void;
+  productId: number;
+  resetProductIllustration: TResetProductIllustration;
 }
 
 const RevolvingCreditIllustration: React.FC<IRevolvingCreditIllustration> = ({

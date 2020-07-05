@@ -20,7 +20,7 @@ interface IEditCustomerForm extends ISpinner {
   countryCodes: Array<ISelectValue>;
   identificationTypeValue: ISelectValue;
   isEditMode?: boolean;
-  isReadOnly: boolean;
+  isReadOnly?: boolean;
   loadCountryCodes: THandleGetDictionaryCountries;
   onCancel: () => void;
   updateCustomer: THandleUpdateCustomer;

@@ -74,6 +74,7 @@ const Navbar: React.FC<INavbar> = ({
           <Link
             to={!isModalWindow && `${basePath}${id}`}
             className={menuClasses.MENU_TITLE}
+            onClick={clearMenu}
           >
             {title}
           </Link>

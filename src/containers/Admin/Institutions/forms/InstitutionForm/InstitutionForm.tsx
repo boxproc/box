@@ -32,8 +32,8 @@ interface IInstitutionForm extends ISpinner {
   getCurrencies: THandleGetDictionaryCurrencies;
   isCurrenciesLoading: boolean;
   isEditMode?: boolean;
-  isMasterInstitutionFlag: boolean;
-  isReadOnly: boolean;
+  isMasterInstitutionFlag?: boolean;
+  isReadOnly?: boolean;
   onCancel: () => void;
   updateInstitution: THandleUpdateInstitution;
 }

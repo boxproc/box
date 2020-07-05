@@ -28,7 +28,7 @@ export const prepareDataToSend = (data: Partial<IInstitutionDetails>) => {
   };
 };
 
-export const prepareDataToRender = (data: any) => { // IInstitutionData
+export const prepareDataToRender = (data: IInstitutionData) => {
   if (!data) {
     return null;
   }

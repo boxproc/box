@@ -1,7 +1,7 @@
 import React from 'react';
 import { ContextMenuTrigger } from 'react-contextmenu';
 import { connect } from 'react-redux';
-import { RowInfo } from 'react-table';
+import { ComponentPropsGetter0, ComponentPropsGetterR, RowInfo } from 'react-table';
 import { bindActionCreators, Dispatch } from 'redux';
 
 import { ContextMenuList } from 'components';
@@ -31,7 +31,7 @@ export interface IWithEditTable {
   contextMenuItems?: Array<IContextMenuItem>;
   handleOpenModal: TOpenModal;
   modalsStateList: object;
-  onRowClick: () => object;
+  onRowClick: ComponentPropsGetterR | ComponentPropsGetter0;
   handleSetActiveItemId: TSetActiveItemId;
   handleSetActiveTableRowIndex: TSetActiveTableRowIndex;
   viewingModalName: string;
@@ -194,7 +194,7 @@ export const withEditTable = <OriginProps extends {}>(
     dispatch
   );
 
-  return connect(
+  return connect<Partial<IWithEditTable>, Partial<IWithEditTable>, any, IStoreState>(
     mapStateToProps,
     mapDispatchToProps
   )(WithEditTable);

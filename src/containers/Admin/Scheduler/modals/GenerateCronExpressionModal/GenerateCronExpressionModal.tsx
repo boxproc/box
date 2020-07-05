@@ -17,13 +17,13 @@ import { ICronExpressionRadio, ICronValues } from './cronExpressionTypes';
 
 import { TChangeFieldValue } from 'types';
 
-interface IGenerateCronExpressionModal extends IWithModal {
+interface IGenerateCronExpressionModal {
   changeFormValue: TChangeFieldValue;
   formValues: Partial<ICronValues>;
   cronRadioValues: ICronExpressionRadio;
 }
 
-type TGenerateCronExpressionModal = IGenerateCronExpressionModal
+type TGenerateCronExpressionModal = IGenerateCronExpressionModal & IWithModal
   & InjectedFormProps<{}, IGenerateCronExpressionModal>;
 
 const ResultWrapper = styled.div`
@@ -45,11 +45,11 @@ const modalName = modalNamesConst.GENERATE_CRON_EXPRESSION;
 const GenerateCronExpressionModal: React.FC<TGenerateCronExpressionModal> = ({
   changeFormValue,
   closeModal,
-  formValues,
   cronRadioValues,
-  reset,
-  pristine,
   dirty,
+  formValues,
+  pristine,
+  reset,
 }) => {
   const [cronExpression, setCronExpression] = React.useState(null);
 

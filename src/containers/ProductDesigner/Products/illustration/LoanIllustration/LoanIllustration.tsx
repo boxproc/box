@@ -29,7 +29,7 @@ interface ILoanIllust {
   isConversionLoading: boolean;
   isIllustrationLoading: boolean;
   isLoading: boolean;
-  isReadOnly: boolean;
+  isReadOnly?: boolean;
   loanDetails: Partial<ILoanProduct>;
   loanProductsOptions: Array<ISelectValue>;
   onCancel?: () => void;

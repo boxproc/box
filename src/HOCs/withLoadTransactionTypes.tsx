@@ -77,7 +77,12 @@ export const withLoadTransactionTypes = <OriginProps extends {}>(
     dispatch
   );
 
-  return connect(
+  return connect<
+    Partial<IWithLoadTransactionTypes>,
+    Partial<IWithLoadTransactionTypes>,
+    any,
+    IStoreState
+  >(
     mapStateToProps,
     mapDispatchToProps
   )(WithLoadTransactionTypes);

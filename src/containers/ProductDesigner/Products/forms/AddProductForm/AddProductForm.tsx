@@ -16,9 +16,8 @@ import { ISelectValue } from 'types';
 
 interface IAddProductForm extends ISpinner {
   addProduct: THandleAddProduct;
-  currentInstitution: ISelectValue;
   currentProductType: ISelectValue;
-  enabledForCustomerLimitValue: ISelectValue;
+  enabledForCustomerLimitValue: boolean;
   institutionValue: ISelectValue;
   interestDistributionValue: ISelectValue;
   onCancel: () => void;
@@ -29,7 +28,6 @@ type TAddProductForm = IAddProductForm & InjectedFormProps<{}, IAddProductForm>;
 
 const AddProductForm: React.FC<TAddProductForm> = ({
   addProduct,
-  currentInstitution,
   currentProductType,
   dirty,
   enabledForCustomerLimitValue,
@@ -55,7 +53,6 @@ const AddProductForm: React.FC<TAddProductForm> = ({
       <Tabs>
         <TabsPanel title="General">
           <ProductGeneralInfo
-            currentInstitution={currentInstitution}
             enabledForCustomerLimitValue={enabledForCustomerLimitValue}
             institutionValue={institutionValue}
             statementCycleTypeValue={statementCycleTypeValue}

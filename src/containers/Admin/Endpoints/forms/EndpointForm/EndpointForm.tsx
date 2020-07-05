@@ -19,13 +19,14 @@ import { ISelectValue } from 'types';
 interface IEndpointForm extends ISpinner {
   addEndpoint: THandleAddEndpoint;
   currentEndpointId: number;
-  currentEndpointName: string;
+  currentEndpointName?: string;
   deleteEndpoint: THandleDeleteEndpoint;
   endpointTypesOptions: Array<ISelectValue>;
   getDictionaryEndpointTypes: THandleGetDictionaryEndpointTypes;
+  institutionsOptions: Array<ISelectValue>;
   isEditMode?: boolean;
   isLoadingTypesSelector: boolean;
-  isReadOnly: boolean;
+  isReadOnly?: boolean;
   onCancel: () => void;
   updateEndpoint: THandleUpdateEndpoint;
 }
@@ -41,6 +42,7 @@ const EndpointForm: React.FC<TEndpointForm> = ({
   endpointTypesOptions,
   getDictionaryEndpointTypes,
   handleSubmit,
+  institutionsOptions,
   isEditMode,
   isLoadingTypesSelector,
   isReadOnly,
@@ -74,6 +76,7 @@ const EndpointForm: React.FC<TEndpointForm> = ({
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <EndpointFields
         endpointTypesOptions={endpointTypesOptions}
+        institutionsOptions={institutionsOptions}
         isEditMode={isEditMode}
         isLoadingTypesSelector={isLoadingTypesSelector}
         isReadOnly={isReadOnly}

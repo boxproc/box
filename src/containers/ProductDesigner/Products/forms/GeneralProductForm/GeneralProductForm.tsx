@@ -14,29 +14,32 @@ import {
 } from 'components';
 import { formNamesConst, iconNamesConst } from 'consts';
 import { ProductGeneralInfo } from 'containers/ProductDesigner/Products/components';
-import { THandleDeleteProduct, THandleGetProduct, THandleUpdateProduct } from 'store';
+import {
+  IProductGeneralDetails,
+  THandleDeleteProduct,
+  THandleGetProduct,
+  THandleUpdateProduct,
+} from 'store';
 import { ISelectValue } from 'types';
 
 interface IGeneralProductForm extends ISpinner {
-  currentInstitution: ISelectValue;
   currentProductName: string;
   deleteProduct: THandleDeleteProduct;
-  enabledForCustomerLimitValue: ISelectValue;
+  enabledForCustomerLimitValue: boolean;
   getProduct: THandleGetProduct;
+  initialValues: Partial<IProductGeneralDetails>;
   institutionValue: ISelectValue;
   isProductOverride: boolean;
-  isReadOnly: boolean;
+  isReadOnly?: boolean;
   isUpdatingOrDeleting: boolean;
   onCancel?: () => void;
   statementCycleTypeValue: ISelectValue;
   updateProduct: THandleUpdateProduct;
-  initialValues: any;
 }
 
 type TGeneralProductForm = IGeneralProductForm & InjectedFormProps<{}, IGeneralProductForm>;
 
 const GeneralProductForm: React.FC<TGeneralProductForm> = ({
-  currentInstitution,
   currentProductName,
   deleteProduct,
   dirty,
@@ -87,7 +90,6 @@ const GeneralProductForm: React.FC<TGeneralProductForm> = ({
       <form onSubmit={isReadOnly ? null : handleSubmitForm}>
         <ProductGeneralInfo
           isEditMode={true}
-          currentInstitution={currentInstitution}
           enabledForCustomerLimitValue={enabledForCustomerLimitValue}
           institutionValue={institutionValue}
           statementCycleTypeValue={statementCycleTypeValue}

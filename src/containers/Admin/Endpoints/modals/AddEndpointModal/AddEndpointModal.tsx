@@ -6,10 +6,7 @@ import { IWithModal, withModal } from 'HOCs';
 import { modalNamesConst } from 'consts';
 import { EndpointForm } from './../../forms';
 
-import { ISelectValue } from 'types';
-
 interface IAddEndpointModal extends IWithModal {
-  institutionsOptions: Array<ISelectValue>;
   isFormDirty: boolean;
 }
 
@@ -17,7 +14,6 @@ const modalName = modalNamesConst.ADD_ENDPOINT;
 
 const AddEndpointModal: React.FC<IAddEndpointModal> = ({
   closeModal,
-  institutionsOptions,
   isFormDirty,
 }) => {
   const handleOnCancel = React.useCallback(
@@ -33,10 +29,7 @@ const AddEndpointModal: React.FC<IAddEndpointModal> = ({
       withCloseConfirmation={isFormDirty}
       isBluredBackdrop={true}
     >
-      <EndpointForm
-        institutionsOptions={institutionsOptions}
-        onCancel={handleOnCancel}
-      />
+      <EndpointForm onCancel={handleOnCancel} />
     </Modal>
   );
 };

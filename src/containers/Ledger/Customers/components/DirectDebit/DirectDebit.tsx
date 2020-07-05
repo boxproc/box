@@ -37,8 +37,7 @@ interface IDirectDebit {
   isLoading: boolean;
   isMandatesLoading: boolean;
   isReadOnly: boolean;
-  mandates: any;
-  // mandates: ImmutableArray<IDirectDebitMandate>;
+  mandates: any; // ImmutableArray<IDirectDebitMandate>;
   onCancel: () => void;
   resetDirectDebitMandates: TResetDirectDebitMandates;
 }

@@ -22,7 +22,6 @@ const mapStateToProps = (state: IStoreState) => ({
     ...detailsInitialFormValues,
   },
   currentProductType: formSelector(state, 'productType'),
-  currentInstitution: formSelector(state, 'institutionId'),
   interestDistributionValue: formSelector(state, 'interestDistributionType'),
   enabledForCustomerLimitValue: formSelector(state, 'enabledForCustomerLimit'),
   institutionValue: formSelector(state, 'institutionId'),

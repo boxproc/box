@@ -12,7 +12,7 @@ import { ISelectValue } from 'types';
 
 interface IDetailsForm extends ISpinner {
   onCancel?: () => void;
-  productType: string;
+  productType: string | number;
   getProductDetails: THandleGetProductDetails;
   updateProductDetails: THandleUpdateProductDetails;
   isReadOnly: boolean;

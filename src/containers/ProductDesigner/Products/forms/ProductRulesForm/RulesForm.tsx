@@ -134,7 +134,7 @@ const RulesForm: React.FC<TRulesForm> = ({
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <ProductRules
         eventValue={eventId}
-        onChangeValues={handleGetRuleByChange}
+        onChangeValues={handleGetRuleByChange as any}
         changeFormField={change}
         handleGetRule={handleGetRule}
         actionTypesOptions={actionTypesOptionsPrepared}

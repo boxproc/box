@@ -27,7 +27,7 @@ import { dateUtil, stringsUtil } from 'utils';
 interface IAccountForm extends ISpinner {
   addAccount: THandleAddAccount;
   currentAccountId: number;
-  currentAccAuxCounters: Partial<IAccountDetails>;
+  currentAccAuxCounters?: Partial<IAccountDetails>;
   customerIdValue: number;
   institutionValue: ISelectValue;
   productValue: ISelectValue;
