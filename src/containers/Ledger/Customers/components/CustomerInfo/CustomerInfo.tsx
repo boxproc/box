@@ -3,7 +3,7 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Delimiter, Hr, InputField, MaskField, SelectField, T4 } from 'components';
+import { Delimiter, Hr, InputField, MaskField, SelectField, T3 } from 'components';
 
 import {
   customerStatusOptions,
@@ -40,18 +40,19 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
         flexWrap="wrap"
       >
         {isEditMode && (
-          <Box width="100px" p="8px">
+          <Box width="115px" p="8px">
             <Field
               id="id"
               name="id"
               component={InputField}
               label="ID"
               placeholder="Enter ID"
+              isNumber={true}
               disabled={true}
             />
           </Box>
         )}
-        <Box width={[1 / 5]} p="8px">
+        <Box width="238px" p="8px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -64,73 +65,19 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width="180px" p="8px">
+        <Box width="120px" p="8px">
           <Field
             id="status"
             name="status"
             component={SelectField}
             label="Status"
-            placeholder="Select Status"
+            placeholder="Status"
             options={customerStatusOptions}
             isDisabled={isReadOnly}
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width="180px" p="8px">
-          <Field
-            id="identificationType"
-            name="identificationType"
-            component={SelectField}
-            options={identificationTypesOptions}
-            label="Identification Type"
-            placeholder="Select Type"
-            isDisabled={isReadOnly}
-            validate={[formErrorUtil.isRequired]}
-          />
-        </Box>
-        {isIdentification && (
-          <Box width="180px" p="8px">
-            <Field
-              id="identificationNumber"
-              name="identificationNumber"
-              component={InputField}
-              label="Identification Number"
-              placeholder="Enter Number"
-              disabled={isReadOnly}
-              validate={[formErrorUtil.isRequired]}
-            />
-          </Box>
-        )}
-        <Delimiter />
-        <Box width={[1 / 5]} p="8px">
-          <Field
-            id="firstName"
-            name="firstName"
-            component={InputField}
-            label="First Name"
-            placeholder="Enter First Name"
-            disabled={isReadOnly}
-            validate={[
-              formErrorUtil.isRequired,
-              formErrorUtil.isAlpha,
-            ]}
-          />
-        </Box>
-        <Box width={[1 / 5]} p="8px">
-          <Field
-            id="lastName"
-            name="lastName"
-            component={InputField}
-            label="Last Name"
-            placeholder="Enter Last Name"
-            disabled={isReadOnly}
-            validate={[
-              formErrorUtil.isRequired,
-              formErrorUtil.isAlpha,
-            ]}
-          />
-        </Box>
-        <Box width="160px" p="8px">
+        <Box width="115px" p="8px">
           <Field
             id="dateOfBirth"
             name="dateOfBirth"
@@ -145,21 +92,61 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             ]}
           />
         </Box>
-        <Box width={[1 / 5]} p="8px">
+        <Box width="170px" p="8px">
           <Field
-            id="email"
-            name="email"
+            id="identificationType"
+            name="identificationType"
+            component={SelectField}
+            options={identificationTypesOptions}
+            label="Identification Type"
+            placeholder="Select Type"
+            isDisabled={isReadOnly}
+            validate={[formErrorUtil.isRequired]}
+          />
+        </Box>
+        {isIdentification && (
+          <Box width="238px" p="8px">
+            <Field
+              id="identificationNumber"
+              name="identificationNumber"
+              component={InputField}
+              label="Identification Number"
+              placeholder="Enter Number"
+              disabled={isReadOnly}
+              validate={[formErrorUtil.isRequired]}
+            />
+          </Box>
+        )}
+        <Delimiter />
+        <Box width="238px" p="8px">
+          <Field
+            id="firstName"
+            name="firstName"
             component={InputField}
-            label="Email"
-            placeholder="Enter Email"
+            label="First Name"
+            placeholder="Enter First Name"
             disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
-              formErrorUtil.isEmail,
+              formErrorUtil.isAlpha,
             ]}
           />
         </Box>
-        <Box width={[1 / 5]} p="8px">
+        <Box width="238px" p="8px">
+          <Field
+            id="lastName"
+            name="lastName"
+            component={InputField}
+            label="Last Name"
+            placeholder="Enter Last Name"
+            disabled={isReadOnly}
+            validate={[
+              formErrorUtil.isRequired,
+              formErrorUtil.isAlpha,
+            ]}
+          />
+        </Box>
+        <Box width="170px" p="8px">
           <Field
             id="mobilePhoneNumber"
             name="mobilePhoneNumber"
@@ -175,11 +162,25 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             ]}
           />
         </Box>
+        <Box width="238px" p="8px">
+          <Field
+            id="email"
+            name="email"
+            component={InputField}
+            label="Email"
+            placeholder="Enter Email"
+            disabled={isReadOnly}
+            validate={[
+              formErrorUtil.isRequired,
+              formErrorUtil.isEmail,
+            ]}
+          />
+        </Box>
         <Hr />
         <Box width="100%" px="10px">
-          <T4>Address</T4>
+          <T3>Address</T3>
         </Box>
-        <Box width={[1 / 4]} p="8px">
+        <Box width="290px" p="8px">
           <Field
             id="nationalityCountryCode"
             name="nationalityCountryCode"
@@ -192,7 +193,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width={[1 / 4]} p="8px">
+        <Box width="290px" p="8px">
           <Field
             id="addressCountryCode"
             name="addressCountryCode"
@@ -205,48 +206,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width={[1 / 4]} p="8px">
-          <Field
-            id="addressLine1"
-            name="addressLine1"
-            component={InputField}
-            label="Line 1"
-            placeholder="Enter Line 1"
-            disabled={isReadOnly}
-            validate={[formErrorUtil.isRequired]}
-          />
-        </Box>
-        <Box width={[1 / 4]} p="8px">
-          <Field
-            id="addressLine2"
-            name="addressLine2"
-            component={InputField}
-            label="Line 2"
-            placeholder="Enter Line 2"
-            disabled={isReadOnly}
-          />
-        </Box>
-        <Box width={[1 / 4]} p="8px">
-          <Field
-            id="addressLine3"
-            name="addressLine3"
-            component={InputField}
-            label="Line 3"
-            placeholder="Enter Line 3"
-            disabled={isReadOnly}
-          />
-        </Box>
-        <Box width={[1 / 4]} p="8px">
-          <Field
-            id="addressLine4"
-            name="addressLine4"
-            component={InputField}
-            label="Line 4"
-            placeholder="Enter Line 4"
-            disabled={isReadOnly}
-          />
-        </Box>
-        <Box width={[1 / 4]} p="8px">
+        <Box width="238px" p="8px">
           <Field
             id="addressTown"
             name="addressTown"
@@ -257,7 +217,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width={[1 / 4]} p="8px">
+        <Box width="130px" p="8px">
           <Field
             id="addressPostCode"
             name="addressPostCode"
@@ -269,6 +229,48 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
               formErrorUtil.isRequired,
               formErrorUtil.isPostalCode,
             ]}
+          />
+        </Box>
+        <Delimiter />
+        <Box width="238px" p="8px">
+          <Field
+            id="addressLine1"
+            name="addressLine1"
+            component={InputField}
+            label="Line 1"
+            placeholder="Enter Line 1"
+            disabled={isReadOnly}
+            validate={[formErrorUtil.isRequired]}
+          />
+        </Box>
+        <Box width="238px" p="8px">
+          <Field
+            id="addressLine2"
+            name="addressLine2"
+            component={InputField}
+            label="Line 2"
+            placeholder="Enter Line 2"
+            disabled={isReadOnly}
+          />
+        </Box>
+        <Box width="238px" p="8px">
+          <Field
+            id="addressLine3"
+            name="addressLine3"
+            component={InputField}
+            label="Line 3"
+            placeholder="Enter Line 3"
+            disabled={isReadOnly}
+          />
+        </Box>
+        <Box width="238px" p="8px">
+          <Field
+            id="addressLine4"
+            name="addressLine4"
+            component={InputField}
+            label="Line 4"
+            placeholder="Enter Line 4"
+            disabled={isReadOnly}
           />
         </Box>
         {isEditMode && (

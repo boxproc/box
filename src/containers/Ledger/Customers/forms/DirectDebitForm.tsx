@@ -3,7 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, InputField, SelectField } from 'components';
+import { Button, Delimiter, InputField, SelectField } from 'components';
 import { accountTypesOptions, formNamesConst, iconNamesConst } from 'consts';
 import { THandleAddDirectDebitAccount } from 'store';
 import { ISelectValue } from 'types';
@@ -59,7 +59,7 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width="100px" p="8px">
+          <Box width="200px" p="8px">
             <Field
               id="accountField1"
               name="accountField1"
@@ -71,7 +71,7 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
               validate={[formErrorUtil.isRequired]}
             />
           </Box>
-          <Box width="100px" p="8px">
+          <Box width="200px" p="8px">
             <Field
               id="accountField2"
               name="accountField2"
@@ -83,7 +83,7 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
               validate={[formErrorUtil.isRequired]}
             />
           </Box>
-          <Box width="100px" p="8px">
+          <Box width="200px" p="8px">
             <Field
               id="accountField3"
               name="accountField3"
@@ -95,7 +95,7 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
             />
           </Box>
           {isUSACountryCode && (
-            <Box width="120px" p="8px">
+            <Box width="125px" p="8px">
               <Field
                 id="accountType"
                 name="accountType"
@@ -107,7 +107,8 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
               />
             </Box>
           )}
-          <Box width="230px" p="8px">
+          <Delimiter />
+          <Box width="300px" p="8px">
             <Field
               id="accountholderName"
               name="accountholderName"
@@ -118,7 +119,7 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
               validate={[formErrorUtil.isRequired]}
             />
           </Box>
-          <Box width="250px" p="8px">
+          <Box width="300px" p="8px">
             <Field
               id="interfaceId"
               name="interfaceId"
@@ -131,7 +132,7 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
               validate={[formErrorUtil.isRequired]}
             />
           </Box>
-          <Box pb="8px">
+          <Box pb="8px" pl="8px">
             <Button
               text="Add"
               isLoading={isLoading}

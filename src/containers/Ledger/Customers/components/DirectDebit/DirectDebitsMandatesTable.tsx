@@ -57,7 +57,7 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
   const columns = React.useMemo(
     () => [
       {
-        maxWidth: 120,
+        maxWidth: 100,
         accessor: 'accountAlias',
         Header: <TableHeader title="Account Alias" />,
         Cell: (props: TCell<'accountAlias'>) => (
@@ -69,7 +69,7 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
         ),
       },
       {
-        maxWidth: 200,
+        maxWidth: 260,
         accessor: 'bankName',
         Header: <TableHeader title="Bank Name" />,
         Cell: (props: TCell<'bankName'>) => (
@@ -91,7 +91,7 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
         ),
       },
       {
-        maxWidth: 200,
+        maxWidth: 260,
         accessor: 'interfaceName',
         Header: <TableHeader title="Direct Debit Provider" />,
         Cell: (props: TCell<'interfaceName'>) => (

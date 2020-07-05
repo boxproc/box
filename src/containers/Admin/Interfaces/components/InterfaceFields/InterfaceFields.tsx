@@ -29,7 +29,20 @@ const InterfaceFields: React.FC<IInterfaceFields> = ({
   return (
     <Box mx="-8px" >
       <Flex flexWrap="wrap">
-        <Box width={[1 / 3]} p="8px">
+        {isEditMode && (
+          <Box width={[1 / 6]} p="8px">
+            <Field
+              id="id"
+              name="id"
+              component={InputField}
+              label="ID"
+              disabled={true}
+              isNumber={true}
+              validate={[formErrorUtil.isRequired]}
+            />
+          </Box>
+        )}
+        <Box width={[isEditMode ? 1 / 3 : 1 / 2]} p="8px">
           <Field
             id="institutionId"
             name="institutionId"

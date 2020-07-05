@@ -29,7 +29,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 220,
+    maxWidth: 230,
     Header: <TableHeader title="First Name" />,
     accessor: 'firstName',
     Cell: (props: TCell<'firstName'>) => (
@@ -39,7 +39,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 220,
+    maxWidth: 230,
     Header: <TableHeader title="Last Name" />,
     accessor: 'lastName',
     Cell: (props: TCell<'lastName'>) => (
@@ -70,7 +70,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 220,
     Header: <TableHeader title="Email" />,
     accessor: 'email',
     Cell: (props: TCell<'email'>) => (
@@ -80,7 +80,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 125,
     Header: <TableHeader title="Mobile Phone" />,
     accessor: 'mobilePhoneNumber',
     Cell: (props: TCell<'mobilePhoneNumber'>) => (
