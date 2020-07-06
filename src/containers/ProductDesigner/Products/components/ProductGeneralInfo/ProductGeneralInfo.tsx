@@ -130,6 +130,19 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
         alignItems="flex-end"
         flexWrap="wrap"
       >
+        {isEditMode && (
+          <Box width="130px" p="8px">
+            <Field
+              id="id"
+              name="id"
+              component={InputField}
+              label="ID"
+              disabled={true}
+              isNumber={true}
+              validate={[formErrorUtil.isRequired]}
+            />
+          </Box>
+        )}
         <Box width="200px" p="8px">
           <Field
             id="productType"
@@ -167,18 +180,6 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
               formErrorUtil.isRequired,
               formErrorUtil.isAlphaNumeric,
             ]}
-          />
-        </Box>
-        <Box width="150px" p="8px">
-          <Field
-            id="status"
-            name="status"
-            component={SelectField}
-            label="Status"
-            placeholder="Select Status"
-            options={statusOptions}
-            isDisabled={isReadOnly}
-            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Flex alignItems="flex-start">
@@ -273,19 +274,33 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             </Box>
           </Flex>
           <Box width="500px" pt="15px">
-            <Box width="350px" p="8px">
-              <Field
-                id="currencyCode"
-                name="currencyCode"
-                component={SelectField}
-                label="Currency Code"
-                placeholder="Select Currency Code"
-                options={currenciesOptions}
-                isLoading={isCurrenciesLoading}
-                isDisabled={isReadOnly}
-                validate={[formErrorUtil.isRequired]}
-              />
-            </Box>
+            <Flex alignItems="flex-end">
+              <Box width="350px" p="8px">
+                <Field
+                  id="currencyCode"
+                  name="currencyCode"
+                  component={SelectField}
+                  label="Currency Code"
+                  placeholder="Select Currency Code"
+                  options={currenciesOptions}
+                  isLoading={isCurrenciesLoading}
+                  isDisabled={isReadOnly}
+                  validate={[formErrorUtil.isRequired]}
+                />
+              </Box>
+              <Box width="150px" p="8px">
+                <Field
+                  id="status"
+                  name="status"
+                  component={SelectField}
+                  label="Status"
+                  placeholder="Select Status"
+                  options={statusOptions}
+                  isDisabled={isReadOnly}
+                  validate={[formErrorUtil.isRequired]}
+                />
+              </Box>
+            </Flex>
             <Box width={[1]} p="8px">
               <Field
                 id="description"
