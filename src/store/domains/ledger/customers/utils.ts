@@ -245,8 +245,8 @@ export const prepareFormDataDirectDebitAccountToSend =
       account_field_1: accountField1,
       account_field_2: accountField2,
       account_field_3: accountField3,
-      accountholder_name: accountholderName,
       account_type: accountType && accountType.value,
+      accountholder_name: accountholderName,
       interface_id: interfaceId && interfaceId.value,
     };
   };

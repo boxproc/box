@@ -3,7 +3,6 @@ import { bindActionCreators, Dispatch } from 'redux';
 import { isDirty } from 'redux-form';
 
 import { formNamesConst } from 'consts';
-
 import EditCustomerModal from './EditCustomerModal';
 
 import {

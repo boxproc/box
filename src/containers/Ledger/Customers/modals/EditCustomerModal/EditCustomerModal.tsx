@@ -44,11 +44,6 @@ const EditCustomerModal: React.FC<IEditCustomerModal> = ({
     [getInterfaces, currentCustomerInstitutionId]
   );
 
-  const modalTitle = React.useMemo(
-    () => `Edit Customer: ${currentCustomerName}`,
-    [currentCustomerName]
-  );
-
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
@@ -58,20 +53,26 @@ const EditCustomerModal: React.FC<IEditCustomerModal> = ({
     <Modal
       name={modalName}
       type={modalTypesConst.VIEWING}
-      title={modalTitle}
+      title={`Edit Customer: ${currentCustomerName}`}
       containerWidth="1010px"
       minContainerHeight="570px"
       withCloseConfirmation={isFormDirty}
     >
       <Tabs>
-        <TabsPanel title="General">
+        <TabsPanel
+          title="General"
+          withConfirmation={isFormDirty}
+        >
           <CustomerForm
             isEditMode={true}
             isReadOnly={isReadOnly}
             onCancel={handleOnCancel}
           />
         </TabsPanel>
-        <TabsPanel title="Repayment Debit Cards">
+        <TabsPanel
+          title="Repayment Debit Cards"
+          withConfirmation={isFormDirty}
+        >
           <RepaymentDebitCardsForm
             interfacesOptions={interfacesOptions}
             isInterfacesLoading={isInterfacesLoading}
@@ -79,7 +80,10 @@ const EditCustomerModal: React.FC<IEditCustomerModal> = ({
             onCancel={handleOnCancel}
           />
         </TabsPanel>
-        <TabsPanel title="Direct Debit Mandates">
+        <TabsPanel
+          title="Direct Debit Mandates"
+          withConfirmation={isFormDirty}
+        >
           <DirectDebit
             interfacesOptions={interfacesOptions}
             isInterfacesLoading={isInterfacesLoading}
@@ -87,7 +91,10 @@ const EditCustomerModal: React.FC<IEditCustomerModal> = ({
             onCancel={handleOnCancel}
           />
         </TabsPanel>
-        <TabsPanel title="Limit">
+        <TabsPanel
+          title="Limit"
+          withConfirmation={isFormDirty}
+        >
           <CurrencyLimitForm
             isReadOnly={isReadOnly}
             onCancel={handleOnCancel}
