@@ -13,18 +13,23 @@ import {
   handleGetDictionaryCountries,
   handleUpdateCustomer,
   isAddingCustomerSelector,
+  isCountriesLoadingSelector,
   IStoreState,
   isUpdatingCustomerSelector,
+  userInstitutionsOptionsSelector,
 } from 'store';
 
 const formSelector = formValueSelector(formNamesConst.CUSTOMER);
 
 const mapStateToProps = (state: IStoreState) => ({
+  isCountryCodesLoading: isCountriesLoadingSelector(state),
+  institutionsOptions: userInstitutionsOptionsSelector(state),
   isLoading: isAddingCustomerSelector(state)
     || isUpdatingCustomerSelector(state),
   initialValues: currentCustomerSelector(state),
   countryCodes: countriesOptionsSelector(state),
   identificationTypeValue: formSelector(state, 'identificationType'),
+  countryCodeValue: formSelector(state, 'addressCountryCode'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

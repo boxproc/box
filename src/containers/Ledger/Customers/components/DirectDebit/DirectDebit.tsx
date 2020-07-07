@@ -115,17 +115,19 @@ const DirectDebit: React.FC<IDirectDebit> = ({
         />
       )}
       <Hr />
-      <Box mt="15px">
-        <T4>Mandates</T4>
-      </Box>
-      <MandatesFilterForm
-        options={statusOptions}
-        onSubmit={filterMandates}
-        isFiltering={isFiltering}
-        initialValues={{
-          status: statusOptions.find(el => el.label === status),
-        }}
-      />
+      <Flex alignItems="center">
+        <Box mr="10px">
+          <T4>Mandates</T4>
+        </Box>
+        <MandatesFilterForm
+          options={statusOptions}
+          onSubmit={filterMandates}
+          isFiltering={isFiltering}
+          initialValues={{
+            status: statusOptions.find(el => el.label === status),
+          }}
+        />
+      </Flex>
       <Box py="10px">
         <DirectDebitsMandatesTable
           changeMandate={changeMandate}

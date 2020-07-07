@@ -17,21 +17,23 @@ import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface ICustomerInfo {
+  countryCodes: Array<ISelectValue>;
   institutionsOptions: Array<ISelectValue>;
+  isCountryCodesLoading: boolean;
   isEditMode?: boolean;
   isIdentification: boolean;
-  countryCodes: Array<ISelectValue>;
-  isCountryCodesLoading: boolean;
   isReadOnly: boolean;
+  isCounty: boolean;
 }
 
 const CustomerInfo: React.FC<ICustomerInfo> = ({
-  institutionsOptions,
   countryCodes,
+  institutionsOptions,
+  isCountryCodesLoading,
   isEditMode = false,
   isIdentification,
-  isCountryCodesLoading,
   isReadOnly,
+  isCounty,
 }) => {
   return (
     <Box mx="-8px">
@@ -206,6 +208,19 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
+        {isCounty && (
+          <Box width="170px" p="8px">
+            <Field
+              id="addressCountyState"
+              name="addressCountyState"
+              component={InputField}
+              label="Address County State"
+              placeholder="Enter County State"
+              hint="2 letter ISO3166-2:US state code (e.g. CA for California)"
+              disabled={isReadOnly}
+            />
+          </Box>
+        )}
         <Box width="238px" p="8px">
           <Field
             id="addressTown"
@@ -231,8 +246,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             ]}
           />
         </Box>
-        <Delimiter />
-        <Box width="238px" p="8px">
+        <Box width={isCounty ? '215px' : '238px'} p="8px">
           <Field
             id="addressLine1"
             name="addressLine1"
@@ -243,7 +257,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width="238px" p="8px">
+        <Box width={isCounty ? '215px' : '238px'} p="8px">
           <Field
             id="addressLine2"
             name="addressLine2"
@@ -253,7 +267,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             disabled={isReadOnly}
           />
         </Box>
-        <Box width="238px" p="8px">
+        <Box width={isCounty ? '215px' : '238px'} p="8px">
           <Field
             id="addressLine3"
             name="addressLine3"
@@ -263,7 +277,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             disabled={isReadOnly}
           />
         </Box>
-        <Box width="238px" p="8px">
+        <Box width={isCounty ? '215px' : '238px'} p="8px">
           <Field
             id="addressLine4"
             name="addressLine4"
@@ -276,7 +290,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
         {isEditMode && (
           <React.Fragment>
             <Hr />
-            <Box width="180px" p="8px">
+            <Box width="120px" p="8px">
               <Field
                 id="dateCreated"
                 name="dateCreated"
@@ -285,7 +299,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
                 disabled={true}
               />
             </Box>
-            <Box width="180px" p="8px">
+            <Box width="120px" p="8px">
               <Field
                 id="dateClosed"
                 name="dateClosed"

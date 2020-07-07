@@ -17,6 +17,7 @@ export interface ICustomerData {
   address_line3: string;
   address_line4: string;
   address_town: string;
+  address_county_state?: string;
   address_post_code: string;
   address_country_code: string | number;
   nationality_country_code: string | number;
@@ -42,6 +43,7 @@ interface ICustomerPlain {
   addressLine3: string;
   addressLine4: string;
   addressTown: string;
+  addressCountyState?: string;
   addressPostCode: string;
   dateCreated: string;
   dateClosed: string;

@@ -39,14 +39,13 @@ const MandatesFilterForm: React.FC<TMandatesFilterForm> = ({
             id="status"
             name="status"
             component={SelectField}
-            label="Status"
             placeholder="Select status"
             options={options}
             isDisabled={isFiltering}
             isClearable={false}
           />
         </Box>
-        <Box ml="16px">
+        <Box ml="8px">
           <Button
             text="Show"
             isLoading={isFiltering}

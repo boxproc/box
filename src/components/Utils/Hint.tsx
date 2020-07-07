@@ -31,8 +31,9 @@ const HintWrapper = styled.div<IHintWrapper>`
     padding: 7px 10px;
     background-color: ${({ theme }) => theme.colors.white};
     color: ${({ theme }) => theme.colors.black};
-    box-shadow: ${({ theme }) => theme.shadows.normalBox};
-    border: 1px solid ${({ theme }) => theme.colors.lightGray};
+    box-shadow: ${({ theme }) => theme.shadows.aroundBox};
+    border: 1px solid ${({ theme }) => theme.colors.gray};
+    background-color: ${({ theme }) => theme.colors.lighterGray};
     transform: ${({ position }) =>
     position === 'left' || position === 'right' ? 'translateY(-50%)' : 'translateX(-50%)'};
     margin: ${({ position }) =>
