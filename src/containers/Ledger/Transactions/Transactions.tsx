@@ -110,7 +110,7 @@ const Transactions: React.FC<ITransactions> = ({
           icon: iconNamesConst.LOAN,
           action: () => openModal({
             name: modalNamesConst.TRANSACTION,
-            payload: { activeTab: 1 },
+            payload: { activeTab: 2 },
           }),
         },
       ];
