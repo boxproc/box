@@ -219,7 +219,7 @@ export interface ISettleTrFormValues {
 }
 
 export interface ISettleTransactionResp {
-  transaction_result: {
+  transaction: {
     transaction_id: number;
     status: string;
     amount_settled: number;

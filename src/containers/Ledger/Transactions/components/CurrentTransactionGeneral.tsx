@@ -70,6 +70,15 @@ const CurrentTransactionGeneral: React.FC = () => {
           />
         </Box>
         <Delimiter />
+        <Box width="115px" p="8px">
+          <Field
+            id="debitCreditIndicator"
+            name="debitCreditIndicator"
+            component={InputField}
+            label="Debit Credit Indicator"
+            disabled={true}
+          />
+        </Box>
         <Box width="150px" p="8px">
           <Field
             id="amount"
@@ -94,15 +103,6 @@ const CurrentTransactionGeneral: React.FC = () => {
             disabled={true}
           />
         </Box>
-        <Box width="115px" p="8px">
-          <Field
-            id="debitCreditIndicator"
-            name="debitCreditIndicator"
-            component={InputField}
-            label="Debit Credit Indicator"
-            disabled={true}
-          />
-        </Box>
         <Box width="150px" p="8px">
           <Field
             id="amountSettled"
@@ -115,6 +115,15 @@ const CurrentTransactionGeneral: React.FC = () => {
             disabled={true}
           />
         </Box>
+        <Box width="170px" p="8px">
+          <Field
+            id="settledDatetime"
+            name="settledDatetime"
+            component={InputField}
+            label="Settled Datetime"
+            disabled={true}
+          />
+        </Box>
         <Box width="150px" p="8px">
           <Field
             id="sourceEndpointId"
@@ -123,15 +132,6 @@ const CurrentTransactionGeneral: React.FC = () => {
             label="Source Endpoint ID"
             disabled={true}
             isNumber={true}
-          />
-        </Box>
-        <Box width="170px" p="8px">
-          <Field
-            id="settledDatetime"
-            name="settledDatetime"
-            component={InputField}
-            label="Settled Datetime"
-            disabled={true}
           />
         </Box>
         <Hr />

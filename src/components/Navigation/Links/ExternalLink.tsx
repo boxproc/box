@@ -15,6 +15,7 @@ const ExternalLinkWrapper = styled.a<IExternalLinkWrapper>`
   font-size: 13px;
   text-decoration: none;
   text-transform: capitalize;
+  user-select: none;
 
   ${({ grayStyle }) => grayStyle && `
     font-weight: 500;

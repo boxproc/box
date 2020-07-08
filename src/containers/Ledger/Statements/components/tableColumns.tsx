@@ -8,7 +8,7 @@ type TCell<T extends keyof IStatement> = ITableCell<IStatement[T]>;
 
 export const tableColumns = [
   {
-    maxWidth: 100,
+    maxWidth: 90,
     Header: <TableHeader title="ID" />,
     accessor: 'id',
     Cell: (props: TCell<'id'>) => (
@@ -39,7 +39,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 90,
     Header: <TableHeader title="Account ID" />,
     accessor: 'accountId',
     Cell: (props: TCell<'accountId'>) => (
@@ -80,7 +80,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 90,
     Header: <TableHeader title="First Transaction ID" />,
     accessor: 'firstTransactionId',
     Cell: (props: TCell<'firstTransactionId'>) => (
@@ -113,7 +113,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 120,
     Header: <TableHeader title="Balance Open" />,
     accessor: 'balanceOpen',
     Cell: (props: TCell<'balanceOpen'>) => (
@@ -124,7 +124,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 120,
     Header: <TableHeader title="Balance Close" />,
     accessor: 'balanceClose',
     Cell: (props: TCell<'balanceClose'>) => (
@@ -135,7 +135,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 120,
     Header: <TableHeader title="Minimum Amount Due Repayment" />,
     accessor: 'repaymentMinimumAmountDue',
     Cell: (props: TCell<'repaymentMinimumAmountDue'>) => (
@@ -146,7 +146,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 150,
+    maxWidth: 120,
     Header: <TableHeader title="Repayment Status" />,
     accessor: 'repaymentStatus',
     Cell: (props: TCell<'repaymentStatus'>) => (

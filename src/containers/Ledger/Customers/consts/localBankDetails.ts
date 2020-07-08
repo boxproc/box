@@ -138,7 +138,7 @@ export const localBankDetails = {
     isAccountType: false,
     accountField2Name: 'Branch Number',
     accountField3Name: 'Bank Number',
-    accountField1Hint: '	The account suffix should be included in the account number field. For example, 0123456-89',
+    accountField1Hint: 'The account suffix should be included in the account number field. For example, 0123456-89',
   },
   PRT: {
     isAccountField1: true,

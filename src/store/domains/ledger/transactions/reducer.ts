@@ -27,7 +27,7 @@ const transactionsReducer = (state = transactionsInitialState, action: TTransact
       return state.set('settledTransaction', action.payload.transaction);
 
     case ActionTypeKeys.SETTLE_TRANSACTION_FULFILLED:
-      const { transaction_id, ...settledTr } = action.payload.transaction_result[0];
+      const { transaction_id, ...settledTr } = action.payload.transaction[0];
       const settledTrInd = state.transactions.findIndex(el => el.id === transaction_id);
       const transactions = state.transactions.asMutable();
 

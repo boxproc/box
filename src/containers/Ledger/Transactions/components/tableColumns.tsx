@@ -10,7 +10,7 @@ type TCell<T extends keyof ITransaction> = ITableCell<ITransaction[T]>;
 
 export const tableColumns = [
   {
-    maxWidth: 100,
+    maxWidth: 90,
     Header: <TableHeader title="ID" />,
     accessor: 'id',
     Cell: (props: TCell<'id'>) => (
@@ -21,7 +21,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 90,
     Header: <TableHeader title="Account ID" />,
     accessor: 'accountId',
     Cell: (props: TCell<'accountId'>) => (
@@ -32,7 +32,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 90,
     Header: <TableHeader title="Card ID" />,
     accessor: 'cardId',
     Cell: (props: TCell<'cardId'>) => (
@@ -43,7 +43,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 100,
     Header: <TableHeader title="Transaction Datetime" />,
     accessor: 'transactionDatetime',
     Cell: (props: TCell<'transactionDatetime'>) => (
