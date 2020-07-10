@@ -18,10 +18,10 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = () => {
     >
       <Box width="170px" p="8px">
         <Field
-          id="directDebitCreatedTimestamp"
-          name="directDebitCreatedTimestamp"
+          id="directDebitProviderTimestamp"
+          name="directDebitProviderTimestamp"
           component={InputField}
-          label="BOX timestamp"
+          label="Date / Time"
           disabled={true}
         />
       </Box>
@@ -34,7 +34,7 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = () => {
           disabled={true}
         />
       </Box>
-      <Box width="100px" p="8px">
+      <Box width="140px" p="8px">
         <Field
           id="directDebitAmount"
           name="directDebitAmount"

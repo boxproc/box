@@ -130,8 +130,16 @@ export const handleAddAccount: THandleAddAccount = data =>
         const state = getState();
         const isAccessibleFiltering = isAccessibleFilterSelector(state);
 
-        await dispatch(addAccount(preparedData));
+        const res = await dispatch(addAccount(preparedData)) as any;
         dispatch(closeModal(modalNamesConst.ADD_ACCOUNT));
+
+        dispatch(openModal({
+          name: modalNamesConst.MESSAGE,
+          payload: {
+            title: 'Account was created',
+            message: `Account ID: ${res.value.account_id}`,
+          },
+        }));
 
         if (isAccessibleFiltering) {
           await dispatch(handleFilterAccounts());

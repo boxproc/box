@@ -18,7 +18,7 @@ const eventsConsts = {
   },
   submitted: {
     color: theme.colors.lightAccent,
-    icon: (<ArrowBoldDownIcon size="12" />),
+    icon: (<ArrowBoldDownIcon size="13" />),
   },
   verified: {
     color: theme.colors.green,
@@ -26,7 +26,7 @@ const eventsConsts = {
   },
   completed: {
     color: theme.colors.green,
-    icon: (<ArrowToBottomIcon size="14" />),
+    icon: (<ArrowToBottomIcon size="16" />),
   },
   revoked: {
     color: theme.colors.red,

@@ -238,7 +238,7 @@ const Filter: React.FC<TFilter> = ({
 
 export default reduxForm<{}, IFilter>({
   form: formNamesConst.FILTER,
-  keepDirtyOnReinitialize: true,
+  // keepDirtyOnReinitialize: true,
   destroyOnUnmount: false,
   enableReinitialize: true,
 })(Filter);

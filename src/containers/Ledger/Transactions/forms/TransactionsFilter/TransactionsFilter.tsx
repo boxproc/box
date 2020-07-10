@@ -68,7 +68,7 @@ const TransactionsFilter: React.FC<ITransactionsFilter> = ({
           isDisabled={isDisabled}
         />
       </Box>
-      <Box width="160px" p="8px">
+      <Box width="180px" p="8px">
         <Field
           id="transactionsDateTimeFrom"
           name="transactionsDateTimeFrom"
@@ -84,7 +84,7 @@ const TransactionsFilter: React.FC<ITransactionsFilter> = ({
           ]}
         />
       </Box>
-      <Box width="160px" p="8px">
+      <Box width="180px" p="8px">
         <Field
           id="transactionsDateTimeTo"
           name="transactionsDateTimeTo"
@@ -149,7 +149,7 @@ const TransactionsFilter: React.FC<ITransactionsFilter> = ({
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
-      <Box width="320px" p="8px">
+      <Box width="360px" p="8px">
         <Field
           id="panAlias"
           name="panAlias"

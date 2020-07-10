@@ -208,31 +208,33 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width="150px" p="8px">
-          <Field
-            id="repaymentMethod"
-            name="repaymentMethod"
-            component={SelectField}
-            label="Repayment Method"
-            placeholder="Select Method"
-            isDisabled={isReadOnly}
-            options={repaymentMethodsOptions}
-            validate={[formErrorUtil.isRequired]}
-          />
-        </Box>
         {isRepaymentType && (
-          <Box width="200px" p="8px">
-            <Field
-              id="repaymentType"
-              name="repaymentType"
-              component={SelectField}
-              label="Repayment Type"
-              placeholder="Select Type"
-              isDisabled={isSelectedLoan || isReadOnly}
-              options={repaymentTypesOptions}
-              validate={[formErrorUtil.isRequired]}
-            />
-          </Box>
+          <React.Fragment>
+            <Box width="150px" p="8px">
+              <Field
+                id="repaymentMethod"
+                name="repaymentMethod"
+                component={SelectField}
+                label="Repayment Method"
+                placeholder="Select Method"
+                isDisabled={isReadOnly}
+                options={repaymentMethodsOptions}
+                validate={[formErrorUtil.isRequired]}
+              />
+            </Box>
+            <Box width="200px" p="8px">
+              <Field
+                id="repaymentType"
+                name="repaymentType"
+                component={SelectField}
+                label="Repayment Type"
+                placeholder="Select Type"
+                isDisabled={isSelectedLoan || isReadOnly}
+                options={repaymentTypesOptions}
+                validate={[formErrorUtil.isRequired]}
+              />
+            </Box>
+          </React.Fragment>
         )}
         {isDirectDebitRepayment && (
           <Box width="240px" p="8px">
