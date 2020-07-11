@@ -106,7 +106,7 @@ const DirectDebitsMandatesTable: React.FC<IDirectDebitsMandatesTable> = ({
         Cell: (cellInfo: CellInfo) => (
           <Flex alignItems="flex-start" p="7px 5px">
             <Button
-              title="View details"
+              title="Show details"
               text="Details"
               size="10"
               type="reset"

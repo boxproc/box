@@ -46,7 +46,7 @@ const UserBlock: React.FC<IUserData> = ({
 }) => (
     <Flex alignItems="center">
       {isMasterInstitution
-        ? (<div><UserShieldIconStyled size="15" /></div>)
+        ? (<Box mt="-2px"><UserShieldIconStyled size="15" /></Box>)
         : (<Box mt="-2px"><UserIconStyled size="12" /></Box>)
       }
       <TextWrapper>{`${firstName} ${lastName}`}</TextWrapper>

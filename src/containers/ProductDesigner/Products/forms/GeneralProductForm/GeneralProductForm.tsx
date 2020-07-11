@@ -131,4 +131,5 @@ export default reduxForm<{}, IGeneralProductForm>({
   form: formNamesConst.GENERAL_PRODUCT,
   destroyOnUnmount: true,
   enableReinitialize: true,
+  keepDirtyOnReinitialize: true,
 })(withSpinner()(GeneralProductForm));

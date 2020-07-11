@@ -30,10 +30,9 @@ const HintWrapper = styled.div<IHintWrapper>`
     min-width: ${({ icon }) => icon ? '160px' : 'auto'};
     padding: 7px 10px;
     background-color: ${({ theme }) => theme.colors.white};
-    color: ${({ theme }) => theme.colors.black};
-    box-shadow: ${({ theme }) => theme.shadows.normalBox};
-    border: 1px solid ${({ theme }) => theme.colors.lightGray};
-    background-color: ${({ theme }) => theme.colors.lighterGray};
+    color: ${({ theme }) => theme.colors.white};
+    box-shadow: ${({ theme }) => theme.shadows.aroundBox};
+    background-color: ${({ theme }) => theme.colors.darkGray};
     transform: ${({ position }) =>
     position === 'left' || position === 'right' ? 'translateY(-50%)' : 'translateX(-50%)'};
     margin: ${({ position }) =>

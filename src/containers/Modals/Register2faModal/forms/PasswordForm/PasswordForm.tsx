@@ -3,7 +3,7 @@ import React from 'react';
 import { Flex } from '@rebass/grid';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
-import { Button, ISpinner, Paragraph, PasswordField, withSpinner } from 'components';
+import { Button, Paragraph, PasswordField } from 'components';
 
 import { THandleUserGetAuthKey } from 'store';
 
@@ -11,8 +11,9 @@ import { formNamesConst } from 'consts';
 
 import { formErrorUtil } from 'utils';
 
-interface IPasswordForm extends ISpinner {
+interface IPasswordForm {
   userGetAuthKey?: THandleUserGetAuthKey;
+  isLoading: boolean;
 }
 
 type TPasswordForm = IPasswordForm & InjectedFormProps<{}, IPasswordForm>;
@@ -21,6 +22,7 @@ const PasswordForm: React.FC<TPasswordForm> = ({
   handleSubmit,
   userGetAuthKey,
   pristine,
+  isLoading,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(userGetAuthKey),
@@ -39,11 +41,13 @@ const PasswordForm: React.FC<TPasswordForm> = ({
           autoComplete="new-password"
           validate={[formErrorUtil.isRequired]}
           autoFocus={true}
+          disabled={isLoading}
         />
         <Flex justifyContent="flex-end">
           <Button
             text="Next"
             disabled={pristine}
+            isLoading={isLoading}
           />
         </Flex>
       </form>
@@ -55,4 +59,4 @@ export default reduxForm<{}, IPasswordForm>({
   form: formNamesConst.PASSWORD,
   destroyOnUnmount: true,
   enableReinitialize: true,
-})(withSpinner()(PasswordForm));
+})(PasswordForm);

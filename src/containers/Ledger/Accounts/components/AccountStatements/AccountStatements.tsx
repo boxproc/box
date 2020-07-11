@@ -6,7 +6,7 @@ import { CellInfo, RowInfo } from 'react-table';
 
 import { Button, Table, TableCell, TableHeader, withSpinner } from 'components';
 
-import { iconNamesConst, modalNamesConst } from 'consts';
+import { modalNamesConst } from 'consts';
 
 import {
   IAccountStatement,
@@ -152,17 +152,19 @@ const AccountStatements: React.FC<IAccountStatements> = ({
         ),
       },
       {
-        maxWidth: 50,
-        Header: <TableHeader title="Details" />,
+        maxWidth: 75,
         Cell: (cellInfo: CellInfo) => (
           <Flex
             justifyContent="center"
             width="100%"
+            alignItems="center"
+            p="7px 5px"
           >
             <Button
-              iconName={iconNamesConst.SHORT_TEXT}
-              title="Sow details"
+              title="Show details"
+              text="Details"
               type="reset"
+              size={11}
               onClick={() => getStatementAprs(
                 cellInfo.original.id,
                 modalNamesConst.STATEMENT_APRS

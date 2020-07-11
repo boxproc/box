@@ -59,7 +59,7 @@ const Home: React.FC<IHome> = ({ openModal }) => {
       <CenterBlock>
         {storageUtil.getFirstScreenFlag() && (
           <React.Fragment>
-            <Paragraph bold={true} size={15}>Welcome {userName}!</Paragraph>
+            <Paragraph bold={true} size={16}>Welcome {userName}!</Paragraph>
             {lastActivity && (<SmallText>Your last activity: {lastActivity}</SmallText>)}
           </React.Fragment>
         )}

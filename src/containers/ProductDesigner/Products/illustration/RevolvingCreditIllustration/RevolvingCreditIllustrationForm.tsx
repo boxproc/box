@@ -1,5 +1,6 @@
 import React from 'react';
 import { Field, InjectedFormProps, reduxForm } from 'redux-form';
+import styled from 'styled-components';
 
 import { Box, Flex } from '@rebass/grid';
 
@@ -17,6 +18,21 @@ import { dateFormatConst, formNamesConst, iconNamesConst, maskFormatConst } from
 import { THandleIllustrateRevCredit } from 'store';
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
+
+const LeftPartWrapper = styled(Flex)`
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 30px;
+    right: 0;
+    bottom: 10px;
+    display: block;
+    width: 1px;
+    border-right: 1px solid ${({ theme }) => theme.colors.lightGray};
+  }
+`;
 
 interface IRevolvingCreditIllustrationForm {
   transactionTypesOptions: Array<ISelectValue>;
@@ -64,231 +80,244 @@ const RevolvingCreditIllustrationForm: React.FC<TTGeneralProductForm> = ({
           text={filterButtonText}
           iconName={iconNamesConst.FILTER}
           type="reset"
+          classNames={['is-bordered']}
           onClick={handleFilter}
         />
       </Box>
       {isOpenFilter && (
         <form onSubmit={handleSubmitForm}>
           <Flex
-            alignItems="flex-end"
+            alignItems="flex-start"
             flexWrap="wrap"
             mx="-8px"
           >
-            <Box width="130px" p="8px">
-              <Field
-                id="startDate"
-                name="startDate"
-                component={MaskField}
-                label="Start Date"
-                placeholder={dateFormatConst.DATE}
-                mask={maskFormatConst.DATE}
-                disabled={isDisabled}
-                validate={[
-                  formErrorUtil.isRequired,
-                  formErrorUtil.isDate,
-                ]}
-              />
-            </Box>
-            <Box width={[1 / 7]} p="8px">
-              <Field
-                id="limit"
-                name="limit"
-                component={NumberFormatField}
-                label="Limit"
-                placeholder="0.00"
-                fixedDecimalScale={true}
-                decimalScale={2}
-                disabled={isDisabled}
-                validate={[
-                  formErrorUtil.isRequired,
-                  formErrorUtil.isNumber,
-                  formErrorUtil.isPositive,
-                ]}
-              />
-            </Box>
-            <Box width={[1 / 7]} p="8px">
-              <Field
-                id="openBalance"
-                name="openBalance"
-                component={NumberFormatField}
-                label="Open Balance"
-                placeholder="0.00"
-                fixedDecimalScale={true}
-                decimalScale={2}
-                disabled={isDisabled}
-                validate={[
-                  formErrorUtil.isRequired,
-                  formErrorUtil.isNumber,
-                  formErrorUtil.isPositive,
-                ]}
-              />
-            </Box>
-            <Delimiter />
-            <Box px="8px" mb="5px" width="130px">
-              <Paragraph bold={false} light={true}>
-                1st Transaction
-              </Paragraph>
-            </Box>
-            <Box width={[1 / 7]} p="8px">
-              <Field
-                id="transactionDate1"
-                name="transactionDate1"
-                component={MaskField}
-                label="Date"
-                placeholder={dateFormatConst.DATE}
-                mask={maskFormatConst.DATE}
-                disabled={isDisabled}
-                validate={[
-                  formErrorUtil.isRequired,
-                  formErrorUtil.isDate,
-                ]}
-              />
-            </Box>
-            <Box width={[1 / 3]} p="8px">
-              <Field
-                id="transactionType1"
-                name="transactionType1"
-                component={SelectField}
-                placeholder="Select type"
-                isLoading={isTransTypesLoading}
-                options={transactionTypesOptions}
-                label="Type"
-                isDisabled={isDisabled}
-                validate={[formErrorUtil.isRequired]}
-              />
-            </Box>
-            <Box width={[1 / 7]} p="8px" >
-              <Field
-                id="transactionAmount1"
-                name="transactionAmount1"
-                component={NumberFormatField}
-                label="Amount"
-                placeholder="0.00"
-                fixedDecimalScale={true}
-                decimalScale={2}
-                disabled={isDisabled}
-                validate={[
-                  formErrorUtil.isRequired,
-                  formErrorUtil.isNumber,
-                  formErrorUtil.isPositive,
-                ]}
-              />
-            </Box>
-            <Delimiter />
-            <Box px="8px" mb="5px" width="130px">
-              <Paragraph bold={false} light={true}>
-                2nd Transaction
-              </Paragraph>
-            </Box>
-            <Box width={[1 / 7]} p="8px">
-              <Field
-                id="transactionDate2"
-                name="transactionDate2"
-                component={MaskField}
-                label="Date"
-                placeholder={dateFormatConst.DATE}
-                mask={maskFormatConst.DATE}
-                disabled={isDisabled}
-                validate={[
-                  formErrorUtil.isRequired,
-                  formErrorUtil.isDate,
-                ]}
-              />
-            </Box>
-            <Box width={[1 / 3]} p="8px">
-              <Field
-                id="transactionType2"
-                name="transactionType2"
-                component={SelectField}
-                isLoading={isTransTypesLoading}
-                options={transactionTypesOptions}
-                placeholder="Select Type"
-                label="Type"
-                isDisabled={isDisabled}
-                validate={[formErrorUtil.isRequired]}
-              />
-            </Box>
-            <Box width={[1 / 7]} p="8px">
-              <Field
-                id="transactionAmount2"
-                name="transactionAmount2"
-                component={NumberFormatField}
-                label="Amount"
-                placeholder="0.00"
-                fixedDecimalScale={true}
-                decimalScale={2}
-                disabled={isDisabled}
-                validate={[
-                  formErrorUtil.isRequired,
-                  formErrorUtil.isNumber,
-                  formErrorUtil.isPositive,
-                ]}
-              />
-            </Box>
-            <Delimiter />
-            <Box px="8px" mb="5px" width="130px">
-              <Paragraph bold={false} light={true}>
-                3rd Transaction
-              </Paragraph>
-            </Box>
-            <Box width={[1 / 7]} p="8px">
-              <Field
-                id="transactionDate3"
-                name="transactionDate3"
-                component={MaskField}
-                label="Date"
-                placeholder={dateFormatConst.DATE}
-                mask={maskFormatConst.DATE}
-                disabled={isDisabled}
-                validate={[
-                  formErrorUtil.isRequired,
-                  formErrorUtil.isDate,
-                ]}
-              />
-            </Box>
-            <Box width={[1 / 3]} p="8px">
-              <Field
-                id="transactionType3"
-                name="transactionType3"
-                component={SelectField}
-                isLoading={isTransTypesLoading}
-                options={transactionTypesOptions}
-                placeholder="Select type"
-                label="Type"
-                isDisabled={isDisabled}
-                validate={[formErrorUtil.isRequired]}
-              />
-            </Box>
-            <Box width={[1 / 7]} p="8px">
-              <Field
-                id="transactionAmount3"
-                name="transactionAmount3"
-                component={NumberFormatField}
-                label="Amount"
-                placeholder="0.00"
-                fixedDecimalScale={true}
-                decimalScale={2}
-                disabled={isDisabled}
-                validate={[
-                  formErrorUtil.isRequired,
-                  formErrorUtil.isNumber,
-                  formErrorUtil.isPositive,
-                ]}
-              />
-            </Box>
-            <Box width={[1]} px="10px">
-              <Hr />
-              <Flex justifyContent="flex-end" width="100%">
-                <Button
-                  text="Illustrate"
-                  isLoading={isLoading}
+            <LeftPartWrapper
+              width="145px"
+              flexDirection="column"
+              pr="15px"
+            >
+              <Box width={[1]} p="8px">
+                <Field
+                  id="startDate"
+                  name="startDate"
+                  component={MaskField}
+                  label="Start Date"
+                  placeholder={dateFormatConst.DATE}
+                  mask={maskFormatConst.DATE}
+                  disabled={isDisabled}
+                  validate={[
+                    formErrorUtil.isRequired,
+                    formErrorUtil.isDate,
+                  ]}
                 />
-              </Flex>
-            </Box>
+              </Box>
+              <Box width={[1]} p="8px">
+                <Field
+                  id="limit"
+                  name="limit"
+                  component={NumberFormatField}
+                  label="Limit"
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  disabled={isDisabled}
+                  validate={[
+                    formErrorUtil.isRequired,
+                    formErrorUtil.isNumber,
+                    formErrorUtil.isPositive,
+                  ]}
+                />
+              </Box>
+              <Box width={[1]} p="8px">
+                <Field
+                  id="openBalance"
+                  name="openBalance"
+                  component={NumberFormatField}
+                  label="Open Balance"
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  disabled={isDisabled}
+                  validate={[
+                    formErrorUtil.isRequired,
+                    formErrorUtil.isNumber,
+                    formErrorUtil.isPositive,
+                  ]}
+                />
+              </Box>
+            </LeftPartWrapper>
+            <Flex
+              width="830px"
+              flexWrap="wrap"
+              pl="10px"
+            >
+              <Box p="8px" pt="30px">
+                <Paragraph bold={false} light={true}>
+                  1st Transaction
+                </Paragraph>
+              </Box>
+              <Box width="130px" p="8px">
+                <Field
+                  id="transactionDate1"
+                  name="transactionDate1"
+                  component={MaskField}
+                  label="Date"
+                  placeholder={dateFormatConst.DATE}
+                  mask={maskFormatConst.DATE}
+                  disabled={isDisabled}
+                  validate={[
+                    formErrorUtil.isRequired,
+                    formErrorUtil.isDate,
+                  ]}
+                />
+              </Box>
+              <Box width="340px" p="8px">
+                <Field
+                  id="transactionType1"
+                  name="transactionType1"
+                  component={SelectField}
+                  placeholder="Select type"
+                  isLoading={isTransTypesLoading}
+                  options={transactionTypesOptions}
+                  label="Transaction Type"
+                  isDisabled={isDisabled}
+                  validate={[formErrorUtil.isRequired]}
+                />
+              </Box>
+              <Box width="130px" p="8px">
+                <Field
+                  id="transactionAmount1"
+                  name="transactionAmount1"
+                  component={NumberFormatField}
+                  label="Amount"
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  disabled={isDisabled}
+                  validate={[
+                    formErrorUtil.isRequired,
+                    formErrorUtil.isNumber,
+                    formErrorUtil.isPositive,
+                  ]}
+                />
+              </Box>
+              <Delimiter />
+              <Box p="8px" pt="30px">
+                <Paragraph bold={false} light={true}>
+                  2nd Transaction
+              </Paragraph>
+              </Box>
+              <Box width="130px" p="8px">
+                <Field
+                  id="transactionDate2"
+                  name="transactionDate2"
+                  component={MaskField}
+                  label="Date"
+                  placeholder={dateFormatConst.DATE}
+                  mask={maskFormatConst.DATE}
+                  disabled={isDisabled}
+                  validate={[
+                    formErrorUtil.isRequired,
+                    formErrorUtil.isDate,
+                  ]}
+                />
+              </Box>
+              <Box width="340px" p="8px">
+                <Field
+                  id="transactionType2"
+                  name="transactionType2"
+                  component={SelectField}
+                  isLoading={isTransTypesLoading}
+                  options={transactionTypesOptions}
+                  placeholder="Select Type"
+                  label="Transaction Type"
+                  isDisabled={isDisabled}
+                  validate={[formErrorUtil.isRequired]}
+                />
+              </Box>
+              <Box width="130px" p="8px">
+                <Field
+                  id="transactionAmount2"
+                  name="transactionAmount2"
+                  component={NumberFormatField}
+                  label="Amount"
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  disabled={isDisabled}
+                  validate={[
+                    formErrorUtil.isRequired,
+                    formErrorUtil.isNumber,
+                    formErrorUtil.isPositive,
+                  ]}
+                />
+              </Box>
+              <Delimiter />
+              <Box p="8px" pt="30px">
+                <Paragraph bold={false} light={true}>
+                  3rd Transaction
+              </Paragraph>
+              </Box>
+              <Box width="130px" p="8px">
+                <Field
+                  id="transactionDate3"
+                  name="transactionDate3"
+                  component={MaskField}
+                  label="Date"
+                  placeholder={dateFormatConst.DATE}
+                  mask={maskFormatConst.DATE}
+                  disabled={isDisabled}
+                  validate={[
+                    formErrorUtil.isRequired,
+                    formErrorUtil.isDate,
+                  ]}
+                />
+              </Box>
+              <Box width="340px" p="8px">
+                <Field
+                  id="transactionType3"
+                  name="transactionType3"
+                  component={SelectField}
+                  isLoading={isTransTypesLoading}
+                  options={transactionTypesOptions}
+                  placeholder="Select type"
+                  label="Transaction Type"
+                  isDisabled={isDisabled}
+                  validate={[formErrorUtil.isRequired]}
+                />
+              </Box>
+              <Box width="130px" p="8px">
+                <Field
+                  id="transactionAmount3"
+                  name="transactionAmount3"
+                  component={NumberFormatField}
+                  label="Amount"
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  disabled={isDisabled}
+                  validate={[
+                    formErrorUtil.isRequired,
+                    formErrorUtil.isNumber,
+                    formErrorUtil.isPositive,
+                  ]}
+                />
+              </Box>
+            </Flex>
+            <Hr />
+            <Flex
+              justifyContent="flex-end"
+              width={[1]}
+            >
+              <Button
+                text="Illustrate"
+                isLoading={isLoading}
+              />
+            </Flex>
           </Flex>
         </form>
       )}
-    </React.Fragment>
+    </React.Fragment >
   );
 };
 
