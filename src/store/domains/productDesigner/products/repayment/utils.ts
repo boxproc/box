@@ -13,8 +13,8 @@ export const prepareDataToRender = (data: Partial<IProductRepaymentData>) => {
 
   return {
     productId: id,
-    repaymentClearingNrDays: repayment_clearing_nr_days,
-    directDebitSubmissionNrDays: direct_debit_submission_nr_days,
+    repaymentClearingNrDays: repayment_clearing_nr_days || 2,
+    directDebitSubmissionNrDays: direct_debit_submission_nr_days || 5,
   };
 };
 
