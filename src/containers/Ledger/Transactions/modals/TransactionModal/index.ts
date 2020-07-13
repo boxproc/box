@@ -4,7 +4,6 @@ import { bindActionCreators, Dispatch } from 'redux';
 import TransactionModal from './TransactionModal';
 
 import {
-  activeItemIdSelector,
   currentTrAmountSelector,
   currentTransactionSelector,
   directDebitPaymentHistorySelector,
@@ -19,7 +18,6 @@ import {
 } from 'store';
 
 const mapStateToProps = (state: IStoreState) => ({
-  currentTransactionId: activeItemIdSelector(state),
   payloadTransactionModal: payloadTransactionModalSelector(state),
   transactionAmount: currentTrAmountSelector(state),
   isConvertibleToLoan: isTrConvertibleToLoanSelector(state),

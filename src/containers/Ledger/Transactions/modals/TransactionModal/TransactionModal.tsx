@@ -18,8 +18,7 @@ import {
 import { dateUtil } from 'utils';
 
 interface ITransactionModal extends IWithModal {
-  currentTransaction: Array<ITransaction>;
-  currentTransactionId: number;
+  currentTransaction: ITransaction;
   directDebitPayment: IDirectDebitPayment;
   directDebitPaymentHistory: Array<{ date: string; event: string; }>;
   getDirectDebitPayment: THandleGetDirectDebitPayment;
@@ -36,7 +35,6 @@ const modalName = modalNamesConst.TRANSACTION;
 const TransactionModal: React.FC<ITransactionModal> = ({
   closeModal,
   currentTransaction,
-  currentTransactionId,
   directDebitPayment,
   directDebitPaymentHistory,
   getDirectDebitPayment,
@@ -48,6 +46,16 @@ const TransactionModal: React.FC<ITransactionModal> = ({
   resetDirectDebitPayment,
   transactionAmount,
 }) => {
+  const currentTransactionId = React.useMemo(
+    () => currentTransaction && currentTransaction.id,
+    [currentTransaction]
+  );
+
+  const currentTransactionDescription = React.useMemo(
+    () => currentTransaction && currentTransaction.description,
+    [currentTransaction]
+  );
+
   React.useEffect(
     () => {
       if (isDirectDebitTr) {
@@ -88,7 +96,7 @@ const TransactionModal: React.FC<ITransactionModal> = ({
     <Modal
       name={modalName}
       type={modalTypesConst.VIEWING}
-      title={`Transaction: ${currentTransactionId}`}
+      title={`Transaction: ${currentTransactionDescription}`}
       containerWidth="900px"
       minContainerHeight="580px"
     >
