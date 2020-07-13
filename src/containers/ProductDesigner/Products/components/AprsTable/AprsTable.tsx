@@ -58,7 +58,7 @@ const AprsTable: React.FC<IAprsTable> = ({
   const columns = React.useMemo(
     () => [
       {
-        maxWidth: 120,
+        maxWidth: 80,
         accessor: 'productAprId',
         Header: <TableHeader title="APR ID" />,
         Cell: (props: TCell<'productAprId'>) => (
@@ -164,6 +164,7 @@ const AprsTable: React.FC<IAprsTable> = ({
         data={productAprs}
         columns={columns}
         isSmaller={true}
+        isScrollbar={false}
       />
     </Box>
   );

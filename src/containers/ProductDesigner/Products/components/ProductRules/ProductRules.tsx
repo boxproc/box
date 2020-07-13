@@ -360,6 +360,8 @@ const ProductRules: React.FC<IProductRules> = ({
                 menuId="rulesCodeContextMenu"
                 fontSize={11}
                 height="calc(100vh - 250px)"
+                hint="To apply scripts run the scheduler task 'Initializing global variables'."
+                hintPosition="left"
                 disabled={isReadOnly}
               />
             </Box>

@@ -89,7 +89,7 @@ const RewardsForm: React.FC<TRewardsForm> = ({
         flexWrap="wrap"
         mx="-8px"
       >
-        <Box width="240px" p="8px">
+        <Box width="190px" p="8px">
           <Field
             id="description"
             name="description"
@@ -109,16 +109,15 @@ const RewardsForm: React.FC<TRewardsForm> = ({
             options={rewardsTypesOptions}
             placeholder="Select Condition"
             isDisabled={isLoading}
-            isClearable={false}
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width="120px" p="8px">
+        <Box width="80px" p="8px">
           <Field
             id="rate"
             name="rate"
             component={NumberFormatField}
-            label="Rate"
+            label="Rate %"
             disabled={isLoading || isOnlyAmount}
             placeholder="0.00"
             fixedDecimalScale={true}

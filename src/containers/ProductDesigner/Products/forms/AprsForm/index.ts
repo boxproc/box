@@ -19,6 +19,7 @@ const mapStateToProps = (state: IStoreState) => ({
   isLoading: isProductAprsAddingSelector(state),
   initialValues: {
     aprFutureStartDate: dateUtil.tomorrowDate(),
+    initialInterestFreeDays: 0,
   },
   startDateValue: formSelector(state, 'aprStartDate'),
 });

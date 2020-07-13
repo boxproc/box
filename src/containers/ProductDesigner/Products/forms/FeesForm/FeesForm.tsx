@@ -3,7 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, Delimiter, InputField, NumberFormatField, SelectField } from 'components';
+import { Button, InputField, NumberFormatField, SelectField } from 'components';
 import { feeRewardsTypesConst, feeTypesOptions, formNamesConst, iconNamesConst } from 'consts';
 import { THandleAddProductFee } from 'store';
 import { ISelectValue } from 'types';
@@ -91,7 +91,7 @@ const FeesForm: React.FC<TFeesForm> = ({
         flexWrap="wrap"
         mx="-8px"
       >
-        <Box width="240px" p="8px">
+        <Box width="190px" p="8px">
           <Field
             id="description"
             name="description"
@@ -111,11 +111,10 @@ const FeesForm: React.FC<TFeesForm> = ({
             options={feeTypesOptions}
             placeholder="Select Condition"
             isDisabled={isLoading}
-            isClearable={false}
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width="300px" p="8px">
+        <Box width="200px" p="8px">
           <Field
             id="apr"
             name="apr"
@@ -125,16 +124,14 @@ const FeesForm: React.FC<TFeesForm> = ({
             options={aprsOptions}
             placeholder="Select APR"
             isDisabled={isLoading}
-            isClearable={false}
           />
         </Box>
-        <Delimiter />
-        <Box width="120px" p="8px">
+        <Box width="80px" p="8px">
           <Field
             id="rate"
             name="rate"
             component={NumberFormatField}
-            label="Rate"
+            label="Rate %"
             disabled={isLoading || isOnlyAmount}
             placeholder="0.00"
             fixedDecimalScale={true}

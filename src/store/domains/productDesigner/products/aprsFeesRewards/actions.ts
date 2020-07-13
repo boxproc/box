@@ -294,7 +294,7 @@ export const handleAddProductReward: THandleAddProductReward = data =>
           product_id: productId,
         }));
         await dispatch(handleGetProductRewards());
-        dispatch(resetForm(formNamesConst.PRODUCT_FEES));
+        dispatch(resetForm(formNamesConst.PRODUCT_REWARDS));
       },
       dispatch
     );

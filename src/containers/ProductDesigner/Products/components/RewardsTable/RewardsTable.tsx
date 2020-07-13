@@ -58,7 +58,7 @@ const RewardsTable: React.FC<IRewardsTable> = ({
   const columns = React.useMemo(
     () => [
       {
-        maxWidth: 120,
+        maxWidth: 80,
         accessor: 'productRewardId',
         Header: <TableHeader title="Product Reward ID" />,
         Cell: (props: TCell<'productRewardId'>) => (
@@ -70,7 +70,7 @@ const RewardsTable: React.FC<IRewardsTable> = ({
         ),
       },
       {
-        maxWidth: 250,
+        maxWidth: 330,
         accessor: 'description',
         Header: <TableHeader title="Description" />,
         Cell: (cellInfo: CellInfo) => (
@@ -83,7 +83,7 @@ const RewardsTable: React.FC<IRewardsTable> = ({
         ),
       },
       {
-        maxWidth: 120,
+        maxWidth: 80,
         accessor: 'rate',
         Header: <TableHeader title="Rate" />,
         Cell: (cellInfo: CellInfo) => (
@@ -157,6 +157,7 @@ const RewardsTable: React.FC<IRewardsTable> = ({
         data={productRewards}
         columns={columns}
         isSmaller={true}
+        isScrollbar={false}
       />
     </Box>
   );

@@ -124,7 +124,7 @@ export enum aprDateConst {
 
 export const aprDateOptions = [
   { value: aprDateConst.IMMEDIATE, label: 'Immediate' },
-  { value: aprDateConst.NEXT_BILLING_DAY, label: 'Next billing date' },
+  { value: aprDateConst.NEXT_BILLING_DAY, label: 'Next billing date', isDisabled: true },
   { value: aprDateConst.FUTURE, label: 'Future date' },
 ];
 

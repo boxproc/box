@@ -66,7 +66,7 @@ const FeesTable: React.FC<IFeesTable> = ({
   const columns = React.useMemo(
     () => [
       {
-        maxWidth: 100,
+        maxWidth: 80,
         accessor: 'productFeeId',
         Header: <TableHeader title="Product Fee ID" />,
         Cell: (props: TCell<'productFeeId'>) => (
@@ -91,7 +91,7 @@ const FeesTable: React.FC<IFeesTable> = ({
         ),
       },
       {
-        maxWidth: 100,
+        maxWidth: 80,
         accessor: 'rate',
         Header: <TableHeader title="Rate" />,
         Cell: (cellInfo: CellInfo) => (
@@ -121,7 +121,7 @@ const FeesTable: React.FC<IFeesTable> = ({
         ),
       },
       {
-        maxWidth: 300,
+        maxWidth: 200,
         minWidth: 150,
         accessor: 'feeApplicationCondition',
         Header: <TableHeader title="Fee Application Condition" />,
@@ -133,7 +133,7 @@ const FeesTable: React.FC<IFeesTable> = ({
         ),
       },
       {
-        maxWidth: 300,
+        maxWidth: 250,
         minWidth: 200,
         accessor: 'apr',
         Header: <TableHeader title="APR" />,
