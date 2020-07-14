@@ -197,6 +197,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
                 placeholder="Select Card"
                 options={cardFormFactorOptions}
                 isDisabled={isReadOnly}
+                hint="Select card from factor 'Physical' for the card management interface 'Tribe'."
                 validate={[formErrorUtil.isRequired]}
               />
             </Box>

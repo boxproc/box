@@ -259,7 +259,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
               component={InputField}
               label="Statement Cycle Repayment Day"
               placeholder="Enter Day"
-              disabled={isReadOnly}
+              disabled={true}
               isNumber={true}
               validate={[formErrorUtil.isInteger]}
             />
@@ -398,7 +398,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             placeholder="0.00"
             fixedDecimalScale={true}
             decimalScale={2}
-            disabled={isEditMode || isReadOnly}
+            disabled={true}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
@@ -414,7 +414,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             placeholder="0.00"
             fixedDecimalScale={true}
             decimalScale={2}
-            disabled={isEditMode || isReadOnly}
+            disabled={true}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
@@ -431,7 +431,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             placeholder="0.00"
             fixedDecimalScale={true}
             decimalScale={2}
-            disabled={isEditMode || isReadOnly}
+            disabled={true}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
@@ -448,7 +448,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             placeholder="0.00"
             fixedDecimalScale={true}
             decimalScale={2}
-            disabled={isEditMode || isReadOnly}
+            disabled={true}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,

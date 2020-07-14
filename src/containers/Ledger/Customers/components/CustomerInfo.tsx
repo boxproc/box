@@ -160,7 +160,7 @@ const CustomerInfo: React.FC<ICustomerInfo> = ({
             hint="Phone number must be supplied with the country code, therefore must start with '+' and omit the leading zero."
             validate={[
               formErrorUtil.isRequired,
-              formErrorUtil.isMobilePhone,
+              // formErrorUtil.isMobilePhone,
             ]}
           />
         </Box>

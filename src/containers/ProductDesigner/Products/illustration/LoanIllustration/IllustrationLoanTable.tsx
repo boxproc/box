@@ -10,7 +10,7 @@ type TCell<T extends keyof ILoanIllustration> = ITableCell<ILoanIllustration[T]>
 
 const columns = [
   {
-    maxWidth: 100,
+    maxWidth: 80,
     accessor: 'statementId',
     Header: <TableHeader title="Statement ID" />,
     Cell: (props: TCell<'statementId'>) => (
@@ -21,7 +21,7 @@ const columns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 95,
     accessor: 'startDate',
     Header: <TableHeader title="Start Date" />,
     Cell: (props: TCell<'startDate'>) => (
@@ -32,7 +32,7 @@ const columns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 95,
     accessor: 'endDate',
     Header: <TableHeader title="End Date" />,
     Cell: (props: TCell<'endDate'>) => (
@@ -43,7 +43,7 @@ const columns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 95,
     accessor: 'statementDate',
     Header: <TableHeader title="Statement Date" />,
     Cell: (props: TCell<'statementDate'>) => (

@@ -271,11 +271,10 @@ const AccountForm: React.FC<TAccountForm> = ({
         </TabsPanel>
         <TabsPanel title="Overdue">
           <Overdue
-            isEditMode={isEditMode}
             onCancel={onCancel}
             dirty={dirty}
             pristine={pristine}
-            isReadOnly={isReadOnly}
+            isReadOnly={true}
           />
         </TabsPanel>
       </Tabs>

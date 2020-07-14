@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Modal } from 'components';
+import { Hr, Modal } from 'components';
 import { SettleTransactionForm, TransactionRetrievingForm } from './forms';
 
 import { modalNamesConst, modalTypesConst, uiItemsConst } from 'consts';
@@ -96,13 +96,16 @@ const SettleTransactionModal: React.FC<ISettleTransactionModal> = ({
         onCancel={handleCloseModal}
       />
       {isRetrievedTransaction && (
-        <SettleTransactionForm
-          isLoading={isLoading}
-          isDisabled={isLoading || isRetrieving}
-          initialValues={retrievedTransaction}
-          onCancel={handleCloseModal}
-          settleTransaction={settleTransaction}
-        />
+        <React.Fragment>
+          <Hr />
+          <SettleTransactionForm
+            isLoading={isLoading}
+            isDisabled={isLoading || isRetrieving}
+            initialValues={retrievedTransaction}
+            onCancel={handleCloseModal}
+            settleTransaction={settleTransaction}
+          />
+        </React.Fragment>
       )}
     </Modal>
   );

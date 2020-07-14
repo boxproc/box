@@ -42,8 +42,8 @@ const accountsReducer = (state = accountsInitialState, action: TAccountsAction) 
 
       lAccounts[lAccInd] = {
         ...lAccounts[lAccInd],
-        balance_limit: lData.balance_limit,
-        balance_limit_shared: lData.balance_limit_shared,
+        balance_limit: lData && lData.balance_limit,
+        balance_limit_shared: lData && lData.balance_limit_shared,
       };
 
       return state
