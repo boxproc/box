@@ -248,13 +248,22 @@ export const prepareSettleTrDataToRender = (data: ImmutableArray<ISettleTransact
   };
 };
 
-const sortPaymentData = (data: ImmutableArray<IDirectDebitPaymentData>) =>
-  data.asMutable().sort((a, b) => {
-    const dateA = moment(a.created_timestamp, dateFormatConst.DATE_TIME);
-    const dateB = moment(b.created_timestamp, dateFormatConst.DATE_TIME);
+const sortPaymentData = (data: ImmutableArray<IDirectDebitPaymentData>) => {
+  const statusesSet = new Set();
+  data.map(e => statusesSet.add(e.status));
 
-    return dateA < dateB ? -1 : 1;
-  });
+  let statuses = Array.from(statusesSet) as Array<any>;
+
+  statuses = statuses.map(status => data.find(el => el.status === status));
+
+  return statuses
+    .sort((a, b) => {
+      const dateA = moment(a.created_timestamp, dateFormatConst.DATE_TIME);
+      const dateB = moment(b.created_timestamp, dateFormatConst.DATE_TIME);
+
+      return dateA < dateB ? -1 : 1;
+    });
+};
 
 export const prepareDirectDebitPaymentToRender =
   (data: ImmutableArray<IDirectDebitPaymentData>) => {
