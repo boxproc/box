@@ -29,7 +29,7 @@ const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () =
               isNumber={true}
             />
           </Box>
-          <Box width="150px" p="8px">
+          <Box width="180px" p="8px">
             <Field
               id="status"
               name="status"

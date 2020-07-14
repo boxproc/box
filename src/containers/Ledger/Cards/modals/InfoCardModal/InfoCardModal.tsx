@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, Hr, Modal } from 'components';
+import { Button, Hr, Modal, T2 } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { cardStatusesConst, modalNamesConst, modalTypesConst } from 'consts';
@@ -52,23 +52,24 @@ const InfoAccountModal: React.FC<IInfoAccountModal> = ({
     <Modal
       name={modalName}
       type={modalTypesConst.VIEWING}
-      title="Card"
       containerWidth="450px"
       withCloseConfirmation={isFormDirty}
     >
       {!isReadOnly && (
         <React.Fragment>
-          <Box mb="10px">
-            <Button
-              text="Activate Card"
-              disabled={isStatusActive}
-              type="reset"
-              onClick={handleActivateCard}
-              isLoading={isLoading}
-              isFocused={true}
-            />
-          </Box>
-          <Hr />
+          <Flex alignItems="center">
+            <T2>Card</T2>
+            <Box ml="10px" mb="5px">
+              <Button
+                text="Activate Card"
+                disabled={isStatusActive}
+                type="reset"
+                onClick={handleActivateCard}
+                isLoading={isLoading}
+                isFocused={true}
+              />
+            </Box>
+          </Flex>
         </React.Fragment>
       )}
       <StatusForm isReadOnly={isReadOnly} />

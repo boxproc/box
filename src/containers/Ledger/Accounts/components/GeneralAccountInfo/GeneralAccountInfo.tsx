@@ -398,7 +398,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             placeholder="0.00"
             fixedDecimalScale={true}
             decimalScale={2}
-            disabled={true}
+            disabled={isEditMode || isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
@@ -414,7 +414,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             placeholder="0.00"
             fixedDecimalScale={true}
             decimalScale={2}
-            disabled={true}
+            disabled={isEditMode || isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,

@@ -72,7 +72,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 120,
+    maxWidth: 200,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
     Cell: (props: TCell<'status'>) => (

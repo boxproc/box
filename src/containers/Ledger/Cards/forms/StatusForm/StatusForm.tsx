@@ -52,7 +52,7 @@ const StatusForm: React.FC<TStatusForm> = ({
     <form onSubmit={handleSubmitForm}>
       <Box mx="-8px" >
         <Flex alignItems="flex-end">
-          <Box width={[2 / 3]} p="8px">
+          <Box width="290px" p="8px">
             <Field
               id="status"
               name="status"
@@ -66,7 +66,7 @@ const StatusForm: React.FC<TStatusForm> = ({
             />
           </Box>
           {!isReadOnly && (
-            <Box width={[1 / 2]} p="8px">
+            <Box p="8px">
               <Button
                 text="Change Status"
                 disabled={pristine}
