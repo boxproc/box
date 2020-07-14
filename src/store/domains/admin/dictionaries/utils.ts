@@ -2,7 +2,6 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { IDictionaryEventDataElemsFilter, IDictionaryEventDataElemsFilterToSend } from './types';
 
-import { cardStatusesConst } from 'consts';
 import { IIdNamePair, ISelectValue } from 'types';
 
 export const valueLabelParse = (data: ImmutableArray<IIdNamePair>): Array<ISelectValue> => {
@@ -16,7 +15,6 @@ export const valueLabelParse = (data: ImmutableArray<IIdNamePair>): Array<ISelec
     return {
       value: id,
       label: name,
-      isDisabled: id === cardStatusesConst.ACTIVE,
     };
   });
 };
