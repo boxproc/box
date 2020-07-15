@@ -67,7 +67,7 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
           flexWrap="wrap"
         >
           {isAccountField1 && (
-            <Box width="200px" p="8px">
+            <Box width="170px" p="8px">
               <Field
                 id="accountField1"
                 name="accountField1"
@@ -83,7 +83,7 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
             </Box>
           )}
           {isAccountField2 && (
-            <Box width="200px" p="8px">
+            <Box width="170px" p="8px">
               <Field
                 id="accountField2"
                 name="accountField2"
@@ -97,7 +97,7 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
             </Box>
           )}
           {isAccountField3 && (
-            <Box width="200px" p="8px">
+            <Box width="170px" p="8px">
               <Field
                 id="accountField3"
                 name="accountField3"
@@ -123,7 +123,7 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
               />
             </Box>
           )}
-          <Box width="300px" p="8px">
+          <Box width="270px" p="8px">
             <Field
               id="accountholderName"
               name="accountholderName"
@@ -135,7 +135,7 @@ const DirectDebitForm: React.FC<TDirectDebitForm> = ({
             />
           </Box>
           <Flex alignItems="flex-end">
-            <Box width="300px" p="8px">
+            <Box width="270px" p="8px">
               <Field
                 id="interfaceId"
                 name="interfaceId"
