@@ -115,7 +115,7 @@ const AprsTable: React.FC<IAprsTable> = ({
           <TableCell
             value={props.value}
             isSmaller={true}
-            isDate={true}
+            // isDate={true}
           />
         ),
       },

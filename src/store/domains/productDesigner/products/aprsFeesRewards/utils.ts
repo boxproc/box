@@ -34,7 +34,7 @@ export const prepareProductAprsToRender = (data: IProductAprData): IProductApr =
     description,
     calculation_method,
     rate,
-    apr_start_date,
+    // apr_start_date,
     initial_interest_free_days,
   } = data;
 
@@ -46,7 +46,8 @@ export const prepareProductAprsToRender = (data: IProductAprData): IProductApr =
     description,
     calculationMethod: calculationMethod && calculationMethod.label,
     rate: stringsUtil.numberToFixed(rate, 2),
-    aprStartDate: apr_start_date,
+    // aprStartDate: apr_start_date,
+    aprStartDate: 'Immediate',
     initialInterestFreeDays: initial_interest_free_days,
   };
 };

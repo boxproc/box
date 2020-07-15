@@ -355,7 +355,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
           </React.Fragment>
         )}
         <Hr />
-        <Box width="150px" p="8px">
+        <Box width="120px" p="8px">
           <Field
             id="balanceLimit"
             name="balanceLimit"
@@ -372,7 +372,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             ]}
           />
         </Box>
-        <Box width="150px" p="8px">
+        <Box width="120px" p="8px">
           <Field
             id="balanceLimitShared"
             name="balanceLimitShared"
@@ -389,7 +389,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             ]}
           />
         </Box>
-        <Box width="150px" p="8px">
+        <Box width="120px" p="8px">
           <Field
             id="balanceSettled"
             name="balanceSettled"
@@ -405,7 +405,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             ]}
           />
         </Box>
-        <Box width="150px" p="8px">
+        <Box width="120px" p="8px">
           <Field
             id="balanceAvailable"
             name="balanceAvailable"
@@ -422,7 +422,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
           />
         </Box>
         <Hr />
-        <Box width="150px" p="8px">
+        <Box width="120px" p="8px">
           <Field
             id="repaymentAmountDue"
             name="repaymentAmountDue"
@@ -439,7 +439,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             ]}
           />
         </Box>
-        <Box width="150px" p="8px">
+        <Box width="120px" p="8px">
           <Field
             id="accruedInterest"
             name="accruedInterest"
@@ -458,7 +458,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
         </Box>
         {isEditMode && (
           <React.Fragment>
-            <Box width="150px" p="8px">
+            <Box width="120px" p="8px">
               <Field
                 id="totalOverdueAmount"
                 name="totalOverdueAmount"
