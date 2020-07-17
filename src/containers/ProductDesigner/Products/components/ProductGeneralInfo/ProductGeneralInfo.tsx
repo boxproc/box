@@ -274,7 +274,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
               />
             </Box>
           </Flex>
-          <Box width="500px" pt="15px">
+          <Box width="480px" pt="15px">
             <Flex alignItems="flex-end">
               <Box width="350px" p="8px">
                 <Field
@@ -287,9 +287,10 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
                   isLoading={isCurrenciesLoading}
                   isDisabled={isReadOnly}
                   validate={[formErrorUtil.isRequired]}
+                  hint={'To enable a customer limit the currency rates must exist.'}
                 />
               </Box>
-              <Box width="150px" p="8px">
+              <Box width="130px" p="8px">
                 <Field
                   id="status"
                   name="status"

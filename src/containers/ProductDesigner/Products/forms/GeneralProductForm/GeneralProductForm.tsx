@@ -15,7 +15,6 @@ import {
 import { formNamesConst, iconNamesConst } from 'consts';
 import { ProductGeneralInfo } from 'containers/ProductDesigner/Products/components';
 import {
-  IProductGeneralDetails,
   THandleDeleteProduct,
   THandleGetProduct,
   THandleUpdateProduct,
@@ -27,7 +26,6 @@ interface IGeneralProductForm extends ISpinner {
   deleteProduct: THandleDeleteProduct;
   enabledForCustomerLimitValue: boolean;
   getProduct: THandleGetProduct;
-  initialValues: Partial<IProductGeneralDetails>;
   institutionValue: ISelectValue;
   isProductOverride: boolean;
   isReadOnly?: boolean;
@@ -54,7 +52,6 @@ const GeneralProductForm: React.FC<TGeneralProductForm> = ({
   pristine,
   statementCycleTypeValue,
   updateProduct,
-  initialValues,
 }) => {
   React.useEffect(
     () => {
@@ -131,5 +128,5 @@ export default reduxForm<{}, IGeneralProductForm>({
   form: formNamesConst.GENERAL_PRODUCT,
   destroyOnUnmount: true,
   enableReinitialize: true,
-  keepDirtyOnReinitialize: true,
+  // keepDirtyOnReinitialize: true,
 })(withSpinner()(GeneralProductForm));

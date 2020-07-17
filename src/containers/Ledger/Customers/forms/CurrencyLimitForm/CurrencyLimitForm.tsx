@@ -65,7 +65,7 @@ const CurrencyLimitForm: React.FC<TCurrencyLimitForm> = ({
           />
         </Box>
         {!isReadOnly && (
-          <Box p="8px">
+          <Box p="8px" pl="0">
             <Button
               text="Save"
               isLoading={isUpdating}
