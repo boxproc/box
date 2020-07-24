@@ -17,9 +17,7 @@ export const prepareDataToRender = (data: IRepaymentHierarchyItemData): IRepayme
     repayment_priority,
     element_identifier,
     product_id,
-    product_element_id,
     status,
-    description,
   } = data;
 
   const elementIdentifier = elementIdentifierOptions.find(el => el.value === element_identifier);
@@ -30,9 +28,7 @@ export const prepareDataToRender = (data: IRepaymentHierarchyItemData): IRepayme
     repaymentPriority: repayment_priority,
     elementIdentifier: elementIdentifier && elementIdentifier.label,
     productId: product_id,
-    productElementId: product_element_id,
     status: elementStatus && elementStatus.label,
-    description,
   };
 };
 

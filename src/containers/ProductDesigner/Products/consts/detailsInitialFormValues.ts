@@ -4,5 +4,6 @@ export const detailsInitialFormValues = {
   minimumRepaymentRate: '0.00',
   repaymentGraceNumberOfDays: 0,
   defNumOfInstallments: 0,
+  defNumInterestFreeInstlmts: 0,
   defNumDeferredInstlmts: 0,
 };

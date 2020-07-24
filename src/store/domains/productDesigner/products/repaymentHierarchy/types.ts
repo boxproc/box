@@ -5,9 +5,7 @@ export interface IRepaymentHierarchyItemData {
   repayment_priority: number;
   element_identifier: string;
   product_id: number;
-  product_element_id: number;
   status: string;
-  description: string;
 }
 
 export interface IRepaymentHierarchy {
@@ -15,9 +13,7 @@ export interface IRepaymentHierarchy {
   repaymentPriority: number;
   elementIdentifier: string;
   productId: number;
-  productElementId: number;
   status: string;
-  description: string;
 }
 
 export interface IRepaymentHierarchyItemsData {

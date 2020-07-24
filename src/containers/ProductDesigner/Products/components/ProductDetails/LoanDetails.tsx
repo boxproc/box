@@ -80,6 +80,7 @@ const LoanDetails: React.FC<ILoanDetails> = ({
               disabled={isReadOnly}
               isNumber={true}
               validate={[
+                formErrorUtil.isRequired,
                 formErrorUtil.isInteger,
               ]}
             />
@@ -98,6 +99,7 @@ const LoanDetails: React.FC<ILoanDetails> = ({
             disabled={isReadOnly}
             isNumber={true}
             validate={[
+              formErrorUtil.isRequired,
               formErrorUtil.isInteger,
             ]}
           />
