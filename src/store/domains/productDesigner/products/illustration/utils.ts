@@ -30,7 +30,7 @@ export const prepareLoanToSend = (data: Partial<ILoanIllustrationReq>):
     product_id: productId,
     amount,
     nr_loan_cycles: stringsUtil.toNumber(defNumOfInstallments),
-    num_interest_free_instlmts: stringsUtil.toNumber(defNumInterestFreeInstlmts),
+    num_of_interest_free_instllmnts: stringsUtil.toNumber(defNumInterestFreeInstlmts),
     num_deferred_instlmts: stringsUtil.toNumber(defNumDeferredInstlmts),
     start_date: startDate,
   };

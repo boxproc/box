@@ -116,7 +116,6 @@ export interface IDirectDebitPaymentData {
   id: number;
   transaction_id: number;
   mandate_id: number;
-  created_timestamp: string;
   provider_timestamp: string;
   amount: number;
   status: string;
@@ -132,7 +131,6 @@ export interface IDirectDebitPayment {
   directDebitId: number;
   directDebitTransactionId: number;
   directDebitMandateId: number;
-  directDebitCreatedTimestamp: string;
   directDebitProviderTimestamp: string;
   directDebitAmount: number;
   directDebitStatus: string;
@@ -155,7 +153,7 @@ export interface IConvertTrToLoanReqToSend {
   amount: number;
   account_id: number;
   num_of_installments: number;
-  num_interest_free_instlmts: number;
+  num_of_interest_free_instllmnts: number;
   transaction_id: number;
   product_id: number;
 }

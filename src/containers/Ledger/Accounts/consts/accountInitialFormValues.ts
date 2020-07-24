@@ -28,6 +28,6 @@ export const accountInitialFormValues = {
   numberOfTimesOverdue7Cycles: '0',
   loanStartDate: dateUtil.todayDate(),
   numOfInstallments: 0,
-  numInterestFreeInstlmts: 0,
+  numOfInterestFreeInstllmnts: 0,
   numDeferredInstlmts: 0,
 };

@@ -51,7 +51,7 @@ export interface ILoanIllustrationReqToSend {
   amount: number;
   start_date: string;
   nr_loan_cycles: number;
-  num_interest_free_instlmts: number;
+  num_of_interest_free_instllmnts: number;
   num_deferred_instlmts: number;
 }
 

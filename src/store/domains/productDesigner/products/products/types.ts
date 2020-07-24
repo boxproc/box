@@ -145,7 +145,7 @@ export interface ILoanProduct {
   defNumInterestFreeInstlmts: number;
   defNumDeferredInstlmts: number;
   interestDistributionType: ISelectValue;
-  allowOverpayment: number | string;
+  allowOverpayment: boolean;
 }
 
 /**

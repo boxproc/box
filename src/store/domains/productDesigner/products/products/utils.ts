@@ -321,7 +321,7 @@ export const prepareLoanToRender = (data: ILoanProductData) => {
     defNumInterestFreeInstlmts: def_num_of_intrst_free_instlmts,
     defNumDeferredInstlmts: def_num_deferred_instlmts,
     interestDistributionType: loanTypesOptions.find(el => el.value === interest_distribution_type),
-    allowOverpayment: allow_overpayment ? yesNoConst.YES : yesNoConst.NO,
+    allowOverpayment: allow_overpayment === yesNoConst.YES,
   };
 };
 

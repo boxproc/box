@@ -199,7 +199,7 @@ export const prepareDataToConvert = (data: Partial<IConvertTrToLoanReq>) => {
 
   return {
     num_of_installments: stringsUtil.toNumber(defNumOfInstallments),
-    num_interest_free_instlmts: stringsUtil.toNumber(defNumInterestFreeInstlmts),
+    num_of_interest_free_instllmnts: stringsUtil.toNumber(defNumInterestFreeInstlmts),
     account_id: stringsUtil.toNumber(accountId),
     transaction_id: stringsUtil.toNumber(transactionId),
     product_id: productId,
@@ -258,8 +258,8 @@ const sortPaymentData = (data: ImmutableArray<IDirectDebitPaymentData>) => {
 
   return statuses
     .sort((a, b) => {
-      const dateA = moment(a.created_timestamp, dateFormatConst.DATE_TIME);
-      const dateB = moment(b.created_timestamp, dateFormatConst.DATE_TIME);
+      const dateA = moment(a.provider_timestamp, dateFormatConst.DATE_TIME);
+      const dateB = moment(b.provider_timestamp, dateFormatConst.DATE_TIME);
 
       return dateA < dateB ? -1 : 1;
     });
@@ -278,7 +278,6 @@ export const prepareDirectDebitPaymentToRender =
       id,
       transaction_id,
       mandate_id,
-      created_timestamp,
       provider_timestamp,
       amount,
       status,
@@ -290,7 +289,6 @@ export const prepareDirectDebitPaymentToRender =
       directDebitId: id,
       directDebitTransactionId: transaction_id,
       directDebitMandateId: mandate_id,
-      directDebitCreatedTimestamp: created_timestamp,
       directDebitProviderTimestamp: provider_timestamp,
       directDebitAmount: amount,
       directDebitStatus: status,

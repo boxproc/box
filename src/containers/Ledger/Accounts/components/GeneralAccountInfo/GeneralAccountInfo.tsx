@@ -284,8 +284,8 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             </Box>
             <Box width="120px" p="8px">
               <Field
-                id="numInterestFreeInstlmts"
-                name="numInterestFreeInstlmts"
+                id="numOfInterestFreeInstllmnts"
+                name="numOfInterestFreeInstllmnts"
                 component={InputField}
                 label="# of Interest Free Installments"
                 placeholder="Enter #"
@@ -398,11 +398,11 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             placeholder="0.00"
             fixedDecimalScale={true}
             decimalScale={2}
-            disabled={isEditMode || isReadOnly}
-            validate={[
-              formErrorUtil.isRequired,
-              formErrorUtil.isNumber,
-            ]}
+            disabled={true}
+            // validate={[
+            //   formErrorUtil.isRequired,
+            //   formErrorUtil.isNumber,
+            // ]}
           />
         </Box>
         <Box width="120px" p="8px">
@@ -414,11 +414,11 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             placeholder="0.00"
             fixedDecimalScale={true}
             decimalScale={2}
-            disabled={isEditMode || isReadOnly}
-            validate={[
-              formErrorUtil.isRequired,
-              formErrorUtil.isNumber,
-            ]}
+            disabled={true}
+            // validate={[
+            //   formErrorUtil.isRequired,
+            //   formErrorUtil.isNumber,
+            // ]}
           />
         </Box>
         <Hr />

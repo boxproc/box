@@ -44,7 +44,7 @@ export interface IAccountData {
   last_cycle_date: string;
   start_loan_date: string;
   num_of_installments: number;
-  num_interest_free_instlmts: number;
+  num_of_interest_free_instllmnts: number;
   num_deferred_instlmts: number;
   number_of_times_overdue_1_cycle: number;
   number_of_times_overdue_2_cycle: number;
@@ -116,7 +116,7 @@ interface IAccountPlain {
   numberOfTimesOverdue7Cycles: number;
   numberOfTimesOverdueTotal: number;
   numOfInstallments: number;
-  numInterestFreeInstlmts: number;
+  numOfInterestFreeInstllmnts: number;
   numDeferredInstlmts: number;
   productId: number | string;
   productOverrideFlag?: boolean;
