@@ -137,7 +137,7 @@ export const instProductsSelector = createSelector(
       id: el.id,
       name: el.name,
       productType: el.product_type,
-      defNumInterestFreeInstlmts: el.def_num_interest_free_instlmts,
+      defNumInterestFreeInstlmts: el.def_num_of_intrst_free_instlmts,
       defNumOfInstallments: el.def_num_of_installments,
       defNumDeferredInstlmts: el.def_num_deferred_instlmts,
     };
