@@ -44,7 +44,7 @@ const CurrentTransactionBalance: React.FC = () => {
             placeholder="0.00"
             fixedDecimalScale={true}
             decimalScale={2}
-            label="Balance Available Before"
+            label="Balance Authorized Before"
             disabled={true}
           />
         </Box>
@@ -56,7 +56,7 @@ const CurrentTransactionBalance: React.FC = () => {
             placeholder="0.00"
             fixedDecimalScale={true}
             decimalScale={2}
-            label="Balance Available After	"
+            label="Balance Authorized After	"
             disabled={true}
           />
         </Box>

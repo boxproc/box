@@ -56,7 +56,7 @@ export const tableColumns = [
   },
   {
     maxWidth: 120,
-    Header: <TableHeader title="Balance Available Before" />,
+    Header: <TableHeader title="Balance Authorized Before" />,
     accessor: 'balanceAvailableBefore',
     Cell: (props: TCell<'balanceAvailableBefore'>) => (
       <TableCell
@@ -68,7 +68,7 @@ export const tableColumns = [
   },
   {
     maxWidth: 120,
-    Header: <TableHeader title="Balance Available After" />,
+    Header: <TableHeader title="Balance Authorized After" />,
     accessor: 'balanceAvailableAfter',
     Cell: (props: TCell<'balanceAvailableAfter'>) => (
       <TableCell

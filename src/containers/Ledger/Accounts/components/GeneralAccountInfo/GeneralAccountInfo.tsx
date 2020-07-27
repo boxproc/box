@@ -409,7 +409,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
           <Field
             id="balanceAvailable"
             name="balanceAvailable"
-            label="Balance Available"
+            label="Balance Authorized"
             component={NumberFormatField}
             placeholder="0.00"
             fixedDecimalScale={true}

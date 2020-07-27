@@ -112,7 +112,7 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    Header: <TableHeader title="Balance Available" />,
+    Header: <TableHeader title="Balance Authorized" />,
     accessor: 'balanceAvailable',
     Cell: (props: TCell<'balanceAvailable'>) => (
       <TableCell
