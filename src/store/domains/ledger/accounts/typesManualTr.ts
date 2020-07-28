@@ -23,8 +23,8 @@ export interface IManualTransactionResultData {
   status: string;
   balance_settled_before: number;
   balance_settled_after: number;
-  balance_available_before: number;
-  balance_available_after: number;
+  balance_authorised_before: number;
+  balance_authorised_after: number;
 }
 
 export interface IManualTransactionResultResponse {
@@ -36,6 +36,6 @@ export interface IManualTransactionResult {
   status: string;
   balanceSettledBefore: number;
   balanceSettledAfter: number;
-  balanceAvailableBefore: number;
-  balanceAvailableAfter: number;
+  balanceAuthorisedBefore: number;
+  balanceAuthorisedAfter: number;
 }

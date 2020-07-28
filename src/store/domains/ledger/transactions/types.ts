@@ -20,8 +20,8 @@ export interface ITransactionData extends ITransactionPlain {
   amount_in_original_currency: number;
   balance_settled_before: number;
   balance_settled_after: number;
-  balance_available_before: number;
-  balance_available_after: number;
+  balance_authorised_before: number;
+  balance_authorised_after: number;
   original_currency: string;
   card_transaction_id: string;
   card_id: number;
@@ -72,8 +72,8 @@ export interface ITransaction extends ITransactionPlain {
   amountInOriginalCurrency: string;
   balanceSettledBefore: string;
   balanceSettledAfter: string;
-  balanceAvailableBefore: string;
-  balanceAvailableAfter: string;
+  balanceAuthorisedBefore: string;
+  balanceAuthorisedAfter: string;
   originalCurrency: string;
   cardTransactionId: string;
   cardId: number;

@@ -89,8 +89,8 @@ export interface IStatementTransactionData {
   amount: number;
   apr_id: number;
   apr_rate: number;
-  balance_available_after: number;
-  balance_available_before: number;
+  balance_authorised_after: number;
+  balance_authorised_before: number;
   balance_settled_after: number;
   balance_settled_before: number;
   description: string;
@@ -112,8 +112,8 @@ export interface IStatementTransaction {
   amountInOriginalCurrency: string;
   aprId: number;
   aprRate: string;
-  balanceAvailableAfter: string;
-  balanceAvailableBefore: string;
+  balanceAuthorisedAfter: string;
+  balanceAuthorisedBefore: string;
   balanceSettledAfter: string;
   balanceSettledBefore: string;
   description: string;

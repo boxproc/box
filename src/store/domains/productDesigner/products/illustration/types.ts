@@ -106,8 +106,8 @@ export interface IRevCreditIllustrationTransData {
   amount: number;
   balance_settled_before: number;
   balance_settled_after: number;
-  balance_available_before: number;
-  balance_available_after: number;
+  balance_authorised_before: number;
+  balance_authorised_after: number;
   description: string;
   status: string;
   apr_rate: number;
@@ -120,8 +120,8 @@ export interface IRevCreditIllustrationTrans {
   amount: string;
   balanceSettledBefore: string;
   balanceSettledAfter: string;
-  balanceAvailableBefore: string;
-  balanceAvailableAfter: string;
+  balanceAuthorisedBefore: string;
+  balanceAuthorisedAfter: string;
   description: string;
   status: string;
   aprRate: string;

@@ -28,7 +28,7 @@ const accountsReducer = (state = accountsInitialState, action: TAccountsAction) 
       mAccounts[mAccInd] = {
         ...mAccounts[mAccInd],
         balance_settled: mData.balance_settled_after,
-        balance_available: mData.balance_available_after,
+        balance_authorised: mData.balance_authorised_after,
       };
 
       return state

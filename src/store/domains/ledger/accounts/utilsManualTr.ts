@@ -44,8 +44,8 @@ export const prepareManualTrResultDataToRender =
       status,
       balance_settled_before,
       balance_settled_after,
-      balance_available_before,
-      balance_available_after,
+      balance_authorised_before,
+      balance_authorised_after,
     } = data[0];
 
     const transactionStatus = transactionStatusOptions.find(el => el.value === status);
@@ -55,7 +55,7 @@ export const prepareManualTrResultDataToRender =
       status: transactionStatus && transactionStatus.label,
       balanceSettledBefore: balance_settled_before,
       balanceSettledAfter: balance_settled_after,
-      balanceAvailableBefore: balance_available_before,
-      balanceAvailableAfter: balance_available_after,
+      balanceAuthorisedBefore: balance_authorised_before,
+      balanceAuthorisedAfter: balance_authorised_after,
     };
   };

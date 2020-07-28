@@ -83,9 +83,9 @@ const columns = [
   },
   {
     maxWidth: 125,
-    accessor: 'balanceAvailableBefore',
-    Header: <TableHeader title="Balance Authorized Before" />,
-    Cell: (props: TCell<'balanceAvailableBefore'>) => (
+    accessor: 'balanceAuthorisedBefore',
+    Header: <TableHeader title="Balance Authorised Before" />,
+    Cell: (props: TCell<'balanceAuthorisedBefore'>) => (
       <TableCell
         value={props.value}
         isDecimalNumber={true}
@@ -107,9 +107,9 @@ const columns = [
   },
   {
     maxWidth: 125,
-    accessor: 'balanceAvailableAfter',
-    Header: <TableHeader title="Balance Authorized After" />,
-    Cell: (props: TCell<'balanceAvailableAfter'>) => (
+    accessor: 'balanceAuthorisedAfter',
+    Header: <TableHeader title="Balance Authorised After" />,
+    Cell: (props: TCell<'balanceAuthorisedAfter'>) => (
       <TableCell
         value={props.value}
         isDecimalNumber={true}

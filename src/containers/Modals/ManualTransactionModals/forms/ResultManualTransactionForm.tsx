@@ -65,25 +65,25 @@ const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () =
           </Box>
           <Box width="150px" p="8px">
             <Field
-              id="balanceAvailableBefore"
-              name="balanceAvailableBefore"
+              id="balanceAuthorisedBefore"
+              name="balanceAuthorisedBefore"
               component={NumberFormatField}
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              label="Balance Authorized Before"
+              label="Balance Authorised Before"
               disabled={true}
             />
           </Box>
           <Box width="150px" p="8px">
             <Field
-              id="balanceAvailableAfter"
-              name="balanceAvailableAfter"
+              id="balanceAuthorisedAfter"
+              name="balanceAuthorisedAfter"
               component={NumberFormatField}
               placeholder="0.00"
               fixedDecimalScale={true}
               decimalScale={2}
-              label="Balance Authorized After"
+              label="Balance Authorised After"
               disabled={true}
             />
           </Box>

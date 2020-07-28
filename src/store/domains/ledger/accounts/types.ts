@@ -27,7 +27,7 @@ export interface IAccountData {
   aux_counter_3_description: string;
   aux_counter_3_enabled: string;
   aux_counter_3: number;
-  balance_available: number;
+  balance_authorised: number;
   balance_limit_shared: number;
   balance_limit: number;
   balance_settled: number;
@@ -93,7 +93,7 @@ interface IAccountPlain {
   auxCounter3: number;
   auxCounter3Description: string;
   auxCounter3Enabled: boolean;
-  balanceAvailable: number;
+  balanceAuthorised: number;
   balanceLimit: number;
   balanceLimitShared: number;
   balanceSettled: number;

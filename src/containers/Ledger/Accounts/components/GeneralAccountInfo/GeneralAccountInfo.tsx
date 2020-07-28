@@ -407,9 +407,9 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
         </Box>
         <Box width="120px" p="8px">
           <Field
-            id="balanceAvailable"
-            name="balanceAvailable"
-            label="Balance Authorized"
+            id="balanceAuthorised"
+            name="balanceAuthorised"
+            label="Balance Authorised"
             component={NumberFormatField}
             placeholder="0.00"
             fixedDecimalScale={true}

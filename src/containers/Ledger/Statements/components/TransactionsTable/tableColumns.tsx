@@ -56,9 +56,9 @@ export const tableColumns = [
   },
   {
     maxWidth: 120,
-    Header: <TableHeader title="Balance Authorized Before" />,
-    accessor: 'balanceAvailableBefore',
-    Cell: (props: TCell<'balanceAvailableBefore'>) => (
+    Header: <TableHeader title="Balance Authorised Before" />,
+    accessor: 'balanceAuthorisedBefore',
+    Cell: (props: TCell<'balanceAuthorisedBefore'>) => (
       <TableCell
         value={props.value}
         isNumber={true}
@@ -68,9 +68,9 @@ export const tableColumns = [
   },
   {
     maxWidth: 120,
-    Header: <TableHeader title="Balance Authorized After" />,
-    accessor: 'balanceAvailableAfter',
-    Cell: (props: TCell<'balanceAvailableAfter'>) => (
+    Header: <TableHeader title="Balance Authorised After" />,
+    accessor: 'balanceAuthorisedAfter',
+    Cell: (props: TCell<'balanceAuthorisedAfter'>) => (
       <TableCell
         value={props.value}
         isNumber={true}
