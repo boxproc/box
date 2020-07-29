@@ -88,9 +88,9 @@ const columns = [
   },
   {
     maxWidth: 150,
-    accessor: 'repaymentMinimumAmountDue',
+    accessor: 'minimumAmountDueRepayment',
     Header: <TableHeader title="Payment Due" />,
-    Cell: (props: TCell<'repaymentMinimumAmountDue'>) => (
+    Cell: (props: TCell<'minimumAmountDueRepayment'>) => (
       <TableCell
         value={props.value}
         isNumber={true}
@@ -99,9 +99,9 @@ const columns = [
   },
   {
     maxWidth: 150,
-    accessor: 'amount',
+    accessor: 'balanceToRepay',
     Header: <TableHeader title="Balance to Repay" />,
-    Cell: (props: TCell<'amount'>) => (
+    Cell: (props: TCell<'balanceToRepay'>) => (
       <TableCell
         value={props.value}
         isNumber={true}

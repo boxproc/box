@@ -11,8 +11,8 @@ export interface ILoanIllustrationData {
   installment_balance: number;
   fee: number;
   apr: number;
-  amount: number;
-  repayment_minimum_amount_due: number;
+  balance_to_repay: number;
+  minimum_amount_due_repayment: number;
   start_date: string;
   end_date: string;
 }
@@ -27,8 +27,8 @@ export interface ILoanIllustration {
   installmentBalance: string;
   fee: string;
   apr: string;
-  amount: string;
-  repaymentMinimumAmountDue: string;
+  balanceToRepay: string;
+  minimumAmountDueRepayment: string;
   startDate: string;
   endDate: string;
 }

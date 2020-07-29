@@ -137,8 +137,8 @@ export const prepareLoanToRender = (data: ILoanIllustrationData) => {
     installment_balance,
     fee,
     apr,
-    repayment_minimum_amount_due,
-    amount,
+    minimum_amount_due_repayment,
+    balance_to_repay,
     start_date,
     end_date,
   } = data;
@@ -148,10 +148,10 @@ export const prepareLoanToRender = (data: ILoanIllustrationData) => {
     statementDate: statement_date,
     startDate: start_date,
     endDate: end_date,
-    amount: stringsUtil.numberToFixed(amount, 2),
+    balanceToRepay: stringsUtil.numberToFixed(balance_to_repay, 2),
     installmentBalance: stringsUtil.numberToFixed(installment_balance, 2),
     fee: stringsUtil.numberToFixed(fee, 2),
     apr: stringsUtil.numberToFixed(apr, 2),
-    repaymentMinimumAmountDue: stringsUtil.numberToFixed(repayment_minimum_amount_due, 2),
+    minimumAmountDueRepayment: stringsUtil.numberToFixed(minimum_amount_due_repayment, 2),
   };
 };
