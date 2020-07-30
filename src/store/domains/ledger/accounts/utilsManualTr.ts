@@ -1,6 +1,6 @@
 import { ImmutableArray } from 'seamless-immutable';
 
-import { transactionStatusOptions } from 'consts';
+import { transactionStatusOptions, yesNoConst } from 'consts';
 import { IManualTransactionFromData, IManualTransactionResultData } from './typesManualTr';
 
 import { stringsUtil } from 'utils';
@@ -17,6 +17,7 @@ export const prepareManualTrDataToSend = (data: Partial<IManualTransactionFromDa
     amount,
     description,
     mandate,
+    settledFlag,
   } = data;
 
   const transactionTypeValue = transactionType ? transactionType.value : null;
@@ -30,6 +31,7 @@ export const prepareManualTrDataToSend = (data: Partial<IManualTransactionFromDa
     account_id: stringsUtil.toNumber(accountId),
     amount: stringsUtil.toNumber(amount),
     description,
+    settled: settledFlag ? yesNoConst.YES : yesNoConst.NO,
   };
 };
 

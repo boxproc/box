@@ -5,6 +5,7 @@ import { Box, Flex } from '@rebass/grid';
 
 import {
   Button,
+  CheckboxField,
   Delimiter,
   InputField,
   NumberFormatField,
@@ -163,6 +164,14 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
                   formErrorUtil.isNumber,
                   formErrorUtil.isPositive,
                 ]}
+              />
+            </Box>
+            <Box width={[1]} p="8px" pb="0">
+              <Field
+                id="settledFlag"
+                name="settledFlag"
+                component={CheckboxField}
+                label="Settled"
               />
             </Box>
           </React.Fragment>

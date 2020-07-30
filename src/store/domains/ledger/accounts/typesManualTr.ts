@@ -7,6 +7,7 @@ export interface IManualTransactionReq {
   amount: number;
   description: string;
   mandate_id?: number | string;
+  settled: string;
 }
 
 export interface IManualTransactionFromData {
@@ -16,6 +17,7 @@ export interface IManualTransactionFromData {
   amount: string;
   description: string;
   mandate?: ISelectValue;
+  settledFlag: boolean;
 }
 
 export interface IManualTransactionResultData {
