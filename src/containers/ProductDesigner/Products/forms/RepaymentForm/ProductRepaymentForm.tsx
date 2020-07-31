@@ -69,6 +69,21 @@ const ProductRepaymentForm: React.FC<TProductRepaymentForm> = ({
             ]}
           />
         </Box>
+        <Box width="195px" p="8px">
+          <Field
+            id="repaymentDateCalcNrDays"
+            name="repaymentDateCalcNrDays"
+            placeholder="Enter #"
+            component={InputField}
+            label="Repayment Date Calculation # of Days"
+            isNumber={true}
+            disabled={isReadOnly}
+            validate={[
+              formErrorUtil.isRequired,
+              formErrorUtil.isInteger,
+            ]}
+          />
+        </Box>
       </Flex>
       <Hr />
       <OkCancelButtons

@@ -93,7 +93,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
         || statementCycleTypeValue.value === cycleTypesConst.BI_MONTHLY
         || statementCycleTypeValue.value === cycleTypesConst.WEEKLY
         || statementCycleTypeValue.value === cycleTypesConst.BI_WEEKLY) {
-        return 'Repayment day';
+        return 'Billing Day';
       } else if (statementCycleTypeValue.value === cycleTypesConst.FIXED_NUMBER_OF_DAYS) {
         return 'Number of days';
       } else {
