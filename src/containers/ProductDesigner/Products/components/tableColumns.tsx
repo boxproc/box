@@ -8,7 +8,7 @@ type TCell<T extends keyof IProduct> = ITableCell<IProduct[T]>;
 
 export const tableColumns = [
   {
-    maxWidth: 100,
+    maxWidth: 70,
     Header: <TableHeader title="ID" />,
     accessor: 'id',
     Cell: (props: TCell<'id'>) => (
@@ -19,7 +19,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 130,
+    maxWidth: 150,
     Header: <TableHeader title="Institution" />,
     accessor: 'institutionId',
     Cell: (props: TCell<'institutionId'>) => (
@@ -48,11 +48,12 @@ export const tableColumns = [
     Cell: (props: TCell<'description'>) => (
       <TableCell
         value={props.value}
+        isSmaller={true}
       />
     ),
   },
   {
-    maxWidth: 80,
+    maxWidth: 70,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
     Cell: (props: TCell<'status'>) => (
@@ -62,7 +63,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 120,
+    maxWidth: 100,
     Header: <TableHeader title="Product Type" />,
     accessor: 'productType',
     Cell: (props: TCell<'productType'>) => (
@@ -72,7 +73,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 90,
     Header: <TableHeader title="Scheme" />,
     accessor: 'scheme',
     Cell: (props: TCell<'scheme'>) => (
@@ -93,7 +94,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 110,
+    maxWidth: 105,
     Header: <TableHeader title="History Retention Number of Days" />,
     accessor: 'historyRetentionNumberOfDays',
     Cell: (props: TCell<'historyRetentionNumberOfDays'>) => (
@@ -114,8 +115,8 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
-    Header: <TableHeader title="Statement Cycle Parameter" />,
+    maxWidth: 70,
+    Header: <TableHeader title="Billing Day" />,
     accessor: 'statementCycleParameter',
     Cell: (props: TCell<'statementCycleParameter'>) => (
       <TableCell
@@ -125,7 +126,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 60,
+    maxWidth: 65,
     Header: <TableHeader title="Locked" />,
     accessor: 'lockedFlag',
     Cell: renderCheckBoxTableCell(),
