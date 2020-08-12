@@ -155,20 +155,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width="240px" p="8px">
-          <Field
-            id="institutionId"
-            name="institutionId"
-            component={SelectField}
-            label="Institution"
-            placeholder="Select Institution"
-            options={institutionsOptions}
-            isDisabled={isEditMode || isReadOnly}
-            isClearable={false}
-            validate={[formErrorUtil.isRequired]}
-          />
-        </Box>
-        <Box width="240px" p="8px">
+        <Box width="350px" p="8px">
           <Field
             id="name"
             name="name"
@@ -180,6 +167,19 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
               formErrorUtil.isRequired,
               formErrorUtil.isAlphaNumeric,
             ]}
+          />
+        </Box>
+        <Box width="240px" p="8px">
+          <Field
+            id="institutionId"
+            name="institutionId"
+            component={SelectField}
+            label="Institution"
+            placeholder="Select Institution"
+            options={institutionsOptions}
+            isDisabled={isEditMode || isReadOnly}
+            isClearable={false}
+            validate={[formErrorUtil.isRequired]}
           />
         </Box>
         <Flex alignItems="flex-start">
