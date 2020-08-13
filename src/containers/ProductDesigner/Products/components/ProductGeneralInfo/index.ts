@@ -5,7 +5,6 @@ import ProductGeneralInfo from './ProductGeneralInfo';
 
 import {
   currenciesOptionsSelector,
-  handleGetConvertibleInstCurrencies,
   handleGetDictionaryCurrencies,
   handleGetDictionaryStatementCycleTypes,
   isCurrenciesLoadingSelector,
@@ -26,7 +25,6 @@ const mapStateToProps = (state: IStoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     getStatementCycleTypes: handleGetDictionaryStatementCycleTypes,
-    getConvertibleInstCurrencies: handleGetConvertibleInstCurrencies,
     getDictionaryCurrencies: handleGetDictionaryCurrencies,
   },
   dispatch

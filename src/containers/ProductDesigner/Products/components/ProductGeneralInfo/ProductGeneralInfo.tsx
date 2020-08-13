@@ -14,7 +14,6 @@ import {
 } from 'consts';
 
 import {
-  THandleGetConvertibleInstCurrencies,
   THandleGetDictionaryCurrencies,
   THandleGetDictionaryStatementCycleTypes,
 } from 'store';
@@ -24,12 +23,9 @@ import { formErrorUtil } from 'utils';
 
 interface IProductGeneralInfo {
   currenciesOptions: Array<ISelectValue>;
-  enabledForCustomerLimitValue: boolean;
-  getConvertibleInstCurrencies: THandleGetConvertibleInstCurrencies;
   getDictionaryCurrencies: THandleGetDictionaryCurrencies;
   getStatementCycleTypes: THandleGetDictionaryStatementCycleTypes;
   institutionsOptions: Array<ISelectValue>;
-  institutionValue: ISelectValue;
   isCurrenciesLoading: boolean;
   isEditMode?: boolean;
   isReadOnly?: boolean;
@@ -40,12 +36,9 @@ interface IProductGeneralInfo {
 
 const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
   currenciesOptions,
-  enabledForCustomerLimitValue,
-  getConvertibleInstCurrencies,
   getDictionaryCurrencies,
   getStatementCycleTypes,
   institutionsOptions,
-  institutionValue,
   isCurrenciesLoading,
   isEditMode = false,
   isReadOnly,
@@ -53,11 +46,6 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
   statementCycleTypesOptions,
   statementCycleTypeValue,
 }) => {
-  const institutionId = React.useMemo(
-    () => institutionValue && Number(institutionValue.value),
-    [institutionValue]
-  );
-
   React.useEffect(
     () => {
       getStatementCycleTypes();
@@ -67,17 +55,10 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
 
   React.useEffect(
     () => {
-      if (!enabledForCustomerLimitValue) {
-        getDictionaryCurrencies();
-      } else if (enabledForCustomerLimitValue && institutionId) {
-        getConvertibleInstCurrencies(institutionId);
-      }
+      getDictionaryCurrencies();
     },
     [
-      enabledForCustomerLimitValue,
       getDictionaryCurrencies,
-      getConvertibleInstCurrencies,
-      institutionId,
     ]
   );
 
@@ -287,7 +268,6 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
                   isLoading={isCurrenciesLoading}
                   isDisabled={isReadOnly}
                   validate={[formErrorUtil.isRequired]}
-                  hint={'To enable a customer limit the currency rates must exist.'}
                 />
               </Box>
               <Box width="130px" p="8px">

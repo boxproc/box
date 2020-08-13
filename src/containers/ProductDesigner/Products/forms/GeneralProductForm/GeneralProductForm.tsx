@@ -24,9 +24,7 @@ import { ISelectValue } from 'types';
 interface IGeneralProductForm extends ISpinner {
   currentProductName: string;
   deleteProduct: THandleDeleteProduct;
-  enabledForCustomerLimitValue: boolean;
   getProduct: THandleGetProduct;
-  institutionValue: ISelectValue;
   isProductOverride: boolean;
   isReadOnly?: boolean;
   isUpdatingOrDeleting: boolean;
@@ -41,10 +39,8 @@ const GeneralProductForm: React.FC<TGeneralProductForm> = ({
   currentProductName,
   deleteProduct,
   dirty,
-  enabledForCustomerLimitValue,
   getProduct,
   handleSubmit,
-  institutionValue,
   isProductOverride,
   isReadOnly,
   isUpdatingOrDeleting,
@@ -87,8 +83,6 @@ const GeneralProductForm: React.FC<TGeneralProductForm> = ({
       <form onSubmit={isReadOnly ? null : handleSubmitForm}>
         <ProductGeneralInfo
           isEditMode={true}
-          enabledForCustomerLimitValue={enabledForCustomerLimitValue}
-          institutionValue={institutionValue}
           statementCycleTypeValue={statementCycleTypeValue}
           isReadOnly={isReadOnly || isUpdatingOrDeleting}
         />
@@ -128,5 +122,4 @@ export default reduxForm<{}, IGeneralProductForm>({
   form: formNamesConst.GENERAL_PRODUCT,
   destroyOnUnmount: true,
   enableReinitialize: true,
-  // keepDirtyOnReinitialize: true,
 })(withSpinner()(GeneralProductForm));
