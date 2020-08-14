@@ -144,6 +144,7 @@ export const withEditTable = <OriginProps extends {}>(
               setIsVisibleContextMenu(true);
             }
           },
+          className: isLocked && 'is-gray',
         };
       },
       [

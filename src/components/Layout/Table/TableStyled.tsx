@@ -9,6 +9,7 @@ const gradients = {
     hsla(0,0%,0%,0) 100%)`,
   cellWhite: 'linear-gradient(to right, rgba(255, 255, 255, .6) 0%,rgba(255, 255, 255,1) 100%)',
   cellGray: 'linear-gradient(to right, rgba(243, 243, 243, .6) 0%,rgba(243, 243, 243,1) 100%)',
+  cellLighterGray: 'linear-gradient(to right, rgba(250, 250, 250, .6) 0%,rgba(250, 250, 250,1) 100%)',
 };
 
 interface ITableStyled {
@@ -110,11 +111,15 @@ export const TableStyled = styled.div<ITableStyled>`
       border-bottom: 1px solid ${({ theme }) => theme.colors.lighterGray};
     }
 
+    .rt-tr-group.is-gray {
+      background-color: ${({ theme }) => theme.colors.lighterGrayCell};
+    }
+
     .rt-tr-group:hover,
-    .rt-tbody .rt-tr-group:last-child:hover {
-      cursor: default;
+    .rt-tr-group.is-gray:hover {
       background-color: ${({ theme }) => theme.colors.lighterGray};
       box-shadow: ${({ theme }) => theme.shadows.normalBox};
+      border-bottom: 1px solid ${({ theme }) => theme.colors.lightGray};
     }
 
     .rt-tbody .rt-tr-group:hover:before {
@@ -164,7 +169,12 @@ export const TableStyled = styled.div<ITableStyled>`
       }
     }
 
-    .rt-tbody .rt-tr-group:hover .rt-td:before {
+    .rt-tbody .rt-tr-group.is-gray .rt-td:before {
+      background: ${gradients.cellLighterGray};
+    }
+
+    .rt-tbody .rt-tr-group:hover .rt-td:before,
+    .rt-tbody .rt-tr-group.is-gray:hover .rt-td:before {
       background: ${gradients.cellGray};
     }
 
