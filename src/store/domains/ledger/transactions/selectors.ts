@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 
 import {
+  debitCreditIndicatorConst,
   transactionStatusConst,
   transactionStatusOptions,
   transactionTypesIdsConst,
@@ -73,7 +74,7 @@ export const isTrConvertibleToLoanSelector = createSelector(
       return false;
     }
 
-    return data.transactionTypeId === transactionTypesIdsConst.PURCHASE_CARD_PAYMENT;
+    return data.debitCreditIndicator === debitCreditIndicatorConst.DEBIT;
   });
 
 export const isSettledTrSelector = createSelector(

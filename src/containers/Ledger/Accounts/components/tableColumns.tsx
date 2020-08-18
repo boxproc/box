@@ -10,7 +10,7 @@ type TCell<T extends keyof IAccount> = ITableCell<IAccount[T]>;
 
 export const tableColumns = [
   {
-    maxWidth: 100,
+    maxWidth: 80,
     Header: <TableHeader title="ID" />,
     accessor: 'id',
     Cell: (props: TCell<'id'>) => (
@@ -21,7 +21,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 130,
+    maxWidth: 150,
     Header: <TableHeader title="Institution" />,
     accessor: 'institutionId',
     Cell: (props: TCell<'institutionId'>) => (
@@ -31,7 +31,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 220,
+    maxWidth: 300,
     minWidth: 150,
     Header: <TableHeader title="Product Name" />,
     accessor: 'product',
@@ -43,13 +43,13 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 70,
+    maxWidth: 60,
     Header: <TableHeader title="Product Override" />,
     accessor: 'productOverrideFlag',
     Cell: renderCheckBoxTableCell(),
   },
   {
-    maxWidth: 200,
+    maxWidth: 150,
     Header: <TableHeader title="Account Alias" />,
     accessor: 'accountAlias',
     Cell: (props: TCell<'accountAlias'>) => (
@@ -59,7 +59,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 80,
     Header: <TableHeader title="Customer ID" />,
     accessor: 'customerId',
     Cell: (props: TCell<'customerId'>) => (

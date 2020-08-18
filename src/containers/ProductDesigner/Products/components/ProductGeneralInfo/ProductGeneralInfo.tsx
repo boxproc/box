@@ -150,7 +150,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             ]}
           />
         </Box>
-        <Box width="240px" p="8px">
+        <Box width="260px" p="8px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -290,7 +290,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
                 placeholder="Enter Description"
                 component={TextareaField}
                 label="Description"
-                height={50}
+                height={113}
                 disabled={isReadOnly}
               />
             </Box>

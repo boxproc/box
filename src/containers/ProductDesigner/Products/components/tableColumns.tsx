@@ -30,7 +30,7 @@ export const tableColumns = [
   },
   {
     maxWidth: 300,
-    minWidth: 140,
+    minWidth: 150,
     Header: <TableHeader title="Name" />,
     accessor: 'name',
     Cell: (props: TCell<'name'>) => (
@@ -42,7 +42,7 @@ export const tableColumns = [
   },
   {
     maxWidth: 300,
-    minWidth: 140,
+    minWidth: 150,
     Header: <TableHeader title="Description" />,
     accessor: 'description',
     Cell: (props: TCell<'description'>) => (
@@ -53,7 +53,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 70,
+    maxWidth: 65,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
     Cell: (props: TCell<'status'>) => (
@@ -63,7 +63,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 85,
     Header: <TableHeader title="Product Type" />,
     accessor: 'productType',
     Cell: (props: TCell<'productType'>) => (
@@ -73,7 +73,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 90,
+    maxWidth: 85,
     Header: <TableHeader title="Scheme" />,
     accessor: 'scheme',
     Cell: (props: TCell<'scheme'>) => (
@@ -83,7 +83,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 70,
+    maxWidth: 65,
     Header: <TableHeader title="Currency Code" />,
     accessor: 'currencyCode',
     Cell: (props: TCell<'currencyCode'>) => (
@@ -115,7 +115,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 70,
+    maxWidth: 65,
     Header: <TableHeader title="Billing Day" />,
     accessor: 'statementCycleParameter',
     Cell: (props: TCell<'statementCycleParameter'>) => (

@@ -32,7 +32,7 @@ const LeftPartWrapper = styled(Flex)`
     bottom: 10px;
     display: block;
     width: 1px;
-    border-right: 1px solid ${({ theme }) => theme.colors.lightGray};
+    border-right: 1px solid ${theme.colors.lightGray};
   }
 `;
 

@@ -11,7 +11,7 @@ import { card, creditCard, money, percent } from 'resources/images';
 const Wrapper = styled(Box)`
   min-width: 24px;
   width: 24px;
-  margin-right: 5px;
+  margin-right: 2px;
   text-align: center;
   font-size: 0;
 
