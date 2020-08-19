@@ -4,6 +4,7 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import {
+  Delimiter,
   Hr,
   InputField,
   MaskField,
@@ -151,27 +152,27 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             ]}
           />
         </Box>
-        <Box width="235px" p="8px">
+        <Box width="160px" p="8px">
           <Field
             id="accountAlias"
             name="accountAlias"
             component={InputField}
             label="Account Alias"
-            placeholder="Enter Account Alias"
+            placeholder="Enter Alias"
             disabled={isReadOnly}
           />
         </Box>
-        <Box width="235px" p="8px">
+        <Box width="160px" p="8px">
           <Field
             id="accountAliasAdditional"
             name="accountAliasAdditional"
             component={InputField}
             label="Account Alias Additional"
-            placeholder="Enter Account Alias"
+            placeholder="Enter Alias"
             disabled={isReadOnly}
           />
         </Box>
-        <Box width="240px" p="8px">
+        <Box width="195px" p="8px">
           <Field
             id="status"
             name="status"
@@ -180,6 +181,19 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             placeholder="Select Status"
             options={statusesOptions}
             isDisabled={isReadOnly}
+            validate={[formErrorUtil.isRequired]}
+          />
+        </Box>
+        <Hr />
+        <Box width="480px" p="8px">
+          <Field
+            id="product"
+            name="product"
+            component={SelectField}
+            label="Product"
+            placeholder="Select Product"
+            isDisabled={isEditMode || isReadOnly}
+            options={institutionProductsOptions}
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
@@ -196,21 +210,36 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             />
           </Box>
         )}
-        <Box width="240px" p="8px">
-          <Field
-            id="product"
-            name="product"
-            component={SelectField}
-            label="Product"
-            placeholder="Select Product"
-            isDisabled={isEditMode || isReadOnly}
-            options={institutionProductsOptions}
-            validate={[formErrorUtil.isRequired]}
-          />
-        </Box>
+        {hasProductOverride && (
+          <React.Fragment>
+            <Box width="120px" p="8px">
+              <Field
+                id="productOverrideId"
+                name="productOverrideId"
+                component={InputField}
+                label="Product Override ID"
+                placeholder="Enter ID"
+                disabled={true}
+                isNumber={true}
+              />
+            </Box>
+            <Box width="120px" p="8px">
+              <Field
+                id="dateOfProductOverride"
+                name="dateOfProductOverride"
+                component={MaskField}
+                label="Date of Product Override"
+                placeholder={dateFormatConst.DATE}
+                mask={maskFormatConst.DATE}
+                disabled={true}
+              />
+            </Box>
+          </React.Fragment>
+        )}
+        <Delimiter />
         {isRepaymentType && (
           <React.Fragment>
-            <Box width="150px" p="8px">
+            <Box width="160px" p="8px">
               <Field
                 id="repaymentMethod"
                 name="repaymentMethod"
@@ -327,33 +356,6 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             </Box>
           </React.Fragment>
         )}
-        {hasProductOverride && (
-          <React.Fragment>
-            <Hr />
-            <Box width="150px" p="8px">
-              <Field
-                id="productOverrideId"
-                name="productOverrideId"
-                component={InputField}
-                label="Product Override ID"
-                placeholder="Enter ID"
-                disabled={true}
-                isNumber={true}
-              />
-            </Box>
-            <Box width="120px" p="8px">
-              <Field
-                id="dateOfProductOverride"
-                name="dateOfProductOverride"
-                component={MaskField}
-                label="Date of Product Override"
-                placeholder={dateFormatConst.DATE}
-                mask={maskFormatConst.DATE}
-                disabled={true}
-              />
-            </Box>
-          </React.Fragment>
-        )}
         <Hr />
         <Box width="120px" p="8px">
           <Field
@@ -399,10 +401,6 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             disabled={true}
-            // validate={[
-            //   formErrorUtil.isRequired,
-            //   formErrorUtil.isNumber,
-            // ]}
           />
         </Box>
         <Box width="120px" p="8px">
@@ -415,10 +413,6 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             disabled={true}
-            // validate={[
-            //   formErrorUtil.isRequired,
-            //   formErrorUtil.isNumber,
-            // ]}
           />
         </Box>
         <Hr />

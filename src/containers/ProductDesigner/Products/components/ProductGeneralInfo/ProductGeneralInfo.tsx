@@ -136,7 +136,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width="350px" p="8px">
+        <Box width="370px" p="8px">
           <Field
             id="name"
             name="name"
@@ -255,15 +255,15 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
               />
             </Box>
           </Flex>
-          <Box width="480px" pt="15px">
+          <Box width="500px" pt="15px">
             <Flex alignItems="flex-end">
-              <Box width="350px" p="8px">
+              <Box width="370px" p="8px">
                 <Field
                   id="currencyCode"
                   name="currencyCode"
                   component={SelectField}
-                  label="Currency Code"
-                  placeholder="Select Currency Code"
+                  label="Currency"
+                  placeholder="Select Currency"
                   options={currenciesOptions}
                   isLoading={isCurrenciesLoading}
                   isDisabled={isReadOnly}
