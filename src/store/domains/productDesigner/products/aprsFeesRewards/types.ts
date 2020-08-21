@@ -13,6 +13,7 @@ export interface IProductAprData {
   calculation_method: string | number;
   rate: number;
   initial_interest_free_days: number;
+  repayment_priority: number;
 }
 
 export interface IProductAprsData {
@@ -28,6 +29,7 @@ export interface IProductAprPlain extends IProductAprIds {
   description: string;
   rate: string;
   initialInterestFreeDays: number;
+  repaymentPriority: number;
 }
 
 export interface IProductApr extends IProductAprPlain {

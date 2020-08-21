@@ -33,6 +33,7 @@ export const prepareProductAprsToRender = (data: IProductAprData): IProductApr =
     calculation_method,
     rate,
     initial_interest_free_days,
+    repayment_priority,
   } = data;
 
   const calculationMethod = aprTypesOptions.find(el => el.value === calculation_method);
@@ -44,6 +45,7 @@ export const prepareProductAprsToRender = (data: IProductAprData): IProductApr =
     calculationMethod: calculationMethod && calculationMethod.label,
     rate: stringsUtil.numberToFixed(rate, 2),
     initialInterestFreeDays: initial_interest_free_days,
+    repaymentPriority: repayment_priority,
   };
 };
 
@@ -88,13 +90,14 @@ export const prepareProductAprsToSend = (data: Partial<IProductApr>): Partial<IP
     return null;
   }
 
-  const { calculationMethod } = data;
+  const { calculationMethod, repaymentPriority } = data;
 
   const calculationMethodOption = aprTypesOptions.find(el => el.label === calculationMethod);
 
   return {
     ...prepareProductAprs(data),
     calculation_method: calculationMethodOption && calculationMethodOption.value,
+    repayment_priority: repaymentPriority,
   };
 };
 

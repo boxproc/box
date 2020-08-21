@@ -9,6 +9,7 @@ export const productAprsMock: IProductAprsData = {
       calculation_method: 'A',
       rate: 2.5,
       initial_interest_free_days: 1,
+      repayment_priority: 1,
     },
     {
       product_id: 3,
@@ -17,6 +18,7 @@ export const productAprsMock: IProductAprsData = {
       calculation_method: 'A',
       rate: 2.5,
       initial_interest_free_days: 1,
+      repayment_priority: 2,
     },
     {
       product_id: 3,
@@ -25,6 +27,7 @@ export const productAprsMock: IProductAprsData = {
       calculation_method: 'A',
       rate: 2.5,
       initial_interest_free_days: 1,
+      repayment_priority: 3,
     },
   ],
 };

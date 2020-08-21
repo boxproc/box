@@ -38,7 +38,7 @@ const AprsForm: React.FC<TAprsForm> = ({
         mx="-8px"
         width="100%"
       >
-        <Box width="210px" p="8px">
+        <Box width="410px" p="8px">
           <Field
             id="description"
             name="description"
@@ -79,7 +79,7 @@ const AprsForm: React.FC<TAprsForm> = ({
             ]}
           />
         </Box>
-        <Box width="120px" p="8px">
+        <Box width="150px" p="8px">
           <Field
             id="initialInterestFreeDays"
             name="initialInterestFreeDays"

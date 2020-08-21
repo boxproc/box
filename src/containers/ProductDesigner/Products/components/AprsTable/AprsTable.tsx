@@ -4,6 +4,8 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { Box, Flex } from '@rebass/grid';
 
+import styled from 'theme';
+
 import {
   Button,
   EditableTableCell,
@@ -23,6 +25,26 @@ import {
 } from 'store';
 
 import { ITableCell } from 'types';
+
+const ArrowButtonWrapper = styled.div`
+  position: relative;
+  width: 18px;
+  height: 13px;
+  overflow: hidden;
+
+  .button {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -13px;
+    margin-top: -13px;
+
+    &:disabled {
+      opacity: .7;
+      pointer-events: none;
+    }
+  }
+`;
 
 type TCell<T extends keyof IProductApr> = ITableCell<IProductApr[T]>;
 
@@ -55,8 +77,55 @@ const AprsTable: React.FC<IAprsTable> = ({
     [isReadOnly, isLoading]
   );
 
+  const countData = React.useMemo(
+    () => productAprs && productAprs.length,
+    [productAprs]
+  );
+
   const columns = React.useMemo(
     () => [
+      {
+        maxWidth: 80,
+        accessor: 'repaymentPriority',
+        Header: <TableHeader title="Repayment Priority" />,
+        Cell: (cellInfo: CellInfo) => (
+          <React.Fragment>
+            <TableCell
+              value={cellInfo.value}
+              isSmaller={true}
+              isNumber={true}
+            />
+            <Flex
+              flexDirection="column"
+              alignItems="center"
+              p="2px 5px 5px 0"
+            >
+              <ArrowButtonWrapper>
+                <Button
+                  iconName={iconNamesConst.ARROW_UP}
+                  title="Move up"
+                  disabled={(cellInfo.index === 0) || !isEditableCell}
+                  onClick={() => updateProductApr({
+                    ...cellInfo.original,
+                    repaymentPriority: cellInfo.original.repaymentPriority - 1,
+                  })}
+                />
+              </ArrowButtonWrapper>
+              <ArrowButtonWrapper>
+                <Button
+                  iconName={iconNamesConst.ARROW_DOWN}
+                  title="Move down"
+                  disabled={(cellInfo.index === countData - 1) || !isEditableCell}
+                  onClick={() => updateProductApr({
+                    ...cellInfo.original,
+                    repaymentPriority: cellInfo.original.repaymentPriority + 1,
+                  })}
+                />
+              </ArrowButtonWrapper>
+            </Flex>
+          </React.Fragment>
+        ),
+      },
       {
         maxWidth: 80,
         accessor: 'productAprId',
@@ -70,7 +139,7 @@ const AprsTable: React.FC<IAprsTable> = ({
         ),
       },
       {
-        maxWidth: 370,
+        maxWidth: 410,
         accessor: 'description',
         Header: <TableHeader title="Description" />,
         Cell: (cellInfo: CellInfo) => (
@@ -143,7 +212,7 @@ const AprsTable: React.FC<IAprsTable> = ({
         ),
       },
     ],
-    [deleteProductApr, updateProductApr, isEditableCell]
+    [deleteProductApr, updateProductApr, isEditableCell, countData]
   );
 
   return (
