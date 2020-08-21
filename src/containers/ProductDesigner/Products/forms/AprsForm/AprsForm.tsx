@@ -3,24 +3,18 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, InputField, MaskField, NumberFormatField, SelectField } from 'components';
+import { Button, InputField, NumberFormatField, SelectField } from 'components';
 import {
-  aprDateConst,
-  aprDateOptions,
   aprTypesOptions,
-  dateFormatConst,
   formNamesConst,
   iconNamesConst,
-  maskFormatConst,
 } from 'consts';
 import { THandleAddProductApr } from 'store';
-import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 interface IAprsForm {
   addProductApr: THandleAddProductApr;
   isLoading: boolean;
-  startDateValue: ISelectValue;
 }
 
 type TAprsForm = IAprsForm & InjectedFormProps<{}, IAprsForm>;
@@ -30,13 +24,7 @@ const AprsForm: React.FC<TAprsForm> = ({
   handleSubmit,
   isLoading,
   pristine,
-  startDateValue,
 }) => {
-  const isFutureDate = React.useMemo(
-    () => startDateValue && startDateValue.value === aprDateConst.FUTURE,
-    [startDateValue]
-  );
-
   const handleSubmitForm = React.useCallback(
     handleSubmit(addProductApr),
     [handleSubmit, addProductApr]
@@ -91,36 +79,6 @@ const AprsForm: React.FC<TAprsForm> = ({
             ]}
           />
         </Box>
-        <Box width="170px" p="8px">
-          <Field
-            id="aprStartDate"
-            name="aprStartDate"
-            component={SelectField}
-            label="Start Date"
-            options={aprDateOptions}
-            placeholder="Select Start Date"
-            isDisabled={isLoading}
-            validate={[formErrorUtil.isRequired]}
-          />
-        </Box>
-        {isFutureDate && (
-          <Box width="120px" p="8px">
-            <Field
-              id="aprFutureStartDate"
-              name="aprFutureStartDate"
-              component={MaskField}
-              label="Future Date"
-              placeholder={dateFormatConst.DATE}
-              mask={maskFormatConst.DATE}
-              disabled={isLoading}
-              autoFocus={true}
-              validate={[
-                formErrorUtil.isRequired,
-                formErrorUtil.isFutureDate,
-              ]}
-            />
-          </Box>
-        )}
         <Box width="120px" p="8px">
           <Field
             id="initialInterestFreeDays"

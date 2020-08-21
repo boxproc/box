@@ -115,19 +115,6 @@ export const aprTypesOptions = [
   { value: 'D', label: 'Actual/360' },
 ];
 
-// custom consts (not in db)
-export enum aprDateConst {
-  IMMEDIATE = 'I',
-  NEXT_BILLING_DAY = 'B',
-  FUTURE = 'F',
-}
-
-export const aprDateOptions = [
-  { value: aprDateConst.IMMEDIATE, label: 'Immediate' },
-  { value: aprDateConst.NEXT_BILLING_DAY, label: 'Next billing date', isDisabled: true },
-  // { value: aprDateConst.FUTURE, label: 'Future date' },
-];
-
 /**
  * Fees and rewards
  */

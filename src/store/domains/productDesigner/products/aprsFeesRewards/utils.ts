@@ -1,5 +1,4 @@
 import {
-  aprDateConst,
   aprTypesOptions,
   feeTypesOptions,
   rewardsTypesOptions,
@@ -20,7 +19,6 @@ import {
   IProductRewardPlain,
 } from './types';
 
-import { ISelectValue } from 'types';
 import { stringsUtil } from 'utils';
 
 export const prepareProductAprsToRender = (data: IProductAprData): IProductApr => {
@@ -34,7 +32,6 @@ export const prepareProductAprsToRender = (data: IProductAprData): IProductApr =
     description,
     calculation_method,
     rate,
-    // apr_start_date,
     initial_interest_free_days,
   } = data;
 
@@ -46,8 +43,6 @@ export const prepareProductAprsToRender = (data: IProductAprData): IProductApr =
     description,
     calculationMethod: calculationMethod && calculationMethod.label,
     rate: stringsUtil.numberToFixed(rate, 2),
-    // aprStartDate: apr_start_date,
-    aprStartDate: 'Immediate',
     initialInterestFreeDays: initial_interest_free_days,
   };
 };
@@ -80,29 +75,11 @@ export const prepareFormDataProductAprsToSend = (data: Partial<IProductAprFormVa
     return null;
   }
 
-  const { calculationMethod, aprStartDate, aprFutureStartDate } = data;
-
-  const startDate = (date: ISelectValue) => {
-    if (!date) {
-      return null;
-    }
-
-    const isFutureDate = date && date.value === aprDateConst.FUTURE;
-    const isNextBillingDate = date && date.value === aprDateConst.NEXT_BILLING_DAY;
-
-    if (isFutureDate) {
-      return aprFutureStartDate;
-    } else if (isNextBillingDate) {
-      return date.value;
-    } else {
-      return null;
-    }
-  };
+  const { calculationMethod } = data;
 
   return {
     ...prepareProductAprs(data),
     calculation_method: calculationMethod && calculationMethod.value,
-    apr_start_date: startDate(aprStartDate),
   };
 };
 

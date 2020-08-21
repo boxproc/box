@@ -108,22 +108,10 @@ const AprsTable: React.FC<IAprsTable> = ({
         ),
       },
       {
-        maxWidth: 120,
-        accessor: 'aprStartDate',
-        Header: <TableHeader title="Start Date" />,
-        Cell: (props: TCell<'aprStartDate'>) => (
-          <TableCell
-            value={props.value}
-            isSmaller={true}
-            // isDate={true}
-          />
-        ),
-      },
-      {
         maxWidth: 100,
         accessor: 'initialInterestFreeDays',
         Header: <TableHeader title="Initial Interest Free Days" />,
-        Cell: (props: TCell<'aprStartDate'>) => (
+        Cell: (props: TCell<'initialInterestFreeDays'>) => (
           <TableCell
             value={props.value}
             isSmaller={true}

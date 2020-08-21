@@ -8,7 +8,6 @@ export const productAprsMock: IProductAprsData = {
       description: 'Base APR',
       calculation_method: 'A',
       rate: 2.5,
-      apr_start_date: '05/05/2020',
       initial_interest_free_days: 1,
     },
     {
@@ -17,7 +16,6 @@ export const productAprsMock: IProductAprsData = {
       description: 'APR',
       calculation_method: 'A',
       rate: 2.5,
-      apr_start_date: '05/05/2020',
       initial_interest_free_days: 1,
     },
     {
@@ -26,7 +24,6 @@ export const productAprsMock: IProductAprsData = {
       description: 'APR',
       calculation_method: 'A',
       rate: 2.5,
-      apr_start_date: '05/05/2020',
       initial_interest_free_days: 1,
     },
   ],
