@@ -6,6 +6,8 @@ import {
   IChangeMinimumAmountRequestData,
   IStatementApr,
   IStatementAprData,
+  IStatementAprLog,
+  IStatementAprLogData,
   IStatementData,
   IStatementsFilter,
   IStatementTransaction,
@@ -178,6 +180,30 @@ export const prepareAccountStatementsToRender = (data: IAccountStatementData) =>
     accruedInterestTotal: stringsUtil.numberToFixed(accrued_interest_total, 5),
     startDate: start_date,
     repaymentType: repaymentType && repaymentType.label,
+  };
+};
+
+export const prepareStatementAprLogsToRender = (data: IStatementAprLogData): IStatementAprLog => {
+  if (!data) {
+    return null;
+  }
+
+  const {
+    statement_id,
+    product_apr_id,
+    product_id,
+    transaction_id,
+    calculation_date,
+    interest,
+  } = data;
+
+  return {
+    statementId: statement_id,
+    productAprId: product_apr_id,
+    productId: product_id,
+    transactionId: transaction_id,
+    calculationDate: calculation_date,
+    interest,
   };
 };
 

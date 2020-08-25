@@ -8,11 +8,13 @@ import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst } from 'consts';
 import { StatementAprsTable, StatementDate } from 'containers/Ledger/Statements/components';
-import { IStatementApr } from 'store';
+import { IStatementApr, THandleGetStatementAprLogs } from 'store';
 
 interface IStatementAprs extends IWithModal {
   currentAccAlias: string;
   currentStatementDate: string;
+  getStatementAprLogs: THandleGetStatementAprLogs;
+  isStatementAprLogsLoading: boolean;
   statementAprs: ImmutableArray<IStatementApr>;
 }
 
@@ -22,6 +24,8 @@ const StatementAprs: React.FC<IStatementAprs> = ({
   closeModal,
   currentAccAlias,
   currentStatementDate,
+  getStatementAprLogs,
+  isStatementAprLogsLoading,
   statementAprs,
 }) => {
   const modalTitle = React.useMemo(
@@ -47,7 +51,11 @@ const StatementAprs: React.FC<IStatementAprs> = ({
     >
       <StatementDate date={currentStatementDate} />
       <T4>Accrued Interest</T4>
-      <StatementAprsTable data={statementAprs} />
+      <StatementAprsTable
+        data={statementAprs}
+        isStatementAprLogsLoading={isStatementAprLogsLoading}
+        getStatementAprLogs={getStatementAprLogs}
+      />
       <Flex justifyContent="flex-end">
         <Box mt="10px">
           <Button

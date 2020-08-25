@@ -35,6 +35,7 @@ export const tableColumns = [
     Cell: (props: TCell<'productName'>) => (
       <TableCell
         value={props.value}
+        isSmaller={true}
       />
     ),
   },

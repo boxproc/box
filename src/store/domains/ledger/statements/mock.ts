@@ -1,5 +1,6 @@
 import {
   IAccountStatementsData,
+  IStatementAprLogsData,
   IStatementAprsData,
   IStatementsData,
   IStatementTransactionsData,
@@ -143,11 +144,55 @@ export const statementTransMock: IStatementTransactionsData = {
 export const statementAprsMock: IStatementAprsData = {
   statement_aprs: [
     {
-      accrued_interest: 1,
-      description: 'Description',
+      accrued_interest: 100,
+      description: 'Description 1',
       product_apr_id: 1,
       rate: 1,
       statement_id: 1,
+    },
+    {
+      accrued_interest: 134.2,
+      description: 'Description 2',
+      product_apr_id: 2,
+      rate: 5,
+      statement_id: 1,
+    },
+    {
+      accrued_interest: 54.23,
+      description: 'Description 3',
+      product_apr_id: 3,
+      rate: 3,
+      statement_id: 1,
+    },
+  ],
+};
+
+/** Statement APR log mock */
+export const statementAprLogsMock: IStatementAprLogsData = {
+  statement_aprs_log: [
+    {
+      statement_id: 1,
+      product_apr_id: 1,
+      product_id: 3,
+      transaction_id: 123,
+      calculation_date: '25/08/2020',
+      interest: '101.33335',
+    },
+    {
+      statement_id: 1,
+      product_apr_id: 2,
+      product_id: 3,
+      transaction_id: 234,
+      calculation_date: '25/08/2020',
+      interest: '10.84900',
+    },
+    {
+      statement_id: 1,
+      product_apr_id: 5,
+      product_id: 3,
+      transaction_id: 450,
+      calculation_date: '25/08/2020',
+      interest: '5.00000',
     },
   ],
 };

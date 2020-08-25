@@ -38,6 +38,7 @@ export const tableColumns = [
     Cell: (props: TCell<'product'>) => (
       <TableCell
         value={props.value}
+        isSmaller={true}
         Icon={ProductImages[props.original.productType]}
       />
     ),

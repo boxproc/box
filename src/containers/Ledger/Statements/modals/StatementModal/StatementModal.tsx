@@ -16,6 +16,7 @@ import {
   IStatementApr,
   IStatementTransaction,
   THandleDownloadStatement,
+  THandleGetStatementAprLogs,
   THandleGetStatementAprs,
   THandleGetStatementTransactions,
 } from 'store';
@@ -24,12 +25,14 @@ interface IStatementModal extends IWithModal {
   currentStatement: IStatement;
   currentStatementId: number;
   downloadStatement: THandleDownloadStatement;
+  getStatementAprLogs: THandleGetStatementAprLogs;
   getStatementAprs: THandleGetStatementAprs;
   getStatementTransactions: THandleGetStatementTransactions;
+  isLoading: boolean;
+  isStatementAprLogsLoading: boolean;
   statementAprs: ImmutableArray<IStatementApr>;
   statementPendingTransactions: ImmutableArray<IStatementTransaction>;
   statementTransactions: ImmutableArray<IStatementTransaction>;
-  isLoading: boolean;
 }
 
 const modalName = modalNamesConst.STATEMENTS;
@@ -39,9 +42,11 @@ const StatementModal: React.FC<IStatementModal> = ({
   currentStatement,
   currentStatementId,
   downloadStatement,
+  getStatementAprLogs,
   getStatementAprs,
   getStatementTransactions,
   isLoading,
+  isStatementAprLogsLoading,
   openModal,
   statementAprs,
   statementPendingTransactions,
@@ -104,25 +109,33 @@ const StatementModal: React.FC<IStatementModal> = ({
           isLoading={isLoading}
         >
           <Box mt="20px" mb="10px">
-            <StatementAprsTable data={statementAprs} />
+            <StatementAprsTable
+              data={statementAprs}
+              getStatementAprLogs={getStatementAprLogs}
+              isStatementAprLogsLoading={isStatementAprLogsLoading}
+            />
           </Box>
         </TabsPanel>
 
       </Tabs>
       <Flex
         alignItems="center"
-        justifyContent="space-between"
+        justifyContent="flex-end"
         mt="20px"
       >
-        <Button
-          text="Open pdf statement"
-          iconName={iconNamesConst.FILE_PDF}
-          classNames={['is-bordered']}
-          disabled={isLoading}
-          onClick={downloadStatement}
-        />
+        <Box mr="7px">
+          <Button
+            text="Open pdf statement"
+            iconName={iconNamesConst.FILE_PDF}
+            classNames={['is-bordered']}
+            disabled={isLoading}
+            type="reset"
+            onClick={downloadStatement}
+          />
+        </Box>
         <Button
           text="Close"
+          type="reset"
           onClick={handleCloseModal}
         />
       </Flex>

@@ -12,6 +12,7 @@ import {
   IFilterStatementsAction,
   IFilterStatementsByIdAction,
   IGetAccountStatementsAction,
+  IGetStatementAprLogsAction,
   IGetStatementAprsAction,
   IGetStatementTransAction,
 } from './actionTypes';
@@ -168,6 +169,37 @@ export const handleGetStatementAprs: THandleGetStatementAprs = (statementId, ope
         if (openModalName) {
           dispatch(openModal({ name: openModalName }));
         }
+      },
+      dispatch
+    );
+  };
+
+/**
+ * Get statement APR logs action
+ */
+
+export type TGetStatementAprLogs = (data: {
+  statementId: number,
+  productAprId: number,
+}) => IGetStatementAprLogsAction;
+export type THandleGetStatementAprLogs = (data: {
+  statementId: number,
+  productAprId: number,
+}) =>
+  Thunk<void>;
+
+export const getStatementAprLogs: TGetStatementAprLogs = data => ({
+  type: ActionTypeKeys.GET_STATEMENT_APR_LOGS,
+  payload: api.getStatementAprLogs(data),
+});
+
+export const handleGetStatementAprLogs: THandleGetStatementAprLogs = data =>
+  async dispatch => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        await dispatch(getStatementAprLogs(data));
+
+        dispatch(openModal({ name: modalNamesConst.STATEMENT_APR_LOGS }));
       },
       dispatch
     );
