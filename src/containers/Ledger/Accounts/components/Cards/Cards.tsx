@@ -68,13 +68,11 @@ export const Cards: React.FC<IAccountCards> = ({
       </Box>
       <Hr />
       <Flex justifyContent="flex-end">
-        <Box mt="10px">
-          <Button
-            type="reset"
-            onClick={onCancel}
-            text="Close"
-          />
-        </Box>
+        <Button
+          type="reset"
+          onClick={onCancel}
+          text="Close"
+        />
       </Flex>
     </React.Fragment>
   );

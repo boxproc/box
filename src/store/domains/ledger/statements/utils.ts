@@ -216,6 +216,7 @@ export const prepareStatementAprsToRender = (data: IStatementAprData): IStatemen
     statement_id,
     product_apr_id,
     accrued_interest,
+    accrued_interest_repaid,
     description,
     rate,
   } = data;
@@ -224,6 +225,7 @@ export const prepareStatementAprsToRender = (data: IStatementAprData): IStatemen
     statementId: statement_id,
     productAprId: product_apr_id,
     accruedInterest: stringsUtil.numberToFixed(accrued_interest, 5),
+    accruedInterestRepaid: stringsUtil.numberToFixed(accrued_interest_repaid, 5),
     description,
     rate: stringsUtil.numberToFixed(rate, 2),
   };
@@ -264,12 +266,13 @@ export const prepareStatementAprsForReport = (data: Array<IStatementAprData>) =>
   if (data && data.length) {
     return data.map(el => {
 
-      const { description, rate, accrued_interest } = el;
+      const { description, rate, accrued_interest, accrued_interest_repaid } = el;
 
       return {
         description,
         rate,
         accruedInterest: stringsUtil.numberToFixed(accrued_interest, 5),
+        accruedInterestRepaid: stringsUtil.numberToFixed(accrued_interest_repaid, 5),
       };
 
     });
@@ -278,6 +281,7 @@ export const prepareStatementAprsForReport = (data: Array<IStatementAprData>) =>
       description: null,
       rate: null,
       accruedInterest: null,
+      accruedInterestRepaid: null,
     }];
   }
 };

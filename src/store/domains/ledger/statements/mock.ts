@@ -145,6 +145,7 @@ export const statementAprsMock: IStatementAprsData = {
   statement_aprs: [
     {
       accrued_interest: 100,
+      accrued_interest_repaid: 10,
       description: 'Description 1',
       product_apr_id: 1,
       rate: 1,
@@ -152,6 +153,7 @@ export const statementAprsMock: IStatementAprsData = {
     },
     {
       accrued_interest: 134.2,
+      accrued_interest_repaid: 10,
       description: 'Description 2',
       product_apr_id: 2,
       rate: 5,
@@ -159,6 +161,7 @@ export const statementAprsMock: IStatementAprsData = {
     },
     {
       accrued_interest: 54.23,
+      accrued_interest_repaid: 10,
       description: 'Description 3',
       product_apr_id: 3,
       rate: 3,

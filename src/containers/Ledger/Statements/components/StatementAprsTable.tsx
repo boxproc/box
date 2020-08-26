@@ -48,6 +48,18 @@ const StatementAprsTable: React.FC<IStatementAprsTable> = ({
         ),
       },
       {
+        maxWidth: 150,
+        Header: <TableHeader title="Accrued Interest Repaid" />,
+        accessor: 'accruedInterestRepaid',
+        Cell: (props: TCell<'accruedInterestRepaid'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+            isNumber={true}
+          />
+        ),
+      },
+      {
         maxWidth: 500,
         Header: <TableHeader title="Description" />,
         accessor: 'description',

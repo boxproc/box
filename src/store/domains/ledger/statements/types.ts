@@ -136,6 +136,7 @@ export interface IStatementTransReq {
 
 export interface IStatementAprData {
   accrued_interest: number;
+  accrued_interest_repaid: number;
   description: string;
   product_apr_id: number;
   rate: number;
@@ -148,6 +149,7 @@ export interface IStatementAprsData {
 
 export interface IStatementApr {
   accruedInterest: string;
+  accruedInterestRepaid: string;
   description: string;
   productAprId: number;
   rate: string;

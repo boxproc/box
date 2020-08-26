@@ -25,6 +25,7 @@ const StatementAprLogsModal: React.FC<IStatementAprLogsModal> = ({
       name={modalName}
       title="Statement APR log"
       containerWidth="650px"
+      minContainerHeight="500px"
     >
       <StatementAprLogsTable
         data={statementAprLogs}

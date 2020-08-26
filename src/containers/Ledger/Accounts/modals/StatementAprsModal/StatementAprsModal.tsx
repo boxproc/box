@@ -46,7 +46,7 @@ const StatementAprs: React.FC<IStatementAprs> = ({
     <Modal
       name={modalName}
       title={modalTitle}
-      containerWidth="700px"
+      containerWidth="950px"
       minContainerHeight="500px"
     >
       <StatementDate date={currentStatementDate} />
@@ -57,7 +57,7 @@ const StatementAprs: React.FC<IStatementAprs> = ({
         getStatementAprLogs={getStatementAprLogs}
       />
       <Flex justifyContent="flex-end">
-        <Box mt="10px">
+        <Box mt="15px">
           <Button
             text="close"
             onClick={handleOnCancel}

@@ -70,7 +70,7 @@ const AccountStatements: React.FC<IAccountStatements> = ({
         ),
       },
       {
-        maxWidth: 80,
+        maxWidth: 100,
         Header: <TableHeader title="Start Date" />,
         accessor: 'startDate',
         Cell: (props: ITableCell<'startDate'>) => (
@@ -82,7 +82,7 @@ const AccountStatements: React.FC<IAccountStatements> = ({
         ),
       },
       {
-        maxWidth: 100,
+        maxWidth: 120,
         Header: <TableHeader title="Balance Open" />,
         accessor: 'balanceOpen',
         Cell: (props: TCell<'balanceOpen'>) => (
@@ -94,7 +94,7 @@ const AccountStatements: React.FC<IAccountStatements> = ({
         ),
       },
       {
-        maxWidth: 100,
+        maxWidth: 120,
         Header: <TableHeader title="Balance Close" />,
         accessor: 'balanceClose',
         Cell: (props: TCell<'balanceClose'>) => (
@@ -118,7 +118,7 @@ const AccountStatements: React.FC<IAccountStatements> = ({
         ),
       },
       {
-        maxWidth: 120,
+        maxWidth: 150,
         Header: <TableHeader title="Repayment Status" />,
         accessor: 'repaymentStatus',
         Cell: (props: TCell<'repaymentStatus'>) => (
@@ -129,7 +129,7 @@ const AccountStatements: React.FC<IAccountStatements> = ({
         ),
       },
       {
-        maxWidth: 100,
+        maxWidth: 120,
         Header: <TableHeader title="Interest" />,
         accessor: 'accruedInterestTotal',
         Cell: (props: TCell<'accruedInterestTotal'>) => (
@@ -187,7 +187,7 @@ const AccountStatements: React.FC<IAccountStatements> = ({
         isSmaller={true}
       />
       <Flex justifyContent="flex-end">
-        <Box mt="10px">
+        <Box mt="15px">
           <Button
             text="close"
             type="reset"
