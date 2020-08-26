@@ -42,7 +42,7 @@ const ScheduledJobsFilter: React.FC<IScheduledJobsFilter> = ({
 
   return (
     <React.Fragment>
-      <Box width={[1 / 4]} p="8px">
+      <Box width="300px" p="8px">
         <Field
           id="institutionId"
           name="institutionId"
@@ -56,7 +56,7 @@ const ScheduledJobsFilter: React.FC<IScheduledJobsFilter> = ({
           validate={[formErrorUtil.isRequired]}
         />
       </Box>
-      <Box width={[2 / 7]} p="8px" >
+      <Box width="300px" p="8px">
         <Field
           id="scheduler"
           name="scheduler"

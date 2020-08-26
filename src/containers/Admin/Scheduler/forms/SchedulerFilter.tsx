@@ -18,7 +18,7 @@ const SchedulerFilter: React.FC<ISchedulerFilter> = ({
 }) => {
   return (
     <React.Fragment>
-      <Box width={[1 / 4]} p="8px">
+      <Box width="300px" p="8px">
         <Field
           id="institutionId"
           name="institutionId"
@@ -32,7 +32,7 @@ const SchedulerFilter: React.FC<ISchedulerFilter> = ({
           validate={[formErrorUtil.isRequired]}
         />
       </Box>
-      <Box width={[1 / 4]} p="8px">
+      <Box width="300px" p="8px">
         <Field
           id="name"
           name="name"

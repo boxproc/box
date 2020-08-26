@@ -19,7 +19,7 @@ const CardsFilter: React.FC<ICardsFilter> = ({
 }) => {
   return (
     <React.Fragment>
-      <Box width="240px" p="8px">
+      <Box width="300px" p="8px">
         <Field
           id="institutionId"
           name="institutionId"

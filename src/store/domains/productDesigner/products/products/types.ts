@@ -257,6 +257,7 @@ export interface IInstProductData extends IPlainInfo {
   def_num_of_intrst_free_instlmts: number;
   def_num_of_installments: number;
   def_num_deferred_instlmts: number;
+  statement_cycle_repayment_day: number;
 }
 
 export interface IInstProduct extends IPlainInfo {

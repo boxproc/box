@@ -12,8 +12,8 @@ import { formErrorUtil } from 'utils';
 
 const InstitutionsWrapper = styled(Box)`
   max-width: 50%;
-  min-width: 25%;
-  padding: 10px;
+  min-width: 300px;
+  padding: 8px;
 `;
 
 interface IUiSessionsFilter {

@@ -4,7 +4,6 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import {
-  Delimiter,
   Hr,
   InputField,
   MaskField,
@@ -112,7 +111,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
         mx="-8px"
       >
         {isEditMode && (
-          <Box width="120px" p="8px">
+          <Box width="110px" p="8px">
             <Field
               id="id"
               name="id"
@@ -124,7 +123,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             />
           </Box>
         )}
-        <Box width="240px" p="8px">
+        <Box width={isEditMode ? '260px' : '370px'} p="8px">
           <Field
             id="institutionId"
             name="institutionId"
@@ -137,7 +136,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width="120px" p="8px">
+        <Box width="110px" p="8px">
           <Field
             id="customerId"
             name="customerId"
@@ -184,180 +183,193 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Hr />
-        <Box width="480px" p="8px">
-          <Field
-            id="product"
-            name="product"
-            component={SelectField}
-            label="Product"
-            placeholder="Select Product"
-            isDisabled={isEditMode || isReadOnly}
-            options={institutionProductsOptions}
-            validate={[formErrorUtil.isRequired]}
-          />
-        </Box>
-        {isEditMode && (
-          <Box width="120px" p="8px">
-            <Field
-              id="productId"
-              name="productId"
-              component={InputField}
-              label="Product ID"
-              placeholder="Enter ID"
-              disabled={true}
-              isNumber={true}
-            />
-          </Box>
-        )}
-        {hasProductOverride && (
-          <React.Fragment>
-            <Box width="120px" p="8px">
+        <Flex
+          alignItems="flex-start"
+          flexDirection={isEditMode ? 'row-reverse' : 'row'}
+        >
+          <Flex
+            flexWrap="wrap"
+            alignItems="flex-end"
+            width="480px"
+          >
+            <Box width="480px" p="8px" pt="24px">
               <Field
-                id="productOverrideId"
-                name="productOverrideId"
-                component={InputField}
-                label="Product Override ID"
-                placeholder="Enter ID"
-                disabled={true}
-                isNumber={true}
-              />
-            </Box>
-            <Box width="120px" p="8px">
-              <Field
-                id="dateOfProductOverride"
-                name="dateOfProductOverride"
-                component={MaskField}
-                label="Date of Product Override"
-                placeholder={dateFormatConst.DATE}
-                mask={maskFormatConst.DATE}
-                disabled={true}
-              />
-            </Box>
-          </React.Fragment>
-        )}
-        <Delimiter />
-        {isRepaymentType && (
-          <React.Fragment>
-            <Box width="160px" p="8px">
-              <Field
-                id="repaymentMethod"
-                name="repaymentMethod"
+                id="product"
+                name="product"
                 component={SelectField}
-                label="Repayment Method"
-                placeholder="Select Method"
-                isDisabled={isReadOnly}
-                options={repaymentMethodsOptions}
+                label="Product"
+                placeholder="Select Product"
+                isDisabled={isEditMode || isReadOnly}
+                options={institutionProductsOptions}
                 validate={[formErrorUtil.isRequired]}
               />
             </Box>
-            <Box width="200px" p="8px">
-              <Field
-                id="repaymentType"
-                name="repaymentType"
-                component={SelectField}
-                label="Repayment Type"
-                placeholder="Select Type"
-                isDisabled={isSelectedLoan || isReadOnly}
-                options={repaymentTypesOptions}
-                validate={[formErrorUtil.isRequired]}
-              />
-            </Box>
-          </React.Fragment>
-        )}
-        {isDirectDebitRepayment && (
-          <Box width="240px" p="8px">
-            <Field
-              id="directDebitMandateId"
-              name="directDebitMandateId"
-              component={SelectField}
-              label="Direct Debit Mandate"
-              placeholder="Select Mandate"
-              isDisabled={isReadOnly || hint}
-              isLoading={isLoadingMandates}
-              hint={hint}
-              options={directDebitMandatesOptions}
-            />
-          </Box>
-        )}
-        {isEditMode && (
-          <Box width="120px" p="8px">
-            <Field
-              id="statementCycleRepaymentDay"
-              name="statementCycleRepaymentDay"
-              component={InputField}
-              label="Statement Cycle Repayment Day"
-              placeholder="Enter Day"
-              disabled={true}
-              isNumber={true}
-              validate={[formErrorUtil.isInteger]}
-            />
-          </Box>
-        )}
-        {isSelectedLoan && (
-          <React.Fragment>
-            <Box width="120px" p="8px">
-              <Field
-                id="numOfInstallments"
-                name="numOfInstallments"
-                component={InputField}
-                label="# of Installments"
-                placeholder="Enter #"
-                disabled={isReadOnly}
-                isNumber={true}
-                validate={[
-                  formErrorUtil.isRequired,
-                  formErrorUtil.isInteger,
-                ]}
-              />
-            </Box>
-            <Box width="120px" p="8px">
-              <Field
-                id="numOfInterestFreeInstllmnts"
-                name="numOfInterestFreeInstllmnts"
-                component={InputField}
-                label="# of Interest Free Installments"
-                placeholder="Enter #"
-                disabled={isReadOnly}
-                isNumber={true}
-                validate={[
-                  formErrorUtil.isInteger,
-                ]}
-              />
-            </Box>
-            <Box width="120px" p="8px">
-              <Field
-                id="numDeferredInstlmts"
-                name="numDeferredInstlmts"
-                component={InputField}
-                label="# of Deferred Installments"
-                placeholder="Enter #"
-                disabled={isReadOnly}
-                isNumber={true}
-                validate={[
-                  formErrorUtil.isInteger,
-                ]}
-              />
-            </Box>
-            <Box width="115px" p="8px">
-              <Field
-                id="loanStartDate"
-                name="loanStartDate"
-                component={MaskField}
-                label="Loan Start Date"
-                placeholder={dateFormatConst.DATE}
-                mask={maskFormatConst.DATE}
-                disabled={isReadOnly || isEditMode}
-                validate={[
-                  formErrorUtil.isRequired,
-                  formErrorUtil.isDate,
-                ]}
-              />
-            </Box>
-          </React.Fragment>
-        )}
+            {isEditMode && (
+              <Box width="110px" p="8px">
+                <Field
+                  id="productId"
+                  name="productId"
+                  component={InputField}
+                  label="Product ID"
+                  placeholder="Enter ID"
+                  disabled={true}
+                  isNumber={true}
+                />
+              </Box>
+            )}
+            {hasProductOverride && (
+              <React.Fragment>
+                <Box width="110px" p="8px">
+                  <Field
+                    id="productOverrideId"
+                    name="productOverrideId"
+                    component={InputField}
+                    label="Product Override ID"
+                    placeholder="Enter ID"
+                    disabled={true}
+                    isNumber={true}
+                  />
+                </Box>
+                <Box width="120px" p="8px">
+                  <Field
+                    id="dateOfProductOverride"
+                    name="dateOfProductOverride"
+                    component={MaskField}
+                    label="Date of Product Override"
+                    placeholder={dateFormatConst.DATE}
+                    mask={maskFormatConst.DATE}
+                    disabled={true}
+                  />
+                </Box>
+              </React.Fragment>
+            )}
+          </Flex>
+          <Flex
+            flexWrap="wrap"
+            alignItems="flex-end"
+            width="480px"
+          >
+            {isRepaymentType && (
+              <React.Fragment>
+                <Box width="110px" p="8px">
+                  <Field
+                    id="statementCycleRepaymentDay"
+                    name="statementCycleRepaymentDay"
+                    component={InputField}
+                    label="Statement Cycle Repayment Day"
+                    placeholder="Enter Day"
+                    disabled={isEditMode}
+                    isNumber={true}
+                    validate={[formErrorUtil.isInteger]}
+                  />
+                </Box>
+                <Box width="220px" p="8px">
+                  <Field
+                    id="repaymentType"
+                    name="repaymentType"
+                    component={SelectField}
+                    label="Repayment Type"
+                    placeholder="Select Type"
+                    isDisabled={isSelectedLoan || isReadOnly}
+                    options={repaymentTypesOptions}
+                    validate={[formErrorUtil.isRequired]}
+                  />
+                </Box>
+                <Box width="150px" p="8px">
+                  <Field
+                    id="repaymentMethod"
+                    name="repaymentMethod"
+                    component={SelectField}
+                    label="Repayment Method"
+                    placeholder="Select Method"
+                    isDisabled={isReadOnly}
+                    options={repaymentMethodsOptions}
+                    validate={[formErrorUtil.isRequired]}
+                  />
+                </Box>
+              </React.Fragment>
+            )}
+            {isDirectDebitRepayment && (
+              <Box width="480px" p="8px" pt={hasProductOverride ? '24px' : '8px'}>
+                <Field
+                  id="directDebitMandateId"
+                  name="directDebitMandateId"
+                  component={SelectField}
+                  label="Direct Debit Mandate"
+                  placeholder="Select Mandate"
+                  isDisabled={isReadOnly || hint}
+                  isLoading={isLoadingMandates}
+                  hint={hint}
+                  options={directDebitMandatesOptions}
+                />
+              </Box>
+            )}
+            {isSelectedLoan && (
+              <React.Fragment>
+                <Box width="110px" p="8px">
+                  <Field
+                    id="numOfInstallments"
+                    name="numOfInstallments"
+                    component={InputField}
+                    label="# of Installments"
+                    placeholder="Enter #"
+                    disabled={isEditMode}
+                    isNumber={true}
+                    validate={[
+                      formErrorUtil.isRequired,
+                      formErrorUtil.isInteger,
+                    ]}
+                  />
+                </Box>
+                <Box width="110px" p="8px">
+                  <Field
+                    id="numOfInterestFreeInstllmnts"
+                    name="numOfInterestFreeInstllmnts"
+                    component={InputField}
+                    label="# of Interest Free Installments"
+                    placeholder="Enter #"
+                    disabled={isEditMode}
+                    isNumber={true}
+                    validate={[
+                      formErrorUtil.isInteger,
+                    ]}
+                  />
+                </Box>
+                <Box width="110px" p="8px">
+                  <Field
+                    id="numDeferredInstlmts"
+                    name="numDeferredInstlmts"
+                    component={InputField}
+                    label="# of Deferred Installments"
+                    placeholder="Enter #"
+                    disabled={isEditMode}
+                    isNumber={true}
+                    validate={[
+                      formErrorUtil.isInteger,
+                    ]}
+                  />
+                </Box>
+                <Box width="120px" p="8px">
+                  <Field
+                    id="loanStartDate"
+                    name="loanStartDate"
+                    component={MaskField}
+                    label="Loan Start Date"
+                    placeholder={dateFormatConst.DATE}
+                    mask={maskFormatConst.DATE}
+                    disabled={isEditMode}
+                    validate={[
+                      formErrorUtil.isRequired,
+                      formErrorUtil.isDate,
+                    ]}
+                  />
+                </Box>
+              </React.Fragment>
+            )}
+          </Flex>
+        </Flex>
         <Hr />
-        <Box width="120px" p="8px">
+        <Box width="165px" p="8px">
           <Field
             id="balanceLimit"
             name="balanceLimit"
@@ -374,7 +386,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             ]}
           />
         </Box>
-        <Box width="120px" p="8px">
+        <Box width="165px" p="8px">
           <Field
             id="balanceLimitShared"
             name="balanceLimitShared"
@@ -391,7 +403,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             ]}
           />
         </Box>
-        <Box width="120px" p="8px">
+        <Box width="165px" p="8px">
           <Field
             id="balanceSettled"
             name="balanceSettled"
@@ -403,7 +415,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             disabled={true}
           />
         </Box>
-        <Box width="120px" p="8px">
+        <Box width="165px" p="8px">
           <Field
             id="balanceAuthorised"
             name="balanceAuthorised"
@@ -416,7 +428,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
           />
         </Box>
         <Hr />
-        <Box width="120px" p="8px">
+        <Box width="165px" p="8px">
           <Field
             id="repaymentAmountDue"
             name="repaymentAmountDue"
@@ -433,7 +445,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             ]}
           />
         </Box>
-        <Box width="120px" p="8px">
+        <Box width="165px" p="8px">
           <Field
             id="accruedInterest"
             name="accruedInterest"
@@ -452,7 +464,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
         </Box>
         {isEditMode && (
           <React.Fragment>
-            <Box width="120px" p="8px">
+            <Box width="165px" p="8px">
               <Field
                 id="totalOverdueAmount"
                 name="totalOverdueAmount"

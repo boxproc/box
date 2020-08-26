@@ -42,7 +42,7 @@ const ApiCallsFilter: React.FC<IApiCallsFilter> = ({
 
   return (
     <React.Fragment>
-      <Box width={[1 / 4]} p="8px">
+      <Box width="300px" p="8px">
         <Field
           id="institutionId"
           name="institutionId"
@@ -56,7 +56,7 @@ const ApiCallsFilter: React.FC<IApiCallsFilter> = ({
           validate={[formErrorUtil.isRequired]}
         />
       </Box>
-      <Box width={[1 / 3]} p="8px">
+      <Box width="300px" p="8px">
         <Field
           id="endpointId"
           name="endpointId"
@@ -70,7 +70,7 @@ const ApiCallsFilter: React.FC<IApiCallsFilter> = ({
           validate={[formErrorUtil.isRequired]}
         />
       </Box>
-      <Box width={[1 / 3]} p="8px">
+      <Box width="300px" p="8px">
         <Field
           id="apiName"
           name="apiName"

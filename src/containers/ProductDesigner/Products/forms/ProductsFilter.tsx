@@ -13,7 +13,7 @@ import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
 const ProductWrapper = styled(Box)`
-  min-width: 235px;
+  min-width: 300px;
   max-width: 500px;
 `;
 
@@ -28,7 +28,7 @@ const ProductsFilter: React.FC<IProductsFilter> = ({
 }) => {
   return (
     <React.Fragment>
-      <Box width={[1 / 4]} p="8px">
+      <Box width="300px" p="8px">
         <Field
           id="institutionId"
           name="institutionId"

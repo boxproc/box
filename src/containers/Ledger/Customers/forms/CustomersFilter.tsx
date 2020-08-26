@@ -19,7 +19,7 @@ const CustomersFilter: React.FC<ICustomersFilter> = ({
 }) => {
   return (
     <React.Fragment>
-      <Box width="240px" p="8px">
+      <Box width="280px" p="8px">
         <Field
           id="institutionId"
           name="institutionId"
@@ -45,7 +45,7 @@ const CustomersFilter: React.FC<ICustomersFilter> = ({
           validate={[formErrorUtil.isInteger]}
         />
       </Box>
-      <Box width="300px" p="8px">
+      <Box width="280px" p="8px">
         <Field
           id="firstName"
           name="firstName"
@@ -55,7 +55,7 @@ const CustomersFilter: React.FC<ICustomersFilter> = ({
           disabled={isDisabled}
         />
       </Box>
-      <Box width="300px" p="8px">
+      <Box width="280px" p="8px">
         <Field
           id="lastName"
           name="lastName"

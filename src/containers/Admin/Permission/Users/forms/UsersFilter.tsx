@@ -20,7 +20,7 @@ const UsersFilter: React.FC<IUsersFilter> = ({
 }) => {
   return (
     <React.Fragment>
-      <Box width={[1 / 4]} p="8px">
+      <Box width="300px" p="8px">
         <Field
           id="institutionId"
           name="institutionId"
