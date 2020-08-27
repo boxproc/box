@@ -260,7 +260,10 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
                     placeholder="Enter Day"
                     disabled={isEditMode}
                     isNumber={true}
-                    validate={[formErrorUtil.isInteger]}
+                    validate={[
+                      formErrorUtil.isInteger,
+                      formErrorUtil.isRequired,
+                    ]}
                   />
                 </Box>
                 <Box width="220px" p="8px">
@@ -369,7 +372,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
           </Flex>
         </Flex>
         <Hr />
-        <Box width="165px" p="8px">
+        <Box width="160px" p="8px">
           <Field
             id="balanceLimit"
             name="balanceLimit"
@@ -386,7 +389,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             ]}
           />
         </Box>
-        <Box width="165px" p="8px">
+        <Box width="160px" p="8px">
           <Field
             id="balanceLimitShared"
             name="balanceLimitShared"
@@ -403,7 +406,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             ]}
           />
         </Box>
-        <Box width="165px" p="8px">
+        <Box width="160px" p="8px">
           <Field
             id="balanceSettled"
             name="balanceSettled"
@@ -415,7 +418,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             disabled={true}
           />
         </Box>
-        <Box width="165px" p="8px">
+        <Box width="160px" p="8px">
           <Field
             id="balanceAuthorised"
             name="balanceAuthorised"
@@ -428,7 +431,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
           />
         </Box>
         <Hr />
-        <Box width="165px" p="8px">
+        <Box width="160px" p="8px">
           <Field
             id="repaymentAmountDue"
             name="repaymentAmountDue"
@@ -445,7 +448,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             ]}
           />
         </Box>
-        <Box width="165px" p="8px">
+        <Box width="160px" p="8px">
           <Field
             id="accruedInterest"
             name="accruedInterest"
@@ -464,7 +467,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
         </Box>
         {isEditMode && (
           <React.Fragment>
-            <Box width="165px" p="8px">
+            <Box width="160px" p="8px">
               <Field
                 id="totalOverdueAmount"
                 name="totalOverdueAmount"
