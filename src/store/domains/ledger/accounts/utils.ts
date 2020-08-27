@@ -209,7 +209,7 @@ export const prepareDataToRender = (data: Partial<IAccountData>, institution?: I
     number_of_times_overdue_7_cycle,
     currency_code,
     currency_numeric_code,
-    statement_cycle_parameter,
+    statement_cycle_repayment_day,
     status_name,
   } = data;
 
@@ -275,7 +275,7 @@ export const prepareDataToRender = (data: Partial<IAccountData>, institution?: I
     numberOfTimesOverdue5Cycles: number_of_times_overdue_5_cycle,
     numberOfTimesOverdue6Cycles: number_of_times_overdue_6_cycle,
     numberOfTimesOverdue7Cycles: number_of_times_overdue_7_cycle,
-    statementCycleRepaymentDay: statement_cycle_parameter,
+    statementCycleRepaymentDay: statement_cycle_repayment_day,
   };
 };
 

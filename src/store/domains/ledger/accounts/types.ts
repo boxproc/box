@@ -62,7 +62,7 @@ export interface IAccountData {
   repayment_type: number | string;
   repayment_method: number | string;
   direct_debit_mandate_id?: number | string;
-  statement_cycle_parameter: number;
+  statement_cycle_repayment_day: number;
   status_name: string;
   status: string | number;
   total_overdue_amount: number;

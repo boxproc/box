@@ -140,7 +140,7 @@ export const instProductsSelector = createSelector(
       defNumInterestFreeInstlmts: el.def_num_of_intrst_free_instlmts,
       defNumOfInstallments: el.def_num_of_installments,
       defNumDeferredInstlmts: el.def_num_deferred_instlmts,
-      statementCycleRepaymentDay: el.statement_cycle_repayment_day,
+      statementCycleRepaymentDay: el.statement_cycle_parameter,
     };
   })
 );
