@@ -70,132 +70,129 @@ const SchedulerForm: React.FC<TSchedulerForm> = ({
 
   return (
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
-      <Box mx="-8px" >
-        <Flex
-          flexWrap="wrap"
-          alignItems="flex-end"
-        >
-          <Box width={[1 / 3]} p="8px">
-            <Field
-              id="institutionId"
-              name="institutionId"
-              component={SelectField}
-              label="Institution"
-              placeholder="Select Institution"
-              options={institutionsOptions}
-              isDisabled={isEditMode || isReadOnly}
-              isClearable={false}
-              validate={[formErrorUtil.isRequired]}
-            />
-          </Box>
-          <Box width={[1 / 3]} p="8px">
-            <Field
-              id="name"
-              name="name"
-              placeholder="Enter Name"
-              component={InputField}
-              label="Name"
-              disabled={isReadOnly}
-              validate={[
-                formErrorUtil.isRequired,
-                formErrorUtil.isAlphaNumeric,
-              ]}
-            />
-          </Box>
-          <Box width={[1 / 3]} p="8px">
-            <Field
-              id="status"
-              name="status"
-              component={SelectField}
-              label="Status"
-              placeholder="Select Status"
-              options={schedulerStatusOptions}
-              isDisabled={isDisabledStatus || isReadOnly}
-              validate={[formErrorUtil.isRequired]}
-            />
-          </Box>
-          <Box width="100%">
-            <Flex alignItems="flex-start">
-              <Box width="50%" p="8px">
-                <Field
-                  id="description"
-                  name="description"
-                  component={TextareaField}
-                  label="Description"
-                  placeholder="Enter Description"
-                  disabled={isReadOnly}
-                />
-              </Box>
-              <Box width="50%" p="8px">
-                <Field
-                  id="parameters"
-                  name="parameters"
-                  component={TextareaField}
-                  label="Parameters"
-                  placeholder="Enter Parameters"
-                  disabled={isReadOnly}
-                />
-              </Box>
-            </Flex>
-          </Box>
-          <Box width={[1 / 3]} p="8px">
-            <Field
-              id="executableType"
-              name="executableType"
-              placeholder="Enter Executable type"
-              component={SelectField}
-              label="Executable Type"
-              options={executableTypeOptions}
-              isDisabled={isReadOnly}
-              validate={[formErrorUtil.isRequired]}
-            />
-          </Box>
-          <Box width={[2 / 3]} p="8px">
-            <Field
-              id="executable"
-              name="executable"
-              placeholder="Executable"
-              component={InputField}
-              label="Executable"
-              disabled={isReadOnly}
-              validate={[
-                formErrorUtil.isRequired,
-              ]}
-            />
-          </Box>
-          <Box width={[4 / 9]} p="8px">
-            <Field
-              id="logLocation"
-              name="logLocation"
-              placeholder="Enter Log Location"
-              component={InputField}
-              label="Log Location"
-              disabled={isReadOnly}
-              validate={[formErrorUtil.isRequired]}
-            />
-          </Box>
-          <Box width={[1 / 4]} p="8px">
-            <Field
-              id="cronExpression"
-              name="cronExpression"
-              placeholder="Enter Cron Expression"
-              component={InputField}
-              label="Cron Expression"
-              disabled={true}
-              validate={[formErrorUtil.isRequired]}
-            />
-          </Box>
-          <Box p="8px">
-            <Button
-              type="reset"
-              text="Build cron expression"
-              isFocused={true}
-              onClick={handleOpenModal}
-              disabled={isReadOnly}
-            />
-          </Box>
-        </Flex>
-      </Box>
+      <Flex
+        flexWrap="wrap"
+        alignItems="flex-end"
+        mx="-8px"
+      >
+        <Box width="390px" p="8px">
+          <Field
+            id="institutionId"
+            name="institutionId"
+            component={SelectField}
+            label="Institution"
+            placeholder="Select Institution"
+            options={institutionsOptions}
+            isDisabled={isEditMode || isReadOnly}
+            isClearable={false}
+            validate={[formErrorUtil.isRequired]}
+          />
+        </Box>
+        <Box width="390px" p="8px">
+          <Field
+            id="name"
+            name="name"
+            placeholder="Enter Name"
+            component={InputField}
+            label="Name"
+            disabled={isReadOnly}
+            validate={[
+              formErrorUtil.isRequired,
+              formErrorUtil.isAlphaNumeric,
+            ]}
+          />
+        </Box>
+        <Box width="200px" p="8px">
+          <Field
+            id="status"
+            name="status"
+            component={SelectField}
+            label="Status"
+            placeholder="Select Status"
+            options={schedulerStatusOptions}
+            isDisabled={isDisabledStatus || isReadOnly}
+            validate={[formErrorUtil.isRequired]}
+          />
+        </Box>
+        <Box width="390px" p="8px">
+          <Field
+            id="description"
+            name="description"
+            component={TextareaField}
+            label="Description"
+            placeholder="Enter Description"
+            height={150}
+            disabled={isReadOnly}
+          />
+        </Box>
+        <Box width="590px" p="8px">
+          <Field
+            id="parameters"
+            name="parameters"
+            component={TextareaField}
+            label="Parameters"
+            placeholder="Enter Parameters"
+            height={150}
+            disabled={isReadOnly}
+          />
+        </Box>
+        <Box width="200px" p="8px">
+          <Field
+            id="executableType"
+            name="executableType"
+            placeholder="Select Executable Type"
+            component={SelectField}
+            label="Executable Type"
+            options={executableTypeOptions}
+            isDisabled={isReadOnly}
+            validate={[formErrorUtil.isRequired]}
+          />
+        </Box>
+        <Box width="780px" p="8px">
+          <Field
+            id="executable"
+            name="executable"
+            placeholder="Enter Executable"
+            component={InputField}
+            label="Executable"
+            disabled={isReadOnly}
+            validate={[
+              formErrorUtil.isRequired,
+            ]}
+          />
+        </Box>
+        <Box width="980px" p="8px">
+          <Field
+            id="logLocation"
+            name="logLocation"
+            placeholder="Enter Log Location"
+            component={InputField}
+            label="Log Location"
+            disabled={isReadOnly}
+            validate={[formErrorUtil.isRequired]}
+          />
+        </Box>
+        <Box width="780px" p="8px">
+          <Field
+            id="cronExpression"
+            name="cronExpression"
+            placeholder="Cron Expression"
+            component={InputField}
+            label="Cron Expression"
+            disabled={true}
+            validate={[formErrorUtil.isRequired]}
+          />
+        </Box>
+        <Box p="8px">
+          <Button
+            type="reset"
+            text="Build cron expression"
+            isFocused={true}
+            onClick={handleOpenModal}
+            disabled={isReadOnly}
+          />
+        </Box>
+      </Flex>
       <Hr />
       <Flex
         alignItems="center"

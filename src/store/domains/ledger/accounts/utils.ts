@@ -144,7 +144,7 @@ export const prepareDataToSend = (data: Partial<IAccountDetails>) => {
     number_of_times_overdue_5_cycle: stringsUtil.toNumber(numberOfTimesOverdue5Cycles),
     number_of_times_overdue_6_cycle: stringsUtil.toNumber(numberOfTimesOverdue6Cycles),
     number_of_times_overdue_7_cycle: stringsUtil.toNumber(numberOfTimesOverdue7Cycles),
-    statement_cycle_parameter: stringsUtil.toNumber(statementCycleRepaymentDay),
+    statement_cycle_repayment_day: stringsUtil.toNumber(statementCycleRepaymentDay),
     repayment_type: repaymentType && repaymentType.value,
     repayment_method: repaymentMethod && repaymentMethod.value,
     direct_debit_mandate_id: directDebitMandateId ? directDebitMandateId.value : null,

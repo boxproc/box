@@ -35,7 +35,7 @@ const AddSchedulerModal: React.FC<IAddSchedulerModal> = ({
     <Modal
       name={modalName}
       title="Add Scheduler Job"
-      containerWidth="740px"
+      containerWidth="1000px"
       withCloseConfirmation={isFormDirty}
       isBluredBackdrop={true}
     >
