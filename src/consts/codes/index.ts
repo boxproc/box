@@ -5,5 +5,4 @@ export * from './dateTime';
 export * from './debitCreditIndicator';
 export * from './identificationTypes';
 export * from './product';
-export * from './repayment';
 export * from './statuses';

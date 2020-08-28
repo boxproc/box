@@ -60,8 +60,6 @@ export const accountsMock: IAccountsData = {
       currency_numeric_code: 784,
       statement_cycle_repayment_day: 1,
       status_name: 'Active',
-      repayment_type: 'M',
-      repayment_method: 'D',
       direct_debit_mandate_id: 2,
     },
     {
@@ -121,8 +119,6 @@ export const accountsMock: IAccountsData = {
       currency_numeric_code: 971,
       statement_cycle_repayment_day: 1,
       status_name: 'Active',
-      repayment_type: 'O',
-      repayment_method: 'C',
       direct_debit_mandate_id: 1,
     },
   ],

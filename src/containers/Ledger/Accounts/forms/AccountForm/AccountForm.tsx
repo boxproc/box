@@ -6,9 +6,6 @@ import { ISpinner, Tabs, TabsPanel, withSpinner } from 'components';
 import {
   formNamesConst,
   productTypesConst,
-  repaymentMethodsConst,
-  repaymentTypesConst,
-  repaymentTypesOptions,
 } from 'consts';
 import { AuxiliaryCounters, GeneralAccountInfo, Overdue } from './../../components';
 
@@ -31,7 +28,6 @@ interface IAccountForm extends ISpinner {
   customerIdValue: number;
   institutionValue: ISelectValue;
   productValue: ISelectValue;
-  repaymentMethodValue: ISelectValue;
   institutionProducts: ImmutableArray<IInstProduct>;
   isEditMode?: boolean;
   isReadOnly?: boolean;
@@ -50,7 +46,6 @@ const AccountForm: React.FC<TAccountForm> = ({
   currentAccAuxCounters,
   currentAccountId,
   institutionProducts,
-  repaymentMethodValue,
   isEditMode,
   isReadOnly,
   dirty,
@@ -95,11 +90,6 @@ const AccountForm: React.FC<TAccountForm> = ({
     [institutionValue]
   );
 
-  const isDirectDebitRepayment = React.useMemo(
-    () => repaymentMethodValue && repaymentMethodValue.value === repaymentMethodsConst.DIRECT_DEBIT,
-    [repaymentMethodValue]
-  );
-
   // reset products list if institution changed (adding mode)
   React.useEffect(
     () => {
@@ -121,7 +111,7 @@ const AccountForm: React.FC<TAccountForm> = ({
         change('directDebitMandateId', '');
       };
 
-      if (!isEditMode && isDirectDebitRepayment) {
+      if (!isEditMode) {
         if (customerIdState !== customerIdValue) {
           resetMandatesList();
           setStateCustomerId(customerIdValue);
@@ -137,7 +127,6 @@ const AccountForm: React.FC<TAccountForm> = ({
       change,
       customerIdValue,
       customerIdState,
-      isDirectDebitRepayment,
       isEditMode,
       productIdState,
       resetDirectDebitMandates,
@@ -156,10 +145,6 @@ const AccountForm: React.FC<TAccountForm> = ({
 
       const statementCycleRepaymentDay = selectedProduct
         && selectedProduct.statementCycleRepaymentDay;
-      const repaymentTypeInstalments = repaymentTypesOptions
-        .find(type => type.value === repaymentTypesConst.INSTALMENTS);
-      const repaymentTypeMinimumRepayment = repaymentTypesOptions
-        .find(type => type.value === repaymentTypesConst.MINIMUM_REPAYMENT);
 
       const resetLoanValues = () => {
         change('numOfInstallments', 0);
@@ -178,9 +163,6 @@ const AccountForm: React.FC<TAccountForm> = ({
             change('numOfInstallments', numOfInstallments);
             change('numOfInterestFreeInstllmnts', numOfInterestFreeInstllmnts);
             change('numDeferredInstlmts', numDeferredInstlmts);
-            change('repaymentType', repaymentTypeInstalments);
-          } else if (isSelectedRevCredit) {
-            change('repaymentType', repaymentTypeMinimumRepayment);
           }
         }
 
@@ -189,7 +171,6 @@ const AccountForm: React.FC<TAccountForm> = ({
         }
 
         if (!isSelectedLoan && !isSelectedRevCredit) {
-          change('repaymentType', '');
           change('statementCycleRepaymentDay', '');
         }
       }
@@ -208,7 +189,7 @@ const AccountForm: React.FC<TAccountForm> = ({
 
   React.useEffect(
     () => {
-      if (isEditMode && isDirectDebitRepayment) {
+      if (isEditMode) {
         getDirectDebitMandates({
           accountId: currentAccountId,
           forAccount: true,
@@ -219,13 +200,12 @@ const AccountForm: React.FC<TAccountForm> = ({
       getDirectDebitMandates,
       currentAccountId,
       isEditMode,
-      isDirectDebitRepayment,
     ]
   );
 
   React.useEffect(
     () => {
-      if (!isEditMode && isDirectDebitRepayment && customerIdValue && selectedProductId) {
+      if (!isEditMode && customerIdValue && selectedProductId) {
         getDirectDebitMandates({
           customerId: stringsUtil.toNumber(customerIdValue),
           productId: selectedProductId,
@@ -237,7 +217,6 @@ const AccountForm: React.FC<TAccountForm> = ({
       getDirectDebitMandates,
       customerIdValue,
       isEditMode,
-      isDirectDebitRepayment,
       selectedProductId,
     ]
   );
@@ -255,10 +234,8 @@ const AccountForm: React.FC<TAccountForm> = ({
             dirty={dirty}
             institutionValue={institutionValue}
             isSelectedLoan={isSelectedLoan}
-            isDirectDebitRepayment={isDirectDebitRepayment}
             isEditMode={isEditMode}
             isReadOnly={isReadOnly}
-            isRepaymentType={isSelectedLoan || isSelectedRevCredit}
             customerId={customerIdValue}
             productId={selectedProductId}
             onCancel={onCancel}

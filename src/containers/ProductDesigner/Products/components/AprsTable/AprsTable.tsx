@@ -95,34 +95,36 @@ const AprsTable: React.FC<IAprsTable> = ({
               isSmaller={true}
               isNumber={true}
             />
-            <Flex
-              flexDirection="column"
-              alignItems="center"
-              p="2px 5px 5px 0"
-            >
-              <ArrowButtonWrapper>
-                <Button
-                  iconName={iconNamesConst.ARROW_UP}
-                  title="Move up"
-                  disabled={(cellInfo.index === 0) || !isEditableCell}
-                  onClick={() => updateProductApr({
-                    ...cellInfo.original,
-                    repaymentPriority: cellInfo.original.repaymentPriority - 1,
-                  })}
-                />
-              </ArrowButtonWrapper>
-              <ArrowButtonWrapper>
-                <Button
-                  iconName={iconNamesConst.ARROW_DOWN}
-                  title="Move down"
-                  disabled={(cellInfo.index === countData - 1) || !isEditableCell}
-                  onClick={() => updateProductApr({
-                    ...cellInfo.original,
-                    repaymentPriority: cellInfo.original.repaymentPriority + 1,
-                  })}
-                />
-              </ArrowButtonWrapper>
-            </Flex>
+            {isEditableCell && (
+              <Flex
+                flexDirection="column"
+                alignItems="center"
+                p="2px 5px 5px 0"
+              >
+                <ArrowButtonWrapper>
+                  <Button
+                    iconName={iconNamesConst.ARROW_UP}
+                    title="Move up"
+                    disabled={(cellInfo.index === 0) || !isEditableCell}
+                    onClick={() => updateProductApr({
+                      ...cellInfo.original,
+                      repaymentPriority: cellInfo.original.repaymentPriority - 1,
+                    })}
+                  />
+                </ArrowButtonWrapper>
+                <ArrowButtonWrapper>
+                  <Button
+                    iconName={iconNamesConst.ARROW_DOWN}
+                    title="Move down"
+                    disabled={(cellInfo.index === countData - 1) || !isEditableCell}
+                    onClick={() => updateProductApr({
+                      ...cellInfo.original,
+                      repaymentPriority: cellInfo.original.repaymentPriority + 1,
+                    })}
+                  />
+                </ArrowButtonWrapper>
+              </Flex>
+            )}
           </React.Fragment>
         ),
       },

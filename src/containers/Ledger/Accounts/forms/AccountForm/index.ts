@@ -26,7 +26,6 @@ const mapStateToProps = (state: IStoreState) => ({
   currentAccountId: activeItemIdSelector(state),
   productValue: formSelector(state, 'product'),
   institutionValue: formSelector(state, 'institutionId'),
-  repaymentMethodValue: formSelector(state, 'repaymentMethod'),
   customerIdValue: formSelector(state, 'customerId'),
 });
 

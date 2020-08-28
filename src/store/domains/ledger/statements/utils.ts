@@ -1,4 +1,4 @@
-import { repaymentStatusOptions, repaymentTypesOptions } from 'consts';
+import { repaymentStatusOptions } from 'consts';
 
 import {
   IAccountStatementData,
@@ -170,16 +170,12 @@ export const prepareAccountStatementsToRender = (data: IAccountStatementData) =>
   const {
     accrued_interest_total,
     start_date,
-    repayment_type,
   } = data;
-
-  const repaymentType = repaymentTypesOptions.find(el => el.value === repayment_type);
 
   return {
     ...prepareStatementsToRender(data),
     accruedInterestTotal: stringsUtil.numberToFixed(accrued_interest_total, 5),
     startDate: start_date,
-    repaymentType: repaymentType && repaymentType.label,
   };
 };
 

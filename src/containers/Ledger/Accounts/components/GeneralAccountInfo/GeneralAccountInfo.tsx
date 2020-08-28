@@ -4,6 +4,7 @@ import { Field } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import {
+  Delimiter,
   Hr,
   InputField,
   MaskField,
@@ -20,8 +21,6 @@ import {
 import {
   dateFormatConst,
   maskFormatConst,
-  repaymentMethodsOptions,
-  repaymentTypesOptions,
 } from 'consts';
 
 import { ISelectValue } from 'types';
@@ -37,11 +36,9 @@ interface IGeneralAccountInfo {
   institutionsOptions: Array<ISelectValue>;
   institutionValue: ISelectValue;
   isSelectedLoan: boolean;
-  isDirectDebitRepayment: boolean;
   isEditMode?: boolean;
   isLoadingMandates: boolean;
   isReadOnly: boolean;
-  isRepaymentType: boolean;
   onCancel: () => void;
   pristine: boolean;
   statusesOptions: Array<ISelectValue>;
@@ -59,11 +56,9 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
   institutionProductsOptions,
   institutionsOptions,
   isSelectedLoan,
-  isDirectDebitRepayment,
   isEditMode,
   isLoadingMandates,
   isReadOnly,
-  isRepaymentType,
   onCancel,
   pristine,
   statusesOptions,
@@ -183,16 +178,13 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Flex
-          alignItems="flex-start"
-          flexDirection={isEditMode ? 'row-reverse' : 'row'}
-        >
+        <Flex>
           <Flex
             flexWrap="wrap"
             alignItems="flex-end"
             width="480px"
           >
-            <Box width="480px" p="8px" pt="24px">
+            <Box width="480px" p="8px">
               <Field
                 id="product"
                 name="product"
@@ -204,7 +196,26 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
                 validate={[formErrorUtil.isRequired]}
               />
             </Box>
-            {isEditMode && (
+            <Box width="480px" p="8px">
+              <Field
+                id="directDebitMandateId"
+                name="directDebitMandateId"
+                component={SelectField}
+                label="Direct Debit Mandate"
+                placeholder="Select Mandate"
+                isDisabled={isReadOnly || hint}
+                isLoading={isLoadingMandates}
+                hint={hint}
+                options={directDebitMandatesOptions}
+              />
+            </Box>
+          </Flex>
+          <Flex
+            flexWrap="wrap"
+            alignItems="flex-end"
+            width="480px"
+          >
+                        {isEditMode && (
               <Box width="110px" p="8px">
                 <Field
                   id="productId"
@@ -243,72 +254,24 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
                 </Box>
               </React.Fragment>
             )}
-          </Flex>
-          <Flex
-            flexWrap="wrap"
-            alignItems="flex-end"
-            width="480px"
-          >
-            {isRepaymentType && (
-              <React.Fragment>
-                <Box width="110px" p="8px">
-                  <Field
-                    id="statementCycleRepaymentDay"
-                    name="statementCycleRepaymentDay"
-                    component={InputField}
-                    label="Statement Cycle Repayment Day"
-                    placeholder="Enter Day"
-                    disabled={isEditMode}
-                    isNumber={true}
-                    validate={[
-                      formErrorUtil.isInteger,
-                      formErrorUtil.isRequired,
-                    ]}
-                  />
-                </Box>
-                <Box width="220px" p="8px">
-                  <Field
-                    id="repaymentType"
-                    name="repaymentType"
-                    component={SelectField}
-                    label="Repayment Type"
-                    placeholder="Select Type"
-                    isDisabled={isSelectedLoan || isReadOnly}
-                    options={repaymentTypesOptions}
-                    validate={[formErrorUtil.isRequired]}
-                  />
-                </Box>
-                <Box width="150px" p="8px">
-                  <Field
-                    id="repaymentMethod"
-                    name="repaymentMethod"
-                    component={SelectField}
-                    label="Repayment Method"
-                    placeholder="Select Method"
-                    isDisabled={isReadOnly}
-                    options={repaymentMethodsOptions}
-                    validate={[formErrorUtil.isRequired]}
-                  />
-                </Box>
-              </React.Fragment>
-            )}
-            {isDirectDebitRepayment && (
-              <Box width="480px" p="8px" pt={hasProductOverride ? '24px' : '8px'}>
-                <Field
-                  id="directDebitMandateId"
-                  name="directDebitMandateId"
-                  component={SelectField}
-                  label="Direct Debit Mandate"
-                  placeholder="Select Mandate"
-                  isDisabled={isReadOnly || hint}
-                  isLoading={isLoadingMandates}
-                  hint={hint}
-                  options={directDebitMandatesOptions}
-                />
-              </Box>
-            )}
+            <Box width="110px" p="8px">
+              <Field
+                id="statementCycleRepaymentDay"
+                name="statementCycleRepaymentDay"
+                component={InputField}
+                label="Statement Cycle Repayment Day"
+                placeholder="Enter Day"
+                disabled={isEditMode}
+                isNumber={true}
+                validate={[
+                  formErrorUtil.isInteger,
+                  formErrorUtil.isRequired,
+                ]}
+              />
+            </Box>
             {isSelectedLoan && (
               <React.Fragment>
+                <Delimiter />
                 <Box width="110px" p="8px">
                   <Field
                     id="numOfInstallments"
