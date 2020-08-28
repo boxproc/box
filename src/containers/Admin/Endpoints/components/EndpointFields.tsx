@@ -121,6 +121,7 @@ const EndpointFields: React.FC<IEndpointFields> = ({
             component={TextareaField}
             label="Connection Attributes"
             placeholder="Enter Connection Attributes"
+            height={120}
             disabled={isReadOnly}
           />
         </Box>

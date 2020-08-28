@@ -290,85 +290,83 @@ const ProductRules: React.FC<IProductRules> = ({
   );
 
   return (
-    <React.Fragment>
-      <Box mx="-8px">
-        <Flex
-          alignItems="flex-end"
-          flexWrap="wrap"
-        >
-          <Box width="150px" p="8px">
+    <Box mx="-8px">
+      <Flex
+        alignItems="flex-end"
+        flexWrap="wrap"
+      >
+        <Box width="150px" p="8px">
+          <Field
+            id="eventId"
+            name="eventId"
+            component={SelectField}
+            label="Event"
+            placeholder="Select Event"
+            options={eventsOptions}
+            isLoading={isEventsLoading}
+            isClearable={false}
+            onChange={onChangeValues}
+            validate={[formErrorUtil.isRequired]}
+          />
+        </Box>
+        <HiddenBox width={[1 / 3]} p="8px">
+          <Field
+            id="actionType"
+            name="actionType"
+            component={SelectField}
+            label="Action Type"
+            placeholder="Select Action Type"
+            options={actionTypesOptions}
+            isClearable={false}
+            onChange={onChangeValues}
+            validate={[formErrorUtil.isRequired]}
+          />
+        </HiddenBox>
+        {eventValue && (
+          <Box mb="8px">
+            <Flex alignItems="center" flexWrap="wrap">
+              {actionTypesOptions && actionTypesOptions.map(type => (
+                <Button
+                  key={type.value}
+                  text={type.label}
+                  size="11"
+                  isFocused={initialActionType === type.value}
+                  classNames={['is-tabs']}
+                  type="reset"
+                  withConfirmation={dirty}
+                  confirmationTitle="Switch the tab?'"
+                  confirmationText="You have unsaved changes."
+                  onClick={() => handleGetRule('actionType', type)}
+                />
+              ))}
+            </Flex>
+          </Box>
+        )}
+        <ScriptWrapper>
+          {isLoading && (
+            <div className="loading">loading...</div>
+          )}
+          <Box width={[1]} p="0 10px 10px">
             <Field
-              id="eventId"
-              name="eventId"
-              component={SelectField}
-              label="Event"
-              placeholder="Select Event"
-              options={eventsOptions}
-              isLoading={isEventsLoading}
-              isClearable={false}
-              onChange={onChangeValues}
-              validate={[formErrorUtil.isRequired]}
+              id="rule-script"
+              name="script"
+              placeholder="Enter Script"
+              component={HighlightCodeField}
+              label="Script"
+              contextSubMenuItems={contextSubMenuItems}
+              onContextMenuClick={onContextMenuClick}
+              setCursorCurrentPosition={handleSetCursorPosition}
+              menuId="rulesCodeContextMenu"
+              fontSize={11}
+              height="calc(100vh - 250px)"
+              hint="To apply scripts run the scheduler task 'Initializing global variables'."
+              hintPosition="left"
+              disabled={isReadOnly}
             />
           </Box>
-          <HiddenBox width={[1 / 3]} p="8px">
-            <Field
-              id="actionType"
-              name="actionType"
-              component={SelectField}
-              label="Action Type"
-              placeholder="Select Action Type"
-              options={actionTypesOptions}
-              isClearable={false}
-              onChange={onChangeValues}
-              validate={[formErrorUtil.isRequired]}
-            />
-          </HiddenBox>
-          {eventValue && (
-            <Box mb="8px">
-              <Flex alignItems="center" flexWrap="wrap">
-                {actionTypesOptions && actionTypesOptions.map(type => (
-                  <Button
-                    key={type.value}
-                    text={type.label}
-                    size="11"
-                    isFocused={initialActionType === type.value}
-                    classNames={['is-tabs']}
-                    type="reset"
-                    withConfirmation={dirty}
-                    confirmationTitle="Switch the tab?'"
-                    confirmationText="You have unsaved changes."
-                    onClick={() => handleGetRule('actionType', type)}
-                  />
-                ))}
-              </Flex>
-            </Box>
-          )}
-          <ScriptWrapper>
-            {isLoading && (
-              <div className="loading">loading...</div>
-            )}
-            <Box width={[1]} p="0 10px 10px">
-              <Field
-                id="rule-script"
-                name="script"
-                placeholder="Enter Script"
-                component={HighlightCodeField}
-                label="Script"
-                contextSubMenuItems={contextSubMenuItems}
-                onContextMenuClick={onContextMenuClick}
-                setCursorCurrentPosition={handleSetCursorPosition}
-                menuId="rulesCodeContextMenu"
-                fontSize={11}
-                height="calc(100vh - 250px)"
-                hint="To apply scripts run the scheduler task 'Initializing global variables'."
-                hintPosition="left"
-                disabled={isReadOnly}
-              />
-            </Box>
-          </ScriptWrapper>
-        </Flex>
-      </Box>
-    </React.Fragment>
+        </ScriptWrapper>
+      </Flex>
+    </Box>
   );
 };
 

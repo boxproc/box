@@ -187,7 +187,6 @@ const SchedulerForm: React.FC<TSchedulerForm> = ({
           <Button
             type="reset"
             text="Build cron expression"
-            isFocused={true}
             onClick={handleOpenModal}
             disabled={isReadOnly}
           />

@@ -1,8 +1,9 @@
 import React from 'react';
 import { CellInfo } from 'react-table';
 
+import { Flex } from '@rebass/grid';
+
 import { Button, TableCell, TableHeader } from 'components';
-import { iconNamesConst } from 'consts';
 import { HandleGetLogData, ISysMonitorItem } from 'store';
 import { ITableCell } from 'types';
 
@@ -67,19 +68,24 @@ export const tableColumns = (getLogData: HandleGetLogData, name: string) => [
     ),
   },
   {
-    maxWidth: 80,
+    maxWidth: 85,
     accessor: 'showLogButton',
     Cell: (cellInfo: CellInfo) => (
-      <Button
-        iconName={iconNamesConst.SHORT_TEXT}
-        text="Show log"
-        size="10"
-        onClick={() => getLogData({
-          name,
-          id: cellInfo.original.id,
-          title: cellInfo.original.name,
-        })}
-      />
+      <Flex
+        alignItems="flex-start"
+        p="7px 5px"
+      >
+        <Button
+          text="Show log"
+          size="10"
+          classNames={['is-bordered']}
+          onClick={() => getLogData({
+            name,
+            id: cellInfo.original.id,
+            title: cellInfo.original.name,
+          })}
+        />
+      </Flex>
     ),
   },
 ];

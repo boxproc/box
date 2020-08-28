@@ -73,6 +73,7 @@ const LogModal: React.FC<ILogModal> = ({
             text="Refresh"
             isLoading={isLoading}
             iconName={iconNamesConst.REFRESH}
+            classNames={['is-bordered']}
             onClick={refreshLogData}
           />
           <Button

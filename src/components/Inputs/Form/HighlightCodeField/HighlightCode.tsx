@@ -75,50 +75,48 @@ const HighlightCode: React.FC<IHighlightCode> = ({
   };
 
   return (
-    <React.Fragment>
-      <EditorWrapper
-        ref={wrapperRef}
-        height={height}
-        minHeight={minHeight}
-        whiteSpacePre={whiteSpacePre}
+    <EditorWrapper
+      ref={wrapperRef}
+      height={height}
+      minHeight={minHeight}
+      whiteSpacePre={whiteSpacePre}
+    >
+      <ContextMenuTrigger
+        id={menuId ? menuId : 'context-menu-trigger'}
+        disable={disabled}
       >
-        <ContextMenuTrigger
-          id={menuId ? menuId : 'context-menu-trigger'}
-          disable={disabled}
-        >
-          <Editor
-            value={value.toString()}
-            onValueChange={handleChange}
-            highlight={code => highlight(code, languages.js)}
-            textareaId={id}
-            name={name}
-            placeholder={placeholder}
-            onFocus={addFocusClass}
-            onBlur={removeFocusClass}
-            onKeyUp={setCursorCurrentPosition}
-            onClick={setCursorCurrentPosition}
-            onContextMenu={setCursorCurrentPosition}
-            tabSize={4}
-            padding={padding}
-            className="editor"
-            disabled={disabled}
-            style={{
-              overflow: 'visible',
-              fontFamily: '"Roboto Mono", monospace',
-              fontSize: fontSize ? fontSize : 8.5,
-            }}
-          />
-        </ContextMenuTrigger>
-        {!disabled && (contextMenuItems || contextSubMenuItems) && (
-          <ContextMenuList
-            menuId={menuId}
-            onClick={onContextMenuClick}
-            items={contextMenuItems}
-            subMenuItems={contextSubMenuItems}
-          />
-        )}
-      </EditorWrapper>
-    </React.Fragment>
+        <Editor
+          value={value.toString()}
+          onValueChange={handleChange}
+          highlight={code => highlight(code, languages.js)}
+          textareaId={id}
+          name={name}
+          placeholder={placeholder}
+          onFocus={addFocusClass}
+          onBlur={removeFocusClass}
+          onKeyUp={setCursorCurrentPosition}
+          onClick={setCursorCurrentPosition}
+          onContextMenu={setCursorCurrentPosition}
+          tabSize={4}
+          padding={padding}
+          className="editor"
+          disabled={disabled}
+          style={{
+            overflow: 'visible',
+            fontFamily: '"Roboto Mono", monospace',
+            fontSize: fontSize ? fontSize : 8.5,
+          }}
+        />
+      </ContextMenuTrigger>
+      {!disabled && (contextMenuItems || contextSubMenuItems) && (
+        <ContextMenuList
+          menuId={menuId}
+          onClick={onContextMenuClick}
+          items={contextMenuItems}
+          subMenuItems={contextSubMenuItems}
+        />
+      )}
+    </EditorWrapper>
   );
 };
 

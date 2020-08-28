@@ -183,7 +183,7 @@ const RevolvingCreditIllustrationForm: React.FC<TTGeneralProductForm> = ({
                     ]}
                   />
                 </Box>
-                <Box width="340px" p="8px">
+                <Box width="400px" p="8px">
                   <Field
                     id="transactionType1"
                     name="transactionType1"
@@ -234,7 +234,7 @@ const RevolvingCreditIllustrationForm: React.FC<TTGeneralProductForm> = ({
                     ]}
                   />
                 </Box>
-                <Box width="340px" p="8px">
+                <Box width="400px" p="8px">
                   <Field
                     id="transactionType2"
                     name="transactionType2"
@@ -285,7 +285,7 @@ const RevolvingCreditIllustrationForm: React.FC<TTGeneralProductForm> = ({
                     ]}
                   />
                 </Box>
-                <Box width="340px" p="8px">
+                <Box width="400px" p="8px">
                   <Field
                     id="transactionType3"
                     name="transactionType3"
