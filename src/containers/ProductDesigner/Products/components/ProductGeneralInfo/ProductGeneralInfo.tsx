@@ -62,28 +62,6 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
     ]
   );
 
-  const statementCycleParameterLabel = React.useMemo(
-    () => {
-      const defaultLabel = 'Statement Cycle Parameter';
-
-      if (!statementCycleTypeValue) {
-        return defaultLabel;
-      }
-
-      if (statementCycleTypeValue.value === cycleTypesConst.MONTHLY
-        || statementCycleTypeValue.value === cycleTypesConst.BI_MONTHLY
-        || statementCycleTypeValue.value === cycleTypesConst.WEEKLY
-        || statementCycleTypeValue.value === cycleTypesConst.BI_WEEKLY) {
-        return 'Billing Day';
-      } else if (statementCycleTypeValue.value === cycleTypesConst.FIXED_NUMBER_OF_DAYS) {
-        return 'Number of days';
-      } else {
-        return defaultLabel;
-      }
-    },
-    [statementCycleTypeValue]
-  );
-
   const statementCycleParameterValidation = React.useMemo(
     () => {
       if (!statementCycleTypeValue) {
@@ -244,7 +222,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
                 name="statementCycleParameter"
                 placeholder="Enter day"
                 component={InputField}
-                label={statementCycleParameterLabel}
+                label="Statement Cycle Parameter"
                 isNumber={true}
                 disabled={!statementCycleTypeValue || isReadOnly}
                 hint={!statementCycleTypeValue && 'Select Statement Cycle Type'}

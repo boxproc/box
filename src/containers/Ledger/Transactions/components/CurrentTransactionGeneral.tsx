@@ -140,9 +140,9 @@ const CurrentTransactionGeneral: React.FC = () => {
           width={[1]}
           flexWrap="wrap"
         >
-          <Box width={[7 / 15]}>
+          <Box width={[9 / 15]}>
             <Flex alignItems="flex-end">
-              <Box width={[1 / 3]} p="8px">
+              <Box width={[1 / 4]} p="8px">
                 <Field
                   id="aprRate"
                   name="aprRate"
@@ -152,7 +152,7 @@ const CurrentTransactionGeneral: React.FC = () => {
                   isNumber={true}
                 />
               </Box>
-              <Box width={[2 / 3]} p="8px">
+              <Box width={[3 / 4]} p="8px">
                 <Field
                   id="aprCalculationMethod"
                   name="aprCalculationMethod"
@@ -163,7 +163,7 @@ const CurrentTransactionGeneral: React.FC = () => {
               </Box>
             </Flex>
             <Flex alignItems="flex-end">
-              <Box width={[1 / 3]} p="8px">
+              <Box width={[1 / 4]} p="8px">
                 <Field
                   id="feeRate"
                   name="feeRate"
@@ -173,7 +173,7 @@ const CurrentTransactionGeneral: React.FC = () => {
                   isNumber={true}
                 />
               </Box>
-              <Box width={[2 / 3]} p="8px">
+              <Box width={[3 / 4]} p="8px">
                 <Field
                   id="feeApplicationCondition"
                   name="feeApplicationCondition"
@@ -184,7 +184,7 @@ const CurrentTransactionGeneral: React.FC = () => {
               </Box>
             </Flex>
             <Flex alignItems="flex-end">
-              <Box width={[1 / 3]} p="8px">
+              <Box width={[1 / 4]} p="8px">
                 <Field
                   id="rewardRate"
                   name="rewardRate"
@@ -194,7 +194,7 @@ const CurrentTransactionGeneral: React.FC = () => {
                   isNumber={true}
                 />
               </Box>
-              <Box width={[2 / 3]} p="8px">
+              <Box width={[3 / 4]} p="8px">
                 <Field
                   id="rewardApplicationCondition"
                   name="rewardApplicationCondition"
@@ -205,7 +205,7 @@ const CurrentTransactionGeneral: React.FC = () => {
               </Box>
             </Flex>
           </Box>
-          <Box width={[8 / 15]} p="8px">
+          <Box width={[6 / 15]} p="8px">
             <Field
               id="description"
               name="description"

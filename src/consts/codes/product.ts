@@ -109,10 +109,14 @@ export const schemeTypesOptions = [
  */
 
 export const aprTypesOptions = [
-  { value: 'A', label: 'Actual/Actual' },
-  { value: 'B', label: '30/360' },
-  { value: 'C', label: 'Actual/365' },
-  { value: 'D', label: 'Actual/360' },
+  { value: 'A', label: 'Simple: Actual/Actual' },
+  { value: 'B', label: 'Simple: 30/360' },
+  { value: 'C', label: 'Simple: Actual/365' },
+  { value: 'D', label: 'Simple: Actual/360' },
+  { value: 'E', label: 'Compound: Actual/Actual', isDisabled: true },
+  { value: 'F', label: 'Compound: 30/360', isDisabled: true },
+  { value: 'G', label: 'Compound: Actual/365', isDisabled: true },
+  { value: 'H', label: 'Compound: Actual/360', isDisabled: true },
 ];
 
 /**

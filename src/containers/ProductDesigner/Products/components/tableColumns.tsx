@@ -115,8 +115,8 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 65,
-    Header: <TableHeader title="Billing Day" />,
+    maxWidth: 100,
+    Header: <TableHeader title="Statement Cycle Parameter" />,
     accessor: 'statementCycleParameter',
     Cell: (props: TCell<'statementCycleParameter'>) => (
       <TableCell

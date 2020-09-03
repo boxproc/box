@@ -49,7 +49,7 @@ const AprsForm: React.FC<TAprsForm> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box width="160px" p="8px">
+        <Box width="220px" p="8px">
           <Field
             id="calculationMethod"
             name="calculationMethod"

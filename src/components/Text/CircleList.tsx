@@ -8,7 +8,7 @@ const CircleListWrapper = styled.ul`
   li {
     position: relative;
     padding-left: 13px;
-    margin-bottom: 7px;
+    margin-bottom: 5px;
     line-height: 1.5;
 
     &:before {

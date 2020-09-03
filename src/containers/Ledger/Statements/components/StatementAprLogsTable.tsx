@@ -16,7 +16,7 @@ const StatementAprLogTable: React.FC<IStatementAprLogTable> = ({
 }) => {
   const columns = [
     {
-      maxWidth: 100,
+      maxWidth: 120,
       Header: <TableHeader title="Statement ID" />,
       accessor: 'statementId',
       Cell: (props: TCell<'statementId'>) => (
@@ -28,31 +28,7 @@ const StatementAprLogTable: React.FC<IStatementAprLogTable> = ({
       ),
     },
     {
-      maxWidth: 100,
-      Header: <TableHeader title="Product APR ID" />,
-      accessor: 'productAprId',
-      Cell: (props: TCell<'productAprId'>) => (
-        <TableCell
-          value={props.value}
-          isSmaller={true}
-          isNumber={true}
-        />
-      ),
-    },
-    {
-      maxWidth: 100,
-      Header: <TableHeader title="Product ID" />,
-      accessor: 'productId',
-      Cell: (props: TCell<'productId'>) => (
-        <TableCell
-          value={props.value}
-          isSmaller={true}
-          isNumber={true}
-        />
-      ),
-    },
-    {
-      maxWidth: 100,
+      maxWidth: 120,
       Header: <TableHeader title="Transaction ID" />,
       accessor: 'transactionId',
       Cell: (props: TCell<'transactionId'>) => (
@@ -76,7 +52,7 @@ const StatementAprLogTable: React.FC<IStatementAprLogTable> = ({
       ),
     },
     {
-      maxWidth: 150,
+      maxWidth: 210,
       Header: <TableHeader title="Interest" />,
       accessor: 'interest',
       Cell: (props: TCell<'interest'>) => (

@@ -1,9 +1,9 @@
 import React from 'react';
 import { ImmutableArray } from 'seamless-immutable';
 
-import { Flex } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
-import { Button, Modal } from 'components';
+import { Button, CircleList, Modal } from 'components';
 import { modalNamesConst } from 'consts';
 import { IWithModal, withModal } from 'HOCs';
 import { StatementAprLogsTable } from '../../components';
@@ -20,13 +20,31 @@ const StatementAprLogsModal: React.FC<IStatementAprLogsModal> = ({
   closeModal,
   statementAprLogs,
 }) => {
+  const productAprId = React.useMemo(
+    () => statementAprLogs && statementAprLogs[0] && statementAprLogs[0].productAprId,
+    [statementAprLogs]
+  );
+
+  const productId = React.useMemo(
+    () => statementAprLogs && statementAprLogs[0] && statementAprLogs[0].productId,
+    [statementAprLogs]
+  );
+
   return (
     <Modal
       name={modalName}
       title="Statement APR log"
-      containerWidth="650px"
+      containerWidth="550px"
       minContainerHeight="500px"
     >
+      <Box mb="15px">
+        <CircleList
+          items={[
+            `APR ID: ${productAprId}`,
+            `Product ID: ${productId}`,
+          ]}
+        />
+      </Box>
       <StatementAprLogsTable
         data={statementAprLogs}
       />

@@ -4,7 +4,7 @@ import { ImmutableArray } from 'seamless-immutable';
 
 import { Flex } from '@rebass/grid';
 
-import { Button, Table, TableCell, TableHeader } from 'components';
+import { Button, renderCheckBoxTableCell, Table, TableCell, TableHeader } from 'components';
 import { IStatementApr, THandleGetStatementAprLogs } from 'store';
 import { ITableCell } from 'types';
 
@@ -48,18 +48,6 @@ const StatementAprsTable: React.FC<IStatementAprsTable> = ({
         ),
       },
       {
-        maxWidth: 150,
-        Header: <TableHeader title="Accrued Interest Repaid" />,
-        accessor: 'accruedInterestRepaid',
-        Cell: (props: TCell<'accruedInterestRepaid'>) => (
-          <TableCell
-            value={props.value}
-            isSmaller={true}
-            isNumber={true}
-          />
-        ),
-      },
-      {
         maxWidth: 500,
         Header: <TableHeader title="Description" />,
         accessor: 'description',
@@ -71,7 +59,7 @@ const StatementAprsTable: React.FC<IStatementAprsTable> = ({
         ),
       },
       {
-        maxWidth: 100,
+        maxWidth: 80,
         Header: <TableHeader title="Rate %" />,
         accessor: 'rate',
         Cell: (props: TCell<'rate'>) => (
@@ -81,6 +69,36 @@ const StatementAprsTable: React.FC<IStatementAprsTable> = ({
             isNumber={true}
           />
         ),
+      },
+      {
+        maxWidth: 140,
+        Header: <TableHeader title="Previous Statement Unpaid Principal" />,
+        accessor: 'prevStmntUnpaidPrincipal',
+        Cell: (props: TCell<'prevStmntUnpaidPrincipal'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+            isNumber={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 100,
+        Header: <TableHeader title="Repayment Date" />,
+        accessor: 'repaymentDate',
+        Cell: (props: TCell<'repaymentDate'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+            isDate={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 80,
+        Header: <TableHeader title="Repaid Flag" />,
+        accessor: 'repaidFlag',
+        Cell: renderCheckBoxTableCell(),
       },
       {
         maxWidth: 130,
