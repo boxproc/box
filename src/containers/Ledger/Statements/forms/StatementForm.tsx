@@ -29,9 +29,9 @@ const StatementForm: React.FC<TStatementForm> = ({
   changeMinimumAmount,
   initialValues,
 }) => {
-  const isNewStatement = React.useMemo(
+  const isRepaymentDue = React.useMemo(
     () => initialValues.repaymentStatus === repaymentStatusOptions
-      .find(el => el.value === repaymentStatusConst.NEW).label,
+      .find(el => el.value === repaymentStatusConst.REPAYMENT_DUE).label,
     [initialValues]
   );
 
@@ -209,7 +209,7 @@ const StatementForm: React.FC<TStatementForm> = ({
               disabled={true}
             />
           </Box>
-          {isNewStatement && (
+          {isRepaymentDue && (
             <Box p="8px">
               <Button
                 text="Change minimum amount"
