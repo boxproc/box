@@ -148,7 +148,7 @@ export const rewardsTypesOptions = [
   ...feeTypesOptions,
   {
     value: feeRewardsTypesConst.APPLY_WHICHEVER_IS_SMALLER_RATE_OR_FIXED_AMOUNT,
-    label: 'apply whichever is smaller: % rate or the fixed amount',
+    label: 'Apply whichever is smaller: % rate or the fixed amount',
   },
 ];
 

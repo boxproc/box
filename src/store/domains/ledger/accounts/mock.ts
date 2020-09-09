@@ -128,7 +128,7 @@ export const manualTransactionMock: IManualTransactionResultResponse = {
   transaction_result: [
     {
       transaction_id: 1,
-      status: '00',
+      status: 'P',
       balance_settled_before: 10.19,
       balance_settled_after: 110.19,
       balance_authorised_before: 10.19,

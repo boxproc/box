@@ -19,9 +19,9 @@ export const prepareLimitAdjDataToSend = (data: Partial<ILimitAdjustmentFromData
 
   return {
     transaction_type_id: transactionType.value,
-    balance_limit_shared: balanceLimitShared,
     account_id: stringsUtil.toNumber(accountId),
     balance_limit: stringsUtil.toNumber(balanceLimit),
+    balance_limit_shared: stringsUtil.toNumber(balanceLimitShared),
     description,
     transaction_datetime: transactionDatetime && transactionDatetime.value,
   };

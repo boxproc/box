@@ -11,6 +11,7 @@ import {
   currentSchedulerJobSelector,
   currentSchedulerNameSelector,
   handleDeleteSchedulerJob,
+  handleExecSchedulerJob,
   handleUpdateSchedulerJobs,
   isSchedulerJobDeletingSelector,
   IStoreState,
@@ -30,6 +31,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     deleteSchedulerJob: handleDeleteSchedulerJob,
     updateSchedulerJob: handleUpdateSchedulerJobs,
+    execSchedulerJob: handleExecSchedulerJob,
   },
   dispatch
 );

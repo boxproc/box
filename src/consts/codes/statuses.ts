@@ -106,7 +106,7 @@ export enum repaymentStatusConst {
   MINIMUM_REPAID = 'M',
   REPAID_IN_FULL = 'F',
   OVERPAID = 'O',
-  NEW = 'N',
+  UNKNOWN = 'U',
 }
 
 export const repaymentStatusOptions = [
@@ -117,7 +117,7 @@ export const repaymentStatusOptions = [
   { value: repaymentStatusConst.MINIMUM_REPAID, label: 'Minimum repaid' },
   { value: repaymentStatusConst.REPAID_IN_FULL, label: 'Repaid in full' },
   { value: repaymentStatusConst.OVERPAID, label: 'Overpaid' },
-  { value: repaymentStatusConst.NEW, label: 'New' },
+  { value: repaymentStatusConst.UNKNOWN, label: 'unknown' },
 ];
 
 /**
@@ -127,14 +127,14 @@ export const repaymentStatusOptions = [
 export enum transactionStatusConst {
   PENDING = 'P',
   SETTLED = 'S',
-  CONVERTED = 'C',
+  REVERSED = 'R',
   INVALID = 'I',
 }
 
 export const transactionStatusOptions = [
   { value: transactionStatusConst.PENDING, label: 'Pending' },
   { value: transactionStatusConst.SETTLED, label: 'Settled' },
-  { value: transactionStatusConst.CONVERTED, label: 'Converted ' },
+  { value: transactionStatusConst.REVERSED, label: 'Reversed' },
   { value: transactionStatusConst.INVALID, label: 'Invalid' },
 ];
 

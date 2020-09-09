@@ -12,6 +12,7 @@ import {
 
 import PageTemplate from 'containers/PageTemplate';
 import { tableColumns } from './components';
+import { schedulerTasksConsts } from './consts';
 
 import {
   HandleGetLogData,
@@ -26,29 +27,6 @@ import {
 import { SchedulerFilter } from './forms';
 
 import { ISelectValue } from 'types';
-
-const schedulerTasksConsts = {
-  EXECUTE_TASK: {
-    TASK_COMMAND: 'execute_task',
-    NAME: 'Execute now',
-  },
-  START: {
-    TASK_COMMAND: 'start',
-    NAME: 'Start job',
-  },
-  STOP: {
-    TASK_COMMAND: 'stop',
-    NAME: 'Stop job',
-  },
-  RESUME: {
-    TASK_COMMAND: 'resume',
-    NAME: 'Resume job',
-  },
-  PAUSE: {
-    TASK_COMMAND: 'pause',
-    NAME: 'Pause job',
-  },
-};
 
 interface IScheduler extends IWithModal {
   currentSchedulerId: number;

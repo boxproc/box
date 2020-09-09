@@ -157,7 +157,6 @@ export const handleUpdateSchedulerJobs: THandleUpdateSchedulerJob = data =>
       async () => {
         const preparedData = prepareDataToSend(data);
 
-        dispatch(closeModal(modalNamesConst.EDIT_SCHEDULER));
         await dispatch(updateSchedulerJobs(preparedData));
         await dispatch(handleFilterSchedulerJobs());
       },

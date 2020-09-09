@@ -1,14 +1,18 @@
 import React from 'react';
 
-import { Modal, withSpinner } from 'components';
+import { Box } from '@rebass/grid';
+
+import { Button, Modal, withSpinner } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
+import { schedulerTasksConsts } from '../../consts';
 import { SchedulerForm } from './../../forms';
 
 import {
   ISchedulerJobEditable,
   THandleDeleteSchedulerJob,
+  THandleExecSchedulerJob,
   THandleUpdateSchedulerJob,
 } from 'store';
 
@@ -19,6 +23,7 @@ interface IEditSchedulerModal extends IWithModal {
   deleteSchedulerJob: THandleDeleteSchedulerJob;
   isFormDirty: boolean;
   updateSchedulerJob: THandleUpdateSchedulerJob;
+  execSchedulerJob: THandleExecSchedulerJob;
 }
 
 const modalName = modalNamesConst.EDIT_SCHEDULER;
@@ -29,13 +34,14 @@ const EditSchedulerModal: React.FC<IEditSchedulerModal> = ({
   currentSchedulerJob,
   currentSchedulerName,
   deleteSchedulerJob,
+  execSchedulerJob,
   isFormDirty,
   isReadOnly,
   openModal,
   updateSchedulerJob,
 }) => {
   const modalTitle = React.useMemo(
-    () => `Edit Scheduler: ${currentSchedulerName}`,
+    () => `Scheduler Job: ${currentSchedulerName}`,
     [currentSchedulerName]
   );
 
@@ -57,6 +63,19 @@ const EditSchedulerModal: React.FC<IEditSchedulerModal> = ({
       containerWidth="1000px"
       withCloseConfirmation={isFormDirty}
     >
+      <Box mb="10px">
+        <Button
+          text={schedulerTasksConsts.EXECUTE_TASK.NAME}
+          disabled={isReadOnly}
+          isFocused={true}
+          onClick={() => execSchedulerJob({
+            taskId: currentSchedulerId,
+            taskCommand: schedulerTasksConsts.EXECUTE_TASK.TASK_COMMAND,
+          })}
+          withConfirmation={true}
+          confirmationText={`${schedulerTasksConsts.EXECUTE_TASK.NAME} "${currentSchedulerName}"?`}
+        />
+      </Box>
       <SchedulerForm
         onCancel={handleOnCancel}
         openModal={openModal}
