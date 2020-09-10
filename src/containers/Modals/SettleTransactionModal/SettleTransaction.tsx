@@ -77,7 +77,7 @@ const SettleTransactionModal: React.FC<ISettleTransactionModal> = ({
   return (
     <Modal
       name={modalName}
-      containerWidth="400px"
+      containerWidth="340px"
       minContainerHeight="160px"
       type={modalTypesConst.VIEWING}
       isBluredBackdrop={!transactionId}

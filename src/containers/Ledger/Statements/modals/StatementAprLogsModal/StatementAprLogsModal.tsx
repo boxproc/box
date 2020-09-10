@@ -30,6 +30,11 @@ const StatementAprLogsModal: React.FC<IStatementAprLogsModal> = ({
     [statementAprLogs]
   );
 
+  const isData = React.useMemo(
+    () => statementAprLogs && statementAprLogs.length,
+    [statementAprLogs]
+  );
+
   return (
     <Modal
       name={modalName}
@@ -37,14 +42,16 @@ const StatementAprLogsModal: React.FC<IStatementAprLogsModal> = ({
       containerWidth="550px"
       minContainerHeight="500px"
     >
-      <Box mb="15px">
-        <CircleList
-          items={[
-            `APR ID: ${productAprId}`,
-            `Product ID: ${productId}`,
-          ]}
-        />
-      </Box>
+      {isData && (
+        <Box mb="15px">
+          <CircleList
+            items={[
+              `APR ID: ${productAprId}`,
+              `Product ID: ${productId}`,
+            ]}
+          />
+        </Box>
+      )}
       <StatementAprLogsTable
         data={statementAprLogs}
       />

@@ -43,7 +43,7 @@ const TransactionRetrievingForm: React.FC<TTransactionRetrievingForm> = ({
   return (
     <form onSubmit={handleSubmitForm}>
       <Flex alignItems="flex-end" mx="-8px">
-        <Box width="180px" p="8px">
+        <Box width="120px" p="8px">
           <Field
             id="id"
             name="id"

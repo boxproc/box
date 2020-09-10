@@ -43,7 +43,7 @@ const SettleTransactionForm: React.FC<TSettleTransactionForm> = ({
   return (
     <form onSubmit={handleSubmitForm}>
       <Flex alignItems="flex-end" mx="-8px">
-        <Box width="180px" p="8px">
+        <Box width="120px" p="8px">
           <Field
             id="amountSettled"
             name="amountSettled"
@@ -60,7 +60,7 @@ const SettleTransactionForm: React.FC<TSettleTransactionForm> = ({
             ]}
           />
         </Box>
-        <Box width="200px" p="8px" >
+        <Box width="180px" p="8px" >
           <Field
             id="settledDatetime"
             name="settledDatetime"
@@ -70,7 +70,6 @@ const SettleTransactionForm: React.FC<TSettleTransactionForm> = ({
             mask={maskFormatConst.DATE_TIME}
             disabled={isDisabled}
             validate={[
-              formErrorUtil.isRequired,
               formErrorUtil.isDateTime,
             ]}
           />

@@ -110,15 +110,25 @@ export const passwordsMatch = (value: string, allValues: any) =>
 export const passwordsDoNotMatch = (value: string, allValues: any) =>
   value === allValues.currentPassword ? 'Passwords match' : undefined;
 
-export const isDateTime = (value: string) =>
-  moment(value, dateFormatConst.DATE_TIME, true).isValid()
-    ? undefined
-    : 'Invalid date';
+export const isDateTime = (value: string) => {
+  if (!value) {
+    return undefined;
+  }
 
-export const isDate = (value: string) =>
-  moment(value, dateFormatConst.DATE, true).isValid()
+  return moment(value, dateFormatConst.DATE_TIME, true).isValid()
     ? undefined
     : 'Invalid date';
+};
+
+export const isDate = (value: string) => {
+  if (!value) {
+    return undefined;
+  }
+
+  return moment(value, dateFormatConst.DATE, true).isValid()
+    ? undefined
+    : 'Invalid date';
+};
 
 const exactNumberValue = (exactNumber: number) => (value: string) =>
   value && value.length !== exactNumber
