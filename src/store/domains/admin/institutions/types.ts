@@ -11,6 +11,7 @@ export interface IInstitutionData {
   sftp_public_key: string;
   status: string | number;
   base_currency: string | number;
+  current_operation_date: string;
 }
 
 export interface IInstitutionsData {
@@ -23,6 +24,7 @@ interface IInstitutionPlain {
   masterInstitutionFlag: boolean;
   sftpLocation: string;
   sftpPublicKey: string;
+  currentOperationDate: string;
 }
 
 export interface IInstitution extends IInstitutionPlain {

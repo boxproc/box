@@ -26,7 +26,7 @@ const EditInstitutionModal: React.FC<IEditInstitutionModal> = ({
   const modalTitle = React.useMemo(
     () => {
       const institutionName = currentInstitutionName ? `: "${currentInstitutionName}"` : '';
-      return `Edit Institution${institutionName}`;
+      return `Institution${institutionName}`;
     },
     [currentInstitutionName]
   );

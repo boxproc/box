@@ -40,6 +40,7 @@ export const prepareDataToRender = (data: IInstitutionData) => {
     sftp_location,
     sftp_public_key,
     master_institution_flag,
+    current_operation_date,
   } = data;
 
   const instStatus = statusOptions.find(el => el.value === status);
@@ -51,6 +52,7 @@ export const prepareDataToRender = (data: IInstitutionData) => {
     sftpLocation: sftp_location,
     sftpPublicKey: sftp_public_key,
     masterInstitutionFlag: master_institution_flag === yesNoConst.YES,
+    currentOperationDate: current_operation_date,
   };
 };
 

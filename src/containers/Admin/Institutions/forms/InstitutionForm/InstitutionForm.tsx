@@ -9,11 +9,12 @@ import {
   Hr,
   InputField,
   ISpinner,
+  MaskField,
   OkCancelButtons,
   SelectField,
   withSpinner,
 } from 'components';
-import { formNamesConst, iconNamesConst, statusOptions } from 'consts';
+import { dateFormatConst, formNamesConst, iconNamesConst, maskFormatConst, statusOptions } from 'consts';
 import {
   THandleAddInstitution,
   THandleDeleteInstitution,
@@ -130,23 +131,33 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
               validate={[formErrorUtil.isRequired]}
             />
           </Box>
-          <React.Fragment>
-            <Hr />
-            <Box width={[2 / 3]} p="8px">
+          <Box width={[2 / 3]} p="8px">
+            <Field
+              id="baseCurrency"
+              name="baseCurrency"
+              component={SelectField}
+              label="Base Currency"
+              placeholder="Select Currencies"
+              options={currenciesOptions}
+              isLoading={isCurrenciesLoading}
+              isDisabled={isReadOnly}
+              validate={[formErrorUtil.isRequired]}
+            />
+          </Box>
+          {isEditMode && (
+            <Box width={[1 / 3]} p="8px">
               <Field
-                id="baseCurrency"
-                name="baseCurrency"
-                component={SelectField}
-                label="Base Currency"
-                placeholder="Select Currencies"
-                options={currenciesOptions}
-                isLoading={isCurrenciesLoading}
-                isDisabled={isReadOnly}
-                validate={[formErrorUtil.isRequired]}
+                id="currentOperationDate"
+                name="currentOperationDate"
+                component={MaskField}
+                label="Current Operation Date"
+                placeholder={dateFormatConst.DATE}
+                mask={maskFormatConst.DATE}
+                disabled={true}
               />
             </Box>
-            <Hr />
-          </React.Fragment>
+          )}
+          <Hr />
           <Box width={[1]} p="8px">
             <Field
               id="sftpLocation"

@@ -59,7 +59,18 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 110,
+    maxWidth: 100,
+    Header: <TableHeader title="Current Operation Date" />,
+    accessor: 'currentOperationDate',
+    Cell: (props: TCell<'currentOperationDate'>) => (
+      <TableCell
+        value={props.value}
+        isDate={true}
+      />
+    ),
+  },
+  {
+    maxWidth: 70,
     Header: <TableHeader title="Master Institution" />,
     accessor: 'masterInstitutionFlag',
     Cell: renderCheckBoxTableCell(),

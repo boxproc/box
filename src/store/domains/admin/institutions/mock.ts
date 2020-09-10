@@ -10,6 +10,7 @@ export const institutionsMock: IInstitutionsData = {
       sftp_public_key: '',
       master_institution_flag: 'Y',
       base_currency: 740,
+      current_operation_date: '10/09/2020',
     },
     {
       id: 2,
@@ -19,6 +20,7 @@ export const institutionsMock: IInstitutionsData = {
       sftp_public_key: '',
       master_institution_flag: 'N',
       base_currency: 533,
+      current_operation_date: '10/09/2020',
     },
   ],
 };
