@@ -118,13 +118,23 @@ const AccountStatements: React.FC<IAccountStatements> = ({
         ),
       },
       {
-        maxWidth: 150,
+        maxWidth: 120,
         Header: <TableHeader title="Repayment Status" />,
         accessor: 'repaymentStatus',
         Cell: (props: TCell<'repaymentStatus'>) => (
           <TableCell
             value={props.value}
             isSmaller={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 80,
+        Header: <TableHeader title="Status" />,
+        accessor: 'status',
+        Cell: (props: TCell<'status'>) => (
+          <TableCell
+            value={props.value}
           />
         ),
       },

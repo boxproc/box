@@ -26,11 +26,12 @@ export interface IStatementData {
   institution_id: string | number;
   last_name: string;
   last_transaction_id: number;
-  previous_statement_id: number;
   product_name: string;
   repayment_minimum_amount_due: number;
   repayment_status: string;
-  start_date?: string;
+  status: string;
+  start_date: string;
+  end_date: string;
   statement_date: string;
   repayment_date: string;
 }
@@ -59,11 +60,12 @@ export interface IStatement {
   institutionId: string | number;
   lastName: string;
   lastTransactionId: number;
-  previousStatementId: number;
   productName: string;
   repaymentMinimumAmountDue: string;
   repaymentStatus: string;
-  startDate?: string;
+  status: string;
+  startDate: string;
+  endDate: string;
   statementDate: string;
   repaymentDate: string;
 }

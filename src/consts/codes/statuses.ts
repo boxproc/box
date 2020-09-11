@@ -121,6 +121,22 @@ export const repaymentStatusOptions = [
 ];
 
 /**
+ * Statement statuses
+ */
+
+export enum statementsStatusConst {
+  ACTIVE = 'A',
+  NOT_ACTIVE = 'I',
+  RELEASED = 'R',
+}
+
+export const statementsStatusOptions = [
+  { value: statementsStatusConst.ACTIVE, label: 'Active' },
+  { value: statementsStatusConst.NOT_ACTIVE, label: 'Not active' },
+  { value: statementsStatusConst.RELEASED, label: 'Released' },
+];
+
+/**
  * Transaction statuses
  */
 

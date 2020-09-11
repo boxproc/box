@@ -1,4 +1,4 @@
-import { repaymentStatusOptions, yesNoConst } from 'consts';
+import { repaymentStatusOptions, statementsStatusOptions, yesNoConst } from 'consts';
 
 import {
   IAccountStatementData,
@@ -31,11 +31,14 @@ export const prepareStatementToRender = (
     first_transaction_id,
     last_transaction_id,
     statement_date,
+    start_date,
+    end_date,
     repayment_date,
     balance_open,
     balance_close,
     repayment_minimum_amount_due,
     repayment_status,
+    status,
     account_alias,
     product_name,
     first_name,
@@ -48,10 +51,10 @@ export const prepareStatementToRender = (
     address_town,
     address_post_code,
     address_country_code,
-    previous_statement_id,
   } = data;
 
   const repaymentStatus = repaymentStatusOptions.find(el => el.value === repayment_status);
+  const statementStatus = statementsStatusOptions.find(el => el.value === status);
 
   return {
     account: {
@@ -72,6 +75,8 @@ export const prepareStatementToRender = (
     statement: {
       id,
       statementDate: statement_date,
+      startDate: start_date,
+      endDate: end_date,
       repaymentDate: repayment_date,
       productName: product_name,
       firstTransactionId: first_transaction_id,
@@ -80,7 +85,7 @@ export const prepareStatementToRender = (
       balanceClose: stringsUtil.numberToFixed(balance_close, 2),
       repaymentMinimumAmountDue: stringsUtil.numberToFixed(repayment_minimum_amount_due, 2),
       repaymentStatus: repaymentStatus && repaymentStatus.label,
-      previousStatementId: previous_statement_id,
+      status: statementStatus && statementStatus.label,
     },
   };
 };

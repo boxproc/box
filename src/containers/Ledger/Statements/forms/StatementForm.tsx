@@ -16,6 +16,7 @@ import { IStatement } from 'store';
 
 const LeftPartWrapper = styled(Flex)`
   border-right: 1px solid ${({ theme }) => theme.colors.lightGray};
+  margin-right: 15px;
 `;
 
 interface IStatementForm {
@@ -44,7 +45,7 @@ const StatementForm: React.FC<TStatementForm> = ({
         >
           <Flex alignItems="flex-start">
             <LeftPartWrapper
-              width={[1 / 2]}
+              width="54%"
               alignItems="flex-end"
               flexWrap="wrap"
             >
@@ -68,7 +69,7 @@ const StatementForm: React.FC<TStatementForm> = ({
                   isNumber={true}
                 />
               </Box>
-              <Box width="240px" p="8px">
+              <Box width="270px" p="8px">
                 <Field
                   id="accountAlias"
                   name="accountAlias"
@@ -98,6 +99,46 @@ const StatementForm: React.FC<TStatementForm> = ({
                   isNumber={true}
                 />
               </Box>
+              <Box width="170px" p="8px">
+                <Field
+                  id="repaymentStatus"
+                  name="repaymentStatus"
+                  component={InputField}
+                  label="Repayment Status"
+                  disabled={true}
+                />
+              </Box>
+              <Box width="100px" p="8px">
+                <Field
+                  id="status"
+                  name="status"
+                  component={InputField}
+                  label="Status"
+                  disabled={true}
+                />
+              </Box>
+              <Box width="120px" p="8px">
+                <Field
+                  id="startDate"
+                  name="startDate"
+                  component={InputField}
+                  label="Start Date"
+                  placeholder={dateFormatConst.DATE}
+                  mask={maskFormatConst.DATE}
+                  disabled={true}
+                />
+              </Box>
+              <Box width="120px" p="8px">
+                <Field
+                  id="endDate"
+                  name="endDate"
+                  component={InputField}
+                  label="End Date"
+                  placeholder={dateFormatConst.DATE}
+                  mask={maskFormatConst.DATE}
+                  disabled={true}
+                />
+              </Box>
               <Box width="120px" p="8px">
                 <Field
                   id="statementDate"
@@ -109,33 +150,14 @@ const StatementForm: React.FC<TStatementForm> = ({
                   disabled={true}
                 />
               </Box>
-              <Box width="120px" p="8px">
-                <Field
-                  id="previousStatementId"
-                  name="previousStatementId"
-                  component={InputField}
-                  label="Previous Statement ID"
-                  disabled={true}
-                  isNumber={true}
-                />
-              </Box>
-              <Box width="240px" p="8px">
-                <Field
-                  id="repaymentStatus"
-                  name="repaymentStatus"
-                  component={InputField}
-                  label="Repayment Status"
-                  disabled={true}
-                />
-              </Box>
             </LeftPartWrapper>
             <Flex
-              width={[1 / 2]}
+              width="46%"
               alignItems="flex-end"
               justifyContent="flex-end"
               flexWrap="wrap"
             >
-              <Box width="240px" p="8px">
+              <Box width={[1 / 2]} p="8px">
                 <Field
                   id="firstName"
                   name="firstName"
@@ -144,7 +166,7 @@ const StatementForm: React.FC<TStatementForm> = ({
                   disabled={true}
                 />
               </Box>
-              <Box width="240px" p="8px">
+              <Box width={[1 / 2]} p="8px">
                 <Field
                   id="lastName"
                   name="lastName"
@@ -153,7 +175,7 @@ const StatementForm: React.FC<TStatementForm> = ({
                   disabled={true}
                 />
               </Box>
-              <Box width="480px" p="8px">
+              <Box width={[1]} p="8px">
                 <Field
                   id="institutionId"
                   name="institutionId"
@@ -162,7 +184,7 @@ const StatementForm: React.FC<TStatementForm> = ({
                   disabled={true}
                 />
               </Box>
-              <Box width="480px" p="8px">
+              <Box width={[1]} p="8px">
                 <Field
                   id="productName"
                   name="productName"
@@ -173,7 +195,7 @@ const StatementForm: React.FC<TStatementForm> = ({
               </Box>
             </Flex>
           </Flex>
-          <Box width="165px" p="8px">
+          <Box width="160px" p="8px">
             <Field
               id="balanceOpen"
               name="balanceOpen"
@@ -185,7 +207,7 @@ const StatementForm: React.FC<TStatementForm> = ({
               disabled={true}
             />
           </Box>
-          <Box width="165px" p="8px">
+          <Box width="160px" p="8px">
             <Field
               id="balanceClose"
               name="balanceClose"
@@ -197,7 +219,7 @@ const StatementForm: React.FC<TStatementForm> = ({
               disabled={true}
             />
           </Box>
-          <Box width="165px" p="8px">
+          <Box width="160px" p="8px">
             <Field
               id="repaymentMinimumAmountDue"
               name="repaymentMinimumAmountDue"
