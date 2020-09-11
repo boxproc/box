@@ -70,6 +70,17 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 100,
+    Header: <TableHeader title="Next Operation Date" />,
+    accessor: 'nextOperationDate',
+    Cell: (props: TCell<'nextOperationDate'>) => (
+      <TableCell
+        value={props.value}
+        isDate={true}
+      />
+    ),
+  },
+  {
     maxWidth: 70,
     Header: <TableHeader title="Master Institution" />,
     accessor: 'masterInstitutionFlag',

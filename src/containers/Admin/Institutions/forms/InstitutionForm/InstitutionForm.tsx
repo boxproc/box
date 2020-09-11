@@ -145,18 +145,31 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
             />
           </Box>
           {isEditMode && (
-            <Box width={[1 / 3]} p="8px">
-              <Field
-                id="currentOperationDate"
-                name="currentOperationDate"
-                component={MaskField}
-                label="Current Operation Date"
-                placeholder={dateFormatConst.DATE}
-                mask={maskFormatConst.DATE}
-                disabled={true}
-              />
-            </Box>
+            <React.Fragment>
+              <Hr />
+              <Box width={[1 / 3]} p="8px">
+                <Field
+                  id="currentOperationDate"
+                  name="currentOperationDate"
+                  component={MaskField}
+                  label="Current Operation Date"
+                  placeholder={dateFormatConst.DATE}
+                  mask={maskFormatConst.DATE}
+                  disabled={true}
+                />
+              </Box>
+            </React.Fragment>
           )}
+          <Box width={[1 / 3]} p="8px">
+            <Field
+              id="nextOperationDate"
+              name="nextOperationDate"
+              component={MaskField}
+              label="Next Operation Date"
+              placeholder={dateFormatConst.DATE}
+              mask={maskFormatConst.DATE}
+            />
+          </Box>
           <Hr />
           <Box width={[1]} p="8px">
             <Field

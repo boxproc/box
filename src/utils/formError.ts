@@ -130,6 +130,18 @@ export const isDate = (value: string) => {
     : 'Invalid date';
 };
 
+export const isFutureDate = (value: string) => {
+  if (!value) {
+    return undefined;
+  }
+
+  const isFuture = moment(value, dateFormatConst.DATE, true).isAfter(moment());
+
+  return isFuture
+    ? undefined
+    : 'Has to be future date';
+};
+
 const exactNumberValue = (exactNumber: number) => (value: string) =>
   value && value.length !== exactNumber
     ? `Enter ${exactNumber} digits`

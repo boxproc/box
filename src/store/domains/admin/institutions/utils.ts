@@ -16,6 +16,7 @@ export const prepareDataToSend = (data: Partial<IInstitutionDetails>) => {
     sftpLocation,
     sftpPublicKey,
     baseCurrency,
+    nextOperationDate,
   } = data;
 
   return {
@@ -25,6 +26,7 @@ export const prepareDataToSend = (data: Partial<IInstitutionDetails>) => {
     sftp_location: sftpLocation,
     sftp_public_key: sftpPublicKey,
     base_currency: baseCurrency && baseCurrency.value,
+    next_operation_date: nextOperationDate,
   };
 };
 
@@ -41,6 +43,7 @@ export const prepareDataToRender = (data: IInstitutionData) => {
     sftp_public_key,
     master_institution_flag,
     current_operation_date,
+    next_operation_date,
   } = data;
 
   const instStatus = statusOptions.find(el => el.value === status);
@@ -53,6 +56,7 @@ export const prepareDataToRender = (data: IInstitutionData) => {
     sftpPublicKey: sftp_public_key,
     masterInstitutionFlag: master_institution_flag === yesNoConst.YES,
     currentOperationDate: current_operation_date,
+    nextOperationDate: next_operation_date,
   };
 };
 
