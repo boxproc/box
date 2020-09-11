@@ -39,6 +39,8 @@ export interface ITransactionData extends ITransactionPlain {
   product_reward_id: number;
   fee_rate: number;
   fee_application_condition: string;
+  fee_amount: number;
+  reward_amount: number;
   reward_application_condition: string;
   reward_rate: number;
   card_currency_billing: string;
@@ -91,6 +93,8 @@ export interface ITransaction extends ITransactionPlain {
   productRewardId: number;
   feeRate: string;
   feeApplicationCondition: string;
+  feeAmount: string;
+  rewardAmount: string;
   rewardApplicationCondition: string;
   rewardRate: string;
   cardCurrencyBilling: string;

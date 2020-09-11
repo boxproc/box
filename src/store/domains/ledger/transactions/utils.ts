@@ -59,6 +59,8 @@ export const prepareDataToRender = (data: ITransactionData): ITransaction => {
     product_reward_id,
     fee_rate,
     fee_application_condition,
+    fee_amount,
+    reward_amount,
     reward_application_condition,
     reward_rate,
     card_currency_billing,
@@ -116,6 +118,8 @@ export const prepareDataToRender = (data: ITransactionData): ITransaction => {
     productRewardId: product_reward_id,
     feeRate: stringsUtil.numberToFixed(fee_rate, 2),
     feeApplicationCondition: feeApplicationCondition ? feeApplicationCondition.label : null,
+    feeAmount: stringsUtil.numberToFixed(fee_amount, 2),
+    rewardAmount: stringsUtil.numberToFixed(reward_amount, 2),
     rewardApplicationCondition: rewardApplicationCondition
       ? rewardApplicationCondition.label
       : null,

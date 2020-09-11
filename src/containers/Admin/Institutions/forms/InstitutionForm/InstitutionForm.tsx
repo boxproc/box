@@ -168,6 +168,7 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
               label="Next Operation Date"
               placeholder={dateFormatConst.DATE}
               mask={maskFormatConst.DATE}
+              validate={[formErrorUtil.isDate]}
             />
           </Box>
           <Hr />

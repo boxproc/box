@@ -97,8 +97,8 @@ const TransactionModal: React.FC<ITransactionModal> = ({
       name={modalName}
       type={modalTypesConst.VIEWING}
       title={`Transaction: ${currentTransactionDescription}`}
-      containerWidth="900px"
-      minContainerHeight="580px"
+      containerWidth="1010px"
+      minContainerHeight="600px"
     >
       <Tabs activeTab={activeTab}>
         <TabsPanel
