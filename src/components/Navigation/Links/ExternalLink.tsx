@@ -28,6 +28,18 @@ const ExternalLinkWrapper = styled.a<IExternalLinkWrapper>`
   &:hover * {
     color: ${({ theme }) => theme.colors.normalAccent};
   }
+
+  &.is-bordered {
+    padding: 3px 5px 2px;
+    background-color: ${({ theme }) => theme.colors.lighterGray};
+    border: 1px solid ${({ theme }) => theme.colors.lightGray};
+    border-radius: 2px;
+
+    &:hover:not(:disabled) {
+      background-color: ${({ theme }) => theme.colors.lighterGrayHover};
+      box-shadow: ${({ theme }) => theme.shadows.bottomBox};
+    }
+  }
 `;
 
 const LinkIcon = styled(LinkExternalIcon)`
@@ -39,18 +51,21 @@ interface IExternalLink {
   link: string;
   text: string;
   grayStyle?: boolean;
+  className?: string;
 }
 
 const ExternalLink: React.FC<IExternalLink> = ({
   link,
   text,
   grayStyle = false,
+  className,
 }) => {
   return (
     <ExternalLinkWrapper
       href={link}
       title={link}
       grayStyle={grayStyle}
+      className={className}
       target="_blank"
       rel="noopener noreferrer"
     >

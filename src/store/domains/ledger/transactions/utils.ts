@@ -228,12 +228,12 @@ export const prepareSettleTrDataToSend = (data: Partial<ISettleTrFormValues>) =>
     return null;
   }
 
-  const { transactionId, amountSettled, settledDatetime } = data;
+  const { transactionId, amountSettled } = data;
 
   return {
     transaction_id: stringsUtil.toNumber(transactionId),
     amount_settled: stringsUtil.toNumber(amountSettled),
-    settled_datetime: settledDatetime,
+    settled_datetime: dateUtil.todayDateTime(),
   };
 };
 
@@ -248,7 +248,6 @@ export const prepareSettleTrDataToRender = (data: ImmutableArray<ISettleTransact
   return {
     transactionId: transaction_id,
     amountSettled: amount_settled,
-    settledDatetime: dateUtil.todayDateTime(),
   };
 };
 

@@ -29,7 +29,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 80,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
     Cell: (props: TCell<'status'>) => (
@@ -59,7 +59,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 130,
     Header: <TableHeader title="Current Operation Date" />,
     accessor: 'currentOperationDate',
     Cell: (props: TCell<'currentOperationDate'>) => (
@@ -70,7 +70,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 100,
+    maxWidth: 130,
     Header: <TableHeader title="Next Operation Date" />,
     accessor: 'nextOperationDate',
     Cell: (props: TCell<'nextOperationDate'>) => (
@@ -81,7 +81,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 70,
+    maxWidth: 110,
     Header: <TableHeader title="Master Institution" />,
     accessor: 'masterInstitutionFlag',
     Cell: renderCheckBoxTableCell(),

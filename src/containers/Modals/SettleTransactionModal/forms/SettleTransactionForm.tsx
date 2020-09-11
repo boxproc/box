@@ -4,15 +4,13 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import {
-  Hr,
   ISpinner,
-  MaskField,
   NumberFormatField,
   OkCancelButtons,
   withSpinner,
 } from 'components';
 
-import { dateFormatConst, formNamesConst, maskFormatConst } from 'consts';
+import { formNamesConst } from 'consts';
 
 import { THandleSettleTransaction } from 'store';
 
@@ -53,6 +51,7 @@ const SettleTransactionForm: React.FC<TSettleTransactionForm> = ({
             fixedDecimalScale={true}
             decimalScale={2}
             disabled={isDisabled}
+            autoFocus={true}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,
@@ -60,28 +59,15 @@ const SettleTransactionForm: React.FC<TSettleTransactionForm> = ({
             ]}
           />
         </Box>
-        <Box width="180px" p="8px" >
-          <Field
-            id="settledDatetime"
-            name="settledDatetime"
-            component={MaskField}
-            label="Settled Datetime"
-            placeholder={dateFormatConst.DATE_TIME}
-            mask={maskFormatConst.DATE_TIME}
-            disabled={isDisabled}
-            validate={[
-              formErrorUtil.isDateTime,
-            ]}
+        <Box p="8px" >
+          <OkCancelButtons
+            okText="Settle"
+            disabledOk={isDisabled || pristine}
+            onCancel={onCancel}
+            withCancelConfirmation={dirty}
           />
         </Box>
       </Flex>
-      <Hr />
-      <OkCancelButtons
-        okText="Settle"
-        disabledOk={isDisabled || pristine}
-        onCancel={onCancel}
-        withCancelConfirmation={dirty}
-      />
     </form>
   );
 };

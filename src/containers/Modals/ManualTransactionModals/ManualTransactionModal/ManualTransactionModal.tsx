@@ -157,7 +157,7 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
     <Modal
       name={modalName}
       type={modalTypesConst.VIEWING}
-      containerWidth="500px"
+      containerWidth="420px"
       isBluredBackdrop={!initialFormValues.accountId}
     >
       <PageTitle

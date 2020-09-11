@@ -6,7 +6,7 @@ import { Box, Flex } from '@rebass/grid';
 import {
   Button,
   CheckboxField,
-  Delimiter,
+  Hr,
   InputField,
   NumberFormatField,
   OkCancelButtons,
@@ -118,8 +118,21 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
             />
           </Box>
         )}
-        <Delimiter />
-        <Box width={[2 / 9]} p="8px">
+        {!isDirectDebitTrType && !isLimitAdjustment && (
+          <Box width={[1]} p="8px">
+            <Field
+              id="currencyCode"
+              name="currencyCode"
+              component={SelectField}
+              label="Currency"
+              placeholder="Select Currency"
+              options={currenciesOptions}
+              isLoading={isCurrenciesLoading}
+              validate={[formErrorUtil.isRequired]}
+            />
+          </Box>
+        )}
+        <Box width={[isLimitAdjustment ? 1 / 3 : 1 / 2]} p="8px">
           <Field
             id="accountId"
             name="accountId"
@@ -135,46 +148,22 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
           />
         </Box>
         {!isLimitAdjustment && (
-          <React.Fragment>
-            {!isDirectDebitTrType && (
-              <Box width={[4 / 9]} p="8px">
-                <Field
-                  id="currencyCode"
-                  name="currencyCode"
-                  component={SelectField}
-                  label="Currency"
-                  placeholder="Select Currency"
-                  options={currenciesOptions}
-                  isLoading={isCurrenciesLoading}
-                  validate={[formErrorUtil.isRequired]}
-                />
-              </Box>
-            )}
-            <Box width={[1 / 3]} p="8px">
-              <Field
-                id="amount"
-                name="amount"
-                component={NumberFormatField}
-                placeholder="0.00"
-                fixedDecimalScale={true}
-                decimalScale={2}
-                label="Amount"
-                validate={[
-                  formErrorUtil.isRequired,
-                  formErrorUtil.isNumber,
-                  formErrorUtil.isPositive,
-                ]}
-              />
-            </Box>
-            <Box width={[1]} p="8px" pb="0">
-              <Field
-                id="settledFlag"
-                name="settledFlag"
-                component={CheckboxField}
-                label="Settled"
-              />
-            </Box>
-          </React.Fragment>
+          <Box width={[1 / 2]} p="8px">
+            <Field
+              id="amount"
+              name="amount"
+              component={NumberFormatField}
+              placeholder="0.00"
+              fixedDecimalScale={true}
+              decimalScale={2}
+              label="Amount"
+              validate={[
+                formErrorUtil.isRequired,
+                formErrorUtil.isNumber,
+                formErrorUtil.isPositive,
+              ]}
+            />
+          </Box>
         )}
         {isLimitAdjustment && (
           <React.Fragment>
@@ -219,9 +208,21 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
             component={TextareaField}
             placeholder="Enter Description"
             label="Description"
+            height={100}
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
+        {!isLimitAdjustment && (
+          <Box width={[1]} p="8px" pb="0">
+            <Field
+              id="settledFlag"
+              name="settledFlag"
+              component={CheckboxField}
+              label="Settled"
+            />
+          </Box>
+        )}
+        <Hr />
       </Flex>
       <Flex
         justifyContent="space-between"

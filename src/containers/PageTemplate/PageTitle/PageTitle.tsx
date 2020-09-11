@@ -32,6 +32,7 @@ export const PageTitle: React.FC<IPageTitle> = ({
           text="HELP"
           link={helpLink}
           grayStyle={true}
+          className="is-bordered"
         />
       </Box>
       <T2>{title}</T2>

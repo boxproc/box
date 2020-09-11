@@ -217,7 +217,6 @@ export interface ISettleTransactionDataReq {
 export interface ISettleTrFormValues {
   transactionId: number;
   amountSettled: number;
-  settledDatetime: string;
 }
 
 export interface ISettleTransactionResp {

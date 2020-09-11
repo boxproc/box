@@ -19,7 +19,7 @@ const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () =
           alignItems="flex-end"
           flexWrap="wrap"
         >
-          <Box width="120px" p="8px">
+          <Box width={[1 / 2]} p="8px">
             <Field
               id="transactionId"
               name="transactionId"
@@ -29,7 +29,7 @@ const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () =
               isNumber={true}
             />
           </Box>
-          <Box width="180px" p="8px">
+          <Box width={[1 / 2]} p="8px">
             <Field
               id="status"
               name="status"
@@ -39,31 +39,7 @@ const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () =
             />
           </Box>
           <Hr />
-          <Box width="150px" p="8px">
-            <Field
-              id="balanceSettledBefore"
-              name="balanceSettledBefore"
-              component={NumberFormatField}
-              placeholder="0.00"
-              fixedDecimalScale={true}
-              decimalScale={2}
-              label="Balance Settled Before"
-              disabled={true}
-            />
-          </Box>
-          <Box width="150px" p="8px">
-            <Field
-              id="balanceSettledAfter"
-              name="balanceSettledAfter"
-              component={NumberFormatField}
-              placeholder="0.00"
-              fixedDecimalScale={true}
-              decimalScale={2}
-              label="Balance Settled After"
-              disabled={true}
-            />
-          </Box>
-          <Box width="150px" p="8px">
+          <Box width={[1 / 2]} p="8px">
             <Field
               id="balanceAuthorisedBefore"
               name="balanceAuthorisedBefore"
@@ -75,7 +51,7 @@ const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () =
               disabled={true}
             />
           </Box>
-          <Box width="150px" p="8px">
+          <Box width={[1 / 2]} p="8px">
             <Field
               id="balanceAuthorisedAfter"
               name="balanceAuthorisedAfter"
@@ -84,6 +60,30 @@ const ResultManualTransactionForm: React.FC<TResultManualTransactionForm> = () =
               fixedDecimalScale={true}
               decimalScale={2}
               label="Balance Authorised After"
+              disabled={true}
+            />
+          </Box>
+          <Box width={[1 / 2]} p="8px">
+            <Field
+              id="balanceSettledBefore"
+              name="balanceSettledBefore"
+              component={NumberFormatField}
+              placeholder="0.00"
+              fixedDecimalScale={true}
+              decimalScale={2}
+              label="Balance Settled Before"
+              disabled={true}
+            />
+          </Box>
+          <Box width={[1 / 2]} p="8px">
+            <Field
+              id="balanceSettledAfter"
+              name="balanceSettledAfter"
+              component={NumberFormatField}
+              placeholder="0.00"
+              fixedDecimalScale={true}
+              decimalScale={2}
+              label="Balance Settled After"
               disabled={true}
             />
           </Box>
