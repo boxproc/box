@@ -72,9 +72,9 @@ const EditSchedulerModal: React.FC<IEditSchedulerModal> = ({
     >
       <Flex
         alignItems="center"
-        mx="-8px"
+        mx="-5px"
       >
-        <Box p="8px">
+        <Box p="5px">
           <Button
             text={schedulerTasksConsts.EXECUTE_TASK.NAME}
             disabled={isReadOnly || isLoading || isAutoRefresh}
@@ -88,7 +88,7 @@ const EditSchedulerModal: React.FC<IEditSchedulerModal> = ({
             }
           />
         </Box>
-        <Box p="8px">
+        <Box p="5px">
           <Button
             text={`${schedulerTasksConsts.EXECUTE_TASK.NAME} with auto-refresh`}
             disabled={isReadOnly || isLoading || isAutoRefresh}

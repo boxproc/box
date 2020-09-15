@@ -183,7 +183,7 @@ const SchedulerForm: React.FC<TSchedulerForm> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        <Box p="8px">
+        <Box p="9px 2px 7px">
           <Button
             type="reset"
             text="Build cron expression"
