@@ -1,11 +1,11 @@
 import React from 'react';
 
-import { Box } from '@rebass/grid';
+import { Box, Flex } from '@rebass/grid';
 
-import { Button, Modal, withSpinner } from 'components';
+import { Button, CountDownTimer, Modal, withSpinner } from 'components';
 import { IWithModal, withModal } from 'HOCs';
 
-import { modalNamesConst, modalTypesConst } from 'consts';
+import { iconNamesConst, modalNamesConst, modalTypesConst } from 'consts';
 import { schedulerTasksConsts } from '../../consts';
 import { SchedulerForm } from './../../forms';
 
@@ -14,6 +14,7 @@ import {
   THandleDeleteSchedulerJob,
   THandleExecSchedulerJob,
   THandleUpdateSchedulerJob,
+  TStopAutoRefresh,
 } from 'store';
 
 interface IEditSchedulerModal extends IWithModal {
@@ -21,9 +22,12 @@ interface IEditSchedulerModal extends IWithModal {
   currentSchedulerJob: ISchedulerJobEditable;
   currentSchedulerName: string;
   deleteSchedulerJob: THandleDeleteSchedulerJob;
+  isAutoRefresh: boolean;
+  isLoading: boolean;
   isFormDirty: boolean;
   updateSchedulerJob: THandleUpdateSchedulerJob;
   execSchedulerJob: THandleExecSchedulerJob;
+  stopAutoRefresh: TStopAutoRefresh;
 }
 
 const modalName = modalNamesConst.EDIT_SCHEDULER;
@@ -35,6 +39,9 @@ const EditSchedulerModal: React.FC<IEditSchedulerModal> = ({
   currentSchedulerName,
   deleteSchedulerJob,
   execSchedulerJob,
+  stopAutoRefresh,
+  isAutoRefresh,
+  isLoading,
   isFormDirty,
   isReadOnly,
   openModal,
@@ -63,19 +70,59 @@ const EditSchedulerModal: React.FC<IEditSchedulerModal> = ({
       containerWidth="1000px"
       withCloseConfirmation={isFormDirty}
     >
-      <Box mb="10px">
-        <Button
-          text={schedulerTasksConsts.EXECUTE_TASK.NAME}
-          disabled={isReadOnly}
-          isFocused={true}
-          onClick={() => execSchedulerJob({
-            taskId: currentSchedulerId,
-            taskCommand: schedulerTasksConsts.EXECUTE_TASK.TASK_COMMAND,
-          })}
-          withConfirmation={true}
-          confirmationText={`${schedulerTasksConsts.EXECUTE_TASK.NAME} "${currentSchedulerName}"?`}
-        />
-      </Box>
+      <Flex
+        alignItems="center"
+        mx="-8px"
+      >
+        <Box p="8px">
+          <Button
+            text={schedulerTasksConsts.EXECUTE_TASK.NAME}
+            disabled={isReadOnly || isLoading || isAutoRefresh}
+            onClick={() => execSchedulerJob({
+              taskId: currentSchedulerId,
+              taskCommand: schedulerTasksConsts.EXECUTE_TASK.TASK_COMMAND,
+            })}
+            withConfirmation={true}
+            confirmationText={
+              `${schedulerTasksConsts.EXECUTE_TASK.NAME} "${currentSchedulerName}"?`
+            }
+          />
+        </Box>
+        <Box p="8px">
+          <Button
+            text={`${schedulerTasksConsts.EXECUTE_TASK.NAME} with auto-refresh`}
+            disabled={isReadOnly || isLoading || isAutoRefresh}
+            onClick={() => execSchedulerJob(
+              {
+                taskId: currentSchedulerId,
+                taskCommand: schedulerTasksConsts.EXECUTE_TASK.TASK_COMMAND,
+              },
+              {
+                withAutoRefresh: true,
+              })}
+            withConfirmation={true}
+            confirmationText={
+              `${schedulerTasksConsts.EXECUTE_TASK.NAME} "${currentSchedulerName}" with auto-refresh?`
+            }
+          />
+        </Box>
+        {isAutoRefresh && (
+          <Flex
+            alignItems="flex-end"
+            pl="3px"
+          >
+            <CountDownTimer seconds={5} />
+            <Box ml="4px">
+              <Button
+                text="Stop Auto Refreshing"
+                size="11"
+                iconName={iconNamesConst.STOP}
+                onClick={stopAutoRefresh}
+              />
+            </Box>
+          </Flex>
+        )}
+      </Flex>
       <SchedulerForm
         onCancel={handleOnCancel}
         openModal={openModal}
@@ -83,7 +130,7 @@ const EditSchedulerModal: React.FC<IEditSchedulerModal> = ({
         initialValues={currentSchedulerJob}
         deleteSchedulerJob={handleDeleteScheduler}
         isEditMode={true}
-        isReadOnly={isReadOnly}
+        isReadOnly={isReadOnly || isAutoRefresh || isLoading}
         currentSchedulerName={currentSchedulerName}
       />
     </Modal>

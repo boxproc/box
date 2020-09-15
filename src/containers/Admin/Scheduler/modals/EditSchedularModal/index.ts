@@ -13,8 +13,10 @@ import {
   handleDeleteSchedulerJob,
   handleExecSchedulerJob,
   handleUpdateSchedulerJobs,
+  isAutoRefreshSelector,
   isSchedulerJobDeletingSelector,
   IStoreState,
+  stopAutoRefresh,
 } from 'store';
 
 const dirty = isDirty(formNamesConst.SCHEDULER);
@@ -25,6 +27,7 @@ const mapStateToProps = (state: IStoreState) => ({
   currentSchedulerName: currentSchedulerNameSelector(state),
   isFormDirty: dirty(state),
   isLoading: isSchedulerJobDeletingSelector(state),
+  isAutoRefresh: isAutoRefreshSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
@@ -32,6 +35,7 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
     deleteSchedulerJob: handleDeleteSchedulerJob,
     updateSchedulerJob: handleUpdateSchedulerJobs,
     execSchedulerJob: handleExecSchedulerJob,
+    stopAutoRefresh,
   },
   dispatch
 );
