@@ -117,7 +117,7 @@ export const repaymentStatusOptions = [
   { value: repaymentStatusConst.MINIMUM_REPAID, label: 'Minimum repaid' },
   { value: repaymentStatusConst.REPAID_IN_FULL, label: 'Repaid in full' },
   { value: repaymentStatusConst.OVERPAID, label: 'Overpaid' },
-  { value: repaymentStatusConst.UNKNOWN, label: 'unknown' },
+  { value: repaymentStatusConst.UNKNOWN, label: 'Unknown' },
 ];
 
 /**
@@ -176,7 +176,7 @@ export const cardStatusesOptions = [
   { value: cardStatusesConst.CARD_LOST, label: 'Card lost' },
   { value: cardStatusesConst.CARD_STOLEN, label: 'Card stolen' },
   { value: cardStatusesConst.PIN_TRIES_EXCEEDED, label: 'PIN tries exceeded' },
-  { value: cardStatusesConst.SUSPECTED_FRAUND, label: 'Suspected fraund ' },
+  { value: cardStatusesConst.SUSPECTED_FRAUND, label: 'Suspected fraund' },
   { value: cardStatusesConst.CARD_REPLACED, label: 'Card replaced' },
 ];
 

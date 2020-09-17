@@ -81,6 +81,17 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
     [getInstProducts, institutionValue]
   );
 
+  const statuses = React.useMemo(
+    () => {
+      const activeInd = statusesOptions.findIndex(el => el.value === 'A');
+
+      return isEditMode
+        ? statusesOptions
+        : [statusesOptions[activeInd]];
+    },
+    [statusesOptions, isEditMode]
+  );
+
   const hint = React.useMemo(
     () => {
       let text = '';
@@ -173,7 +184,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             component={SelectField}
             label="Status"
             placeholder="Select Status"
-            options={statusesOptions}
+            options={statuses}
             isDisabled={isReadOnly}
             validate={[formErrorUtil.isRequired]}
           />
@@ -430,29 +441,16 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
         </Box>
         {isEditMode && (
           <React.Fragment>
-            <Box width="160px" p="8px">
-              <Field
-                id="totalOverdueAmount"
-                name="totalOverdueAmount"
-                label="Total Overdue Amount"
-                component={NumberFormatField}
-                placeholder="0.00"
-                fixedDecimalScale={true}
-                decimalScale={2}
-                disabled={true}
-              />
-            </Box>
-            <Box width="120px" p="8px">
+            <Box width="107px" p="8px">
               <Field
                 id="lastCycleDate"
                 name="lastCycleDate"
                 component={InputField}
                 label="Last Cycle Date"
-                placeholder={dateFormatConst.DATE}
                 disabled={true}
               />
             </Box>
-            <Box width="120px" p="8px">
+            <Box width="107px" p="8px">
               <Field
                 id="dateCreated"
                 name="dateCreated"
@@ -461,7 +459,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
                 disabled={true}
               />
             </Box>
-            <Box width="120px" p="8px">
+            <Box width="107px" p="8px">
               <Field
                 id="dateClosed"
                 name="dateClosed"

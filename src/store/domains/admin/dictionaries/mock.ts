@@ -14,16 +14,17 @@ import {
 export const dictionaryAccountStatusesMock: IDictionaryAccountStatusesData = {
   account_statuses: [
     { status: 'A', name: 'Active' },
-    { status: 'I', name: 'Inactive' },
+    { status: 'B', name: 'Bankrupt' },
     { status: 'C', name: 'Closed' },
     { status: 'D', name: 'Deleted' },
-    { status: 'B', name: 'Bankrupt' },
-    { status: 'V', name: 'Interest prohibited, vulnerable customer' },
+    { status: 'E', name: 'Overdue' },
+    { status: 'I', name: 'Inactive' },
     { status: 'L', name: 'Lost' },
-    { status: 'S', name: 'Stolen' },
+    { status: 'O', name: 'Over-limit' },
     { status: 'R', name: 'Recency' },
-    { status: 'O', name: 'Delinquency and Over-limit' },
     { status: 'Q', name: 'Delinquency' },
+    { status: 'S', name: 'Stolen' },
+    { status: 'V', name: 'Vulnerable customer' },
   ],
 };
 
