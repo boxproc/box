@@ -11,30 +11,32 @@ import {
 import { ISelectValue } from 'types';
 
 interface IDetailsForm extends ISpinner {
-  onCancel?: () => void;
-  productType: string | number;
+  currentProductId: number;
   getProductDetails: THandleGetProductDetails;
-  updateProductDetails: THandleUpdateProductDetails;
+  interestDistributionValue: ISelectValue;
   isReadOnly: boolean;
   isUpdating: boolean;
-  interestDistributionValue: ISelectValue;
-  currentProductId: number;
+  onCancel?: () => void;
+  productType: string | number;
+  updateProductDetails: THandleUpdateProductDetails;
+  useStatementGracePeriodFlagValue: boolean;
 }
 
 type TDetailsForm = IDetailsForm & InjectedFormProps<{}, IDetailsForm>;
 
 const DetailsForm: React.FC<TDetailsForm> = ({
-  handleSubmit,
-  onCancel,
-  productType,
-  getProductDetails,
-  updateProductDetails,
+  currentProductId,
   dirty,
-  pristine,
+  getProductDetails,
+  handleSubmit,
   interestDistributionValue,
   isReadOnly,
   isUpdating,
-  currentProductId,
+  onCancel,
+  pristine,
+  productType,
+  updateProductDetails,
+  useStatementGracePeriodFlagValue,
 }) => {
   React.useEffect(
     () => {
@@ -52,6 +54,7 @@ const DetailsForm: React.FC<TDetailsForm> = ({
     <form onSubmit={isReadOnly ? null : handleSubmitForm}>
       <ProductDetails
         interestDistributionValue={interestDistributionValue}
+        useStatementGracePeriodFlagValue={useStatementGracePeriodFlagValue}
         productType={productType}
         isReadOnly={isReadOnly}
         isUpdating={isUpdating}

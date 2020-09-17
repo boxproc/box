@@ -107,7 +107,7 @@ export const productDetailsMock: IProductDetailsDataResp = {
     limit_sharing_allowed_flag: 'N',
     minimum_repayment_amount: 15,
     minimum_repayment_rate: 5,
-    repayment_grace_number_of_days: 30,
+    statement_grace_nr_days: 30,
   },
 };
 

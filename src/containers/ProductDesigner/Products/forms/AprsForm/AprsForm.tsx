@@ -87,8 +87,7 @@ const AprsForm: React.FC<TAprsForm> = ({
             label="Initial Interest Free Days"
             placeholder="Enter Days"
             isNumber={true}
-            disabled={true}
-            // disabled={isLoading}
+            disabled={isLoading}
             validate={[
               formErrorUtil.isInteger,
             ]}

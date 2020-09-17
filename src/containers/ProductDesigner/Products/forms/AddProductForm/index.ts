@@ -24,6 +24,7 @@ const mapStateToProps = (state: IStoreState) => ({
   currentProductType: formSelector(state, 'productType'),
   interestDistributionValue: formSelector(state, 'interestDistributionType'),
   statementCycleTypeValue: formSelector(state, 'statementCycleTypeId'),
+  useStatementGracePeriodFlagValue: formSelector(state, 'useStatementGracePeriodFlag'),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

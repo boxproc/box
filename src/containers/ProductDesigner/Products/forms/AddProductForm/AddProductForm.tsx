@@ -20,6 +20,7 @@ interface IAddProductForm extends ISpinner {
   interestDistributionValue: ISelectValue;
   onCancel: () => void;
   statementCycleTypeValue: ISelectValue;
+  useStatementGracePeriodFlagValue: boolean;
 }
 
 type TAddProductForm = IAddProductForm & InjectedFormProps<{}, IAddProductForm>;
@@ -33,6 +34,7 @@ const AddProductForm: React.FC<TAddProductForm> = ({
   onCancel,
   pristine,
   statementCycleTypeValue,
+  useStatementGracePeriodFlagValue,
 }) => {
   const productType = React.useMemo(
     () => currentProductType && currentProductType.value,
@@ -60,6 +62,7 @@ const AddProductForm: React.FC<TAddProductForm> = ({
           <ProductDetails
             productType={productType}
             interestDistributionValue={interestDistributionValue}
+            useStatementGracePeriodFlagValue={useStatementGracePeriodFlagValue}
           />
         </TabsPanel>
       </Tabs>

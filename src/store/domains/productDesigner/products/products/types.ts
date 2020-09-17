@@ -107,7 +107,7 @@ export interface IRevCreditProductData {
   limit_sharing_allowed_flag: string;
   minimum_repayment_amount: number;
   minimum_repayment_rate: number;
-  repayment_grace_number_of_days: number;
+  statement_grace_nr_days: number;
 }
 
 export interface IRevCreditProductDataResp {
@@ -119,7 +119,8 @@ export interface IRevCreditProduct {
   limitSharingAllowedFlag: boolean;
   minimumRepaymentAmount: number;
   minimumRepaymentRate: number;
-  repaymentGraceNumberOfDays: number;
+  statementGraceNrDays: number;
+  useStatementGracePeriodFlag: boolean;
 }
 
 /**

@@ -3,15 +3,18 @@ import { Field } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { CheckboxField, InputField, NumberFormatField } from 'components';
-
+import { CheckboxField, Hr, InputField, NumberFormatField } from 'components';
 import { formErrorUtil } from 'utils';
 
 interface IRevolvingCreditDetails {
   isReadOnly: boolean;
+  useStatementGracePeriodFlagValue: boolean;
 }
 
-const RevolvingCreditDetails: React.FC<IRevolvingCreditDetails> = ({ isReadOnly }) => {
+const RevolvingCreditDetails: React.FC<IRevolvingCreditDetails> = ({
+  isReadOnly,
+  useStatementGracePeriodFlagValue,
+}) => {
   return (
     <Box mx="-8px">
       <Flex
@@ -52,27 +55,38 @@ const RevolvingCreditDetails: React.FC<IRevolvingCreditDetails> = ({ isReadOnly 
             ]}
           />
         </Box>
-        <Box width="150px" p="8px">
-          <Field
-            id="repaymentGraceNumberOfDays"
-            name="repaymentGraceNumberOfDays"
-            placeholder="Enter # of Days"
-            component={InputField}
-            label="Repayment Grace # Of Days"
-            isNumber={true}
-            disabled={isReadOnly}
-            validate={[
-              formErrorUtil.isRequired,
-              formErrorUtil.isInteger,
-            ]}
-          />
-        </Box>
-        <Box width={[2 / 5]} p="8px" pb="10px">
+        <Box width={[1]} p="8px" pb="10px">
           <Field
             id="limitSharingAllowedFlag"
             name="limitSharingAllowedFlag"
             component={CheckboxField}
             label="Limit Sharing Allowed"
+            disabled={isReadOnly}
+          />
+        </Box>
+        <Hr />
+        <Box width="150px" p="8px">
+          <Field
+            id="statementGraceNrDays"
+            name="statementGraceNrDays"
+            placeholder="Enter # of Days"
+            component={InputField}
+            label="Statement Grace # of Days"
+            isNumber={true}
+            disabled={isReadOnly ? true : !useStatementGracePeriodFlagValue}
+            validate={[
+              formErrorUtil.isRequired,
+              formErrorUtil.isInteger,
+              formErrorUtil.rangeValueMin1Max255,
+            ]}
+          />
+        </Box>
+        <Box width={[1]} p="8px" pb="10px">
+          <Field
+            id="useStatementGracePeriodFlag"
+            name="useStatementGracePeriodFlag"
+            component={CheckboxField}
+            label="Use Statement Grace Period"
             disabled={isReadOnly}
           />
         </Box>

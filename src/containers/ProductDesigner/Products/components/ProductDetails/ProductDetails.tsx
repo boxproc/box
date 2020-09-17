@@ -14,6 +14,7 @@ interface IProductDetails {
   isReadOnly?: boolean;
   isUpdating?: boolean;
   interestDistributionValue?: ISelectValue;
+  useStatementGracePeriodFlagValue: boolean;
 }
 
 const ProductDetails: React.FC<IProductDetails> = ({
@@ -21,6 +22,7 @@ const ProductDetails: React.FC<IProductDetails> = ({
   isReadOnly,
   isUpdating,
   interestDistributionValue,
+  useStatementGracePeriodFlagValue,
 }) => {
   const isLoan = React.useMemo(
     () => productType === productTypesConst.LOAN,
@@ -70,7 +72,10 @@ const ProductDetails: React.FC<IProductDetails> = ({
         <SavingsDetails isReadOnly={readOnly} />
       )}
       {isRevolvingCredit && (
-        <RevolvingCreditDetails isReadOnly={readOnly} />
+        <RevolvingCreditDetails
+          isReadOnly={readOnly}
+          useStatementGracePeriodFlagValue={useStatementGracePeriodFlagValue}
+        />
       )}
     </React.Fragment>
   );

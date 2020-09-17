@@ -104,6 +104,8 @@ export const rangeValueMin1Max7 = rangeValue(1, 7);
 
 export const rangeValueMin1Max250 = rangeValue(1, 250);
 
+export const rangeValueMin1Max255 = rangeValue(1, 255);
+
 export const passwordsMatch = (value: string, allValues: any) =>
   value !== allValues.password ? 'Passwords don\'t match' : undefined;
 
