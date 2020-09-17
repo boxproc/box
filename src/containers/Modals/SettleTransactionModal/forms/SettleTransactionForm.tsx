@@ -4,6 +4,8 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import {
+  Hr,
+  InputField,
   ISpinner,
   NumberFormatField,
   OkCancelButtons,
@@ -11,9 +13,7 @@ import {
 } from 'components';
 
 import { formNamesConst } from 'consts';
-
 import { THandleSettleTransaction } from 'store';
-
 import { formErrorUtil } from 'utils';
 
 interface ISettleTransactionForm extends ISpinner {
@@ -28,7 +28,6 @@ type TSettleTransactionForm = ISettleTransactionForm
 const SettleTransactionForm: React.FC<TSettleTransactionForm> = ({
   handleSubmit,
   isDisabled,
-  pristine,
   onCancel,
   settleTransaction,
   dirty,
@@ -41,7 +40,23 @@ const SettleTransactionForm: React.FC<TSettleTransactionForm> = ({
   return (
     <form onSubmit={handleSubmitForm}>
       <Flex alignItems="flex-end" mx="-8px">
-        <Box width="120px" p="8px">
+        <Box width={[1 / 2]} p="8px">
+          <Field
+            id="transactionId"
+            name="transactionId"
+            placeholder="Enter ID"
+            label="Transaction ID"
+            component={InputField}
+            isNumber={true}
+            disabled={true}
+            validate={[
+              formErrorUtil.isRequired,
+              formErrorUtil.isInteger,
+            ]}
+            autoFocus={true}
+          />
+        </Box>
+        <Box width={[1 / 2]} p="8px">
           <Field
             id="amountSettled"
             name="amountSettled"
@@ -59,14 +74,15 @@ const SettleTransactionForm: React.FC<TSettleTransactionForm> = ({
             ]}
           />
         </Box>
-        <Box p="8px" >
-          <OkCancelButtons
-            okText="Settle"
-            disabledOk={isDisabled || pristine}
-            onCancel={onCancel}
-            withCancelConfirmation={dirty}
-          />
-        </Box>
+      </Flex>
+      <Hr />
+      <Flex justifyContent="flex-end">
+        <OkCancelButtons
+          okText="Settle"
+          disabledOk={isDisabled}
+          onCancel={onCancel}
+          withCancelConfirmation={dirty}
+        />
       </Flex>
     </form>
   );

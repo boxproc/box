@@ -154,6 +154,7 @@ export const statementAprsMock: IStatementAprsData = {
       prev_stmnt_unpaid_principal: 0,
       repayment_date: '03/09/2020',
       repaid_flag: 'N',
+      interest_calc_start_date: null,
     },
     {
       accrued_interest: 134.2,
@@ -164,6 +165,7 @@ export const statementAprsMock: IStatementAprsData = {
       prev_stmnt_unpaid_principal: 0,
       repayment_date: '03/09/2020',
       repaid_flag: 'N',
+      interest_calc_start_date: null,
     },
     {
       accrued_interest: 54.23,
@@ -174,6 +176,7 @@ export const statementAprsMock: IStatementAprsData = {
       prev_stmnt_unpaid_principal: 0,
       repayment_date: '03/09/2020',
       repaid_flag: 'N',
+      interest_calc_start_date: null,
     },
   ],
 };

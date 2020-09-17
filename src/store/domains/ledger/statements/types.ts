@@ -143,6 +143,7 @@ export interface IStatementAprData {
   prev_stmnt_unpaid_principal: number;
   repayment_date: string;
   repaid_flag: string;
+  interest_calc_start_date: string;
 }
 
 export interface IStatementAprsData {
@@ -158,6 +159,7 @@ export interface IStatementApr {
   prevStmntUnpaidPrincipal: string;
   repaymentDate: string;
   repaidFlag: boolean;
+  interestCalcStartDate: string;
 }
 
 /**

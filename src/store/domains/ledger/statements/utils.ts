@@ -222,6 +222,7 @@ export const prepareStatementAprsToRender = (data: IStatementAprData): IStatemen
     prev_stmnt_unpaid_principal,
     repayment_date,
     repaid_flag,
+    interest_calc_start_date,
   } = data;
 
   return {
@@ -233,6 +234,7 @@ export const prepareStatementAprsToRender = (data: IStatementAprData): IStatemen
     prevStmntUnpaidPrincipal: stringsUtil.numberToFixed(prev_stmnt_unpaid_principal, 2),
     repaymentDate: repayment_date,
     repaidFlag: repaid_flag === yesNoConst.YES,
+    interestCalcStartDate: interest_calc_start_date,
   };
 };
 

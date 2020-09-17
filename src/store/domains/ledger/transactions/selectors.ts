@@ -84,10 +84,14 @@ export const isSettledTrSelector = createSelector(
       return false;
     }
 
-    const { status } = data;
+    const { status, transactionTypeId } = data;
 
-    return status === transactionStatusConst.SETTLED || status === transactionStatusOptions
-      .find(el => el.value === transactionStatusConst.SETTLED).label;
+    return status === transactionStatusConst.SETTLED
+      || status === transactionStatusOptions
+        .find(el => el.value === transactionStatusConst.SETTLED).label
+      || transactionTypeId === transactionTypesIdsConst.FEE
+      || transactionTypeId === transactionTypesIdsConst.REWARD
+      || transactionTypeId === transactionTypesIdsConst.LIMIT_ADJUSTMENT;
   });
 
 /**
@@ -144,6 +148,20 @@ export const isRetrievedTransactionSelector = createSelector(
     }
 
     return Boolean(data);
+  }
+);
+
+export const transactionForSettleSelector = createSelector(
+  currentTransactionSelector,
+  data => {
+    if (!data) {
+      return false;
+    }
+
+    return {
+      amountSettled: data.amount,
+      transactionId: data.id,
+    };
   }
 );
 

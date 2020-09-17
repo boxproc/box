@@ -37,9 +37,11 @@ export const executableTypeOptions = [
 export enum transactionTypesIdsConst {
   PURCHASE_CARD_PAYMENT = 1,
   CASH_WITHDRAWAL_ATM = 5,
-  BALANCE_TRANSFER_DEBIT = 55,
+  FEE = 9,
+  REWARD = 27,
   LIMIT_ADJUSTMENT = 14,
   DIRECT_DEBIT = 24,
+  BALANCE_TRANSFER_DEBIT = 55,
 }
 
 export const accountTypesOptions = [

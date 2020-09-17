@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { Hr, Modal } from 'components';
-import { SettleTransactionForm, TransactionRetrievingForm } from './forms';
+import { Modal } from 'components';
+import { SettleTransactionForm } from './forms';
 
 import { modalNamesConst, modalTypesConst, uiItemsConst } from 'consts';
 
@@ -10,62 +10,64 @@ import PageTitle from 'containers/PageTemplate/PageTitle';
 import { IWithModal, withModal } from 'HOCs';
 
 import {
+  // ISettleTrFormValues,
+  // THandleRetrieveTransaction,
   IPayloadSettleTransactionModal,
-  ISettleTrFormValues,
-  THandleRetrieveTransaction,
   THandleSettleTransaction,
   TResetRetrievedTransaction,
 } from 'store';
 
 interface ISettleTransactionModal extends IWithModal {
-  retrievedTransaction: ISettleTrFormValues;
-  retrieveTransaction: THandleRetrieveTransaction;
-  settleTransaction: THandleSettleTransaction;
-  resetRetrievedTransaction: TResetRetrievedTransaction;
-  isRetrieving: boolean;
-  isLoading: boolean;
-  isRetrievedTransaction: boolean;
+  // isRetrievedTransaction: boolean;
+  // isRetrieving: boolean;
+  // retrievedTransaction: ISettleTrFormValues;
+  // retrieveTransaction: THandleRetrieveTransaction;
   isDirtySettleTransactionForm: boolean;
+  isLoading: boolean;
   payloadSettleTransactionModal: IPayloadSettleTransactionModal;
+  resetRetrievedTransaction: TResetRetrievedTransaction;
+  settleTransaction: THandleSettleTransaction;
+  transactionForSettle: number;
 }
 
 const modalName = modalNamesConst.SETTLE_TRANSACTION;
 
 const SettleTransactionModal: React.FC<ISettleTransactionModal> = ({
-  retrievedTransaction,
-  retrieveTransaction,
-  resetRetrievedTransaction,
-  settleTransaction,
-  isLoading,
-  isRetrieving,
-  isRetrievedTransaction,
-  isDirtySettleTransactionForm,
+  // isRetrievedTransaction,
+  // isRetrieving,
+  // retrievedTransaction,
+  // retrieveTransaction,
   closeModal,
+  isDirtySettleTransactionForm,
+  isLoading,
   payloadSettleTransactionModal,
+  // resetRetrievedTransaction,
+  settleTransaction,
+  transactionForSettle,
 }) => {
-  React.useEffect(
-    () => {
-      return () => resetRetrievedTransaction();
-    },
-    [resetRetrievedTransaction]
-  );
+  // React.useEffect(
+  //   () => {
+  //     return () => resetRetrievedTransaction();
+  //   },
+  //   [resetRetrievedTransaction]
+  // );
 
   const transactionId = React.useMemo(
     () => payloadSettleTransactionModal && payloadSettleTransactionModal.transactionId,
     [payloadSettleTransactionModal]
   );
 
-  const initialRetrievingFormValues = React.useMemo(
-    () => {
-      return { id: transactionId };
-    },
-    [transactionId]
-  );
+  // const initialRetrievingFormValues = React.useMemo(
+  //   () => {
+  //     return { id: transactionId };
+  //   },
+  //   [transactionId]
+  // );
 
-  const isReadonlyId = React.useMemo(
-    () => Boolean(transactionId),
-    [transactionId]
-  );
+  // const isReadonlyId = React.useMemo(
+  //   () => Boolean(transactionId),
+  //   [transactionId]
+  // );
 
   const handleCloseModal = React.useCallback(
     () => {
@@ -87,7 +89,7 @@ const SettleTransactionModal: React.FC<ISettleTransactionModal> = ({
         title="Settle Transaction"
         pageId={uiItemsConst.SETTLE_TRANSACTION}
       />
-      <TransactionRetrievingForm
+      {/* <TransactionRetrievingForm
         isRetrieving={isRetrieving}
         isRetrieved={isRetrievedTransaction}
         retrieveTransaction={retrieveTransaction}
@@ -97,16 +99,17 @@ const SettleTransactionModal: React.FC<ISettleTransactionModal> = ({
       />
       {isRetrievedTransaction && (
         <React.Fragment>
-          <Hr />
+          <Hr /> */}
           <SettleTransactionForm
             isLoading={isLoading}
-            isDisabled={isLoading || isRetrieving}
-            initialValues={retrievedTransaction}
+            isDisabled={isLoading}
+            // isDisabled={isLoading || isRetrieving}
+            initialValues={transactionForSettle}
             onCancel={handleCloseModal}
             settleTransaction={settleTransaction}
           />
-        </React.Fragment>
-      )}
+        {/* </React.Fragment>
+      )} */}
     </Modal>
   );
 };

@@ -84,6 +84,18 @@ const StatementAprsTable: React.FC<IStatementAprsTable> = ({
       },
       {
         maxWidth: 100,
+        Header: <TableHeader title="Interest Calc Start Date" />,
+        accessor: 'interestCalcStartDate',
+        Cell: (props: TCell<'interestCalcStartDate'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+            isDate={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 100,
         Header: <TableHeader title="Repayment Date" />,
         accessor: 'repaymentDate',
         Cell: (props: TCell<'repaymentDate'>) => (

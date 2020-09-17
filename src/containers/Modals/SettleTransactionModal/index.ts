@@ -7,33 +7,35 @@ import SettleTransaction from './SettleTransaction';
 import { formNamesConst } from 'consts';
 
 import {
-  handleRetrieveTransaction,
+  // handleRetrieveTransaction,
+  // isRetrievedTransactionSelector,
+  // isRetrievingTrLoadingSelector,
+  // retrievedTransactionSelector,
   handleSettleTransaction,
-  isRetrievedTransactionSelector,
-  isRetrievingTrLoadingSelector,
   isSettlingTrLoadingSelector,
   IStoreState,
   payloadSettleTrModalSelector,
-  resetRetrievedTransaction,
-  retrievedTransactionSelector,
+  // resetRetrievedTransaction,
+  transactionForSettleSelector,
 } from 'store';
 
 const dirtySettleTransactionForm = isDirty(formNamesConst.SETTLE_TRANSACTION_FORM);
 
 const mapStateToProps = (state: IStoreState) => ({
-  isRetrieving: isRetrievingTrLoadingSelector(state),
-  isLoading: isSettlingTrLoadingSelector(state),
-  isRetrievedTransaction: isRetrievedTransactionSelector(state),
+  // isRetrievedTransaction: isRetrievedTransactionSelector(state),
+  // isRetrieving: isRetrievingTrLoadingSelector(state),
+  // retrievedTransaction: retrievedTransactionSelector(state),
   isDirtySettleTransactionForm: dirtySettleTransactionForm(state),
-  retrievedTransaction: retrievedTransactionSelector(state),
+  isLoading: isSettlingTrLoadingSelector(state),
   payloadSettleTransactionModal: payloadSettleTrModalSelector(state),
+  transactionForSettle: transactionForSettleSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
-    retrieveTransaction: handleRetrieveTransaction,
+    // retrieveTransaction: handleRetrieveTransaction,
     settleTransaction: handleSettleTransaction,
-    resetRetrievedTransaction,
+    // resetRetrievedTransaction,
   },
   dispatch
 );
