@@ -9,6 +9,7 @@ import styled from 'theme';
 import {
   Button,
   EditableTableCell,
+  renderCheckBoxTableCell,
   Table,
   TableCell,
   TableHeader,
@@ -154,7 +155,7 @@ const AprsTable: React.FC<IAprsTable> = ({
         ),
       },
       {
-        maxWidth: 170,
+        maxWidth: 150,
         accessor: 'calculationMethod',
         Header: <TableHeader title="Calculation Method" />,
         Cell: (props: TCell<'calculationMethod'>) => (
@@ -165,7 +166,7 @@ const AprsTable: React.FC<IAprsTable> = ({
         ),
       },
       {
-        maxWidth: 80,
+        maxWidth: 70,
         accessor: 'rate',
         Header: <TableHeader title="Rate %" />,
         Cell: (cellInfo: CellInfo) => (
@@ -179,7 +180,7 @@ const AprsTable: React.FC<IAprsTable> = ({
         ),
       },
       {
-        maxWidth: 100,
+        maxWidth: 90,
         accessor: 'initialInterestFreeDays',
         Header: <TableHeader title="Initial Interest Free Days" />,
         Cell: (props: TCell<'initialInterestFreeDays'>) => (
@@ -189,6 +190,12 @@ const AprsTable: React.FC<IAprsTable> = ({
             isNumber={true}
           />
         ),
+      },
+      {
+        maxWidth: 90,
+        Header: <TableHeader title="Always Charge Interest" />,
+        accessor: 'alwaysChargeInterest',
+        Cell: renderCheckBoxTableCell(),
       },
       {
         maxWidth: 65,

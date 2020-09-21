@@ -2,6 +2,7 @@ import {
   aprTypesOptions,
   feeTypesOptions,
   rewardsTypesOptions,
+  yesNoConst,
 } from 'consts';
 
 import {
@@ -34,6 +35,7 @@ export const prepareProductAprsToRender = (data: IProductAprData): IProductApr =
     rate,
     initial_interest_free_days,
     repayment_priority,
+    always_charge_interest,
   } = data;
 
   const calculationMethod = aprTypesOptions.find(el => el.value === calculation_method);
@@ -46,6 +48,7 @@ export const prepareProductAprsToRender = (data: IProductAprData): IProductApr =
     rate: stringsUtil.numberToFixed(rate, 2),
     initialInterestFreeDays: initial_interest_free_days,
     repaymentPriority: repayment_priority,
+    alwaysChargeInterest: always_charge_interest === yesNoConst.YES,
   };
 };
 
@@ -60,6 +63,7 @@ export const prepareProductAprs = (data: Partial<IProductAprPlain>): Partial<IPr
     description,
     rate,
     initialInterestFreeDays,
+    alwaysChargeInterest,
   } = data;
 
   return {
@@ -68,6 +72,7 @@ export const prepareProductAprs = (data: Partial<IProductAprPlain>): Partial<IPr
     description,
     rate: stringsUtil.toNumber(rate),
     initial_interest_free_days: stringsUtil.toNumber(initialInterestFreeDays),
+    always_charge_interest: alwaysChargeInterest ? yesNoConst.YES : yesNoConst.NO,
   };
 };
 

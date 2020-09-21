@@ -45,7 +45,7 @@ const EditProductModal: React.FC<IEditProductModal> = ({
   );
 
   const modalTitle = React.useMemo(
-    () => isProductOverride ? `Product override${productName}` : `Edit product${productName}`,
+    () => isProductOverride ? `Product override${productName}` : `Product${productName}`,
     [isProductOverride, productName]
   );
 

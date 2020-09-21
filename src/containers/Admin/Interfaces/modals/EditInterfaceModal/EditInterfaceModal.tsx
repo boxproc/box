@@ -29,7 +29,7 @@ const EditAccountModal: React.FC<IEditInterfaceModal> = ({
   );
 
   const modalTitle = React.useMemo(
-    () => `Edit Interface${interfaceName}`,
+    () => `Interface${interfaceName}`,
     [interfaceName]
   );
 

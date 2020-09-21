@@ -25,7 +25,7 @@ const EditSystemPropertyModal: React.FC<IEditSystemPropertyModal> = ({
   return (
     <Modal
       name={modalName}
-      title="Edit System Property"
+      title="System Property"
       containerWidth="600px"
       type={modalTypesConst.VIEWING}
       withCloseConfirmation={isFormDirty}

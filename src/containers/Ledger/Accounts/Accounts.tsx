@@ -119,7 +119,7 @@ const Accounts: React.FC<IAccounts> = ({
   const contextMenuItems = React.useMemo(
     () => [
       {
-        name: hasProductOverride ? 'Edit product override' : 'Add product override',
+        name: hasProductOverride ? 'Product override' : 'Add product override',
         icon: hasProductOverride ? iconNamesConst.EDIT : iconNamesConst.PLUS,
         isDisabled: isReadOnly,
         action: handleEditOverride,

@@ -14,6 +14,7 @@ export interface IProductAprData {
   rate: number;
   initial_interest_free_days: number;
   repayment_priority: number;
+  always_charge_interest: string;
 }
 
 export interface IProductAprsData {
@@ -30,6 +31,7 @@ export interface IProductAprPlain extends IProductAprIds {
   rate: string;
   initialInterestFreeDays: number;
   repaymentPriority: number;
+  alwaysChargeInterest: boolean;
 }
 
 export interface IProductApr extends IProductAprPlain {

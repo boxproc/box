@@ -3,7 +3,6 @@ import { createSelector } from 'reselect';
 import {
   debitCreditIndicatorConst,
   transactionStatusConst,
-  transactionStatusOptions,
   transactionTypesIdsConst,
 } from 'consts';
 
@@ -87,8 +86,8 @@ export const isSettledTrSelector = createSelector(
     const { status, transactionTypeId } = data;
 
     return status === transactionStatusConst.SETTLED
-      || status === transactionStatusOptions
-        .find(el => el.value === transactionStatusConst.SETTLED).label
+      || status === transactionStatusConst.INVALID
+      || status === transactionStatusConst.REVERSED
       || transactionTypeId === transactionTypesIdsConst.FEE
       || transactionTypeId === transactionTypesIdsConst.REWARD
       || transactionTypeId === transactionTypesIdsConst.LIMIT_ADJUSTMENT;

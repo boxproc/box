@@ -27,7 +27,7 @@ const EditEndpointModal: React.FC<IEditEndpointModal> = ({
     () => {
       const endpointName = currentEndpointName ? `: "${currentEndpointName}"` : '';
 
-      return `Edit Endpoint${endpointName}`;
+      return `Endpoint${endpointName}`;
     },
     [currentEndpointName]
   );

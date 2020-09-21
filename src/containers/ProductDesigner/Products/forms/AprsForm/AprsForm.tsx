@@ -3,7 +3,7 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, InputField, NumberFormatField, SelectField } from 'components';
+import { Button, CheckboxField, InputField, NumberFormatField, SelectField } from 'components';
 import {
   aprTypesOptions,
   formNamesConst,
@@ -100,6 +100,15 @@ const AprsForm: React.FC<TAprsForm> = ({
             iconName={iconNamesConst.PLUS}
             classNames={['is-bordered']}
             disabled={pristine}
+          />
+        </Box>
+        <Box width={[1]} p="8px">
+          <Field
+            id="alwaysChargeInterest"
+            name="alwaysChargeInterest"
+            component={CheckboxField}
+            label="Always Charge Interest"
+            disabled={isLoading}
           />
         </Box>
       </Flex>

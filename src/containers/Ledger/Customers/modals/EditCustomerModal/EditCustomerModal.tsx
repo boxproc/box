@@ -53,7 +53,7 @@ const EditCustomerModal: React.FC<IEditCustomerModal> = ({
     <Modal
       name={modalName}
       type={modalTypesConst.VIEWING}
-      title={`Edit Customer: ${currentCustomerName}`}
+      title={`Customer: ${currentCustomerName}`}
       containerWidth="1010px"
       minContainerHeight="570px"
       withCloseConfirmation={isFormDirty}

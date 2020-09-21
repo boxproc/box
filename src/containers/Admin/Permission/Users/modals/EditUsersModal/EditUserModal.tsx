@@ -27,7 +27,7 @@ const EditUserModal: React.FC<IEditUserModal> = ({
     () => {
       const username = currentUsername ? `: "${currentUsername}"` : '';
 
-      return `Edit User${username}`;
+      return `User${username}`;
     },
     [currentUsername]
   );
