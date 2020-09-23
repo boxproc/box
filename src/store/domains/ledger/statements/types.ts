@@ -121,7 +121,7 @@ export interface IStatementTransaction {
   id: number;
   originalCurrency: string;
   status: string;
-  transactionDatetime: number | string;
+  transactionDatetime: string;
 }
 
 export interface IStatementTransReq {

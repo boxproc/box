@@ -4,13 +4,12 @@ import 'jspdf-autotable';
 import { theme } from 'theme';
 
 import { logoData } from 'resources/images';
-import { dateUtil, formErrorUtil, storageUtil } from 'utils';
+import { dateUtil, storageUtil } from 'utils';
 
 const formatKey = (key: string) =>
   key.replace(/([A-Z])/g, ' $1')
     .toLocaleLowerCase()
     .replace(/^./, str => str.toUpperCase())
-    .replace(/id|Id/g, 'ID')
     .replace(/Institution ID/, 'Institution');
 
 const formatValue = (value: string) => (value === null || value === undefined) ? '-' : value;
@@ -19,7 +18,6 @@ export const downloadStatementPDF = (data: {
   fileName: string,
   statement: Array<object>;
   tables: Array<{
-    id: string;
     title: string;
     items: Array<object>;
   }>,
@@ -85,8 +83,8 @@ export const downloadStatementPDF = (data: {
   if (statement) {
     statement.forEach((item, i) => {
       const isSecondColumn = i === 1;
-      const leftSpaceKey = isSecondColumn ? 290 : 30;
-      const leftSpaceValue = isSecondColumn ? 433 : 132;
+      const leftSpaceKey = isSecondColumn ? 270 : 30;
+      const leftSpaceValue = isSecondColumn ? 373 : 173;
       const topSpace = 97;
 
       doc.setFontSize(9);
@@ -106,17 +104,16 @@ export const downloadStatementPDF = (data: {
    * Tables
    */
   tables.forEach((table, i) => {
-    const { id, title, items } = table;
+    const { title, items } = table;
 
     const isFirstTable = i === 0;
-    const isTransactions = id === 'transactions';
 
     if (items && items.length) {
       const tableHead = Object.keys(items[0]).map(key => formatKey(formatValue(key)));
 
       const tableBody = items.map(item => Object.values(item));
 
-      const startY = () => isFirstTable ? 320 : doc.previousAutoTable.finalY + 35;
+      const startY = () => isFirstTable ? 340 : doc.previousAutoTable.finalY + 35;
 
       const tableContent = {
         head: [tableHead],
@@ -132,7 +129,6 @@ export const downloadStatementPDF = (data: {
         headStyles: {
           fontStyle: 'normal',
           fillColor: theme.colors.lightGray,
-          cellWidth: !isTransactions && 100,
           textColor: theme.colors.black,
         },
         alternateRowStyles: {
@@ -143,7 +139,6 @@ export const downloadStatementPDF = (data: {
           const isBody = tableData.section === 'body';
           const value = isBody && tableData.cell.raw;
           const isNumber = !isNaN(value);
-          const isNotDate = formErrorUtil.isDateTime(value);
           const styles = tableData.cell.styles;
 
           if (isBody && isNumber) {
@@ -152,10 +147,6 @@ export const downloadStatementPDF = (data: {
             styles.halign = 'center';
           } else {
             styles.halign = 'left';
-          }
-
-          if (!isNotDate) {
-            styles.textColor = theme.colors.darkGray;
           }
         },
       };
@@ -167,7 +158,7 @@ export const downloadStatementPDF = (data: {
         doc.setTextColor(theme.colors.darkGray);
         doc.text(
           30,
-          310,
+          330,
           title
         );
       }

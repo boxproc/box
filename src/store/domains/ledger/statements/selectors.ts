@@ -166,7 +166,7 @@ export const currentStatementForReportSelector = createSelector(
       };
     }
 
-    return [account, clonedStatement];
+    return [clonedStatement, account];
   }
 );
 

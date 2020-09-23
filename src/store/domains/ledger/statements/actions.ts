@@ -266,17 +266,14 @@ export const handleDownloadStatement: THandleDownloadStatement = () =>
             statement: currentStatementForReportSelector(state),
             tables: [
               {
-                id: 'transactions',
                 title: 'Pending transactions',
                 items: prepareStatementTransactionsForReport(pendingTransactions),
               },
               {
-                id: 'transactions',
                 title: 'Transactions',
                 items: prepareStatementTransactionsForReport(transactions),
               },
               {
-                id: 'accruedInterest',
                 title: 'Accrued interest',
                 items: prepareStatementAprsForReport(aprs),
               },

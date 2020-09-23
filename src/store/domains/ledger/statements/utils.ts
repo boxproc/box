@@ -61,6 +61,7 @@ export const prepareStatementToRender = (
       accountId: account_id,
       accountAlias: account_alias,
       accountAliasAdditional: account_alias_additional,
+      productName: product_name,
       firstName: first_name,
       lastName: last_name,
       institutionId: institution && institution.label,
@@ -78,7 +79,6 @@ export const prepareStatementToRender = (
       startDate: start_date,
       endDate: end_date,
       repaymentDate: repayment_date,
-      productName: product_name,
       firstTransactionId: first_transaction_id,
       lastTransactionId: last_transaction_id,
       balanceOpen: stringsUtil.numberToFixed(balance_open, 2),
@@ -273,12 +273,24 @@ export const prepareStatementAprsForReport = (data: Array<IStatementAprData>) =>
   if (data && data.length) {
     return data.map(el => {
 
-      const { description, rate, accrued_interest } = el;
+      const {
+        description,
+        rate,
+        accrued_interest,
+        prev_stmnt_unpaid_principal,
+        interest_calc_start_date,
+        repayment_date,
+        repaid_flag,
+      } = el;
 
       return {
         description,
         rate,
         accruedInterest: stringsUtil.numberToFixed(accrued_interest, 5),
+        previousStatementUnpaidPrincipal: stringsUtil.numberToFixed(prev_stmnt_unpaid_principal, 2),
+        interestCalcStartDate: interest_calc_start_date,
+        repaymentDate: repayment_date,
+        repaid: repaid_flag === yesNoConst.YES ? 'Yes' : 'No',
       };
 
     });
@@ -287,6 +299,10 @@ export const prepareStatementAprsForReport = (data: Array<IStatementAprData>) =>
       description: null,
       rate: null,
       accruedInterest: null,
+      previousStatementUnpaidPrincipal: null,
+      interestCalcStartDate: null,
+      repaymentDate: null,
+      repaid: null,
     }];
   }
 };
