@@ -19,10 +19,10 @@ interface ISelectState {
 
 const getStatusColor = (data: ISelectValue) => {
   if (data.label === 'Suspended'
-    || data.value === statusConst.DELETED
-    || data.value === statusConst.INACTIVE
-    || data.value === statusConst.CLOSED
-    || data.value === statusConst.LOCKED) {
+    || data.label === 'Deleted'
+    || data.label === 'Inactive'
+    || data.label === 'Closed'
+    || data.label === 'Locked') {
     return theme.colors.red;
   } else if (data.value === statusConst.EXECUTION_PENDING) {
     return theme.colors.normalAccent;
