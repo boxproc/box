@@ -1,7 +1,9 @@
+import { statusConst } from 'consts';
 import { Props } from 'react-select/src/Select';
 import { StylesConfig } from 'react-select/src/styles';
 
 import { theme } from 'theme';
+import { ISelectValue } from 'types';
 
 interface ICustomSelect extends Props {
   invalid?: boolean;
@@ -11,8 +13,23 @@ interface ICustomSelect extends Props {
 interface ISelectState {
   isDisabled: boolean;
   isFocused: boolean;
+  data: ISelectValue;
   selectProps: ICustomSelect;
 }
+
+const getStatusColor = (data: ISelectValue) => {
+  if (data.label === 'Suspended'
+    || data.value === statusConst.DELETED
+    || data.value === statusConst.INACTIVE
+    || data.value === statusConst.CLOSED
+    || data.value === statusConst.LOCKED) {
+    return theme.colors.red;
+  } else if (data.value === statusConst.EXECUTION_PENDING) {
+    return theme.colors.normalAccent;
+  } else {
+    return theme.colors.black;
+  }
+};
 
 export const customStyles: StylesConfig = {
   indicatorsContainer: (provided: React.CSSProperties) => ({
@@ -122,13 +139,16 @@ export const customStyles: StylesConfig = {
         isCustomSingleValue,
         isEditableCellStyle,
       },
+      data,
     } = state;
+
+    console.log('---state', state);
 
     return ({
       ...provided,
       fontSize: isEditableCellStyle ? '12px' : '13px',
       lineHeight: '15px',
-      color: theme.colors.black,
+      color: getStatusColor(data),
       fontWeight: isCustomSingleValue ? 500 : 'inherit',
     });
   },
