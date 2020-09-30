@@ -14,7 +14,6 @@ import {
 import {
   Aprs,
   Fees,
-  RepaymentHierarchyTable,
   Rewards,
 } from 'containers/ProductDesigner/Products/components';
 
@@ -137,11 +136,6 @@ const EditProductForms: React.FC<IEditProductForms> = ({
             onCancel={onCancel}
             isReadOnly={true}
           />
-        </TabsPanel>
-      )}
-      {isRevolvingCreditType && (
-        <TabsPanel title="Repayment Hierarchy">
-          <RepaymentHierarchyTable />
         </TabsPanel>
       )}
       <TabsPanel

@@ -7,7 +7,6 @@ export { default as ProductAuxiliaryCounters } from './ProductAuxiliaryCounters'
 export { default as ProductDetails } from './ProductDetails';
 export { default as ProductGeneralInfo } from './ProductGeneralInfo';
 export { default as ProductRules } from './ProductRules';
-export { default as RepaymentHierarchyTable } from './RepaymentHierarchyTable';
 export { default as Rewards } from './Rewards';
 export { default as RewardsTable } from './RewardsTable';
 export { default as Services } from './ProductServices';

@@ -79,22 +79,6 @@ export const customerStatusOptions = [
 ];
 
 /**
- * Hierarchy element statuses
- */
-
-export enum hierarchyElemsStatusConst {
-  CURRENT = 'C',
-  PREVIOUS = 'P',
-  OUTSTANDING = 'O',
-}
-
-export const hierarchyElemsStatusOptions = [
-  { value: hierarchyElemsStatusConst.CURRENT, label: 'Current' },
-  { value: hierarchyElemsStatusConst.PREVIOUS, label: 'Previous' },
-  { value: hierarchyElemsStatusConst.OUTSTANDING, label: 'Outstanding' },
-];
-
-/**
  * Repayment statuses
  */
 
