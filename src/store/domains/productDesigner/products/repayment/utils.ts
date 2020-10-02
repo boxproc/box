@@ -7,14 +7,14 @@ export const prepareDataToRender = (data: Partial<IProductRepaymentData>) => {
 
   const {
     id,
-    repayment_clearing_nr_days,
+    number_of_days_to_make_repayment,
     direct_debit_submission_nr_days,
     repayment_date_calc_nr_days,
   } = data;
 
   return {
     productId: id,
-    repaymentClearingNrDays: repayment_clearing_nr_days || 2,
+    numberOfDaysToMakeRepayment: number_of_days_to_make_repayment || 2,
     directDebitSubmissionNrDays: direct_debit_submission_nr_days || 5,
     repaymentDateCalcNrDays: repayment_date_calc_nr_days || 6,
   };
@@ -26,7 +26,7 @@ export const prepareDataToSend = (data: Partial<IProductRepayment>) => {
   }
 
   const {
-    repaymentClearingNrDays,
+    numberOfDaysToMakeRepayment,
     directDebitSubmissionNrDays,
     repaymentDateCalcNrDays,
     productId,
@@ -34,7 +34,7 @@ export const prepareDataToSend = (data: Partial<IProductRepayment>) => {
 
   return {
     product_id: productId,
-    repayment_clearing_nr_days: repaymentClearingNrDays,
+    number_of_days_to_make_repayment: numberOfDaysToMakeRepayment,
     direct_debit_submission_nr_days: directDebitSubmissionNrDays,
     repayment_date_calc_nr_days: repaymentDateCalcNrDays,
   };

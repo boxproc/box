@@ -178,7 +178,7 @@ export const prepareRevolvingCreditToRender = (data: IRevCreditProductData) => {
     limit_sharing_allowed_flag,
     minimum_repayment_amount,
     minimum_repayment_rate,
-    statement_grace_nr_days,
+    statement_initial_interest_free_days,
   } = data;
 
   return {
@@ -186,8 +186,8 @@ export const prepareRevolvingCreditToRender = (data: IRevCreditProductData) => {
     limitSharingAllowedFlag: limit_sharing_allowed_flag === yesNoConst.YES,
     minimumRepaymentAmount: minimum_repayment_amount,
     minimumRepaymentRate: minimum_repayment_rate,
-    statementGraceNrDays: statement_grace_nr_days,
-    useStatementGracePeriodFlag: statement_grace_nr_days ? true : false,
+    statementInitialInterestFreeDays: statement_initial_interest_free_days,
+    useStatementGracePeriodFlag: statement_initial_interest_free_days ? true : false,
   };
 };
 
@@ -201,7 +201,7 @@ export const prepareRevolvingCreditToSend = (data: IRevCreditProduct) => {
     limitSharingAllowedFlag,
     minimumRepaymentAmount,
     minimumRepaymentRate,
-    statementGraceNrDays,
+    statementInitialInterestFreeDays,
     useStatementGracePeriodFlag,
   } = data;
 
@@ -211,8 +211,8 @@ export const prepareRevolvingCreditToSend = (data: IRevCreditProduct) => {
       limitSharingAllowedFlag === true ? yesNoConst.YES : yesNoConst.NO,
     minimum_repayment_amount: stringsUtil.toNumber(minimumRepaymentAmount),
     minimum_repayment_rate: stringsUtil.toNumber(minimumRepaymentRate),
-    statement_grace_nr_days: useStatementGracePeriodFlag
-      ? stringsUtil.toNumber(statementGraceNrDays)
+    statement_initial_interest_free_days: useStatementGracePeriodFlag
+      ? stringsUtil.toNumber(statementInitialInterestFreeDays)
       : null,
   };
 };

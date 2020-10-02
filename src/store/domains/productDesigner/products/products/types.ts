@@ -46,7 +46,7 @@ export interface IProductData extends IProductPlainData {
   statement_cycle_type_id: number | string;
   statement_cycle_type_name?: string;
   statement_cycle_parameter: number;
-  repayment_clearing_nr_days?: number;
+  number_of_days_to_make_repayment?: number;
   direct_debit_submission_nr_days?: number;
 }
 
@@ -107,7 +107,7 @@ export interface IRevCreditProductData {
   limit_sharing_allowed_flag: string;
   minimum_repayment_amount: number;
   minimum_repayment_rate: number;
-  statement_grace_nr_days: number;
+  statement_initial_interest_free_days: number;
 }
 
 export interface IRevCreditProductDataResp {
@@ -119,7 +119,7 @@ export interface IRevCreditProduct {
   limitSharingAllowedFlag: boolean;
   minimumRepaymentAmount: number;
   minimumRepaymentRate: number;
-  statementGraceNrDays: number;
+  statementInitialInterestFreeDays: number;
   useStatementGracePeriodFlag: boolean;
 }
 

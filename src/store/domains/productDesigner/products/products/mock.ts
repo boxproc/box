@@ -33,7 +33,7 @@ export const productsMock: IProductDataResp = {
     statement_cycle_type_id: 1,
     statement_cycle_type_name: 'Test cycle',
     statement_cycle_parameter: 1,
-    repayment_clearing_nr_days: 5,
+    number_of_days_to_make_repayment: 5,
     direct_debit_submission_nr_days: 3,
   },
 };
@@ -66,7 +66,7 @@ export const productsFilteredMock: IProductsDataResp = {
       statement_cycle_type_id: 1,
       statement_cycle_type_name: 'Test cycle',
       statement_cycle_parameter: 1,
-      repayment_clearing_nr_days: 6,
+      number_of_days_to_make_repayment: 6,
       direct_debit_submission_nr_days: 4,
     },
     {
@@ -95,7 +95,7 @@ export const productsFilteredMock: IProductsDataResp = {
       statement_cycle_type_id: 1,
       statement_cycle_type_name: 'Test cycle',
       statement_cycle_parameter: 1,
-      repayment_clearing_nr_days: 7,
+      number_of_days_to_make_repayment: 7,
       direct_debit_submission_nr_days: 5,
     },
   ],
@@ -107,7 +107,7 @@ export const productDetailsMock: IProductDetailsDataResp = {
     limit_sharing_allowed_flag: 'N',
     minimum_repayment_amount: 15,
     minimum_repayment_rate: 5,
-    statement_grace_nr_days: 30,
+    statement_initial_interest_free_days: 30,
   },
 };
 

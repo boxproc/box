@@ -96,9 +96,8 @@ export enum repaymentStatusConst {
 export const repaymentStatusOptions = [
   { value: repaymentStatusConst.REPAYMENT_DUE, label: 'Repayment due' },
   { value: repaymentStatusConst.REPAYMENT_OVERDUE, label: 'Repayment overdue' },
-  { value: repaymentStatusConst.PARTIAL_REPAYMENT, label: 'Partial repayment' },
+  { value: repaymentStatusConst.PARTIAL_REPAYMENT, label: 'Not repaid in full' },
   { value: repaymentStatusConst.LATE_PAYMENT_RECEIVED, label: 'Late payment received' },
-  { value: repaymentStatusConst.MINIMUM_REPAID, label: 'Minimum repaid' },
   { value: repaymentStatusConst.REPAID_IN_FULL, label: 'Repaid in full' },
   { value: repaymentStatusConst.OVERPAID, label: 'Overpaid' },
   { value: repaymentStatusConst.UNKNOWN, label: 'Unknown' },

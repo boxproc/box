@@ -34,15 +34,14 @@ const ProductRepaymentForm: React.FC<TProductRepaymentForm> = ({
       <Flex alignItems="flex-end" mx="-8px">
         <Box width="195px" p="8px">
           <Field
-            id="repaymentClearingNrDays"
-            name="repaymentClearingNrDays"
+            id="numberOfDaysToMakeRepayment"
+            name="numberOfDaysToMakeRepayment"
             placeholder="Enter #"
             component={InputField}
-            label="Repayment Clearing Window # of Days"
+            label="Number of Days to Make Repayment"
             isNumber={true}
             disabled={isReadOnly}
-            hint="The number of days after the expected repayment date provided for
-             a repayment to clear before penalties apply."
+            hint="Number of days since the end of cycle allowed to take repayment."
             hintPosition="right"
             validate={[
               formErrorUtil.isRequired,
@@ -56,7 +55,7 @@ const ProductRepaymentForm: React.FC<TProductRepaymentForm> = ({
             name="directDebitSubmissionNrDays"
             placeholder="Enter #"
             component={InputField}
-            label="Direct Debit Submission Window # of Days"
+            label="Direct Debit Submission Window Number of Days"
             isNumber={true}
             disabled={isReadOnly}
             hint="The number of days prior to the expected repayment date that a Direct
@@ -75,7 +74,7 @@ const ProductRepaymentForm: React.FC<TProductRepaymentForm> = ({
             name="repaymentDateCalcNrDays"
             placeholder="Enter #"
             component={InputField}
-            label="Repayment Date Calculation # of Days"
+            label="Repayment Date Calculation Number of Days"
             isNumber={true}
             disabled={isReadOnly}
             validate={[

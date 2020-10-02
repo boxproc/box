@@ -67,11 +67,11 @@ const RevolvingCreditDetails: React.FC<IRevolvingCreditDetails> = ({
         <Hr />
         <Box width="150px" p="8px">
           <Field
-            id="statementGraceNrDays"
-            name="statementGraceNrDays"
+            id="statementInitialInterestFreeDays"
+            name="statementInitialInterestFreeDays"
             placeholder="Enter # of Days"
             component={InputField}
-            label="Statement Grace # of Days"
+            label="Statement Initial Interest Free Days"
             isNumber={true}
             disabled={isReadOnly ? true : !useStatementGracePeriodFlagValue}
             validate={[
