@@ -142,8 +142,6 @@ export const customStyles: StylesConfig = {
       data,
     } = state;
 
-    console.log('---state', state);
-
     return ({
       ...provided,
       fontSize: isEditableCellStyle ? '12px' : '13px',

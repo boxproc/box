@@ -80,7 +80,7 @@ export const prepareDataToSend = (data: Partial<IAccountDetails>) => {
     auxCounter2,
     auxCounter3,
     amountOverdue,
-    numberOfTimeOverdueCycles,
+    numberOfTimesOverdueCycles,
     statementCycleRepaymentDay,
     directDebitMandateId,
   } = data;
@@ -113,7 +113,7 @@ export const prepareDataToSend = (data: Partial<IAccountDetails>) => {
     aux_counter_2: stringsUtil.toNumber(auxCounter2),
     aux_counter_3: stringsUtil.toNumber(auxCounter3),
     amount_overdue: stringsUtil.toNumber(amountOverdue),
-    number_of_time_overdue_cycles: stringsUtil.toNumber(numberOfTimeOverdueCycles),
+    number_of_times_overdue_cycles: stringsUtil.toNumber(numberOfTimesOverdueCycles),
     statement_cycle_repayment_day: stringsUtil.toNumber(statementCycleRepaymentDay),
     direct_debit_mandate_id: directDebitMandateId ? directDebitMandateId.value : null,
   };
@@ -160,7 +160,7 @@ export const prepareDataToRender = (data: Partial<IAccountData>, institution?: I
     aux_counter_3_enabled,
     amount_overdue,
     total_overdue_amount,
-    number_of_time_overdue_cycles,
+    number_of_times_overdue_cycles,
     currency_code,
     currency_numeric_code,
     statement_cycle_repayment_day,
@@ -214,7 +214,7 @@ export const prepareDataToRender = (data: Partial<IAccountData>, institution?: I
     auxCounter3Enabled: aux_counter_3_enabled === yesNoConst.YES,
     amountOverdue: stringsUtil.numberToFixed(amount_overdue, 2),
     totalOverdueAmount: stringsUtil.numberToFixed(total_overdue_amount, 2),
-    numberOfTimeOverdueCycles: number_of_time_overdue_cycles,
+    numberOfTimesOverdueCycles: number_of_times_overdue_cycles,
     statementCycleRepaymentDay: statement_cycle_repayment_day,
   };
 };

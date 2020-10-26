@@ -11,7 +11,7 @@ export const accountInitialFormValues = {
   auxCounter2: '0.00',
   auxCounter3: '0.00',
   amountOverdue: '0.00',
-  numberOfTimeOverdueCycles: '0',
+  numberOfTimesOverdueCycles: '0',
   loanStartDate: dateUtil.todayDate(),
   numOfInstallments: 0,
   numOfInterestFreeInstllmnts: 0,

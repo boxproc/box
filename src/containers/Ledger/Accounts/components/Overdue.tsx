@@ -45,8 +45,8 @@ const Overdue: React.FC<IOverdue> = ({
           </Box>
           <Box width="150px" p="8px">
             <Field
-              id="numberOfTimeOverdueCycles"
-              name="numberOfTimeOverdueCycles"
+              id="numberOfTimesOverdueCycles"
+              name="numberOfTimesOverdueCycles"
               component={InputField}
               label="Number of Times Overdue Cycles"
               placeholder="0"
