@@ -34,6 +34,7 @@ export interface IStatementData {
   end_date: string;
   statement_date: string;
   repayment_date: string;
+  sequence_number: number;
 }
 
 export interface IStatementsData {
@@ -68,6 +69,7 @@ export interface IStatement {
   endDate: string;
   statementDate: string;
   repaymentDate: string;
+  sequenceNumber: number;
 }
 
 export interface IChangeMinimumAmountRequest {

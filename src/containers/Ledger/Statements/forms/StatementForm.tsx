@@ -61,6 +61,16 @@ const StatementForm: React.FC<TStatementForm> = ({
               </Box>
               <Box width="120px" p="8px">
                 <Field
+                  id="sequenceNumber"
+                  name="sequenceNumber"
+                  component={InputField}
+                  label="Sequence Number"
+                  disabled={true}
+                  isNumber={true}
+                />
+              </Box>
+              <Box width="120px" p="8px">
+                <Field
                   id="accountId"
                   name="accountId"
                   component={InputField}
@@ -69,7 +79,7 @@ const StatementForm: React.FC<TStatementForm> = ({
                   isNumber={true}
                 />
               </Box>
-              <Box width="270px" p="8px">
+              <Box width="150px" p="8px">
                 <Field
                   id="accountAlias"
                   name="accountAlias"

@@ -51,6 +51,7 @@ export const prepareStatementToRender = (
     address_town,
     address_post_code,
     address_country_code,
+    sequence_number,
   } = data;
 
   const repaymentStatus = repaymentStatusOptions.find(el => el.value === repayment_status);
@@ -75,6 +76,7 @@ export const prepareStatementToRender = (
     },
     statement: {
       id,
+      sequenceNumber: sequence_number,
       statementDate: statement_date,
       startDate: start_date,
       endDate: end_date,

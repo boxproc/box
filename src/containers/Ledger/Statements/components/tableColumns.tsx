@@ -19,6 +19,17 @@ export const tableColumns = [
     ),
   },
   {
+    maxWidth: 60,
+    Header: <TableHeader title="Sequence Number" />,
+    accessor: 'sequenceNumber',
+    Cell: (props: TCell<'sequenceNumber'>) => (
+      <TableCell
+        value={props.value}
+        isNumber={true}
+      />
+    ),
+  },
+  {
     maxWidth: 150,
     Header: <TableHeader title="Institution" />,
     accessor: 'institutionId',

@@ -36,6 +36,7 @@ export const statementsMock: IStatementsData = {
       start_date: '07/09/2019',
       end_date: '06/10/2019',
       repayment_date: '27/10/2019',
+      sequence_number: 1,
     },
     {
       account_alias_additional: 'test',
@@ -64,6 +65,7 @@ export const statementsMock: IStatementsData = {
       start_date: '07/09/2019',
       end_date: '06/10/2019',
       repayment_date: '29/10/2019',
+      sequence_number: 2,
     },
   ],
 };
@@ -83,6 +85,7 @@ export const accountStatementsMock: IAccountStatementsData = {
       repayment_status: 'R',
       start_date: '07/10/2019',
       statement_date: '07/10/2019',
+      sequence_number: 1,
     },
     {
       account_id: 1,
@@ -96,6 +99,7 @@ export const accountStatementsMock: IAccountStatementsData = {
       repayment_status: 'O',
       start_date: '07/10/2019',
       statement_date: '07/10/2019',
+      sequence_number: 2,
     },
   ],
 };

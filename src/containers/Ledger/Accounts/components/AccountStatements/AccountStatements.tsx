@@ -58,7 +58,29 @@ const AccountStatements: React.FC<IAccountStatements> = ({
   const tableColumns = React.useMemo(
     () => [
       {
-        maxWidth: 100,
+        maxWidth: 85,
+        Header: <TableHeader title="ID" />,
+        accessor: 'id',
+        Cell: (props: TCell<'id'>) => (
+          <TableCell
+            value={props.value}
+            isNumber={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 65,
+        Header: <TableHeader title="Sequence Number" />,
+        accessor: 'sequenceNumber',
+        Cell: (props: TCell<'sequenceNumber'>) => (
+          <TableCell
+            value={props.value}
+            isNumber={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 80,
         Header: <TableHeader title="Statement Date" />,
         accessor: 'statementDate',
         Cell: (props: TCell<'statementDate'>) => (
@@ -70,7 +92,7 @@ const AccountStatements: React.FC<IAccountStatements> = ({
         ),
       },
       {
-        maxWidth: 100,
+        maxWidth: 80,
         Header: <TableHeader title="Start Date" />,
         accessor: 'startDate',
         Cell: (props: ITableCell<'startDate'>) => (
