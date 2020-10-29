@@ -143,8 +143,7 @@ const AccountForm: React.FC<TAccountForm> = ({
         && selectedProduct.defNumInterestFreeInstlmts;
       const numDeferredInstlmts = selectedProduct && selectedProduct.defNumDeferredInstlmts;
 
-      const statementCycleRepaymentDay = selectedProduct
-        && selectedProduct.statementCycleRepaymentDay;
+      const statementCycleParameter = selectedProduct && selectedProduct.statementCycleParameter;
 
       const resetLoanValues = () => {
         change('numOfInstallments', 0);
@@ -157,7 +156,7 @@ const AccountForm: React.FC<TAccountForm> = ({
         if (productIdState !== selectedProductId) {
           setStateProductId(selectedProductId);
 
-          change('statementCycleRepaymentDay', statementCycleRepaymentDay);
+          change('statementCycleParameter', statementCycleParameter);
 
           if (isSelectedLoan) {
             change('numOfInstallments', numOfInstallments);
@@ -171,7 +170,7 @@ const AccountForm: React.FC<TAccountForm> = ({
         }
 
         if (!isSelectedLoan && !isSelectedRevCredit) {
-          change('statementCycleRepaymentDay', '');
+          change('statementCycleParameter', '');
         }
       }
     },

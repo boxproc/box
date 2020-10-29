@@ -46,7 +46,7 @@ export interface IAccountData {
   product_type: string;
   repayment_amount_due: number;
   direct_debit_mandate_id?: number | string;
-  statement_cycle_repayment_day: number;
+  statement_cycle_parameter: number;
   status_name: string;
   status: string | number;
   total_overdue_amount: number;
@@ -92,7 +92,7 @@ interface IAccountPlain {
   productOverrideFlag?: boolean;
   productOverrideId?: number;
   repaymentAmountDue: number;
-  statementCycleRepaymentDay: number;
+  statementCycleParameter: number;
   statusName: string;
   totalOverdueAmount: number;
 }

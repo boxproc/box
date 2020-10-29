@@ -16,7 +16,7 @@ interface IProductPlain extends IPlainInfo {
   lockedFlag: boolean;
   enabledForCustomerLimit: boolean;
   overridesProductId?: number;
-  statementCycleParameter: number;
+  defaultStatementCycleParameter: number;
 }
 
 export interface IProductData extends IProductPlainData {
@@ -45,7 +45,7 @@ export interface IProductData extends IProductPlainData {
   aux_counter_3_enabled?: string;
   statement_cycle_type_id: number | string;
   statement_cycle_type_name?: string;
-  statement_cycle_parameter: number;
+  default_statement_cycle_parameter: number;
   number_of_days_to_make_repayment?: number;
   direct_debit_submission_nr_days?: number;
 }
@@ -258,7 +258,7 @@ export interface IInstProductData extends IPlainInfo {
   def_num_of_intrst_free_instlmts: number;
   def_num_of_installments: number;
   def_num_deferred_instlmts: number;
-  statement_cycle_parameter: number;
+  default_statement_cycle_parameter: number;
 }
 
 export interface IInstProduct extends IPlainInfo {
@@ -266,7 +266,7 @@ export interface IInstProduct extends IPlainInfo {
   defNumInterestFreeInstlmts: number;
   defNumOfInstallments: number;
   defNumDeferredInstlmts: number;
-  statementCycleRepaymentDay: number;
+  statementCycleParameter: number;
 }
 
 export interface IInstProductsData {

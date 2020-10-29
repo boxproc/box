@@ -116,9 +116,9 @@ export const tableColumns = [
   },
   {
     maxWidth: 100,
-    Header: <TableHeader title="Statement Cycle Parameter" />,
-    accessor: 'statementCycleParameter',
-    Cell: (props: TCell<'statementCycleParameter'>) => (
+    Header: <TableHeader title="Default Statement Cycle Parameter" />,
+    accessor: 'defaultStatementCycleParameter',
+    Cell: (props: TCell<'defaultStatementCycleParameter'>) => (
       <TableCell
         value={props.value}
         isNumber={true}

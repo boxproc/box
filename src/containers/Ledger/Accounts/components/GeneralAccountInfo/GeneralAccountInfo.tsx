@@ -267,10 +267,10 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             )}
             <Box width="110px" p="8px">
               <Field
-                id="statementCycleRepaymentDay"
-                name="statementCycleRepaymentDay"
+                id="statementCycleParameter"
+                name="statementCycleParameter"
                 component={InputField}
-                label="Statement Cycle Repayment Day"
+                label="Statement Cycle Parameter"
                 placeholder="Enter Day"
                 disabled={isEditMode}
                 isNumber={true}

@@ -218,11 +218,11 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
             </Box>
             <Box width="130px" p="8px">
               <Field
-                id="statementCycleParameter"
-                name="statementCycleParameter"
+                id="defaultStatementCycleParameter"
+                name="defaultStatementCycleParameter"
                 placeholder="Enter day"
                 component={InputField}
-                label="Statement Cycle Parameter"
+                label="Default Statement Cycle Parameter"
                 isNumber={true}
                 disabled={!statementCycleTypeValue || isReadOnly}
                 hint={!statementCycleTypeValue && 'Select Statement Cycle Type'}

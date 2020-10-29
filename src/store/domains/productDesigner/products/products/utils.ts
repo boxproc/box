@@ -60,7 +60,7 @@ export const prepareGeneralProductToRender = (item: IProductData, institutionNam
     enabledForCustomerLimit: item.enabled_for_customer_limit === yesNoConst.YES,
     overridesProductId: item.overrides_product_id,
     statementCycleType: item.statement_cycle_type_name,
-    statementCycleParameter: item.statement_cycle_parameter,
+    defaultStatementCycleParameter: item.default_statement_cycle_parameter,
   };
 };
 
@@ -102,7 +102,7 @@ export const prepareCurrGeneralProductToRender = (data: IProductData):
     number_of_days_card_expires,
     statement_cycle_type_id,
     statement_cycle_type_name,
-    statement_cycle_parameter,
+    default_statement_cycle_parameter,
   } = data;
 
   return {
@@ -119,7 +119,7 @@ export const prepareCurrGeneralProductToRender = (data: IProductData):
     cardFormFactor: cardFormFactorOptions.find(el => el.value === card_form_factor),
     numberOfDaysCardExpires: number_of_days_card_expires,
     statementCycleTypeId: { value: statement_cycle_type_id, label: statement_cycle_type_name },
-    statementCycleParameter: statement_cycle_parameter,
+    defaultStatementCycleParameter: default_statement_cycle_parameter,
   };
 };
 
@@ -145,7 +145,7 @@ export const prepareGeneralProductDataToSend = (data: Partial<IProductGeneralDet
     cardFormFactor,
     numberOfDaysCardExpires,
     statementCycleTypeId,
-    statementCycleParameter,
+    defaultStatementCycleParameter,
   } = data;
 
   return {
@@ -164,7 +164,7 @@ export const prepareGeneralProductDataToSend = (data: Partial<IProductGeneralDet
     card_form_factor: cardFormFactor && cardFormFactor.value,
     number_of_days_card_expires: stringsUtil.toNumber(numberOfDaysCardExpires),
     statement_cycle_type_id: statementCycleTypeId && statementCycleTypeId.value,
-    statement_cycle_parameter: stringsUtil.toNumber(statementCycleParameter),
+    default_statement_cycle_parameter: stringsUtil.toNumber(defaultStatementCycleParameter),
   };
 };
 
