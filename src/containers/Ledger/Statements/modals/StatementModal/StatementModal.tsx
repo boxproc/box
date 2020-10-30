@@ -72,11 +72,16 @@ const StatementModal: React.FC<IStatementModal> = ({
     [openModal]
   );
 
+  const sequenceNumber = React.useMemo(
+    () => currentStatement && currentStatement.sequenceNumber,
+    [currentStatement]
+  );
+
   return (
     <Modal
       name={modalName}
       type={modalTypesConst.VIEWING}
-      title="Statement"
+      title={`Statement: ${sequenceNumber}`}
       containerWidth="1010px"
       minContainerHeight="600px"
     >

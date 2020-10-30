@@ -28,6 +28,7 @@ interface IProductGeneralInfo {
   institutionsOptions: Array<ISelectValue>;
   isCurrenciesLoading: boolean;
   isEditMode?: boolean;
+  isProductOverride?: boolean;
   isReadOnly?: boolean;
   isStatementCycleTypesLoading: boolean;
   statementCycleTypesOptions: Array<ISelectValue>;
@@ -41,6 +42,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
   institutionsOptions,
   isCurrenciesLoading,
   isEditMode = false,
+  isProductOverride,
   isReadOnly,
   isStatementCycleTypesLoading,
   statementCycleTypesOptions,
@@ -212,7 +214,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
                 placeholder="Select Type"
                 options={statementCycleTypesOptions}
                 isLoading={isStatementCycleTypesLoading}
-                isDisabled={isReadOnly}
+                isDisabled={isReadOnly || isProductOverride}
                 validate={[formErrorUtil.isRequired]}
               />
             </Box>
@@ -224,7 +226,7 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
                 component={InputField}
                 label="Default Statement Cycle Parameter"
                 isNumber={true}
-                disabled={!statementCycleTypeValue || isReadOnly}
+                disabled={!statementCycleTypeValue || isReadOnly || isProductOverride}
                 hint={!statementCycleTypeValue && 'Select Statement Cycle Type'}
                 validate={[
                   formErrorUtil.isRequired,

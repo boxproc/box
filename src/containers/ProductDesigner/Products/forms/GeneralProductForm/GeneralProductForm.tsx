@@ -85,6 +85,7 @@ const GeneralProductForm: React.FC<TGeneralProductForm> = ({
           isEditMode={true}
           statementCycleTypeValue={statementCycleTypeValue}
           isReadOnly={isReadOnly || isUpdatingOrDeleting}
+          isProductOverride={isProductOverride}
         />
         <Hr />
         <Flex
