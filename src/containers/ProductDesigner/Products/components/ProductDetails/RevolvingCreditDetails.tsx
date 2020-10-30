@@ -76,7 +76,7 @@ const RevolvingCreditDetails: React.FC<IRevolvingCreditDetails> = ({
             disabled={isReadOnly ? true : !useStatementGracePeriodFlagValue}
             validate={[
               formErrorUtil.isInteger,
-              formErrorUtil.rangeValueMin1Max255,
+              formErrorUtil.rangeValueMin0Max255,
             ]}
           />
         </Box>
