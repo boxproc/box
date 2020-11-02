@@ -134,7 +134,7 @@ const EditProductForms: React.FC<IEditProductForms> = ({
         <TabsPanel title="Repayment">
           <RepaymentForm
             onCancel={onCancel}
-            isReadOnly={true}
+            isReadOnly={isReadOnly}
           />
         </TabsPanel>
       )}
