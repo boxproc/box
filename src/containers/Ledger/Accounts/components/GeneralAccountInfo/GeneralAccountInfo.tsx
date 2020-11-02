@@ -272,7 +272,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
                 component={InputField}
                 label="Statement Cycle Parameter"
                 placeholder="Enter Day"
-                disabled={isEditMode}
+                disabled={isReadOnly}
                 isNumber={true}
                 validate={[
                   formErrorUtil.isInteger,

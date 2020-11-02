@@ -24,7 +24,7 @@ const StatementAprsTable: React.FC<IStatementAprsTable> = ({
   const columns = React.useMemo(
     () => [
       {
-        maxWidth: 100,
+        maxWidth: 90,
         Header: <TableHeader title="Product APR ID" />,
         accessor: 'productAprId',
         Cell: (props: TCell<'productAprId'>) => (
@@ -36,7 +36,7 @@ const StatementAprsTable: React.FC<IStatementAprsTable> = ({
         ),
       },
       {
-        maxWidth: 150,
+        maxWidth: 100,
         Header: <TableHeader title="Accrued Interest" />,
         accessor: 'accruedInterest',
         Cell: (props: TCell<'accruedInterest'>) => (
@@ -48,7 +48,7 @@ const StatementAprsTable: React.FC<IStatementAprsTable> = ({
         ),
       },
       {
-        maxWidth: 500,
+        maxWidth: 200,
         Header: <TableHeader title="Description" />,
         accessor: 'description',
         Cell: (props: TCell<'description'>) => (
@@ -59,7 +59,7 @@ const StatementAprsTable: React.FC<IStatementAprsTable> = ({
         ),
       },
       {
-        maxWidth: 80,
+        maxWidth: 60,
         Header: <TableHeader title="Rate %" />,
         accessor: 'rate',
         Cell: (props: TCell<'rate'>) => (
@@ -71,7 +71,19 @@ const StatementAprsTable: React.FC<IStatementAprsTable> = ({
         ),
       },
       {
-        maxWidth: 140,
+        maxWidth: 100,
+        Header: <TableHeader title="Statement Principal" />,
+        accessor: 'statementPrincipal',
+        Cell: (props: TCell<'statementPrincipal'>) => (
+          <TableCell
+            value={props.value}
+            isSmaller={true}
+            isNumber={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 100,
         Header: <TableHeader title="Previous Statement Unpaid Principal" />,
         accessor: 'prevStmntUnpaidPrincipal',
         Cell: (props: TCell<'prevStmntUnpaidPrincipal'>) => (
@@ -83,7 +95,7 @@ const StatementAprsTable: React.FC<IStatementAprsTable> = ({
         ),
       },
       {
-        maxWidth: 100,
+        maxWidth: 90,
         Header: <TableHeader title="Interest Calc Start Date" />,
         accessor: 'interestCalcStartDate',
         Cell: (props: TCell<'interestCalcStartDate'>) => (
@@ -95,7 +107,7 @@ const StatementAprsTable: React.FC<IStatementAprsTable> = ({
         ),
       },
       {
-        maxWidth: 100,
+        maxWidth: 90,
         Header: <TableHeader title="Repayment Date" />,
         accessor: 'repaymentDate',
         Cell: (props: TCell<'repaymentDate'>) => (
@@ -107,7 +119,7 @@ const StatementAprsTable: React.FC<IStatementAprsTable> = ({
         ),
       },
       {
-        maxWidth: 80,
+        maxWidth: 60,
         Header: <TableHeader title="Repaid Flag" />,
         accessor: 'repaidFlag',
         Cell: renderCheckBoxTableCell(),

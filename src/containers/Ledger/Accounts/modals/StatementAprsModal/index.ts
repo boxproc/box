@@ -5,7 +5,6 @@ import StatementAprsModal from './StatementAprsModal';
 
 import {
   accountStatementDateSelector,
-  currentAccAliasSelector,
   handleGetStatementAprLogs,
   isStatementAprLogsLoadingSelector,
   IStoreState,
@@ -15,7 +14,6 @@ import {
 const mapStateToProps = (state: IStoreState) => ({
   isStatementAprLogsLoading: isStatementAprLogsLoadingSelector(state),
   statementAprs: statementAprsSelector(state),
-  currentAccAlias: currentAccAliasSelector(state),
   currentStatementDate: accountStatementDateSelector(state),
 });
 

@@ -142,6 +142,7 @@ export interface IStatementAprData {
   product_apr_id: number;
   rate: number;
   statement_id: number;
+  statement_principal: number;
   prev_stmnt_unpaid_principal: number;
   repayment_date: string;
   repaid_flag: string;
@@ -158,6 +159,7 @@ export interface IStatementApr {
   productAprId: number;
   rate: string;
   statementId: number;
+  statementPrincipal: string;
   prevStmntUnpaidPrincipal: string;
   repaymentDate: string;
   repaidFlag: boolean;

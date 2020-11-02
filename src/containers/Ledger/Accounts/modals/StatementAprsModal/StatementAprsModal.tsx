@@ -11,7 +11,6 @@ import { StatementAprsTable, StatementDate } from 'containers/Ledger/Statements/
 import { IStatementApr, THandleGetStatementAprLogs } from 'store';
 
 interface IStatementAprs extends IWithModal {
-  currentAccAlias: string;
   currentStatementDate: string;
   getStatementAprLogs: THandleGetStatementAprLogs;
   isStatementAprLogsLoading: boolean;
@@ -22,21 +21,11 @@ const modalName = modalNamesConst.STATEMENT_APRS;
 
 const StatementAprs: React.FC<IStatementAprs> = ({
   closeModal,
-  currentAccAlias,
   currentStatementDate,
   getStatementAprLogs,
   isStatementAprLogsLoading,
   statementAprs,
 }) => {
-  const modalTitle = React.useMemo(
-    () => {
-      const accountAlias = currentAccAlias ? `: ${currentAccAlias}` : '';
-
-      return `Account${accountAlias}`;
-    },
-    [currentAccAlias]
-  );
-
   const handleOnCancel = React.useCallback(
     () => closeModal(modalName),
     [closeModal]
@@ -45,8 +34,8 @@ const StatementAprs: React.FC<IStatementAprs> = ({
   return (
     <Modal
       name={modalName}
-      title={modalTitle}
-      containerWidth="950px"
+      title="Statement"
+      containerWidth="1010px"
       minContainerHeight="500px"
     >
       <StatementDate date={currentStatementDate} />
