@@ -36,6 +36,7 @@ export const prepareProductAprsToRender = (data: IProductAprData): IProductApr =
     initial_interest_free_days,
     repayment_priority,
     always_charge_interest,
+    default_flag,
   } = data;
 
   const calculationMethod = aprTypesOptions.find(el => el.value === calculation_method);
@@ -49,6 +50,7 @@ export const prepareProductAprsToRender = (data: IProductAprData): IProductApr =
     initialInterestFreeDays: initial_interest_free_days,
     repaymentPriority: repayment_priority,
     alwaysChargeInterest: always_charge_interest === yesNoConst.YES,
+    defaultFlag: default_flag === yesNoConst.YES,
   };
 };
 

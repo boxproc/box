@@ -106,7 +106,8 @@ const AprsTable: React.FC<IAprsTable> = ({
                   <Button
                     iconName={iconNamesConst.ARROW_UP}
                     title="Move up"
-                    disabled={(cellInfo.index === 0) || !isEditableCell}
+                    disabled={(cellInfo.index === 0) || !isEditableCell
+                      || cellInfo.original.defaultFlag}
                     onClick={() => updateProductApr({
                       ...cellInfo.original,
                       repaymentPriority: cellInfo.original.repaymentPriority - 1,
@@ -117,7 +118,8 @@ const AprsTable: React.FC<IAprsTable> = ({
                   <Button
                     iconName={iconNamesConst.ARROW_DOWN}
                     title="Move down"
-                    disabled={(cellInfo.index === countData - 1) || !isEditableCell}
+                    disabled={(cellInfo.index === countData - 1) || !isEditableCell
+                      || cellInfo.original.defaultFlag}
                     onClick={() => updateProductApr({
                       ...cellInfo.original,
                       repaymentPriority: cellInfo.original.repaymentPriority + 1,
@@ -198,6 +200,12 @@ const AprsTable: React.FC<IAprsTable> = ({
         Cell: renderCheckBoxTableCell(),
       },
       {
+        maxWidth: 70,
+        Header: <TableHeader title="Default" />,
+        accessor: 'defaultFlag',
+        Cell: renderCheckBoxTableCell(),
+      },
+      {
         maxWidth: 65,
         accessor: 'deleteButton',
         Cell: (cellInfo: CellInfo) => (
@@ -211,7 +219,7 @@ const AprsTable: React.FC<IAprsTable> = ({
               size="10"
               withConfirmation={true}
               confirmationText={`Confirm want you delete APR?`}
-              disabled={!isEditableCell}
+              disabled={!isEditableCell || cellInfo.original.defaultFlag}
               onClick={() => deleteProductApr({
                 productId: cellInfo.original.productId,
                 productAprId: cellInfo.original.productAprId,
