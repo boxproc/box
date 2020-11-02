@@ -160,7 +160,7 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
               validate={[
                 formErrorUtil.isRequired,
                 formErrorUtil.isNumber,
-                formErrorUtil.isPositive,
+                formErrorUtil.isStrictPositive,
               ]}
             />
           </Box>

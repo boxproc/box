@@ -53,6 +53,11 @@ export const isPositive = (value: string) =>
     ? undefined
     : 'Must be greater than zero';
 
+export const isStrictPositive = (value: string) =>
+  Number(value) > 0 || value === undefined
+    ? undefined
+    : 'Must be greater than zero';
+
 export const isInteger = (value: string | number) => {
   const val = (value || (typeof value === 'number' && value === 0)) ? value.toString() : '';
 
