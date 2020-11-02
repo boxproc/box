@@ -160,6 +160,17 @@ const StatementForm: React.FC<TStatementForm> = ({
                   disabled={true}
                 />
               </Box>
+              <Box width="120px" p="8px">
+                <Field
+                  id="repaymentDate"
+                  name="repaymentDate"
+                  component={InputField}
+                  label="Repayment Date"
+                  placeholder={dateFormatConst.DATE}
+                  mask={maskFormatConst.DATE}
+                  disabled={true}
+                />
+              </Box>
             </LeftPartWrapper>
             <Flex
               width="46%"

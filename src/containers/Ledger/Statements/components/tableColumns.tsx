@@ -62,16 +62,6 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 150,
-    Header: <TableHeader title="Account Alias" />,
-    accessor: 'accountAlias',
-    Cell: (props: TCell<'accountAlias'>) => (
-      <TableCell
-        value={props.value}
-      />
-    ),
-  },
-  {
     maxWidth: 200,
     Header: <TableHeader title="First Name" />,
     accessor: 'firstName',
@@ -88,28 +78,6 @@ export const tableColumns = [
     Cell: (props: TCell<'lastName'>) => (
       <TableCell
         value={props.value}
-      />
-    ),
-  },
-  {
-    maxWidth: 90,
-    Header: <TableHeader title="First Transaction ID" />,
-    accessor: 'firstTransactionId',
-    Cell: (props: TCell<'firstTransactionId'>) => (
-      <TableCell
-        value={props.value}
-        isNumber={true}
-      />
-    ),
-  },
-  {
-    maxWidth: 100,
-    Header: <TableHeader title="Last Transaction ID" />,
-    accessor: 'lastTransactionId',
-    Cell: (props: TCell<'lastTransactionId'>) => (
-      <TableCell
-        value={props.value}
-        isNumber={true}
       />
     ),
   },
