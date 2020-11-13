@@ -4,29 +4,56 @@ import { Field, InjectedFormProps, reduxForm } from 'redux-form';
 import { Box, Flex } from '@rebass/grid';
 
 import { Hr, InputField, ISpinner, OkCancelButtons, withSpinner } from 'components';
-import { formNamesConst } from 'consts';
+import { cycleTypesConst, formNamesConst } from 'consts';
 import { THandleUpdateProductRepayment } from 'store';
 import { formErrorUtil } from 'utils';
 
 interface IProductRepaymentForm extends ISpinner {
-  onCancel?: () => void;
   isReadOnly: boolean;
+  onCancel?: () => void;
+  statementCycleTypeId?: number | string;
   updateProductRepayment: THandleUpdateProductRepayment;
 }
+
+const rangeValueMonthly = formErrorUtil.rangeValue(1, 27, 'for monthly type');
+const rangeValueBiMonthly = formErrorUtil.rangeValue(1, 58, 'for bi-monthly type');
+const rangeValueWeekly = formErrorUtil.rangeValue(1, 6, 'for weekly type');
+const rangeValueBiWeekly = formErrorUtil.rangeValue(1, 13, 'for bi-weekly type');
+const rangeValueFixedNumOfDays = formErrorUtil.rangeValue(1, 249, 'for fixed number of days');
 
 type TProductRepaymentForm = IProductRepaymentForm & InjectedFormProps<{}, IProductRepaymentForm>;
 
 const ProductRepaymentForm: React.FC<TProductRepaymentForm> = ({
-  handleSubmit,
-  onCancel,
   dirty,
-  pristine,
+  handleSubmit,
   isReadOnly,
+  onCancel,
+  pristine,
+  statementCycleTypeId,
   updateProductRepayment,
 }) => {
   const handleSubmitForm = React.useCallback(
     handleSubmit(updateProductRepayment),
     [handleSubmit]
+  );
+
+  const statementCycleParameterValidation = React.useMemo(
+    () => {
+      if (statementCycleTypeId === cycleTypesConst.MONTHLY) {
+        return rangeValueMonthly;
+      } else if (statementCycleTypeId === cycleTypesConst.BI_MONTHLY) {
+        return rangeValueBiMonthly;
+      } else if (statementCycleTypeId === cycleTypesConst.WEEKLY) {
+        return rangeValueWeekly;
+      } else if (statementCycleTypeId === cycleTypesConst.BI_WEEKLY) {
+        return rangeValueBiWeekly;
+      } else if (statementCycleTypeId === cycleTypesConst.FIXED_NUMBER_OF_DAYS) {
+        return rangeValueFixedNumOfDays;
+      } else {
+        return formErrorUtil.isInteger;
+      }
+    },
+    [statementCycleTypeId]
   );
 
   return (
@@ -45,7 +72,7 @@ const ProductRepaymentForm: React.FC<TProductRepaymentForm> = ({
             hintPosition="right"
             validate={[
               formErrorUtil.isRequired,
-              formErrorUtil.isInteger,
+              statementCycleParameterValidation,
             ]}
           />
         </Box>

@@ -35,6 +35,12 @@ interface IProductGeneralInfo {
   statementCycleTypeValue: ISelectValue;
 }
 
+const rangeValueMonthly = formErrorUtil.rangeValue(1, 28, 'for monthly type');
+const rangeValueBiMonthly = formErrorUtil.rangeValue(1, 28, 'for bi-monthly type');
+const rangeValueWeekly = formErrorUtil.rangeValue(1, 7, 'for weekly type');
+const rangeValueBiWeekly = formErrorUtil.rangeValue(1, 7, 'for bi-weekly type');
+const rangeValueFixedNumOfDays = formErrorUtil.rangeValue(1, 250, 'for fixed number of days');
+
 const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
   currenciesOptions,
   getDictionaryCurrencies,
@@ -70,14 +76,16 @@ const ProductGeneralInfo: React.FC<IProductGeneralInfo> = ({
         return formErrorUtil.isInteger;
       }
 
-      if (statementCycleTypeValue.value === cycleTypesConst.MONTHLY
-        || statementCycleTypeValue.value === cycleTypesConst.BI_MONTHLY) {
-        return formErrorUtil.rangeValueMin1Max28;
-      } else if (statementCycleTypeValue.value === cycleTypesConst.WEEKLY
-        || statementCycleTypeValue.value === cycleTypesConst.BI_WEEKLY) {
-        return formErrorUtil.rangeValueMin1Max7;
+      if (statementCycleTypeValue.value === cycleTypesConst.MONTHLY) {
+        return rangeValueMonthly;
+      } else if (statementCycleTypeValue.value === cycleTypesConst.BI_MONTHLY) {
+        return rangeValueBiMonthly;
+      } else if (statementCycleTypeValue.value === cycleTypesConst.WEEKLY) {
+        return rangeValueWeekly;
+      } else if (statementCycleTypeValue.value === cycleTypesConst.BI_WEEKLY) {
+        return rangeValueBiWeekly;
       } else if (statementCycleTypeValue.value === cycleTypesConst.FIXED_NUMBER_OF_DAYS) {
-        return formErrorUtil.rangeValueMin1Max250;
+        return rangeValueFixedNumOfDays;
       } else {
         return formErrorUtil.isInteger;
       }

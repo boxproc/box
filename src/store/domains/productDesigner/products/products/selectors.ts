@@ -111,6 +111,11 @@ export const productLoanDetailsSelector = createSelector(
   data => data && prepareDetailsToRender(data, 'L')
 );
 
+export const currentProductStatementCycleTypeIdSelector = createSelector(
+  defaultCurrentProductSelector,
+  data => data && data.statement_cycle_type_id
+);
+
 /**
  * Institution products selectors
  */

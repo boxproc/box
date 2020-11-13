@@ -100,16 +100,10 @@ export const isPort = (value: string) => {
     : 'Invalid port number';
 };
 
-const rangeValue = (min: number, max: number) => (value: string | number) =>
-  value && (value < min || value > max) ? `Must be in range ${min} and ${max}` : undefined;
-
-export const rangeValueMin1Max28 = rangeValue(1, 28);
-
-export const rangeValueMin1Max7 = rangeValue(1, 7);
-
-export const rangeValueMin1Max250 = rangeValue(1, 250);
-
-export const rangeValueMin0Max255 = rangeValue(0, 255);
+export const rangeValue = (min: number, max: number, hint?: string) => (value: string | number) =>
+  value && (value < min || value > max)
+    ? `${min} - ${max} ${hint ? hint : ''}`
+    : undefined;
 
 export const passwordsMatch = (value: string, allValues: any) =>
   value !== allValues.password ? 'Passwords don\'t match' : undefined;

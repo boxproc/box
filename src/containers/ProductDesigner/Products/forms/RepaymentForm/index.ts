@@ -4,6 +4,7 @@ import { bindActionCreators, Dispatch } from 'redux';
 import ProductRepaymentForm from './ProductRepaymentForm';
 
 import {
+  currentProductStatementCycleTypeIdSelector,
   handleUpdateProductRepayment,
   isProductRepaymentUpdatingSelector,
   IStoreState,
@@ -13,6 +14,7 @@ import {
 const mapStateToProps = (state: IStoreState) => ({
   isLoading: isProductRepaymentUpdatingSelector(state),
   initialValues: productRepaymentSelector(state),
+  statementCycleTypeId: currentProductStatementCycleTypeIdSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

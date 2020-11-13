@@ -11,6 +11,8 @@ interface IRevolvingCreditDetails {
   useStatementGracePeriodFlagValue: boolean;
 }
 
+const rangeValueInterestNumOfDays = formErrorUtil.rangeValue(0, 255);
+
 const RevolvingCreditDetails: React.FC<IRevolvingCreditDetails> = ({
   isReadOnly,
   useStatementGracePeriodFlagValue,
@@ -76,7 +78,7 @@ const RevolvingCreditDetails: React.FC<IRevolvingCreditDetails> = ({
             disabled={isReadOnly ? true : !useStatementGracePeriodFlagValue}
             validate={[
               formErrorUtil.isInteger,
-              formErrorUtil.rangeValueMin0Max255,
+              rangeValueInterestNumOfDays,
             ]}
           />
         </Box>
