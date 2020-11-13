@@ -30,7 +30,7 @@ export const transactionsMock: ITransactionsData = {
       transaction_datetime: '11/08/2019 00:04:46',
       transaction_type_id: 1,
       status: 'P',
-      settled_datetime: null,
+      settled_date: null,
       amount_settled: 0,
       source_endpoint_id: 1,
       transaction_type_description: 'Purchase card',
@@ -112,7 +112,7 @@ export const settleTransactionMock: ISettleTransactionDataReq = {
     {
       transaction_id: 3456,
       amount_settled: 1,
-      settled_datetime: '2020-01-08 22:55:12',
+      settled_date: '2020-01-08 22:55:12',
     },
   ],
 };

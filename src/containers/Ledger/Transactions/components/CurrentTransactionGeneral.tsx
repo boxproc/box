@@ -143,10 +143,10 @@ const CurrentTransactionGeneral: React.FC = () => {
             </Box>
             <Box width={[3 / 7]} p="8px">
               <Field
-                id="settledDatetime"
-                name="settledDatetime"
+                id="settledDate"
+                name="settledDate"
                 component={InputField}
-                label="Settled Datetime"
+                label="Settled Date"
                 disabled={true}
               />
             </Box>

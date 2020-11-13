@@ -55,7 +55,7 @@ export interface ITransactionData extends ITransactionPlain {
   card_pos_condition_data: string;
   card_response_code: string;
   parent_transaction_id: number;
-  settled_datetime: string;
+  settled_date: string;
   amount_settled: number;
   source_endpoint_id: number;
 }
@@ -109,7 +109,7 @@ export interface ITransaction extends ITransactionPlain {
   cardPosConditionData: string;
   cardResponseCode: string;
   parentTransactionId: number;
-  settledDatetime: string;
+  settledDate: string;
   amountSettled: number;
   sourceEndpointId: number;
 }
@@ -207,7 +207,7 @@ export interface IRetrieveTrReq {
 export interface ISettleTransactionReq {
   transaction_id: number;
   amount_settled: number;
-  settled_datetime: string;
+  settled_date: string;
 }
 
 export interface ISettleTransactionDataReq {
@@ -224,7 +224,7 @@ export interface ISettleTransactionResp {
     transaction_id: number;
     status: string;
     amount_settled: number;
-    settled_datetime: string;
+    settled_date: string;
     balance_settled_before: number;
     balance_settled_after: number;
   };

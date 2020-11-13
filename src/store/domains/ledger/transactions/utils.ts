@@ -75,7 +75,7 @@ export const prepareDataToRender = (data: ITransactionData): ITransaction => {
     card_pos_condition_data,
     card_response_code,
     parent_transaction_id,
-    settled_datetime,
+    settled_date,
     amount_settled,
     source_endpoint_id,
   } = data;
@@ -136,7 +136,7 @@ export const prepareDataToRender = (data: ITransactionData): ITransaction => {
     cardPosConditionData: card_pos_condition_data,
     cardResponseCode: card_response_code,
     parentTransactionId: parent_transaction_id,
-    settledDatetime: settled_datetime,
+    settledDate: settled_date,
     amountSettled: amount_settled,
     sourceEndpointId: source_endpoint_id,
   };
@@ -233,7 +233,7 @@ export const prepareSettleTrDataToSend = (data: Partial<ISettleTrFormValues>) =>
   return {
     transaction_id: stringsUtil.toNumber(transactionId),
     amount_settled: stringsUtil.toNumber(amountSettled),
-    settled_datetime: dateUtil.todayDateTime(),
+    settled_date: dateUtil.todayDateTime(),
   };
 };
 
