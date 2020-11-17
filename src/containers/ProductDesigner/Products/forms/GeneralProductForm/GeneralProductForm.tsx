@@ -93,7 +93,7 @@ const GeneralProductForm: React.FC<TGeneralProductForm> = ({
           justifyContent="space-between"
         >
           <div>
-            {!isReadOnly && (
+            {!isReadOnly && !isProductOverride && (
               <Button
                 text="delete"
                 iconName={iconNamesConst.DELETE}
