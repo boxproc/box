@@ -120,7 +120,8 @@ export const institutionProductsMock: IInstProductsData = {
       def_num_of_intrst_free_instlmts: 1,
       def_num_of_installments: 1,
       def_num_deferred_instlmts: 1,
-      default_statement_cycle_parameter: 15,
+      default_statement_cycle_parameter: 6,
+      statement_cycle_type_id: 3,
     },
     {
       id: 2,
@@ -129,7 +130,8 @@ export const institutionProductsMock: IInstProductsData = {
       def_num_of_intrst_free_instlmts: null,
       def_num_of_installments: null,
       def_num_deferred_instlmts: null,
-      default_statement_cycle_parameter: null,
+      default_statement_cycle_parameter: 4,
+      statement_cycle_type_id: 1,
     },
   ],
 };

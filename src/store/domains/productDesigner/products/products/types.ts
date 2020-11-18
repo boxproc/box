@@ -259,6 +259,7 @@ export interface IInstProductData extends IPlainInfo {
   def_num_of_installments: number;
   def_num_deferred_instlmts: number;
   default_statement_cycle_parameter: number;
+  statement_cycle_type_id: number;
 }
 
 export interface IInstProduct extends IPlainInfo {
@@ -267,6 +268,7 @@ export interface IInstProduct extends IPlainInfo {
   defNumOfInstallments: number;
   defNumDeferredInstlmts: number;
   statementCycleParameter: number;
+  statementCycleTypeId: number;
 }
 
 export interface IInstProductsData {

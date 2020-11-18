@@ -146,6 +146,7 @@ export const instProductsSelector = createSelector(
       defNumOfInstallments: el.def_num_of_installments,
       defNumDeferredInstlmts: el.def_num_deferred_instlmts,
       statementCycleParameter: el.default_statement_cycle_parameter,
+      statementCycleTypeId: el.statement_cycle_type_id,
     };
   })
 );
