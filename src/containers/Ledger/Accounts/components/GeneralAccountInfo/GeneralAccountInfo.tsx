@@ -19,6 +19,7 @@ import {
 } from 'store';
 
 import {
+  cycleTypesConst,
   dateFormatConst,
   maskFormatConst,
 } from 'consts';
@@ -26,7 +27,14 @@ import {
 import { ISelectValue } from 'types';
 import { formErrorUtil } from 'utils';
 
+const rangeValueMonthly = formErrorUtil.rangeValue(1, 28);
+const rangeValueBiMonthly = formErrorUtil.rangeValue(1, 28);
+const rangeValueWeekly = formErrorUtil.rangeValue(1, 7);
+const rangeValueBiWeekly = formErrorUtil.rangeValue(1, 7);
+const rangeValueFixedNumOfDays = formErrorUtil.rangeValue(1, 250);
+
 interface IGeneralAccountInfo {
+  customerId: number;
   directDebitMandatesOptions: Array<ISelectValue>;
   dirty: boolean;
   getAccountStatuses: THandleGetDictionaryAccountStatuses;
@@ -35,19 +43,19 @@ interface IGeneralAccountInfo {
   institutionProductsOptions: Array<ISelectValue>;
   institutionsOptions: Array<ISelectValue>;
   institutionValue: ISelectValue;
-  isSelectedLoan: boolean;
   isEditMode?: boolean;
   isLoadingMandates: boolean;
   isReadOnly: boolean;
+  isSelectedLoan: boolean;
   onCancel: () => void;
   pristine: boolean;
-  statusesOptions: Array<ISelectValue>;
-  customerId: number;
   productId: number;
+  statementCycleTypeId: number;
+  statusesOptions: Array<ISelectValue>;
 }
 
 const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
-  institutionValue,
+  customerId,
   directDebitMandatesOptions,
   dirty,
   getAccountStatuses,
@@ -55,15 +63,16 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
   hasProductOverride,
   institutionProductsOptions,
   institutionsOptions,
-  isSelectedLoan,
+  institutionValue,
   isEditMode,
   isLoadingMandates,
   isReadOnly,
+  isSelectedLoan,
   onCancel,
   pristine,
-  statusesOptions,
-  customerId,
   productId,
+  statementCycleTypeId,
+  statusesOptions,
 }) => {
   React.useEffect(
     () => {
@@ -107,6 +116,42 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
       return text;
     },
     [customerId, productId]
+  );
+
+  const statementCycleParameterValidation = React.useMemo(
+    () => {
+      if (statementCycleTypeId === cycleTypesConst.MONTHLY) {
+        return {
+          validation: rangeValueMonthly,
+          hint: 'Statement cycle type "Monthly"',
+        };
+      } else if (statementCycleTypeId === cycleTypesConst.BI_MONTHLY) {
+        return {
+          validation: rangeValueBiMonthly,
+          hint: 'Statement cycle type "Bi-monthly"',
+        };
+      } else if (statementCycleTypeId === cycleTypesConst.WEEKLY) {
+        return {
+          validation: rangeValueWeekly,
+          hint: 'Statement cycle type "Weekly"',
+        };
+      } else if (statementCycleTypeId === cycleTypesConst.BI_WEEKLY) {
+        return {
+          validation: rangeValueBiWeekly,
+          hint: 'Statement cycle type "Bi-Weekly"',
+        };
+      } else if (statementCycleTypeId === cycleTypesConst.FIXED_NUMBER_OF_DAYS) {
+        return {
+          validation: rangeValueFixedNumOfDays,
+          hint: 'Statement cycle type "Fixed number of days"',
+        };
+      } else {
+        return {
+          validation: formErrorUtil.isInteger,
+        };
+      }
+    },
+    [statementCycleTypeId]
   );
 
   return (
@@ -226,7 +271,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             alignItems="flex-end"
             width="480px"
           >
-                        {isEditMode && (
+            {isEditMode && (
               <Box width="110px" p="8px">
                 <Field
                   id="productId"
@@ -274,9 +319,11 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
                 placeholder="Enter Day"
                 disabled={isReadOnly}
                 isNumber={true}
+                hint={statementCycleTypeId && statementCycleParameterValidation.hint}
                 validate={[
-                  formErrorUtil.isInteger,
                   formErrorUtil.isRequired,
+                  formErrorUtil.isInteger,
+                  statementCycleParameterValidation.validation,
                 ]}
               />
             </Box>

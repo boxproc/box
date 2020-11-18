@@ -75,6 +75,14 @@ const AccountForm: React.FC<TAccountForm> = ({
     [institutionProducts, selectedProductId]
   );
 
+  const statementCycleTypeId = React.useMemo(
+    () => {
+      const product = institutionProducts.find(el => el.id === selectedProductId);
+      return product && product.statementCycleTypeId;
+    },
+    [institutionProducts, selectedProductId]
+  );
+
   const isSelectedLoan = React.useMemo(
     () => selectedProductType === productTypesConst.LOAN,
     [selectedProductType]
@@ -169,9 +177,9 @@ const AccountForm: React.FC<TAccountForm> = ({
           resetLoanValues();
         }
 
-        if (!isSelectedLoan && !isSelectedRevCredit) {
-          change('statementCycleParameter', '');
-        }
+        // if (!isSelectedLoan && !isSelectedRevCredit) {
+        //   change('statementCycleParameter', '');
+        // }
       }
     },
     [
@@ -239,6 +247,7 @@ const AccountForm: React.FC<TAccountForm> = ({
             productId={selectedProductId}
             onCancel={onCancel}
             pristine={pristine}
+            statementCycleTypeId={statementCycleTypeId}
           />
         </TabsPanel>
         <TabsPanel title="Aux Counters">
