@@ -24,8 +24,8 @@ yarn-error.log*
 
 # env
 # .env
-./*.env
-*.env
+# ./*.env
+# *.env
 
 # User-specific stuff:
 .idea/**/workspace.xml
