@@ -1,3 +1,5 @@
+Copyright (C) 2019-2020 BOX Processing - All Rights Reserved Unauthorized copying of this software via any medium is strictly prohibited Proprietary and confidential Written by BOX Processing <mail to: office@boxproc.com>
+
 # BOX User Interface Repository
 
 To make changes, please raise a PR against the "dev" branch.
