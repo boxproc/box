@@ -40,7 +40,6 @@ export const downloadStatementPDF = (data: {
    * Title of document
    */
   doc.setFontSize(15);
-  doc.setFontStyle('bold');
   doc.setTextColor(theme.colors.darkGray);
   doc.text(30, 35, 'Statement');
 
@@ -49,7 +48,6 @@ export const downloadStatementPDF = (data: {
    * e.g. Created by Admin Lastname at 26/03/2020 13:06:24
    */
   doc.setFontSize(8);
-  doc.setFontStyle('normal');
   doc.setTextColor(theme.colors.gray);
   doc.text(30, 51, `Created by ${username} at ${dateTime}`);
 
@@ -88,7 +86,6 @@ export const downloadStatementPDF = (data: {
       const topSpace = 97;
 
       doc.setFontSize(9);
-      doc.setFontStyle('normal');
       doc.setTextColor(theme.colors.black);
 
       Object.entries(item).forEach((el, j) => {
@@ -154,7 +151,6 @@ export const downloadStatementPDF = (data: {
       // set title for first table
       if (isFirstTable) {
         doc.setFontSize(13);
-        doc.setFontStyle('bold');
         doc.setTextColor(theme.colors.darkGray);
         doc.text(
           30,
@@ -166,7 +162,6 @@ export const downloadStatementPDF = (data: {
       // set titles for next tables
       if (!isFirstTable) {
         doc.setFontSize(13);
-        doc.setFontStyle('bold');
         doc.setTextColor(theme.colors.darkGray);
         doc.text(
           30,
@@ -183,7 +178,6 @@ export const downloadStatementPDF = (data: {
    * Page number at the bottom right corner
    */
   doc.setTextColor(theme.colors.gray);
-  doc.setFontStyle('normal');
   doc.setFontSize(7);
 
   const pageCount = doc.internal.getNumberOfPages();
