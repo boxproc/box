@@ -7,7 +7,6 @@ export const statementsInitialState: ImmutableObject<IStatementsState> = Immutab
   accountStatements: Immutable([]),
   pendingTransactions: Immutable([]),
   statementAprs: Immutable([]),
-  statementAprLogs: Immutable([]),
   statements: Immutable([]),
   transactions: Immutable([]),
 });
@@ -30,9 +29,6 @@ const statementsReducer = (state = statementsInitialState, action: TStatementsAc
 
     case ActionTypeKeys.GET_STATEMENT_APRS_FULFILLED:
       return state.set('statementAprs', action.payload.statement_aprs);
-
-    case ActionTypeKeys.GET_STATEMENT_APR_LOGS_FULFILLED:
-      return state.set('statementAprLogs', action.payload.statement_aprs_log);
 
     case ActionTypeKeys.CHANGE_MINIMUM_REPAYMENT_FULFILLED:
       const statementInd = state.statements.findIndex(el => el.id === action.meta.statement_id);

@@ -7,10 +7,8 @@ import {
   activeItemIdSelector,
   currentStatementSelector,
   handleDownloadStatement,
-  handleGetStatementAprLogs,
   handleGetStatementAprs,
   handleGetStatementTransactions,
-  isStatementAprLogsLoadingSelector,
   IStoreState,
   isTransArsLoadingSelector,
   statementAprsSelector,
@@ -19,7 +17,6 @@ import {
 } from 'store';
 
 const mapStateToProps = (state: IStoreState) => ({
-  isStatementAprLogsLoading: isStatementAprLogsLoadingSelector(state),
   currentStatement: currentStatementSelector(state),
   currentStatementId: activeItemIdSelector(state),
   isLoading: isTransArsLoadingSelector(state),
@@ -32,7 +29,6 @@ const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     downloadStatement: handleDownloadStatement,
     getStatementAprs: handleGetStatementAprs,
-    getStatementAprLogs: handleGetStatementAprLogs,
     getStatementTransactions: handleGetStatementTransactions,
   },
   dispatch

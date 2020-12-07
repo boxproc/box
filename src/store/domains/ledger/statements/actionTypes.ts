@@ -2,7 +2,6 @@ import { IResponseStatus, TApiResponse } from 'types';
 import {
   IAccountStatementsData,
   IChangeMinimumAmountRequestData,
-  IStatementAprLogsData,
   IStatementAprsData,
   IStatementsData,
   IStatementTransactionsData,
@@ -33,11 +32,6 @@ export enum ActionTypeKeys {
   GET_STATEMENT_APRS = 'statements/GET_STATEMENT_APRS',
   GET_STATEMENT_APRS_FULFILLED = 'statements/GET_STATEMENT_APRS_FULFILLED',
   GET_STATEMENT_APRS_REJECTED = 'statements/GET_STATEMENT_APRS_REJECTED',
-
-  /** Get statement APR logs action type keys */
-  GET_STATEMENT_APR_LOGS = 'statements/GET_STATEMENT_APR_LOGS',
-  GET_STATEMENT_APR_LOGS_FULFILLED = 'statements/GET_STATEMENT_APR_LOGS_FULFILLED',
-  GET_STATEMENT_APR_LOGS_REJECTED = 'statements/GET_STATEMENT_APR_LOGS_REJECTED',
 
   /** Change minimum repayment action type keys */
   CHANGE_MINIMUM_REPAYMENT = 'statements/CHANGE_MINIMUM_REPAYMENT',
@@ -128,22 +122,6 @@ export interface IGetStatementAprsRejectedAction {
   readonly type: ActionTypeKeys.GET_STATEMENT_APRS_REJECTED;
 }
 
-/** Get statement APR logs action interfaces */
-export interface IGetStatementAprLogsAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.GET_STATEMENT_APR_LOGS;
-}
-
-export interface IGetStatementAprLogsFulfilledAction {
-  readonly payload: IStatementAprLogsData;
-  readonly type: ActionTypeKeys.GET_STATEMENT_APR_LOGS_FULFILLED;
-}
-
-export interface IGetStatementAprLogsRejectedAction {
-  readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.GET_STATEMENT_APR_LOGS_REJECTED;
-}
-
 /** Change minimum repayment action interfaces */
 export interface IChangeMinimumRepaymentAction {
   readonly payload: Promise<object>;
@@ -173,5 +151,4 @@ export type TStatementsAction =
   | IGetAccountStatementsFulfilledAction
   | IGetStatementAprsFulfilledAction
   | IChangeMinimumRepaymentFulfilledAction
-  | IGetStatementAprLogsFulfilledAction
   | IResetStatementsAction;

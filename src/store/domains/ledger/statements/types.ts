@@ -167,32 +167,6 @@ export interface IStatementApr {
 }
 
 /**
- * Statement APR log interfaces
- */
-
-export interface IStatementAprLogData {
-  statement_id: number;
-  product_apr_id: number;
-  product_id: number;
-  transaction_id: number;
-  calculation_date: string;
-  interest: string;
-}
-
-export interface IStatementAprLogsData {
-  statement_aprs_log: Array<IStatementAprLogData>;
-}
-
-export interface IStatementAprLog {
-  statementId: number;
-  productAprId: number;
-  productId: number;
-  transactionId: number;
-  calculationDate: string;
-  interest: string;
-}
-
-/**
  * Account statements interfaces
  */
 
@@ -238,7 +212,6 @@ export interface IStatementsState {
   accountStatements: ImmutableArray<IAccountStatementData>;
   pendingTransactions: ImmutableArray<IStatementTransactionData>;
   statementAprs: ImmutableArray<IStatementAprData>;
-  statementAprLogs: ImmutableArray<IStatementAprLogData>;
   statements: ImmutableArray<IStatementData>;
   transactions: ImmutableArray<IStatementTransactionData>;
 }

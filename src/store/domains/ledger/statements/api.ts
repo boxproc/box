@@ -4,7 +4,6 @@ import { apiClientService } from 'services';
 import { ILedgerId } from './../customers';
 // import {
 //   accountStatementsMock,
-//   statementAprLogsMock,
 //   statementAprsMock,
 //   statementsMock,
 //   statementTransMock,
@@ -61,18 +60,6 @@ export const getAccountStatementAprs = (statementId: number) =>
   // throttleUtil.getDataAfter(statementAprsMock, 500);
   apiClientService.post('ui/ledger/accounts/get_statement_aprs', {
     data: { statement_id: statementId },
-  });
-
-/**
- * Get statement APR log API
- */
-export const getStatementAprLogs = (data: { statementId: number, productAprId: number }) =>
-  // throttleUtil.getDataAfter(statementAprLogsMock, 500);
-  apiClientService.post('/ui/ledger/statements/get_statement_logs', {
-    data: {
-      statement_id: data.statementId,
-      product_apr_id: data.productAprId,
-    },
   });
 
 /**

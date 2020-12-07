@@ -1,25 +1,18 @@
 import React from 'react';
-import { CellInfo } from 'react-table';
 import { ImmutableArray } from 'seamless-immutable';
 
-import { Flex } from '@rebass/grid';
-
-import { Button, renderCheckBoxTableCell, Table, TableCell, TableHeader } from 'components';
-import { IStatementApr, THandleGetStatementAprLogs } from 'store';
+import { renderCheckBoxTableCell, Table, TableCell, TableHeader } from 'components';
+import { IStatementApr } from 'store';
 import { ITableCell } from 'types';
 
 type TCell<T extends keyof IStatementApr> = ITableCell<IStatementApr[T]>;
 
 interface IStatementAprsTable {
   data: ImmutableArray<IStatementApr>;
-  getStatementAprLogs: THandleGetStatementAprLogs;
-  isStatementAprLogsLoading: boolean;
 }
 
 const StatementAprsTable: React.FC<IStatementAprsTable> = ({
   data,
-  getStatementAprLogs,
-  isStatementAprLogsLoading,
 }) => {
   const columns = React.useMemo(
     () => [
@@ -124,25 +117,8 @@ const StatementAprsTable: React.FC<IStatementAprsTable> = ({
         accessor: 'repaidFlag',
         Cell: renderCheckBoxTableCell(),
       },
-      {
-        maxWidth: 130,
-        accessor: 'showBreakdown',
-        Cell: (cellInfo: CellInfo) => (
-          <Flex alignItems="flex-start" p="7px 5px">
-            <Button
-              text="Show breakdown"
-              size="10"
-              disabled={isStatementAprLogsLoading}
-              onClick={() => getStatementAprLogs({
-                statementId: cellInfo.original.statementId,
-                productAprId: cellInfo.original.productAprId,
-              })}
-            />
-          </Flex>
-        ),
-      },
     ],
-    [getStatementAprLogs, isStatementAprLogsLoading]
+    []
   );
 
   return (
