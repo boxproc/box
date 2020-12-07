@@ -12,7 +12,6 @@ import {
   IFilterStatementsAction,
   IFilterStatementsByIdAction,
   IGetAccountStatementsAction,
-  IGetStatementAprLogsAction,
   IGetStatementAprsAction,
   IGetStatementTransAction,
 } from './actionTypes';
@@ -175,37 +174,6 @@ export const handleGetStatementAprs: THandleGetStatementAprs = (statementId, ope
   };
 
 /**
- * Get statement APR logs action
- */
-
-export type TGetStatementAprLogs = (data: {
-  statementId: number,
-  productAprId: number,
-}) => IGetStatementAprLogsAction;
-export type THandleGetStatementAprLogs = (data: {
-  statementId: number,
-  productAprId: number,
-}) =>
-  Thunk<void>;
-
-export const getStatementAprLogs: TGetStatementAprLogs = data => ({
-  type: ActionTypeKeys.GET_STATEMENT_APR_LOGS,
-  payload: api.getStatementAprLogs(data),
-});
-
-export const handleGetStatementAprLogs: THandleGetStatementAprLogs = data =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        await dispatch(getStatementAprLogs(data));
-
-        dispatch(openModal({ name: modalNamesConst.STATEMENT_APR_LOGS }));
-      },
-      dispatch
-    );
-  };
-
-/**
  * Change minimum repayment action
  */
 
@@ -240,49 +208,49 @@ export const handleChangeMinimumRepayment: THandleChangeMinimumRepayment = data 
 export type THandleDownloadStatement = () => Thunk<void>;
 
 export const handleDownloadStatement: THandleDownloadStatement = () =>
-    async (dispatch, getState) => {
-      errorDecoratorUtil.withErrorHandler(
-        async () => {
-          const state = getState();
-          const statementId = activeItemIdSelector(state);
+  async (dispatch, getState) => {
+    errorDecoratorUtil.withErrorHandler(
+      async () => {
+        const state = getState();
+        const statementId = activeItemIdSelector(state);
 
-          const currentTransaction = currentStatementTransactionSelector(state);
+        const currentTransaction = currentStatementTransactionSelector(state);
 
-          const data: Array<any> = [];
+        const data: Array<any> = [];
 
-          const loadedData = await Promise.all([
-            dispatch(getStatementTransactions(currentTransaction)),
-            dispatch(getAccountStatementAprs(statementId)),
-          ]) as Array<any>;
+        const loadedData = await Promise.all([
+          dispatch(getStatementTransactions(currentTransaction)),
+          dispatch(getAccountStatementAprs(statementId)),
+        ]) as Array<any>;
 
-          loadedData.forEach(item => data.push(item.value));
+        loadedData.forEach(item => data.push(item.value));
 
-          const transactions = data.find(el => el.transactions).transactions;
-          const pendingTransactions = data.find(el => el.transactions).pending_transactions;
-          const aprs = data.find(el => el.statement_aprs).statement_aprs;
+        const transactions = data.find(el => el.transactions).transactions;
+        const pendingTransactions = data.find(el => el.transactions).pending_transactions;
+        const aprs = data.find(el => el.statement_aprs).statement_aprs;
 
-          downloadUtil.downloadStatementPDF({
-            fileName: statementReportFileNameSelector(state),
-            statement: currentStatementForReportSelector(state),
-            tables: [
-              {
-                title: 'Pending transactions',
-                items: prepareStatementTransactionsForReport(pendingTransactions),
-              },
-              {
-                title: 'Transactions',
-                items: prepareStatementTransactionsForReport(transactions),
-              },
-              {
-                title: 'Accrued interest',
-                items: prepareStatementAprsForReport(aprs),
-              },
-            ],
-          });
-        },
-        dispatch
-      );
-    };
+        downloadUtil.downloadStatementPDF({
+          fileName: statementReportFileNameSelector(state),
+          statement: currentStatementForReportSelector(state),
+          tables: [
+            {
+              title: 'Pending transactions',
+              items: prepareStatementTransactionsForReport(pendingTransactions),
+            },
+            {
+              title: 'Transactions',
+              items: prepareStatementTransactionsForReport(transactions),
+            },
+            {
+              title: 'Accrued interest',
+              items: prepareStatementAprsForReport(aprs),
+            },
+          ],
+        });
+      },
+      dispatch
+    );
+  };
 
 /**
  * Reset statements action

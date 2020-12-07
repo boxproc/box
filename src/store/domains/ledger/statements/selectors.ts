@@ -8,7 +8,6 @@ import { activeItemIdSelector } from 'store/domains/utils';
 import { ActionTypeKeys } from './actionTypes';
 import {
   prepareAccountStatementsToRender,
-  prepareStatementAprLogsToRender,
   prepareStatementAprsToRender,
   prepareStatementsToRender,
   prepareStatementToRender,
@@ -123,18 +122,6 @@ export const statementAprsSelector = createSelector(
 );
 
 /**
- * Statement APR logs selectors
- */
-
-export const defaultStatementAprLogsSelector = (state: IStoreState) =>
-  state.ledger.statements.statementAprLogs;
-
-export const statementAprLogsSelector = createSelector(
-  defaultStatementAprLogsSelector,
-  data => data && data.map(el => prepareStatementAprLogsToRender(el))
-);
-
-/**
  * Statement data selectors for report
  */
 
@@ -187,10 +174,6 @@ export const statementReportFileNameSelector = createSelector(
 export const isTransArsLoadingSelector = createLoadingSelector([
   ActionTypeKeys.GET_STATEMENT_TRANSACTIONS,
   ActionTypeKeys.GET_STATEMENT_APRS,
-]);
-
-export const isStatementAprLogsLoadingSelector = createLoadingSelector([
-  ActionTypeKeys.GET_STATEMENT_APR_LOGS,
 ]);
 
 export const isChangingMinimumRepaymentSelector = createLoadingSelector([

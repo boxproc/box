@@ -16,7 +16,6 @@ import {
   IStatementApr,
   IStatementTransaction,
   THandleDownloadStatement,
-  THandleGetStatementAprLogs,
   THandleGetStatementAprs,
   THandleGetStatementTransactions,
 } from 'store';
@@ -25,11 +24,9 @@ interface IStatementModal extends IWithModal {
   currentStatement: IStatement;
   currentStatementId: number;
   downloadStatement: THandleDownloadStatement;
-  getStatementAprLogs: THandleGetStatementAprLogs;
   getStatementAprs: THandleGetStatementAprs;
   getStatementTransactions: THandleGetStatementTransactions;
   isLoading: boolean;
-  isStatementAprLogsLoading: boolean;
   statementAprs: ImmutableArray<IStatementApr>;
   statementPendingTransactions: ImmutableArray<IStatementTransaction>;
   statementTransactions: ImmutableArray<IStatementTransaction>;
@@ -42,11 +39,9 @@ const StatementModal: React.FC<IStatementModal> = ({
   currentStatement,
   currentStatementId,
   downloadStatement,
-  getStatementAprLogs,
   getStatementAprs,
   getStatementTransactions,
   isLoading,
-  isStatementAprLogsLoading,
   openModal,
   statementAprs,
   statementPendingTransactions,
@@ -114,11 +109,7 @@ const StatementModal: React.FC<IStatementModal> = ({
           isLoading={isLoading}
         >
           <Box mt="20px" mb="10px">
-            <StatementAprsTable
-              data={statementAprs}
-              getStatementAprLogs={getStatementAprLogs}
-              isStatementAprLogsLoading={isStatementAprLogsLoading}
-            />
+            <StatementAprsTable data={statementAprs} />
           </Box>
         </TabsPanel>
 
