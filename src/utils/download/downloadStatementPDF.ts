@@ -28,7 +28,10 @@ export const downloadStatementPDF = (data: {
   const userData = storageUtil.getUserData();
   const username = userData && `${userData.firstName} ${userData.lastName}`;
 
-  const doc = new jsPDF('portrait', 'pt', 'a4') as any;
+  /**
+   * Orientation: landscape or portrait
+   */
+  const doc = new jsPDF('landscape', 'pt', 'a4') as any;
 
   /**
    * Name of .pdf file.
@@ -55,14 +58,14 @@ export const downloadStatementPDF = (data: {
    * BOX logo at the top right corner
    * (data img, 'JPEG', left, top, width, height)
    */
-  doc.addImage(logoData, 'JPEG', 525, 15, 50, 37);
+  doc.addImage(logoData, 'JPEG', 760, 15, 50, 37);
 
   /**
    * Horizontal line
    */
   doc.setLineWidth(0.3);
   doc.setDrawColor(153, 153, 153);
-  doc.line(30, 60, 580, 60);
+  doc.line(30, 60, 810, 60);
 
   /** Two columns:
    * 1st: account and customer info

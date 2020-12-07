@@ -142,11 +142,21 @@ export interface IStatementAprData {
   product_apr_id: number;
   rate: number;
   statement_id: number;
-  statement_principal: number;
   prev_stmnt_unpaid_principal: number;
   repayment_date: string;
   repaid_flag: string;
   interest_calc_start_date: string;
+  always_charge_interest: string;
+  prev_accrued_interest: number;
+  accrued_interest_repaid: number;
+  prev_accrued_interest_repaid: number;
+  outsd_accrued_interest: number;
+  outsd_accrued_interest_repaid: number;
+  stmnt_unpaid_principal: number;
+  outsd_stmnt_unpaid_principal: number;
+  stmnt_repaid_principal: number;
+  prev_stmnt_repaid_principal: number;
+  outsd_stmnt_repaid_principal: number;
 }
 
 export interface IStatementAprsData {
@@ -159,11 +169,21 @@ export interface IStatementApr {
   productAprId: number;
   rate: string;
   statementId: number;
-  statementPrincipal: string;
   prevStmntUnpaidPrincipal: string;
   repaymentDate: string;
   repaidFlag: boolean;
   interestCalcStartDate: string;
+  alwaysChargeInterest: boolean;
+  prevAccruedInterest: string;
+  accruedInterestRepaid: string;
+  prevAccruedInterestRepaid: string;
+  outsdAccruedInterest: string;
+  outsdAccruedInterestRepaid: string;
+  stmntUnpaidPrincipal: string;
+  outsdStmntUnpaidPrincipal: string;
+  stmntRepaidPrincipal: string;
+  prevStmntRepaidPrincipal: string;
+  outsdStmntRepaidPrincipal: string;
 }
 
 /**
