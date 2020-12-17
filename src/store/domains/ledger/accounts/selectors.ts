@@ -107,11 +107,6 @@ export const currentAccBalanceLimitSelector = createSelector(
   data => data && data.balanceLimit
 );
 
-export const currentAccBalanceLimitSharedSelector = createSelector(
-  currentAccSelector,
-  data => data && data.balanceLimitShared
-);
-
 export const currentAccProductOverrideIdSelector = createSelector(
   currentAccSelector,
   data => data && data.productOverrideId

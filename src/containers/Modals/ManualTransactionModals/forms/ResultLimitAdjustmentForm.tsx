@@ -31,18 +31,6 @@ const ResultLimitAdjustmentForm: React.FC<TResultLimitAdjustmentForm> = () => {
               disabled={true}
             />
           </Box>
-          <Box width={[1 / 2]} p="8px">
-            <Field
-              id="balanceLimitShared"
-              name="balanceLimitShared"
-              component={NumberFormatField}
-              placeholder="0.00"
-              fixedDecimalScale={true}
-              decimalScale={2}
-              label="Balance Limit Shared"
-              disabled={true}
-            />
-          </Box>
         </Flex>
       </Box>
     </form>

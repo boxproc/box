@@ -29,7 +29,6 @@ export interface IPayloadManualTransactionModal {
   accountId?: number;
   currencyCode?: string;
   balanceLimit: string;
-  balanceLimitShared: string;
   isLimitAdjustmentMode?: boolean;
 }
 

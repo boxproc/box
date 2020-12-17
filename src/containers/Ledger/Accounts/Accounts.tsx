@@ -27,7 +27,6 @@ interface IAccounts extends IWithModal {
   accounts: ImmutableArray<IAccount>;
   addProductOverride: THandleAddProductOverride;
   currentAccBalanceLimit: string;
-  currentAccBalanceLimitShared: string;
   currentCurrencyCode: number;
   currentId: number;
   filterAccounts: THandleFilterAccounts;
@@ -62,7 +61,6 @@ const Accounts: React.FC<IAccounts> = ({
   filterStatementsById,
   currentCurrencyCode,
   currentAccBalanceLimit,
-  currentAccBalanceLimitShared,
   isLoading,
   isReadOnly,
   uiItems,
@@ -162,7 +160,6 @@ const Accounts: React.FC<IAccounts> = ({
             isLimitAdjustmentMode: true,
             accountId: currentId,
             balanceLimit: currentAccBalanceLimit,
-            balanceLimitShared: currentAccBalanceLimitShared,
           },
         }),
       },
@@ -177,7 +174,6 @@ const Accounts: React.FC<IAccounts> = ({
       currentId,
       currentCurrencyCode,
       currentAccBalanceLimit,
-      currentAccBalanceLimitShared,
       openModal,
       isReadOnly,
       isReadOnlyTransactions,

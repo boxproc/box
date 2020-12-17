@@ -183,22 +183,6 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
                 ]}
               />
             </Box>
-            <Box width={[1 / 3]} p="8px">
-              <Field
-                id="balanceLimitShared"
-                name="balanceLimitShared"
-                component={NumberFormatField}
-                label="Balance Limit Shared"
-                placeholder="0.00"
-                fixedDecimalScale={true}
-                decimalScale={2}
-                validate={[
-                  formErrorUtil.isRequired,
-                  formErrorUtil.isNumber,
-                  formErrorUtil.isPositive,
-                ]}
-              />
-            </Box>
           </React.Fragment>
         )}
         <Box width={[1]} p="8px">

@@ -116,7 +116,6 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
       const {
         accountId,
         balanceLimit,
-        balanceLimitShared,
         currencyCode,
         isLimitAdjustmentMode,
       } = modalPayload;
@@ -131,7 +130,6 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
         accountId,
         currencyCode: currency,
         balanceLimit,
-        balanceLimitShared,
         transactionType,
       };
     },

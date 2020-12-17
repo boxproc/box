@@ -122,12 +122,6 @@ export const dictionaryEventDataElemsMock: IDictionaryEventDataElemsData = {
     },
     {
       event_id: 1,
-      name: 'account_balance_limit_shared',
-      description: 'Account shared limit',
-      data_type: 'F',
-    },
-    {
-      event_id: 1,
       name: 'product_currency',
       description: 'Currency of the product',
       data_type: 'S',

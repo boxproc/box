@@ -12,7 +12,6 @@ export const prepareLimitAdjDataToSend = (data: Partial<ILimitAdjustmentFromData
     transactionType,
     balanceLimit,
     accountId,
-    balanceLimitShared,
     description,
     transactionDatetime,
   } = data;
@@ -21,7 +20,6 @@ export const prepareLimitAdjDataToSend = (data: Partial<ILimitAdjustmentFromData
     transaction_type_id: transactionType.value,
     account_id: stringsUtil.toNumber(accountId),
     balance_limit: stringsUtil.toNumber(balanceLimit),
-    balance_limit_shared: stringsUtil.toNumber(balanceLimitShared),
     description,
     transaction_datetime: transactionDatetime && transactionDatetime.value,
   };
@@ -36,12 +34,10 @@ export const prepareResultLimitAdjDataToRender =
     const {
       transaction_id,
       balance_limit,
-      balance_limit_shared,
     } = data[0];
 
     return {
       transactionId: transaction_id,
       balanceLimit: balance_limit,
-      balanceLimitShared: balance_limit_shared,
     };
   };
