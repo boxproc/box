@@ -26,7 +26,6 @@ import { ISelectValue } from 'types';
 interface IAccounts extends IWithModal {
   accounts: ImmutableArray<IAccount>;
   addProductOverride: THandleAddProductOverride;
-  currentAccBalanceLimit: string;
   currentCurrencyCode: number;
   currentId: number;
   filterAccounts: THandleFilterAccounts;
@@ -60,7 +59,6 @@ const Accounts: React.FC<IAccounts> = ({
   filterTransactionsById,
   filterStatementsById,
   currentCurrencyCode,
-  currentAccBalanceLimit,
   isLoading,
   isReadOnly,
   uiItems,
@@ -75,7 +73,6 @@ const Accounts: React.FC<IAccounts> = ({
   const isReadOnlyTransactions = React.useMemo(
     () => {
       const manualTransaction = uiItems.find(item => item.id === uiItemsConst.MANUAL_TRANSACTION);
-      const limitAdjustment = uiItems.find(item => item.id === uiItemsConst.LIMIT_ADJUSTMENT);
 
       const isReadOnlyItem = (item: IUiItem) => {
         if (!item) {
@@ -87,7 +84,6 @@ const Accounts: React.FC<IAccounts> = ({
 
       return {
         isReadOnlyManualTransaction: isReadOnlyItem(manualTransaction),
-        isReadOnlyLimitAdjustment: isReadOnlyItem(limitAdjustment),
       };
     },
     [uiItems]
@@ -151,18 +147,6 @@ const Accounts: React.FC<IAccounts> = ({
           },
         }),
       },
-      {
-        name: 'Limit Adjustment',
-        isDisabled: isReadOnlyTransactions.isReadOnlyLimitAdjustment,
-        action: () => openModal({
-          name: modalNamesConst.MANUAL_TRANSACTION,
-          payload: {
-            isLimitAdjustmentMode: true,
-            accountId: currentId,
-            balanceLimit: currentAccBalanceLimit,
-          },
-        }),
-      },
     ],
     [
       hasProductOverride,
@@ -173,7 +157,6 @@ const Accounts: React.FC<IAccounts> = ({
       filterCardsById,
       currentId,
       currentCurrencyCode,
-      currentAccBalanceLimit,
       openModal,
       isReadOnly,
       isReadOnlyTransactions,

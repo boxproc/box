@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
 
 import {
-  dictionaryLimitAdjTypesOptionsSelector,
   dictionaryManualTrTypesOptionsSelector,
   dictionaryTransTypesOptionsSelector,
   handleGetDictionaryTransactionTypes,
@@ -19,7 +18,6 @@ import { componentUtil } from 'utils';
 export interface IWithLoadTransactionTypes {
   getTransactionTypes: THandleGetDictionaryTransactionTypes;
   isTransTypesLoading: boolean;
-  limitAdjTypeOptions: Array<ISelectValue>;
   manualTransTypesOptions: Array<ISelectValue>;
   transactionTypesOptions: Array<ISelectValue>;
 }
@@ -32,7 +30,6 @@ export const withLoadTransactionTypes = <OriginProps extends {}>(
       const {
         getTransactionTypes,
         isTransTypesLoading,
-        limitAdjTypeOptions,
         manualTransTypesOptions,
         transactionTypesOptions,
         ...originProps
@@ -52,7 +49,6 @@ export const withLoadTransactionTypes = <OriginProps extends {}>(
         <Component
           getTransactionTypes={getTransactionTypes}
           isTransTypesLoading={isTransTypesLoading}
-          limitAdjTypeOptions={limitAdjTypeOptions}
           manualTransTypesOptions={manualTransTypesOptions}
           transactionTypesOptions={transactionTypesOptions}
           {...originProps as OriginProps}
@@ -67,7 +63,6 @@ export const withLoadTransactionTypes = <OriginProps extends {}>(
     isTransTypesLoading: isTransTypesLoadingSelector(state),
     transactionTypesOptions: dictionaryTransTypesOptionsSelector(state),
     manualTransTypesOptions: dictionaryManualTrTypesOptionsSelector(state),
-    limitAdjTypeOptions: dictionaryLimitAdjTypesOptionsSelector(state),
   });
 
   const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(

@@ -1,5 +1,4 @@
 import { IAccountCardsData, IAccountsData } from './types';
-import { ILimitAdjustmentResultResponse } from './typesLimitAdj';
 import { IManualTransactionResultResponse } from './typesManualTr';
 
 import { IResponseStatus, TApiResponse } from 'types';
@@ -38,10 +37,6 @@ export enum ActionTypeKeys {
   MAKE_TRANSACTION = 'manualTransaction/MAKE_TRANSACTION',
   MAKE_TRANSACTION_FULFILLED = 'manualTransaction/MAKE_TRANSACTION_FULFILLED',
   MAKE_TRANSACTION_REJECTED = 'manualTransaction/MAKE_TRANSACTION_REJECTED',
-
-  LIMIT_ADJUSTMENT = 'limitAdjustment/LIMIT_ADJUSTMENT',
-  LIMIT_ADJUSTMENT_FULFILLED = 'limitAdjustment/LIMIT_ADJUSTMENT_FULFILLED',
-  LIMIT_ADJUSTMENT_REJECTED = 'limitAdjustment/LIMIT_ADJUSTMENT_REJECTED',
 }
 
 /** Get account cards action interfaces */
@@ -189,24 +184,6 @@ export interface IMakeTransactionRejectedAction {
   readonly type: ActionTypeKeys.MAKE_TRANSACTION_REJECTED;
 }
 
-/** Limit adjustment action interfaces */
-
-export interface IMakeLimitAdjustmentAction {
-  readonly payload: Promise<object>;
-  readonly type: ActionTypeKeys.LIMIT_ADJUSTMENT;
-}
-
-export interface IMakeLimitAdjustmentFulfilledAction {
-  readonly payload: ILimitAdjustmentResultResponse;
-  readonly type: ActionTypeKeys.LIMIT_ADJUSTMENT_FULFILLED;
-  readonly meta: { accId: number };
-}
-
-export interface IMakeLimitAdjustmentRejectedAction {
-  readonly payload: TApiResponse;
-  readonly type: ActionTypeKeys.LIMIT_ADJUSTMENT_REJECTED;
-}
-
 export type TAccountsAction =
   | IGetAccountCardsFulfilledAction
   | IOrderAccountCardFulfilledAction
@@ -216,5 +193,4 @@ export type TAccountsAction =
   | IAddProductOverrideFulfilledAction
   | IFilterAccountsByIdFulfilledAction
   | IResetAccountsAction
-  | IMakeTransactionFulfilledAction
-  | IMakeLimitAdjustmentFulfilledAction;
+  | IMakeTransactionFulfilledAction;

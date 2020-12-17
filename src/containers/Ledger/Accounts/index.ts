@@ -6,7 +6,6 @@ import Accounts from './Accounts';
 import {
   accountsSelector,
   activeItemIdSelector,
-  currentAccBalanceLimitSelector,
   currentAccCurrencyCodeSelector,
   currentAccHasProductOverrideSelector,
   currentAccProductOverrideIdSelector,
@@ -33,7 +32,6 @@ const mapStateToProps = (state: IStoreState) => ({
   productOverrideId: currentAccProductOverrideIdSelector(state),
   currentId: activeItemIdSelector(state),
   currentCurrencyCode: currentAccCurrencyCodeSelector(state),
-  currentAccBalanceLimit: currentAccBalanceLimitSelector(state),
   isReadOnly: isReadOnlySelector(state),
   uiItems: uiItemsSelector(state),
 });

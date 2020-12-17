@@ -89,8 +89,7 @@ export const isSettledTrSelector = createSelector(
       || status === transactionStatusConst.INVALID
       || status === transactionStatusConst.REVERSED
       || transactionTypeId === transactionTypesIdsConst.FEE
-      || transactionTypeId === transactionTypesIdsConst.REWARD
-      || transactionTypeId === transactionTypesIdsConst.LIMIT_ADJUSTMENT;
+      || transactionTypeId === transactionTypesIdsConst.REWARD;
   });
 
 /**

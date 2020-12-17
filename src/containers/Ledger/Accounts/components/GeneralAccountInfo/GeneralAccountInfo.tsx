@@ -402,7 +402,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             placeholder="0.00"
             fixedDecimalScale={true}
             decimalScale={2}
-            disabled={isEditMode || isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,

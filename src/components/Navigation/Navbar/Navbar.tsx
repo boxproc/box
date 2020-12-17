@@ -42,20 +42,17 @@ const Navbar: React.FC<INavbar> = ({
     const hasChildren = type === uiItemTypesConst.MENU_PARENT;
 
     const isModalWindow = item.id === uiItemsConst.MANUAL_TRANSACTION
-      || item.id === uiItemsConst.LIMIT_ADJUSTMENT
       || item.id === uiItemsConst.SETTLE_TRANSACTION;
 
     const isManualTransaction = item.id === uiItemsConst.MANUAL_TRANSACTION;
-    const isLimitAdjustment = item.id === uiItemsConst.LIMIT_ADJUSTMENT;
     const isSettleTransaction = item.id === uiItemsConst.SETTLE_TRANSACTION;
 
     const isReadOnly = permission === permissionTypesConst.READ_ONLY;
 
     const handleOpenModalWindow = () => {
-      if (isManualTransaction || isLimitAdjustment) {
+      if (isManualTransaction) {
         return openModal({
           name: modalNamesConst.MANUAL_TRANSACTION,
-          payload: { isLimitAdjustmentMode: isLimitAdjustment },
         });
       } else if (isSettleTransaction) {
         return openModal({ name: modalNamesConst.SETTLE_TRANSACTION });

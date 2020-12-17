@@ -28,8 +28,6 @@ export interface IPayloadLogModal {
 export interface IPayloadManualTransactionModal {
   accountId?: number;
   currencyCode?: string;
-  balanceLimit: string;
-  isLimitAdjustmentMode?: boolean;
 }
 
 export interface IPayloadTransactionModal {

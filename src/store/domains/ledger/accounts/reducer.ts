@@ -6,7 +6,6 @@ export const accountsInitialState: ImmutableObject<IAccountsState> = Immutable({
   accounts: Immutable([]),
   cards: Immutable([]),
   manualTrResult: Immutable([]),
-  limitAdjResult: Immutable([]),
 });
 
 const accountsReducer = (state = accountsInitialState, action: TAccountsAction) => {
@@ -34,20 +33,6 @@ const accountsReducer = (state = accountsInitialState, action: TAccountsAction) 
       return state
         .set('accounts', mAccounts)
         .set('manualTrResult', action.payload.transaction_result);
-
-    case ActionTypeKeys.LIMIT_ADJUSTMENT_FULFILLED:
-      const lData = action.payload.transaction_result[0];
-      const lAccInd = state.accounts.findIndex(el => el.id === action.meta.accId);
-      const lAccounts = state.accounts.asMutable();
-
-      lAccounts[lAccInd] = {
-        ...lAccounts[lAccInd],
-        balance_limit: lData && lData.balance_limit,
-      };
-
-      return state
-        .set('accounts', lAccounts)
-        .set('limitAdjResult', action.payload.transaction_result);
 
     case ActionTypeKeys.RESET_ACCOUNTS:
       return state = accountsInitialState;
