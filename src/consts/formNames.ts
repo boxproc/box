@@ -54,7 +54,6 @@ export enum formNamesConst {
   MANUAL_TRANSACTION = 'manualTransaction',
   REPAYMENT_DEBIT_CARDS = 'repaymentDebitCardsForm',
   DIRECT_DEBIT_ACCOUNTS = 'directDebitsAccountsForm',
-  RESULT_LIMIT_ADJUSTMENT = 'limitAdjustment',
   RESULT_MANUAL_TRANSACTION = 'resultManualTransaction',
   STATEMENT = 'statementForm',
   MINIMUM_REPAYMENT = 'minimumRepaymentForm',

@@ -122,12 +122,6 @@ export const dictionaryEventDataElemsMock: IDictionaryEventDataElemsData = {
     },
     {
       event_id: 1,
-      name: 'account_balance_limit_shared',
-      description: 'Account shared limit',
-      data_type: 'F',
-    },
-    {
-      event_id: 1,
       name: 'product_currency',
       description: 'Currency of the product',
       data_type: 'S',
@@ -154,7 +148,6 @@ export const dictionaryEventsMock: IDictionaryEventsData = {
     { id: 2, name: 'Account close' },
     { id: 3, name: 'Account limit changed' },
     { id: 4, name: 'Transaction - Card' },
-    { id: 5, name: 'Transaction - Adjustment' },
     { id: 6, name: 'Transaction - Repayment' },
     { id: 7, name: 'Daily Settlement' },
     { id: 8, name: 'Cycle Settlement' },

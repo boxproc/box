@@ -14,7 +14,6 @@ export enum uiItemsConst {
   ENDPOINTS = 'administration/endpoints',
   INSTITUTIONS = 'administration/institutions',
   INTERFACES = 'administration/interfaces',
-  LIMIT_ADJUSTMENT = 'ledger/limit_adjustment',
   MANUAL_TRANSACTION = 'ledger/manual_transaction',
   PRODUCTS = 'product_designer/products',
   SCHEDULED_JOBS = 'audit/scheduled_jobs',

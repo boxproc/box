@@ -146,17 +146,6 @@ export const tableColumns = [
   },
   {
     maxWidth: 150,
-    Header: <TableHeader title="Balance Limit Shared" />,
-    accessor: 'balanceLimitShared',
-    Cell: (props: TCell<'balanceLimitShared'>) => (
-      <TableCell
-        value={props.value}
-        isNumber={true}
-      />
-    ),
-  },
-  {
-    maxWidth: 150,
     Header: <TableHeader title="Accrued Interest" />,
     accessor: 'accruedInterest',
     Cell: (props: TCell<'accruedInterest'>) => (

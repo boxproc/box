@@ -39,7 +39,6 @@ export enum transactionTypesIdsConst {
   CASH_WITHDRAWAL_ATM = 5,
   FEE = 9,
   REWARD = 27,
-  LIMIT_ADJUSTMENT = 14,
   DIRECT_DEBIT = 24,
   BALANCE_TRANSFER_DEBIT = 55,
 }

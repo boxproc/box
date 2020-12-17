@@ -5,20 +5,16 @@ import { IWithModal, withModal } from 'HOCs';
 
 import { modalNamesConst, modalTypesConst } from 'consts';
 import {
-  ResultLimitAdjustmentForm,
   ResultManualTransactionForm
 } from 'containers/Modals/ManualTransactionModals/forms';
 
 import {
-  ILimitAdjustmentResult,
   IManualTransactionResult,
   THandleFilterTransactionsById,
 } from 'store';
 
 interface IResultManualTransactionModal extends IWithModal {
   filterTransactionsById: THandleFilterTransactionsById;
-  isLimitAdjustment: boolean;
-  limitAdjustment: ILimitAdjustmentResult;
   manualTransaction: IManualTransactionResult;
   transactionId: number;
 }
@@ -28,8 +24,6 @@ const modalName = modalNamesConst.MANUAL_TRANSACTION_RESULT;
 const ResultManualTransactionModal: React.FC<IResultManualTransactionModal> = ({
   closeModal,
   manualTransaction,
-  limitAdjustment,
-  isLimitAdjustment,
   filterTransactionsById,
   transactionId,
   closeAllModals,
@@ -54,10 +48,7 @@ const ResultManualTransactionModal: React.FC<IResultManualTransactionModal> = ({
       title="Transaction is successfully completed"
       containerWidth="320px"
     >
-      {isLimitAdjustment
-        ? (<ResultLimitAdjustmentForm initialValues={limitAdjustment} />)
-        : (<ResultManualTransactionForm initialValues={manualTransaction} />)
-      }
+      <ResultManualTransactionForm initialValues={manualTransaction} />
       <Hr />
       <OkCancelButtons
         okText="View transaction"
@@ -65,7 +56,6 @@ const ResultManualTransactionModal: React.FC<IResultManualTransactionModal> = ({
         focusedButton="ok"
         onOk={handleGetTransaction}
         onCancel={handleOnCancel}
-        hideOk={isLimitAdjustment}
       />
     </Modal>
   );

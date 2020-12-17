@@ -17,7 +17,6 @@ import {
   IFilterAccountsAction,
   IFilterAccountsByIdAction,
   IGetAccountCardsAction,
-  IMakeLimitAdjustmentAction,
   IMakeTransactionAction,
   IOrderAccountCardAction,
   IUpdateAccountAction,
@@ -28,10 +27,8 @@ import {
   IAccountDetails,
   IAccountsFilterToSend,
 } from './types';
-import { ILimitAdjReq, ILimitAdjustmentFromData } from './typesLimitAdj';
 import { IManualTransactionFromData, IManualTransactionReq } from './typesManualTr';
 import { prepareDataToSend, prepareFilterToSend, prepareFilterToSet } from './utils';
-import { prepareLimitAdjDataToSend } from './utilsLimitAdj';
 import { prepareManualTrDataToSend } from './utilsManualTr';
 
 import { Thunk } from 'types';
@@ -272,33 +269,6 @@ export const handleMakeTransaction: THandleMakeTransaction = data =>
         const preparedData = prepareManualTrDataToSend(data);
 
         await dispatch(makeTransaction(preparedData));
-        dispatch(resetForm(formNamesConst.MANUAL_TRANSACTION));
-        dispatch(openModal({ name: modalNamesConst.MANUAL_TRANSACTION_RESULT }));
-      },
-      dispatch
-    );
-  };
-
-/**
- * Limit adjustment action
- */
-
-export type TMakeLimitAdjustment = (data: Partial<ILimitAdjReq>) => IMakeLimitAdjustmentAction;
-export type THandleMakeLimitAdjustment = (data: Partial<ILimitAdjustmentFromData>) => Thunk<void>;
-
-export const makeLimitAdjustment: TMakeLimitAdjustment = data => ({
-  type: ActionTypeKeys.LIMIT_ADJUSTMENT,
-  payload: api.makeLimitAdjustment(data),
-  meta: { accId: data.account_id },
-});
-
-export const handleMakeLimitAdjustment: THandleMakeLimitAdjustment = data =>
-  async dispatch => {
-    errorDecoratorUtil.withErrorHandler(
-      async () => {
-        const preparedData = prepareLimitAdjDataToSend(data);
-
-        await dispatch(makeLimitAdjustment(preparedData));
         dispatch(resetForm(formNamesConst.MANUAL_TRANSACTION));
         dispatch(openModal({ name: modalNamesConst.MANUAL_TRANSACTION_RESULT }));
       },

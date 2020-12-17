@@ -402,24 +402,7 @@ const GeneralAccountInfo: React.FC<IGeneralAccountInfo> = ({
             placeholder="0.00"
             fixedDecimalScale={true}
             decimalScale={2}
-            disabled={isEditMode || isReadOnly}
-            validate={[
-              formErrorUtil.isRequired,
-              formErrorUtil.isNumber,
-              formErrorUtil.isPositive,
-            ]}
-          />
-        </Box>
-        <Box width="160px" p="8px">
-          <Field
-            id="balanceLimitShared"
-            name="balanceLimitShared"
-            label="Balance Limit Shared"
-            component={NumberFormatField}
-            placeholder="0.00"
-            fixedDecimalScale={true}
-            decimalScale={2}
-            disabled={isEditMode || isReadOnly}
+            disabled={isReadOnly}
             validate={[
               formErrorUtil.isRequired,
               formErrorUtil.isNumber,

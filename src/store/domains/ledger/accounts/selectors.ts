@@ -8,7 +8,6 @@ import { activeItemIdSelector } from 'store/domains/utils';
 import { directDebitsMandatesOptionsSelector } from './../customers';
 import { ActionTypeKeys } from './actionTypes';
 import { prepareCardsToRender, prepareDataToRender, prepareDetailsToRender } from './utils';
-import { prepareResultLimitAdjDataToRender } from './utilsLimitAdj';
 import { prepareManualTrResultDataToRender } from './utilsManualTr';
 
 /** Accounts selectors */
@@ -102,16 +101,6 @@ export const currentAccCurrencyCodeSelector = createSelector(
   data => data && data.currencyNumericCode
 );
 
-export const currentAccBalanceLimitSelector = createSelector(
-  currentAccSelector,
-  data => data && data.balanceLimit
-);
-
-export const currentAccBalanceLimitSharedSelector = createSelector(
-  currentAccSelector,
-  data => data && data.balanceLimitShared
-);
-
 export const currentAccProductOverrideIdSelector = createSelector(
   currentAccSelector,
   data => data && data.productOverrideId
@@ -166,20 +155,4 @@ export const manualTransactionIdSelector = createSelector(
 
 export const isManualTransactionLoading = createLoadingSelector([
   ActionTypeKeys.MAKE_TRANSACTION,
-]);
-
-/**
- * Limit adjustment selectors
- */
-
-export const defaultLimitAdjustmentSelector = (state: IStoreState) =>
-  state.ledger.accounts.limitAdjResult;
-
-export const limitAdjustmentSelector = createSelector(
-  defaultLimitAdjustmentSelector,
-  data => data && prepareResultLimitAdjDataToRender(data)
-);
-
-export const isLimitAdjustmentLoadingSelector = createLoadingSelector([
-  ActionTypeKeys.LIMIT_ADJUSTMENT,
 ]);

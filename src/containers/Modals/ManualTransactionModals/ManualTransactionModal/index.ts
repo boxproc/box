@@ -11,14 +11,11 @@ import {
   directDebitsMandatesOptionsSelector,
   handleGetDictionaryCurrencies,
   handleGetDirectDebitMandates,
-  handleMakeLimitAdjustment,
   handleMakeTransaction,
   isCurrenciesLoadingSelector,
   isGettingDirectDebitMandatesSelector,
-  isLimitAdjustmentLoadingSelector,
   isManualTransactionLoading,
   IStoreState,
-  manualTrModalIsLimitAdjSelector,
   payloadManualTrModalSelector,
   resetDirectDebitMandates,
 } from 'store';
@@ -29,8 +26,7 @@ const mapStateToProps = (state: IStoreState) => ({
   currenciesOptions: currencyNumsOptionsSelector(state),
   isCurrenciesLoading: isCurrenciesLoadingSelector(state),
   isDirectDebitMandatesLoading: isGettingDirectDebitMandatesSelector(state),
-  isLimitAdjustment: manualTrModalIsLimitAdjSelector(state),
-  isLoading: isLimitAdjustmentLoadingSelector(state) || isManualTransactionLoading(state),
+  isLoading: isManualTransactionLoading(state),
   mandateOptions: directDebitsMandatesOptionsSelector(state),
   modalPayload: payloadManualTrModalSelector(state),
   accountIdValue: formSelector(state, 'accountId'),
@@ -40,7 +36,6 @@ const mapStateToProps = (state: IStoreState) => ({
 const mapDispatchToProps = (dispatch: Dispatch) => bindActionCreators(
   {
     makeTransaction: handleMakeTransaction,
-    makeLimitAdjustment: handleMakeLimitAdjustment,
     getCurrencies: handleGetDictionaryCurrencies,
     getDirectDebitMandates: handleGetDirectDebitMandates,
     resetDirectDebitMandates,

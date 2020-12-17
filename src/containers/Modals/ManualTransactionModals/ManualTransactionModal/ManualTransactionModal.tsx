@@ -23,7 +23,6 @@ import {
   IPayloadManualTransactionModal,
   THandleGetDictionaryCurrencies,
   THandleGetDirectDebitMandates,
-  THandleMakeLimitAdjustment,
   THandleMakeTransaction,
   TResetDirectDebitMandates,
 } from 'store';
@@ -37,8 +36,6 @@ interface IManualTransactionModal extends IWithModal, IWithLoadTransactionTypes 
   getDirectDebitMandates: THandleGetDirectDebitMandates;
   isCurrenciesLoading: boolean;
   isDirectDebitMandatesLoading: boolean;
-  isLimitAdjustment: boolean;
-  makeLimitAdjustment: THandleMakeLimitAdjustment;
   makeTransaction: THandleMakeTransaction;
   mandateOptions: Array<ISelectValue>;
   modalPayload: IPayloadManualTransactionModal;
@@ -55,10 +52,7 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
   getDirectDebitMandates,
   isCurrenciesLoading,
   isDirectDebitMandatesLoading,
-  isLimitAdjustment,
   isTransTypesLoading,
-  limitAdjTypeOptions,
-  makeLimitAdjustment,
   makeTransaction,
   mandateOptions,
   manualTransTypesOptions,
@@ -91,20 +85,10 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
         getDirectDebitMandates({
           accountId: accountIdValue,
           forAccount: true,
-         });
+        });
       }
     },
     [getDirectDebitMandates, accountIdValue, isDirectDebitTrType]
-  );
-
-  const modalTitle = React.useMemo(
-    () => isLimitAdjustment ? 'Limit Adjustment' : 'Manual Transaction',
-    [isLimitAdjustment]
-  );
-
-  const transactionTypes = React.useMemo(
-    () => isLimitAdjustment ? limitAdjTypeOptions : manualTransTypesOptions,
-    [isLimitAdjustment, manualTransTypesOptions, limitAdjTypeOptions]
   );
 
   const initialFormValues = React.useMemo(
@@ -115,31 +99,21 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
 
       const {
         accountId,
-        balanceLimit,
-        balanceLimitShared,
         currencyCode,
-        isLimitAdjustmentMode,
       } = modalPayload;
 
       const currency = currenciesOptions.find(item => item.value === currencyCode);
 
-      const transactionType = isLimitAdjustmentMode
-        && transactionTypes
-        && transactionTypes[0];
-
       return {
         accountId,
         currencyCode: currency,
-        balanceLimit,
-        balanceLimitShared,
-        transactionType,
       };
     },
-    [currenciesOptions, modalPayload, transactionTypes]
+    [currenciesOptions, modalPayload]
   );
 
   const isReadonlyId = React.useMemo(
-    () => Boolean(initialFormValues.accountId),
+    () => Boolean(initialFormValues && initialFormValues.accountId),
     [initialFormValues]
   );
 
@@ -148,21 +122,16 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
     [closeModal]
   );
 
-  const currentPath = React.useMemo(
-    () => isLimitAdjustment ? uiItemsConst.LIMIT_ADJUSTMENT : uiItemsConst.MANUAL_TRANSACTION,
-    [isLimitAdjustment]
-  );
-
   return (
     <Modal
       name={modalName}
       type={modalTypesConst.VIEWING}
       containerWidth="420px"
-      isBluredBackdrop={!initialFormValues.accountId}
+      isBluredBackdrop={initialFormValues && !initialFormValues.accountId}
     >
       <PageTitle
-        title={modalTitle}
-        pageId={currentPath}
+        title="Manual Transaction"
+        pageId={uiItemsConst.MANUAL_TRANSACTION}
       />
       <ManualTransactionForm
         currenciesOptions={currenciesOptions}
@@ -170,13 +139,11 @@ const ManualTransactionModal: React.FC<IManualTransactionModal> = ({
         initialValues={initialFormValues}
         isCurrenciesLoading={isCurrenciesLoading}
         isDirectDebitMandatesLoading={isDirectDebitMandatesLoading}
-        isLimitAdjustment={isLimitAdjustment}
         isReadonly={isReadonlyId}
         isTransTypesLoading={isTransTypesLoading}
-        makeLimitAdjustment={makeLimitAdjustment}
         makeTransaction={makeTransaction}
         onCancel={handleOnCancel}
-        transactionTypes={transactionTypes}
+        transactionTypes={manualTransTypesOptions}
         isDirectDebitTrType={isDirectDebitTrType}
         accountIdValue={accountIdValue}
       />

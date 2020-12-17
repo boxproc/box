@@ -14,7 +14,7 @@ import {
   TextareaField,
 } from 'components';
 
-import { THandleMakeLimitAdjustment, THandleMakeTransaction } from 'store';
+import { THandleMakeTransaction } from 'store';
 
 import { formNamesConst } from 'consts';
 
@@ -27,10 +27,8 @@ interface IManualTransactionForm {
   isCurrenciesLoading: boolean;
   isDirectDebitMandatesLoading: boolean;
   isDirectDebitTrType: boolean;
-  isLimitAdjustment: boolean;
   isReadonly: boolean;
   isTransTypesLoading: boolean;
-  makeLimitAdjustment: THandleMakeLimitAdjustment;
   makeTransaction: THandleMakeTransaction;
   mandateOptions: Array<ISelectValue>;
   onCancel: () => void;
@@ -48,10 +46,8 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
   isCurrenciesLoading,
   isDirectDebitMandatesLoading,
   isDirectDebitTrType,
-  isLimitAdjustment,
   isReadonly,
   isTransTypesLoading,
-  makeLimitAdjustment,
   makeTransaction,
   mandateOptions,
   onCancel,
@@ -73,8 +69,8 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
   );
 
   const submitFormAction = React.useMemo(
-    () => isLimitAdjustment ? makeLimitAdjustment : makeTransaction,
-    [isLimitAdjustment, makeLimitAdjustment, makeTransaction]
+    () => makeTransaction,
+    [makeTransaction]
   );
 
   const handleSubmitForm = React.useCallback(
@@ -98,7 +94,7 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
             placeholder="Select Transaction Type"
             isLoading={isTransTypesLoading}
             options={transactionTypes}
-            isDisabled={isLimitAdjustment}
+            isDisabled={false}
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
@@ -118,7 +114,7 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
             />
           </Box>
         )}
-        {!isDirectDebitTrType && !isLimitAdjustment && (
+        {!isDirectDebitTrType && (
           <Box width={[1]} p="8px">
             <Field
               id="currencyCode"
@@ -132,7 +128,7 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
             />
           </Box>
         )}
-        <Box width={[isLimitAdjustment ? 1 / 3 : 1 / 2]} p="8px">
+        <Box width={[1 / 2]} p="8px">
           <Field
             id="accountId"
             name="accountId"
@@ -147,60 +143,22 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
             ]}
           />
         </Box>
-        {!isLimitAdjustment && (
-          <Box width={[1 / 2]} p="8px">
-            <Field
-              id="amount"
-              name="amount"
-              component={NumberFormatField}
-              placeholder="0.00"
-              fixedDecimalScale={true}
-              decimalScale={2}
-              label="Amount"
-              validate={[
-                formErrorUtil.isRequired,
-                formErrorUtil.isNumber,
-                formErrorUtil.isStrictPositive,
-              ]}
-            />
-          </Box>
-        )}
-        {isLimitAdjustment && (
-          <React.Fragment>
-            <Box width={[1 / 3]} p="8px">
-              <Field
-                id="balanceLimit"
-                name="balanceLimit"
-                component={NumberFormatField}
-                label="Balance Limit"
-                placeholder="0.00"
-                fixedDecimalScale={true}
-                decimalScale={2}
-                validate={[
-                  formErrorUtil.isRequired,
-                  formErrorUtil.isNumber,
-                  formErrorUtil.isPositive,
-                ]}
-              />
-            </Box>
-            <Box width={[1 / 3]} p="8px">
-              <Field
-                id="balanceLimitShared"
-                name="balanceLimitShared"
-                component={NumberFormatField}
-                label="Balance Limit Shared"
-                placeholder="0.00"
-                fixedDecimalScale={true}
-                decimalScale={2}
-                validate={[
-                  formErrorUtil.isRequired,
-                  formErrorUtil.isNumber,
-                  formErrorUtil.isPositive,
-                ]}
-              />
-            </Box>
-          </React.Fragment>
-        )}
+        <Box width={[1 / 2]} p="8px">
+          <Field
+            id="amount"
+            name="amount"
+            component={NumberFormatField}
+            placeholder="0.00"
+            fixedDecimalScale={true}
+            decimalScale={2}
+            label="Amount"
+            validate={[
+              formErrorUtil.isRequired,
+              formErrorUtil.isNumber,
+              formErrorUtil.isStrictPositive,
+            ]}
+          />
+        </Box>
         <Box width={[1]} p="8px">
           <Field
             id="description"
@@ -212,16 +170,14 @@ const ManualTransactionForm: React.FC<TManualTransactionForm> = ({
             validate={[formErrorUtil.isRequired]}
           />
         </Box>
-        {!isLimitAdjustment && (
-          <Box width={[1]} p="8px" pb="0">
-            <Field
-              id="settledFlag"
-              name="settledFlag"
-              component={CheckboxField}
-              label="Settled"
-            />
-          </Box>
-        )}
+        <Box width={[1]} p="8px" pb="0">
+          <Field
+            id="settledFlag"
+            name="settledFlag"
+            component={CheckboxField}
+            label="Settled"
+          />
+        </Box>
         <Hr />
       </Flex>
       <Flex

@@ -1,7 +1,6 @@
 
 import { ImmutableArray } from 'seamless-immutable';
 
-import { ILimitAdjustmentResultData } from './typesLimitAdj';
 import { IManualTransactionResultData } from './typesManualTr';
 
 import { ISelectValue } from 'types';
@@ -21,7 +20,6 @@ export interface IAccountData {
   aux_counter_3_enabled: string;
   aux_counter_3: number;
   balance_authorised: number;
-  balance_limit_shared: number;
   balance_limit: number;
   balance_settled: number;
   currency_code: string;
@@ -72,7 +70,6 @@ interface IAccountPlain {
   auxCounter3Enabled: boolean;
   balanceAuthorised: number;
   balanceLimit: number;
-  balanceLimitShared: number;
   balanceSettled: number;
   currencyCode: string;
   currencyNumericCode: number;
@@ -158,5 +155,4 @@ export interface IAccountsState {
   accounts: ImmutableArray<IAccountData>;
   cards: ImmutableArray<IAccountCardData>;
   manualTrResult: ImmutableArray<IManualTransactionResultData>;
-  limitAdjResult: ImmutableArray<ILimitAdjustmentResultData>;
 }

@@ -4,7 +4,6 @@ import {
   dataTypesOptions,
   debitCreditIndicatorConst,
   debitCreditIndicatorOptions,
-  transactionTypesIdsConst,
 } from 'consts';
 
 import { IStoreState } from 'store';
@@ -190,25 +189,6 @@ export const dictionaryManualTrTypesOptionsSelector = createSelector(
     });
   }
 );
-
-export const dictionaryLimitAdjTypesOptionsSelector = createSelector(
-  dictionaryTransTypesSelector,
-  data => {
-    const limitAdjType = data.find(el => el.id === transactionTypesIdsConst.LIMIT_ADJUSTMENT);
-
-    return limitAdjType && [limitAdjType].map(type => {
-      if (!type) {
-        return null;
-      }
-
-      const { id, description, debitCreditIndicator } = type;
-
-      return {
-        value: id,
-        label: `${description} - [${debitCreditIndicator}]`,
-      };
-    });
-  });
 
 export const isTransTypesLoadedSelector = createSelector(
   defaultDictionaryTransTypesSelector,
