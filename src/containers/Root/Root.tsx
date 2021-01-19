@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Redirect, Route, RouteComponentProps, Switch, withRouter } from 'react-router-dom';
 import { ImmutableArray } from 'seamless-immutable';
 
 import styled from 'theme';
 
-import { Container, Footer, PrivateRoute } from 'components';
+import { Container, Footer, PrivateRoute, Spinner } from 'components';
 
 import { basePath } from 'consts';
 
@@ -88,40 +88,42 @@ const Root: React.FC<IRoot> = ({
           <div>{isLoggedIn && (<Header />)}</div>
           <main>
             <PagesWrapper>
-              <Switch>
-                <Route
-                  exact={true}
-                  path={`${basePath}login`}
-                  render={() => isLoggedIn
-                    ? <Redirect to={basePath} />
-                    : <Login />
-                  }
-                />
-
-                {privateRoutes}
-
-                {isRedirectionToLastScreen && (
+              <Suspense fallback={<Spinner isFixed={true} />}>
+                <Switch>
                   <Route
-                    path={`${basePath}${lastPathname}`}
-                    render={() => screensList[lastPathname]}
-                  />
-                )}
-
-                {isRedirectionToLastScreen && (
-                  <Redirect from={basePath} to={`${basePath}${lastPathname}`} />
-                )}
-
-                {(isLoadedUiItems || registrationPendingFlag) && !isRedirectionToLastScreen && (
-                  <PrivateRoute
                     exact={true}
-                    path={basePath}
-                    component={Home}
+                    path={`${basePath}login`}
+                    render={() => isLoggedIn
+                      ? <Redirect to={basePath} />
+                      : <Login />
+                    }
                   />
-                )}
 
-                {!isLoggedIn && (<Redirect from="*" to={`${basePath}login`} />)}
+                  {privateRoutes}
 
-              </Switch>
+                  {isRedirectionToLastScreen && (
+                    <Route
+                      path={`${basePath}${lastPathname}`}
+                      render={() => screensList[lastPathname]}
+                    />
+                  )}
+
+                  {isRedirectionToLastScreen && (
+                    <Redirect from={basePath} to={`${basePath}${lastPathname}`} />
+                  )}
+
+                  {(isLoadedUiItems || registrationPendingFlag) && !isRedirectionToLastScreen && (
+                    <PrivateRoute
+                      exact={true}
+                      path={basePath}
+                      component={Home}
+                    />
+                  )}
+
+                  {!isLoggedIn && (<Redirect from="*" to={`${basePath}login`} />)}
+
+                </Switch>
+              </Suspense>
             </PagesWrapper>
           </main>
         </div>

@@ -1,40 +1,34 @@
-import React from 'react';
+import React, { lazy } from 'react';
 
 import { uiItemsConst } from 'consts';
 
-import {
-  Countries,
-  Currencies,
-  Endpoints,
-  EventDataElems,
-  Events,
-  Institutions,
-  Interfaces,
-  Scheduler,
-  SystemProperties,
-  TransactionTypes,
-  Users,
-  UsersGroups,
-} from './Admin';
+const Countries = lazy(() => import('containers/Admin').then(({ Countries }) => ({ default: Countries})));
+const Currencies = lazy(() => import('containers/Admin').then(({ Currencies }) => ({ default: Currencies})));
+const Endpoints = lazy(() => import('containers/Admin').then(({ Endpoints }) => ({ default: Endpoints})));
+const EventDataElems = lazy(() => import('containers/Admin').then(({ EventDataElems }) => ({ default: EventDataElems})));
+const Events = lazy(() => import('containers/Admin').then(({ Events }) => ({ default: Events})));
+const Institutions = lazy(() => import('containers/Admin').then(({ Institutions }) => ({ default: Institutions})));
+const Interfaces = lazy(() => import('containers/Admin').then(({ Interfaces }) => ({ default: Interfaces})));
+const Scheduler = lazy(() => import('containers/Admin').then(({ Scheduler }) => ({ default: Scheduler})));
+const SystemProperties = lazy(() => import('containers/Admin').then(({ SystemProperties }) => ({ default: SystemProperties})));
+const TransactionTypes = lazy(() => import('containers/Admin').then(({ TransactionTypes }) => ({ default: TransactionTypes})));
+const Users = lazy(() => import('containers/Admin').then(({ Users }) => ({ default: Users})));
+const UsersGroups = lazy(() => import('containers/Admin').then(({ UsersGroups }) => ({ default: UsersGroups})));
 
-import { Products } from 'containers/ProductDesigner';
+const Products = lazy(() => import('containers/ProductDesigner').then(({ Products }) => ({ default: Products})));
 
-import {
-  Accounts,
-  Cards,
-  CurrencyRates,
-  Customers,
-  Statements,
-  Transactions,
-} from 'containers/Ledger';
+const ApiCalls = lazy(() => import('containers/Audit').then(({ ApiCalls }) => ({ default: ApiCalls})));
+const ScheduledJobs = lazy(() => import('containers/Audit').then(({ ScheduledJobs }) => ({ default: ScheduledJobs})));
+const SystemMonitor = lazy(() => import('containers/Audit').then(({ SystemMonitor }) => ({ default: SystemMonitor})));
+const UiSessions = lazy(() => import('containers/Audit').then(({ UiSessions }) => ({ default: UiSessions})));
+const UsersActivity = lazy(() => import('containers/Audit').then(({ UsersActivity }) => ({ default: UsersActivity})));
 
-import {
-  ApiCalls,
-  ScheduledJobs,
-  SystemMonitor,
-  UiSessions,
-  UsersActivity,
-} from 'containers/Audit';
+const Accounts = lazy(() => import('containers/Ledger').then(({ Accounts }) => ({ default: Accounts})));
+const Cards = lazy(() => import('containers/Ledger').then(({ Cards }) => ({ default: Cards})));
+const CurrencyRates = lazy(() => import('containers/Ledger').then(({ CurrencyRates }) => ({ default: CurrencyRates})));
+const Customers = lazy(() => import('containers/Ledger').then(({ Customers }) => ({ default: Customers})));
+const Statements = lazy(() => import('containers/Ledger').then(({ Statements }) => ({ default: Statements})));
+const Transactions = lazy(() => import('containers/Ledger').then(({ Transactions }) => ({ default: Transactions})));
 
 export const screensList = {
   [uiItemsConst.ACCOUNTS]: <Accounts />,
