@@ -231,18 +231,6 @@ const StatementForm: React.FC<TStatementForm> = ({
               </Box>
               <Box width={[1 / 4]} p="8px">
                 <Field
-                  id="repaymentMinimumInterest"
-                  name="repaymentMinimumInterest"
-                  component={NumberFormatField}
-                  placeholder="0.00"
-                  fixedDecimalScale={true}
-                  decimalScale={2}
-                  label="Repayment Minimum Interest"
-                  disabled={true}
-                />
-              </Box>
-              <Box width={[1 / 4]} p="8px">
-                <Field
                   id="overLimit"
                   name="overLimit"
                   component={NumberFormatField}
