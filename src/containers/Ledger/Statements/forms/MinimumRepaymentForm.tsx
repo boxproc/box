@@ -55,10 +55,10 @@ const MinimumRepaymentForm: React.FC<TMinimumRepaymentForm> = ({
         </Box>
         <Box width="120px" p="8px">
           <Field
-            id="repaymentDate"
-            name="repaymentDate"
+            id="repaymentDueDate"
+            name="repaymentDueDate"
             component={InputField}
-            label="Repayment Date"
+            label="Repayment Due Date"
             placeholder={dateFormatConst.DATE}
             mask={maskFormatConst.DATE}
             disabled={true}

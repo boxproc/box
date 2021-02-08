@@ -31,7 +31,7 @@ export const prepareStatementToRender = (
     statement_date,
     start_date,
     end_date,
-    repayment_date,
+    repayment_due_date,
     balance_open,
     balance_close,
     repayment_minimum_amount_due,
@@ -50,6 +50,17 @@ export const prepareStatementToRender = (
     address_post_code,
     address_country_code,
     sequence_number,
+    repayment_minimum_percentage,
+    repayment_minimum_interest,
+    repayment_amount,
+    over_limit,
+    estimated_interest,
+    total_overdue_repayments,
+    total_interest,
+    total_fees,
+    total_credits,
+    total_debits,
+    date_of_last_update,
   } = data;
 
   const repaymentStatus = repaymentStatusOptions.find(el => el.value === repayment_status);
@@ -78,7 +89,7 @@ export const prepareStatementToRender = (
       statementDate: statement_date,
       startDate: start_date,
       endDate: end_date,
-      repaymentDate: repayment_date,
+      repaymentDueDate: repayment_due_date,
       firstTransactionId: first_transaction_id,
       lastTransactionId: last_transaction_id,
       balanceOpen: stringsUtil.numberToFixed(balance_open, 2),
@@ -86,6 +97,17 @@ export const prepareStatementToRender = (
       repaymentMinimumAmountDue: stringsUtil.numberToFixed(repayment_minimum_amount_due, 2),
       repaymentStatus: repaymentStatus && repaymentStatus.label,
       status: statementStatus && statementStatus.label,
+      repaymentMinimumPercentage: stringsUtil.numberToFixed(repayment_minimum_percentage, 2),
+      repaymentMinimumInterest: stringsUtil.numberToFixed(repayment_minimum_interest, 2),
+      repaymentAmount: stringsUtil.numberToFixed(repayment_amount, 2),
+      overLimit: stringsUtil.numberToFixed(over_limit, 2),
+      estimatedInterest: stringsUtil.numberToFixed(estimated_interest, 2),
+      totalOverdueRepayments: stringsUtil.numberToFixed(total_overdue_repayments, 2),
+      totalInterest: stringsUtil.numberToFixed(total_interest, 2),
+      totalFees: stringsUtil.numberToFixed(total_fees, 2),
+      totalCredits: stringsUtil.numberToFixed(total_credits, 2),
+      totalDebits: stringsUtil.numberToFixed(total_debits, 2),
+      dateOfLastUpdate: date_of_last_update,
     },
   };
 };
@@ -173,13 +195,11 @@ export const prepareAccountStatementsToRender = (data: IAccountStatementData) =>
   }
 
   const {
-    accrued_interest_total,
     start_date,
   } = data;
 
   return {
     ...prepareStatementsToRender(data),
-    accruedInterestTotal: stringsUtil.numberToFixed(accrued_interest_total, 5),
     startDate: start_date,
   };
 };

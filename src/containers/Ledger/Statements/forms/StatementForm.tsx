@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 import { Box, Flex } from '@rebass/grid';
 
-import { Button, InputField, NumberFormatField } from 'components';
+import { Button, Hr, InputField, NumberFormatField, T3 } from 'components';
 import {
   dateFormatConst,
   formNamesConst,
@@ -16,7 +16,8 @@ import { IStatement } from 'store';
 
 const LeftPartWrapper = styled(Flex)`
   border-right: 1px solid ${({ theme }) => theme.colors.lightGray};
-  margin-right: 15px;
+  margin-right: 10px;
+  padding-right: 10px;
 `;
 
 interface IStatementForm {
@@ -49,7 +50,10 @@ const StatementForm: React.FC<TStatementForm> = ({
               alignItems="flex-end"
               flexWrap="wrap"
             >
-              <Box width="120px" p="8px">
+              <Box width="100%" px="10px">
+                <T3>Statement</T3>
+              </Box>
+              <Box width={[1 / 4]} p="8px">
                 <Field
                   id="id"
                   name="id"
@@ -59,7 +63,7 @@ const StatementForm: React.FC<TStatementForm> = ({
                   isNumber={true}
                 />
               </Box>
-              <Box width="120px" p="8px">
+              <Box width={[1 / 4]} p="8px">
                 <Field
                   id="sequenceNumber"
                   name="sequenceNumber"
@@ -69,27 +73,7 @@ const StatementForm: React.FC<TStatementForm> = ({
                   isNumber={true}
                 />
               </Box>
-              <Box width="120px" p="8px">
-                <Field
-                  id="accountId"
-                  name="accountId"
-                  component={InputField}
-                  label="Account ID"
-                  disabled={true}
-                  isNumber={true}
-                />
-              </Box>
-              <Box width="150px" p="8px">
-                <Field
-                  id="accountAlias"
-                  name="accountAlias"
-                  component={InputField}
-                  label="Account Alias"
-                  disabled={true}
-                  isNumber={true}
-                />
-              </Box>
-              <Box width="120px" p="8px">
+              <Box width={[1 / 4]} p="8px">
                 <Field
                   id="firstTransactionId"
                   name="firstTransactionId"
@@ -99,7 +83,7 @@ const StatementForm: React.FC<TStatementForm> = ({
                   isNumber={true}
                 />
               </Box>
-              <Box width="120px" p="8px">
+              <Box width={[1 / 4]} p="8px">
                 <Field
                   id="lastTransactionId"
                   name="lastTransactionId"
@@ -109,7 +93,7 @@ const StatementForm: React.FC<TStatementForm> = ({
                   isNumber={true}
                 />
               </Box>
-              <Box width="170px" p="8px">
+              <Box width={[1 / 2]} p="8px">
                 <Field
                   id="repaymentStatus"
                   name="repaymentStatus"
@@ -118,7 +102,7 @@ const StatementForm: React.FC<TStatementForm> = ({
                   disabled={true}
                 />
               </Box>
-              <Box width="100px" p="8px">
+              <Box width={[1 / 2]} p="8px">
                 <Field
                   id="status"
                   name="status"
@@ -127,7 +111,7 @@ const StatementForm: React.FC<TStatementForm> = ({
                   disabled={true}
                 />
               </Box>
-              <Box width="120px" p="8px">
+              <Box width={[1 / 4]} p="8px">
                 <Field
                   id="startDate"
                   name="startDate"
@@ -138,7 +122,7 @@ const StatementForm: React.FC<TStatementForm> = ({
                   disabled={true}
                 />
               </Box>
-              <Box width="120px" p="8px">
+              <Box width={[1 / 4]} p="8px">
                 <Field
                   id="endDate"
                   name="endDate"
@@ -149,7 +133,7 @@ const StatementForm: React.FC<TStatementForm> = ({
                   disabled={true}
                 />
               </Box>
-              <Box width="120px" p="8px">
+              <Box width={[1 / 4]} p="8px">
                 <Field
                   id="statementDate"
                   name="statementDate"
@@ -160,14 +144,184 @@ const StatementForm: React.FC<TStatementForm> = ({
                   disabled={true}
                 />
               </Box>
-              <Box width="120px" p="8px">
+              <Box width={[1 / 4]} p="8px">
                 <Field
-                  id="repaymentDate"
-                  name="repaymentDate"
+                  id="repaymentDueDate"
+                  name="repaymentDueDate"
                   component={InputField}
-                  label="Repayment Date"
+                  label="Repayment Due Date"
                   placeholder={dateFormatConst.DATE}
                   mask={maskFormatConst.DATE}
+                  disabled={true}
+                />
+              </Box>
+              <Hr />
+              <Box width={[1 / 4]} p="8px">
+                <Field
+                  id="balanceOpen"
+                  name="balanceOpen"
+                  component={NumberFormatField}
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  label="Balance open"
+                  disabled={true}
+                />
+              </Box>
+              <Box width={[1 / 4]} p="8px">
+                <Field
+                  id="balanceClose"
+                  name="balanceClose"
+                  component={NumberFormatField}
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  label="Balance close"
+                  disabled={true}
+                />
+              </Box>
+              <Box width={[1 / 4]} p="8px">
+                <Field
+                  id="repaymentMinimumAmountDue"
+                  name="repaymentMinimumAmountDue"
+                  component={NumberFormatField}
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  label="Minimum amount due repayment"
+                  disabled={true}
+                />
+              </Box>
+              <Box width={[1 / 4]} p="8px">
+                <Field
+                  id="repaymentAmount"
+                  name="repaymentAmount"
+                  component={NumberFormatField}
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  label="Repayment Amount"
+                  disabled={true}
+                />
+              </Box>
+              <Hr />
+              <Box width={[1 / 4]} p="8px">
+                <Field
+                  id="repaymentMinimumPercentage"
+                  name="repaymentMinimumPercentage"
+                  component={NumberFormatField}
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  label="Repayment Minimum Percentage"
+                  disabled={true}
+                />
+              </Box>
+              <Box width={[1 / 4]} p="8px">
+                <Field
+                  id="repaymentMinimumInterest"
+                  name="repaymentMinimumInterest"
+                  component={NumberFormatField}
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  label="Repayment Minimum Interest"
+                  disabled={true}
+                />
+              </Box>
+              <Box width={[1 / 4]} p="8px">
+                <Field
+                  id="repaymentMinimumInterest"
+                  name="repaymentMinimumInterest"
+                  component={NumberFormatField}
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  label="Repayment Minimum Interest"
+                  disabled={true}
+                />
+              </Box>
+              <Box width={[1 / 4]} p="8px">
+                <Field
+                  id="overLimit"
+                  name="overLimit"
+                  component={NumberFormatField}
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  label="Over Limit"
+                  disabled={true}
+                />
+              </Box>
+              <Box width={[1 / 4]} p="8px">
+                <Field
+                  id="estimatedInterest"
+                  name="estimatedInterest"
+                  component={NumberFormatField}
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  label="Estimated Interest"
+                  disabled={true}
+                />
+              </Box>
+              <Box width={[1 / 4]} p="8px">
+                <Field
+                  id="totalOverdueRepayments"
+                  name="totalOverdueRepayments"
+                  component={NumberFormatField}
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  label="Total Overdue Repayments"
+                  disabled={true}
+                />
+              </Box>
+              <Box width={[1 / 4]} p="8px">
+                <Field
+                  id="totalInterest"
+                  name="totalInterest"
+                  component={NumberFormatField}
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  label="Total Interest"
+                  disabled={true}
+                />
+              </Box>
+              <Box width={[1 / 4]} p="8px">
+                <Field
+                  id="totalFees"
+                  name="totalFees"
+                  component={NumberFormatField}
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  label="Total Fees"
+                  disabled={true}
+                />
+              </Box>
+              <Box width={[1 / 4]} p="8px">
+                <Field
+                  id="totalCredits"
+                  name="totalCredits"
+                  component={NumberFormatField}
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  label="Total Credits"
+                  disabled={true}
+                />
+              </Box>
+              <Box width={[1 / 4]} p="8px">
+                <Field
+                  id="totalDebits"
+                  name="totalDebits"
+                  component={NumberFormatField}
+                  placeholder="0.00"
+                  fixedDecimalScale={true}
+                  decimalScale={2}
+                  label="Total Debits"
                   disabled={true}
                 />
               </Box>
@@ -178,6 +332,9 @@ const StatementForm: React.FC<TStatementForm> = ({
               justifyContent="flex-end"
               flexWrap="wrap"
             >
+              <Box width="100%" px="10px">
+                <T3>Customer</T3>
+              </Box>
               <Box width={[1 / 2]} p="8px">
                 <Field
                   id="firstName"
@@ -205,6 +362,38 @@ const StatementForm: React.FC<TStatementForm> = ({
                   disabled={true}
                 />
               </Box>
+              <Hr />
+              <Box width="100%" px="10px">
+                <T3>Account</T3>
+              </Box>
+              <Box width={[1 / 3]} p="8px">
+                <Field
+                  id="accountId"
+                  name="accountId"
+                  component={InputField}
+                  label="ID"
+                  disabled={true}
+                  isNumber={true}
+                />
+              </Box>
+              <Box width={[1 / 3]} p="8px">
+                <Field
+                  id="accountAlias"
+                  name="accountAlias"
+                  component={InputField}
+                  label="Alias"
+                  disabled={true}
+                />
+              </Box>
+              <Box width={[1 / 3]} p="8px">
+                <Field
+                  id="accountAliasAdditional"
+                  name="accountAliasAdditional"
+                  component={InputField}
+                  label="Alias Additional"
+                  disabled={true}
+                />
+              </Box>
               <Box width={[1]} p="8px">
                 <Field
                   id="productName"
@@ -214,41 +403,84 @@ const StatementForm: React.FC<TStatementForm> = ({
                   disabled={true}
                 />
               </Box>
+              <Hr />
+              <Box width="100%" px="10px">
+                <T3>Address</T3>
+              </Box>
+              <Box width={[1 / 2]} p="8px">
+                <Field
+                  id="addressTown"
+                  name="addressTown"
+                  component={InputField}
+                  label="Town"
+                  disabled={true}
+                />
+              </Box>
+              <Box width={[1 / 4]} p="8px">
+                <Field
+                  id="addressCountryCode"
+                  name="addressCountryCode"
+                  component={InputField}
+                  label="Country Code"
+                  disabled={true}
+                />
+              </Box>
+              <Box width={[1 / 4]} p="8px">
+                <Field
+                  id="addressPostCode"
+                  name="addressPostCode"
+                  component={InputField}
+                  label="Post Code"
+                  disabled={true}
+                />
+              </Box>
+              <Box width={[1 / 2]} p="8px">
+                <Field
+                  id="addressLine1"
+                  name="addressLine1"
+                  component={InputField}
+                  label="Line 1"
+                  disabled={true}
+                />
+              </Box>
+              <Box width={[1 / 2]} p="8px">
+                <Field
+                  id="addressLine2"
+                  name="addressLine2"
+                  component={InputField}
+                  label="Line 2"
+                  disabled={true}
+                />
+              </Box>
+              <Box width={[1 / 2]} p="8px">
+                <Field
+                  id="addressLine3"
+                  name="addressLine3"
+                  component={InputField}
+                  label="Line 3"
+                  disabled={true}
+                />
+              </Box>
+              <Box width={[1 / 2]} p="8px">
+                <Field
+                  id="addressLine4"
+                  name="addressLine4"
+                  component={InputField}
+                  label="Line 4"
+                  disabled={true}
+                />
+              </Box>
             </Flex>
           </Flex>
-          <Box width="160px" p="8px">
+          <Hr />
+          <Box width="130px" p="8px">
             <Field
-              id="balanceOpen"
-              name="balanceOpen"
-              component={NumberFormatField}
-              placeholder="0.00"
-              fixedDecimalScale={true}
-              decimalScale={2}
-              label="Balance open"
-              disabled={true}
-            />
-          </Box>
-          <Box width="160px" p="8px">
-            <Field
-              id="balanceClose"
-              name="balanceClose"
-              component={NumberFormatField}
-              placeholder="0.00"
-              fixedDecimalScale={true}
-              decimalScale={2}
-              label="Balance close"
-              disabled={true}
-            />
-          </Box>
-          <Box width="160px" p="8px">
-            <Field
-              id="repaymentMinimumAmountDue"
-              name="repaymentMinimumAmountDue"
-              component={NumberFormatField}
-              placeholder="0.00"
-              fixedDecimalScale={true}
-              decimalScale={2}
-              label="Minimum amount due repayment"
+              id="dateOfLastUpdate"
+              name="dateOfLastUpdate"
+              component={InputField}
+              label="Date of Last Update"
+              placeholder={dateFormatConst.DATE}
+              mask={maskFormatConst.DATE}
               disabled={true}
             />
           </Box>

@@ -1,4 +1,4 @@
 export default Object.freeze({
-  apiUrl: 'http://10.37.10.3:8080/boxproc',
-  apiHost: 'http://10.37.10.3:8080',
+  apiUrl: 'https://dev.dev.boxproc.io/api',
+  apiHost: 'https://dev.dev.boxproc.io',
 });

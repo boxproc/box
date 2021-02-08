@@ -10,7 +10,6 @@ export interface IStatementData {
   account_alias_additional: string;
   account_alias: string;
   account_id: number;
-  accrued_interest_total?: number;
   address_country_code: string;
   address_line1: string;
   address_line2: string;
@@ -33,8 +32,19 @@ export interface IStatementData {
   start_date: string;
   end_date: string;
   statement_date: string;
-  repayment_date: string;
+  repayment_due_date: string;
   sequence_number: number;
+  repayment_minimum_percentage: number;
+  repayment_minimum_interest: number;
+  repayment_amount: number;
+  over_limit: number;
+  estimated_interest: number;
+  total_overdue_repayments: number;
+  total_interest: number;
+  total_fees: number;
+  total_credits: number;
+  total_debits: number;
+  date_of_last_update: string;
 }
 
 export interface IStatementsData {
@@ -68,8 +78,19 @@ export interface IStatement {
   startDate: string;
   endDate: string;
   statementDate: string;
-  repaymentDate: string;
+  repaymentDueDate: string;
   sequenceNumber: number;
+  repaymentMinimumPercentage: string;
+  repaymentMinimumInterest: string;
+  repaymentAmount: string;
+  overLimit: string;
+  estimatedInterest: string;
+  totalOverdueRepayments: string;
+  totalInterest: string;
+  totalFees: string;
+  totalCredits: string;
+  totalDebits: string;
+  dateOfLastUpdate: string;
 }
 
 export interface IChangeMinimumAmountRequest {
