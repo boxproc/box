@@ -10,7 +10,7 @@ const formatKey = (key: string) =>
   key.replace(/([A-Z])/g, ' $1')
     .toLocaleLowerCase()
     .replace(/^./, str => str.toUpperCase())
-    .replace(/Institution ID/, 'Institution');
+    .replace(/Institution id/, 'Institution');
 
 const formatValue = (value: string) => (value === null || value === undefined) ? '-' : value;
 
@@ -68,24 +68,24 @@ export const downloadStatementPDF = (data: {
   doc.line(30, 60, 810, 60);
 
   /** Two columns:
-   * 1st: account and customer info
+   * 1st: statement info
+   * e.g.
+   * Statement ID: 1
+   * Statement date: 25/04/2020
+   * key: value
+   * 
+   * 2nd: account and customer info
    * e.g.
    * Account ID: 1
    * First name: John
    * Last name: Doe
-   * key: value
-   *
-   * 2nd: statement info
-   * e.g.
-   * Statement ID: 1
-   * Statement date: 25/04/2020
    * key: value
    */
   if (statement) {
     statement.forEach((item, i) => {
       const isSecondColumn = i === 1;
       const leftSpaceKey = isSecondColumn ? 270 : 30;
-      const leftSpaceValue = isSecondColumn ? 373 : 173;
+      const leftSpaceValue = isSecondColumn ? 373 : 175;
       const topSpace = 97;
 
       doc.setFontSize(9);
@@ -100,6 +100,8 @@ export const downloadStatementPDF = (data: {
     });
   }
 
+  doc.addPage();
+
   /**
    * Tables
    */
@@ -113,7 +115,7 @@ export const downloadStatementPDF = (data: {
 
       const tableBody = items.map(item => Object.values(item));
 
-      const startY = () => isFirstTable ? 340 : doc.previousAutoTable.finalY + 35;
+      const startY = () => isFirstTable ? 45 : doc.previousAutoTable.finalY + 35;
 
       const tableContent = {
         head: [tableHead],
@@ -157,7 +159,7 @@ export const downloadStatementPDF = (data: {
         doc.setTextColor(theme.colors.darkGray);
         doc.text(
           30,
-          330,
+          35,
           title
         );
       }
@@ -188,8 +190,8 @@ export const downloadStatementPDF = (data: {
   for (let i = 0; i < pageCount; i++) {
     doc.setPage(i);
     doc.text(
-      580,
-      825,
+      820,
+      570,
       `${doc.internal.getCurrentPageInfo().pageNumber}/${pageCount}`,
       null,
       null,

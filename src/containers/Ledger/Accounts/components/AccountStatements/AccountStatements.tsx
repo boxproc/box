@@ -104,6 +104,30 @@ const AccountStatements: React.FC<IAccountStatements> = ({
         ),
       },
       {
+        maxWidth: 80,
+        Header: <TableHeader title="End Date" />,
+        accessor: 'endDate',
+        Cell: (props: ITableCell<'endDate'>) => (
+          <TableCell
+            value={props.value}
+            isDate={true}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 80,
+        Header: <TableHeader title="Repayment Due Date" />,
+        accessor: 'repaymentDueDate',
+        Cell: (props: ITableCell<'repaymentDueDate'>) => (
+          <TableCell
+            value={props.value}
+            isDate={true}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
         maxWidth: 120,
         Header: <TableHeader title="Balance Open" />,
         accessor: 'balanceOpen',
@@ -129,9 +153,21 @@ const AccountStatements: React.FC<IAccountStatements> = ({
       },
       {
         maxWidth: 120,
-        Header: <TableHeader title="Repayment Amount" />,
+        Header: <TableHeader title="Repayment Minimum Amount Due" />,
         accessor: 'repaymentMinimumAmountDue',
         Cell: (props: TCell<'repaymentMinimumAmountDue'>) => (
+          <TableCell
+            isNumber={true}
+            value={props.value}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 120,
+        Header: <TableHeader title="Repayment Amount" />,
+        accessor: 'repaymentAmount',
+        Cell: (props: TCell<'repaymentAmount'>) => (
           <TableCell
             isNumber={true}
             value={props.value}
@@ -157,16 +193,125 @@ const AccountStatements: React.FC<IAccountStatements> = ({
         Cell: (props: TCell<'status'>) => (
           <TableCell
             value={props.value}
+            isSmaller={true}
           />
         ),
       },
       {
         maxWidth: 120,
-        Header: <TableHeader title="Interest" />,
-        accessor: 'accruedInterestTotal',
-        Cell: (props: TCell<'accruedInterestTotal'>) => (
+        Header: <TableHeader title="Repayment Minimum Percentage" />,
+        accessor: 'repaymentMinimumPercentage',
+        Cell: (props: TCell<'repaymentMinimumPercentage'>) => (
           <TableCell
             isNumber={true}
+            value={props.value}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 120,
+        Header: <TableHeader title="Repayment Minimum Interest" />,
+        accessor: 'repaymentMinimumInterest',
+        Cell: (props: TCell<'repaymentMinimumInterest'>) => (
+          <TableCell
+            isNumber={true}
+            value={props.value}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 120,
+        Header: <TableHeader title="Over Limit" />,
+        accessor: 'overLimit',
+        Cell: (props: TCell<'overLimit'>) => (
+          <TableCell
+            isNumber={true}
+            value={props.value}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 120,
+        Header: <TableHeader title="Estimated Interest" />,
+        accessor: 'estimatedInterest',
+        Cell: (props: TCell<'estimatedInterest'>) => (
+          <TableCell
+            isNumber={true}
+            value={props.value}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 120,
+        Header: <TableHeader title="Total Overdue Repayments" />,
+        accessor: 'totalOverdueRepayments',
+        Cell: (props: TCell<'totalOverdueRepayments'>) => (
+          <TableCell
+            isNumber={true}
+            value={props.value}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 120,
+        Header: <TableHeader title="Total Interest" />,
+        accessor: 'totalInterest',
+        Cell: (props: TCell<'totalInterest'>) => (
+          <TableCell
+            isNumber={true}
+            value={props.value}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 120,
+        Header: <TableHeader title="Total Fees" />,
+        accessor: 'totalFees',
+        Cell: (props: TCell<'totalFees'>) => (
+          <TableCell
+            isNumber={true}
+            value={props.value}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 120,
+        Header: <TableHeader title="Total Credits" />,
+        accessor: 'totalCredits',
+        Cell: (props: TCell<'totalCredits'>) => (
+          <TableCell
+            isNumber={true}
+            value={props.value}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 120,
+        Header: <TableHeader title="Total Debits" />,
+        accessor: 'totalDebits',
+        Cell: (props: TCell<'totalDebits'>) => (
+          <TableCell
+            isNumber={true}
+            value={props.value}
+            isSmaller={true}
+          />
+        ),
+      },
+      {
+        maxWidth: 80,
+        Header: <TableHeader title="Date of Last Update" />,
+        accessor: 'dateOfLastUpdate',
+        Cell: (props: TCell<'dateOfLastUpdate'>) => (
+          <TableCell
+            isDate={true}
             value={props.value}
             isSmaller={true}
           />

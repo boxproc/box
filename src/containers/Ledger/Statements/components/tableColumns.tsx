@@ -19,7 +19,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 60,
+    maxWidth: 90,
     Header: <TableHeader title="Sequence Number" />,
     accessor: 'sequenceNumber',
     Cell: (props: TCell<'sequenceNumber'>) => (
@@ -40,7 +40,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 200,
+    maxWidth: 230,
     Header: <TableHeader title="Product Name" />,
     accessor: 'productName',
     Cell: (props: TCell<'productName'>) => (
@@ -93,7 +93,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 120,
+    maxWidth: 110,
     Header: <TableHeader title="Balance Open" />,
     accessor: 'balanceOpen',
     Cell: (props: TCell<'balanceOpen'>) => (
@@ -104,7 +104,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 120,
+    maxWidth: 110,
     Header: <TableHeader title="Balance Close" />,
     accessor: 'balanceClose',
     Cell: (props: TCell<'balanceClose'>) => (
@@ -115,7 +115,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 120,
+    maxWidth: 110,
     Header: <TableHeader title="Minimum Amount Due Repayment" />,
     accessor: 'repaymentMinimumAmountDue',
     Cell: (props: TCell<'repaymentMinimumAmountDue'>) => (
@@ -126,7 +126,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 80,
+    maxWidth: 90,
     Header: <TableHeader title="Status" />,
     accessor: 'status',
     Cell: (props: TCell<'status'>) => (
@@ -136,7 +136,7 @@ export const tableColumns = [
     ),
   },
   {
-    maxWidth: 120,
+    maxWidth: 90,
     Header: <TableHeader title="Repayment Status" />,
     accessor: 'repaymentStatus',
     Cell: (props: TCell<'repaymentStatus'>) => (

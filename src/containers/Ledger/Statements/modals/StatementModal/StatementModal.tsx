@@ -76,7 +76,7 @@ const StatementModal: React.FC<IStatementModal> = ({
     <Modal
       name={modalName}
       type={modalTypesConst.VIEWING}
-      title={`Statement: ${sequenceNumber}`}
+      title={`Statement #${sequenceNumber}`}
       containerWidth="1010px"
       minContainerHeight="600px"
     >
