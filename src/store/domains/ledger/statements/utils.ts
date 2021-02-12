@@ -34,7 +34,7 @@ export const prepareStatementToRender = (
     repayment_due_date,
     balance_open,
     balance_close,
-    repayment_minimum_amount_due,
+    repayment_minimum_amount,
     repayment_status,
     status,
     account_alias,
@@ -51,7 +51,6 @@ export const prepareStatementToRender = (
     address_country_code,
     sequence_number,
     repayment_minimum_percentage,
-    repayment_minimum_interest,
     repayment_amount,
     over_limit,
     estimated_interest,
@@ -94,11 +93,10 @@ export const prepareStatementToRender = (
       lastTransactionId: last_transaction_id,
       balanceOpen: stringsUtil.numberToFixed(balance_open, 2),
       balanceClose: stringsUtil.numberToFixed(balance_close, 2),
-      repaymentMinimumAmountDue: stringsUtil.numberToFixed(repayment_minimum_amount_due, 2),
+      repaymentMinimumAmount: stringsUtil.numberToFixed(repayment_minimum_amount, 2),
       repaymentStatus: repaymentStatus && repaymentStatus.label,
       status: statementStatus && statementStatus.label,
       repaymentMinimumPercentage: stringsUtil.numberToFixed(repayment_minimum_percentage, 2),
-      repaymentMinimumInterest: stringsUtil.numberToFixed(repayment_minimum_interest, 2),
       repaymentAmount: stringsUtil.numberToFixed(repayment_amount, 2),
       overLimit: stringsUtil.numberToFixed(over_limit, 2),
       estimatedInterest: stringsUtil.numberToFixed(estimated_interest, 2),
@@ -370,6 +368,6 @@ export const prepareChangeMinimumRepaymentReq = (data: Partial<IChangeMinimumAmo
   const { statementId, minimumRepayment } = data;
   return {
     statement_id: statementId,
-    repayment_minimum_amount_due: Number(minimumRepayment),
+    repayment_minimum_amount: Number(minimumRepayment),
   };
 };

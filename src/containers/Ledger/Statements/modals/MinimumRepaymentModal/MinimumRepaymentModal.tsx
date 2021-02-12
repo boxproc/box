@@ -47,7 +47,7 @@ const MinimumRepaymentModal: React.FC<IMinimumRepaymentModal> = ({
   return (
     <Modal
       name={modalName}
-      title="Change Minimum Amount due Repayment"
+      title="Change Minimum Amount Repayment"
       containerWidth="320px"
     >
       <MinimumRepaymentForm

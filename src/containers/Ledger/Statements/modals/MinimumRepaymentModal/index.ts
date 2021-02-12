@@ -16,7 +16,7 @@ const mapStateToProps = (state: IStoreState) => ({
   outstandingBalance: currentStatementSelector(state).balanceClose,
   initialValues: {
     statementId: activeItemIdSelector(state),
-    minimumRepayment: currentStatementSelector(state).repaymentMinimumAmountDue,
+    minimumRepayment: currentStatementSelector(state).repaymentMinimumAmount,
     repaymentDueDate: currentStatementSelector(state).repaymentDueDate,
   },
 });

@@ -73,9 +73,9 @@ const columns = [
   },
   {
     maxWidth: 120,
-    accessor: 'repaymentMinimumAmountDue',
-    Header: <TableHeader title="Due Repayment" />,
-    Cell: (props: TCell<'repaymentMinimumAmountDue'>) => (
+    accessor: 'repaymentMinimumAmount',
+    Header: <TableHeader title="Repayment Minimum Amount" />,
+    Cell: (props: TCell<'repaymentMinimumAmount'>) => (
       <TableCell
         value={props.value}
         isNumber={true}
