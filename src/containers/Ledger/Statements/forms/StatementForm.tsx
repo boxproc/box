@@ -182,13 +182,13 @@ const StatementForm: React.FC<TStatementForm> = ({
               </Box>
               <Box width={[1 / 4]} p="8px">
                 <Field
-                  id="repaymentMinimumAmountDue"
-                  name="repaymentMinimumAmountDue"
+                  id="repaymentMinimumAmount"
+                  name="repaymentMinimumAmount"
                   component={NumberFormatField}
                   placeholder="0.00"
                   fixedDecimalScale={true}
                   decimalScale={2}
-                  label="Minimum amount due repayment"
+                  label="Minimum amount repayment"
                   disabled={true}
                 />
               </Box>
@@ -214,18 +214,6 @@ const StatementForm: React.FC<TStatementForm> = ({
                   fixedDecimalScale={true}
                   decimalScale={2}
                   label="Repayment Minimum Percentage"
-                  disabled={true}
-                />
-              </Box>
-              <Box width={[1 / 4]} p="8px">
-                <Field
-                  id="repaymentMinimumInterest"
-                  name="repaymentMinimumInterest"
-                  component={NumberFormatField}
-                  placeholder="0.00"
-                  fixedDecimalScale={true}
-                  decimalScale={2}
-                  label="Repayment Minimum Interest"
                   disabled={true}
                 />
               </Box>

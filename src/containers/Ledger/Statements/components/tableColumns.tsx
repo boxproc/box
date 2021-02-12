@@ -116,9 +116,9 @@ export const tableColumns = [
   },
   {
     maxWidth: 110,
-    Header: <TableHeader title="Minimum Amount Due Repayment" />,
-    accessor: 'repaymentMinimumAmountDue',
-    Cell: (props: TCell<'repaymentMinimumAmountDue'>) => (
+    Header: <TableHeader title="Minimum Amount Repayment" />,
+    accessor: 'repaymentMinimumAmount',
+    Cell: (props: TCell<'repaymentMinimumAmount'>) => (
       <TableCell
         value={props.value}
         isNumber={true}

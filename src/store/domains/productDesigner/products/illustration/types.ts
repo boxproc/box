@@ -67,7 +67,7 @@ export interface IRevCreditIllustrationStatementData {
   last_transaction_id: number;
   balance_open: number;
   balance_close: number;
-  repayment_minimum_amount_due: number;
+  repayment_minimum_amount: number;
   minimum_repayment: number;
   start_date: string;
   end_date: string;
@@ -80,7 +80,7 @@ export interface IRevCreditIllustrationStatement {
   lastTransactionId: number | string;
   balanceOpen: number | string;
   balanceClose: string;
-  repaymentMinimumAmountDue: string;
+  repaymentMinimumAmount: string;
   minimumRepayment: string;
   startDate: number | string;
   endDate: number | string;

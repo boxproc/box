@@ -26,7 +26,7 @@ export interface IStatementData {
   last_name: string;
   last_transaction_id: number;
   product_name: string;
-  repayment_minimum_amount_due: number;
+  repayment_minimum_amount: number;
   repayment_status: string;
   status: string;
   start_date: string;
@@ -35,7 +35,6 @@ export interface IStatementData {
   repayment_due_date: string;
   sequence_number: number;
   repayment_minimum_percentage: number;
-  repayment_minimum_interest: number;
   repayment_amount: number;
   over_limit: number;
   estimated_interest: number;
@@ -72,7 +71,7 @@ export interface IStatement {
   lastName: string;
   lastTransactionId: number;
   productName: string;
-  repaymentMinimumAmountDue: string;
+  repaymentMinimumAmount: string;
   repaymentStatus: string;
   status: string;
   startDate: string;
@@ -81,7 +80,6 @@ export interface IStatement {
   repaymentDueDate: string;
   sequenceNumber: number;
   repaymentMinimumPercentage: string;
-  repaymentMinimumInterest: string;
   repaymentAmount: string;
   overLimit: string;
   estimatedInterest: string;
@@ -100,7 +98,7 @@ export interface IChangeMinimumAmountRequest {
 
 export interface IChangeMinimumAmountRequestData {
   statement_id: number;
-  repayment_minimum_amount_due: number;
+  repayment_minimum_amount: number;
 }
 
 /**

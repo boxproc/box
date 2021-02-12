@@ -36,7 +36,7 @@ const statementsReducer = (state = statementsInitialState, action: TStatementsAc
 
       statements[statementInd] = {
         ...statements[statementInd],
-        repayment_minimum_amount_due: action.meta.repayment_minimum_amount_due,
+        repayment_minimum_amount: action.meta.repayment_minimum_amount,
       };
 
       return state.set('statements', statements);

@@ -87,7 +87,7 @@ export const prepareStatementToRender = (data: IRevCreditIllustrationStatementDa
     lastTransactionId: data.last_transaction_id,
     balanceOpen: stringsUtil.numberToFixed(data.balance_open, 2),
     balanceClose: stringsUtil.numberToFixed(data.balance_close, 2),
-    repaymentMinimumAmountDue: stringsUtil.numberToFixed(data.repayment_minimum_amount_due, 2),
+    repaymentMinimumAmount: stringsUtil.numberToFixed(data.repayment_minimum_amount, 2),
     minimumRepayment: stringsUtil.numberToFixed(data.minimum_repayment, 2),
     startDate: data.start_date,
     endDate: data.end_date,
