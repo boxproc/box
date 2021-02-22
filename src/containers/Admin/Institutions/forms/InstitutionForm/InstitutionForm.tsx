@@ -115,7 +115,6 @@ const InstitutionForm: React.FC<TInstitutionForm> = ({
               disabled={isEditMode || isReadOnly}
               validate={[
                 formErrorUtil.isRequired,
-                formErrorUtil.isAlphaNumeric,
               ]}
             />
           </Box>
