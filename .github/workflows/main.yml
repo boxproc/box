@@ -29,7 +29,7 @@ jobs:
         uses: garygrossgarten/github-action-scp@release
         with:
           local: build
-          remote: /tmp/build/
+          remote: /box-dev/boxui/ui/build
           host: ${{ secrets.HOST }}
           privateKey: ${{ secrets.PRIVATEKEY }}
           username: ${{ secrets.AWSUSER }}
