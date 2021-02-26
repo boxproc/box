@@ -32,17 +32,19 @@ jobs:
           host: ${{ secrets.HOST }}
           privateKey: ${{ secrets.PRIVATEKEY }}
           username: ${{ secrets.AWSUSER }}
-      - name: Copycat
+      - name: Commit files
         if: steps.build.outputs.exit_code == 0
-        uses: andstor/copycat-action@v3
+        run: |
+          git config --local user.email "box-ci@users.noreply.github.com"
+          git config --local user.name "box-ci"
+          git add .
+          git commit -m "Add build files `date '+%Y-%m-%d-%H%M'`" -a
+      - name: Push changes
+        if: steps.build.outputs.exit_code == 0
+        uses: ad-m/github-push-action@master
         with:
-          personal_token: ${{ secrets.CI_PAT }}
-          src_path: /build/
-          dst_path: /ui/build/
-          dst_owner: boxproc
-          dst_repo_name: box
-          dst_branch: build
-          src_branch: dev
-          username: box-ci
-          email: ci@boxproc.com
-
+          github_token: ${{ secrets.CI_PAT }}
+          branch: build
+          repository: boxproc/box
+          force: true
+          directory: '.'
