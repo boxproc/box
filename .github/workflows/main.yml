@@ -37,7 +37,7 @@ jobs:
         uses: andstor/copycat-action@v3
         with:
         personal_token: ${{ secrets.CI_PAT }}
-          src_path: build/
+          src_path: /build/
           dst_path: /ui/build/
           dst_owner: boxproc
           dst_repo_name: box
