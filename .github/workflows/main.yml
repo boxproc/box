@@ -32,3 +32,17 @@ jobs:
           host: ${{ secrets.HOST }}
           privateKey: ${{ secrets.PRIVATEKEY }}
           username: ${{ secrets.AWSUSER }}
+      - name: Copycat
+        if: steps.build.outputs.exit_code == 0
+        uses: andstor/copycat-action@v3
+        with:
+        personal_token: ${{ secrets.CI_PAT }}
+          src_path: build/
+          dst_path: /ui/build/
+          dst_owner: boxproc
+          dst_repo_name: box
+          dst_branch: build
+          src_branch: dev
+          username: box-ci
+          email: ci@boxproc.com
+
