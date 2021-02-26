@@ -36,7 +36,7 @@ jobs:
         if: steps.build.outputs.exit_code == 0
         uses: andstor/copycat-action@v3
         with:
-        personal_token: ${{ secrets.CI_PAT }}
+          personal_token: ${{ secrets.CI_PAT }}
           src_path: /build/
           dst_path: /ui/build/
           dst_owner: boxproc
