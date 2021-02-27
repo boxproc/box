@@ -13,19 +13,26 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
+
     steps:
-      - uses: actions/checkout@v2
-      with:
-        persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
-        fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
+
       - name: Install Packages
         run: npm install
+
       - name: Build page
         run: npm run build
+
       - name: Copy the folder /build to the remote
         if: steps.build.outputs.exit_code == 0
         uses: garygrossgarten/github-action-scp@release
@@ -35,13 +42,14 @@ jobs:
           host: ${{ secrets.HOST }}
           privateKey: ${{ secrets.PRIVATEKEY }}
           username: ${{ secrets.AWSUSER }}
+
       - name: Commit files
         if: steps.build.outputs.exit_code == 0
         run: |
-          git config --local user.email "box-ci@users.noreply.github.com"
-          git config --local user.name "box-ci"
-          git add .
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git commit -m "Add build files `date '+%Y-%m-%d-%H%M'`" -a
+
       - name: Push changes
         if: steps.build.outputs.exit_code == 0
         uses: ad-m/github-push-action@master
