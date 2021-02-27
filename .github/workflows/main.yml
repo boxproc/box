@@ -43,7 +43,7 @@ jobs:
         if: steps.build.outputs.exit_code == 0
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.CI_PAT }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: build
           repository: boxproc/box
           force: true
