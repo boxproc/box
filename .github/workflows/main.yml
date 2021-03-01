@@ -1,0 +1,22 @@
+name: main
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Create code archive
+        run: |
+          tar cf - nginx ui | gzip > /tmp/box.tar.gz
+          tar cf /tmp/box.tar nginx ui
+
+    steps:
+      - uses: actions/upload-artifact@v2
+        if: success()
+        with:
+          name: new-version
+          path: /tmp/box.tar*
