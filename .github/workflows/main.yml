@@ -9,13 +9,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create code archive
-      - uses: actions/checkout@v2
+        uses: actions/checkout@v2
         run: |
           tar cf - nginx ui | gzip > /tmp/box.tar.gz
           tar cf /tmp/box.tar nginx ui
 
       - name: Upload artifact
-      - uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v2
         if: success()
         with:
           name: new-version
