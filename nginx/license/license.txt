@@ -1,6 +1,0 @@
-/* 
- * Copyright (C) Box Processing Ltd. - All Rights Reserved
- * Unauthorized copying or use of this software is strictly prohibited
- * Proprietary and confidential
- * Written by Mike Charles <mike@boxproc.com> November 2020
- */

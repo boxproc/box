@@ -1,9 +1,5 @@
-# releases
-Complete catalogue of all BOX releases and downloads
-
-.
-├── bin        - the scripts required to release code
-├── build      - the BOX pipelines dump their new code here
-├── archive    - build get rolled up into tar balls and put here
-└── releases   - the release information
-
+# BOX
+Copyright (C) 2019-2020 BOX Processing - All Rights Reserved 
+Unauthorized copying of this software via any medium is strictly prohibited 
+Proprietary and confidential 
+Written by BOX Processing <mail to: office@boxproc.com>
