@@ -1,0 +1,114 @@
+#!/bin/bash
+
+# box.sh by mikec
+#
+# March 2021
+#
+# box install version - installs specified version
+# box list            - lists all versions
+# box help            - displays usage message
+# box restart         - stop/starts all services
+# box [status]        - shows status of software
+# box upgrade version - change to specified version
+# box version         - print the current version number
+#
+# Pre-requisites: software must be mounted as /box on Linux
+#                 jq is installed
+
+PATH=/usr/bin ; export PATH
+
+# Simple die function, every command should be followed by this!
+die() { >&2 echo -e `basename $0`: $* ; exit 1 ; }
+
+# check PATH
+hash jq  2>/dev/null   || die "jq not found in PATH"
+hash wget 2>/dev/null  || die "wget not found in PATH"
+hash unzip 2>/dev/null || die "unzip not found in PATH"
+hash curl 2>/dev/null  || die "curl not found in PATH"
+
+USAGE=' box install version - installs specified version \n box list - lists all versions \n box help - displays usage message \n box restart - stop/starts all services \n box [status] - shows status of software \n box upgrade version - change to specified version\n box version         - print the current version number'
+
+# Check that we've got the correct number of parameters and that we can see the box software
+
+[ $# -gt 2 ] && die "$USAGE"
+[ $# -eq 0 ] && set "status"
+cd /box || die "Cannot find /box"
+
+# The following function shows each component as either "UP" or "DOWN". 
+
+check_status() {
+
+   # Assume everything is down until you find it up!
+
+   API_STATUS='\033[0;31mDOWN\033[0m' ; NGINX_STATUS='\033[0;31mDOWN\033[0m' ; SCHEDULER_STATUS='\033[0;31mDOWN\033[0m' ; UI_STATUS='\033[0;31mDOWN\033[0m'
+
+   [ -f /var/run/nginx.pid ] && ps -q `cat /var/run/nginx.pid` > /dev/null && NGINX_STATUS='\033[0;32mUP\033[0m'
+   [ -f /tmp/scheduler_pid ] && ps -q `cat /tmp/scheduler_pid` > /dev/null && SCHEDULER_STATUS='\033[0;32mUP\033[0m'
+   curl -X POST http://localhost:8080/boxproc/1/api/echo >/dev/null 2>&1 && API_STATUS='\033[0;32mUP\033[0m'
+   ps -C node > /dev/null && UI_STATUS='\033[0;32mUP\033[0m'
+
+   printf "BOX API   [$API_STATUS]\nBOX UI    [$UI_STATUS]\nnginx     [$NGINX_STATUS]\nScheduler [$SCHEDULER_STATUS]\n"
+}
+
+# The following function installs the version of BOX that is passed as a parameter
+# The third party software that we need like JRE is unzipped into a directory 
+# called tmp and then our executables are copied into that directory
+# The tmp directory is then renamed at the end.
+
+install() {
+   cd /var/opt/box
+   VERSION=$1
+   echo "Fetching $VERSION from GitHub"
+   wget -q https://api.github.com/repos/boxproc/box/zipball/$VERSION || die "Cannot find $VERSION"
+   rm -rf tmp
+   mkdir tmp
+   cd tmp
+   echo "Extract 3rd party software from local archive"
+   for FILE in ../archive/*.tar.gz
+   do
+      echo unzipping $FILE
+      gunzip -c $FILE | tar xf -
+   done
+   cd ..
+   unzip -q $VERSION || die "Out of disk space"
+   COMMIT=`unzip -z $VERSION | awk 'END {print substr($1,1,7)}'`
+   rm -f $VERSION
+   
+   cp boxproc-box-$COMMIT/api/boxproc.jar tmp/boxapi/bin
+   cp -R boxproc-box-$COMMIT/ui/* tmp/boxui/
+
+#   cp boxproc-box-$COMMIT/scheduler/scheduler.jar tmp/scheduler/bin
+
+#  Need to add in copying the box*.service files to /etc/systemd/system/
+
+   mv tmp $VERSION
+}
+
+# Process the various commands
+
+case $1 in
+   list) curl -s https://api.github.com/repos/boxproc/box/releases|jq -r '.[].tag_name' ;;
+   install) [ $# -ne 2 ] && die "Version number is missing \n\n$USAGE"
+      [ -d /box/$2 ] && die "$2 is already installed"
+      install $2 ;;
+   status) printf "BOX version \033[1;33m$(basename `pwd -P`)\033[0m \n"
+      check_status ;;
+   restart) check_status 
+      echo Stop/starting all services
+      systemctl restart boxapi
+      systemctl restart boxui
+      systemctl restart boxs
+      check_status ;;
+   upgrade|downgrade) [ $# -ne 2 ] && die "Version number is missing \n\n$USAGE"
+      [ -d /var/opt/box/$2 ] || die "$2 is not installed"
+      rm -f /box
+      ln -s /var/opt/box/$2 /box
+      systemctl restart boxapi
+      systemctl restart boxui
+      systemctl restart boxs
+      check_status ;;
+   version) basename `pwd -P` ;;
+   help|\?|*) echo -e $USAGE ; exit 0 ;;
+esac
+
+
