@@ -2,10 +2,10 @@
 
 . /etc/init.d/functions
 
-BOX_HOME="/box-dev"
-NAME="boxui-dev"
-SERVICENAME="boxui-dev"
-LOCKFILE=/var/lock/subsys/box-uat
+BOX_HOME="/box"
+NAME="boxui"
+SERVICENAME="boxui"
+LOCKFILE=/var/lock/subsys/box
 LOGFILE=${BOX_HOME}/logs/node/node.log
 DAEMON_OPTS="--check $NAME"
 IS_PROCESS_EXISTS=`ps aux | grep -v grep | grep  node| wc -l`
@@ -20,16 +20,16 @@ start() {
   RETVAL=$?
   echo
   [ $RETVAL = 0 ] && touch ${LOCKFILE}
-       
+
   return $RETVAL
 }
 
 status() {
  if [ $IS_PROCESS_EXISTS -eq 0 ]; then
    echo "UI ${red}[DOWN]${white}"
- else 
+ else
    echo "UI ${green}[UP]${white}"
- fi 
+ fi
 }
 
 stop() {
