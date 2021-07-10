@@ -1,15 +1,16 @@
 #!/bin/sh
-BOX_HOME=/box/scheduler/
+BOX_HOME=/box
 cd $BOX_HOME
-echo $BOX_HOME
-JAVA_EXEC=/box/jdk-12.0.1/bin/java
+JAVA_EXEC=/bin/java
 SERVICE_NAME=boxscheduler
 PATH_TO_SCHEDULER_JAR=$BOX_HOME/scheduler/bin/scheduler.jar
 echo $PATH_TO_SCHEDULER_JAR
-PID_PATH_NAME=/tmp/scheduler-pid
+PID_PATH_NAME=/tmp/$SERVICE_NAME-pid
 echo $PID_PATH_NAME
 PATH_TO_SCHEDULER_PROPERTIES="$BOX_HOME/scheduler/bin/scheduler.properties"
 echo $PATH_TO_SCHEDULER_PROPERTIES
+source /usr/local/bin/env.sh .
+
 
 IS_PROCESS_EXISTS=`ps aux | grep -v grep | grep scheduler| wc -l`
 red="`tput setaf 1`"
@@ -38,7 +39,7 @@ case $1 in
     start)
         echo "Starting $SERVICE_NAME ..."
         if [ ! -f $PID_PATH_NAME ]; then
-            sudo nohup $JAVA_EXEC -Ddb.conn.url=$DATASOURCE_URL -Ddb.username=$DATASOURCE_USER_NAME -Ddb.password=$DATASOURCE_PASSWORD -Dbox.home=/box -Dlog4j.configuration="file:/box/scheduler/bin/log4j.properties"  -jar $PATH_TO_SCHEDULER_JAR /tmp 2>> /dev/null >> /dev/null &
+            sudo nohup $JAVA_EXEC -Ddb.conn.url=$DATASOURCE_URL -Ddb.username=$DATASOURCE_USER_NAME -Ddb.password=$DATASOURCE_PASSWORD -Dbox.home=$BOX -Dlog4j.configuration="file:/box/scheduler/bin/log4j.properties"  -jar $PATH_TO_SCHEDULER_JAR /tmp 2>> /dev/null >> /dev/null &
              echo $! > $PID_PATH_NAME
         echo "$SERVICE_NAME started ..."
         else

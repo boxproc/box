@@ -5,12 +5,11 @@ After=syslog.target network.target
 
 [Service]
 Type=forking
-Environment=JAVA_HOME=/box/jdk-12.0.1
-Environment=JAVA_EXEC=/box-dev/jdk-12.0.1/bin/java
-ExecStart=/box-dev/boxapi/boxapi.sh start
-ExecStop=/box-dev/boxapi/boxapi.sh stop
+ExecStart=/box/scripts/services/boxscheduler.sh start
+ExecStop=/box/scripts/services/boxscheduler.sh stop
 Restart=always
-User=root
+User=boxuser
+Group=box
 
 [Install]
 WantedBy=multi-user.target

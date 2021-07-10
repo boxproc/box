@@ -1,12 +1,13 @@
 #!/bin/sh
 BOX_HOME=/box
 cd $BOX_HOME
-JAVA_EXEC=/box/jdk-12.0.1/bin/java
+JAVA_EXEC=/bin/java
 SERVICE_NAME=boxapi
 BOXAPI_LOG_DIR=/var/log/box
 BOXAPI_LOG_LEVEL=debug
 PATH_TO_BOX_API_JAR=$BOX_HOME/boxapi/bin/boxapi.jar
 PID_PATH_NAME=/tmp/boxapi-pid
+source /usr/local/bin/env.sh .
 
 IS_PROCESS_EXISTS=`ps aux | grep -v grep | grep boxapi | wc -l`
 red="`tput setaf 1`"
@@ -35,7 +36,8 @@ case $1 in
     start)
 
         if [ ! -f $PID_PATH_NAME ]; then
-            sudo nohup $JAVA_EXEC -Dspring.datasource.url=$DATASOURCE_URL -Dspring.datasource.username=$DATASOURCE_USER_NAME -Dspring.datasource.password=$DATASOURCE_PASSWORD -Dbox.logging.dir=/var/log/box2 -Dbox.logging.level=$BOXAPI_LOG_LEVEL -jar $PATH_TO_BOX_API_JAR &
+            sudo nohup $JAVA_EXEC -Dspring.datasource.url=$DATASOURCE_URL -Dspring.datasource.username=$DATASOURCE_USER_NAME -Dspring.datasource.password=$DATASOURCE_PASSWORD
+            -Dbox.logging.dir=/var/log/box2 -Dbox.logging.level=$BOXAPI_LOG_LEVEL -jar $PATH_TO_BOX_API_JAR &
             echo $! > $PID_PATH_NAME
               echo "$SERVICE_NAME started ..."
               else
