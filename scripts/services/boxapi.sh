@@ -1,13 +1,12 @@
 #!/bin/sh
 BOX_HOME=/box
 cd $BOX_HOME
-echo $BOX_HOME
 JAVA_EXEC=/box/jdk-12.0.1/bin/java
-SERVICE_NAME=boxproc
+SERVICE_NAME=boxapi
+BOXAPI_LOG_DIR=/var/log/box
+BOXAPI_LOG_LEVEL=debug
 PATH_TO_BOX_API_JAR=$BOX_HOME/boxapi/bin/boxapi.jar
-echo $PATH_TO_BOX_API_JAR
 PID_PATH_NAME=/tmp/boxapi-pid
-echo $PID_PATH_NAME
 
 IS_PROCESS_EXISTS=`ps aux | grep -v grep | grep boxapi | wc -l`
 red="`tput setaf 1`"
@@ -17,9 +16,9 @@ white="`tput setaf 7`"
 
 status() {
  if [ $IS_PROCESS_EXISTS -eq 0 ]; then
-   echo "SCHEDULER ${red}[DOWN]${white}"
+   echo "BOXAPI ${red}[DOWN]${white}"
  else
-   echo "SCHEDULER ${green}[UP]${white}"
+   echo "BOXAPI ${green}[UP]${white}"
  fi
 }
 
@@ -34,28 +33,28 @@ stop() {
 
 case $1 in
     start)
-        echo "Starting $SERVICE_NAME ..."
-        if [ ! -f $PID_PATH_NAME ]; then
-            sudo nohup $JAVA_EXEC -jar $PATH_TO_BOX_API_JAR &
-             echo $! > $PID_PATH_NAME
-        echo "$SERVICE_NAME started ..."
-        else
-            echo "$SERVICE_NAME is already running ..."
-        fi
-    ;;
 
-    status)
-    status
-    ;;
-    stop)
-        if [ -f $PID_PATH_NAME ]; then
-            PID=$(cat $PID_PATH_NAME);
-            echo "$SERVICE_NAME stoping ..."
-            kill $PID;
-            echo "$SERVICE_NAME stopped ..."
-            sudo rm -f $PID_PATH_NAME
-        else
-            echo "$SERVICE_NAME is not running ..."
-        fi
-    ;;
-esac
+        if [ ! -f $PID_PATH_NAME ]; then
+            sudo nohup $JAVA_EXEC -Dspring.datasource.url=$DATASOURCE_URL -Dspring.datasource.username=$DATASOURCE_USER_NAME -Dspring.datasource.password=$DATASOURCE_PASSWORD -Dbox.logging.dir=/var/log/box2 -Dbox.logging.level=$BOXAPI_LOG_LEVEL -jar $PATH_TO_BOX_API_JAR &
+            echo $! > $PID_PATH_NAME
+              echo "$SERVICE_NAME started ..."
+              else
+                  echo "$SERVICE_NAME is already running ..."
+              fi
+          ;;
+
+          status)
+          status
+          ;;
+          stop)
+              if [ -f $PID_PATH_NAME ]; then
+                  PID=$(cat $PID_PATH_NAME);
+                  echo "$SERVICE_NAME stoping ..."
+                  kill $PID;
+                  echo "$SERVICE_NAME stopped ..."
+                  sudo rm -f $PID_PATH_NAME
+              else
+                  echo "$SERVICE_NAME is not running ..."
+              fi
+          ;;
+      esac

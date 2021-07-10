@@ -1,0 +1,16 @@
+# Systemd unit file for box scheduler jar
+[Unit]
+Description=Box SCHEDULER Jar Start Stop Service
+After=syslog.target network.target
+
+[Service]
+Type=forking
+Environment=JAVA_HOME=/box/jdk-12.0.1
+Environment=JAVA_EXEC=/box-dev/jdk-12.0.1/bin/java
+ExecStart=/box-dev/boxapi/boxapi.sh start
+ExecStop=/box-dev/boxapi/boxapi.sh stop
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
