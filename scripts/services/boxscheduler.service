@@ -1,0 +1,15 @@
+# Systemd unit file for box scheduler jar
+[Unit]
+Description=Box SCHEDULER Jar Start Stop Service
+After=syslog.target network.target
+
+[Service]
+Type=forking
+ExecStart=/box/scripts/services/boxscheduler.sh start
+ExecStop=/box/scripts/services/boxscheduler.sh stop
+Restart=always
+User=boxuser
+Group=box
+
+[Install]
+WantedBy=multi-user.target

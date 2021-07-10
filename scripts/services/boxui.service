@@ -1,0 +1,15 @@
+# Systemd unit file for box ui
+[Unit]
+Description=Box UI Start Stop Service
+After=syslog.target network.target
+
+[Service]
+Type=forking
+ExecStart=/box/scripts/services/boxui.sh start
+ExecStop=/box/scripts/services/boxui.sh stop
+Restart=always
+User=boxuser
+Group=box
+
+[Install]
+WantedBy=multi-user.target
