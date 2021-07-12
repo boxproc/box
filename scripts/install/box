@@ -57,13 +57,16 @@ check_status() {
 install() {
 
    cd /var/opt/box
-   ln -s /var/opt/box /box
+
    VERSION=$1
+
    echo "Fetching $VERSION from GitHub"
    wget -q https://github.com/boxproc/box/archive/refs/heads/main.zip || die "Cannot find $VERSION"
    rm -rf tmp
    mkdir tmp
    cd tmp
+
+   ln -s /var/opt/box/$VERSION /box
 
    unzip -q $VERSION || die "Out of disk space"
    COMMIT=`unzip -z $VERSION | awk 'END {print substr($1,1,7)}'`
@@ -87,7 +90,7 @@ install() {
    cp -R boxproc-box-$COMMIT/boxui/* tmp/boxui/
 
    cp boxproc-box-$COMMIT/scheduler/scheduler.jar tmp/scheduler/bin
-   cp boxproc-box-$COMMIT/scheduler/test.sh tmp/scheduler/bin/test.sh
+   # cp boxproc-box-$COMMIT/scheduler/test.sh tmp/scheduler/bin/test.sh
    cp boxproc-box-$COMMIT/scheduler/scheduler.properties tmp/scheduler/bin/scheduler.properties
    cp boxproc-box-$COMMIT/scheduler/log4j.properties tmp/scheduler/bin/log4j.properties
 
@@ -96,7 +99,6 @@ install() {
 
    tmp/boxui/npm init
    tmp/boxui/npm install express compression --save
-
 
    # usermod -aG sudo boxuser
 
