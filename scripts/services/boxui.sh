@@ -15,7 +15,7 @@ source /usr/local/bin/env.sh .
 
 start() {
   echo -n "Starting ${SERVICENAME}: "
-  daemon $DAEMON_OPTS "node ${BOX_HOME}/boxui > ${LOGFILE} 2>&1 &"
+  node ${BOX_HOME}/boxui > ${LOGFILE} 2>&1 &
   RETVAL=$?
   echo
   [ $RETVAL = 0 ] && touch ${LOCKFILE}

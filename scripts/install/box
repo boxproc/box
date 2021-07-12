@@ -42,7 +42,7 @@ check_status() {
    API_STATUS='\033[0;31mDOWN\033[0m' ; NGINX_STATUS='\033[0;31mDOWN\033[0m' ; SCHEDULER_STATUS='\033[0;31mDOWN\033[0m' ; UI_STATUS='\033[0;31mDOWN\033[0m'
 
    [ -f /var/run/nginx.pid ] && ps -q `cat /var/run/nginx.pid` > /dev/null && NGINX_STATUS='\033[0;32mUP\033[0m'
-   [ -f /tmp/scheduler_pid ] && ps -q `cat /tmp/scheduler_pid` > /dev/null && SCHEDULER_STATUS='\033[0;32mUP\033[0m'
+   [ -f /tmp/boxscheduler-pid ] && ps -q `cat /tmp/boxscheduler-pid` > /dev/null && SCHEDULER_STATUS='\033[0;32mUP\033[0m'
    curl -X POST http://localhost:8080/boxproc/1/api/echo >/dev/null 2>&1 && API_STATUS='\033[0;32mUP\033[0m'
    ps -C node > /dev/null && UI_STATUS='\033[0;32mUP\033[0m'
 
@@ -103,6 +103,7 @@ install() {
    # apply this fix manually so far
    #tmp/boxui/npm init
    #tmp/boxui/npm install express compression --save
+   mkdir -p /box/logs/node/
 
    # usermod -aG sudo boxuser
 
