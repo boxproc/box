@@ -36,8 +36,7 @@ case $1 in
     start)
 
         if [ ! -f $PID_PATH_NAME ]; then
-            sudo nohup $JAVA_EXEC -Dspring.datasource.url=$DATASOURCE_URL -Dspring.datasource.username=$DATASOURCE_USER_NAME -Dspring.datasource.password=$DATASOURCE_PASSWORD
-            -Dbox.logging.dir=$BOXAPI_LOG_DIR -Dbox.logging.level=$BOXAPI_LOG_LEVEL -jar $PATH_TO_BOX_API_JAR &
+            sudo nohup $JAVA_EXEC -Dspring.datasource.url=$DATASOURCE_URL -Dspring.datasource.username=$DATASOURCE_USER_NAME -Dspring.datasource.password=$DATASOURCE_PASSWORD -Dbox.logging.dir=$BOXAPI_LOG_DIR -Dbox.logging.level=$BOXAPI_LOG_LEVEL -jar $PATH_TO_BOX_API_JAR &
             echo $! > $PID_PATH_NAME
               echo "$SERVICE_NAME started ..."
               else
