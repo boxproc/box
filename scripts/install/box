@@ -103,6 +103,7 @@ install() {
    # apply this fix manually so far
    #tmp/boxui/npm init
    #tmp/boxui/npm install express compression --save
+   mkdir -p /box/logs/node/
 
    # usermod -aG sudo boxuser
 

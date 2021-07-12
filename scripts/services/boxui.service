@@ -4,10 +4,11 @@ Description=Box UI Start Stop Service
 After=syslog.target network.target
 
 [Service]
-Type=forking
+Environment=NODE_PORT=37080
+Type=simple
 ExecStart=/box/scripts/services/boxui.sh start
 ExecStop=/box/scripts/services/boxui.sh stop
-Restart=always
+Restart=on-failure
 User=root
 Group=
 
