@@ -8,7 +8,7 @@ Type=forking
 ExecStart=/box/scripts/services/boxapi.sh start
 ExecStop=/box/scripts/services/boxapi.sh stop
 Restart=always
-User=boxuser
+User=root
 Group=box
 
 [Install]

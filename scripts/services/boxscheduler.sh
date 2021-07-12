@@ -54,7 +54,7 @@ case $1 in
         if [ -f $PID_PATH_NAME ]; then
             PID=$(cat $PID_PATH_NAME);
             echo "$SERVICE_NAME stoping ..."
-            kill $PID;
+            kill -9 $PID;
             echo "$SERVICE_NAME stopped ..."
             sudo rm -f $PID_PATH_NAME
         else

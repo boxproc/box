@@ -8,8 +8,8 @@ Type=forking
 ExecStart=/box/scripts/services/boxscheduler.sh start
 ExecStop=/box/scripts/services/boxscheduler.sh stop
 Restart=always
-User=boxuser
-Group=box
+User=root
+Group=
 
 [Install]
 WantedBy=multi-user.target
