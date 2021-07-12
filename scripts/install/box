@@ -57,11 +57,11 @@ check_status() {
 install() {
 
    cd /var/opt/box
-
+   rm -rf /box
    VERSION=$1
 
    echo "Fetching $VERSION from GitHub"
-   wget -q https://github.com/boxproc/box/archive/refs/heads/main.zip || die "Cannot find $VERSION"
+   wget -q https://api.github.com/repos/boxproc/box/zipball/$VERSION || die "Cannot find $VERSION"
    rm -rf tmp
    mkdir tmp
    cd tmp
@@ -100,7 +100,7 @@ install() {
    cp boxproc-box-$COMMIT/scripts/install/*  tmp/scripts/install
    cp boxproc-box-$COMMIT/scripts/services/*  tmp/scripts/services
 
-   # apply this fix manually so far 
+   # apply this fix manually so far
    #tmp/boxui/npm init
    #tmp/boxui/npm install express compression --save
 
