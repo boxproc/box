@@ -32,7 +32,6 @@ USAGE=' box install version - installs specified version \n box list - lists all
 
 [ $# -gt 2 ] && die "$USAGE"
 [ $# -eq 0 ] && set "status"
-cd /box || die "Cannot find /box"
 
 # The following function shows each component as either "UP" or "DOWN".
 
@@ -56,25 +55,35 @@ check_status() {
 # The tmp directory is then renamed at the end.
 
 install() {
+
    cd /var/opt/box
+   ln -s /var/opt/box /box
    VERSION=$1
    echo "Fetching $VERSION from GitHub"
-   wget -q https://api.github.com/repos/boxproc/box/zipball/$VERSION || die "Cannot find $VERSION"
+   wget -q https://github.com/boxproc/box/archive/refs/heads/main.zip || die "Cannot find $VERSION"
    rm -rf tmp
    mkdir tmp
    cd tmp
-   echo "Extract 3rd party software from local archive"
-   for FILE in ../archive/*.tar.gz
-   do
-      echo unzipping $FILE
-      gunzip -c $FILE | tar xf -
-   done
-   cd ..
+
    unzip -q $VERSION || die "Out of disk space"
    COMMIT=`unzip -z $VERSION | awk 'END {print substr($1,1,7)}'`
    rm -f $VERSION
 
+   mkdir tmp/boxui
+   mkdir tmp/boxapi
+   mkdir tmp/boxapi/bin
+
+   mkdir tmp/scheduler
+   mkdir tmp/scheduler/bin
+
+   mkdir tmp/scripts
+   mkdir tmp/scripts/install
+   mkdir tmp/scripts/services
+
    cp boxproc-box-$COMMIT/api/boxapi.jar tmp/boxapi/bin
+   cp boxproc-box-$COMMIT/api/application-template.properties tmp/boxapi/bin
+   mv tmp/boxapi/bin/application-template.properties tmp/boxapi/bin/application.properties
+
    cp -R boxproc-box-$COMMIT/boxui/* tmp/boxui/
 
    cp boxproc-box-$COMMIT/scheduler/scheduler.jar tmp/scheduler/bin
@@ -82,14 +91,23 @@ install() {
    cp boxproc-box-$COMMIT/scheduler/scheduler.properties tmp/scheduler/bin/scheduler.properties
    cp boxproc-box-$COMMIT/scheduler/log4j.properties tmp/scheduler/bin/log4j.properties
 
-   cp boxproc-box-$COMMIT/scripts/* tmp/scripts
-   chmod 755 tmp/scripts/services/*.sh
+   cp boxproc-box-$COMMIT/scripts/install/*  tmp/scripts/install
+   cp boxproc-box-$COMMIT/scripts/services/*  tmp/scripts/services
 
+   tmp/boxui/npm init
+   tmp/boxui/npm install express compression --save
+
+
+   # usermod -aG sudo boxuser
+
+   # copy box*.service files to /etc/systemd/system/
+   chmod 755 tmp/scripts/services/*.sh
+   chmod 755 tmp/scripts/services/*.service
+
+   rm -rf /etc/systemd/system/box*.service
    cp -rf tmp/scripts/services/*.service /etc/systemd/system/
 
-
-
-#  Need to add in copying the box*.service files to /etc/systemd/system/
+   systemctl daemon-reload
 
 
    mv tmp $VERSION
@@ -108,15 +126,16 @@ case $1 in
       echo Stop/starting all services
       systemctl restart boxapi
       systemctl restart boxui
-      systemctl restart boxs
+      systemctl restart boxscheduler
       check_status ;;
    upgrade|downgrade) [ $# -ne 2 ] && die "Version number is missing \n\n$USAGE"
       [ -d /var/opt/box/$2 ] || die "$2 is not installed"
       rm -f /box
       ln -s /var/opt/box/$2 /box
+      systemctl daemon-reload
       systemctl restart boxapi
       systemctl restart boxui
-      systemctl restart boxs
+      systemctl restart boxscheduler
       check_status ;;
    version) basename `pwd -P` ;;
    help|\?|*) echo -e $USAGE ; exit 0 ;;

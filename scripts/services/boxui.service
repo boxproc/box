@@ -8,8 +8,8 @@ Type=forking
 ExecStart=/box/scripts/services/boxui.sh start
 ExecStop=/box/scripts/services/boxui.sh stop
 Restart=always
-User=boxuser
-Group=box
+User=root
+Group=
 
 [Install]
 WantedBy=multi-user.target
