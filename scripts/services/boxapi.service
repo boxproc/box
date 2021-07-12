@@ -9,7 +9,7 @@ ExecStart=/box/scripts/services/boxapi.sh start
 ExecStop=/box/scripts/services/boxapi.sh stop
 Restart=always
 User=root
-Group=box
+Group=
 
 [Install]
 WantedBy=multi-user.target
