@@ -39,7 +39,7 @@ case $1 in
     start)
         echo "Starting $SERVICE_NAME ..."
         if [ ! -f $PID_PATH_NAME ]; then
-            sudo nohup $JAVA_EXEC -Ddb.conn.url=$DATASOURCE_URL -Ddb.username=$DATASOURCE_USER_NAME -Ddb.password=$DATASOURCE_PASSWORD -Dbox.home=$BOX -Dlog4j.configuration="file:/box/scheduler/bin/log4j.properties"  -jar $PATH_TO_SCHEDULER_JAR /tmp 2>> /dev/null >> /dev/null &
+            sudo nohup $JAVA_EXEC -Ddb.conn.url=$DATASOURCE_URL -Ddb.username=$DATASOURCE_USER_NAME -Ddb.password=$DATASOURCE_PASSWORD -Dbox.home=$BOX -Dlog4j.configuration="file:/box/scheduler/bin/log4j.properties"  -jar $PATH_TO_SCHEDULER_JAR &
              echo $! > $PID_PATH_NAME
         echo "$SERVICE_NAME started ..."
         else
