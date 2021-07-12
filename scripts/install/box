@@ -68,6 +68,7 @@ install() {
 
    ln -s /var/opt/box/$VERSION /box
 
+   cd ..
    unzip -q $VERSION || die "Out of disk space"
    COMMIT=`unzip -z $VERSION | awk 'END {print substr($1,1,7)}'`
    rm -f $VERSION
@@ -85,7 +86,9 @@ install() {
 
    cp boxproc-box-$COMMIT/api/boxapi.jar tmp/boxapi/bin
    cp boxproc-box-$COMMIT/api/application-template.properties tmp/boxapi/bin
-   mv tmp/boxapi/bin/application-template.properties tmp/boxapi/bin/application.properties
+
+   # this step will update after env property source fix
+   mv tmp/boxapi/bin/application-template.properties tmp/boxapi/bin/application-template.properties
 
    cp -R boxproc-box-$COMMIT/boxui/* tmp/boxui/
 
@@ -97,8 +100,9 @@ install() {
    cp boxproc-box-$COMMIT/scripts/install/*  tmp/scripts/install
    cp boxproc-box-$COMMIT/scripts/services/*  tmp/scripts/services
 
-   tmp/boxui/npm init
-   tmp/boxui/npm install express compression --save
+   # apply this fix manually so far 
+   #tmp/boxui/npm init
+   #tmp/boxui/npm install express compression --save
 
    # usermod -aG sudo boxuser
 
@@ -110,7 +114,6 @@ install() {
    cp -rf tmp/scripts/services/*.service /etc/systemd/system/
 
    systemctl daemon-reload
-
 
    mv tmp $VERSION
 }
