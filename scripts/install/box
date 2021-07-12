@@ -88,7 +88,7 @@ install() {
    cp boxproc-box-$COMMIT/api/application-template.properties tmp/boxapi/bin
 
    # this step will update after env property source fix
-   mv tmp/boxapi/bin/application-template.properties tmp/boxapi/bin/application-template.properties
+   # mv tmp/boxapi/bin/application-template.properties tmp/boxapi/bin/application-template.properties
 
    cp -R boxproc-box-$COMMIT/boxui/* tmp/boxui/
 
