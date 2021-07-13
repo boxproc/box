@@ -57,7 +57,7 @@ check_status() {
 install() {
 
    cd /var/opt/box
-   rm -rf /box
+  # rm -rf /box
    VERSION=$1
 
    echo "Fetching $VERSION from GitHub"
@@ -133,6 +133,7 @@ case $1 in
       systemctl restart boxapi
       systemctl restart boxui
       systemctl restart boxscheduler
+      systemctl restart nginx
       check_status ;;
    upgrade|downgrade) [ $# -ne 2 ] && die "Version number is missing \n\n$USAGE"
       [ -d /var/opt/box/$2 ] || die "$2 is not installed"
@@ -142,6 +143,7 @@ case $1 in
       systemctl restart boxapi
       systemctl restart boxui
       systemctl restart boxscheduler
+      systemctl restart nginx
       check_status ;;
    version) basename `pwd -P` ;;
    help|\?|*) echo -e $USAGE ; exit 0 ;;
