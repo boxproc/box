@@ -107,7 +107,7 @@ case $1 in
    list) curl -s https://api.github.com/repos/boxproc/box/releases|jq -r '.[].tag_name' ;;
    local) cd /var/opt/box/ ; ls -1Fd v* | awk -F\/ '{if(NF==2){print $1}}';;
    install) [ $# -ne 2 ] && die "Version number is missing \n\n$USAGE"
-      [ -d /var/opt//box/$2 ] && die "$2 is already installed"
+      [ -d /var/opt/box/$2 ] && die "$2 is already installed"
       install $2 ;;
    status) cd /box ; printf "BOX version \033[1;33m$(basename `pwd -P`)\033[0m \n"
       check_status ;;
