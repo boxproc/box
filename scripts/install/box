@@ -26,7 +26,7 @@ hash wget 2>/dev/null  || die "wget not found in PATH"
 hash unzip 2>/dev/null || die "unzip not found in PATH"
 hash curl 2>/dev/null  || die "curl not found in PATH"
 
-USAGE=' box install version - installs specified version \n box list - lists all versions \n box help - displays usage message \n box restart - stop/starts all services \n box [status] - shows status of software \n box upgrade version - change to specified version\n box version         - print the current version number'
+USAGE=' box install version - installs specified version \n box list - lists all versions \n   box local - lists all the local copies\n box help - displays usage message \n box restart - stop/starts all services \n box [status] - shows status of software \n box upgrade version - change to specified version\n box version         - print the current version number'
 
 # Check that we've got the correct number of parameters and that we can see the box software
 
@@ -57,18 +57,12 @@ check_status() {
 install() {
 
    cd /var/opt/box
-  # rm -rf /box
    VERSION=$1
 
    echo "Fetching $VERSION from GitHub"
    wget -q https://api.github.com/repos/boxproc/box/zipball/$VERSION || die "Cannot find $VERSION"
    rm -rf tmp
    mkdir tmp
-   cd tmp
-
-   ln -s /var/opt/box/$VERSION /box
-
-   cd ..
    unzip -q $VERSION || die "Out of disk space"
    COMMIT=`unzip -z $VERSION | awk 'END {print substr($1,1,7)}'`
    rm -f $VERSION
@@ -76,10 +70,8 @@ install() {
    mkdir tmp/boxui
    mkdir tmp/boxapi
    mkdir tmp/boxapi/bin
-
    mkdir tmp/scheduler
    mkdir tmp/scheduler/bin
-
    mkdir tmp/scripts
    mkdir tmp/scripts/install
    mkdir tmp/scripts/services
@@ -91,26 +83,16 @@ install() {
    # mv tmp/boxapi/bin/application-template.properties tmp/boxapi/bin/application-template.properties
 
    cp -R boxproc-box-$COMMIT/boxui/* tmp/boxui/
-
    cp boxproc-box-$COMMIT/scheduler/scheduler.jar tmp/scheduler/bin
-   # cp boxproc-box-$COMMIT/scheduler/test.sh tmp/scheduler/bin/test.sh
    cp boxproc-box-$COMMIT/scheduler/scheduler.properties tmp/scheduler/bin/scheduler.properties
    cp boxproc-box-$COMMIT/scheduler/log4j.properties tmp/scheduler/bin/log4j.properties
-
    cp boxproc-box-$COMMIT/scripts/install/*  tmp/scripts/install
    cp boxproc-box-$COMMIT/scripts/services/*  tmp/scripts/services
 
-   # apply this fix manually so far
-   #tmp/boxui/npm init
-   #tmp/boxui/npm install express compression --save
-   mkdir -p /box/logs/node/
-
-   # usermod -aG sudo boxuser
+   mkdir -p /var/logs/node/ 2>/dev/null
 
    # copy box*.service files to /etc/systemd/system/
-   chmod 755 tmp/scripts/services/*.sh
    chmod 755 tmp/scripts/services/*.service
-
    rm -rf /etc/systemd/system/box*.service
    cp -rf tmp/scripts/services/*.service /etc/systemd/system/
 
@@ -123,8 +105,9 @@ install() {
 
 case $1 in
    list) curl -s https://api.github.com/repos/boxproc/box/releases|jq -r '.[].tag_name' ;;
+   local) cd /var/opt/box/ ; ls -1Fd v* | awk -F\/ '{if(NR==2){print $1}}';;
    install) [ $# -ne 2 ] && die "Version number is missing \n\n$USAGE"
-      [ -d /box/$2 ] && die "$2 is already installed"
+      [ -d /var/opt//box/$2 ] && die "$2 is already installed"
       install $2 ;;
    status) printf "BOX version \033[1;33m$(basename `pwd -P`)\033[0m \n"
       check_status ;;
