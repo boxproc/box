@@ -1,0 +1,12 @@
+# Makes a command line connection to the MySQl database
+# by MAC
+# July 2021
+PATH=/usr/bin
+REGION="eu-west-2"
+INSTANCE_ID="`wget -qO- http://instance-data/latest/meta-data/instance-id`"
+ENVIRONMENT="`aws ec2 describe-tags --filters "Name=resource-id,Values=$INSTANCE_ID" "Name=key,Values=Name" --region $REGION --output=text | cut -d"-" -f3`"
+DATASOURCE_USER_NAME=boxuser
+DATASOURCE_PASSWORD=`aws secretsmanager get-secret-value --region $REGION --secret-id ${ENVIRONMENT}_boxuser --query SecretString --output text | jq -r '.password'`
+DB_ENDPOINT=`aws rds describe-db-clusters --region $REGION --db-cluster-identifier box-${ENVIRONMENT} | jq -r '.DBClusters[].Endpoint'`
+DATASOURCE_URL="jdbc:mysql://$DB_ENDPOINT:3306/boxdb01?zeroDateTimeBehavior=convertToNull&enabledTLSProtocols=TLSv1.2"
+mysql -h $DB_ENDPOINT -P 3306 -u$DATASOURCE_USER_NAME -p$DATASOURCE_PASSWORD
