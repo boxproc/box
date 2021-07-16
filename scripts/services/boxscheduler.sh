@@ -1,5 +1,5 @@
 #!/bin/sh
-BOX_HOME=/box
+. /usr/local/bin/env.sh
 cd $BOX_HOME
 JAVA_EXEC=/bin/java
 SERVICE_NAME=boxscheduler
@@ -9,7 +9,6 @@ PID_PATH_NAME=/tmp/$SERVICE_NAME-pid
 echo $PID_PATH_NAME
 PATH_TO_SCHEDULER_PROPERTIES="$BOX_HOME/scheduler/bin/scheduler.properties"
 echo $PATH_TO_SCHEDULER_PROPERTIES
-source /usr/local/bin/env.sh .
 
 
 IS_PROCESS_EXISTS=`ps aux | grep -v grep | grep scheduler| wc -l`
