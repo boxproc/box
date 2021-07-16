@@ -1,5 +1,6 @@
 #!/bin/bash
 
+. /usr/local/bin/env.sh
 BOX_HOME="/box"
 NAME="boxui"
 SERVICENAME="boxui"
@@ -11,7 +12,6 @@ RETVAL=0
 red="`tput setaf 1`"
 green="`tput setaf 2`"
 white="`tput setaf 7`"
-source /usr/local/bin/env.sh .
 
 start() {
   echo -n "Starting ${SERVICENAME}: "
